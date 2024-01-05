@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="souplamlam.png">
+<SubTexture name="soup idle0000" x="0" y="348" width="112" height="143" frameX="-1217" frameY="-495" frameWidth="2150" frameHeight="900" />
+<SubTexture name="soup idle0001" x="125" y="183" width="108" height="164" frameX="-1218" frameY="-474" frameWidth="2150" frameHeight="900" />
+<SubTexture name="soup idle0002" x="233" y="183" width="104" height="164" frameX="-1217" frameY="-474" frameWidth="2150" frameHeight="900" />
+<SubTexture name="soup left0000" x="189" y="0" width="126" height="165" frameX="-1181" frameY="-473" frameWidth="2150" frameHeight="900" />
+<SubTexture name="soup left0001" x="315" y="0" width="121" height="165" frameX="-1183" frameY="-473" frameWidth="2150" frameHeight="900" />
+<SubTexture name="soup down0000" x="228" y="348" width="121" height="137" frameX="-1196" frameY="-507" frameWidth="2150" frameHeight="900" />
+<SubTexture name="soup down0001" x="112" y="348" width="116" height="140" frameX="-1198" frameY="-504" frameWidth="2150" frameHeight="900" />
+<SubTexture name="soup right0000" x="436" y="0" width="109" height="164" frameX="-1242" frameY="-472" frameWidth="2150" frameHeight="900" />
+<SubTexture name="soup right0001" x="0" y="183" width="125" height="165" frameX="-1235" frameY="-471" frameWidth="2150" frameHeight="900" />
+<SubTexture name="soup up0000" x="0" y="0" width="85" height="183" frameX="-1224" frameY="-454" frameWidth="2150" frameHeight="900" />
+<SubTexture name="soup up0001" x="85" y="0" width="104" height="171" frameX="-1217" frameY="-467" frameWidth="2150" frameHeight="900" />
+</TextureAtlas>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dudemono.png">
+<SubTexture name="dudemono idle0000" x="204" y="0" width="87" height="145" frameX="-239" frameY="-198" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudemono idle0001" x="204" y="0" width="87" height="145" frameX="-239" frameY="-198" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudemono right0000" x="424" y="0" width="145" height="87" frameX="-276" frameY="-256" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudemono right0001" x="424" y="0" width="145" height="87" frameX="-272" frameY="-256" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudemono up0000" x="0" y="0" width="102" height="198" frameX="-237" frameY="-143" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudemono up0001" x="102" y="0" width="102" height="197" frameX="-236" frameY="-146" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudemono down0000" x="207" y="198" width="73" height="112" frameX="-246" frameY="-256" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudemono down0001" x="133" y="198" width="74" height="114" frameX="-245" frameY="-252" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudemono left0000" x="291" y="0" width="133" height="145" frameX="-155" frameY="-199" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudemono left0001" x="0" y="198" width="133" height="144" frameX="-156" frameY="-200" frameWidth="512" frameHeight="512" />
+</TextureAtlas>

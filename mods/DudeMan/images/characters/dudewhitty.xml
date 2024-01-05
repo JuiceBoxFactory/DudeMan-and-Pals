@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dudewhitty.png">
+<SubTexture name="dudewhitty idle0000" x="0" y="0" width="72" height="118" frameX="-225" frameY="-220" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudewhitty right0000" x="72" y="0" width="72" height="118" frameX="-225" frameY="-220" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudewhitty down0000" x="144" y="0" width="72" height="118" frameX="-225" frameY="-220" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudewhitty left0000" x="216" y="0" width="72" height="118" frameX="-225" frameY="-220" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudewhitty up0000" x="0" y="118" width="72" height="118" frameX="-225" frameY="-220" frameWidth="512" frameHeight="512" />
+</TextureAtlas>

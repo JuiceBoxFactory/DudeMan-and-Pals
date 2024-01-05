@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dudevreen.png">
+<SubTexture name="dudevreen idle0000" x="0" y="166" width="81" height="131" frameX="-225" frameY="-207" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudevreen idle0001" x="81" y="166" width="81" height="130" frameX="-224" frameY="-208" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudevreen down0000" x="0" y="297" width="206" height="122" frameX="-162" frameY="-237" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudevreen down0001" x="241" y="0" width="206" height="136" frameX="-162" frameY="-223" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudevreen up0000" x="0" y="0" width="119" height="166" frameX="-195" frameY="-173" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudevreen up0001" x="119" y="0" width="122" height="156" frameX="-191" frameY="-182" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudevreen left0000" x="206" y="297" width="90" height="121" frameX="-191" frameY="-217" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudevreen left0001" x="361" y="166" width="85" height="122" frameX="-196" frameY="-216" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudevreen right0000" x="162" y="166" width="101" height="128" frameX="-234" frameY="-211" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudevreen right0001" x="263" y="166" width="98" height="127" frameX="-234" frameY="-211" frameWidth="512" frameHeight="512" />
+</TextureAtlas>

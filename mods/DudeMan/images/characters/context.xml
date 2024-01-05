@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="context.png">
+<SubTexture name="context idle0000" x="341" y="0" width="138" height="229" frameX="-825" frameY="-404" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context idle0001" x="0" y="250" width="138" height="229" frameX="-826" frameY="-404" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context left0000" x="276" y="250" width="139" height="221" frameX="-786" frameY="-414" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context left0001" x="138" y="250" width="138" height="224" frameX="-793" frameY="-410" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context up0000" x="0" y="0" width="163" height="250" frameX="-795" frameY="-382" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context up0001" x="163" y="0" width="178" height="242" frameX="-790" frameY="-391" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context right0000" x="634" y="0" width="157" height="212" frameX="-845" frameY="-419" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context right0001" x="479" y="0" width="155" height="220" frameX="-843" frameY="-411" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context down0000" x="634" y="212" width="147" height="207" frameX="-823" frameY="-426" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context down0001" x="479" y="220" width="148" height="205" frameX="-822" frameY="-428" frameWidth="2150" frameHeight="900" />
+</TextureAtlas>

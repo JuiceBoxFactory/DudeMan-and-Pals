@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-stage>
+<stage>
+	<gf/>
+	<sprite antialiasing="false" sprite="backdrop/pastelfever/bg" name="bg"/>
+	<sprite antialiasing="false" sprite="backdrop/pastelfever/floor" name="floor"/>
+	<dad/>
+	<bf/>
+	<combo/>
+</stage>

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dudeinthehole.png">
+<SubTexture name="dudeinthehole idle0000" x="0" y="0" width="131" height="143" frameX="-189" frameY="-201" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudeinthehole left0000" x="131" y="0" width="131" height="143" frameX="-177" frameY="-201" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudeinthehole right0000" x="0" y="0" width="131" height="143" frameX="-208" frameY="-201" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudeinthehole up0000" x="262" y="0" width="143" height="131" frameX="-183" frameY="-185" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudeinthehole down0000" x="0" y="143" width="143" height="131" frameX="-183" frameY="-221" frameWidth="512" frameHeight="512" />
+</TextureAtlas>

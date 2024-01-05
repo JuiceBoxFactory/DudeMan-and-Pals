@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="sideviewGF.png">
+<SubTexture name="sideviewGF idle0000" x="100" y="0" width="99" height="173" frameX="-210" frameY="-171" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF idle0001" x="0" y="0" width="100" height="174" frameX="-209" frameY="-170" frameWidth="512" frameHeight="512" />
+</TextureAtlas>

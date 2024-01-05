@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="sideviewDudeman.png">
+<SubTexture name="sideviewDudeman idle0000" x="418" y="136" width="68" height="111" frameX="-231" frameY="-227" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman idle0001" x="486" y="136" width="67" height="111" frameX="-231" frameY="-227" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman left0000" x="148" y="432" width="147" height="78" frameX="-136" frameY="-261" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman left0001" x="0" y="432" width="148" height="79" frameX="-135" frameY="-259" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman right0000" x="295" y="432" width="117" height="59" frameX="-286" frameY="-279" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman right0001" x="418" y="247" width="109" height="50" frameX="-285" frameY="-289" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman up0000" x="0" y="0" width="114" height="161" frameX="-232" frameY="-176" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman up0001" x="114" y="0" width="116" height="143" frameX="-231" frameY="-194" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman down0000" x="0" y="299" width="143" height="133" frameX="-207" frameY="-280" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman down0001" x="418" y="0" width="137" height="136" frameX="-210" frameY="-275" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman imdead0000" x="230" y="0" width="94" height="138" frameX="-231" frameY="-200" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman imdead0001" x="0" y="161" width="94" height="138" frameX="-231" frameY="-200" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman imdead0002" x="94" y="161" width="94" height="138" frameX="-231" frameY="-200" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman imdead0003" x="188" y="161" width="94" height="138" frameX="-231" frameY="-200" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman imdead0004" x="324" y="0" width="94" height="138" frameX="-231" frameY="-200" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman imdead0005" x="324" y="138" width="94" height="138" frameX="-231" frameY="-200" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman imdead0006" x="486" y="136" width="67" height="111" frameX="-231" frameY="-227" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman white0000" x="395" y="299" width="110" height="104" frameX="-207" frameY="-234" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman white0001" x="285" y="299" width="110" height="105" frameX="-209" frameY="-233" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman white0002" x="285" y="299" width="110" height="105" frameX="-209" frameY="-233" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman white0003" x="285" y="299" width="110" height="105" frameX="-209" frameY="-233" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman white0004" x="285" y="299" width="110" height="105" frameX="-209" frameY="-233" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman white0005" x="285" y="299" width="110" height="105" frameX="-209" frameY="-233" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman white0006" x="285" y="299" width="110" height="105" frameX="-209" frameY="-233" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman white0007" x="285" y="299" width="110" height="105" frameX="-209" frameY="-233" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman white0008" x="285" y="299" width="110" height="105" frameX="-209" frameY="-233" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman white0009" x="285" y="299" width="110" height="105" frameX="-209" frameY="-233" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman white0010" x="285" y="299" width="110" height="105" frameX="-209" frameY="-233" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman black0000" x="213" y="299" width="72" height="109" frameX="-237" frameY="-229" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman black0001" x="143" y="299" width="70" height="110" frameX="-237" frameY="-228" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman black0002" x="143" y="299" width="70" height="110" frameX="-237" frameY="-228" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman black0003" x="143" y="299" width="70" height="110" frameX="-237" frameY="-228" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman black0004" x="143" y="299" width="70" height="110" frameX="-237" frameY="-228" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman black0005" x="143" y="299" width="70" height="110" frameX="-237" frameY="-228" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman black0006" x="143" y="299" width="70" height="110" frameX="-237" frameY="-228" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman black0007" x="143" y="299" width="70" height="110" frameX="-237" frameY="-228" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman black0008" x="143" y="299" width="70" height="110" frameX="-237" frameY="-228" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman black0009" x="143" y="299" width="70" height="110" frameX="-237" frameY="-228" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewDudeman black0010" x="143" y="299" width="70" height="110" frameX="-237" frameY="-228" frameWidth="512" frameHeight="512" />
+</TextureAtlas>

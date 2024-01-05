@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="genderchild.png">
+<SubTexture name="c down0000" x="284" y="1495" width="292" height="338" frameX="-260" frameY="-255" frameWidth="768" frameHeight="768" />
+<SubTexture name="c down0001" x="0" y="1495" width="284" height="343" frameX="-264" frameY="-250" frameWidth="768" frameHeight="768" />
+<SubTexture name="c down0002" x="1610" y="0" width="275" height="347" frameX="-268" frameY="-246" frameWidth="768" frameHeight="768" />
+<SubTexture name="c idle0000" x="715" y="757" width="237" height="369" frameX="-243" frameY="-184" frameWidth="768" frameHeight="768" />
+<SubTexture name="c idle0001" x="238" y="757" width="236" height="371" frameX="-241" frameY="-182" frameWidth="768" frameHeight="768" />
+<SubTexture name="c idle0002" x="823" y="0" width="235" height="372" frameX="-239" frameY="-181" frameWidth="768" frameHeight="768" />
+<SubTexture name="c idle0003" x="234" y="381" width="235" height="375" frameX="-238" frameY="-178" frameWidth="768" frameHeight="768" />
+<SubTexture name="c idle0004" x="0" y="381" width="234" height="376" frameX="-235" frameY="-177" frameWidth="768" frameHeight="768" />
+<SubTexture name="c left0000" x="254" y="1129" width="252" height="365" frameX="-165" frameY="-188" frameWidth="768" frameHeight="768" />
+<SubTexture name="c left0001" x="757" y="1129" width="252" height="363" frameX="-168" frameY="-190" frameWidth="768" frameHeight="768" />
+<SubTexture name="c left0002" x="506" y="1129" width="251" height="365" frameX="-170" frameY="-188" frameWidth="768" frameHeight="768" />
+<SubTexture name="c right0000" x="1058" y="0" width="318" height="372" frameX="-263" frameY="-181" frameWidth="768" frameHeight="768" />
+<SubTexture name="c right0001" x="469" y="381" width="318" height="373" frameX="-259" frameY="-180" frameWidth="768" frameHeight="768" />
+<SubTexture name="c right0002" x="1058" y="372" width="318" height="372" frameX="-258" frameY="-181" frameWidth="768" frameHeight="768" />
+<SubTexture name="c up0000" x="0" y="0" width="270" height="381" frameX="-169" frameY="-172" frameWidth="768" frameHeight="768" />
+<SubTexture name="c up0001" x="270" y="0" width="275" height="381" frameX="-167" frameY="-172" frameWidth="768" frameHeight="768" />
+<SubTexture name="c up0002" x="545" y="0" width="278" height="379" frameX="-166" frameY="-174" frameWidth="768" frameHeight="768" />
+<SubTexture name="c run0000" x="1376" y="367" width="234" height="365" frameX="-237" frameY="-165" frameWidth="768" frameHeight="768" />
+<SubTexture name="c run0001" x="1009" y="1129" width="234" height="362" frameX="-236" frameY="-171" frameWidth="768" frameHeight="768" />
+<SubTexture name="c run0002" x="952" y="757" width="234" height="369" frameX="-233" frameY="-184" frameWidth="768" frameHeight="768" />
+<SubTexture name="c run0003" x="952" y="757" width="234" height="369" frameX="-233" frameY="-184" frameWidth="768" frameHeight="768" />
+<SubTexture name="c run0004" x="823" y="372" width="234" height="372" frameX="-234" frameY="-181" frameWidth="768" frameHeight="768" />
+<SubTexture name="c run0005" x="823" y="372" width="234" height="372" frameX="-234" frameY="-181" frameWidth="768" frameHeight="768" />
+<SubTexture name="c run0006" x="1243" y="1129" width="237" height="360" frameX="-235" frameY="-172" frameWidth="768" frameHeight="768" />
+<SubTexture name="c run0007" x="1376" y="732" width="234" height="365" frameX="-237" frameY="-174" frameWidth="768" frameHeight="768" />
+<SubTexture name="c strokes0000" x="823" y="372" width="234" height="372" frameX="-234" frameY="-181" frameWidth="768" frameHeight="768" />
+<SubTexture name="c strokes0001" x="474" y="757" width="241" height="371" frameX="-246" frameY="-182" frameWidth="768" frameHeight="768" />
+<SubTexture name="c strokes0002" x="0" y="757" width="238" height="372" frameX="-243" frameY="-181" frameWidth="768" frameHeight="768" />
+<SubTexture name="c strokes0003" x="0" y="1129" width="254" height="366" frameX="-234" frameY="-187" frameWidth="768" frameHeight="768" />
+<SubTexture name="c strokes0004" x="1376" y="0" width="234" height="367" frameX="-233" frameY="-186" frameWidth="768" frameHeight="768" />
+</TextureAtlas>

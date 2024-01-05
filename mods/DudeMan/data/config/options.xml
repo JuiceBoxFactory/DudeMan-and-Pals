@@ -1,0 +1,8 @@
+<!DOCTYPE codename-mod-options>
+<!-- TEMPLATE FOR CUSTOM OPTIONS!!! -->
+<menu name="ConfettiFever" desc="Silly Shit !">
+	<number id="numberExample" name="Number example" min="0" max="10" change="1"/>
+	<checkbox id="Lpilepsy" desc="Epilepsy? more like Lpilepsy" name= "No Flashing Lights"/>
+	<checkbox id="catHB" desc="Cat" name= "Cat"/>
+	
+</menu>

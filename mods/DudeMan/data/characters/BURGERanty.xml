@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="anty" camx="-850" y="0" isGF="false" camy="130" color="#FF234F" isPlayer="false" flipX="false" antialiasing="false" sprite="burgeranty">
+	<anim x="0" loop="false" y="0" fps="6" anim="burgeranty idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="burgeranty up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="burgeranty left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="burgeranty right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="burgeranty down" name="singDOWN"/>
+</character>

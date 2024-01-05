@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="burgerdude.png">
+<SubTexture name="burgerdude idle0000" x="271" y="0" width="99" height="144" frameX="-647" frameY="-468" frameWidth="2560" frameHeight="900" />
+<SubTexture name="burgerdude idle0001" x="0" y="156" width="98" height="143" frameX="-647" frameY="-469" frameWidth="2560" frameHeight="900" />
+<SubTexture name="burgerdude up0000" x="0" y="0" width="135" height="156" frameX="-605" frameY="-456" frameWidth="2560" frameHeight="900" />
+<SubTexture name="burgerdude up0001" x="135" y="0" width="136" height="151" frameX="-607" frameY="-461" frameWidth="2560" frameHeight="900" />
+<SubTexture name="burgerdude left0000" x="185" y="156" width="125" height="137" frameX="-599" frameY="-474" frameWidth="2560" frameHeight="900" />
+<SubTexture name="burgerdude left0001" x="370" y="0" width="124" height="134" frameX="-604" frameY="-477" frameWidth="2560" frameHeight="900" />
+<SubTexture name="burgerdude right0000" x="147" y="299" width="147" height="95" frameX="-665" frameY="-519" frameWidth="2560" frameHeight="900" />
+<SubTexture name="burgerdude right0001" x="0" y="299" width="147" height="98" frameX="-664" frameY="-515" frameWidth="2560" frameHeight="900" />
+<SubTexture name="burgerdude down0000" x="370" y="134" width="87" height="131" frameX="-643" frameY="-484" frameWidth="2560" frameHeight="900" />
+<SubTexture name="burgerdude down0001" x="98" y="156" width="87" height="139" frameX="-644" frameY="-476" frameWidth="2560" frameHeight="900" />
+</TextureAtlas>

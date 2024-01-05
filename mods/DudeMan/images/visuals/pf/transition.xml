@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="transition.png">
+<SubTexture name="switch0000" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0001" x="3840" y="0" width="1280" height="481" frameX="0" frameY="-239" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0002" x="1280" y="2880" width="1280" height="632" frameX="0" frameY="-88" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0003" x="1280" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0004" x="0" y="720" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0005" x="1280" y="720" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0006" x="0" y="1440" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0007" x="0" y="1440" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0008" x="1280" y="1440" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0009" x="2560" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0010" x="2560" y="720" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0011" x="2560" y="1440" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0012" x="0" y="2160" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0013" x="1280" y="2160" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0014" x="2560" y="2160" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0015" x="2560" y="2160" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0016" x="0" y="2880" width="1280" height="710" frameX="0" frameY="-10" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0017" x="2560" y="2880" width="1280" height="607" frameX="0" frameY="-113" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0018" x="3840" y="481" width="1280" height="344" frameX="0" frameY="-376" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0019" x="3840" y="895" width="1280" height="68" frameX="0" frameY="-652" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0020" x="4118" y="825" width="131" height="36" frameX="-638" frameY="-684" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0021" x="4118" y="825" width="131" height="36" frameX="-638" frameY="-684" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0022" x="3840" y="825" width="40" height="70" frameX="-683" frameY="-451" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0023" x="3880" y="825" width="32" height="70" frameX="-687" frameY="-424" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0024" x="3880" y="825" width="32" height="70" frameX="-687" frameY="-431" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0025" x="3912" y="825" width="66" height="70" frameX="-670" frameY="-493" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0026" x="3978" y="825" width="70" height="70" frameX="-668" frameY="-553" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0027" x="4048" y="825" width="70" height="45" frameX="-668" frameY="-675" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0028" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="switch0029" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="shesnotthere0000" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

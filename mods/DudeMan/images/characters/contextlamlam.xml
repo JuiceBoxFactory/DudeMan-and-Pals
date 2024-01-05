@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="contextlamlam.png">
+<SubTexture name="context idle0000" x="502" y="164" width="142" height="159" frameX="-835" frameY="-476" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context idle0001" x="115" y="229" width="131" height="178" frameX="-837" frameY="-456" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context idle0002" x="375" y="0" width="127" height="186" frameX="-839" frameY="-448" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context right0000" x="502" y="0" width="181" height="164" frameX="-854" frameY="-469" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context right0001" x="246" y="229" width="172" height="171" frameX="-859" frameY="-461" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context left0000" x="0" y="229" width="115" height="183" frameX="-803" frameY="-451" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context left0001" x="270" y="0" width="105" height="187" frameX="-812" frameY="-447" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context up0000" x="0" y="0" width="134" height="229" frameX="-852" frameY="-366" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context up0001" x="134" y="0" width="136" height="225" frameX="-852" frameY="-373" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context down0000" x="173" y="412" width="187" height="123" frameX="-811" frameY="-532" frameWidth="2150" frameHeight="900" />
+<SubTexture name="context down0001" x="0" y="412" width="173" height="130" frameX="-818" frameY="-526" frameWidth="2150" frameHeight="900" />
+</TextureAtlas>

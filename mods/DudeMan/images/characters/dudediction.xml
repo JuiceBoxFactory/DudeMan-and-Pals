@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dudediction.png">
+<SubTexture name="dudediction idle0000" x="0" y="128" width="84" height="112" frameX="-215" frameY="-226" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudediction idle0001" x="84" y="128" width="82" height="111" frameX="-216" frameY="-227" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudediction down0000" x="264" y="104" width="83" height="82" frameX="-216" frameY="-261" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudediction down0001" x="101" y="240" width="83" height="81" frameX="-216" frameY="-260" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudediction right0000" x="166" y="128" width="95" height="105" frameX="-233" frameY="-233" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudediction right0001" x="168" y="0" width="96" height="113" frameX="-230" frameY="-226" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudediction left0000" x="0" y="240" width="101" height="101" frameX="-175" frameY="-238" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudediction left0001" x="264" y="0" width="98" height="104" frameX="-178" frameY="-235" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudediction up0000" x="0" y="0" width="84" height="128" frameX="-211" frameY="-210" frameWidth="512" frameHeight="512" />
+<SubTexture name="dudediction up0001" x="84" y="0" width="84" height="123" frameX="-211" frameY="-215" frameWidth="512" frameHeight="512" />
+</TextureAtlas>

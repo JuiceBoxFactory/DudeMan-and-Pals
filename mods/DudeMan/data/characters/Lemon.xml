@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="600" icon="lemon" camx="-150" y="70" isGF="false" camy="60" color="#5ED277" isPlayer="false" flipX="false" antialiasing="false" sprite="lemon">
+	<anim x="0" loop="false" y="0" fps="6" anim="lemon idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="lemon up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="lemon left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="lemon right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="lemon down" name="singDOWN"/>
+</character>

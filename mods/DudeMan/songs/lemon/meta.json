@@ -1,0 +1,16 @@
+{
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"beatsPerMesure": 4,
+	"bpm": 195,
+	"difficulties": [
+		"Hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -13893888,
+	"displayName": "life gives you lemons",
+	"icon": "Icon",
+	"name": "lemon",
+	"color": "#2BFF00"
+}

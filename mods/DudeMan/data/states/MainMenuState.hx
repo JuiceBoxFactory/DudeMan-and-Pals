@@ -1,0 +1,61 @@
+import funkin.options.OptionsMenu;
+import flixel.addons.display.FlxBackdrop;
+var SelectedButton = 0;
+
+function postCreate(){
+    magenta.destroy();
+
+	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg')); // second argument: FlxAxes is required to determinate in what axes the sprite should be repeated, default to XY
+	coolBackdrop.moves = true;
+	coolBackdrop.scrollFactor.set(0, 0);
+	coolBackdrop.velocity.x = 100; // you can adjust the values to make the scrolling faster or lower
+	coolBackdrop.velocity.y = 100;
+	coolBackdrop.active = true;
+	add(coolBackdrop);
+
+	buttonbg = new FlxSprite(0, 0).loadGraphic(Paths.image('mainmenu/buttonbg'));
+	buttonbg.scrollFactor.set(0, 0);
+	add(buttonbg);
+
+	mans = new FlxSprite(0, 0).loadGraphic(Paths.image('mainmenu/dudes/'+SelectedButton));
+	mans.scrollFactor.set(0, 0);
+	add(mans);
+
+}
+
+function update() {	
+	mans.loadGraphic(Paths.image('mainmenu/dudes/'+SelectedButton));
+
+	if (controls.BACK) {
+	FlxG.sound.play(Paths.sound('cancel'));
+	}
+	if (FlxG.keys.justPressed.UP) {
+		SelectedButton -= 1;
+	}
+	if (FlxG.keys.justPressed.DOWN) {
+		SelectedButton += 1;
+	}
+	if (SelectedButton > 3) {
+		SelectedButton = 0;
+	}
+	if (SelectedButton < 0) {
+		SelectedButton = 3;
+	}
+	if (SelectedButton == 0 && controls.ACCEPT) {
+		FlxG.sound.play(Paths.sound('confirm'));
+   	 	trace("silly");
+   	 	}
+	if (SelectedButton == 1 && controls.ACCEPT) {
+		FlxG.sound.play(Paths.sound('confirm'));
+		FlxG.switchState(new ModState("FreeplaySelector"));
+   	 	}
+	if (SelectedButton == 2 && controls.ACCEPT) {
+		FlxG.sound.play(Paths.sound('confirm'));
+		FlxG.switchState(new OptionsMenu());
+   	 	}
+	if (SelectedButton == 3 && controls.ACCEPT) {
+		FlxG.sound.play(Paths.sound('confirm'));
+		FlxG.switchState(new ModState("CreditsState"));
+   	 	}
+		
+	}

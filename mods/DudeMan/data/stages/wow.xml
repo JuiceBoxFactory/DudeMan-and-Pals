@@ -1,0 +1,13 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.7">
+	<gf/>
+	<sprite x="2275" name="bg2" sprite="backdrop/strokemypenis/bg"/>
+	<sprite name="bg1" sprite="backdrop/strokemypenis/bg"/>
+	<sprite type="loop" fps="6" antialiasing="false" sprite="backdrop/strokemypenis/yellow" y="-100" name="yellow"/>
+	<sprite antialiasing="false" fps="6" x="2275" sprite="backdrop/strokemypenis/yellow" type="loop" y="-100" name="yellow2"/>
+	<sprite x="987" name="floor" sprite="backdrop/strokemypenis/standhere" y="0"/>
+	<sprite x="403" name="bridge" sprite="backdrop/strokemypenis/bridge" y="0"/>
+	<bf x="2500"/>
+	<dad x="2000"/>
+	<combo/>
+</stage>

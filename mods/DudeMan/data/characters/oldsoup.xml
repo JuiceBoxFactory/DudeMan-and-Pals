@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="350" icon="soup" camx="-350" y="-160" isGF="false" camy="80" color="#FF234F" isPlayer="false" flipX="true" antialiasing="false" sprite="oldsoup">
+	<anim x="0" loop="false" y="0" fps="12" anim="soup idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="soup up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="soup right" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="soup left" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="soup down" name="singDOWN"/>
+</character>

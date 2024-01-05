@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="dudeman" camx="-550" y="0" isGF="false" camy="130" color="#FFFFFF" isPlayer="false" flipX="true" antialiasing="false" sprite="burgerdude">
+	<anim x="0" loop="false" y="0" fps="6" anim="burgerdude idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="burgerdude up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="burgerdude right" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="burgerdude left" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="burgerdude down" name="singDOWN"/>
+</character>

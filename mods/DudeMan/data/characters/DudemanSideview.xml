@@ -1,0 +1,11 @@
+<!DOCTYPE codename-engine-character>
+<character x="600" icon="dudeman" camx="-150" y="70" isGF="false" camy="30" color="#FFFFFF" isPlayer="false" antialiasing="false" sprite="sideviewDudeman">
+	<anim x="0" loop="false" y="0" fps="6" anim="sideviewDudeman idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="sideviewDudeman up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="sideviewDudeman left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="sideviewDudeman right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="sideviewDudeman down" name="singDOWN"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="sideviewDudeman imdead" name="MONO"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="sideviewDudeman white" name="white"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="sideviewDudeman black" name="black"/>
+</character>
