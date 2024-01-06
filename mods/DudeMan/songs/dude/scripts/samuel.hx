@@ -29,7 +29,7 @@ import flixel.text.FlxTextBorderStyle;
 	DUDEDICTION.alpha = 0;
 	add(DUDEDICTION);
 
-	vreendude= new Character(110, 100, "vreendude");
+	vreendude= new Character(110, 100, "dudevreen");
 	vreendude.flipX = false; 
 	vreendude.alpha = 0;
 	add(vreendude);
