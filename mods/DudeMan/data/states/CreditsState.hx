@@ -7,8 +7,21 @@ public var sectionselected;
 var Selected = 0;
 var devname:FlxText;
 
-function create() {
+var links:Array<String> = [
+"https://twitter.com/NeonContext",
+"https://twitter.com/nullfreq_",
+"https://twitter.com/amyd0esstuff",
+"https://twitter.com/GhosttaleSans",
+"https://twitter.com/kosejumpscare",
+"https://twitter.com/SillyCherrrii",
+"https://twitter.com/antyd0te",
+"https://x.com/_MissyIsSilly_",
+"https://twitter.com/R3t1xidiot",
+"https://twitter.com/caz_arc",
+"https://twitter.com/Saaaaayoo",
+"https://twitter.com/angelthetweetb1"];
 
+function create() {
 	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg')); // second argument: FlxAxes is required to determinate in what axes the sprite should be repeated, default to XY
 	coolBackdrop.moves = true;
 	coolBackdrop.scrollFactor.set(0, 0);
@@ -61,13 +74,16 @@ function update() {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		Selected += 1;
 	}
+	if (FlxG.keys.justPressed.ENTER) {
+		CoolUtil.openURL(links[Selected]);
+	}
 	if (Selected == 0) {
 		devname.text = 'NeonExists';
 		thingsdone.text = 'Artist\nCoder\nCharter\nDirector ig\nVA\n\n"soup, if you dont like these sprites Ill kill myself"';
 	}
 	if (Selected == 1) {
 		devname.text = 'NullFrequency';
-		thingsdone.text = 'Musician\nCoder\n\n\n\n\n"kills you with my lazer eyes"';
+		thingsdone.text = 'Musician\nCoder\n\n\n\n\n"Roses are red, violets are blue, Im going to KILL YOU!!!!!"';
 	}
 	if (Selected == 2) {
 		devname.text = 'AussieDoesThings';
