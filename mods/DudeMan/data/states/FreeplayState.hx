@@ -17,7 +17,7 @@ import flixel.addons.display.FlxBackdrop;
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxSave;
 
-var mainArray:Array<String> = ["dude", "blood"];
+var mainArray:Array<String> = ["dude", "blood", "greetings"];
 var extrasArray:Array<String> = ["lemon", "somari", "royalscientist"];
 var palsArray:Array<String> = ["pastelfever"];
 var coversArray:Array<String> = [];
