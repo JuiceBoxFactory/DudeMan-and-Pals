@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="quanBF.png">
+<SubTexture name="quanBF idle0000" x="1050" y="446" width="245" height="439" frameX="-1184" frameY="-518" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quanBF idle0001" x="784" y="0" width="266" height="448" frameX="-1179" frameY="-509" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quanBF idle0002" x="512" y="0" width="272" height="449" frameX="-1177" frameY="-508" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quanBF left0000" x="0" y="487" width="285" height="448" frameX="-1129" frameY="-509" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quanBF left0001" x="537" y="487" width="280" height="447" frameX="-1138" frameY="-510" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quanBF right0000" x="1050" y="0" width="254" height="446" frameX="-1225" frameY="-511" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quanBF right0001" x="285" y="487" width="252" height="448" frameX="-1222" frameY="-509" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quanBF up0000" x="0" y="0" width="254" height="487" frameX="-1175" frameY="-470" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quanBF up0001" x="254" y="0" width="258" height="475" frameX="-1175" frameY="-482" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quanBF down0000" x="0" y="935" width="252" height="410" frameX="-1171" frameY="-547" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quanBF down0001" x="1304" y="0" width="248" height="414" frameX="-1171" frameY="-543" frameWidth="1980" frameHeight="1420" />
+</TextureAtlas>

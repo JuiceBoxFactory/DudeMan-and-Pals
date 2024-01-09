@@ -1,0 +1,5 @@
+<!DOCTYPE codename-engine-character>
+<character x="-400" icon="dudeman" camx="150" y="-150" isGF="false" camy="200" color="#FFFFFF" isPlayer="false" antialiasing="false" sprite="quanDudeman">
+	<anim x="0" loop="false" y="0" fps="12" anim="quanDudeman idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="6" anim="quanDudeman cool" name="cool"/>
+</character>

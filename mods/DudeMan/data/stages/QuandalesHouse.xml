@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.8">
+	<sprite antialiasing="false" sprite="backdrop/quandale/bg" name="bg"/>
+	<dad x="-631" y="-67"/>
+	<bf x="641" y="-67"/>
+	<gf/>
+	<combo/>
+</stage>

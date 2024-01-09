@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="600" icon="dudeman" camx="-400" y="70" isGF="false" camy="30" color="#FFFFFF" isPlayer="false" antialiasing="false" sprite="quandale">
+	<anim x="0" loop="false" y="0" fps="12" anim="quandale idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="quandale up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="quandale left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="quandale right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="quandale down" name="singDOWN"/>
+</character>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="quandale.png">
+<SubTexture name="quandale idle0000" x="1105" y="503" width="266" height="499" frameX="-470" frameY="-472" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quandale idle0001" x="835" y="0" width="270" height="516" frameX="-463" frameY="-455" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quandale idle0002" x="564" y="0" width="271" height="519" frameX="-461" frameY="-452" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quandale right0000" x="0" y="540" width="282" height="513" frameX="-464" frameY="-458" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quandale right0001" x="282" y="540" width="281" height="511" frameX="-462" frameY="-460" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quandale left0000" x="1105" y="0" width="283" height="503" frameX="-440" frameY="-468" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quandale left0001" x="563" y="540" width="280" height="506" frameX="-445" frameY="-465" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quandale up0000" x="0" y="0" width="280" height="540" frameX="-456" frameY="-431" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quandale up0001" x="280" y="0" width="284" height="532" frameX="-456" frameY="-439" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quandale down0000" x="0" y="1053" width="317" height="476" frameX="-415" frameY="-495" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="quandale down0001" x="1388" y="0" width="311" height="483" frameX="-420" frameY="-488" frameWidth="1980" frameHeight="1420" />
+</TextureAtlas>
