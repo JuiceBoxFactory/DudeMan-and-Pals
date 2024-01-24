@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="daxRSVPmoves.png">
+<SubTexture name="moves rock0000" x="100" y="0" width="100" height="191" frameX="-1164" frameY="-913" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="moves jesus0000" x="200" y="0" width="100" height="191" frameX="-1164" frameY="-913" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="moves blank0000" x="0" y="0" width="100" height="191" frameX="-1164" frameY="-913" frameWidth="1980" frameHeight="1420" />
+</TextureAtlas>

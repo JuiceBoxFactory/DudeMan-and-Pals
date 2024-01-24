@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="1">
+	<gf x="580" y="750"/>
+	<combo/>
+	<sprite name="wall" antialiasing="false" sprite="backdrop/rsvp/behind"/>
+	<sprite name="floor" antialiasing="false" sprite="backdrop/rsvp/ground"/>
+	<bf/>
+	<dad/>
+</stage>

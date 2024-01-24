@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="RSVPghost.png">
+<SubTexture name="ghost idle0000" x="169" y="0" width="98" height="203" frameX="-652" frameY="-932" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="ghost idle0001" x="267" y="0" width="96" height="203" frameX="-653" frameY="-932" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="ghost up0000" x="0" y="0" width="84" height="211" frameX="-655" frameY="-925" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="ghost up0001" x="84" y="0" width="85" height="208" frameX="-655" frameY="-927" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="ghost right0000" x="363" y="0" width="161" height="202" frameX="-648" frameY="-934" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="ghost right0001" x="0" y="211" width="165" height="202" frameX="-645" frameY="-934" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="ghost left0000" x="165" y="211" width="138" height="202" frameX="-600" frameY="-934" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="ghost left0001" x="303" y="211" width="133" height="202" frameX="-607" frameY="-935" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="ghost down0000" x="524" y="196" width="89" height="194" frameX="-663" frameY="-944" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="ghost down0001" x="524" y="0" width="96" height="196" frameX="-656" frameY="-940" frameWidth="1980" frameHeight="1420" />
+</TextureAtlas>

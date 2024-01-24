@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="RSVPdax.png">
+<SubTexture name="dax idle0000" x="197" y="256" width="115" height="214" frameX="-1274" frameY="-926" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="dax idle0001" x="312" y="256" width="116" height="213" frameX="-1273" frameY="-926" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="dax down0000" x="629" y="0" width="146" height="198" frameX="-1259" frameY="-943" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="dax down0001" x="629" y="198" width="132" height="195" frameX="-1268" frameY="-944" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="dax right0000" x="277" y="0" width="196" height="215" frameX="-1262" frameY="-927" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="dax right0001" x="0" y="256" width="197" height="215" frameX="-1255" frameY="-926" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="dax up0000" x="0" y="0" width="137" height="256" frameX="-1265" frameY="-883" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="dax up0001" x="137" y="0" width="140" height="251" frameX="-1265" frameY="-889" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="dax left0000" x="473" y="0" width="156" height="212" frameX="-1244" frameY="-929" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="dax left0001" x="473" y="212" width="146" height="212" frameX="-1254" frameY="-928" frameWidth="1980" frameHeight="1420" />
+</TextureAtlas>
