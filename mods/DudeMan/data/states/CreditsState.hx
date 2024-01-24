@@ -8,7 +8,7 @@ var Selected = 0;
 var devname:FlxText;
 
 var links:Array<String> = [
-"https://twitter.com/NeonContext",
+"https://twitter.com/MeltyKelpy",
 "https://twitter.com/nullfreq_",
 "https://twitter.com/amyd0esstuff",
 "https://twitter.com/GhosttaleSans",
@@ -18,8 +18,9 @@ var links:Array<String> = [
 "https://x.com/_MissyIsSilly_",
 "https://twitter.com/R3t1xidiot",
 "https://twitter.com/caz_arc",
-"https://twitter.com/Saaaaayoo",
-"https://twitter.com/angelthetweetb1"];
+"https://twitter.com/Saaaaayoo/status/1721544057179033853",
+"https://twitter.com/angelthetweetb1"
+"https://www.youtube.com/watch?v=2XI9dmhL_1o"];
 
 function create() {
 	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg')); // second argument: FlxAxes is required to determinate in what axes the sprite should be repeated, default to XY
@@ -78,7 +79,7 @@ function update() {
 		CoolUtil.openURL(links[Selected]);
 	}
 	if (Selected == 0) {
-		devname.text = 'NeonExists';
+		devname.text = 'MeltyKelpy';
 		thingsdone.text = 'Artist\nCoder\nCharter\nDirector ig\nVA\n\n"soup, if you dont like these sprites Ill kill myself"';
 	}
 	if (Selected == 1) {
@@ -119,17 +120,21 @@ function update() {
 	}
 	if (Selected == 10) {
 		devname.text = 'Saayo';
-		thingsdone.text = 'Artist\nVA\nChromatic Maker\n\n\n\n"best mod of 2013 !"';
+		thingsdone.text = 'Artist\nVA\nChromatic Maker\n\n\n\n"booty thick"';
 	}
 	if (Selected == 11) {
 		devname.text = 'Angeltheboi';
 		thingsdone.text = 'Charter\nVA\n\n\n\n\n"I smeared doodoo all over the wall"';
 	}
-	if (Selected > 11) {
+	if (Selected == 12) {
+		devname.text = 'That1Gamer';
+		thingsdone.text = 'Artist\n\n\n\n\n\n"fuck my heterosexuality"';
+	}
+	if (Selected > 12) {
 		Selected = 0;
 	}
 	if (Selected < 0) {
-		Selected = 11;
+		Selected = 12;
 	}
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));

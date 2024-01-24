@@ -21,7 +21,7 @@ var mainArray:Array<String> = ["dude", "blood", "greetings"];
 var extrasArray:Array<String> = ["lemon", "somari", "royalscientist"];
 var palsArray:Array<String> = ["pastelfever"];
 var coversArray:Array<String> = [];
-var devArray:Array<String> = ["pastelfever", "lemon", "somari", "dude", "blood", "royalscientist"];
+var devArray:Array<String> = ["pastelfever", "lemon", "somari", "dude", "blood", "royalscientist", "greetings"];
 var songL:FlxTypedGroup<FlxText> = [];
 
 function create() {
