@@ -46,6 +46,7 @@ function create() {
 	middleScreen.animation.addByPrefix('18', '180000', 12);
 	middleScreen.animation.addByPrefix('19', '190000', 12);
 	middleScreen.animation.addByPrefix('20', '200000', 12);
+	middleScreen.animation.addByPrefix('21', '210000', 12);
 	middleScreen.animation.play('blank');
 	middleScreen.alpha = 1;
 	middleScreen.updateHitbox();
@@ -121,9 +122,13 @@ function stepHit(curStep:Int) {
         case 528:
         defaultCamZoom = 1.4;
         case 552:
-	middleScreen.animation.play('21');
+	middleScreen.animation.play('blank');
 	ghostMoves.animation.play('blank');
 	daxMoves.animation.play('blank'); 
+        case 784:
+        defaultCamZoom = 1.8;	
+        case 960:
+	middleScreen.animation.play('21');
        case 16:
         FlxTween.tween(beginning, {alpha: 0}, 2, {ease:FlxEase.quartOut});
 	}
