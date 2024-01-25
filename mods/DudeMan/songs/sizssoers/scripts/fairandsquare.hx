@@ -1,5 +1,8 @@
 function create() {
 
+	remove(boyfriend);
+	remove(dad);
+
 	daxMoves = new FlxSprite(0, 0);	
 	daxMoves.antialiasing = false;
 	daxMoves.frames = Paths.getSparrowAtlas('visuals/rsvp/daxRSVPmoves');
@@ -51,6 +54,48 @@ function create() {
 	middleScreen.alpha = 1;
 	middleScreen.updateHitbox();
 	add(middleScreen);
+
+
+	Llight= new FlxSprite(-500, 0);	
+	Llight.antialiasing = false;
+	Llight.frames = Paths.getSparrowAtlas('visuals/rsvp/L');
+	Llight.animation.addByPrefix('off', '1', 12);
+	Llight.animation.addByPrefix('on', '2', 12);
+	Llight.animation.play('off');
+	Llight.alpha = 1;
+	Llight.updateHitbox();
+	add(Llight);
+
+	Rlight= new FlxSprite(500, 0);	
+	Rlight.antialiasing = false;
+	Rlight.frames = Paths.getSparrowAtlas('visuals/rsvp/R');
+	Rlight.animation.addByPrefix('off', '1', 12);
+	Rlight.animation.addByPrefix('on', '2', 12);
+	Rlight.animation.play('off');
+	Rlight.alpha = 1;
+	Rlight.updateHitbox();
+	add(Rlight);
+
+	add(boyfriend);
+	add(dad);
+
+	actuallightL = new FlxSprite(0, 0).loadGraphic(Paths.image('visuals/rsvp/actuallightL'));
+	actuallightL.antialiasing = false;
+	actuallightL.scrollFactor.set(1, 1);
+	actuallightL.scale.x = 1;
+	actuallightL.scale.y = 1;	
+	actuallightL.alpha = 0;
+	actuallightL.updateHitbox();
+	add(actuallightL);
+
+	actuallightR = new FlxSprite(0, 0).loadGraphic(Paths.image('visuals/rsvp/actuallightR'));
+	actuallightR.antialiasing = false;
+	actuallightR.scrollFactor.set(1, 1);
+	actuallightR.scale.x = 1;
+	actuallightR.scale.y = 1;	
+	actuallightR.alpha = 0;
+	actuallightR.updateHitbox();
+	add(actuallightR);
 
 	beginning = new FlxSprite(0, 100).loadGraphic(Paths.image('visuals/rsvp/beginningmessage'));
 	beginning.antialiasing = false;
@@ -126,10 +171,25 @@ function stepHit(curStep:Int) {
 	ghostMoves.animation.play('blank');
 	daxMoves.animation.play('blank'); 
         case 784:
-        defaultCamZoom = 1.8;	
+        defaultCamZoom = 2.0;	
         case 960:
 	middleScreen.animation.play('21');
+        case 1010:
+        FlxTween.tween(Rlight, {x: 0}, 2, {ease:FlxEase.quartOut});	
+        FlxTween.tween(Llight, {x: 0}, 2, {ease:FlxEase.quartOut});
+        case 1024:
+        defaultCamZoom = 1.4;
+        case 1040:
+	   FlxG.camera.flash(0xFFFFFFFF, 1);	
+        defaultCamZoom = 1.6;	
+        actuallightR.alpha = 1;
+        actuallightL.alpha = 1;
+        case 1232:
+        defaultCamZoom = 2.4;
+        case 1296:
+        defaultCamZoom = 1.4;
        case 16:
         FlxTween.tween(beginning, {alpha: 0}, 2, {ease:FlxEase.quartOut});
+
 	}
 }

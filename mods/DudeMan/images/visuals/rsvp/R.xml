@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="R.png">
+<SubTexture name="R 10000" x="0" y="0" width="167" height="279" frameX="-1286" frameY="-822" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="R 20000" x="167" y="0" width="167" height="279" frameX="-1286" frameY="-822" frameWidth="1980" frameHeight="1420" />
+</TextureAtlas>
