@@ -58,7 +58,7 @@ function stepHit(curStep:Int) {
             FlxTween.tween(playerName, {y: 250}, 3, {ease:FlxEase.quartOut});	    
             FlxTween.tween(opponent, {y: 250}, 3, {ease:FlxEase.quartOut});	 
             FlxTween.tween(vs, {y: 250}, 3, {ease:FlxEase.quartOut});	
-            FlxTween.tween(thisisyou, {y: 450}, 3, {ease:FlxEase.quartOut});	
+            FlxTween.tween(thisisyou, {y: 460}, 3, {ease:FlxEase.quartOut});	
         case 76:
             FlxTween.tween(playerName, {y: 1200}, 2, {ease:FlxEase.quartIn});	    
             FlxTween.tween(opponent, {y: 1200}, 2, {ease:FlxEase.quartIn});	 

@@ -32,10 +32,10 @@ function postCreate() {
 	add(playerName);
 
 if (!downscroll) {
-	thisisyou = new FlxSprite(750, 1400).loadGraphic(Paths.image('singerNames/UPSCROLLthanksStar'));
+	thisisyou = new FlxSprite(435, 1400).loadGraphic(Paths.image('singerNames/UPSCROLLthanksStar'));
 }
 if (downscroll) {
-	thisisyou = new FlxSprite(750, 1400).loadGraphic(Paths.image('singerNames/DOWNSCROLLthanksStar'));
+	thisisyou = new FlxSprite(435, 1400).loadGraphic(Paths.image('singerNames/DOWNSCROLLthanksStar'));
 }
 	thisisyou.antialiasing = false;
 	thisisyou.scrollFactor.set(1, 1);
@@ -58,7 +58,7 @@ function stepHit(curStep:Int) {
             FlxTween.tween(playerName, {y: 250}, 3, {ease:FlxEase.quartOut});	    
             FlxTween.tween(opponent, {y: 250}, 3, {ease:FlxEase.quartOut});	 
             FlxTween.tween(vs, {y: 250}, 3, {ease:FlxEase.quartOut});	
-            FlxTween.tween(thisisyou, {y: 450}, 3, {ease:FlxEase.quartOut});	
+            FlxTween.tween(thisisyou, {y: 460}, 3, {ease:FlxEase.quartOut});	
         case 50:
             FlxTween.tween(playerName, {y: 1200}, 2, {ease:FlxEase.quartIn});	    
             FlxTween.tween(opponent, {y: 1200}, 2, {ease:FlxEase.quartIn});	 
