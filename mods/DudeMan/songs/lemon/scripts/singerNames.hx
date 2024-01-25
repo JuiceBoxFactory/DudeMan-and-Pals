@@ -1,6 +1,6 @@
 function postCreate() {
 
-	opponent = new FlxSprite(375, 1200).loadGraphic(Paths.image('singerNames/MeltyKelpy'));
+	opponent = new FlxSprite(375, 1200).loadGraphic(Paths.image('singerNames/limon'));
 	opponent.antialiasing = false;
 	opponent.scrollFactor.set(1, 1);
 	opponent.scale.x = 1.2;
@@ -21,7 +21,7 @@ function postCreate() {
 	vs.updateHitbox();
 	add(vs);
 
-	playerName = new FlxSprite(700, 1200).loadGraphic(Paths.image('singerNames/SoupSkid'));
+	playerName = new FlxSprite(700, 1200).loadGraphic(Paths.image('singerNames/BF'));
 	playerName.antialiasing = false;
 	playerName.scrollFactor.set(1, 1);
 	playerName.scale.x = 1.2;
@@ -53,13 +53,13 @@ if (downscroll) {
 
 function stepHit(curStep:Int) { 
     switch (curStep) {
-        case 0:
+        case 16:
 	    vs.alpha = 1;
             FlxTween.tween(playerName, {y: 250}, 3, {ease:FlxEase.quartOut});	    
             FlxTween.tween(opponent, {y: 250}, 3, {ease:FlxEase.quartOut});	 
             FlxTween.tween(vs, {y: 250}, 3, {ease:FlxEase.quartOut});	
             FlxTween.tween(thisisyou, {y: 450}, 3, {ease:FlxEase.quartOut});	
-        case 50:
+        case 66:
             FlxTween.tween(playerName, {y: 1200}, 2, {ease:FlxEase.quartIn});	    
             FlxTween.tween(opponent, {y: 1200}, 2, {ease:FlxEase.quartIn});	 
             FlxTween.tween(vs, {y: 1200}, 2, {ease:FlxEase.quartIn});

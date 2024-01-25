@@ -1,6 +1,6 @@
 function postCreate() {
 
-	opponent = new FlxSprite(375, 1200).loadGraphic(Paths.image('singerNames/MeltyKelpy'));
+	opponent = new FlxSprite(375, 1200).loadGraphic(Paths.image('singerNames/sorrybro'));
 	opponent.antialiasing = false;
 	opponent.scrollFactor.set(1, 1);
 	opponent.scale.x = 1.2;
@@ -21,7 +21,7 @@ function postCreate() {
 	vs.updateHitbox();
 	add(vs);
 
-	playerName = new FlxSprite(700, 1200).loadGraphic(Paths.image('singerNames/SoupSkid'));
+	playerName = new FlxSprite(700, 1200).loadGraphic(Paths.image('singerNames/BF'));
 	playerName.antialiasing = false;
 	playerName.scrollFactor.set(1, 1);
 	playerName.scale.x = 1.2;

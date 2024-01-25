@@ -31,7 +31,12 @@ function postCreate() {
 	playerName.updateHitbox();
 	add(playerName);
 
+if (!downscroll) {
 	thisisyou = new FlxSprite(750, 1400).loadGraphic(Paths.image('singerNames/UPSCROLLthanksStar'));
+}
+if (downscroll) {
+	thisisyou = new FlxSprite(750, 1400).loadGraphic(Paths.image('singerNames/DOWNSCROLLthanksStar'));
+}
 	thisisyou.antialiasing = false;
 	thisisyou.scrollFactor.set(1, 1);
 	thisisyou.scale.x = 0.6;
