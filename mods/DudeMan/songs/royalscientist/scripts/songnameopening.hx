@@ -64,7 +64,7 @@ function stepHit(curStep:Int) {
         case 0:
             Freeplaysectionname("EXTRAS");
             Songname("Royal Scientist");
-            Composername("???");         
+            Composername("kosejumpscare");         
             for (obj in [fname, cname, sname])
             FlxTween.tween(obj, {x: 10}, 2, {ease:FlxEase.quartOut});
             for (obj in [songbox])

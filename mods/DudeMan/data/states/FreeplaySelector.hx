@@ -49,11 +49,11 @@ function create() {
 function update() {	
 	catgeory.loadGraphic(Paths.image('freeplay/selection/'+Selected));
 
-	if (FlxG.keys.justPressed.LEFT) {
+	if (controls.LEFT_P) {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		Selected -= 1;
 	}
-	if (FlxG.keys.justPressed.RIGHT) {
+	if (controls.RIGHT_P) {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		Selected += 1;
 	}
