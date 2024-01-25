@@ -3,7 +3,7 @@
 <SubTexture name="blank0000" x="0" y="0" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
 <SubTexture name="one0000" x="275" y="0" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
 <SubTexture name="second0000" x="0" y="274" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
-<SubTexture name="30000" x="275" y="274" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="third0000" x="275" y="274" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
 <SubTexture name="40000" x="550" y="0" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
 <SubTexture name="50000" x="550" y="274" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
 <SubTexture name="60000" x="0" y="548" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
@@ -22,4 +22,18 @@
 <SubTexture name="190000" x="1100" y="822" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
 <SubTexture name="200000" x="0" y="1096" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
 <SubTexture name="210000" x="275" y="1096" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="220000" x="550" y="1096" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="230000" x="825" y="1096" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="240000" x="1100" y="1096" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="250000" x="1375" y="0" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="260000" x="1375" y="274" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="270000" x="1375" y="548" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="280000" x="1375" y="822" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="290000" x="1375" y="1096" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="300000" x="0" y="1370" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="310000" x="275" y="1370" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="320000" x="550" y="1370" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="330000" x="825" y="1370" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="340000" x="1100" y="1370" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
+<SubTexture name="350000" x="1375" y="1370" width="275" height="274" frameX="-877" frameY="-835" frameWidth="1980" frameHeight="1420" />
 </TextureAtlas>

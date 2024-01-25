@@ -31,7 +31,7 @@ function create() {
 	middleScreen.animation.addByPrefix('blank', 'blank', 12);
 	middleScreen.animation.addByPrefix('1', 'one0000', 12);
 	middleScreen.animation.addByPrefix('2', 'second0000', 12);
-	middleScreen.animation.addByPrefix('3', '30000', 12);
+	middleScreen.animation.addByPrefix('3', 'third0000', 12);
 	middleScreen.animation.addByPrefix('4', '40000', 12);
 	middleScreen.animation.addByPrefix('5', '50000', 12);
 	middleScreen.animation.addByPrefix('6', '60000', 12);
@@ -50,6 +50,20 @@ function create() {
 	middleScreen.animation.addByPrefix('19', '190000', 12);
 	middleScreen.animation.addByPrefix('20', '200000', 12);
 	middleScreen.animation.addByPrefix('21', '210000', 12);
+	middleScreen.animation.addByPrefix('22', '220000', 12);
+	middleScreen.animation.addByPrefix('23', '230000', 12);
+	middleScreen.animation.addByPrefix('24', '240000', 12);
+	middleScreen.animation.addByPrefix('25', '250000', 12);
+	middleScreen.animation.addByPrefix('26', '260000', 12);
+	middleScreen.animation.addByPrefix('27', '270000', 12);
+	middleScreen.animation.addByPrefix('28', '280000', 12);
+	middleScreen.animation.addByPrefix('29', '290000', 12);
+	middleScreen.animation.addByPrefix('30', '300000', 12);
+	middleScreen.animation.addByPrefix('31', '310000', 12);
+	middleScreen.animation.addByPrefix('32', '320000', 12);
+	middleScreen.animation.addByPrefix('33', '330000', 12);
+	middleScreen.animation.addByPrefix('34', '340000', 12);
+	middleScreen.animation.addByPrefix('35', '350000', 12);
 	middleScreen.animation.play('blank');
 	middleScreen.alpha = 1;
 	middleScreen.updateHitbox();
@@ -172,12 +186,37 @@ function stepHit(curStep:Int) {
 	daxMoves.animation.play('blank'); 
         case 784:
         defaultCamZoom = 2.0;	
-        case 960:
+        case 832:
 	middleScreen.animation.play('21');
+        case 960:
+	middleScreen.animation.play('22');
+        case 1232:
+	middleScreen.animation.play('23');
+        case 1268:
+	middleScreen.animation.play('24');
+        case 1296:
+	defaultCamZoom = 1.4;
+	middleScreen.animation.play('25');
+        case 1310:
+	middleScreen.animation.play('26');
+        case 1314:
+	middleScreen.animation.play('27');
+        case 1318:
+	middleScreen.animation.play('28');
+        case 1328:
+	middleScreen.animation.play('29');
+        FlxTween.tween(Rlight, {x: 500}, 2, {ease:FlxEase.quartIn});	
+        FlxTween.tween(Llight, {x: -500}, 2, {ease:FlxEase.quartIn});
+	   FlxG.camera.flash(0xFFFFFFFF, 1);	
+        actuallightR.alpha = 0;
+        actuallightL.alpha = 0;
+        daxMoves.animation.play('jesus');
+        case 1328:
+	middleScreen.animation.play('30');
+        daxMoves.animation.play('blank');
         case 1010:
         FlxTween.tween(Rlight, {x: 0}, 2, {ease:FlxEase.quartOut});	
         FlxTween.tween(Llight, {x: 0}, 2, {ease:FlxEase.quartOut});
-        case 1024:
         defaultCamZoom = 1.4;
         case 1040:
 	   FlxG.camera.flash(0xFFFFFFFF, 1);	
