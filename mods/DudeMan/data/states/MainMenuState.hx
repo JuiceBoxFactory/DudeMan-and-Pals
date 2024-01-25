@@ -29,10 +29,10 @@ function update() {
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));
 	}
-	if (FlxG.keys.justPressed.UP) {
+	if (controls.UP_P) {
 		SelectedButton -= 1;
 	}
-	if (FlxG.keys.justPressed.DOWN) {
+	if (controls.DOWN_P) {
 		SelectedButton += 1;
 	}
 	if (SelectedButton > 3) {
