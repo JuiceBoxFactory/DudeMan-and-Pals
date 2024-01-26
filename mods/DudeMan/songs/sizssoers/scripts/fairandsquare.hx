@@ -120,6 +120,34 @@ function create() {
 	beginning.updateHitbox();
 	add(beginning);
 
+	endScreen = new FlxSprite(0, 0);	
+	endScreen.antialiasing = false;
+	endScreen.frames = Paths.getSparrowAtlas('visuals/rsvp/endScreen');
+	endScreen.animation.addByPrefix('blank', 'blank', 12);
+	endScreen.animation.addByPrefix('1', '1', 12);
+	endScreen.animation.addByPrefix('2', '2', 12);
+	endScreen.animation.addByPrefix('3', '3', 12);
+	endScreen.animation.addByPrefix('4', '4', 12);
+	endScreen.animation.addByPrefix('5', '5', 12);
+	endScreen.animation.addByPrefix('6', '6', 12);
+	endScreen.animation.play('blank');
+	endScreen.alpha = 0;
+	endScreen.scale.x = 0.67;
+	endScreen.scale.y = 0.67;
+	endScreen.cameras = [camHUD];
+	endScreen.updateHitbox();
+	add(endScreen);
+
+	flash= new FlxSprite(0, 0).loadGraphic(Paths.image('white'));
+	flash.antialiasing = false;
+	flash.scrollFactor.set(1, 1);
+	flash.scale.x = 5;
+	flash.scale.y = 5;	
+	flash.alpha = 0;
+	flash.cameras = [camHUD];
+	flash.updateHitbox();
+	add(flash);
+
 }
 
 function stepHit(curStep:Int) { 
@@ -211,9 +239,22 @@ function stepHit(curStep:Int) {
         actuallightR.alpha = 0;
         actuallightL.alpha = 0;
         daxMoves.animation.play('jesus');
-        case 1328:
-	middleScreen.animation.play('30');
+        case 1356:
+        middleScreen.animation.play('30');
         daxMoves.animation.play('blank');
+        case 1392:
+        middleScreen.animation.play('31');
+        daxMoves.animation.play('jesus');
+        case 1408:
+        middleScreen.animation.play('32');
+        case 1680:
+        middleScreen.animation.play('33');
+        case 1744:
+        middleScreen.animation.play('34');
+        case 1798:
+        middleScreen.animation.play('35');
+        case 1840:
+        FlxTween.tween(endScreen, {alpha: 1}, 3, {ease:FlxEase.quartOut});
         case 1010:
         FlxTween.tween(Rlight, {x: 0}, 2, {ease:FlxEase.quartOut});	
         FlxTween.tween(Llight, {x: 0}, 2, {ease:FlxEase.quartOut});
@@ -227,6 +268,38 @@ function stepHit(curStep:Int) {
         defaultCamZoom = 2.4;
         case 1296:
         defaultCamZoom = 1.4;
+        case 1424:
+        defaultCamZoom = 1.6;
+        case 1440:
+        defaultCamZoom = 1.2;
+        case 1456:
+        defaultCamZoom = 1.4;
+        case 1552:
+        defaultCamZoom = 1.6;
+        case 1566:
+        defaultCamZoom = 1.2;
+        case 1582:
+        defaultCamZoom = 1.4;
+        case 1808:
+        defaultCamZoom = 1.8;
+        case 1824:
+        defaultCamZoom = 1.2;
+        case 1840:
+        defaultCamZoom = 1.4;
+        case 1860:
+	   endScreen.animation.play('1');
+        case 1864:
+	   endScreen.animation.play('2');
+        case 1866:
+	   endScreen.animation.play('3');
+        case 1868:
+	   endScreen.animation.play('4');
+        case 1870:
+	   endScreen.animation.play('5');
+        case 1872:
+	   flash.alpha = 1;        
+        FlxTween.tween(flash, {alpha: 0}, 2, {ease:FlxEase.quartOut});
+	   endScreen.animation.play('6');
        case 16:
         FlxTween.tween(beginning, {alpha: 0}, 2, {ease:FlxEase.quartOut});
 

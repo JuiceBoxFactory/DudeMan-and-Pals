@@ -91,7 +91,7 @@ function update() {
 		thingsdone.text = 'Musician\nVA\nChromatic Maker\n\n\n\n"thats not a cloud, were in someones balls!"';
 	}
 	if (Selected == 3) {
-		devname.text = 'GhosttaleSans';
+		devname.text = 'GhostyBrick';
 		thingsdone.text = 'Charter\nMade DudeMan (The Character)\n\n\n\n"if my hurt didnt throat so much"';
 	}
 	if (Selected == 4) {
