@@ -54,13 +54,6 @@ function create(event) {
 	optionselected = new FlxSprite(0, 600).loadGraphic(Paths.image('johnpork/'+curSelected));
 	add(optionselected);
 
-
-	hand = new FlxSprite().loadGraphic(Paths.image('stages/school/ui/hand_textbox'));
-	hand.scale.set(3, 3);
-	hand.alpha = 0;
-	hand.updateHitbox();
-	add(hand);
-
 	FlxTween.tween(bg, {x: 0}, 1, {ease: FlxEase.quartInOut});
 	FlxTween.tween(optionselected, {y: 0}, 1.5, {ease: FlxEase.quartInOut});
 	FlxTween.tween(char, {x: 550}, 2, {ease: FlxEase.quartInOut});
@@ -88,9 +81,6 @@ function update(elapsed) {
 	time += elapsed;
 
 	var curText = texts[curSelected];
-	hand.setPosition(curText.x - hand.width - 18 + (Math.sin(time * Math.PI * 2) * 12), curText.y + (text.height - hand.height) - 6);
-	hand.x -= hand.x % 6;
-	hand.y -= hand.y % 6;
 
 	if (!canDoShit) return;
 	var oldSec = curSelected;
