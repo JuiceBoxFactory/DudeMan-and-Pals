@@ -136,7 +136,7 @@ function create() {
 	endScreen.scale.y = 0.67;
 	endScreen.cameras = [camHUD];
 	endScreen.updateHitbox();
-	add(endScreen);
+	insert(40,endScreen);
 
 	flash= new FlxSprite(0, 0).loadGraphic(Paths.image('white'));
 	flash.antialiasing = false;
@@ -146,7 +146,7 @@ function create() {
 	flash.alpha = 0;
 	flash.cameras = [camHUD];
 	flash.updateHitbox();
-	add(flash);
+	inset(41,flash);
 
 }
 
