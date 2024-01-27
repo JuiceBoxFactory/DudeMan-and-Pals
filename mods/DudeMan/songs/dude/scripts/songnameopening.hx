@@ -22,7 +22,7 @@ function create() {
     add(fname);
     fname.cameras = [camHUD];
 
-    sname = new FlxText(-360, 420, 1000, "", 0);
+    sname = new FlxText(-360, 420, 400, "", 0);
     sname.setFormat(Paths.font("vcr.ttf"), 30, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
     sname.scrollFactor.set();
     sname.borderColor = 0xFF000000;
@@ -74,4 +74,5 @@ function stepHit(curStep:Int) {
             FlxTween.tween(obj, {x: -360}, 4, {ease:FlxEase.quartOut});
             for (obj in [songbox])
             FlxTween.tween(obj, {x: -370}, 4, {ease:FlxEase.quartOut});
+    }
 }
