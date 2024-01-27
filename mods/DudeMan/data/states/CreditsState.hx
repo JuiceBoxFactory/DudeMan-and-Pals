@@ -20,7 +20,8 @@ var links:Array<String> = [
 "https://twitter.com/caz_arc",
 "https://twitter.com/Saaaaayoo/status/1721544057179033853",
 "https://twitter.com/angelthetweetb1"
-"https://www.youtube.com/watch?v=2XI9dmhL_1o"];
+"https://www.youtube.com/watch?v=2XI9dmhL_1o"
+"https://docs.google.com/document/d/1zh0LEnsax3X8rIq6Q4idqno3d9Dp8YIEWwRH8b8iQiE/edit"];
 
 function create() {
 	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg')); // second argument: FlxAxes is required to determinate in what axes the sprite should be repeated, default to XY
@@ -130,11 +131,15 @@ function update() {
 		devname.text = 'That1Gamer';
 		thingsdone.text = 'Artist\n\n\n\n\n\n"fuck my heterosexuality"';
 	}
-	if (Selected > 12) {
+	if (Selected == 13) {
+		devname.text = 'Lucidric';
+		thingsdone.text = 'Artist\nCoded Website\n\n\n\n\n"im gonna cut open my scrotum and juggle my testicles"';
+	}
+	if (Selected > 13) {
 		Selected = 0;
 	}
 	if (Selected < 0) {
-		Selected = 12;
+		Selected = 13;
 	}
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));
