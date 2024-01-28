@@ -3,4 +3,7 @@
 <menu name="Secret Settings" desc="Shhhhh">
 	<checkbox id="xbox" desc="its kinda fucked up on downscroll, if ur gonna try this then use upscroll" name= "Xbox Mode"/>
 	<checkbox id="horse" desc="HORSE." name= "Purple Horse Virus"/>
+	<checkbox id="hitsounds" desc="so pro gaming" name= "Hit Sounds"/>
+	<checkbox id="baldiStyle" desc="Oh my fucking god" name= "Baldi Style"/>
+	<checkbox id="geomtery" desc="Fire is in said hole" name= "Geometry Dash"/>
 </menu>

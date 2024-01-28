@@ -1,8 +1,23 @@
 var time = 0;
 var flippingthisfaggot = false;
+var baldBoyDirection = false;
 var horseSpeed = 1;
+var stylishSpeed = 4;
+var noteRating = 200;
 
 function postCreate() {
+
+	if (FlxG.save.data.baldiStyle) {
+		baldi = new FlxSprite(0, 250);	
+		baldi.antialiasing = false;
+		baldi.scrollFactor.set(0, 0);
+		baldi.frames = Paths.getSparrowAtlas('secretsettings/baldiStyle');
+		baldi.animation.addByPrefix('ohyeahBaby', 'idle', 24);
+		baldi.animation.play('ohyeahBaby');
+		baldi.scale.set(2.5, 2.5);
+		baldi.cameras = [camHUD];
+		add(baldi);
+	}
 	
 	if (FlxG.save.data.horse) {
 		horse = new FlxSprite(0, 0).loadGraphic(Paths.image('secretsettings/itsbeensolong'));
@@ -35,7 +50,7 @@ function postCreate() {
 		fuckingController.scrollFactor.set(0, 0);
 		fuckingController.scale.set(0.6, 0.4);
 		fuckingController.cameras = [camHUD];
-		insert(4, fuckingController);
+		insert(80, fuckingController);
 		
     		camGame.zoom -= 0.2;
     		camGame.y -= 50;
@@ -48,10 +63,25 @@ function postCreate() {
 		
 		}
 	}
+
+		if (FlxG.save.data.geomtery) {
+			geomtery= new FlxSprite(0, 0).loadGraphic(Paths.image('secretsettings/GeometryRatings/' + noteRating));
+			geomtery.scrollFactor.set(0, 0);
+			geomtery.scale.set(4, 4);
+			geomtery.screenCenter();
+			geomtery.cameras = [camHUD];
+			insert(30, geomtery);
+		}
 }
 
 function update(delta:Float) {
 	time += delta;
+
+if (FlxG.save.data.xbox) {
+	insert(80, fuckingController);
+}
+
+if (FlxG.save.data.horse) {
 	horse.y = horse.y + Math.cos(time * 6.3) * 1;
 	horse.angle = horse.angle + Math.cos(time * 3.5) * 0.2;	
 
@@ -65,20 +95,65 @@ function update(delta:Float) {
 		flippingthisfaggot = true;
 		horse.scale.set(0.9, 0.9);
 	}
-
 	if (horse.x <= -128) {
 		flippingthisfaggot = false;
 		horse.scale.set(-0.9, 0.9);
 	}
-
+	
 	if (horseBoom.alpha > 0) {
 		horseBoom.alpha -= 0.005;
+	}
+
+}
+
+	if (FlxG.save.data.baldiStyle) {
+		baldi.y = baldi.y + Math.cos(time * 6.3) * -10;
+		baldi.scale.x = baldi.scale.x + Math.cos(time * 5) * 0.010;
+
+		if (baldBoyDirection == false) {
+			baldi.x += stylishSpeed;
+		}
+		if (baldBoyDirection == true) {
+			baldi.x -= stylishSpeed;
+		}
+		if (baldi.x >= 1400) {
+			baldBoyDirection = true;
+		}
+		if (baldi.x <= -328) {
+			baldBoyDirection = false;
+		}
+	}
+
+	if (FlxG.save.data.geomtery) {	
+		geomtery.loadGraphic(Paths.image('secretsettings/GeometryRatings/' +noteRating));
+
+		if (geomtery.alpha > 0) {
+		geomtery.alpha -= 0.05;
+		}
 	}
 }
 
 function onPlayerMiss() {
+	if (FlxG.save.data.geomtery) {
+     			noteRating = 0;
+			geomtery.alpha = 1;
+			}
 	if (FlxG.save.data.horse) {
 		horseBoom.alpha = 1;
 		FlxG.sound.play(Paths.sound('cbt'));
+	}
+}
+function onPlayerHit(event) {
+	if (FlxG.save.data.hitsounds) {
+		FlxG.sound.play(Paths.sound('theGreatestHitsoundThatHasEverLived'));
+	}
+	if (FlxG.save.data.geomtery) {
+     		if (!player.cpu) {
+     			noteRating = event.accuracy;
+			geomtery.alpha = 1;
+			}
+     		if (player.cpu) {
+			geomtery.alpha = 1;
+			}
 	}
 }

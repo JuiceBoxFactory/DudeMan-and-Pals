@@ -46,18 +46,27 @@ for (obj in [healthBar, healthBarBG])
 }
 
 if (FlxG.save.data.xbox) {
-	remove(iconP1);
-	remove(iconP2);
-	remove(healthBar);
 	remove(healthBarBG);
 	remove(healthheader);
-}
 
+	healthBar.x = -50;
+	healthBar.scale.x = 0.7;
+
+	missesTxt.x -= 430;
+	scoreTxt.x -= 525;
+
+	}
 }
 
 function postUpdate(){
+	if (!FlxG.save.data.xbox) {
 	iconP1.x = 595;
 	iconP2.x = 525;
+	}
+	if (FlxG.save.data.xbox) {
+	iconP1.x = 125;
+	iconP2.x = 50;
+	}
 
 }
 
