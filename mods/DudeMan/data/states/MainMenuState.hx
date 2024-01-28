@@ -35,11 +35,11 @@ function update() {
 	if (controls.DOWN_P) {
 		SelectedButton += 1;
 	}
-	if (SelectedButton > 3) {
+	if (SelectedButton > 5) {
 		SelectedButton = 0;
 	}
 	if (SelectedButton < 0) {
-		SelectedButton = 3;
+		SelectedButton = 5;
 	}
 	if (SelectedButton == 0 && controls.ACCEPT) {
 		FlxG.sound.play(Paths.sound('confirm'));
