@@ -45,6 +45,14 @@ for (obj in [healthBar, healthBarBG])
 	iconP2.y -= 20;
 }
 
+if (FlxG.save.data.xbox) {
+	remove(iconP1);
+	remove(iconP2);
+	remove(healthBar);
+	remove(healthBarBG);
+	remove(healthheader);
+}
+
 }
 
 function postUpdate(){
