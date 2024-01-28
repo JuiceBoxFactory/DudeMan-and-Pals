@@ -1,3 +1,4 @@
+//import lime.system.System;
 var time = 0;
 var flippingthisfaggot = false;
 var baldBoyDirection = false;
@@ -72,6 +73,15 @@ function postCreate() {
 			geomtery.cameras = [camHUD];
 			insert(30, geomtery);
 		}
+
+	if (FlxG.save.data.nightmare) {
+		nightmare = new FlxSprite(0, 0).loadGraphic(Paths.image('secretsettings/evil'));
+		nightmare.scrollFactor.set(0, 0);
+		//nightmare.screenCenter();
+		nightmare.alpha = 0;
+		nightmare.cameras = [camHUD];
+		insert(667, nightmare);
+	}
 }
 
 function update(delta:Float) {
@@ -140,7 +150,14 @@ function onPlayerMiss() {
 			}
 	if (FlxG.save.data.horse) {
 		horseBoom.alpha = 1;
+		if (!FlxG.save.data.nightmare) {
 		FlxG.sound.play(Paths.sound('cbt'));
+		}
+	}
+	if (FlxG.save.data.nightmare) {
+		nightmare.alpha = 1;
+		FlxG.sound.play(Paths.sound('evil'));
+		health = 0;
 	}
 }
 function onPlayerHit(event) {
