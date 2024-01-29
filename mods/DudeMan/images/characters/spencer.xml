@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="spencer.png">
+<SubTexture name="spencer idle0000" x="0" y="0" width="93" height="159" frameX="-219" frameY="-189" frameWidth="512" frameHeight="512" />
+<SubTexture name="spencer idle0001" x="93" y="0" width="91" height="159" frameX="-219" frameY="-189" frameWidth="512" frameHeight="512" />
+<SubTexture name="spencer left0000" x="184" y="0" width="113" height="151" frameX="-197" frameY="-198" frameWidth="512" frameHeight="512" />
+<SubTexture name="spencer left0001" x="0" y="159" width="121" height="138" frameX="-186" frameY="-210" frameWidth="512" frameHeight="512" />
+<SubTexture name="spencer right0000" x="121" y="159" width="152" height="151" frameX="-214" frameY="-197" frameWidth="512" frameHeight="512" />
+<SubTexture name="spencer right0001" x="273" y="159" width="137" height="154" frameX="-222" frameY="-194" frameWidth="512" frameHeight="512" />
+<SubTexture name="spencer down0000" x="0" y="313" width="127" height="126" frameX="-208" frameY="-227" frameWidth="512" frameHeight="512" />
+<SubTexture name="spencer down0001" x="127" y="313" width="122" height="141" frameX="-206" frameY="-211" frameWidth="512" frameHeight="512" />
+<SubTexture name="spencer up0000" x="249" y="313" width="144" height="171" frameX="-196" frameY="-177" frameWidth="512" frameHeight="512" />
+<SubTexture name="spencer up0001" x="0" y="484" width="143" height="166" frameX="-196" frameY="-182" frameWidth="512" frameHeight="512" />
+</TextureAtlas>
