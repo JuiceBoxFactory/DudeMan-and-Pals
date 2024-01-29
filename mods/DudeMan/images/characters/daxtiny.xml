@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="daxtiny.png">
+<SubTexture name="daxtiny idle0000" x="0" y="0" width="92" height="141" frameX="-218" frameY="-207" frameWidth="512" frameHeight="512" />
+<SubTexture name="daxtiny idle0001" x="92" y="0" width="92" height="142" frameX="-218" frameY="-207" frameWidth="512" frameHeight="512" />
+<SubTexture name="daxtiny down0000" x="184" y="0" width="109" height="122" frameX="-205" frameY="-228" frameWidth="512" frameHeight="512" />
+<SubTexture name="daxtiny down0001" x="0" y="142" width="105" height="138" frameX="-207" frameY="-213" frameWidth="512" frameHeight="512" />
+<SubTexture name="daxtiny right0000" x="105" y="142" width="113" height="127" frameX="-213" frameY="-222" frameWidth="512" frameHeight="512" />
+<SubTexture name="daxtiny right0001" x="218" y="142" width="102" height="134" frameX="-218" frameY="-215" frameWidth="512" frameHeight="512" />
+<SubTexture name="daxtiny left0000" x="0" y="280" width="92" height="142" frameX="-183" frameY="-209" frameWidth="512" frameHeight="512" />
+<SubTexture name="daxtiny left0001" x="92" y="280" width="94" height="136" frameX="-182" frameY="-213" frameWidth="512" frameHeight="512" />
+<SubTexture name="daxtiny up0000" x="186" y="280" width="108" height="175" frameX="-216" frameY="-162" frameWidth="512" frameHeight="512" />
+<SubTexture name="daxtiny up0001" x="0" y="455" width="114" height="148" frameX="-210" frameY="-168" frameWidth="512" frameHeight="512" />
+<SubTexture name="daxtiny up0002" x="114" y="455" width="112" height="144" frameX="-210" frameY="-172" frameWidth="512" frameHeight="512" />
+</TextureAtlas>

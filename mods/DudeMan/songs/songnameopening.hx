@@ -1,10 +1,14 @@
 import flixel.text.FlxTextBorderStyle;
+import flixel.util.FlxSave;
+var categoryName = FlxG.save.data.categoryName;
+var songName = FlxG.save.data.songName;
+var composerName = FlxG.save.data.composerName;
 
 var sname:FlxText;
 var cname:FlxText;
 var fname:FlxText;
 
-function create() {
+function postCreate() {
 
 	songbox = new FlxSprite(-370, 370).loadGraphic(Paths.image('game/songnamebar'));
 	songbox.antialiasing = false;
@@ -22,7 +26,7 @@ function create() {
     add(fname);
     fname.cameras = [camHUD];
 
-    sname = new FlxText(-360, 420, 400, "", 0);
+    sname = new FlxText(-360, 420, 1000, "", 0);
     sname.setFormat(Paths.font("vcr.ttf"), 30, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
     sname.scrollFactor.set();
     sname.borderColor = 0xFF000000;
@@ -38,6 +42,12 @@ function create() {
     add(cname);
     cname.cameras = [camHUD];
 
+	if (PlayState.SONG.meta.displayName == "life gives you lemons" || PlayState.SONG.meta.displayName == "Pastel Fever" || PlayState.SONG.meta.displayName == "sizssoers") {
+	cname.alpha = 0;
+	sname.alpha = 0;
+	fname.alpha = 0;
+	songbox.alpha = 0;
+	}
 }
 
 function Songname(text:String) {
@@ -60,19 +70,22 @@ function Freeplaysectionname(text:String) {
 }
 
 function stepHit(curStep:Int) { 
-    switch (curStep) {
+        switch (curStep) {
         case 0:
-            Freeplaysectionname("VS DUDEMAN");
-            Songname("Dude");
-            Composername("AussieDoesThings");         
+		 categoryName = FlxG.save.data.categoryName;
+		 songName = FlxG.save.data.songName;
+		 composerName = FlxG.save.data.composerName;
+            Freeplaysectionname(categoryName);
+            Songname(songName);
+            Composername(composerName);         
             for (obj in [fname, cname, sname])
             FlxTween.tween(obj, {x: 10}, 2, {ease:FlxEase.quartOut});
             for (obj in [songbox])
             FlxTween.tween(obj, {x: 0}, 2, {ease:FlxEase.quartOut});
-        case 50:
+        case 35:
             for (obj in [fname, cname, sname])
-            FlxTween.tween(obj, {x: -360}, 4, {ease:FlxEase.quartOut});
+            FlxTween.tween(obj, {x: -1010}, 2, {ease:FlxEase.backIn});
             for (obj in [songbox])
-            FlxTween.tween(obj, {x: -370}, 4, {ease:FlxEase.quartOut});
-    }
+            FlxTween.tween(obj, {x: -1000}, 2, {ease:FlxEase.backIn});
+        }
 }

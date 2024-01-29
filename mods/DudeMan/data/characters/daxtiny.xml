@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="600" icon="dax" camx="-150" y="70" isGF="false" camy="30" color="#FFFFFF" isPlayer="false" antialiasing="false" sprite="daxtiny">
+	<anim x="0" loop="false" y="0" fps="12" anim="daxtiny idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="daxtiny up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="daxtiny left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="daxtiny right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="daxtiny down" name="singDOWN"/>
+</character>
