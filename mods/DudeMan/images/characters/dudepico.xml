@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dudepico.png">
+<SubTexture name="dudeman idle0000" x="478" y="0" width="236" height="450" frameX="-878" frameY="-270" frameWidth="1280" frameHeight="720" />
+<SubTexture name="dudeman idle0001" x="478" y="0" width="236" height="450" frameX="-878" frameY="-270" frameWidth="1280" frameHeight="720" />
+<SubTexture name="dudeman idle0002" x="478" y="0" width="236" height="450" frameX="-878" frameY="-270" frameWidth="1280" frameHeight="720" />
+<SubTexture name="dudeman up0000" x="0" y="0" width="240" height="457" frameX="-878" frameY="-263" frameWidth="1280" frameHeight="720" />
+<SubTexture name="dudeman up0001" x="240" y="0" width="238" height="451" frameX="-878" frameY="-269" frameWidth="1280" frameHeight="720" />
+<SubTexture name="dudeman down0000" x="0" y="891" width="245" height="387" frameX="-833" frameY="-333" frameWidth="1280" frameHeight="720" />
+<SubTexture name="dudeman down0001" x="1052" y="0" width="239" height="400" frameX="-839" frameY="-320" frameWidth="1280" frameHeight="720" />
+<SubTexture name="dudeman left0000" x="593" y="457" width="257" height="424" frameX="-821" frameY="-296" frameWidth="1280" frameHeight="720" />
+<SubTexture name="dudeman left0001" x="344" y="457" width="249" height="430" frameX="-829" frameY="-290" frameWidth="1280" frameHeight="720" />
+<SubTexture name="dudeman right0000" x="0" y="457" width="344" height="434" frameX="-878" frameY="-286" frameWidth="1280" frameHeight="720" />
+<SubTexture name="dudeman right0001" x="714" y="0" width="338" height="437" frameX="-878" frameY="-283" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="bear5.png">
+<SubTexture name="bear5 idle0000" x="1100" y="1296" width="351" height="533" frameX="-123" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 idle0001" x="1451" y="1296" width="351" height="533" frameX="-123" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 right0000" x="2361" y="0" width="432" height="528" frameX="-246" frameY="-173" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 right0001" x="654" y="1296" width="446" height="542" frameX="-238" frameY="-159" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 up0000" x="1280" y="0" width="348" height="586" frameX="-95" frameY="-104" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 up0001" x="0" y="720" width="369" height="576" frameX="-82" frameY="-114" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 left0000" x="2361" y="1042" width="332" height="513" frameX="-67" frameY="-188" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 left0001" x="2361" y="528" width="321" height="514" frameX="-79" frameY="-187" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0000" x="2010" y="0" width="351" height="533" frameX="-123" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0001" x="2010" y="533" width="351" height="533" frameX="-123" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0002" x="2010" y="1066" width="351" height="533" frameX="-123" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0003" x="0" y="1296" width="351" height="547" frameX="-123" frameY="-142" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0004" x="369" y="720" width="362" height="563" frameX="-123" frameY="-126" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0005" x="1113" y="720" width="351" height="557" frameX="-123" frameY="-132" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0006" x="731" y="720" width="382" height="563" frameX="-123" frameY="-126" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0007" x="1628" y="0" width="382" height="557" frameX="-123" frameY="-132" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0008" x="1628" y="557" width="367" height="552" frameX="-123" frameY="-137" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0009" x="0" y="1843" width="324" height="497" frameX="-166" frameY="-116" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0010" x="351" y="1296" width="303" height="544" frameX="-176" frameY="-163" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0011" x="1338" y="1843" width="267" height="418" frameX="-186" frameY="-221" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0012" x="1082" y="1843" width="256" height="444" frameX="-202" frameY="-250" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0013" x="2361" y="1555" width="235" height="261" frameX="-218" frameY="-292" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0014" x="2010" y="1599" width="225" height="183" frameX="-239" frameY="-393" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0015" x="1628" y="1109" width="240" height="84" frameX="-213" frameY="-498" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0016" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0017" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0018" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0019" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0020" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0021" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0022" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0023" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0024" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0025" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0026" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0027" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 explode0028" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 altpose0000" x="1605" y="1843" width="384" height="318" frameX="-174" frameY="-167" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 down0000" x="704" y="1843" width="378" height="464" frameX="-180" frameY="-232" frameWidth="1280" frameHeight="720" />
+<SubTexture name="bear5 down0001" x="324" y="1843" width="380" height="477" frameX="-181" frameY="-219" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

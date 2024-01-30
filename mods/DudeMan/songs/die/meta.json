@@ -3,14 +3,14 @@
 	"coopAllowed": false,
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
-	"bpm": 180,
+	"bpm": 202,
 	"difficulties": [
 		"Hard"
 	],
 	"needsVoices": true,
-	"parsedColor": -13893888,
-	"displayName": "Pastel Fever",
+	"parsedColor": -1,
+	"displayName": "die",
 	"icon": "Icon",
-	"name": "pastelfever",
-	"color": "#2BFF00"
+	"name": "die",
+	"color": "#FFFFFF"
 }
