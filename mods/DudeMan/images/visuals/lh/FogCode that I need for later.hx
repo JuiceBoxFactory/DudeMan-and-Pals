@@ -1,0 +1,11 @@
+    foggyOverlay = new FlxSprite(0, 0);
+    foggyOverlay.frames = Paths.getSparrowAtlas('visuals1/lh/foggy');
+    foggyOverlay.antialiasing = false;
+    foggyOverlay.animation.addByPrefix('1', 'foggy idle', 2);
+    foggyOverlay.animation.play('1');
+    foggyOverlay.updateHitbox();
+    foggyOverlay.alpha = 0.9;
+    foggyOverlay.scale.set(3, 3);
+    foggyOverlay.scrollFactor.set(0, 0);
+    foggyOverlay.updateHitbox();
+    PlayState.add(foggyOverlay);
