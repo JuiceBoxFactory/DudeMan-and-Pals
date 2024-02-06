@@ -2,6 +2,7 @@ var ough:FlxSprite;
 
 function postCreate(){
 
+if (PlayState.SONG.meta.displayName != "lighthouse") {
 	remove(iconP1);
 	remove(iconP2);
 	remove(healthBarBG);
@@ -26,9 +27,6 @@ for (obj in [healthBar, healthBarBG])
 
 for (obj in [iconP1, iconP2,])
     obj.y += 10;
-
-for (obj in [accuracyTxt])
-    obj.alpha = 0;
 
 	missesTxt.x -= 155;
 	missesTxt.y -= 60;
@@ -55,19 +53,24 @@ if (FlxG.save.data.xbox) {
 	missesTxt.x -= 430;
 	scoreTxt.x -= 525;
 
+		}
 	}
-}
 
+for (obj in [accuracyTxt])
+    obj.alpha = 0;
+
+}
 function postUpdate(){
+if (PlayState.SONG.meta.displayName != "lighthouse") {
 	if (!FlxG.save.data.xbox) {
 	iconP1.x = 595;
 	iconP2.x = 525;
-	}
+		}
 	if (FlxG.save.data.xbox) {
 	iconP1.x = 125;
 	iconP2.x = 50;
+		}
 	}
-
 }
 
 function beatHit() {

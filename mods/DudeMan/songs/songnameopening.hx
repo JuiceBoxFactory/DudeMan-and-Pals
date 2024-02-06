@@ -42,7 +42,7 @@ function postCreate() {
     add(cname);
     cname.cameras = [camHUD];
 
-	if (PlayState.SONG.meta.displayName == "life gives you lemons" || PlayState.SONG.meta.displayName == "Pastel Fever" || PlayState.SONG.meta.displayName == "sizssoers") {
+	if (PlayState.SONG.meta.displayName == "life gives you lemons" || PlayState.SONG.meta.displayName == "lighthouse" || PlayState.SONG.meta.displayName == "Pastel Fever" || PlayState.SONG.meta.displayName == "sizssoers") {
 	cname.alpha = 0;
 	sname.alpha = 0;
 	fname.alpha = 0;

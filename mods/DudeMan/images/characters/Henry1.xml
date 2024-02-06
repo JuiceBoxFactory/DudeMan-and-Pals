@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Henry1.png">
+<SubTexture name="henry idle0000" x="535" y="0" width="176" height="323" frameX="-816" frameY="-592" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="henry idle0001" x="180" y="0" width="176" height="325" frameX="-815" frameY="-591" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="henry down0000" x="176" y="329" width="178" height="321" frameX="-812" frameY="-594" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="henry down0001" x="0" y="329" width="176" height="323" frameX="-812" frameY="-592" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="henry right0000" x="890" y="0" width="193" height="310" frameX="-803" frameY="-605" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="henry right0001" x="354" y="329" width="191" height="313" frameX="-804" frameY="-602" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="henry left0000" x="356" y="0" width="179" height="325" frameX="-798" frameY="-591" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="henry left0001" x="0" y="0" width="180" height="329" frameX="-797" frameY="-586" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="henry up0000" x="711" y="313" width="179" height="312" frameX="-813" frameY="-602" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="henry up0001" x="711" y="0" width="179" height="313" frameX="-812" frameY="-602" frameWidth="1500" frameHeight="1500" />
+</TextureAtlas>

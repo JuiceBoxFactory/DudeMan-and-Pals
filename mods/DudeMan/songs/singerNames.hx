@@ -58,7 +58,7 @@ if (downscroll) {
 
 	vs.y = 1200;
 
-  	if (PlayState.SONG.meta.displayName == "life gives you lemons" || PlayState.SONG.meta.displayName == "sizssoers") {
+  	if (PlayState.SONG.meta.displayName == "life gives you lemons" || PlayState.SONG.meta.displayName == "lighthouse" || PlayState.SONG.meta.displayName == "sizssoers") {
 	rightSideName.alpha = 0;
 	vs.alpha = 0;
 	leftSideName.alpha = 0;
