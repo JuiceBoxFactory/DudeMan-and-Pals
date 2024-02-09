@@ -1,10 +1,10 @@
-var brightenShader = FlxG.state.stateScript.get("brightenShader"); // kinda weird way of getting it but cameras break on static vars.
+var brightenShader = FlxG.state.stateScripts.get("brightenShader"); // kinda weird way of getting it but cameras break on static vars.
 
-var editingSprite = FlxG.state.stateScript.get("editingSprite");
-var stageGroup = FlxG.state.stateScript.get("stageGroup");
-var xml = FlxG.state.stateScript.get("xml");
+var editingSprite = FlxG.state.stateScripts.get("editingSprite");
+var stageGroup = FlxG.state.stateScripts.get("stageGroup");
+var xml = FlxG.state.stateScripts.get("xml");
 
-var spriteMap = FlxG.state.stateScript.get("spriteMap");
+var spriteMap = FlxG.state.stateScripts.get("spriteMap");
 
 import Xml;
 import Reflect;
@@ -49,7 +49,7 @@ function create() {
 	winTitle = newSprite ? 'Creating Sprite' : 'Sprite ' + editingSprite.node.get("name") + ' properties';
 }
 
-function createPost() {
+function postCreate() {
 	function addLabelOn(ui, text:String)
 		add(new UIText(ui.x, ui.y - 24, 0, text));
 
@@ -153,6 +153,11 @@ function createPost() {
 }
 
 function saveData() {
+	for (box in [posX, posY, scaleBox, scrollX, scrollY, zoomFactor, skewX, skewY, alphaBox]) {
+		if (box.onChange != null)
+			box.onChange(box.label.text); // workaround the fact the value property only gets set on unfocus.
+	}
+
 	var oldName = editingSprite.node.get("name");
 	var curNode = editingSprite.node;
 
@@ -179,23 +184,18 @@ function saveData() {
 		editingSprite.sprite.destroy(); // much easier to remake than mess with it lol.
 	}
 
-	FlxG.state.stateScript.set("editingSprite", editingSprite);
+	FlxG.state.stateScripts.set("editingSprite", editingSprite);
 	FlxG.state.call("saveSprButton");
 	spriteMap.set(editingSprite.node.get("name"), editingSprite);
 
 	editingSprite.sprite = XMLUtil.createSpriteFromXML(editingSprite.node, xml.get("folder"));
 	editingSprite.sprite.shader = brightenShader;
 	stageGroup.insert(editingSprite.index, editingSprite.sprite);
-}
 
-function update() {
-	if (callPost) {
-		callPost = false;
-		createPost();
+	if (editingSprite.sprite != null) {
+		for(prop in editingSprite.node.elementsNamed("property"))
+			XMLUtil.applyXMLProperty(editingSprite.sprite, prop);
 	}
-
-	if (FlxG.keys.justPressed.ESCAPE)
-		close();
 }
 
 function setNodeList() {
