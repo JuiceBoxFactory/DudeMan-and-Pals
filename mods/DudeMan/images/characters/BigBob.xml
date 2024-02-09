@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="BigBob.png">
+<SubTexture name="bob idle0000" x="0" y="1298" width="1235" height="1135" frameX="-161" frameY="-365" frameWidth="2000" frameHeight="1500" />
+<SubTexture name="bob right0000" x="2716" y="0" width="1454" height="1105" frameX="-102" frameY="-395" frameWidth="2000" frameHeight="1500" />
+<SubTexture name="bob right0001" x="1235" y="1298" width="1440" height="1116" frameX="-101" frameY="-384" frameWidth="2000" frameHeight="1500" />
+<SubTexture name="bob left0000" x="1513" y="2433" width="1541" height="1067" frameX="-35" frameY="-433" frameWidth="2000" frameHeight="1500" />
+<SubTexture name="bob left0001" x="0" y="2433" width="1513" height="1088" frameX="-58" frameY="-412" frameWidth="2000" frameHeight="1500" />
+<SubTexture name="bob up0000" x="0" y="0" width="1354" height="1298" frameX="-197" frameY="-202" frameWidth="2000" frameHeight="1500" />
+<SubTexture name="bob up0001" x="1354" y="0" width="1362" height="1287" frameX="-185" frameY="-213" frameWidth="2000" frameHeight="1500" />
+<SubTexture name="bob down0000" x="4170" y="1012" width="1493" height="1009" frameX="-61" frameY="-489" frameWidth="2000" frameHeight="1500" />
+<SubTexture name="bob down0001" x="4170" y="0" width="1512" height="1012" frameX="-51" frameY="-488" frameWidth="2000" frameHeight="1500" />
+</TextureAtlas>

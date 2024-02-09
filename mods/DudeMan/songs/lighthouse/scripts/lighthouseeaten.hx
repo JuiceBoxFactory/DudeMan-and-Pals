@@ -1,6 +1,7 @@
 import flixel.addons.display.FlxBackdrop;
 
 var time = 0;
+var section2 = false;
 
 function create() {
 
@@ -8,8 +9,10 @@ function create() {
 	remove(dad);
 	remove(boyfriend);
 	
-	bg1 = new FlxSprite(0, 0).loadGraphic(Paths.image('backdrop/lighthoused/bg'));
+	bg1 = new FlxSprite(-500, -300).loadGraphic(Paths.image('backdrop/lighthoused/bg'));
 	bg1.antialiasing = false;
+	bg1.scrollFactor.set(0, 0);
+	bg1.scale.set(3, 3);
 	bg1.alpha = 1;
 	bg1.updateHitbox();
 	add(bg1);
@@ -29,6 +32,12 @@ function create() {
 	light1.updateHitbox();
 	add(light1);
 
+	bigbob = new Character(750, 150, "bigbob");
+	bigbob.flipX = false; 
+	bigbob.alpha = 0;
+	add(bigbob);
+	add(dad);
+
 	lighthouseBase1 = new FlxSprite(0, 0).loadGraphic(Paths.image('backdrop/lighthoused/lighthouseBase'));
 	lighthouseBase1.antialiasing = false;
 	lighthouseBase1.alpha = 1;
@@ -47,7 +56,10 @@ function create() {
 	backRails1.updateHitbox();
 	add(backRails1);
 		
-	add(dad);
+	hen2 = new Character(-750, 100, "hen2");
+	hen2.flipX = false; 
+	hen2.alpha = 0;
+	add(hen2);
 	add(boyfriend);
 
 	frontRails1 = new FlxSprite(0, 0).loadGraphic(Paths.image('backdrop/lighthoused/frontrails'));
@@ -65,8 +77,10 @@ function create() {
 	bottomScroll1.y = -300;
 	add(bottomScroll1);
 
-	overlay = new FlxSprite(0, 0).loadGraphic(Paths.image('backdrop/lighthoused/overlay'));
+	overlay = new FlxSprite(-500, -300).loadGraphic(Paths.image('backdrop/lighthoused/overlay'));
+	overlay.scrollFactor.set(0, 0);
 	overlay.antialiasing = false;
+    	overlay.scale.set(3, 3);
 	overlay.alpha = 1;
 	overlay.updateHitbox();
 	add(overlay);
@@ -88,17 +102,30 @@ function create() {
 	blackHUD.updateHitbox();
 	add(blackHUD);
 
-	foggyOverlay = new FlxSprite(0, 0);
+	foggyOverlay = new FlxSprite(-600, -400);
 	foggyOverlay.frames = Paths.getSparrowAtlas('visuals/lh/foggy');
 	foggyOverlay.antialiasing = false;
 	foggyOverlay.animation.addByPrefix('1', 'foggy idle', 4);
 	foggyOverlay.animation.play('1');
 	foggyOverlay.updateHitbox();
     	foggyOverlay.alpha = 0;
-    	foggyOverlay.scale.set(3, 3);
+    	foggyOverlay.scale.set(10, 10);
     	foggyOverlay.scrollFactor.set(0, 0);
 	foggyOverlay.updateHitbox();
 	add(foggyOverlay);
+
+	foggyEnding = new FlxSprite(0, 0);
+	foggyEnding.frames = Paths.getSparrowAtlas('visuals/lh/foggy');
+	foggyEnding.antialiasing = false;
+	foggyEnding.animation.addByPrefix('1', 'foggy idle', 4);
+	foggyEnding.animation.play('1');
+	foggyEnding.updateHitbox();
+    	foggyEnding.alpha = 0;
+	foggyEnding.cameras = [camHUD];
+    	foggyEnding.scale.set(3, 3);
+    	foggyEnding.scrollFactor.set(0, 0);
+	foggyEnding.updateHitbox();
+	add(foggyEnding);
 
 }
 
@@ -106,9 +133,27 @@ function onCountdown(e) {
 	e.cancel();
 }
 
+function onPlayerHit(event) {
+	hen2.playSingAnim(event.direction);
+}               
+function onDadHit(event) {
+	bigbob.playSingAnim(event.direction);
+}
+
 function update(delta:Float) {
     time += delta;
     light1.alpha = light1.alpha + Math.cos(time * 10) * 0.01 / 2;
+}
+
+function postUpdate(){
+if (section2 == true) {
+	if (curCameraTarget == 0) { 
+		defaultCamZoom = 0.65;
+		} 
+	else { 
+		defaultCamZoom = 1.1; 
+		}
+	}
 }
 
 function stepHit(curStep:Int) { 
@@ -126,5 +171,19 @@ function stepHit(curStep:Int) {
 	    FlxG.camera.flash(0xFF000000, 1);
             blackHUD.alpha = 0;
             blackCam.alpha = 0;
+	    light1.loadGraphic(Paths.image('backdrop/lighthoused/light2'));
+	    light1.x = -500;
+	    lighthouseBase1.loadGraphic(Paths.image('backdrop/lighthoused/lighthouseBase2'));
+	    lighthouseTop1.loadGraphic(Paths.image('backdrop/lighthoused/lighthouseTop2'));
+	    backRails1.loadGraphic(Paths.image('backdrop/lighthoused/backrails2'));
+	    frontRails1.loadGraphic(Paths.image('backdrop/lighthoused/frontrails2'));
+	    bigbob.alpha = 1;
+	    hen2.alpha = 1;
+	    section2 = true;
+	case 705:
+	    remove(dad);
+	    remove(boyfriend);
+	case 2496:
+            FlxTween.tween(foggyEnding, {alpha: 1}, 4);
 	}
 }

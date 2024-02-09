@@ -19,9 +19,9 @@ import flixel.util.FlxSave;
 
 var mainArray:Array<String> = ["dude", "blood", "greetings"];
 var extrasArray:Array<String> = ["lemon", "somari", "royalscientist"];
-var palsArray:Array<String> = ["pastelfever"];
+var palsArray:Array<String> = ["pastelfever", "sizssoers", "lighthouse"];
 var coversArray:Array<String> = [];
-var devArray:Array<String> = ["pastelfever", "lemon", "somari", "dude", "blood", "royalscientist", "greetings"];
+var devArray:Array<String> = ["pastelfever", "lemon", "somari", "dude", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange"];
 var songL:FlxTypedGroup<FlxText> = [];
 
 function create() {
