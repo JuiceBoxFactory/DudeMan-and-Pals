@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="protextmisconduct.png">
+<SubTexture name="protext idle0000" x="0" y="0" width="96" height="173" frameX="-677" frameY="-743" frameWidth="2063" frameHeight="1500" />
+<SubTexture name="protext idle0001" x="96" y="0" width="95" height="173" frameX="-677" frameY="-742" frameWidth="2063" frameHeight="1500" />
+</TextureAtlas>
