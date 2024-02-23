@@ -1,0 +1,16 @@
+{
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"beatsPerMesure": 4,
+	"bpm": 180,
+	"difficulties": [
+		"Hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -13893888,
+	"displayName": "unlikelyrivals",
+	"icon": "Icon",
+	"name": "unlikelyrivals",
+	"color": "#2BFF00"
+}

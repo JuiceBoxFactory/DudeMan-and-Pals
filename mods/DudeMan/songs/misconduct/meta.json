@@ -1,0 +1,16 @@
+{
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"beatsPerMesure": 4,
+	"bpm": 130,
+	"difficulties": [
+		"Hard"
+	],
+	"needsVoices": false,
+	"parsedColor": -13893888,
+	"displayName": "misconduct",
+	"icon": "Icon",
+	"name": "misconduct",
+	"color": "#2BFF00"
+}

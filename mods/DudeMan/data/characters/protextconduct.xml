@@ -1,0 +1,4 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="melty" camx="-150" y="0" isGF="false" camy="30" color="#FFFFFF" isPlayer="false" antialiasing="false" sprite="protextmisconduct">
+	<anim x="0" loop="false" y="0" fps="3" anim="protext idle" name="idle"/>
+</character>

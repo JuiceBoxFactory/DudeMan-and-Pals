@@ -73,6 +73,19 @@ if (PlayState.SONG.meta.displayName != "lighthouse") {
 	}
 }
 
+function stepHit(curStep:Int) { 
+    if (PlayState.SONG.meta.displayName == "misconduct" || PlayState.SONG.meta.displayName == "unlikelyrivals") {
+	iconP1.alpha = 0;
+	iconP2.alpha = 0;
+	healthheader.alpha = 0;
+	}
+    if (curStep > 63 && PlayState.SONG.meta.displayName == "misconduct" || curStep > 256 && curStep < 2592 && PlayState.SONG.meta.displayName == "unlikelyrivals") {	
+	iconP1.alpha = 1;
+	iconP2.alpha = 1;
+	healthheader.alpha = 1;
+	}
+}
+
 function beatHit() {
 iconP1.scale.set(1, 1);
 iconP2.scale.set(1, 1);
