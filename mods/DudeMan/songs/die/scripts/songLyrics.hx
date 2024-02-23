@@ -35,27 +35,27 @@ function UpdateLyric(text:String) {
 
 function stepHit(curStep:Int) { 
     switch (curStep) {
-        case 1032:
+        case 1544:
 		 LyricInQuestion.color = 0xFF1C5C7D;
 		 LyricInQuestion.borderColor = 0xFF439AD4;
 		 lyricscon.loadGraphic(Paths.image('LYRICS/bear5LYRICSCON'));
             UpdateLyric("GRAH IM GONNA KIL YOUUU");        
-        case 1064:
+        case 1576:
 		 LyricInQuestion.color = 0xFFFFFFFF;
 		 LyricInQuestion.borderColor = 0xFF484848;
 		 lyricscon.loadGraphic(Paths.image('LYRICS/dudemanLYRICSCON'));
             UpdateLyric("nuh uh");
-        case 1096:
+        case 1608:
 		 LyricInQuestion.color = 0xFF1C5C7D;
 		 LyricInQuestion.borderColor = 0xFF439AD4;
 		 lyricscon.loadGraphic(Paths.image('LYRICS/bear5LYRICSCON'));
             UpdateLyric('FUCK YOU MEAN "NUH UH" ?');
-        case 1128:
+        case 1640:
 		 LyricInQuestion.color = 0xFFFFFFFF;
 		 LyricInQuestion.borderColor = 0xFF484848;
 		 lyricscon.loadGraphic(Paths.image('LYRICS/dudemanLYRICSCON'));
             UpdateLyric("nuh uh !");
-        case 1160:
+        case 1940:
 		 LyricInQuestion.color = 0xFFFFFFFF;
 		 LyricInQuestion.borderColor = 0xFF484848;
 		 lyricscon.loadGraphic(Paths.image('LYRICS/none'));
