@@ -5,8 +5,8 @@
 	<sprite x="0" antialiasing="false" sprite="backdrop/misconduct/rack" scale="1" name="rack"/>
 	<sprite x="0" antialiasing="false" sprite="backdrop/misconduct/puter" scale="1" name="puter"/>
 	<sprite x="0" antialiasing="false" sprite="backdrop/misconduct/awasodark" scale="1" name="lighting1"/>
-	<bf x="0" y="0"/>
 	<gf scrollx="1" scrolly="1" x="-2.25" y="5.75"/>
+	<bf x="0" y="0"/>
 	<dad x="0" y="0"/>
 	<combo x="665.5" y="206.5"/>
 	<sprite scrolly="1" antialiasing="false" sprite="backdrop/misconduct/lightbright" name="lighting2" scrollx="1"/>

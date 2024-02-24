@@ -56,16 +56,15 @@ function stepHit(curStep:Int) {
 	FlxTween.tween(dialogue, {alpha: 1}, 2, {ease:FlxEase.quartOut});
 	case 42:
 	FlxTween.tween(context, {alpha: 0}, 1.2, {ease:FlxEase.quartOut});
-	FlxTween.tween(dialogue, {alpha: 0}, 0.4, {ease:FlxEase.quartOut});
-	case 49:
+	case 48:
 	dialogue.alpha = 1;
 	dialogue.loadGraphic(Paths.image('visuals/misconduct/lutetext'));
 	FlxTween.tween(lute, {x: 0}, 2, {ease:FlxEase.quartOut});
-	case 61:
+	case 60:
 	holdup.alpha = 1;	
-	case 63:
+	case 62:
 	holdup.loadGraphic(Paths.image('visuals/misconduct/holdup'));
-	case 65:
+	case 64:
 	holdup.alpha = 0;
 	introbg.alpha = 0;
 	dialogue.alpha = 0;
