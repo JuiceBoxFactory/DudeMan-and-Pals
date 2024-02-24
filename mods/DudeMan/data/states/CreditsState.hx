@@ -120,17 +120,20 @@ function update() {
 		devname.text = 'That1Gamer';
 		thingsdone.text = 'Artist\n\n\n\n\n\n"fuck my heterosexuality"';
 	case 13:
-		devname.text = 'Lucidric';
+		devname.text = 'Kozmorama';
 		thingsdone.text = 'Artist\nCoded Website\n\n\n\n\n"im gonna cut open my scrotum and juggle my testicles"';
-	default:
-		devname.text = 'this person doesnt exist';
-		thingsdone.text = 'my penis is so big :3';
+	case 14:
+		devname.text = 'OJSTheCoder';
+		thingsdone.text = 'Musician\n\n\n\n\n\n"lalalala uhm bbaba..uh.. FUCK"';
+//	default:
+//		devname.text = 'this person doesnt exist';
+//		thingsdone.text = 'my penis is so big :3';
 	}
-	if (Selected > 13) {
+	if (Selected > 14) {
 		Selected = 0;
 	}
 	if (Selected < 0) {
-		Selected = 13;
+		Selected = 14;
 	}
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));
