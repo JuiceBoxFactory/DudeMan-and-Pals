@@ -10,4 +10,5 @@
 	<anim x="0" loop="false" y="0" fps="12" anim="sideviewBF alt" name="singUP-alt"/>	
 	<anim x="0" loop="false" y="0" fps="12" anim="sideviewBF alt" name="singLEFT-alt"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="sideviewBF alt" name="singRIGHT-alt"/>
+	<anim x="0" loop="false" y="0" fps="6" anim="sideviewBF damn" name="damn"/>
 </character>
