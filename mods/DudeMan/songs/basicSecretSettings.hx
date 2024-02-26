@@ -17,7 +17,7 @@ function postCreate() {
 		baldi.animation.play('ohyeahBaby');
 		baldi.scale.set(2.5, 2.5);
 		baldi.cameras = [camHUD];
-		add(baldi);
+		insert(60, baldi);
 	}
 	
 	if (FlxG.save.data.horse) {
@@ -39,13 +39,13 @@ function postCreate() {
 		Xbox.makeGraphic(1920, 1080, FlxColor.GREEN);
 		Xbox.alpha = 0.3;
 		Xbox.cameras = [camHUD];
-		insert(2, Xbox);
+		insert(10, Xbox);
 
 		tvOverlay= new FlxSprite(0, 0).loadGraphic(Paths.image('secretsettings/xbox/tvoverlay'));
 		tvOverlay.scrollFactor.set(0, 0);
 		tvOverlay.scale.set(1, 1);
 		tvOverlay.cameras = [camHUD];
-		insert(3, tvOverlay);
+		insert(10, tvOverlay);
 
 		fuckingController= new FlxSprite(140, 300).loadGraphic(Paths.image('secretsettings/xbox/thatfuckingcontroller'));
 		fuckingController.scrollFactor.set(0, 0);

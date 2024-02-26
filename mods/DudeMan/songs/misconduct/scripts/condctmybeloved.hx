@@ -5,7 +5,7 @@ function postCreate() {
 	introbg.alpha = 1;
 	introbg.cameras = [camHUD];
 	introbg.updateHitbox();
-	add(introbg);
+	insert(1,introbg);
 
 	context = new FlxSprite(-800, 0);
 	context.frames = Paths.getSparrowAtlas('visuals/misconduct/contextconductintro');
@@ -18,7 +18,7 @@ function postCreate() {
     	context.scale.set(1, 1);
     	context.scrollFactor.set(0, 0);
 	context.updateHitbox();
-	add(context);
+	insert(2,context);
 
 	lute = new FlxSprite(600, 0);
 	lute.frames = Paths.getSparrowAtlas('visuals/misconduct/luteconductintro');
@@ -31,21 +31,21 @@ function postCreate() {
     	lute.scale.set(1, 1);
     	lute.scrollFactor.set(0, 0);
 	lute.updateHitbox();
-	add(lute);
+	insert(2,lute);
 
 	dialogue = new FlxSprite(0, 0).loadGraphic(Paths.image('visuals/misconduct/contexttext'));
 	dialogue.antialiasing = false;
 	dialogue.alpha = 0;
 	dialogue.cameras = [camHUD];
 	dialogue.updateHitbox();
-	add(dialogue);
+	insert(3,dialogue);
 
 	holdup = new FlxSprite(0, 0).loadGraphic(Paths.image('visuals/misconduct/hold'));
 	holdup.antialiasing = false;
 	holdup.alpha = 0;
 	holdup.cameras = [camHUD];
 	holdup.updateHitbox();
-	add(holdup);
+	insert(3, holdup);
 
 	ccbg = new FlxSprite(0, 900).loadGraphic(Paths.image('visuals/misconduct/mygoat'));
 	ccbg.antialiasing = false;

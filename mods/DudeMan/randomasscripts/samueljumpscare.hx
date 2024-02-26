@@ -1,4 +1,3 @@
-/**
 import flixel.text.FlxTextBorderStyle;
 
 var AA:FlxText;
@@ -33,4 +32,3 @@ function stepHit(curStep:Int) {
     FlxTween.tween(AA, {y: 2000}, 2, {ease: FlxEase.circIn});
 	}
 }
-**/
