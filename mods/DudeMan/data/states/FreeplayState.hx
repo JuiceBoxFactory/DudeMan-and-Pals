@@ -16,6 +16,9 @@ import flixel.FlxCamera;
 import flixel.addons.display.FlxBackdrop;
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxSave;
+import funkin.backend.utils.DiscordUtil;
+import funkin.backend.scripting.events.DiscordPresenceUpdateEvent;
+import discord_rpc.DiscordRpc;
 
 var mainArray:Array<String> = ["dude", "blood", "greetings"];
 var extrasArray:Array<String> = ["lemon", "somari", "royalscientist"];
@@ -23,6 +26,10 @@ var palsArray:Array<String> = ["pastelfever", "sizssoers", "lighthouse"];
 var coversArray:Array<String> = [];
 var devArray:Array<String> = ["pastelfever", "lemon", "somari", "dude", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange"];
 var songL:FlxTypedGroup<FlxText> = [];
+
+function new() { 
+    	   DiscordUtil.changePresence("goat, u in freeplay", null);
+}
 
 function create() {
 

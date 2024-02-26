@@ -6,5 +6,6 @@
 	<checkbox id="hitsounds" desc="so pro gaming" name= "Hit Sounds"/>
 	<checkbox id="baldiStyle" desc="Oh my fucking god" name= "Baldi Style"/>
 	<checkbox id="geomtery" desc="Fire is in said hole" name= "Geometry Dash"/>
+	<checkbox id="valentines" desc="Love you dear LOL" name= "coded on Valentines"/>
 	<checkbox id="nightmare" desc="Don't miss." name= "Nightmare."/>
 </menu>

@@ -1,4 +1,11 @@
+import funkin.backend.utils.DiscordUtil;
+import funkin.backend.scripting.events.DiscordPresenceUpdateEvent;
+import discord_rpc.DiscordRpc;
 var deathCam = new FlxCamera();
+
+function new() { 
+    	   DiscordUtil.changePresence("girl, you died in fucking " + PlayState.SONG.meta.displayName, null);
+}
 
 function create() {
 

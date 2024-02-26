@@ -5,9 +5,23 @@ var baldBoyDirection = false;
 var horseSpeed = 1;
 var stylishSpeed = 4;
 var noteRating = 200;
+var valentinesNumber = 0;
+var valentinesDir = false;
 
 function postCreate() {
 
+	valentinesNumber = FlxG.random.int(0,1);
+
+	//valentines day
+	if (FlxG.save.data.valentines) {
+		kissing = new FlxSprite(0, 100).loadGraphic(Paths.image('secretsettings/valentines/'+valentinesNumber));
+		kissing.scrollFactor.set(0, 0);
+		kissing.scale.set(1, 1);
+		kissing.cameras = [camHUD];
+		insert(60, kissing);
+	}
+
+	//BALDI GANGAM ACROSS SCREEN SPRITE
 	if (FlxG.save.data.baldiStyle) {
 		baldi = new FlxSprite(0, 250);	
 		baldi.antialiasing = false;
@@ -20,6 +34,7 @@ function postCreate() {
 		insert(60, baldi);
 	}
 	
+	//HORSE SPRITE
 	if (FlxG.save.data.horse) {
 		horse = new FlxSprite(0, 0).loadGraphic(Paths.image('secretsettings/itsbeensolong'));
 		horse.scrollFactor.set(0, 0);
@@ -33,19 +48,19 @@ function postCreate() {
 		horseBoom.cameras = [camHUD];
 		insert(61, horseBoom);
 	}
-
+	//XBOX SHIT
 	if (FlxG.save.data.xbox) {
 		Xbox = new FlxSprite();
 		Xbox.makeGraphic(1920, 1080, FlxColor.GREEN);
 		Xbox.alpha = 0.3;
 		Xbox.cameras = [camHUD];
-		insert(10, Xbox);
+		insert(8, Xbox);
 
 		tvOverlay= new FlxSprite(0, 0).loadGraphic(Paths.image('secretsettings/xbox/tvoverlay'));
 		tvOverlay.scrollFactor.set(0, 0);
 		tvOverlay.scale.set(1, 1);
 		tvOverlay.cameras = [camHUD];
-		insert(10, tvOverlay);
+		insert(9, tvOverlay);
 
 		fuckingController= new FlxSprite(140, 300).loadGraphic(Paths.image('secretsettings/xbox/thatfuckingcontroller'));
 		fuckingController.scrollFactor.set(0, 0);
@@ -64,7 +79,7 @@ function postCreate() {
 		
 		}
 	}
-
+	//gemontry
 		if (FlxG.save.data.geomtery) {
 			geomtery= new FlxSprite(0, 0).loadGraphic(Paths.image('secretsettings/GeometryRatings/' + noteRating));
 			geomtery.scrollFactor.set(0, 0);
@@ -73,7 +88,7 @@ function postCreate() {
 			geomtery.cameras = [camHUD];
 			insert(30, geomtery);
 		}
-
+	//im evil.
 	if (FlxG.save.data.nightmare) {
 		nightmare = new FlxSprite(0, 0).loadGraphic(Paths.image('secretsettings/evil'));
 		nightmare.scrollFactor.set(0, 0);
@@ -115,10 +130,10 @@ if (FlxG.save.data.horse) {
 	}
 
 }
-
+	
 	if (FlxG.save.data.baldiStyle) {
 		baldi.y = baldi.y + Math.cos(time * 6.3) * -10;
-		baldi.scale.x = baldi.scale.x + Math.cos(time * 5) * 0.010;
+		baldi.scale.x = baldi.scale.x + Math.cos(time * 5) * 0.020;
 
 		if (baldBoyDirection == false) {
 			baldi.x += stylishSpeed;
@@ -140,6 +155,26 @@ if (FlxG.save.data.horse) {
 		if (geomtery.alpha > 0) {
 		geomtery.alpha -= 0.05;
 		}
+	}
+}
+function postUpdate() {
+if (FlxG.save.data.valentines) {
+	if (valentinesDir == true) {
+		if (kissing.x < 1300) {
+			kissing.x += 1;
+			}
+		}
+	if (valentinesDir == false) {
+		if (kissing.x > -500) {
+			kissing.x -= 1;
+			}
+		}
+	if (kissing.x == 1300) {
+		valentinesDir = false;
+		}	
+	if (kissing.x == -500) {
+		valentinesDir = true;
+		}	
 	}
 }
 

@@ -1,6 +1,13 @@
 import funkin.options.OptionsMenu;
 import flixel.addons.display.FlxBackdrop;
+import funkin.backend.utils.DiscordUtil;
+import funkin.backend.scripting.events.DiscordPresenceUpdateEvent;
+import discord_rpc.DiscordRpc;
 var SelectedButton = 0;
+
+function create() {
+    	DiscordUtil.changePresence("goat, u in the main menu", null);
+    	}
 
 function postCreate(){
     magenta.destroy();
@@ -24,6 +31,7 @@ function postCreate(){
 }
 
 function update() {	
+    	DiscordUtil.changePresence("goat, u in the main menu", null);
 	mans.loadGraphic(Paths.image('mainmenu/dudes/'+SelectedButton));
 
 	if (controls.BACK) {

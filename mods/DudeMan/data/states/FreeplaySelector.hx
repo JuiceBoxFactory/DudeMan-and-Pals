@@ -2,10 +2,17 @@ import flixel.util.FlxSave;
 import flixel.addons.display.FlxBackdrop;
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxSave;
+import funkin.backend.utils.DiscordUtil;
+import funkin.backend.scripting.events.DiscordPresenceUpdateEvent;
+import discord_rpc.DiscordRpc;
 
 public var sectionselected;
 var Selected = 0;
 var sectionname:FlxText;
+
+function new() { 
+    	   DiscordUtil.changePresence("goat, u in freeplay section selector", null);
+}
 
 function create() {
 
