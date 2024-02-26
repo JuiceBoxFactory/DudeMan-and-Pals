@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="lute" camx="0" y="0" isGF="false" camy="250" color="#FFFFFF" isPlayer="true" flipX="true" antialiasing="false" sprite="lute">
+<character x="0" icon="lute" camx="0" y="0" isGF="false" camy="250" color="#2ADD65" isPlayer="true" flipX="true" antialiasing="false" sprite="lute">
 	<anim x="0" loop="false" y="0" fps="3" anim="lute idle" name="idle"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="lute right" name="singRIGHT"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="lute left" name="singLEFT"/>

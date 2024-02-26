@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="-100" icon="lute" camx="-200" y="0" isGF="false" camy="175" color="#2ADD65" flipX="true" isPlayer="false" antialiasing="false" sprite="luteCC">
+	<anim x="0" loop="false" y="0" fps="3" anim="lute idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="lute up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="lute left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="lute right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="lute down" name="singDOWN"/>
+</character>

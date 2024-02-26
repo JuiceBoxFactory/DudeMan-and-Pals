@@ -3,11 +3,11 @@
 	"coopAllowed": false,
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
-	"bpm": 130,
+	"bpm": 124,
 	"difficulties": [
 		"Hard"
 	],
-	"needsVoices": false,
+	"needsVoices": true,
 	"parsedColor": -13893888,
 	"displayName": "misconduct",
 	"icon": "Icon",

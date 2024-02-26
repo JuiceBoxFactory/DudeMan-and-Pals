@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="luteCC.png">
+<SubTexture name="lute idle0000" x="0" y="0" width="392" height="737" frameX="-752" frameY="-460" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="lute idle0001" x="0" y="0" width="392" height="737" frameX="-752" frameY="-460" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="lute left0000" x="0" y="737" width="572" height="703" frameX="-557" frameY="-480" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="lute left0001" x="1351" y="0" width="565" height="711" frameX="-563" frameY="-472" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="lute right0000" x="866" y="0" width="485" height="727" frameX="-738" frameY="-472" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="lute right0001" x="392" y="0" width="474" height="730" frameX="-743" frameY="-469" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="lute down0000" x="0" y="1440" width="794" height="502" frameX="-545" frameY="-684" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="lute down0001" x="1916" y="0" width="786" height="511" frameX="-549" frameY="-675" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="lute up0000" x="572" y="737" width="337" height="634" frameX="-768" frameY="-582" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="lute up0001" x="909" y="737" width="338" height="626" frameX="-762" frameY="-590" frameWidth="2560" frameHeight="1440" />
+</TextureAtlas>

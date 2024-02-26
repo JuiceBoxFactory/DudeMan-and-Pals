@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="melty" camx="-500" y="0" isGF="false" camy="200" color="#FF4577" isPlayer="false" antialiasing="false" sprite="contextmisconduct">
+<character x="0" icon="melty" camx="-800" y="0" isGF="false" camy="175" color="#FF4577" isPlayer="false" antialiasing="false" sprite="contextCC">
 	<anim x="0" loop="false" y="0" fps="3" anim="context idle" name="idle"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="context up" name="singUP"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="context left" name="singLEFT"/>

@@ -66,7 +66,7 @@ function stepHit(curStep:Int) {
             FlxTween.tween(obj, {x: 10}, 2, {ease:FlxEase.quartOut});
             for (obj in [songbox])
             FlxTween.tween(obj, {x: 0}, 2, {ease:FlxEase.quartOut});
-        case 120:
+        case 89:
             for (obj in [fname, cname, sname])
             FlxTween.tween(obj, {x: -1010}, 2, {ease:FlxEase.backIn});
             for (obj in [songbox])

@@ -47,6 +47,47 @@ function postCreate() {
 	holdup.updateHitbox();
 	add(holdup);
 
+	ccbg = new FlxSprite(0, 900).loadGraphic(Paths.image('visuals/misconduct/mygoat'));
+	ccbg.antialiasing = false;
+	ccbg.alpha = 1;
+	ccbg.updateHitbox();
+	add(ccbg);
+
+	contextCC = new Character(0, 900, "contextCC");
+	contextCC.flipX = false; 
+	contextCC.alpha = 1;
+	add(contextCC);
+	
+	luteCC = new Character(200, 900, "luteCC");
+	luteCC.flipX = false;
+	luteCC.alpha = 1;
+	add(luteCC);
+
+	ccoverlay = new FlxSprite(0, 1000).loadGraphic(Paths.image('visuals/misconduct/screenborder'));
+	ccoverlay.antialiasing = false;
+	ccoverlay.alpha = 1;
+	ccoverlay.scale(1, 1.15);
+	ccoverlay.scrollFactor.set(0, 0);
+	ccoverlay.updateHitbox();
+	ccoverlay.cameras = [camHUD];
+	insert(1, ccoverlay);
+
+	blackHUD = new FlxSprite(0, 0).loadGraphic(Paths.image('black'));
+	blackHUD.antialiasing = false;
+	blackHUD.alpha = 0;
+	blackHUD.screenCenter();
+	blackHUD.cameras = [camHUD];
+	blackHUD.scale.set(6,6);
+	blackHUD.updateHitbox();
+	add(blackHUD);
+
+}
+
+function onPlayerHit(event) {
+	luteCC.playSingAnim(event.direction);
+}               
+function onDadHit(event) {
+	contextCC.playSingAnim(event.direction);
 }
 
 function stepHit(curStep:Int) { 
@@ -70,5 +111,17 @@ function stepHit(curStep:Int) {
 	dialogue.alpha = 0;
 	context.alpha = 0;
 	lute.alpha = 0;
+	case 320:
+	FlxTween.tween(luteCC, {y: 0}, 1, {ease:FlxEase.backOut});
+	FlxTween.tween(contextCC, {y: 0}, 1, {ease:FlxEase.backOut});
+	FlxTween.tween(ccbg, {y: 0}, 1, {ease:FlxEase.backOut});
+	FlxTween.tween(ccoverlay, {y: -421}, 1, {ease:FlxEase.backOut});
+	case 760:
+	FlxTween.tween(luteCC, {y: 900}, 1, {ease:FlxEase.backIn});
+	FlxTween.tween(contextCC, {y: 900}, 1, {ease:FlxEase.backIn});
+	FlxTween.tween(ccbg, {y: 900}, 1, {ease:FlxEase.backIn});
+	FlxTween.tween(ccoverlay, {y: 900}, 1, {ease:FlxEase.backIn});
+	case 864:
+	blackHUD.alpha = 1;
 	}
 }
