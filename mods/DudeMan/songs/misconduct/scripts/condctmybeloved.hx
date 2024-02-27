@@ -38,7 +38,7 @@ function postCreate() {
 	dialogue.alpha = 0;
 	dialogue.cameras = [camHUD];
 	dialogue.updateHitbox();
-	insert(3,dialogue);
+	insert(20,dialogue);
 
 	holdup = new FlxSprite(0, 0).loadGraphic(Paths.image('visuals/misconduct/hold'));
 	holdup.antialiasing = false;
