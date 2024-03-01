@@ -9,7 +9,7 @@ FlxG.save.data.leftSideSinger = "sorrybro";
 FlxG.save.data.rightSideSinger = "BF";
 
 // cateogry for the song ( VS DUDEMAN, VS FRUITY, EXTRAS, COVERS, REMIXES, DAX SHAPED DUEL, etc, please use capitols ! )
-FlxG.save.data.categoryName = "VS QUANDALE DINGLE";
+FlxG.save.data.categoryName = "VS robert";
 
 // name of the song
 FlxG.save.data.songName = "Greetings";

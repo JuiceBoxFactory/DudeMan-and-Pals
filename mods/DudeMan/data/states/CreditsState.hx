@@ -24,7 +24,9 @@ var links:Array<String> = [
 "https://twitter.com/Saaaaayoo/status/1721544057179033853",
 "https://twitter.com/angelthetweetb1"
 "https://www.youtube.com/watch?v=2XI9dmhL_1o"
-"https://docs.google.com/document/d/1zh0LEnsax3X8rIq6Q4idqno3d9Dp8YIEWwRH8b8iQiE/edit"];
+"https://twitter.com/OJStheCoder"
+"https://docs.google.com/document/d/1zh0LEnsax3X8rIq6Q4idqno3d9Dp8YIEWwRH8b8iQiE/edit"
+"https://twitter.com/Frump0"];
 
 function new() { 
     	   DiscordUtil.changePresence("goat, u in credits menu", null);
@@ -54,14 +56,20 @@ function create() {
 	arrows.updateHitbox();
 	add(arrows);
 
+     catname = new FlxText(390, 175, 500, "CATNAME", 0);
+     catname.setFormat(Paths.font("COMIC.ttf"), 45, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+     catname.borderColor = 0xFF06000C;
+     catname.borderSize = 3;
+     add(catname);
+
      devname = new FlxText(650, 250, 500, "DEVNAME", 0);
-     devname.setFormat(Paths.font("vcr.ttf"), 45, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+     devname.setFormat(Paths.font("COMIC.ttf"), 45, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
      devname.borderColor = 0xFF06000C;
      devname.borderSize = 3;
      add(devname);
 
-     thingsdone = new FlxText(650, 300, 400, "DEVTHINGS", 0);
-     thingsdone.setFormat(Paths.font("vcr.ttf"), 30, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+     thingsdone = new FlxText(650, 310, 400, "DEVTHINGS", 0);
+     thingsdone.setFormat(Paths.font("COMIC.ttf"), 25, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
      thingsdone.borderColor = 0xFF06000C;
      thingsdone.borderSize = 3;
      add(thingsdone);
@@ -85,6 +93,12 @@ function update() {
 	}
 	if (FlxG.keys.justPressed.ENTER) {
 		CoolUtil.openURL(links[Selected]);
+	}
+	if (Selected < 14) {
+	catname.text = 'Devs';	
+	}
+	if (Selected > 13) {
+	catname.text = 'Guests';	
 	}
 	switch(Selected) {
 	case 0:
@@ -127,20 +141,23 @@ function update() {
 		devname.text = 'That1Gamer';
 		thingsdone.text = 'Artist\n\n\n\n\n\n"fuck my heterosexuality"';
 	case 13:
-		devname.text = 'Kozmorama';
-		thingsdone.text = 'Artist\nCoded Website\n\n\n\n\n"im gonna cut open my scrotum and juggle my testicles"';
-	case 14:
 		devname.text = 'OJSTheCoder';
 		thingsdone.text = 'Musician\n\n\n\n\n\n"lalalala uhm bbaba..uh.. FUCK"';
+	case 14:
+		devname.text = 'Kozmorama';
+		thingsdone.text = 'Artist\nCoded Website\n\n\n\n\n"im gonna cut open my scrotum and juggle my testicles"';
+	case 15:
+		devname.text = 'Frumpo';
+		thingsdone.text = 'Artist I think\n\n\n\n\n\n"Oink :pig2:"';
 //	default:
 //		devname.text = 'this person doesnt exist';
 //		thingsdone.text = 'my penis is so big :3';
 	}
-	if (Selected > 14) {
+	if (Selected > 15) {
 		Selected = 0;
 	}
 	if (Selected < 0) {
-		Selected = 14;
+		Selected = 15 ;
 	}
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));
