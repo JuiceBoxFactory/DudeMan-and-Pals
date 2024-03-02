@@ -75,15 +75,13 @@ function create() {
      thingsdone.borderSize = 3;
      add(thingsdone);
 
-	devs = new FlxSprite(250, 250).loadGraphic(Paths.image('credits/devs/'+Selected));
+	devs = new FlxSprite(250, 250).loadGraphic(Paths.image('credits/devs/melty'));
 	devs.scrollFactor.set(0, 0);
 	add(devs);
 
 }
 
 function update() {	
-	devs.loadGraphic(Paths.image('credits/devs/'+Selected));
-
 	if (controls.LEFT_P) {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		Selected -= 1;
@@ -95,62 +93,79 @@ function update() {
 	if (FlxG.keys.justPressed.ENTER) {
 		CoolUtil.openURL(links[Selected]);
 	}
-	if (Selected < 12) {
+	if (Selected < 13) {
 	catname.text = 'Devs';	
 	}
-	if (Selected > 13) {
+	if (Selected > 12) {
 	catname.text = 'Guests';	
 	}
 	switch(Selected) {
 	case 0:
+		devs.loadGraphic(Paths.image('credits/devs/melty'));
 		devname.text = 'MeltyKelpy';
 		thingsdone.text = 'Artist\nCoder\nCharter\nDirector ig\nVA\n\n"soup, if you dont like these sprites Ill kill myself"';
 	case 1:
+		devs.loadGraphic(Paths.image('credits/devs/dumbfag'));
 		devname.text = 'NullFrequency';
 		thingsdone.text = 'Musician\nCoder\n\n\n\n\n"Roses are red, violets are blue, Im going to KILL YOU!!!!!"';
 	case 2:
+		devs.loadGraphic(Paths.image('credits/devs/aussie'));
 		devname.text = 'AussieDoesThings';
 		thingsdone.text = 'Musician\nVA\nChromatic Maker\n\n\n\n"thats not a cloud, were in someones balls!"';
 	case 3:
+		devs.loadGraphic(Paths.image('credits/devs/ghost'));
 		devname.text = 'GhostyBrick';
 		thingsdone.text = 'Artist\nCharter\nMade DudeMan (The Character)\n\n\n"if my hurt didnt throat so much"';
 	case 4:
+		devs.loadGraphic(Paths.image('credits/devs/kose'));
 		devname.text = 'kosejumpscare';
 		thingsdone.text = 'Musician\nVA\n\n\n\n\n"Its unbelievable how much incest anime I know"';
 	case 5:
+		devs.loadGraphic(Paths.image('credits/devs/cherri'));
 		devname.text = 'CherriBlossom';
 		thingsdone.text = 'Artist\nVA\n\n\n\n\n"IS THAT MY commission"';
 	case 6:
+		devs.loadGraphic(Paths.image('credits/devs/missy'));
 		devname.text = 'Missy';
 		thingsdone.text = 'Artist\n\n\n\n\n\n"missing: i scaM KIDS  so i can feedmy gambling addictiion"';
 	case 7:
+		devs.loadGraphic(Paths.image('credits/devs/twix'));
 		devname.text = 'R3t1xTheIDIOT';
 		thingsdone.text = 'Musician\nCoder\n\n\n\n\n"god dammit ghost, the world doesnt need to know about how i fill my holes. kms"';
 	case 8:
+		devs.loadGraphic(Paths.image('credits/devs/caz'));
 		devname.text = 'CazTheClown';
 		thingsdone.text = 'Artist\n\n\n\n\n\n"Man- just.. oh my fucking god give me a sec, I just murdered a family of 4"';
 	case 9:
+		devs.loadGraphic(Paths.image('credits/devs/saayo'));
 		devname.text = 'Saayo';
 		thingsdone.text = 'Artist\nVA\nChromatic Maker\n\n\n\n"booty thick"';
 	case 10:
+		devs.loadGraphic(Paths.image('credits/devs/angel'));
 		devname.text = 'Angeltheboi';
 		thingsdone.text = 'Charter\nVA\n\n\n\n\n"I smeared doodoo all over the wall"';
 	case 11:
+		devs.loadGraphic(Paths.image('credits/devs/gamer'));
 		devname.text = 'That1Gamer';
 		thingsdone.text = 'Artist\n\n\n\n\n\n"fuck my heterosexuality"';
 	case 12:
+		devs.loadGraphic(Paths.image('credits/devs/oj'));
 		devname.text = 'OJSTheCoder';
 		thingsdone.text = 'Musician\n\n\n\n\n\n"lalalala uhm bbaba..uh.. FUCK"';
 	case 13:
+		devs.loadGraphic(Paths.image('credits/devs/anty'));
 		devname.text = 'Antydote';
 		thingsdone.text = 'VA (of themself)\nBurger King Employee\n\n\n\n\n"HOLY SHIT IS THAT DX FROM GAMEBREAK- Du- OH MY- that should be my qoute"';
 	case 14:
+		devs.loadGraphic(Paths.image('credits/devs/kozmo'));
 		devname.text = 'Kozmorama';
 		thingsdone.text = 'VA\nCoded Website\n\n\n\n\n"im gonna cut open my scrotum and juggle my testicles"';
 	case 15:
-		devname.text = 'Frumpo';
+		devs.loadGraphic(Paths.image('credits/devs/frumpo'));
+		devname.text = 'frumpo';
 		thingsdone.text = 'Artist I think\n\n\n\n\n\n"Oink :pig2:"';
 	case 16:
+		devs.loadGraphic(Paths.image('credits/devs/spencer'));
 		devname.text = 'StrangeX3';
 		thingsdone.text = 'Artist\nVA\n\n\n\n\n"Youre working on the Dude who is like a Man"';
 //	default:

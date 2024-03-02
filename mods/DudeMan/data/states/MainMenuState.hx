@@ -65,5 +65,8 @@ function update() {
 		FlxG.sound.play(Paths.sound('confirm'));
 		FlxG.switchState(new ModState("CreditsState"));
    	 	}
-		
+	if (SelectedButton == 4 && controls.ACCEPT) {
+		FlxG.sound.play(Paths.sound('confirm'));
+		FlxG.switchState(new ModState("GalleryState"));
+   	 	}		
 	}
