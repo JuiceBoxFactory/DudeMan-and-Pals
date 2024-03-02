@@ -17,7 +17,6 @@ var links:Array<String> = [
 "https://twitter.com/GhosttaleSans",
 "https://twitter.com/kosejumpscare",
 "https://twitter.com/SillyCherrrii",
-"https://twitter.com/antyd0te",
 "https://x.com/_MissyIsSilly_",
 "https://twitter.com/R3t1xidiot",
 "https://twitter.com/caz_arc",
@@ -25,8 +24,10 @@ var links:Array<String> = [
 "https://twitter.com/angelthetweetb1"
 "https://www.youtube.com/watch?v=2XI9dmhL_1o"
 "https://twitter.com/OJStheCoder"
-"https://docs.google.com/document/d/1zh0LEnsax3X8rIq6Q4idqno3d9Dp8YIEWwRH8b8iQiE/edit"
-"https://twitter.com/Frump0"];
+"https://twitter.com/antyd0te",
+"https://docs.google.com/document/d/1zh0LEnsax3X8rIq6Q4idqno3d9Dp8YIEWwRH8b8iQiE/edit",
+"https://twitter.com/Frump0",
+"https://twitter.com/Strang3_x3"];
 
 function new() { 
     	   DiscordUtil.changePresence("goat, u in credits menu", null);
@@ -69,7 +70,7 @@ function create() {
      add(devname);
 
      thingsdone = new FlxText(650, 310, 400, "DEVTHINGS", 0);
-     thingsdone.setFormat(Paths.font("COMIC.ttf"), 25, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+     thingsdone.setFormat(Paths.font("COMIC.ttf"), 22, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
      thingsdone.borderColor = 0xFF06000C;
      thingsdone.borderSize = 3;
      add(thingsdone);
@@ -94,7 +95,7 @@ function update() {
 	if (FlxG.keys.justPressed.ENTER) {
 		CoolUtil.openURL(links[Selected]);
 	}
-	if (Selected < 14) {
+	if (Selected < 12) {
 	catname.text = 'Devs';	
 	}
 	if (Selected > 13) {
@@ -120,44 +121,47 @@ function update() {
 		devname.text = 'CherriBlossom';
 		thingsdone.text = 'Artist\nVA\n\n\n\n\n"IS THAT MY commission"';
 	case 6:
-		devname.text = 'Antydote';
-		thingsdone.text = 'VA (of themself)\nBurger King Employee\n\n\n\n\n"HOLY SHIT IS THAT DX FROM GAMEBREAK- Du- OH MY- that should be my qoute"';
-	case 7:
 		devname.text = 'Missy';
 		thingsdone.text = 'Artist\n\n\n\n\n\n"missing: i scaM KIDS  so i can feedmy gambling addictiion"';
-	case 8:
+	case 7:
 		devname.text = 'R3t1xTheIDIOT';
 		thingsdone.text = 'Musician\nCoder\n\n\n\n\n"god dammit ghost, the world doesnt need to know about how i fill my holes. kms"';
-	case 9:
+	case 8:
 		devname.text = 'CazTheClown';
 		thingsdone.text = 'Artist\n\n\n\n\n\n"Man- just.. oh my fucking god give me a sec, I just murdered a family of 4"';
-	case 10:
+	case 9:
 		devname.text = 'Saayo';
 		thingsdone.text = 'Artist\nVA\nChromatic Maker\n\n\n\n"booty thick"';
-	case 11:
+	case 10:
 		devname.text = 'Angeltheboi';
 		thingsdone.text = 'Charter\nVA\n\n\n\n\n"I smeared doodoo all over the wall"';
-	case 12:
+	case 11:
 		devname.text = 'That1Gamer';
 		thingsdone.text = 'Artist\n\n\n\n\n\n"fuck my heterosexuality"';
-	case 13:
+	case 12:
 		devname.text = 'OJSTheCoder';
 		thingsdone.text = 'Musician\n\n\n\n\n\n"lalalala uhm bbaba..uh.. FUCK"';
+	case 13:
+		devname.text = 'Antydote';
+		thingsdone.text = 'VA (of themself)\nBurger King Employee\n\n\n\n\n"HOLY SHIT IS THAT DX FROM GAMEBREAK- Du- OH MY- that should be my qoute"';
 	case 14:
 		devname.text = 'Kozmorama';
-		thingsdone.text = 'Artist\nCoded Website\n\n\n\n\n"im gonna cut open my scrotum and juggle my testicles"';
+		thingsdone.text = 'VA\nCoded Website\n\n\n\n\n"im gonna cut open my scrotum and juggle my testicles"';
 	case 15:
 		devname.text = 'Frumpo';
 		thingsdone.text = 'Artist I think\n\n\n\n\n\n"Oink :pig2:"';
+	case 16:
+		devname.text = 'StrangeX3';
+		thingsdone.text = 'Artist\nVA\n\n\n\n\n"Youre working on the Dude who is like a Man"';
 //	default:
 //		devname.text = 'this person doesnt exist';
 //		thingsdone.text = 'my penis is so big :3';
 	}
-	if (Selected > 15) {
+	if (Selected > 16) {
 		Selected = 0;
 	}
 	if (Selected < 0) {
-		Selected = 15 ;
+		Selected = 16;
 	}
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));
