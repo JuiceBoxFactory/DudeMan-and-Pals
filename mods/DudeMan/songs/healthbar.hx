@@ -13,12 +13,12 @@ if (PlayState.SONG.meta.displayName != "lighthouse") {
 	healthheader.cameras = [camHUD];
 	healthheader.setGraphicSize(Std.int(healthheader.width * 1));
 	healthheader.updateHitbox();
-	insert(51, healthheader);
+	insert(11, healthheader);
 
-	insert(52, iconP1);
-	insert(52, iconP2);
-	insert(20, healthBar);
-	insert(20, healthBarBG);
+	insert(12, iconP1);
+	insert(12, iconP2);
+	insert(10, healthBar);
+	insert(10, healthBarBG);
 
 
 for (obj in [healthBar, healthBarBG])
@@ -74,6 +74,11 @@ if (PlayState.SONG.meta.displayName != "lighthouse") {
 }
 
 function stepHit(curStep:Int) { 
+    if (curStep > 884 && PlayState.SONG.meta.displayName == "skyblue" ) {
+            FlxTween.tween(iconP1, {alpha: 0}, 10);
+            FlxTween.tween(iconP2, {alpha: 0}, 10);
+            FlxTween.tween(healthheader, {alpha: 0}, 10);
+	}    
     if (PlayState.SONG.meta.displayName == "misconduct" || PlayState.SONG.meta.displayName == "unlikelyrivals") {
 	iconP1.alpha = 0;
 	iconP2.alpha = 0;

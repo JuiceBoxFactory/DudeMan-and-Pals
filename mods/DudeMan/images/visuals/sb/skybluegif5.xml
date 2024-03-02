@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="skybluegif5.png">
+<SubTexture name="skybluegif idle0000" x="0" y="0" width="570" height="363" frameX="0" frameY="0" frameWidth="570" frameHeight="363" />
+<SubTexture name="skybluegif idle0001" x="570" y="0" width="570" height="363" frameX="0" frameY="0" frameWidth="570" frameHeight="363" />
+<SubTexture name="skybluegif idle0002" x="0" y="363" width="570" height="363" frameX="0" frameY="0" frameWidth="570" frameHeight="363" />
+<SubTexture name="skybluegif idle0003" x="570" y="363" width="570" height="363" frameX="0" frameY="0" frameWidth="570" frameHeight="363" />
+<SubTexture name="skybluegif idle0004" x="0" y="726" width="570" height="363" frameX="0" frameY="0" frameWidth="570" frameHeight="363" />
+<SubTexture name="skybluegif idle0005" x="570" y="726" width="570" height="363" frameX="0" frameY="0" frameWidth="570" frameHeight="363" />
+</TextureAtlas>

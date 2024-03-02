@@ -103,7 +103,7 @@ function update() {
 	case 0:
 		devs.loadGraphic(Paths.image('credits/devs/melty'));
 		devname.text = 'MeltyKelpy';
-		thingsdone.text = 'Artist\nCoder\nCharter\nDirector ig\nVA\n\n"soup, if you dont like these sprites Ill kill myself"';
+		thingsdone.text = 'Artist\nMusician\nCoder\nCharter\nDirector ig\nVA\n"someone called me acoustic. like, just call me a slur PLEASE"';
 	case 1:
 		devs.loadGraphic(Paths.image('credits/devs/dumbfag'));
 		devname.text = 'NullFrequency';

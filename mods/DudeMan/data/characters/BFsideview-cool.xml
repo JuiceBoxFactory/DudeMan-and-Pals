@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="200" icon="BF" camx="-925" y="70" isGF="false" camy="-425" color="#FAE237" flipX="true" isPlayer="true" antialiasing="false" sprite="sideviewBF-cool">
+	<anim x="0" loop="false" y="0" fps="6" anim="sideviewBF idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="sideviewBF up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="sideviewBF left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="sideviewBF right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="sideviewBF down" name="singDOWN"/>
+</character>

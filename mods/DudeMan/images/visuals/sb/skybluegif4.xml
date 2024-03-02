@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="skybluegif4.png">
+<SubTexture name="skybluegif idle0000" x="0" y="0" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0001" x="320" y="0" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0002" x="0" y="180" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0003" x="320" y="180" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0004" x="0" y="360" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0005" x="320" y="360" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0006" x="640" y="0" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0007" x="640" y="180" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0008" x="640" y="360" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0009" x="0" y="540" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0010" x="320" y="540" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0011" x="640" y="540" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0012" x="0" y="720" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0013" x="320" y="720" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0014" x="640" y="720" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0015" x="960" y="0" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0016" x="960" y="180" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0017" x="960" y="360" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0018" x="960" y="540" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0019" x="960" y="720" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0020" x="0" y="900" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0021" x="320" y="900" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0022" x="640" y="900" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0023" x="960" y="900" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0024" x="0" y="1080" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0025" x="320" y="1080" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0026" x="640" y="1080" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0027" x="960" y="1080" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0028" x="1280" y="0" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0029" x="1280" y="180" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0030" x="1280" y="360" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0031" x="1280" y="540" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0032" x="1280" y="720" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0033" x="1280" y="900" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0034" x="1280" y="1080" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0035" x="0" y="1260" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0036" x="320" y="1260" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0037" x="640" y="1260" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0038" x="960" y="1260" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0039" x="1280" y="1260" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+<SubTexture name="skybluegif idle0040" x="1600" y="0" width="320" height="180" frameX="0" frameY="0" frameWidth="320" frameHeight="180" />
+</TextureAtlas>
