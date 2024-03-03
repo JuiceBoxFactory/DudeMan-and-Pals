@@ -15,6 +15,9 @@ function new() {
 }
 
 function create() {
+
+	FlxG.sound.playMusic(Paths.music('gallery'), 1, true);
+
 	bg = new FlxSprite(0, 0).loadGraphic(Paths.image('gallery/bg'));
 	bg.antialiasing = false;
 	bg.scrollFactor.set(0, 0);
