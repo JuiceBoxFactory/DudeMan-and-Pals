@@ -49,6 +49,10 @@ function update() {
 	if (SelectedButton < 0) {
 		SelectedButton = 5;
 	}
+	if (FlxG.keys.justPressed.D) {
+		FlxG.sound.play(Paths.sound('confirm'));
+		FlxG.switchState(new ModState("DaxGalleryState"));
+   	 	}
 	if (SelectedButton == 0 && controls.ACCEPT) {
 		FlxG.sound.play(Paths.sound('confirm'));
    	 	FlxG.switchState(new StoryMenuState());
