@@ -1,6 +1,6 @@
 var ough:FlxSprite;
 
-function postCreate(){
+function postCreate() {
 
 if (PlayState.SONG.meta.displayName != "lighthouse") {
 	remove(iconP1);
@@ -13,13 +13,12 @@ if (PlayState.SONG.meta.displayName != "lighthouse") {
 	healthheader.cameras = [camHUD];
 	healthheader.setGraphicSize(Std.int(healthheader.width * 1));
 	healthheader.updateHitbox();
-	insert(11, healthheader);
+	insert(7, healthheader);
 
-	insert(12, iconP1);
-	insert(12, iconP2);
-	insert(10, healthBar);
-	insert(10, healthBarBG);
-
+	insert(8, iconP1);
+	insert(8, iconP2);
+	insert(6, healthBar);
+	insert(6, healthBarBG);
 
 for (obj in [healthBar, healthBarBG])
     obj.y -= 10;
@@ -60,7 +59,8 @@ for (obj in [accuracyTxt])
     obj.alpha = 0;
 
 }
-function postUpdate(){
+
+function postUpdate() {
 if (PlayState.SONG.meta.displayName != "lighthouse") {
 	if (!FlxG.save.data.xbox) {
 	iconP1.x = 595;

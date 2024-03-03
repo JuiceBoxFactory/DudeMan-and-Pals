@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="A120.png">
+<SubTexture name="A120 idle0000" x="278" y="530" width="267" height="190" frameX="-462" frameY="-486" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A120 idle0001" x="0" y="530" width="278" height="196" frameX="-454" frameY="-480" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A120 up0000" x="0" y="0" width="268" height="295" frameX="-484" frameY="-361" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A120 up0001" x="268" y="0" width="287" height="280" frameX="-475" frameY="-387" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A120 down0000" x="855" y="0" width="162" height="163" frameX="-543" frameY="-557" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A120 down0001" x="545" y="530" width="181" height="170" frameX="-540" frameY="-541" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A120 left0000" x="555" y="0" width="300" height="277" frameX="-288" frameY="-427" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A120 left0001" x="278" y="295" width="297" height="234" frameX="-319" frameY="-455" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A120 right0000" x="0" y="295" width="278" height="235" frameX="-527" frameY="-459" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A120 right0001" x="575" y="295" width="276" height="224" frameX="-517" frameY="-471" frameWidth="1580" frameHeight="1020" />
+</TextureAtlas>

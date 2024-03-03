@@ -1,0 +1,15 @@
+<!DOCTYPE codename-engine-stage>
+<stage>
+	<gf x="-2716" y="-503"/>
+	<sprite sprite="backdrop/roomed/sky" name="sky"/>
+	<sprite sprite="backdrop/roomed/roof" name="roof"/>
+	<sprite sprite="backdrop/roomed/backwall" name="backwall"/>
+	<sprite sprite="backdrop/roomed/rightwall" name="rightwall"/>
+	<sprite sprite="backdrop/roomed/leftwall" name="leftwall"/>
+	<sprite sprite="backdrop/roomed/carpet" name="leftwall"/>
+	<sprite sprite="backdrop/roomed/rightCabs" name="rightCabs"/>
+	<sprite sprite="backdrop/roomed/leftCabs" name="leftCabs"/>
+	<dad x="-550" y="-50"/>
+	<bf x="-150" y="-50"/>
+	<combo/>
+</stage>

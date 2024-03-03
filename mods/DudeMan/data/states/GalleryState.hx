@@ -80,15 +80,18 @@ function update() {
 	case 3:
 		paintings.loadGraphic(Paths.image('gallery/paintings/santa'));
 		text.text = 'heh. that moment when you realised santa FUCKED the christmas turkey \n- frumpo';
+	case 4:
+		paintings.loadGraphic(Paths.image('gallery/paintings/burningdog'));
+		text.text = 'HELP MEEEEE IM BURNNNNIINNNGGGGGGG HELPPPPPP MEEEEEEE \n- burning dog';
 //	default:
-//		devname.text = 'this person doesnt exist';
-//		thingsdone.text = 'my penis is so big :3';
+//		
+//		
 	}
-	if (Selected > 3) {
+	if (Selected > 4) {
 		Selected = 0;
 	}
 	if (Selected < 0) {
-		Selected = 3;
+		Selected = 4;
 	}
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));

@@ -51,7 +51,7 @@ function update() {
 	}
 	if (SelectedButton == 0 && controls.ACCEPT) {
 		FlxG.sound.play(Paths.sound('confirm'));
-   	 	trace("silly");
+   	 	FlxG.switchState(new StoryMenuState());
    	 	}
 	if (SelectedButton == 1 && controls.ACCEPT) {
 		FlxG.sound.play(Paths.sound('confirm'));

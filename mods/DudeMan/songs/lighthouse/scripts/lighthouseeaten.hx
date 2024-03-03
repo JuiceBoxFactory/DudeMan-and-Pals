@@ -5,7 +5,6 @@ var section2 = false;
 
 function create() {
 
-
 	remove(dad);
 	remove(boyfriend);
 	
@@ -16,6 +15,15 @@ function create() {
 	bg1.alpha = 1;
 	bg1.updateHitbox();
 	add(bg1);
+
+	bottomScroll3 = new FlxBackdrop(Paths.image('backdrop/lighthoused/bottom3')); 
+	bottomScroll3.moves = true;
+	bottomScroll3.scrollFactor.set(0, 0);
+	bottomScroll3.velocity.x = 10; // you can adjust the values to make the scrolling faster or lower
+	bottomScroll3.velocity.y = 0;
+	bottomScroll3.active = true;
+	bottomScroll3.y = -100;
+	add(bottomScroll3);
 	
 	topScroll1 = new FlxBackdrop(Paths.image('backdrop/lighthoused/topscroll')); 
 	topScroll1.moves = true;
@@ -36,6 +44,10 @@ function create() {
 	bigbob.flipX = false; 
 	bigbob.alpha = 0;
 	add(bigbob);
+	bigbob2 = new Character(750, 150, "bigbob2");
+	bigbob2.flipX = false; 
+	bigbob2.alpha = 0;
+	add(bigbob2);
 	add(dad);
 
 	lighthouseBase1 = new FlxSprite(0, 0).loadGraphic(Paths.image('backdrop/lighthoused/lighthouseBase'));
@@ -85,6 +97,30 @@ function create() {
 	overlay.updateHitbox();
 	add(overlay);
 
+	ArmsR = new FlxSprite(800, 0);
+	ArmsR.frames = Paths.getSparrowAtlas('visuals/lh/bobHandsRight');
+	ArmsR.antialiasing = false;
+	ArmsR.animation.addByPrefix('1', 'bobHandsRight idle', 6);
+	ArmsR.animation.play('1');
+    	ArmsR.alpha = 1;
+    	ArmsR.scale.set(1.2, 1);
+    	ArmsR.cameras = [camHUD];
+    	ArmsR.scrollFactor.set(0, 0);
+	ArmsR.updateHitbox();
+	add(ArmsR);
+
+	ArmsL = new FlxSprite(-800, 0);
+	ArmsL.frames = Paths.getSparrowAtlas('visuals/lh/bobHandsLeft');
+	ArmsL.antialiasing = false;
+	ArmsL.animation.addByPrefix('1', 'bobHandsLeft idle', 6);
+	ArmsL.animation.play('1');
+    	ArmsL.alpha = 1;
+    	ArmsL.scale.set(1.3, 1);
+    	ArmsL.cameras = [camHUD];
+    	ArmsL.scrollFactor.set(0, 0);
+	ArmsL.updateHitbox();
+	add(ArmsL);
+
 	blackCam = new FlxSprite(0, 0).loadGraphic(Paths.image('black'));
 	blackCam.antialiasing = false;
 	blackCam.alpha = 1;
@@ -127,6 +163,17 @@ function create() {
 	foggyEnding.updateHitbox();
 	add(foggyEnding);
 
+	bulbbreak = new FlxSprite(0, 0).loadGraphic(Paths.image('visuals/lh/beforebreak'));
+	bulbbreak.antialiasing = false;
+	bulbbreak.scrollFactor.set(0 ,0);
+	bulbbreak.alpha = 0;
+	bulbbreak.scale.set(0.85, 0.85);
+	bulbbreak.cameras = [camHUD];
+	bulbbreak.screenCenter();
+	bulbbreak.x += 125;
+	bulbbreak.updateHitbox();
+	add(bulbbreak);
+
 }
 
 function onCountdown(e) {
@@ -138,6 +185,7 @@ function onPlayerHit(event) {
 }               
 function onDadHit(event) {
 	bigbob.playSingAnim(event.direction);
+	bigbob2.playSingAnim(event.direction);
 }
 
 function update(delta:Float) {
@@ -183,7 +231,43 @@ function stepHit(curStep:Int) {
 	case 705:
 	    remove(dad);
 	    remove(boyfriend);
+	case 1216:
+            FlxTween.tween(ArmsL, {x: -20}, 2, {ease:FlxEase.quartOut});
+            FlxTween.tween(ArmsR, {x: -240}, 2, {ease:FlxEase.quartOut});
+	case 1968:
+            FlxTween.tween(bulbbreak, {alpha: 1}, 1.2, {ease:FlxEase.quartOut});
+	case 1980:
+		camHUD.zoom += 0.4;
+	       bulbbreak.loadGraphic(Paths.image('visuals/lh/afterbreak'));
+	case 1983:
+	    defaultCamZoom = 0.80;
+	    section2 = false;
+	    bigbob.alpha = 0;
+	    hen2.alpha = 0;
+	    bigbob2.alpha = 1;
+	    bottomScroll3.alpha = 1;
+	    lighthouseBase1.loadGraphic(Paths.image('backdrop/lighthoused/lighthouseBase3'));
+	    light1.alpha = 0;
+	    lighthouseTop1.alpha = 0;
+	    ArmsL.alpha = 0;
+	    ArmsR.alpha = 0;
+	    bottomScroll1.alpha = 0;
+	    backRails1.alpha = 0;
+	    frontRails1.alpha = 0;
+	case 1986:
+	    remove(boyfriend);
+	    remove(dad);
+         FlxTween.tween(bulbbreak, {alpha: 0}, 0.2, {ease:FlxEase.quartOut});
 	case 2496:
-            FlxTween.tween(foggyEnding, {alpha: 1}, 4);
+//		bulbbreak.scale.set(1, 1);
+//		 bulbbreak.alpha = 1;
+//	      bulbbreak.loadGraphic(Paths.image('visuals/lh/ending'));
+//		bulbbreak.screenCenter();
+//		bulbbreak.y += 76;
+//		bulbbreak.x += 119;
+           FlxTween.tween(foggyEnding, {alpha: 1}, 4);
+	case 2528:
+//		blackCam.alpha = 1;
+		bulbbreak.alpha = 0;
 	}
 }

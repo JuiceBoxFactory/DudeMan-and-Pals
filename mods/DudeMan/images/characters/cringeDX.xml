@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="cringeDX.png">
+<SubTexture name="cringeDX idle0000" x="107" y="321" width="109" height="294" frameX="-926" frameY="-446" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="cringeDX idle0001" x="533" y="0" width="107" height="299" frameX="-928" frameY="-441" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="cringeDX idle0002" x="0" y="321" width="107" height="297" frameX="-928" frameY="-443" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="cringeDX down0000" x="640" y="0" width="122" height="266" frameX="-935" frameY="-479" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="cringeDX down0001" x="504" y="321" width="115" height="272" frameX="-936" frameY="-473" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="cringeDX up0000" x="0" y="0" width="99" height="321" frameX="-929" frameY="-419" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="cringeDX up0001" x="99" y="0" width="104" height="311" frameX="-926" frameY="-429" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="cringeDX right0000" x="364" y="0" width="169" height="300" frameX="-923" frameY="-441" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="cringeDX right0001" x="203" y="0" width="161" height="306" frameX="-925" frameY="-435" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="cringeDX left0000" x="216" y="321" width="147" height="280" frameX="-864" frameY="-462" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="cringeDX left0001" x="363" y="321" width="141" height="280" frameX="-871" frameY="-462" frameWidth="1580" frameHeight="1020" />
+</TextureAtlas>

@@ -1,4 +1,6 @@
 function create() {
+
+  if (PlayState.SONG.meta.displayName != "roomed") {
     camHUD.zoom = 0;
     camHUD.alpha = 0;
 
@@ -8,7 +10,7 @@ function create() {
 	openingblack.alpha = 1;
 	openingblack.updateHitbox();
 	insert(20, openingblack);
-
+	}
 }
 
 function onCountdown(event) {

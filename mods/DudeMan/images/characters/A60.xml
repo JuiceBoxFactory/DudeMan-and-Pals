@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="A60.png">
+<SubTexture name="A60 idle0000" x="918" y="0" width="431" height="295" frameX="-384" frameY="-431" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A60 idle0001" x="401" y="527" width="430" height="301" frameX="-384" frameY="-427" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A60 right0000" x="446" y="867" width="512" height="272" frameX="-484" frameY="-435" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A60 right0001" x="0" y="867" width="446" height="275" frameX="-495" frameY="-430" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A60 left0000" x="489" y="0" width="429" height="346" frameX="-203" frameY="-364" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A60 left0001" x="0" y="527" width="401" height="340" frameX="-264" frameY="-392" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A60 down0000" x="0" y="1142" width="479" height="204" frameX="-374" frameY="-563" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A60 down0001" x="479" y="1142" width="464" height="199" frameX="-377" frameY="-528" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A60 up0000" x="0" y="0" width="227" height="527" frameX="-483" frameY="-167" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="A60 up0001" x="227" y="0" width="262" height="444" frameX="-463" frameY="-267" frameWidth="1580" frameHeight="1020" />
+</TextureAtlas>
