@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="600" icon="dudeman" camx="-1000" y="70" isGF="false" camy="30" color="#FFFFFF" flipX="true" isPlayer="false" antialiasing="false" sprite="quanBF">
+<character x="600" icon="BF" camx="-1000" y="70" isGF="false" camy="30" color="#FAE237" flipX="true" isPlayer="false" antialiasing="false" sprite="quanBF">
 	<anim x="0" loop="false" y="0" fps="12" anim="quanBF idle" name="idle"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="quanBF up" name="singUP"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="quanBF right" name="singLEFT"/>

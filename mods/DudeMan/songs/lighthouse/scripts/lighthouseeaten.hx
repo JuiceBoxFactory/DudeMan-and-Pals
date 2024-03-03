@@ -186,6 +186,9 @@ function onPlayerHit(event) {
 function onDadHit(event) {
 	bigbob.playSingAnim(event.direction);
 	bigbob2.playSingAnim(event.direction);
+	if (health > 0.1) {
+	health -= 0.03;
+	}
 }
 
 function update(delta:Float) {

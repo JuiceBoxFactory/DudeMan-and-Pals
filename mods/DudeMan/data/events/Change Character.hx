@@ -73,17 +73,21 @@ function onEvent(_)
 
                 if (isPlayer) {
                     icon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 1, 0)) - 26);
+                    if (PlayState.SONG.meta.displayName != "lighthouse") {
                     icon.y += 20;
+                    }
                     iconP1 = icon;
 			    remove(iconP1);
-			    insert(30, iconP1);
+			    insert(9, iconP1);
                 }
                 else {
                     icon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 1, 0))) - (icon.width - 26);
+                    if (PlayState.SONG.meta.displayName != "lighthouse") {
                     icon.y += 20;
+                    }
                     iconP2 = icon;
 			    remove(iconP2);
-			    insert(30, iconP2);
+			    insert(9, iconP2);
                 }
 
                 var leftColor:Int = dad.iconColor != null && Options.colorHealthBar ? dad.iconColor : 0xFFFF0000;

@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="-750" icon="dax" camx="350" y="-100" isGF="false" camy="350" color="#FAE237" flipX="true" isPlayer="true" antialiasing="false" sprite="RSVPdax">
+<character x="-750" icon="dax" camx="350" y="-100" isGF="false" camy="350" color="#767682" flipX="true" isPlayer="true" antialiasing="false" sprite="RSVPdax">
 	<anim x="0" loop="false" y="0" fps="12" anim="dax idle" name="idle"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="dax up" name="singUP"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="dax left" name="singLEFT"/>

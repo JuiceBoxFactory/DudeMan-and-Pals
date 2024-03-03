@@ -2,6 +2,21 @@ var ough:FlxSprite;
 
 function postCreate() {
 
+if (PlayState.SONG.meta.displayName == "lighthouse") {
+	remove(iconP1);
+	remove(iconP2);
+	remove(healthBarBG);
+	remove(healthBar);
+
+	insert(5, healthBarBG);
+	insert(6, healthBar);
+	insert(8, iconP1);
+	insert(8, iconP2);
+
+	missesTxt.y += 20;
+	scoreTxt.y += 20;
+}
+
 if (PlayState.SONG.meta.displayName != "lighthouse") {
 	remove(iconP1);
 	remove(iconP2);
@@ -13,18 +28,18 @@ if (PlayState.SONG.meta.displayName != "lighthouse") {
 	healthheader.cameras = [camHUD];
 	healthheader.setGraphicSize(Std.int(healthheader.width * 1));
 	healthheader.updateHitbox();
-	insert(7, healthheader);
 
+	insert(5, healthBarBG);
+	insert(6, healthBar);
+	insert(7, healthheader);
 	insert(8, iconP1);
 	insert(8, iconP2);
-	insert(6, healthBar);
-	insert(6, healthBarBG);
 
 for (obj in [healthBar, healthBarBG])
     obj.y -= 10;
 
 
-for (obj in [iconP1, iconP2,])
+for (obj in [iconP1, iconP2])
     obj.y += 10;
 
 	missesTxt.x -= 155;
@@ -33,14 +48,14 @@ for (obj in [iconP1, iconP2,])
 	scoreTxt.y -= 60;
 
 if (downscroll) {
-for (obj in [healthBar, healthBarBG])
-    obj.y -= 10;
-	scoreTxt.y += -20;
-	missesTxt.y += -20;
-	healthheader.y -= -5;
-	iconP1.y -= 20;
-	iconP2.y -= 20;
-}
+	for (obj in [healthBar, healthBarBG])
+    		obj.y -= 10;
+		scoreTxt.y += -20;
+		missesTxt.y += -20;
+		healthheader.y -= -5;
+		iconP1.y -= 20;
+		iconP2.y -= 20;
+	}
 
 if (FlxG.save.data.xbox) {
 	remove(healthBarBG);

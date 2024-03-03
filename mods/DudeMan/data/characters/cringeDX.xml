@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="200" icon="cringeDX" camx="100" y="70" isGF="false" camy="150" color="#FAE237" flipX="true" isPlayer="true" antialiasing="false" sprite="cringeDX">
+<character x="200" icon="cringeDX" camx="100" y="70" isGF="false" camy="150" color="#FFF354" flipX="true" isPlayer="true" antialiasing="false" sprite="cringeDX">
 	<anim x="0" loop="false" y="0" fps="12" anim="cringeDX idle" name="idle"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="cringeDX up" name="singUP"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="cringeDX left" name="singLEFT"/>
