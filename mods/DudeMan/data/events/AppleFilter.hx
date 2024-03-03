@@ -5,11 +5,11 @@ function postCreate(){
 		if (event.name == 'AppleFilter') {
             bAbg = new FlxSprite();
             bAbg.makeGraphic(6000, 6000, FlxColor.BLACK);
-            bAbg.scrollFactor.set();
+            bAbg.scrollFactor.set(0, 0);
             bAbg.x = -490;
             bAbg.y = -490;
             bAbg.alpha = 0;
-            insert(6, bAbg);
+            insert(7, bAbg);
         }
     }
 }

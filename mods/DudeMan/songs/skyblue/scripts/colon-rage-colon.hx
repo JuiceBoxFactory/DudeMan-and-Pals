@@ -1,4 +1,4 @@
-function postCreate() {
+function create() {
 
 		gifbg = new FlxSprite(200, 0);
 		gifbg.antialiasing = false;
