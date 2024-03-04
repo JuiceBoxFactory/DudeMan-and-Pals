@@ -86,15 +86,18 @@ function update() {
 	case 4:
 		paintings.loadGraphic(Paths.image('gallery/paintings/burningdog'));
 		text.text = 'HELP MEEEEE IM BURNNNNIINNNGGGGGGG HELPPPPPP MEEEEEEE \n- burning dog';
+	case 5:
+		paintings.loadGraphic(Paths.image('gallery/paintings/galleryplaceholders'));
+		text.text = 'placeholder images we used for the guys who walk across the gallery ! null wanted to start coding, and I didnt wanna draw yet, so these were the placeholder images we used ! quite silly. I love you four and x bfb <3';
 //	default:
 //		
 //		
 	}
-	if (Selected > 4) {
+	if (Selected > 5) {
 		Selected = 0;
 	}
 	if (Selected < 0) {
-		Selected = 4;
+		Selected = 5;
 	}
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));
