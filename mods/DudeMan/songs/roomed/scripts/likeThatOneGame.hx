@@ -44,7 +44,7 @@ function postCreate() {
     black.scrollFactor.set(0, 0);
     black.cameras = [camHUD];
     black.updateHitbox();
-    insert(999,black);
+    insert(35,black);
 
     nindy = new FlxSprite(0, 20);
     nindy.frames = Paths.getSparrowAtlas('visuals/roomed/90');

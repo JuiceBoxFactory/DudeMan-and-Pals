@@ -78,7 +78,7 @@ function onEvent(_)
                     }
                     iconP1 = icon;
 			    remove(iconP1);
-			    insert(32, iconP1);
+			    insert(34, iconP1);
                 }
                 else {
                     icon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 1, 0))) - (icon.width - 26);
@@ -87,7 +87,7 @@ function onEvent(_)
                     }
                     iconP2 = icon;
 			    remove(iconP2);
-			    insert(32, iconP2);
+			    insert(34, iconP2);
                 }
 
                 var leftColor:Int = dad.iconColor != null && Options.colorHealthBar ? dad.iconColor : 0xFFFF0000;

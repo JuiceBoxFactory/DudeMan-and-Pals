@@ -9,7 +9,7 @@ function postCreate(){
             bAbg.x = -490;
             bAbg.y = -490;
             bAbg.alpha = 0;
-            insert(7, bAbg);
+            insert(15, bAbg);
         }
     }
 }
@@ -22,7 +22,7 @@ function onEvent(e) {
             dad.colorTransform.color = e.event.params[1];
             gf.colorTransform.color = e.event.params[1];
         } else if (e.event.params[0] == false){
-            bAbg.alpha = 0.0001;
+            bAbg.alpha = 0;
             boyfriend.colorTransform = new ColorTransform();
             dad.colorTransform = new ColorTransform();
             gf.colorTransform = new ColorTransform();

@@ -22,7 +22,7 @@ function create() {
 		gifbg2.scrollFactor.set(1, 1);
 		gifbg2.alpha = 0;
 		gifbg2.updateHitbox();
-		insert(1, gifbg2);
+		insert(2, gifbg2);
 
 		gifbg3 = new FlxSprite(0, 0);
 		gifbg3.antialiasing = false;
@@ -34,7 +34,7 @@ function create() {
 		gifbg3.scrollFactor.set(1, 1);
 		gifbg3.alpha = 0;
 		gifbg3.updateHitbox();
-		insert(1, gifbg3);
+		insert(3, gifbg3);
 
 		gifbg4 = new FlxSprite(200, 0);
 		gifbg4.antialiasing = false;
@@ -46,7 +46,7 @@ function create() {
 		gifbg4.scrollFactor.set(1, 1);
 		gifbg4.alpha = 0;
 		gifbg4.updateHitbox();
-		insert(1, gifbg4);
+		insert(4, gifbg4);
 
 		gifbg5 = new FlxSprite(0, 0);
 		gifbg5.antialiasing = false;
@@ -58,7 +58,7 @@ function create() {
 		gifbg5.scrollFactor.set(1, 1);
 		gifbg5.alpha = 0;
 		gifbg5.updateHitbox();
-		insert(1, gifbg5);
+		insert(5, gifbg5);
 
             topbar = new FlxSprite();
             topbar.makeGraphic(6000, 800, FlxColor.BLACK);

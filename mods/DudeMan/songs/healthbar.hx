@@ -22,6 +22,8 @@ if (PlayState.SONG.meta.displayName != "lighthouse") {
 	remove(iconP2);
 	remove(healthBarBG);
 	remove(healthBar);
+	remove(missesTxt);
+	remove(scoreTxt);
 
 	healthheader = new FlxSprite(347, 580).loadGraphic(Paths.image('game/healthBarPART2'));
 	healthheader.antialiasing = false;
@@ -34,6 +36,8 @@ if (PlayState.SONG.meta.displayName != "lighthouse") {
 	insert(7, healthheader);
 	insert(8, iconP1);
 	insert(8, iconP2);
+	insert(8, missesTxt);
+	insert(8, scoreTxt);
 
 for (obj in [healthBar, healthBarBG])
     obj.y -= 10;

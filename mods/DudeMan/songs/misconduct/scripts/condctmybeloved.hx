@@ -79,7 +79,7 @@ function postCreate() {
 	blackHUD.cameras = [camHUD];
 	blackHUD.scale.set(6,6);
 	blackHUD.updateHitbox();
-	add(blackHUD);
+	insert(35,blackHUD);
 
 }
 
