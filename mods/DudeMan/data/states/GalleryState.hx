@@ -5,9 +5,11 @@ import flixel.util.FlxSave;
 import funkin.backend.utils.DiscordUtil;
 import funkin.backend.scripting.events.DiscordPresenceUpdateEvent;
 import discord_rpc.DiscordRpc;
+import flixel.util.FlxTimer;
 
 public var sectionselected;
 var Selected = 0;
+var chars = 0;
 
 
 function new() { 
@@ -15,6 +17,8 @@ function new() {
 }
 
 function create() {
+
+	chars = FlxG.random.int(0,1);
 
 	FlxG.sound.playMusic(Paths.music('gallery'), 1, true);
 
@@ -28,15 +32,16 @@ function create() {
 	paintings.scrollFactor.set(0, 0);
 	add(paintings);
 
-	dudeman = new FlxSprite(0, 0).loadGraphic(Paths.image('gallery/dudeman'));
-	dudeman.antialiasing = false;
-	dudeman.scrollFactor.set(0, 0);
-	add(dudeman);
-
 	stand = new FlxSprite(0, 0).loadGraphic(Paths.image('gallery/stand'));
 	stand.antialiasing = false;
 	stand.scrollFactor.set(0, 0);
 	add(stand);
+
+	walkingchars = new FlxSprite(1400, 410).loadGraphic(Paths.image('gallery/placeholders/'+chars));
+	walkingchars.antialiasing = false;
+	walkingchars.scale.set(1.2, 1.2);
+	walkingchars.scrollFactor.set(0, 0);
+	add(walkingchars);
 
 	light = new FlxSprite(0, 0).loadGraphic(Paths.image('gallery/light'));
 	light.antialiasing = false;
@@ -59,9 +64,27 @@ function create() {
      text.borderSize = 0;
      add(text);
 
+	new FlxTimer().start(0.85714285714, function(tmr:FlxTimer) {
+		if (walkingchars.y != 450) {
+		walkingchars.y = 440;
+		}
+	}, 600);
+
 }
 
 function update() {	
+	walkingchars.loadGraphic(Paths.image('gallery/placeholders/'+chars));
+
+	if (walkingchars.y > 410) {
+		walkingchars.y -= 1;	
+	}
+	if (walkingchars.x > -700) {
+		walkingchars.x -= 0.5;
+	}
+	if (walkingchars.x == -700) {
+	     chars = FlxG.random.int(0,1);
+		walkingchars.x = 1400;
+	}
 	if (controls.LEFT_P) {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		Selected -= 1;
@@ -88,7 +111,7 @@ function update() {
 		text.text = 'HELP MEEEEE IM BURNNNNIINNNGGGGGGG HELPPPPPP MEEEEEEE \n- burning dog';
 	case 5:
 		paintings.loadGraphic(Paths.image('gallery/paintings/galleryplaceholders'));
-		text.text = 'placeholder images we used for the guys who walk across the gallery ! null wanted to start coding, and I didnt wanna draw yet, so these were the placeholder images we used ! quite silly. I love you four and x bfb <3';
+		text.text = 'placeholder images we used for the guys who walk across the gallery ! I wanted to start coding, but I also didnt wanna draw yet, so these were the placeholder images we used ! quite silly. I love you four and x bfb <3';
 //	default:
 //		
 //		
