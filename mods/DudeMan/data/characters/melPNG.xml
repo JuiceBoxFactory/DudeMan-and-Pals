@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<character x="-5" icon="melKel" camx="85" camy="50" y="500" isGF="false" color="#D0464E" isPlayer="true" flipX="true" antialiasing="false" sprite="melPNG">
+	<anim x="0" loop="false" y="0" fps="12" anim="mel idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="mel up" indices="0,1" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="mel left" indices="0,1" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="mel right" indices="0,1" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="mel down" indices="0,1" name="singDOWN"/>
+	<anim x="0" loop="false" y="10" fps="12" anim="mel up" indices="2,3" name="singUP-alt"/>
+	<anim x="10" loop="false" y="0" fps="12" anim="mel left" indices="2,3" name="singLEFT-alt"/>
+	<anim x="-10" loop="false" y="0" fps="12" anim="mel right" indices="2,3" name="singRIGHT-alt"/>
+	<anim x="0" loop="false" y="-10" fps="12" anim="mel down" indices="2,3" name="singDOWN-alt"/>
+</character>

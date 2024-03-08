@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="ProtonatedWaterFart.png">
+<SubTexture name="idle0000" x="448" y="1468" width="448" height="341" frameX="-395" frameY="-267" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0001" x="1400" y="0" width="402" height="475" frameX="-418" frameY="-133" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0002" x="624" y="0" width="386" height="483" frameX="-426" frameY="-125" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0003" x="1010" y="0" width="390" height="480" frameX="-424" frameY="-128" frameWidth="1280" frameHeight="720" />
+<SubTexture name="up0000" x="0" y="0" width="624" height="513" frameX="-201" frameY="-96" frameWidth="1280" frameHeight="720" />
+<SubTexture name="up0001" x="0" y="513" width="667" height="481" frameX="-165" frameY="-128" frameWidth="1280" frameHeight="720" />
+<SubTexture name="right0000" x="1802" y="0" width="582" height="436" frameX="-356" frameY="-172" frameWidth="1280" frameHeight="720" />
+<SubTexture name="right0001" x="1802" y="436" width="550" height="436" frameX="-356" frameY="-172" frameWidth="1280" frameHeight="720" />
+<SubTexture name="down0000" x="0" y="1468" width="448" height="394" frameX="-380" frameY="-215" frameWidth="1280" frameHeight="720" />
+<SubTexture name="down0001" x="1802" y="872" width="420" height="427" frameX="-394" frameY="-182" frameWidth="1280" frameHeight="720" />
+<SubTexture name="left0000" x="462" y="994" width="513" height="470" frameX="-306" frameY="-137" frameWidth="1280" frameHeight="720" />
+<SubTexture name="left0001" x="975" y="994" width="465" height="470" frameX="-354" frameY="-137" frameWidth="1280" frameHeight="720" />
+<SubTexture name="clairinet0000" x="0" y="994" width="462" height="474" frameX="-440" frameY="-133" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>
