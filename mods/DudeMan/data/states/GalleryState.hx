@@ -112,15 +112,21 @@ function update() {
 	case 5:
 		paintings.loadGraphic(Paths.image('gallery/paintings/galleryplaceholders'));
 		text.text = 'placeholder images we used for the guys who walk across the gallery ! I wanted to start coding, but I also didnt wanna draw yet, so these were the placeholder images we used ! quite silly. I love you four and x bfb <3';
+	case 6:
+		paintings.loadGraphic(Paths.image('gallery/paintings/titlescreen'));
+		text.text = 'The old dudeman title screen from V1, it was originally just the yoshicrafter engine logo ( rest in terror ) covered up by DUDEMAN MOD and it had some scrolling background. nothing much honestly';
+	case 7:
+		paintings.loadGraphic(Paths.image('gallery/paintings/mainmenu'));
+		text.text = 'the old dudeman main menu also from V1, its got a little bf and dudeman ! this was back from when it was just a gift for ghost and only had a freeplay section since there was no story ( oh, I cant believe it was ever like that now. ) idk man theres not alot to say about it';
 //	default:
 //		
 //		
 	}
-	if (Selected > 5) {
+	if (Selected > 7) {
 		Selected = 0;
 	}
 	if (Selected < 0) {
-		Selected = 5;
+		Selected = 7;
 	}
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));

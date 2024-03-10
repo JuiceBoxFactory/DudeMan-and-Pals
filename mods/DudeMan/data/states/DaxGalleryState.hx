@@ -95,26 +95,32 @@ function update() {
 	}
 	switch(Selected) {
 	case 0:
-		paintings.loadGraphic(Paths.image('gallery/paintingsdax/mel'));
-		text.text = 'Drawn by Melty \nHi fax machine welcome back teehee pokes your lungs \n- ur favorite fag';
-	case 1:
 		paintings.loadGraphic(Paths.image('gallery/paintingsdax/angel'));
 		text.text = 'Drawn by Angel \nFuck Hitler \n- Angel';
-	case 2:
+	case 1:
 		paintings.loadGraphic(Paths.image('gallery/paintingsdax/sweet'));
 		text.text = 'Drawn by Sweet \nRadical. \n- Sweet';
-	case 3:
+	case 2:
 		paintings.loadGraphic(Paths.image('gallery/paintingsdax/spencer'));
 		text.text = 'Drawn by Spencer \nI really missed you c: \n- Spencer';
+	case 3:
+		paintings.loadGraphic(Paths.image('gallery/paintingsdax/aussie'));
+		text.text = 'Drawn by Aussie  \nblows up dax shaped duel with mind \n- Aussie';
+	case 4:
+		paintings.loadGraphic(Paths.image('gallery/paintingsdax/mel'));
+		text.text = 'Drawn by Melty \nHi fax machine welcome back teehee pokes your lungs \n- ur favorite fag';
+	case 5:
+		paintings.loadGraphic(Paths.image('gallery/paintingsdax/whatthefuck'));
+		text.text = 'yknow, at one point....I just kinda... gave up \n- Melty';
 //	default:
 //		
 //		
 	}
-	if (Selected > 3) {
+	if (Selected > 5) {
 		Selected = 0;
 	}
 	if (Selected < 0) {
-		Selected = 3;
+		Selected = 5;
 	}
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));
