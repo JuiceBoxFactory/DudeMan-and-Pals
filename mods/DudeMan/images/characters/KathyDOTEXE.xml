@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="KathyDOTEXE.png">
+<SubTexture name="k down0000" x="0" y="2126" width="378" height="445" frameX="-165" frameY="-163" frameWidth="640" frameHeight="640" />
+<SubTexture name="k down0001" x="2488" y="1366" width="374" height="447" frameX="-166" frameY="-161" frameWidth="640" frameHeight="640" />
+<SubTexture name="k down0002" x="2488" y="918" width="370" height="448" frameX="-166" frameY="-160" frameWidth="640" frameHeight="640" />
+<SubTexture name="k giggle0000" x="0" y="577" width="312" height="531" frameX="-165" frameY="-69" frameWidth="640" frameHeight="640" />
+<SubTexture name="k giggle0001" x="312" y="577" width="312" height="525" frameX="-166" frameY="-76" frameWidth="640" frameHeight="640" />
+<SubTexture name="k giggle0002" x="624" y="577" width="311" height="522" frameX="-167" frameY="-79" frameWidth="640" frameHeight="640" />
+<SubTexture name="k giggle0003" x="0" y="577" width="312" height="531" frameX="-165" frameY="-69" frameWidth="640" frameHeight="640" />
+<SubTexture name="k giggle0004" x="312" y="577" width="312" height="525" frameX="-166" frameY="-76" frameWidth="640" frameHeight="640" />
+<SubTexture name="k giggle0005" x="624" y="577" width="311" height="522" frameX="-167" frameY="-79" frameWidth="640" frameHeight="640" />
+<SubTexture name="k giggle0006" x="0" y="577" width="312" height="531" frameX="-165" frameY="-69" frameWidth="640" frameHeight="640" />
+<SubTexture name="k giggle0007" x="312" y="577" width="312" height="525" frameX="-166" frameY="-76" frameWidth="640" frameHeight="640" />
+<SubTexture name="k giggle0008" x="935" y="577" width="311" height="522" frameX="-167" frameY="-79" frameWidth="640" frameHeight="640" />
+<SubTexture name="k idle0000" x="1681" y="1007" width="317" height="498" frameX="-193" frameY="-110" frameWidth="640" frameHeight="640" />
+<SubTexture name="k idle0001" x="2035" y="1007" width="316" height="499" frameX="-194" frameY="-109" frameWidth="640" frameHeight="640" />
+<SubTexture name="k idle0002" x="476" y="1621" width="314" height="498" frameX="-194" frameY="-110" frameWidth="640" frameHeight="640" />
+<SubTexture name="k idle0003" x="2035" y="506" width="313" height="501" frameX="-192" frameY="-107" frameWidth="640" frameHeight="640" />
+<SubTexture name="k idle0004" x="1681" y="508" width="310" height="499" frameX="-193" frameY="-109" frameWidth="640" frameHeight="640" />
+<SubTexture name="k KICK0000" x="0" y="1621" width="476" height="505" frameX="-47" frameY="-82" frameWidth="640" frameHeight="640" />
+<SubTexture name="k KICK0001" x="922" y="1108" width="480" height="508" frameX="-42" frameY="-79" frameWidth="640" frameHeight="640" />
+<SubTexture name="k KICK0002" x="0" y="1108" width="469" height="513" frameX="-51" frameY="-74" frameWidth="640" frameHeight="640" />
+<SubTexture name="k KICK0003" x="2035" y="0" width="453" height="506" frameX="-52" frameY="-80" frameWidth="640" frameHeight="640" />
+<SubTexture name="k KICK0004" x="469" y="1108" width="453" height="509" frameX="-57" frameY="-78" frameWidth="640" frameHeight="640" />
+<SubTexture name="k KICK0005" x="1681" y="0" width="354" height="508" frameX="-140" frameY="-80" frameWidth="640" frameHeight="640" />
+<SubTexture name="k KICK0006" x="1371" y="0" width="310" height="518" frameX="-180" frameY="-82" frameWidth="640" frameHeight="640" />
+<SubTexture name="k left0000" x="790" y="1621" width="384" height="496" frameX="-107" frameY="-109" frameWidth="640" frameHeight="640" />
+<SubTexture name="k left0001" x="1174" y="1621" width="384" height="495" frameX="-109" frameY="-110" frameWidth="640" frameHeight="640" />
+<SubTexture name="k left0002" x="1558" y="1621" width="382" height="494" frameX="-111" frameY="-111" frameWidth="640" frameHeight="640" />
+<SubTexture name="k right0000" x="2488" y="0" width="509" height="459" frameX="-106" frameY="-159" frameWidth="640" frameHeight="640" />
+<SubTexture name="k right0001" x="2488" y="459" width="507" height="459" frameX="-105" frameY="-159" frameWidth="640" frameHeight="640" />
+<SubTexture name="k right0002" x="1940" y="1621" width="505" height="462" frameX="-104" frameY="-155" frameWidth="640" frameHeight="640" />
+<SubTexture name="k up0000" x="0" y="0" width="456" height="577" frameX="-110" frameY="-35" frameWidth="640" frameHeight="640" />
+<SubTexture name="k up0001" x="456" y="0" width="457" height="573" frameX="-111" frameY="-39" frameWidth="640" frameHeight="640" />
+<SubTexture name="k up0002" x="913" y="0" width="458" height="570" frameX="-111" frameY="-42" frameWidth="640" frameHeight="640" />
+</TextureAtlas>
