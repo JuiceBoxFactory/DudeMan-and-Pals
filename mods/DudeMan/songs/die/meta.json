@@ -4,13 +4,15 @@
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
 	"bpm": 202,
+	"bio": "IM GONNA KILL YOU",
+	"actoresses": "artist: MeltyKelpy\ncomposer: kosejumpscare\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: MeltyKelpy",
 	"difficulties": [
 		"Hard"
 	],
 	"needsVoices": true,
 	"parsedColor": -1,
-	"displayName": "die",
-	"icon": "Icon",
 	"name": "die",
+	"icon": "Icon",
+	"displayName": "Die",
 	"color": "#FFFFFF"
 }

@@ -2,7 +2,7 @@ var ough:FlxSprite;
 
 function postCreate() {
 
-if (PlayState.SONG.meta.displayName == "lighthouse") {
+if (PlayState.SONG.meta.name == "lighthouse") {
 	remove(iconP1);
 	remove(iconP2);
 	remove(healthBarBG);
@@ -17,7 +17,7 @@ if (PlayState.SONG.meta.displayName == "lighthouse") {
 	scoreTxt.y += 20;
 }
 
-if (PlayState.SONG.meta.displayName != "lighthouse") {
+if (PlayState.SONG.meta.name != "lighthouse") {
 	remove(iconP1);
 	remove(iconP2);
 	remove(healthBarBG);
@@ -80,7 +80,7 @@ for (obj in [accuracyTxt])
 }
 
 function postUpdate() {
-if (PlayState.SONG.meta.displayName != "lighthouse") {
+if (PlayState.SONG.meta.name != "lighthouse") {
 	if (!FlxG.save.data.xbox) {
 	iconP1.x = 595;
 	iconP2.x = 525;
@@ -93,17 +93,17 @@ if (PlayState.SONG.meta.displayName != "lighthouse") {
 }
 
 function stepHit(curStep:Int) { 
-    if (curStep > 884 && PlayState.SONG.meta.displayName == "skyblue" ) {
+    if (curStep > 884 && PlayState.SONG.meta.name == "skyblue" ) {
             FlxTween.tween(iconP1, {alpha: 0}, 10);
             FlxTween.tween(iconP2, {alpha: 0}, 10);
             FlxTween.tween(healthheader, {alpha: 0}, 10);
 	}    
-    if (PlayState.SONG.meta.displayName == "misconduct" || PlayState.SONG.meta.displayName == "unlikelyrivals") {
+    if (PlayState.SONG.meta.name == "misconduct") {
 	iconP1.alpha = 0;
 	iconP2.alpha = 0;
 	healthheader.alpha = 0;
 	}
-    if (curStep > 63 && PlayState.SONG.meta.displayName == "misconduct" || curStep > 256 && curStep < 2592 && PlayState.SONG.meta.displayName == "unlikelyrivals") {	
+    if (curStep > 63 && PlayState.SONG.meta.name == "misconduct") {	
 	iconP1.alpha = 1;
 	iconP2.alpha = 1;
 	healthheader.alpha = 1;

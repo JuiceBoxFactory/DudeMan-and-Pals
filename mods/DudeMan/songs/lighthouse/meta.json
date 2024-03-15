@@ -4,12 +4,14 @@
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
 	"bpm": 180,
+	"bio": "Among the Fog.",
+	"actoresses": "artist: MeltyKelpy\ncomposer: kosejumpscare\ncoder: MeltyKelpy\ncharter: GhosttaleSans\ncover art: MeltyKelpy",
 	"difficulties": [
 		"Hard"
 	],
 	"needsVoices": true,
 	"parsedColor": -13893888,
-	"displayName": "lighthouse",
+	"displayName": "Lighthouse",
 	"icon": "Icon",
 	"name": "lighthouse",
 	"color": "#2BFF00"

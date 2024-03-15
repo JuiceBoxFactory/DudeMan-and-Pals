@@ -4,12 +4,14 @@
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
 	"bpm": 200,
+	"bio": "Its like that one game",
+	"actoresses": "artist: MeltyKelpy\ncomposer: AussieDoesThings\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: Saayo",
 	"difficulties": [
 		"Hard"
 	],
 	"needsVoices": true,
 	"parsedColor": -13893888,
-	"displayName": "roomed",
+	"displayName": "Roomed",
 	"icon": "Icon",
 	"name": "roomed",
 	"color": "#2BFF00"

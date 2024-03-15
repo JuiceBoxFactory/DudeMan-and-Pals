@@ -4,12 +4,14 @@
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
 	"bpm": 120,
+	"bio": "Get a load of these guys.",
+	"actoresses": "artist: MeltyKelpy\ncomposer: AussieDoesThings\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: MeltyKelpy",
 	"difficulties": [
 		"Hard"
 	],
 	"needsVoices": true,
 	"parsedColor": -13893888,
-	"displayName": "dude",
+	"displayName": "Dude",
 	"icon": "Icon",
 	"name": "dude",
 	"color": "#2BFF00"

@@ -4,12 +4,14 @@
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
 	"bpm": 115,
+	"bio": "im just robert",
+	"actoresses": "artist: MeltyKelpy\ncomposer: NullFrequency\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: robert just robert",
 	"difficulties": [
 		"Hard"
 	],
 	"needsVoices": false,
 	"parsedColor": -13893888,
-	"displayName": "greetings",
+	"displayName": "Greetings",
 	"icon": "Icon",
 	"name": "greetings",
 	"color": "#2BFF00"

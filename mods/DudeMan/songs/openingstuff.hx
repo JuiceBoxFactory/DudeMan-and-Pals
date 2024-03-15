@@ -1,6 +1,6 @@
 function create() {
 
-  if (PlayState.SONG.meta.displayName != "roomed") {
+  if (PlayState.SONG.meta.name != "roomed") {
     camHUD.zoom = 0;
     camHUD.alpha = 0;
 

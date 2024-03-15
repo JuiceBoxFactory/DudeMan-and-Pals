@@ -20,11 +20,11 @@ import funkin.backend.utils.DiscordUtil;
 import funkin.backend.scripting.events.DiscordPresenceUpdateEvent;
 import discord_rpc.DiscordRpc;
 
-var mainArray:Array<String> = ["dude", "blood", "greetings"];
-var extrasArray:Array<String> = ["lemon", "somari", "royalscientist"];
-var palsArray:Array<String> = ["pastelfever", "sizssoers", "lighthouse"];
+var mainArray:Array<String> = ["dude"];
+var extrasArray:Array<String> = ["lemon", "slashgen", "die"];
+var palsArray:Array<String> = ["skyblue", "misconduct", "roomed", "sizssoers", "lighthouse"];
 var coversArray:Array<String> = [];
-var devArray:Array<String> = ["pastelfever", "lemon", "somari", "dude", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange"];
+var devArray:Array<String> = ["pastelfever", "lemon", "somari", "dude", "", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange"];
 var songL:FlxTypedGroup<FlxText> = [];
 
 function new() { 
@@ -66,13 +66,51 @@ function create() {
 		}
 	for (i in 0...songs.length)	
         {
-            trace(songs[i].displayName);
-            var text = new FlxSprite();
-            text.loadGraphic(Paths.image("freeplay/coolsongthings/"+songs[i].displayName));
-            text.x = (1280 * i) + 30;
-            text.cameras = [uiCamera];
-            songL.push(text);
-            add(text);
+
+            image = new FlxSprite();  
+            image = new FlxSprite();
+            image.loadGraphic(Paths.image("freeplay/coolsongthings/"+songs[i].displayName));
+            image.x = (1280 * i) + 30;
+            image.cameras = [uiCamera];
+            songL.push(image);
+            add(image);
+
+            info1 = new FlxText();
+            info1.text = songs[i].displayName;
+            info1.setFormat(Paths.font("COMIC.ttf"), 35, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+            info1.x = (1280 * i) + 403;
+            info1.y += 14;
+            info1.cameras = [uiCamera];
+            info1.color = 0xFF000000;
+            info1.borderColor = 0xFFFFFFFF;
+            info1.antialiasing = false;
+            info1.borderSize = 2;
+            add(info1);
+
+            info2 = new FlxText(0, 0, 250, "im goated", 0);
+            info2.text = songs[i].bio;
+            info2.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+            info2.x = (1280 * i) + 403;
+            info2.y += 60;
+            info2.cameras = [uiCamera]; 
+            info2.color = 0xFF000000;
+            info2.borderColor = 0xFFFFFFFF;
+            info2.antialiasing = false;
+            info2.borderSize = 2;
+            add(info2);
+
+            info3 = new FlxText(0, 0, 250, "im goated", 0);
+            info3.text = songs[i].actoresses;
+            info3.setFormat(Paths.font("COMIC.ttf"), 17, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+            info3.x = (1280 * i) + 403;
+            info3.y += 222;
+            info3.cameras = [uiCamera]; 
+            info3.color = 0xFF000000;
+            info3.borderColor = 0xFFFFFFFF;
+            info3.antialiasing = false;
+            info3.borderSize = 2;
+            add(info3);
+
         }
 	for (item in grpSongs.members)
 		{
@@ -113,8 +151,8 @@ function postCreate() {
 
 }
 
-
 function update() {
+		
 	if (controls.LEFT_P) {
 		changeSelection(-1);
 	}
@@ -131,4 +169,12 @@ function update() {
 		songL[curSelected].alpha = 1;
 	}
 	uiCamera.follow(songL[curSelected], 0.5);
+}
+
+function postUpdate() {
+
+	if (controls.BACK) {
+	FlxG.switchState(new ModState("FreeplaySelector"));
+	}
+
 }

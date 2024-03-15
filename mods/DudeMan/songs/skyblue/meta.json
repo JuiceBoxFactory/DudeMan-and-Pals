@@ -3,13 +3,15 @@
 	"coopAllowed": false,
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
+	"bio": "Autism Songified",
+	"actoresses": "artist: MeltyKelpy\ncomposer: OJSTheCoder\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: OJSTheCoder",
 	"bpm": 115,
 	"difficulties": [
 		"Hard"
 	],
 	"needsVoices": true,
 	"parsedColor": -13893888,
-	"displayName": "skyblue",
+	"displayName": "SkyBlue",
 	"icon": "Icon",
 	"name": "skyblue",
 	"color": "#2BFF00"

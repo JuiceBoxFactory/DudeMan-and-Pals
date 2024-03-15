@@ -37,13 +37,13 @@ function postCreate() {
 
 if (!downscroll) {
 	thisisyou = new FlxSprite(750, 1400).loadGraphic(Paths.image('singerNames/UPSCROLLthanksStar'));
-	if (PlayState.SONG.meta.displayName == "royalscientist") {
+	if (PlayState.SONG.meta.name == "royalscientist") {
 		thisisyou.x = 435;
 		}
 }
 if (downscroll) {
 	thisisyou = new FlxSprite(750, 1400).loadGraphic(Paths.image('singerNames/DOWNSCROLLthanksStar'));
-	if (PlayState.SONG.meta.displayName == "royalscientist") {
+	if (PlayState.SONG.meta.name == "royalscientist") {
 		thisisyou.x = 435;
 		}
 }
@@ -58,7 +58,7 @@ if (downscroll) {
 
 	vs.y = 1200;
 
-  	if (PlayState.SONG.meta.displayName == "life gives you lemons" || PlayState.SONG.meta.displayName == "misconduct" || PlayState.SONG.meta.displayName == "roomed" || PlayState.SONG.meta.displayName == "lighthouse" || PlayState.SONG.meta.displayName == "sizssoers" || PlayState.SONG.meta.displayName == "unlikelyrivals") {
+  	if (PlayState.SONG.meta.name == "lemon" || PlayState.SONG.meta.name == "misconduct" || PlayState.SONG.meta.name == "roomed" || PlayState.SONG.meta.name == "lighthouse" || PlayState.SONG.meta.name == "sizssoers") {
 	rightSideName.alpha = 0;
 	vs.alpha = 0;
 	leftSideName.alpha = 0;

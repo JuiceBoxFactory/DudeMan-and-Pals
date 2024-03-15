@@ -23,7 +23,7 @@ function postCreate() {
 	vs.updateHitbox();
 	add(vs);
 
-	rightSideName = new FlxSprite(700, 1200).loadGraphic(Paths.image('singerNames/sorrybro'));
+	rightSideName = new FlxSprite(700, 1200).loadGraphic(Paths.image('singerNames/Lute'));
 	rightSideName.antialiasing = false;
 	rightSideName.scrollFactor.set(1, 1);
 	rightSideName.scale.x = 1.2;
