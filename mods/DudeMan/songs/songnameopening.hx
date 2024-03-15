@@ -42,7 +42,7 @@ function postCreate() {
     add(cname);
     cname.cameras = [camHUD];
 
-	if (PlayState.SONG.meta.name == "Lemon" || PlayState.SONG.meta.name == "roomed" || PlayState.SONG.meta.name == "lighthouse" || PlayState.SONG.meta.name == "Pastel Fever" || PlayState.SONG.meta.name == "misconduct" || PlayState.SONG.meta.name == "sizssoers") {
+	if (PlayState.SONG.meta.name == "lemon" || PlayState.SONG.meta.name == "roomed" || PlayState.SONG.meta.name == "lighthouse" || PlayState.SONG.meta.name == "pastelfever" || PlayState.SONG.meta.name == "misconduct" || PlayState.SONG.meta.name == "sizssoers") {
 	cname.alpha = 0;
 	sname.alpha = 0;
 	fname.alpha = 0;
@@ -84,8 +84,8 @@ function stepHit(curStep:Int) {
             FlxTween.tween(obj, {x: 0}, 2, {ease:FlxEase.quartOut});
         case 35:
             for (obj in [fname, cname, sname])
-            FlxTween.tween(obj, {x: -1010}, 2, {ease:FlxEase.backIn});
+            FlxTween.tween(obj, {x: -1010}, 2, {ease:FlxEase.quartIn});
             for (obj in [songbox])
-            FlxTween.tween(obj, {x: -1000}, 2, {ease:FlxEase.backIn});
+            FlxTween.tween(obj, {x: -1000}, 2, {ease:FlxEase.quartIn});
         }
 }

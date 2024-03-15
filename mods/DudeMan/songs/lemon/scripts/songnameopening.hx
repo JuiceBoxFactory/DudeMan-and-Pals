@@ -63,7 +63,7 @@ function stepHit(curStep:Int) {
     switch (curStep) {
         case 16:
             Freeplaysectionname("VS LEMON");
-            Songname("Life givs ya lemons");
+            Songname("Lemon");
             Composername("AussieDoesThings");         
             for (obj in [fname, cname, sname])
             FlxTween.tween(obj, {x: 10}, 2, {ease:FlxEase.quartOut});

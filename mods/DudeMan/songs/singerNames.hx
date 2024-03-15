@@ -76,9 +76,9 @@ function stepHit(curStep:Int) {
             FlxTween.tween(vs, {y: 250}, 3, {ease:FlxEase.quartOut});	
             FlxTween.tween(thisisyou, {y: 460}, 3, {ease:FlxEase.quartOut});	
         case 35:
-            FlxTween.tween(rightSideName, {y: 1200}, 2, {ease:FlxEase.backIn});	    
-            FlxTween.tween(leftSideName, {y: 1200}, 2, {ease:FlxEase.backIn});	 
-            FlxTween.tween(vs, {y: 1200}, 2, {ease:FlxEase.backIn});
-            FlxTween.tween(thisisyou, {y: 1200}, 2, {ease:FlxEase.backIn});
+            FlxTween.tween(rightSideName, {y: 1200}, 2, {ease:FlxEase.quartIn});	    
+            FlxTween.tween(leftSideName, {y: 1200}, 2, {ease:FlxEase.quartIn});	 
+            FlxTween.tween(vs, {y: 1200}, 2, {ease:FlxEase.quartIn});
+            FlxTween.tween(thisisyou, {y: 1200}, 2, {ease:FlxEase.quartIn});
     }
 }
