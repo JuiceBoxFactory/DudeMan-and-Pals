@@ -99,7 +99,7 @@ function create() {
             info2.borderSize = 2;
             add(info2);
 
-            info3 = new FlxText(0, 0, 250, "im goated", 0);
+            info3 = new FlxText(0, 0, 400, "im goated", 0);
             info3.text = songs[i].actoresses;
             info3.setFormat(Paths.font("COMIC.ttf"), 17, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
             info3.x = (1280 * i) + 403;

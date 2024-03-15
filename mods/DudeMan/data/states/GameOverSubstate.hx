@@ -36,7 +36,7 @@ function create() {
 	add(fuckyou);
 	}
 	
-	if (PlayState.SONG.meta.displayName == "lighthouse") {
+	if (PlayState.SONG.meta.name == "lighthouse") {
 	chance = FlxG.random.int(0,50);
 	}
 
