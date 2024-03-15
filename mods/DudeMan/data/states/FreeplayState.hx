@@ -23,8 +23,8 @@ import discord_rpc.DiscordRpc;
 var mainArray:Array<String> = ["dude"];
 var extrasArray:Array<String> = ["lemon", "slashgen", "die"];
 var palsArray:Array<String> = ["skyblue", "misconduct", "roomed", "sizssoers", "lighthouse"];
-var coversArray:Array<String> = [];
-var devArray:Array<String> = ["pastelfever", "lemon", "somari", "dude", "", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange"];
+var coversArray:Array<String> = ["dude"];
+var devArray:Array<String> = ["pastelfever", "lemon", "somari", "dude", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange"];
 var songL:FlxTypedGroup<FlxText> = [];
 
 function new() { 
@@ -67,7 +67,6 @@ function create() {
 	for (i in 0...songs.length)	
         {
 
-            image = new FlxSprite();  
             image = new FlxSprite();
             image.loadGraphic(Paths.image("freeplay/coolsongthings/"+songs[i].displayName));
             image.x = (1280 * i) + 30;
