@@ -4,7 +4,7 @@ var Selected = 0;
 
 function create() {
 
-	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg')); // second argument: FlxAxes is required to determinate in what axes the sprite should be repeated, default to XY
+	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg'));
 	coolBackdrop.moves = true;
 	coolBackdrop.scrollFactor.set(0, 0);
 	coolBackdrop.velocity.x = 100; // you can adjust the values to make the scrolling faster or lower

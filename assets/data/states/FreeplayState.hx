@@ -1,4 +1,5 @@
-// script by nullfrequency
+// script by meltykelpy and nullfrequency, I love you null my frequency <3333
+// kill yourself -Null
 import funkin.menus.FreeplayState;
 import funkin.backend.chart.Chart;
 import haxe.io.Path;
@@ -78,7 +79,7 @@ function create() {
             info1.text = songs[i].displayName;
             info1.setFormat(Paths.font("COMIC.ttf"), 35, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
             info1.x = (1280 * i) + 403;
-            info1.y += 14;
+            info1.y += -9;
             info1.cameras = [uiCamera];
             info1.color = 0xFF000000;
             info1.borderColor = 0xFFFFFFFF;
@@ -90,7 +91,7 @@ function create() {
             info2.text = songs[i].bio;
             info2.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
             info2.x = (1280 * i) + 403;
-            info2.y += 60;
+            info2.y += 35;
             info2.cameras = [uiCamera]; 
             info2.color = 0xFF000000;
             info2.borderColor = 0xFFFFFFFF;
