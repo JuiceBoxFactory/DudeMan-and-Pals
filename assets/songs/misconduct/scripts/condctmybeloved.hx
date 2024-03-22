@@ -1,3 +1,7 @@
+import flixel.text.FlxTextBorderStyle;
+import flixel.text.FlxText;
+import flixel.util.FlxColor;
+
 function postCreate() {
 
 	introbg = new FlxSprite(0, 0).loadGraphic(Paths.image('visuals/misconduct/background'));
@@ -5,7 +9,7 @@ function postCreate() {
 	introbg.alpha = 1;
 	introbg.cameras = [camHUD];
 	introbg.updateHitbox();
-	insert(10,introbg);
+	insert(19,introbg);
 
 	context = new FlxSprite(-800, 0);
 	context.frames = Paths.getSparrowAtlas('visuals/misconduct/contextconductintro');
@@ -18,7 +22,7 @@ function postCreate() {
     	context.scale.set(1, 1);
     	context.scrollFactor.set(0, 0);
 	context.updateHitbox();
-	insert(11,context);
+	insert(20,context);
 
 	lute = new FlxSprite(600, 0);
 	lute.frames = Paths.getSparrowAtlas('visuals/misconduct/luteconductintro');
@@ -31,21 +35,32 @@ function postCreate() {
     	lute.scale.set(1, 1);
     	lute.scrollFactor.set(0, 0);
 	lute.updateHitbox();
-	insert(11,lute);
-
+	insert(21,lute);
+ 
 	dialogue = new FlxSprite(0, 0).loadGraphic(Paths.image('visuals/misconduct/contexttext'));
 	dialogue.antialiasing = false;
 	dialogue.alpha = 0;
 	dialogue.cameras = [camHUD];
 	dialogue.updateHitbox();
-	insert(20,dialogue);
+	insert(23,dialogue);
+
+	info1 = new FlxText();
+	info1.text = "at the CertainContext recording studio...";
+	info1.setFormat(Paths.font("COMIC.ttf"), 35, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+	info1.cameras = [camHUD];
+	info1.color = 0xFFFFFFFF;
+	info1.borderColor = 0xFF000000;
+	info1.antialiasing = false;
+	info1.borderSize = 2;
+	info1.screenCenter();
+	insert(20, info1);
 
 	holdup = new FlxSprite(0, 0).loadGraphic(Paths.image('visuals/misconduct/hold'));
 	holdup.antialiasing = false;
 	holdup.alpha = 0;
 	holdup.cameras = [camHUD];
 	holdup.updateHitbox();
-	insert(21, holdup);
+	insert(25, holdup);
 
 	ccbg = new FlxSprite(0, 900).loadGraphic(Paths.image('visuals/misconduct/mygoat'));
 	ccbg.antialiasing = false;
@@ -93,6 +108,7 @@ function onDadHit(event) {
 function stepHit(curStep:Int) { 
     switch (curStep) {
 	case 0:
+	FlxTween.tween(info1, {alpha: 0}, 1.2, {ease:FlxEase.quartOut});
 	FlxTween.tween(context, {x: 0}, 4, {ease:FlxEase.quartOut});
 	FlxTween.tween(dialogue, {alpha: 1}, 2, {ease:FlxEase.quartOut});
 	case 42:
@@ -111,12 +127,17 @@ function stepHit(curStep:Int) {
 	dialogue.alpha = 0;
 	context.alpha = 0;
 	lute.alpha = 0;
-	case 320:
+	case 320:	
 	FlxTween.tween(luteCC, {y: 0}, 1, {ease:FlxEase.backOut});
 	FlxTween.tween(contextCC, {y: 0}, 1, {ease:FlxEase.backOut});
 	FlxTween.tween(ccbg, {y: 0}, 1, {ease:FlxEase.backOut});
 	FlxTween.tween(ccoverlay, {y: -421}, 1, {ease:FlxEase.backOut});
+	case 321:
+	boyfriend.alpha = 0;	
+	dad.alpha = 0;
 	case 760:
+	boyfriend.alpha = 1;	
+	dad.alpha = 1;
 	FlxTween.tween(luteCC, {y: 900}, 1, {ease:FlxEase.backIn});
 	FlxTween.tween(contextCC, {y: 900}, 1, {ease:FlxEase.backIn});
 	FlxTween.tween(ccbg, {y: 900}, 1, {ease:FlxEase.backIn});

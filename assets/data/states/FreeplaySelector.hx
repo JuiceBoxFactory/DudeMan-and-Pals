@@ -41,7 +41,7 @@ function create() {
 	add(freeplaysectionselectarrows);
 
      sectionname = new FlxText(390, 450, 500, "you cant see this wtf", 0);
-     sectionname.setFormat(Paths.font("vcr.ttf"), 30, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+     sectionname.setFormat(Paths.font("COMIC.ttf"), 30, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
      sectionname.borderColor = 0xFF06000C;
      sectionname.borderSize = 3;
      add(sectionname);

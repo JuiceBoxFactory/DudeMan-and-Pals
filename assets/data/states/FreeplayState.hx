@@ -81,8 +81,8 @@ function create() {
             info1.x = (1280 * i) + 403;
             info1.y += -9;
             info1.cameras = [uiCamera];
-            info1.color = 0xFF000000;
-            info1.borderColor = 0xFFFFFFFF;
+            info1.color = 0xFFFFFFFF;
+            info1.borderColor = 0xFF000000;
             info1.antialiasing = false;
             info1.borderSize = 2;
             add(info1);
@@ -93,8 +93,8 @@ function create() {
             info2.x = (1280 * i) + 403;
             info2.y += 35;
             info2.cameras = [uiCamera]; 
-            info2.color = 0xFF000000;
-            info2.borderColor = 0xFFFFFFFF;
+            info2.color = 0xFFFFFFFF;
+            info2.borderColor = 0xFF000000;
             info2.antialiasing = false;
             info2.borderSize = 2;
             add(info2);
@@ -105,8 +105,8 @@ function create() {
             info3.x = (1280 * i) + 403;
             info3.y += 222;
             info3.cameras = [uiCamera]; 
-            info3.color = 0xFF000000;
-            info3.borderColor = 0xFFFFFFFF;
+            info3.color = 0xFFFFFFFF;
+            info3.borderColor = 0xFF000000;
             info3.antialiasing = false;
             info3.borderSize = 2;
             add(info3);

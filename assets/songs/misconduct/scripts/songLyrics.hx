@@ -35,11 +35,36 @@ function UpdateLyric(text:String) {
 
 function stepHit(curStep:Int) { 
     switch (curStep) {
-        case 566:
+        case 287:
+		 LyricInQuestion.color = 0xFF5CFC50;
+		 LyricInQuestion.borderColor = 0xFF2ADD65;
+		 lyricscon.loadGraphic(Paths.image('LYRICS/luteLYRICSCON'));
+            UpdateLyric("Nah Nah NahNah");        
+        case 295:
+		 LyricInQuestion.color = 0xFF5CFC50;
+		 LyricInQuestion.borderColor = 0xFF2ADD65;
+		 lyricscon.loadGraphic(Paths.image('LYRICS/luteLYRICSCON'));
+            UpdateLyric("Boo Boo !");
+        case 304:
 		 LyricInQuestion.color = 0xFFFF84A6;
 		 LyricInQuestion.borderColor = 0xFFFF4577;
 		 lyricscon.loadGraphic(Paths.image('LYRICS/meltyLYRICSCON'));
-            UpdateLyric("HEY, NO MIMICKING !");        
+            UpdateLyric("Hey thats mean !");
+        case 313:
+		 LyricInQuestion.color = 0xFF5CFC50;
+		 LyricInQuestion.borderColor = 0xFF2ADD65;
+		 lyricscon.loadGraphic(Paths.image('LYRICS/luteLYRICSCON'));
+            UpdateLyric("grrrrrrrr");
+        case 320:
+		 LyricInQuestion.color = 0xFFFF84A6;
+		 LyricInQuestion.borderColor = 0xFFFF4577;
+		 lyricscon.loadGraphic(Paths.image('LYRICS/none'));
+            UpdateLyric(""); 
+        case 562:
+		 LyricInQuestion.color = 0xFFFF84A6;
+		 LyricInQuestion.borderColor = 0xFFFF4577;
+		 lyricscon.loadGraphic(Paths.image('LYRICS/meltyLYRICSCON'));
+            UpdateLyric("GET OUT OF MY STUDIO");        
         case 576:
 		 LyricInQuestion.color = 0xFFFFFFFF;
 		 LyricInQuestion.borderColor = 0xFF484848;

@@ -17,12 +17,12 @@ function create() {
 	border.updateHitbox();
 	add(border);
 
-	numbers = new FlxSprite(0, 0).loadGraphic(Paths.image('storyMode/numbers'));
+	numbers = new FlxSprite(0, 30).loadGraphic(Paths.image('storyMode/numbers'));
 	numbers.antialiasing = false;
 	numbers.updateHitbox();
 	add(numbers);
 	
-	weekDude = new FlxSprite(325, 80);
+	weekDude = new FlxSprite(325, 110);
 	weekDude.antialiasing = false;
 	weekDude.frames = Paths.getSparrowAtlas('storyMode/weekCons/dudeWeek');
 	weekDude.animation.addByPrefix('animation', 'idle', 6);
@@ -34,7 +34,7 @@ function create() {
 	weekDude.updateHitbox();
 	add(weekDude);
 
-	weekFruit = new FlxSprite(325, 235);
+	weekFruit = new FlxSprite(325, 265);
 	weekFruit.antialiasing = false;
 	weekFruit.frames = Paths.getSparrowAtlas('storyMode/weekCons/placeWeek');
 	weekFruit.animation.addByPrefix('animation', 'idle', 6);
@@ -46,7 +46,7 @@ function create() {
 	weekFruit.updateHitbox();
 	add(weekFruit);
 
-	weekZee = new FlxSprite(325, 390);
+	weekZee = new FlxSprite(325, 420);
 	weekZee.antialiasing = false;
 	weekZee.frames = Paths.getSparrowAtlas('storyMode/weekCons/placeWeek');
 	weekZee.animation.addByPrefix('animation', 'idle', 6);
@@ -58,7 +58,7 @@ function create() {
 	weekZee.updateHitbox();
 	add(weekZee);
 	
-	weekRobert = new FlxSprite(325, 545);
+	weekRobert = new FlxSprite(325, 575);
 	weekRobert.antialiasing = false;
 	weekRobert.frames = Paths.getSparrowAtlas('storyMode/weekCons/placeWeek');
 	weekRobert.animation.addByPrefix('animation', 'idle', 6);
@@ -70,7 +70,7 @@ function create() {
 	weekRobert.updateHitbox();
 	add(weekRobert);
 
-	weekKathy = new FlxSprite(675, 80);
+	weekKathy = new FlxSprite(675, 110);
 	weekKathy.antialiasing = false;
 	weekKathy.frames = Paths.getSparrowAtlas('storyMode/weekCons/placeWeek');
 	weekKathy.animation.addByPrefix('animation', 'idle', 6);
@@ -82,7 +82,7 @@ function create() {
 	weekKathy.updateHitbox();
 	add(weekKathy);
 
-	weekUmbreon = new FlxSprite(675, 235);
+	weekUmbreon = new FlxSprite(675, 265);
 	weekUmbreon.antialiasing = false;
 	weekUmbreon.frames = Paths.getSparrowAtlas('storyMode/weekCons/placeWeek');
 	weekUmbreon.animation.addByPrefix('animation', 'idle', 6);
@@ -94,7 +94,7 @@ function create() {
 	weekUmbreon.updateHitbox();
 	add(weekUmbreon);
 
-	weekStick = new FlxSprite(675, 390);
+	weekStick = new FlxSprite(675, 420);
 	weekStick.antialiasing = false;
 	weekStick.frames = Paths.getSparrowAtlas('storyMode/weekCons/placeWeek');
 	weekStick.animation.addByPrefix('animation', 'idle', 6);
@@ -106,7 +106,7 @@ function create() {
 	weekStick.updateHitbox();
 	add(weekStick);
 	
-	weekSilly = new FlxSprite(675, 545);
+	weekSilly = new FlxSprite(675, 575);
 	weekSilly.antialiasing = false;
 	weekSilly.frames = Paths.getSparrowAtlas('storyMode/weekCons/placeWeek');
 	weekSilly.animation.addByPrefix('animation', 'idle', 6);
@@ -117,6 +117,12 @@ function create() {
 	weekSilly.alpha = 0;
 	weekSilly.updateHitbox();
 	add(weekSilly);
+	
+	storytitle = new FlxSprite(310, 10).loadGraphic(Paths.image('storyMode/name'));
+	storytitle.antialiasing = false;
+	storytitle.scale.set(0.8, 0.8);
+	storytitle.updateHitbox();
+	add(storytitle);
 	
 	}
 	
