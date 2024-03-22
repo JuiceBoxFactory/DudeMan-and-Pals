@@ -9,7 +9,7 @@ function postCreate(){
             bAbg.x = -490;
             bAbg.y = -490;
             bAbg.alpha = 0;
-            insert(15, bAbg);
+            insert(20, bAbg);
         }
     }
 }

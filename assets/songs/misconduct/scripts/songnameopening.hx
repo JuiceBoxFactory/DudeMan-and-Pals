@@ -72,4 +72,10 @@ function stepHit(curStep:Int) {
             for (obj in [songbox])
             FlxTween.tween(obj, {x: -1000}, 2, {ease:FlxEase.backIn});
         }
+    	if (curStep > 50) {        
+		cname.alpha = 0;
+		sname.alpha = 0;
+		fname.alpha = 0;
+		songbox.alpha = 0;	
+	}
 }

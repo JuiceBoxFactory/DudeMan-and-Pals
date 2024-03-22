@@ -10,7 +10,6 @@ function create() {
 		gifbg.scrollFactor.set(1, 1);
 		gifbg.alpha = 0;
 		gifbg.updateHitbox();
-		insert(1, gifbg);
 
 		gifbg2 = new FlxSprite(0, 0);
 		gifbg2.antialiasing = false;
@@ -22,7 +21,6 @@ function create() {
 		gifbg2.scrollFactor.set(1, 1);
 		gifbg2.alpha = 0;
 		gifbg2.updateHitbox();
-		insert(2, gifbg2);
 
 		gifbg3 = new FlxSprite(0, 0);
 		gifbg3.antialiasing = false;
@@ -34,7 +32,7 @@ function create() {
 		gifbg3.scrollFactor.set(1, 1);
 		gifbg3.alpha = 0;
 		gifbg3.updateHitbox();
-		insert(3, gifbg3);
+
 
 		gifbg4 = new FlxSprite(200, 0);
 		gifbg4.antialiasing = false;
@@ -46,7 +44,7 @@ function create() {
 		gifbg4.scrollFactor.set(1, 1);
 		gifbg4.alpha = 0;
 		gifbg4.updateHitbox();
-		insert(4, gifbg4);
+
 
 		gifbg5 = new FlxSprite(0, 0);
 		gifbg5.antialiasing = false;
@@ -58,7 +56,7 @@ function create() {
 		gifbg5.scrollFactor.set(1, 1);
 		gifbg5.alpha = 0;
 		gifbg5.updateHitbox();
-		insert(5, gifbg5);
+
 
             topbar = new FlxSprite();
             topbar.makeGraphic(6000, 800, FlxColor.BLACK);
@@ -66,7 +64,7 @@ function create() {
             topbar.x = -490;
             topbar.y = -450;
             topbar.alpha = 0;
-            insert(6, topbar);
+
 
             botbar = new FlxSprite();
             botbar.makeGraphic(6000, 800, FlxColor.BLACK);
@@ -74,7 +72,7 @@ function create() {
             botbar.x = -490;
             botbar.y = 450;
             botbar.alpha = 0;
-            insert(6, botbar);
+
 
 		border = new FlxSprite(0, 0);	
 		border.antialiasing = false;
@@ -88,7 +86,7 @@ function create() {
 		border.screenCenter();
 		border.cameras = [camHUD];
 		border.updateHitbox();
-		add(border);
+
 
             end = new FlxSprite();
             end.makeGraphic(1280, 720, FlxColor.BLACK);
@@ -96,19 +94,30 @@ function create() {
             end.screenCenter();
             end.cameras = [camHUD];
             end.alpha = 0;
-            add(end);
 
-    text = new FlxText(0, 0, 2000, "welcome back :]", 0);
+
+    text = new FlxText(0, 0, 2000, "this shit is songified autism", 0);
     text.setFormat(Paths.font("vcr.ttf"), 25, FlxColor.WHITE, "center");
     text.scrollFactor.set();
     text.alpha = 0;
     text.screenCenter();
     text.cameras = [camHUD];
-    add(text);
+
+
+		insert(7, gifbg);
+		insert(8, gifbg2);
+		insert(9, gifbg3);
+		insert(10, gifbg4);		
+		insert(11, gifbg5);		
+		insert(12, topbar);
+		insert(12, botbar);           
+ 		add(border);           
+           add(end);            
+    		add(text);
 
 }
 
-function stepHit(curStep:Int) { //this is all template btw lol so
+function stepHit(curStep:Int) { 
     switch (curStep) {
         case 319: 
 		camGame.zoom += 0.2;
