@@ -27,7 +27,8 @@ var links:Array<String> = [
 "https://twitter.com/antyd0te",
 "https://docs.google.com/document/d/1zh0LEnsax3X8rIq6Q4idqno3d9Dp8YIEWwRH8b8iQiE/edit",
 "https://twitter.com/Frump0",
-"https://twitter.com/Strang3_x3"];
+"https://twitter.com/Strang3_x3",
+"https://www.youtube.com/@CrispsCrispulent"];
 
 function new() { 
     	   DiscordUtil.changePresence("goat, u in credits menu", null);
@@ -168,15 +169,19 @@ function update() {
 		devs.loadGraphic(Paths.image('credits/devs/spencer'));
 		devname.text = 'StrangeX3';
 		thingsdone.text = 'Artist\nVA\n\n\n\n\n"Youre working on the Dude who is like a Man"';
+	case 17:
+		devs.loadGraphic(Paths.image('credits/devs/crisps'));
+		devname.text = 'Crisps';
+		thingsdone.text = 'did the fuckin uhhh GameOver Song\n\n\n\n\n\n"Made this for a friend, didn't end up getting used beforehand so its nice to see it being used now :]"';
 //	default:
 //		devname.text = 'this person doesnt exist';
 //		thingsdone.text = 'my penis is so big :3';
 	}
-	if (Selected > 16) {
+	if (Selected > 17) {
 		Selected = 0;
 	}
 	if (Selected < 0) {
-		Selected = 16;
+		Selected = 17;
 	}
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));

@@ -1,5 +1,4 @@
 function create() {
-
   if (PlayState.SONG.meta.name != "roomed") {
     camHUD.zoom = 0;
     camHUD.alpha = 0;
@@ -9,7 +8,7 @@ function create() {
 	openingblack.scale.set(15, 15);
 	openingblack.alpha = 1;
 	openingblack.updateHitbox();
-	insert(20, openingblack);
+	insert(35, openingblack);
 	}
 }
 

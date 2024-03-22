@@ -36,7 +36,7 @@ function create(event) {
 	bg.cameras = [pauseCam];
 	add(bg);
 
-	char = new FlxSprite(1800, 0).loadGraphic(Paths.image('johnpork/ports/' + PlayState.SONG.meta.displayName));
+	char = new FlxSprite(1800, 0).loadGraphic(Paths.image('johnpork/ports/' + PlayState.SONG.meta.name));
 	add(char);
 
 	var i = 2;

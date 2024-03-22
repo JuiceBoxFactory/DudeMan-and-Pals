@@ -65,7 +65,7 @@ function stepHit(curStep:Int) {
             FlxTween.tween(vs, {y: 1200}, 2, {ease:FlxEase.backIn});
             FlxTween.tween(thisisyou, {y: 1200}, 2, {ease:FlxEase.backIn});
     }
-    	if (curStep > 50) {
+    	if (curStep > 90) {
 		rightSideName.alpha = 0;
 		vs.alpha = 0;
 		leftSideName.alpha = 0;

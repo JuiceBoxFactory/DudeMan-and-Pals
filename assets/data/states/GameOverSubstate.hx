@@ -24,7 +24,7 @@ function create() {
 	if (chance < 50) {
 	deathQoutes = new FlxSprite(0, 0);
 	deathQoutes.scrollFactor.set(0, 0);
-	deathQoutes.loadGraphic(Paths.image('deathScreens/'+PlayState.SONG.meta.displayName));
+	deathQoutes.loadGraphic(Paths.image('deathScreens/'+PlayState.SONG.meta.name));
 	deathQoutes.cameras = [deathCam];
 	add(deathQoutes);
 
