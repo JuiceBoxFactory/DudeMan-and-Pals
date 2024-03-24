@@ -3,6 +3,7 @@ import flixel.text.FlxText;
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxAxes;
 import funkin.game.PlayState;
+import flixel.util.FlxSave;
 import flixel.addons.display.FlxBackdrop;
 
 var pauseCam = new FlxCamera();
@@ -103,7 +104,15 @@ function update(elapsed) {
 			FlxTween.tween(bg, {x: -600}, 0.0001, {ease: FlxEase.quartOut, onComplete: function() {
 				selectOption();
 			}});
-		} else {
+		} 
+		
+		else if (option == "Change Options") {
+			FlxG.save.data.wasJustInPause = true;
+			trace("gaysex");
+			FlxG.switchState(new ModState("DudeOptionsState"));
+			}
+		
+		else {
 			selectOption();
 		}
 	}

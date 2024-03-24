@@ -88,7 +88,7 @@ function stepHit(curStep:Int) {
             for (obj in [songbox])
             FlxTween.tween(obj, {x: -1000}, 2, {ease:FlxEase.quartIn});
         }
-    	if (curStep > 50) {        
+    	if (curStep > 70) {        
 		cname.alpha = 0;
 		sname.alpha = 0;
 		fname.alpha = 0;

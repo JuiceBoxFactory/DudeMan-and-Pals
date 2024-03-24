@@ -53,6 +53,10 @@ function update() {
 		FlxG.sound.play(Paths.sound('confirm'));
 		FlxG.switchState(new ModState("DaxGalleryState"));
    	 	}
+	if (FlxG.keys.justPressed.O) {
+		FlxG.sound.play(Paths.sound('confirm'));
+		FlxG.switchState(new ModState("DudeOptionsState"));
+   	 	}
 	if (SelectedButton == 0 && controls.ACCEPT) {
 		FlxG.sound.play(Paths.sound('confirm'));
    	 	FlxG.switchState(new ModState("StoryState"));

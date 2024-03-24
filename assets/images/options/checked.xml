@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="checked.png">
+<SubTexture name="no0000" x="201" y="0" width="193" height="191" frameX="-56" frameY="-57" frameWidth="300" frameHeight="300" />
+<SubTexture name="no0001" x="200" y="195" width="193" height="189" frameX="-55" frameY="-58" frameWidth="300" frameHeight="300" />
+<SubTexture name="yes0000" x="0" y="0" width="201" height="195" frameX="-66" frameY="-47" frameWidth="300" frameHeight="300" />
+<SubTexture name="yes0001" x="0" y="195" width="200" height="191" frameX="-66" frameY="-49" frameWidth="300" frameHeight="300" />
+</TextureAtlas>

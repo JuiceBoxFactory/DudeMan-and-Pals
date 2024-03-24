@@ -7,4 +7,5 @@
 	<checkbox id="geomtery" name= "Geometry Dash" desc="Fire is in said hole"/>
 	<checkbox id="valentines" name= "coded on Valentines" desc="Love you dear LOL"/>
 	<checkbox id="nightmare" name= "Nightmare." desc="Don't miss."/>
+	<checkbox id="goodCamera" name= "Camera Quality 100000" desc="4K 1080p 120 FPS gameplay footage"/>
 </menu>

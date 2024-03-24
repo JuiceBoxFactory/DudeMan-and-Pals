@@ -60,7 +60,7 @@ function create() {
 
             topbar = new FlxSprite();
             topbar.makeGraphic(6000, 800, FlxColor.BLACK);
-            topbar.scrollFactor.set();
+            topbar.scrollFactor.set(1,1);
             topbar.x = -490;
             topbar.y = -450;
             topbar.alpha = 0;
@@ -68,7 +68,7 @@ function create() {
 
             botbar = new FlxSprite();
             botbar.makeGraphic(6000, 800, FlxColor.BLACK);
-            botbar.scrollFactor.set();
+            botbar.scrollFactor.set(1,1);
             botbar.x = -490;
             botbar.y = 450;
             botbar.alpha = 0;

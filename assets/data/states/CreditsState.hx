@@ -28,7 +28,8 @@ var links:Array<String> = [
 "https://docs.google.com/document/d/1zh0LEnsax3X8rIq6Q4idqno3d9Dp8YIEWwRH8b8iQiE/edit",
 "https://twitter.com/Frump0",
 "https://twitter.com/Strang3_x3",
-"https://www.youtube.com/@CrispsCrispulent"];
+"https://www.youtube.com/@CrispsCrispulent",
+"https://twitter.com/7_Veeh"];
 
 function new() { 
     	   DiscordUtil.changePresence("goat, u in credits menu", null);
@@ -172,16 +173,20 @@ function update() {
 	case 17:
 		devs.loadGraphic(Paths.image('credits/devs/crisps'));
 		devname.text = 'Crisps';
-		thingsdone.text = 'did the fuckin uhhh GameOver Song\n\n\n\n\n\n"Made this for a friend, didn't end up getting used beforehand so its nice to see it being used now :]"';
+		thingsdone.text = 'did the fuckin uhhh GameOver Song\n\n\n\n\n\n"Made this for a friend, didnt end up getting used beforehand so its nice to see it being used now :]"';
+	case 18:
+		devs.loadGraphic(Paths.image('credits/devs/Veeehhhrr'));
+		devname.text = 'Veeehhhrr';
+		thingsdone.text = 'stole cammove code from them n modified it\n\n\n\n\nNo Qoute Given ( I didnt ask them )';
 //	default:
 //		devname.text = 'this person doesnt exist';
 //		thingsdone.text = 'my penis is so big :3';
 	}
-	if (Selected > 17) {
+	if (Selected > 18) {
 		Selected = 0;
 	}
 	if (Selected < 0) {
-		Selected = 17;
+		Selected = 18;
 	}
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));
