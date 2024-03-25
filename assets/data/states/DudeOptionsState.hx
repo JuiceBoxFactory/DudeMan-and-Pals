@@ -552,7 +552,7 @@ function update() {
 		SelectedSecret += 1;
 	}
 	// BUTTONS MAIN
-	if (Selected1 == 0 && controls.ACCEPT && MainOptionsOpen == true) {
+	if (Selected1 == 0 && controls.ACCEPT && MainOptionsOpen == true && subStateOpen == false) {
 		subStateOpen = true;
 		openSubState(new KeybindsOptions());
 	}
