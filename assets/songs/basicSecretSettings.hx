@@ -108,7 +108,7 @@ if (FlxG.save.data.xbox) {
 
 if (FlxG.save.data.horse) {
 	horse.y = horse.y + Math.cos(time * 6.3) * 1;
-	horse.angle = horse.angle + Math.cos(time * 3.5) * 0.2;	
+	horse.angle = horse.angle + Math.cos(time * 6.5) * 0.2;	
 
 	if (flippingthisfaggot == false) {
 		horse.x += horseSpeed;
@@ -132,7 +132,7 @@ if (FlxG.save.data.horse) {
 }
 	
 	if (FlxG.save.data.baldiStyle) {
-		baldi.y = baldi.y + Math.cos(time * 6.3) * -10;
+		baldi.y = baldi.y + Math.cos(time * 6.3) * -5;
 		baldi.scale.x = baldi.scale.x + Math.cos(time * 5) * 0.020;
 
 		if (baldBoyDirection == false) {
