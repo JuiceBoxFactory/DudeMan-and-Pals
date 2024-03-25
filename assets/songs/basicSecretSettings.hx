@@ -53,6 +53,15 @@ function postCreate() {
 		horseBoom.cameras = [camHUD];
 		insert(61, horseBoom);
 	}
+	
+	//YOU DONT NEED ALL THOSE TABS
+	if (FlxG.save.data.MelTabs == true) {
+		tabs = new FlxSprite(0, 0).loadGraphic(Paths.image('secretsettings/tabs'));
+		tabs.scrollFactor.set(0, 0);
+		tabs.cameras = [cantTouchThisCam];
+		insert(11, tabs);
+	}
+	
 	//XBOX SHIT
 	if (FlxG.save.data.xbox) {
 		Xbox = new FlxSprite();

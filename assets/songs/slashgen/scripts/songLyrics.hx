@@ -4,6 +4,8 @@ var LyricInQuestion:FlxText;
 
 function create() {
 
+	if (FlxG.save.data.subtitles == true) {
+
 	lyricscon = new FlxSprite(0, 500).loadGraphic(Paths.image('LYRICS/none'));
 	lyricscon.antialiasing = false;
 	lyricscon.cameras = [camHUD];
@@ -20,6 +22,7 @@ function create() {
     add(LyricInQuestion);
     LyricInQuestion.cameras = [camHUD];
 
+	}
 }
 
 function UpdateLyric(text:String) {

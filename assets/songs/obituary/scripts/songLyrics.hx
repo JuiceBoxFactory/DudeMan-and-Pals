@@ -4,6 +4,8 @@ var LyricInQuestion:FlxText;
 
 function create() {
 
+	if (FlxG.save.data.subtitles == true) {
+
 	blackHUD = new FlxSprite(0, 0).loadGraphic(Paths.image('black'));
 	blackHUD.antialiasing = false;
 	blackHUD.alpha = 0;
@@ -61,6 +63,7 @@ function create() {
     add(LyricInQuestionfade);
     LyricInQuestionfade.cameras = [camHUD];
 
+	}
 }
 
 function UpdateLyric(text:String) {

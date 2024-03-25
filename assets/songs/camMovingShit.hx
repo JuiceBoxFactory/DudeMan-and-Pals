@@ -13,7 +13,11 @@ function postCreate() {
 		angleVar = 420.80;
 		angleMoveSpeed = 0.2;
 	}
-
+	if (FlxG.save.data.camMove == false) {
+		angleVar = 0;
+		angleMoveSpeed = 0;
+		cammove = 0;		
+	}
 }
 
 function postUpdate() {

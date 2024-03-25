@@ -41,23 +41,8 @@ function create() {
 
 // DEFAULT SETTINGS WHEN YOU FIRST OPEN THE GAME
 	if (FlxG.save.data.wheresGarfield == null) {
-		FlxG.save.data.downscroll = false;
-		FlxG.save.data.botplay = false;
-		FlxG.save.data.ghosttap = true;
-		FlxG.save.data.notebounce = true;
-		FlxG.save.data.middlescroll = false;
-		FlxG.save.data.debug = false;
-		FlxG.save.data.xbox = false;
-		FlxG.save.data.horse = false;
-		FlxG.save.data.baldiStyle = false;
-		FlxG.save.data.hitsounds = false;
-		FlxG.save.data.geomtery = false;
-		FlxG.save.data.nightmare = false;
-		FlxG.save.data.goodCamera = false;
-		trace("set to default settings");
+		resetSettings();
 	}
-	
-	FlxG.save.data.wheresGarfield = false;
 	
 	uiCamera = new FlxCamera(0, 25, 5080, 5020);
 	uiCamera.bgColor = FlxColor.TRANSPARENT;
@@ -229,6 +214,56 @@ function postCreate() {
 		checkboxMiddleScroll.scrollFactor.set(1, 1);
 		checkboxMiddleScroll.cameras = [uiCamera];
 		add(checkboxMiddleScroll);
+
+		Subtitles = new FlxText();
+		Subtitles.text = "Subtitles";
+		Subtitles.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		Subtitles.x = 180;
+		Subtitles.y = 620;
+		Subtitles.cameras = [uiCamera];
+		Subtitles.color = 0xFFFFFFFF;
+		Subtitles.borderColor = 0xFF000000;
+		Subtitles.antialiasing = false;
+		Subtitles.alpha = 0;
+		Subtitles.borderSize = 3;
+		add(Subtitles);
+
+		checkboxSubtitles = new FlxSprite(290, 505);	
+		checkboxSubtitles.frames = Paths.getSparrowAtlas('options/checked');
+		checkboxSubtitles.animation.addByPrefix('selected', 'yes', 6);
+		checkboxSubtitles.animation.addByPrefix('disselected', 'no', 6);
+		checkboxSubtitles.animation.play('disselected');
+		checkboxSubtitles.scale.set(0.3, 0.3);
+		checkboxSubtitles.antialiasing = false;
+		checkboxSubtitles.alpha = 1;
+		checkboxSubtitles.scrollFactor.set(1, 1);
+		checkboxSubtitles.cameras = [uiCamera];
+		add(checkboxSubtitles);
+
+		camMove = new FlxText();
+		camMove.text = "camMove";
+		camMove.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		camMove.x = 180;
+		camMove.y = 720;
+		camMove.cameras = [uiCamera];
+		camMove.color = 0xFFFFFFFF;
+		camMove.borderColor = 0xFF000000;
+		camMove.antialiasing = false;
+		camMove.alpha = 0;
+		camMove.borderSize = 3;
+		add(camMove);
+
+		checkboxcamMove = new FlxSprite(280, 605);	
+		checkboxcamMove.frames = Paths.getSparrowAtlas('options/checked');
+		checkboxcamMove.animation.addByPrefix('selected', 'yes', 6);
+		checkboxcamMove.animation.addByPrefix('disselected', 'no', 6);
+		checkboxcamMove.animation.play('disselected');
+		checkboxcamMove.scale.set(0.3, 0.3);
+		checkboxcamMove.antialiasing = false;
+		checkboxcamMove.alpha = 1;
+		checkboxcamMove.scrollFactor.set(1, 1);
+		checkboxcamMove.cameras = [uiCamera];
+		add(checkboxcamMove);
 
 //	Appearance = new FlxText();
 //	Appearance.text = "Debug Mode >";
@@ -453,6 +488,31 @@ function postCreate() {
 		checkboxCameraAwesome.cameras = [uiCamera];
 		add(checkboxCameraAwesome);
 
+		MelTabs  = new FlxText();
+		MelTabs.text = "Melty's Tabs";
+		MelTabs.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		MelTabs.x = 180;
+		MelTabs.y = 925;
+		MelTabs.cameras = [uiCamera];
+		MelTabs.color = 0xFFFFFFFF;
+		MelTabs.borderColor = 0xFF000000;
+		MelTabs.antialiasing = false;
+		MelTabs.alpha = 0;
+		MelTabs.borderSize = 3;
+		add(MelTabs);
+
+		checkboxMelTabs = new FlxSprite(375, 812);	
+		checkboxMelTabs.frames = Paths.getSparrowAtlas('options/checked');
+		checkboxMelTabs.animation.addByPrefix('selected', 'yes', 6);
+		checkboxMelTabs.animation.addByPrefix('disselected', 'no', 6);
+		checkboxMelTabs.animation.play('disselected');
+		checkboxMelTabs.scale.set(0.3, 0.3);
+		checkboxMelTabs.antialiasing = false;
+		checkboxMelTabs.alpha = 1;
+		checkboxMelTabs.scrollFactor.set(1, 1);
+		checkboxMelTabs.cameras = [uiCamera];
+		add(checkboxMelTabs);
+
 	border = new FlxSprite(0, 0).loadGraphic(Paths.image('options/border'));
 	border.antialiasing = false;
 	border.updateHitbox();
@@ -484,9 +544,31 @@ function postCreate() {
 	
 }
 
+function resetSettings() {
+		FlxG.save.data.downscroll = false;
+		FlxG.save.data.botplay = false;
+		FlxG.save.data.ghosttap = true;
+		FlxG.save.data.notebounce = true;
+		FlxG.save.data.middlescroll = false;
+		FlxG.save.data.debug = false;
+		FlxG.save.data.xbox = false;
+		FlxG.save.data.horse = false;
+		FlxG.save.data.baldiStyle = false;
+		FlxG.save.data.hitsounds = false;
+		FlxG.save.data.geomtery = false;
+		FlxG.save.data.nightmare = false;
+		FlxG.save.data.goodCamera = false;
+		FlxG.save.data.MelTabs = false;
+		FlxG.save.data.subtitles = true;
+		FlxG.save.data.camMove = true;
+
+		FlxG.save.data.wheresGarfield = false;
+		trace("set to default settings");
+}
+
 function update() {
 
-	BottomText.text = "Hi welcome to the options menu, goat :fire::100:";
+	BottomText.text = "Hi welcome to the options menu, goat :fire::100:   press R to reset settings";
 
 	// CHECKING CATEGORY		
 	if (MainOptionsOpen == true) {
@@ -495,34 +577,38 @@ function update() {
 		obj.alpha = 0.6;
 		}
 	}
+	
+	if (FlxG.keys.justPressed.R) {
+		resetSettings();	
+	}
 	if (MainOptionsOpen == false) {
 		for (obj in [Controls, Gameplay, Secret]) {
 		remove(obj);
 		}
 	}
 	if (GameplayOptionsOpen == true) {
-		for (obj in [Downscroll, checkboxDownscroll, Botplay, checkboxBotplay, GhostTapping, checkboxGhostTapping, NoteBounce, checkboxNoteBounce, MiddleScroll, checkboxMiddleScroll]) {
+		for (obj in [Downscroll, checkboxDownscroll, Botplay, checkboxBotplay, GhostTapping, checkboxGhostTapping, NoteBounce, checkboxNoteBounce, MiddleScroll, checkboxMiddleScroll, Subtitles, checkboxSubtitles, camMove, checkboxcamMove]) {
 		add(obj);
 		}
-		for (obj in [Downscroll, Botplay, GhostTapping, NoteBounce, MiddleScroll]) {
+		for (obj in [Downscroll, Botplay, GhostTapping, NoteBounce, MiddleScroll, Subtitles, camMove]) {
 		obj.alpha = 0.6;
 		}
 	}
 	if (GameplayOptionsOpen == false) {
-		for (obj in [Downscroll, checkboxDownscroll, Botplay, checkboxBotplay, GhostTapping, checkboxGhostTapping, NoteBounce, checkboxNoteBounce, MiddleScroll, checkboxMiddleScroll]) {
+		for (obj in [Downscroll, checkboxDownscroll, Botplay, checkboxBotplay, GhostTapping, checkboxGhostTapping, NoteBounce, checkboxNoteBounce, MiddleScroll, checkboxMiddleScroll, Subtitles, checkboxSubtitles, camMove, checkboxcamMove]) {
 		remove(obj);
 		}
 	}
 	if (SecretOptionsOpen == true) {
-		for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome]) {
+		for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs]) {
 		add(obj);
 		}
-		for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome]) {
+		for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs]) {
 		obj.alpha = 0.6;
 		}
 	}
 	if (SecretOptionsOpen == false) {
-		for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome]) {
+		for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs]) {
 		remove(obj);
 		}
 	}
@@ -608,6 +694,22 @@ function update() {
 		BottomText.text = "its just fucking middlescroll- dude do I seriously have to describe these";
 		MiddleScroll.alpha = 1;
 	}
+	if (SelectedGameplay == 5 && GameplayOptionsOpen == true && FlxG.save.data.subtitles == true) {
+		BottomText.text = "hehehe wouldnt it be funny if the subtitles controlled this text too ?";
+		Subtitles.alpha = 1;
+	}
+	if (SelectedGameplay == 5 && GameplayOptionsOpen == true && FlxG.save.data.subtitles == false) {
+		BottomText.text = "";
+		Subtitles.alpha = 1;
+	}
+	if (SelectedGameplay == 6 && GameplayOptionsOpen == true && FlxG.save.data.camMove == true) {
+		BottomText.text = "Are you silly or are you a loser ?";
+		camMove.alpha = 1;
+	}
+	if (SelectedGameplay == 6 && GameplayOptionsOpen == true && FlxG.save.data.camMove == false) {
+		BottomText.text = "Loser. clearly.";
+		camMove.alpha = 1;
+	}
 	// BUTTONS SECRET
 	if (SelectedSecret == 0 && SecretOptionsOpen == true) {
 		BottomText.text = "Debug Mode, lets you do a bunch of shit in the middle of songs";
@@ -641,6 +743,10 @@ function update() {
 		BottomText.text = "4K 1080p 120 FPS gameplay footage";
 		CameraAwesome.alpha = 1;	
 	}
+	if (SelectedSecret == 8 && SecretOptionsOpen == true) {
+		BottomText.text = "You dont need all those tabs open.";
+		MelTabs.alpha = 1;	
+	}
 	// CONTROLS PT 2
 	if (Selected1 > 2) {
 		Selected1 = 0;
@@ -648,30 +754,40 @@ function update() {
 	if (Selected1 < 0) {
 		Selected1 = 2;
 	}
-	if (SelectedGameplay > 4) {
+	if (SelectedGameplay > 6) {
 		SelectedGameplay = 0;
 	}
 	if (SelectedGameplay < 0) {
-		SelectedGameplay = 4;
+		SelectedGameplay = 6;
 	}
-	if (SelectedSecret > 7) {
+	if (SelectedSecret > 8) {
 		SelectedSecret = 0;
 	}
 	if (SelectedSecret < 0) {
-		SelectedSecret = 7;
+		SelectedSecret = 8;
 	}
 	// SECRETSETTINGS CAM
-	if (SelectedSecret > 4) {
+	if (SelectedSecret > 4 && SecretOptionsOpen == true) {
 		if (uiCamera.y != -475) {
 			uiCamera.y -= 5;
 		}
 	}
-	if (SelectedSecret < 5) {
+	if (SelectedSecret < 5 && SecretOptionsOpen == true) {
 		if (uiCamera.y != 25) {
 			uiCamera.y += 5;
 		}
 	}
-
+	// GAMEPLAY CAM
+	if (SelectedGameplay > 4 && GameplayOptionsOpen == true) {
+		if (uiCamera.y != -175) {
+			uiCamera.y -= 5;
+		}
+	}
+	if (SelectedGameplay < 5 && GameplayOptionsOpen == true) {
+		if (uiCamera.y != 25) {
+			uiCamera.y += 5;
+		}
+	}
 }
 function postUpdate() {
 
@@ -779,7 +895,40 @@ function postUpdate() {
 		FlxG.save.data.middlescroll = false;
 		});
 	}
-	
+	if (FlxG.save.data.subtitles == true) {
+		checkboxSubtitles.animation.play('selected');
+	}
+	if (FlxG.save.data.subtitles == false) {
+		checkboxSubtitles.animation.play('disselected');
+	}
+	if (SelectedGameplay == 5 && GameplayOptionsOpen == true && FlxG.save.data.subtitles == false && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.subtitles = true;
+		});
+	}
+	if (SelectedGameplay == 5 && GameplayOptionsOpen == true && FlxG.save.data.subtitles == true && controls.ACCEPT) {
+		trace("oh.. man");
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.subtitles = false;
+		});
+	}	
+	if (FlxG.save.data.camMove == true) {
+		checkboxcamMove.animation.play('selected');
+	}
+	if (FlxG.save.data.camMove == false) {
+		checkboxcamMove.animation.play('disselected');
+	}
+	if (SelectedGameplay == 6 && GameplayOptionsOpen == true && FlxG.save.data.camMove == false && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.camMove = true;
+		});
+	}
+	if (SelectedGameplay == 6 && GameplayOptionsOpen == true && FlxG.save.data.camMove == true && controls.ACCEPT) {
+		trace("oh.. man");
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.camMove = false;
+		});
+	}	
 	
 	
 	// CHECKS SECRET
@@ -917,6 +1066,23 @@ function postUpdate() {
 		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.goodCamera = false;
+		});
+	}
+	if (FlxG.save.data.MelTabs == true) {
+		checkboxMelTabs.animation.play('selected');
+	}
+	if (FlxG.save.data.MelTabs == false) {
+		checkboxMelTabs.animation.play('disselected');
+	}
+	if (SelectedSecret == 8 && SecretOptionsOpen == true && FlxG.save.data.MelTabs == false && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.MelTabs = true;
+		});
+	}
+	if (SelectedSecret == 8 && SecretOptionsOpen == true && FlxG.save.data.MelTabs == true && controls.ACCEPT) {
+		trace("oh.. man");
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.MelTabs = false;
 		});
 	}
 }

@@ -4,14 +4,17 @@ var LyricInQuestion:FlxText;
 
 function create() {
 
-    LyricInQuestion = new FlxText(150, 550, 1000, "", 0);
-    LyricInQuestion.setFormat(Paths.font("vcr.ttf"), 30, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-    LyricInQuestion.scrollFactor.set();
-    LyricInQuestion.borderColor = 0xFF000000;
-    LyricInQuestion.borderSize = 2;
-    add(LyricInQuestion);
-    LyricInQuestion.cameras = [camHUD];
 
+	if (FlxG.save.data.subtitles == true) {
+    		LyricInQuestion = new FlxText(150, 550, 1000, "", 0);
+    		LyricInQuestion.setFormat(Paths.font("vcr.ttf"), 30, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+    		LyricInQuestion.scrollFactor.set();
+    		LyricInQuestion.borderColor = 0xFF000000;
+    		LyricInQuestion.borderSize = 2;
+    		add(LyricInQuestion);
+    		LyricInQuestion.cameras = [camHUD];
+	}
+	
     ominous1 = new FlxText(-325, 300, 2000, "HE WAITS IN THE FOG", 0);
     ominous1.setFormat(Paths.font("vcr.ttf"), 70, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
     ominous1.scrollFactor.set();
