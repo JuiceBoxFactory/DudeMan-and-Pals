@@ -677,11 +677,11 @@ function postUpdate() {
 
 	if (FlxG.save.data.wasJustInPause == true && controls.BACK && MainOptionsOpen == true && subStateOpen == false) {
 		new FlxTimer().start(0.10, function(timer) {
-           	FlxG.save.data.wasJustInPause = false;
+           	FlxG.save.data.wasJustInPause = null;
            	FlxG.switchState(new PlayState());
 		});
      }
-     if (controls.BACK && FlxG.save.data.wasJustInPause == false && subStateOpen == false && MainOptionsOpen == true) {
+     if (controls.BACK && FlxG.save.data.wasJustInPause == null && subStateOpen == false && MainOptionsOpen == true) {
 		new FlxTimer().start(0.10, function(timer) {
 			FlxG.switchState(new MainMenuState());
 		});
