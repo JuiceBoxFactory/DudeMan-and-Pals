@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="playSpritesheet.png">
+<SubTexture name="aintNoWay0000" x="127" y="0" width="126" height="106" frameX="-21" frameY="-28" frameWidth="150" frameHeight="150" />
+<SubTexture name="aintNoWay0001" x="0" y="0" width="127" height="107" frameX="-21" frameY="-27" frameWidth="150" frameHeight="150" />
+</TextureAtlas>

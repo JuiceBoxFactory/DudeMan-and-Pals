@@ -1,1 +1,18 @@
-null
+{
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"beatsPerMesure": 4,
+	"bpm": 158,
+	"bio": "im so evil",
+	"actoresses": "artist: Saayo\ncoverer: Saayo\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: Saayo",
+	"difficulties": [
+		"Hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -13893888,
+	"displayName": "Free-4-Me",
+	"icon": "Icon",
+	"name": "obituary",
+	"color": "#2BFF00"
+}

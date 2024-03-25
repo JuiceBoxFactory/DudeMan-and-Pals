@@ -88,8 +88,8 @@ for (obj in [accuracyTxt])
 function postUpdate() {
 if (PlayState.SONG.meta.name != "lighthouse") {
 	if (!FlxG.save.data.xbox) {
-	iconP1.x = 595;
-	iconP2.x = 525;
+	iconP1.x = 600;
+	iconP2.x = 530;
 		}
 	if (FlxG.save.data.xbox) {
 	iconP1.x = 200;

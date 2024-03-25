@@ -18,6 +18,26 @@ function postCreate() {
 
 function postUpdate() {
 
+	if (PlayState.SONG.meta.name == "obituary" && curStep > 881) {
+	    switch(strumLines.members[0].characters[0].getAnimName()) {
+	        case "singLEFT": 
+	            camFollow.x -= cammove;
+	            camGame.angle = (lerp(camGame.angle, -angleVar - 10, angleMoveSpeed));
+	        case "singDOWN": 
+	            camFollow.y += cammove;
+	            camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
+			 camHUD.angle = (lerp(camHUD.angle, 0, angleMoveSpeed));
+	        case "singUP": 
+	            camFollow.y -= cammove;
+	            camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
+ 	            camHUD.angle = (lerp(camHUD.angle, 0, angleMoveSpeed));
+	        case "singRIGHT": 
+	            camFollow.x += cammove;
+  	          camGame.angle = (lerp(camGame.angle, angleVar + 10, angleMoveSpeed));
+	        case "idle", "hey":
+ 	           camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
+	    }
+	}
 	if (FlxG.save.data.goodCamera) {
 	    switch(strumLines.members[0].characters[0].getAnimName()) {
 	        case "singLEFT": 
@@ -80,7 +100,6 @@ function postUpdate() {
  	           camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
     	}
 }
-
 	if (PlayState.SONG.meta.name != "lighthouse" && !FlxG.save.data.goodCamera) {
 	    switch(strumLines.members[0].characters[0].getAnimName()) {
 	        case "singLEFT": 

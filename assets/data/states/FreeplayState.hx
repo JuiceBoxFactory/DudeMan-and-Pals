@@ -24,7 +24,7 @@ import discord_rpc.DiscordRpc;
 var mainArray:Array<String> = ["dude"];
 var extrasArray:Array<String> = ["lemon", "slashgen", "die"];
 var palsArray:Array<String> = ["skyblue", "misconduct", "roomed", "sizssoers", "lighthouse"];
-var coversArray:Array<String> = ["dude"];
+var coversArray:Array<String> = ["obituary"];
 var devArray:Array<String> = ["pastelfever", "lemon", "somari", "dude", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange"];
 var songL:FlxTypedGroup<FlxText> = [];
 

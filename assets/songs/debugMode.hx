@@ -1,7 +1,9 @@
 import flixel.text.FlxTextBorderStyle;
+import flixel.util.FlxTimer;
 
 var freeRoam = false;
 var camFollowing = true;
+var botplay = false;
 var instructionsGone = false;
 
 function create() {
@@ -13,22 +15,71 @@ function create() {
 function postCreate() {
 
 	if (FlxG.save.data.debug) {	
-		welcometxt = new FlxText(275, 0, 1000, "Ur in Debug Mode !\nyou can press SPACE to toggle freeroam with the game camera\nwhile in freeroam mode, you can use IJKL to move the camera, and Q + E to zoom it !\npress TAB to hide this text (you can press it again to bring it back)", 0);
+	
+		if (FlxG.save.data.botplay == true) {
+			botplay = true;
+		}
+		if (FlxG.save.data.botplay == false) {
+			botplay = false;
+		}
+
+		welcometxt = new FlxText(275, 0, 1000, "Ur in Debug Mode !\nyou can press SPACE to toggle freeroam with the game camera\nwhile in freeroam mode, you can use IJKL to move the camera, and Q + E to zoom it !\nyou can press CTRL to toggle botplay yahoo\npress TAB to hide this text (you can press it again to bring it back)", 0);
      		welcometxt.setFormat(Paths.font("COMIC.ttf"), 22, FlxColor.WHITE, "right", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
      		welcometxt.borderColor = 0xFF06000C;
      		welcometxt.cameras = [camHUD];
      		welcometxt.borderSize = 3;
      		add(welcometxt);
+
+		infotxt = new FlxText(275, 520, 1000, ":Freeroam\n:Botplay", 0);
+     		infotxt.setFormat(Paths.font("COMIC.ttf"), 22, FlxColor.WHITE, "right", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+     		infotxt.borderColor = 0xFF06000C;
+     		infotxt.cameras = [camHUD];
+     		infotxt.borderSize = 3;
+     		add(infotxt);
+
+		Freeroamtxt = new FlxText(160, 520, 1000, ""+freeRoam, 0);
+     		Freeroamtxt.setFormat(Paths.font("COMIC.ttf"), 22, FlxColor.WHITE, "right", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+     		Freeroamtxt.borderColor = 0xFF06000C;
+     		Freeroamtxt.cameras = [camHUD];
+     		Freeroamtxt.borderSize = 3;
+     		add(Freeroamtxt);
+
+		Botplaytxt = new FlxText(185, 550, 1000, ""+botplay, 0);
+     		Botplaytxt.setFormat(Paths.font("COMIC.ttf"), 22, FlxColor.WHITE, "right", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+     		Botplaytxt.borderColor = 0xFF06000C;
+     		Botplaytxt.cameras = [camHUD];
+     		Botplaytxt.borderSize = 3;
+     		add(Botplaytxt);
+
 	}
 }
 
 function postUpdate() {
 
 	if (FlxG.save.data.debug) {
+		Botplaytxt.text = botplay;
+		Freeroamtxt.text = freeRoam;
+
 		if (FlxG.keys.pressed.TAB && instructionsGone == false) {
 			new FlxTimer().start(0.10, function(timer) {
 				instructionsGone = true;
 				welcometxt.alpha = 0;
+			});
+		}
+		if (botplay == true) {
+			FlxG.save.data.botplay = true;
+		}
+		if (botplay == false) {
+			FlxG.save.data.botplay = false;
+		}
+		if (FlxG.keys.justPressed.CONTROL && 	botplay == false) {
+			new FlxTimer().start(0.10, function(timer) {
+				botplay = true;			
+			});
+		}
+		if (FlxG.keys.justPressed.CONTROL && 	botplay == true) {
+			new FlxTimer().start(0.10, function(timer) {
+				botplay = false;		
 			});
 		}
 		if (FlxG.keys.pressed.TAB && instructionsGone == true) {

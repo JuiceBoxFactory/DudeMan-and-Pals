@@ -18,7 +18,8 @@ function create() {
 	}
 	if (FlxG.save.data.ghosttap == false) {
 		ghostTapping = false;
-	}
+	}	
+
 	if (FlxG.save.data.botplay == true) {
 		player.cpu = true;
 		
@@ -34,9 +35,10 @@ function create() {
 		BottomText.borderSize = 3;
 		add(BottomText);
 	}
+	
 	if (FlxG.save.data.botplay == false) {
 		player.cpu = false;
-	}	
+	}
 
 	if (FlxG.save.data.middlescroll == true) {
 		for (i in playerStrums.members) 
@@ -44,4 +46,15 @@ function create() {
 		for (i in cpuStrums.members) 
 		FlxTween.tween(i, {x: i.x -923}, 1, {ease: FlxEase.smootherStepInOut}); 
         }	
+}
+
+function update() {
+
+	if (FlxG.save.data.botplay == true) {
+		player.cpu = true;
+	}
+	if (FlxG.save.data.botplay == false) {
+		player.cpu = false;
+	}
+
 }

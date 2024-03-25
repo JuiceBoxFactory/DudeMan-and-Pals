@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character imagePath="KathyDOTEXE.png" x="0" icon="kathy" y="0" isGF="false" isPlayer="false" sprite="kathyexe2">
+<character imagePath="KathyDOTEXE.png" x="0" icon="kathyObituary2" y="0" color="#5D005A" isGF="false" isPlayer="false" sprite="kathyexe2">
 	<anim x="0" loop="true" y="0" fps="6" anim="k idle" name="idle"/>
 	<anim x="60" loop="false" y="0" fps="12" anim="k left" name="singLEFT"/>
 	<anim x="-35" loop="false" y="-5" fps="12" anim="k down" name="singDOWN"/>
