@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dudebutmetalpipe.png">
+<SubTexture name="d idle0000" x="718" y="528" width="240" height="323" frameX="-229" frameY="-227" frameWidth="640" frameHeight="640" />
+<SubTexture name="d idle0001" x="478" y="528" width="240" height="326" frameX="-231" frameY="-224" frameWidth="640" frameHeight="640" />
+<SubTexture name="d idle0002" x="239" y="528" width="239" height="327" frameX="-233" frameY="-223" frameWidth="640" frameHeight="640" />
+<SubTexture name="d idle0003" x="825" y="0" width="239" height="328" frameX="-235" frameY="-221" frameWidth="640" frameHeight="640" />
+<SubTexture name="d idle0004" x="0" y="528" width="239" height="328" frameX="-237" frameY="-221" frameWidth="640" frameHeight="640" />
+<SubTexture name="d ow0000" x="0" y="0" width="426" height="528" frameX="-140" frameY="-21" frameWidth="640" frameHeight="640" />
+<SubTexture name="d ow0001" x="426" y="0" width="399" height="511" frameX="-154" frameY="-39" frameWidth="640" frameHeight="640" />
+<SubTexture name="d ow0002" x="1064" y="0" width="447" height="317" frameX="-120" frameY="-233" frameWidth="640" frameHeight="640" />
+<SubTexture name="d ow0003" x="0" y="856" width="448" height="317" frameX="-120" frameY="-233" frameWidth="640" frameHeight="640" />
+</TextureAtlas>

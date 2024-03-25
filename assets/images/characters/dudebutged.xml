@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dudebutged.png">
+<SubTexture name="d down0000" x="652" y="922" width="293" height="350" frameX="-161" frameY="-216" frameWidth="640" frameHeight="640" />
+<SubTexture name="d down0001" x="945" y="922" width="291" height="350" frameX="-163" frameY="-215" frameWidth="640" frameHeight="640" />
+<SubTexture name="d idle0000" x="1048" y="418" width="266" height="416" frameX="-232" frameY="-140" frameWidth="640" frameHeight="640" />
+<SubTexture name="d idle0001" x="263" y="485" width="264" height="429" frameX="-233" frameY="-127" frameWidth="640" frameHeight="640" />
+<SubTexture name="d idle0002" x="0" y="485" width="263" height="437" frameX="-235" frameY="-119" frameWidth="640" frameHeight="640" />
+<SubTexture name="d idle0003" x="515" y="0" width="265" height="441" frameX="-237" frameY="-115" frameWidth="640" frameHeight="640" />
+<SubTexture name="d idle0004" x="780" y="0" width="268" height="441" frameX="-239" frameY="-115" frameWidth="640" frameHeight="640" />
+<SubTexture name="d left0000" x="0" y="922" width="326" height="396" frameX="-107" frameY="-164" frameWidth="640" frameHeight="640" />
+<SubTexture name="d left0001" x="326" y="922" width="326" height="394" frameX="-108" frameY="-165" frameWidth="640" frameHeight="640" />
+<SubTexture name="d right0000" x="527" y="485" width="431" height="418" frameX="-185" frameY="-120" frameWidth="640" frameHeight="640" />
+<SubTexture name="d right0001" x="1048" y="0" width="431" height="418" frameX="-185" frameY="-119" frameWidth="640" frameHeight="640" />
+<SubTexture name="d up0000" x="0" y="0" width="258" height="485" frameX="-271" frameY="-66" frameWidth="640" frameHeight="640" />
+<SubTexture name="d up0001" x="258" y="0" width="257" height="485" frameX="-269" frameY="-66" frameWidth="640" frameHeight="640" />
+</TextureAtlas>
