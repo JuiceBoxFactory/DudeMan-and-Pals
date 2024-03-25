@@ -593,7 +593,7 @@ function update() {
 		Downscroll.alpha = 1;	
 	}
 	if (SelectedGameplay == 1 && GameplayOptionsOpen == true) {
-		BottomText.text = "Somehow isnt in normal codename";
+		BottomText.text = "Somehow isnt in normal codename. messes stuff up in a select few songs";
 		Botplay.alpha = 1;
 	}
 	if (SelectedGameplay == 2 && GameplayOptionsOpen == true) {

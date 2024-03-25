@@ -1,4 +1,5 @@
 //import lime.system.System;
+import flixel.FlxCamera;
 var time = 0;
 var flippingthisfaggot = false;
 var baldBoyDirection = false;
@@ -9,6 +10,10 @@ var valentinesNumber = 0;
 var valentinesDir = false;
 
 function postCreate() {
+
+	cantTouchThisCam = new FlxCamera(0, 0, 1280, 720);
+	cantTouchThisCam.bgColor = FlxColor.TRANSPARENT;
+	FlxG.cameras.add(cantTouchThisCam, false);
 
 	valentinesNumber = FlxG.random.int(0,1);
 
@@ -53,20 +58,20 @@ function postCreate() {
 		Xbox = new FlxSprite();
 		Xbox.makeGraphic(1920, 1080, FlxColor.GREEN);
 		Xbox.alpha = 0.3;
-		Xbox.cameras = [camHUD];
+		Xbox.cameras = [cantTouchThisCam];
 		insert(8, Xbox);
 
-		tvOverlay= new FlxSprite(0, 0).loadGraphic(Paths.image('secretsettings/xbox/tvoverlay'));
+		tvOverlay= new FlxSprite(0, 75).loadGraphic(Paths.image('secretsettings/xbox/tvoverlay'));
 		tvOverlay.scrollFactor.set(0, 0);
-		tvOverlay.scale.set(1, 1);
-		tvOverlay.cameras = [camHUD];
+		tvOverlay.scale.set(1.3, 1.3);
+		tvOverlay.cameras = [cantTouchThisCam];
 		insert(9, tvOverlay);
 
 		fuckingController= new FlxSprite(140, 300).loadGraphic(Paths.image('secretsettings/xbox/thatfuckingcontroller'));
 		fuckingController.scrollFactor.set(0, 0);
 		fuckingController.scale.set(0.6, 0.4);
-		fuckingController.cameras = [camHUD];
-		insert(80, fuckingController);
+		fuckingController.cameras = [cantTouchThisCam];
+		insert(11, fuckingController);
 		
     		camGame.zoom -= 0.2;
     		camGame.y -= 50;
@@ -94,7 +99,7 @@ function postCreate() {
 		nightmare.scrollFactor.set(0, 0);
 		//nightmare.screenCenter();
 		nightmare.alpha = 0;
-		nightmare.cameras = [camHUD];
+		nightmare.cameras = [cantTouchThisCam];
 		insert(667, nightmare);
 	}
 }

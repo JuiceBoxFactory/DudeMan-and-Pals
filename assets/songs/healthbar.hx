@@ -71,6 +71,12 @@ if (FlxG.save.data.xbox) {
 	missesTxt.x -= 430;
 	scoreTxt.x -= 525;
 
+	for (obj in [iconP1, iconP2, healthBar, missesTxt, scoreTxt])
+    	obj.y -= 75;
+
+	for (obj in [iconP1, iconP2, healthBar, missesTxt, scoreTxt])
+    	obj.x += 75;
+
 		}
 	}
 
@@ -86,8 +92,8 @@ if (PlayState.SONG.meta.name != "lighthouse") {
 	iconP2.x = 525;
 		}
 	if (FlxG.save.data.xbox) {
-	iconP1.x = 125;
-	iconP2.x = 50;
+	iconP1.x = 200;
+	iconP2.x = 125;
 		}
 	}
 }
