@@ -5,6 +5,29 @@ function new() {
     window.setIcon(Image.fromBytes(File.getBytes('assets/data/modIcon.png')));
 }
 
+function create() {
+
+	if (FlxG.save.data.wheresGarfield == null) {
+		FlxG.save.data.downscroll = false;
+		FlxG.save.data.botplay = false;
+		FlxG.save.data.ghosttap = true;
+		FlxG.save.data.notebounce = true;
+		FlxG.save.data.middlescroll = false;
+		FlxG.save.data.debug = false;
+		FlxG.save.data.xbox = false;
+		FlxG.save.data.horse = false;
+		FlxG.save.data.baldiStyle = false;
+		FlxG.save.data.hitsounds = false;
+		FlxG.save.data.geomtery = false;
+		FlxG.save.data.nightmare = false;
+		FlxG.save.data.goodCamera = false;
+		FlxG.save.data.MelTabs = false;
+		FlxG.save.data.subtitles = true;
+		FlxG.save.data.camMove = true;
+	}
+
+}
+
 function update(elapsed) {
 
     if (FlxG.keys.justPressed.F5)

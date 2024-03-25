@@ -89,7 +89,7 @@ function postUpdate() {
 if (PlayState.SONG.meta.name != "lighthouse") {
 	if (!FlxG.save.data.xbox) {
 	iconP1.x = 600;
-	iconP2.x = 530;
+	iconP2.x = 525;
 		}
 	if (FlxG.save.data.xbox) {
 	iconP1.x = 200;
