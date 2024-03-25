@@ -51,7 +51,7 @@ function create() {
 		FlxG.save.data.horse = false;
 		FlxG.save.data.baldiStyle = false;
 		FlxG.save.data.hitsounds = false;
-		FlxG.save.data.geometry = false;
+		FlxG.save.data.geomtery = false;
 		FlxG.save.data.nightmare = false;
 		FlxG.save.data.goodCamera = false;
 		trace("set to default settings");
@@ -866,21 +866,21 @@ function postUpdate() {
 		FlxG.save.data.hitsounds = false;
 		});
 	}
-	if (FlxG.save.data.geometry == true) {
+	if (FlxG.save.data.geomtery == true) {
 		checkboxGeometry.animation.play('selected');
 	}
-	if (FlxG.save.data.geometry == false) {
+	if (FlxG.save.data.geomtery == false) {
 		checkboxGeometry.animation.play('disselected');
 	}
-	if (SelectedSecret == 5 && SecretOptionsOpen == true && FlxG.save.data.geometry == false && controls.ACCEPT) {
+	if (SelectedSecret == 5 && SecretOptionsOpen == true && FlxG.save.data.geomtery == false && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
-		FlxG.save.data.geometry = true;
+		FlxG.save.data.geomtery = true;
 		});
 	}
-	if (SelectedSecret == 5 && SecretOptionsOpen == true && FlxG.save.data.geometry == true && controls.ACCEPT) {
+	if (SelectedSecret == 5 && SecretOptionsOpen == true && FlxG.save.data.geomtery == true && controls.ACCEPT) {
 		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
-		FlxG.save.data.geometry = false;
+		FlxG.save.data.geomtery = false;
 		});
 	}
 	if (FlxG.save.data.nightmare == true) {
