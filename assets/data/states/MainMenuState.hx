@@ -55,7 +55,7 @@ function update() {
    	 	}
 	if (FlxG.keys.justPressed.O) {
 		FlxG.sound.play(Paths.sound('confirm'));
-		FlxG.switchState(new ModState("DudeOptionsState"));
+		FlxG.switchState(new OptionsMenu());
    	 	}
 	if (SelectedButton == 0 && controls.ACCEPT) {
 		FlxG.sound.play(Paths.sound('confirm'));
@@ -67,7 +67,7 @@ function update() {
    	 	}
 	if (SelectedButton == 2 && controls.ACCEPT) {
 		FlxG.sound.play(Paths.sound('confirm'));
-		FlxG.switchState(new OptionsMenu());
+		FlxG.switchState(new ModState("DudeOptionsState"));
    	 	}
 	if (SelectedButton == 3 && controls.ACCEPT) {
 		FlxG.sound.play(Paths.sound('confirm'));
