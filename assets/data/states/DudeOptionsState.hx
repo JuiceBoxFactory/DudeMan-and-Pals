@@ -681,8 +681,10 @@ function postUpdate() {
            	FlxG.switchState(new PlayState());
 		});
      }
-     if (FlxG.save.data.wasJustInPause == false && controls.BACK && subStateOpen == false && MainOptionsOpen == true) {
-		FlxG.switchState(new MainMenuState());
+     if (controls.BACK && FlxG.save.data.wasJustInPause == false && subStateOpen == false && MainOptionsOpen == true) {
+		new FlxTimer().start(0.10, function(timer) {
+			FlxG.switchState(new MainMenuState());
+		});
 	}
      if (controls.BACK && MainOptionsOpen == false) {
 			GameplayOptionsOpen = false;
