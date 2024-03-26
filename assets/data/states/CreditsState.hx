@@ -161,7 +161,7 @@ function update() {
 	case 14:
 		devs.loadGraphic(Paths.image('credits/devs/kozmo'));
 		devname.text = 'Kozmorama';
-		thingsdone.text = 'VA\nCoded Website\n\n\n\n\n"im gonna cut open my scrotum and juggle my testicles"';
+		thingsdone.text = 'My dear friend,\nOriginally was gonna code the website\nhowever, that never got to happen\nI hope the stars are nice up there Kozmo.\nheres their qoute, cuz I think they d want me to keep it.\n"im gonna cut open my scrotum and juggle my testicles"';
 	case 15:
 		devs.loadGraphic(Paths.image('credits/devs/frumpo'));
 		devname.text = 'frumpo';
