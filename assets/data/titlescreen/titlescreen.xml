@@ -10,7 +10,7 @@
 		<titleEnter sprite="titleEnter" x="-150" y="-100" />
 	</sprites>
 
-	<intro length="16">
+	<intro length="0">
 		<text beat="1">
 			<line text="ninjamuffin99" />
 			<line text="phantomArcade" />

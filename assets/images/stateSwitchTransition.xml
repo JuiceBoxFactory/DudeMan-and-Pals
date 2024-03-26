@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="stateSwitchTransition.png">
+<SubTexture name="close0000" x="0" y="0" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="close0001" x="1292" y="0" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="close0002" x="0" y="732" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="close0003" x="1292" y="732" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="close0004" x="0" y="1464" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="close0005" x="1292" y="1464" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="close0006" x="2584" y="0" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="open0000" x="2584" y="732" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="open0001" x="2584" y="732" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="open0002" x="2584" y="732" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="open0003" x="2584" y="732" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="open0004" x="2584" y="732" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="open0005" x="2584" y="732" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="open0006" x="2584" y="732" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="open0007" x="0" y="1464" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="open0008" x="2584" y="1464" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="open0009" x="1292" y="0" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="open0010" x="0" y="0" width="1292" height="732" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

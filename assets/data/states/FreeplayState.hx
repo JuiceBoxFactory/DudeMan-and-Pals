@@ -13,6 +13,7 @@ import funkin.game.HealthIcon;
 import funkin.savedata.FunkinSave;
 import haxe.Json;
 import funkin.backend.system.Controls;
+import flixel.util.FlxTimer;
 import flixel.FlxCamera;
 import flixel.addons.display.FlxBackdrop;
 import flixel.text.FlxTextBorderStyle;
@@ -174,7 +175,7 @@ function update() {
 function postUpdate() {
 
 	if (controls.BACK) {
-	FlxG.switchState(new ModState("FreeplaySelector"));
+			FlxG.switchState(new ModState("FreeplaySelector"));
 	}
 
 }

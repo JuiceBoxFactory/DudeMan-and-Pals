@@ -20,6 +20,12 @@ function postCreate() {
 	}
 }
 
+//function onPlayerHit(event) {
+//		if (FlxG.save.data.goodCamera) {
+//			angleVar * 1.1;
+// 		}
+//	}
+
 function postUpdate() {
 
 	if (PlayState.SONG.meta.name == "obituary" && curStep > 881) {

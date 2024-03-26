@@ -9,15 +9,16 @@ import flixel.FlxState;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import flixel.addons.display.FlxBackdrop;
+import flixel.text.FlxTextBorderStyle;
 import lime.utils.Assets;
 import funkin.game.HealthIcon;
 import funkin.savedata.FunkinSave;
 import haxe.Json;
 import flixel.FlxSubState;
 import funkin.backend.system.Controls;
+import flixel.util.FlxTimer;
 import flixel.FlxCamera;
-import flixel.addons.display.FlxBackdrop;
-import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxSave;
 import funkin.backend.utils.DiscordUtil;
 import funkin.backend.scripting.events.DiscordPresenceUpdateEvent;
@@ -541,7 +542,7 @@ function postCreate() {
 	title.cameras = [borderCamera];
 	title.updateHitbox();
 	add(title);
-	
+		
 }
 
 function resetSettings() {
@@ -798,7 +799,7 @@ function postUpdate() {
 		});
      }
      if (controls.BACK && FlxG.save.data.wasJustInPause == null && subStateOpen == false && MainOptionsOpen == true) {
-		new FlxTimer().start(0.10, function(timer) {
+		new FlxTimer().start(1, function(timer) {
 			FlxG.switchState(new MainMenuState());
 		});
 	}
