@@ -1,0 +1,6 @@
+<!DOCTYPE codename-mod-options>
+<!-- TEMPLATE FOR CUSTOM OPTIONS!!! -->
+<menu name="Stairbreaker" desc="stairbreaker options">
+	<checkbox id="flights" name="Flashing Lights" />
+	<checkbox id="sex" name="PG Sans" desc="Enable this to remove the sus sans in BBG!"/>
+</menu>

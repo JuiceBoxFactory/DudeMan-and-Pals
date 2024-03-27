@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="1.8" name="stage" folder="">
+	<sprite name="bg"               x="400" y="0"   sprite="flash"       scroll="0" scale="8"/>
+	<sprite name="grad"               x="400" y="-4000"   sprite="sexygradient"       scroll="0" scale="1"/>
+	<dad x="400"/>
+	<girlfriend scale="0" />
+	<boyfriend x="1400"/>
+</stage>

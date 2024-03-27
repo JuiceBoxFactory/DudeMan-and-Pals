@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.9" name="stage" folder="stages/scape/">
+	<girlfriend />
+	<sprite name="bg"               x="-700" y="-200"   sprite="bg"       scroll="0.7" scale="0.8" antialiasing="false"/>
+	<sprite name="stageFront"       x="-300" y="-130"    sprite="ground"   scroll="1" scale="1.2" antialiasing="false"/>
+	<dad />
+	<boyfriend />
+	<sprite name="scare"       x="0" y="0"    sprite="jumpscare"   scroll="0" scale="1.2" antialiasing="true"/>
+</stage>

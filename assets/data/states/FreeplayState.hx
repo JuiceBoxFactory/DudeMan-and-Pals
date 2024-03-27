@@ -23,10 +23,10 @@ import funkin.backend.scripting.events.DiscordPresenceUpdateEvent;
 import discord_rpc.DiscordRpc;
 
 var mainArray:Array<String> = ["dude"];
-var extrasArray:Array<String> = ["lemon", "slashgen", "die"];
+var extrasArray:Array<String> = ["lemon", "slashgen", "die", "kockbuddies"];
 var palsArray:Array<String> = ["skyblue", "misconduct", "roomed", "sizssoers", "lighthouse"];
 var coversArray:Array<String> = ["obituary"];
-var devArray:Array<String> = ["pastelfever", "lemon", "somari", "dude", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange"];
+var devArray:Array<String> = ["pastelfever", "lemon", "somari", "dude", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange", "obituary", "kockbuddies"];
 var songL:FlxTypedGroup<FlxText> = [];
 
 function new() { 

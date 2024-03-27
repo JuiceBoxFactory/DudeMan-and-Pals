@@ -10,14 +10,22 @@ var tipText:Array<String> = [
 "lowkey, im better than you at this game.",
 "9364 WI-16 onalaska, WI",
 "Bob V3",
-"Peakest mod to Exist.. totally"
+"Peakest mod to Exist.. totally",
+"Im gonna put a toothbrush up your ass",
+"what the poop",
+"Have a tip, pal",
+"Give me your money, MeltyKelpy",
+"Can you P-Rank my dude, man ?",
+"Weclome to dude, man...?",
+"Welcome to my Galaxy",
+"I hate tadpoles",
+"oogali boogaliii ( that was a clown. )",
+"did you know that there is secret settings ?? they're.. soooo well hidden... bet u cant find them..... heh heh... yeah."
 
 ];
 var tipTextChosen = "null";
 
 function postCreate() {
-
-	tipTextChosen = tipText[FlxG.random.int(0,3)];
 
 	coolBackdrop = new FlxBackdrop(Paths.image('titleScreen/checkerboardbg'));
 	coolBackdrop.moves = true;
@@ -80,6 +88,8 @@ function postCreate() {
 	enterTxt.x += 0;
 	enterTxt.y += 325;
 	add(enterTxt);
+
+	updateTxt();
 	
 	new FlxTimer().start(7, function(tmr:FlxTimer) {
 		updateTxt();
@@ -96,7 +106,7 @@ function update() {
 }
 
 function updateTxt() {
-	tipTextChosen = tipText[FlxG.random.int(0,4)];
+	tipTextChosen = tipText[FlxG.random.int(0,14)];
 	tipTxt.text = "Tip:\n"+tipTextChosen;
 	tipTxt.screenCenter();		
 	tipTxt.y += 75;

@@ -1,0 +1,18 @@
+{
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"beatsPerMesure": 4,
+	"bpm": 155,
+	"difficulties": [
+		"Hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -13893888,
+	"displayName": "Kock Buddies",
+	"bio": "nothingnothingnothingnothingnothing",
+	"actoresses": "artist: MeltyKelpy\ncomposer: kosejumpscare\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: MeltyKelpy",
+	"icon": "Icon",
+	"name": "kockbuddies",
+	"color": "#2BFF00"
+}

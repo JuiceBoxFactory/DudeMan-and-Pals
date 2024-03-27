@@ -1,0 +1,14 @@
+<!DOCTYPE codename-engine-character>
+<character isPlayer="false" flipX="false" holdTime="6.1" x="-550" y="40" camX="-150" camY="-77" scale="1.1"> <!-- CONVERTED VIA psychjsontocodenamexml.py by Burgerballs -->
+
+   <anim name="singLEFT" anim="overyou_left" loop="false" x="-8" y="40"/>
+   <anim name="singDOWN" anim="overyou_down" loop="false" x="-22" y="18"/>
+   <anim name="singUP" anim="overyou_up" loop="false" x="-50" y="77"/>
+   <anim name="singRIGHT" anim="overyou_right" loop="false" x="-50" y="42"/>
+   <anim name="smile" anim="smileLMAO" fps="4" loop="false" x="-49" y="51"/>
+   <anim name="kiss" anim="kiss" fps="4" loop="true" x="-50" y="51"/>
+   <anim name="laugh" anim="laugh" fps="4" loop="false" x="-51" y="-3"/>
+   <anim name="" anim="" loop="false" x="0" y="0"/>
+   <anim name="idle" anim="overyou_idle" fps="18" loop="true" x="-1" y="-3"/>
+
+</character>
