@@ -21,7 +21,7 @@ function create() {
 
 	FlxG.cameras.add(deathCam, false);
 	
-	if (chance < 50) {
+	if (chance < 49) {
 	deathQoutes = new FlxSprite(0, 0);
 	deathQoutes.scrollFactor.set(0, 0);
 	deathQoutes.loadGraphic(Paths.image('deathScreens/'+PlayState.SONG.meta.name));
@@ -37,10 +37,10 @@ function create() {
 	}
 	
 	if (PlayState.SONG.meta.name == "lighthouse") {
-	chance = FlxG.random.int(0,50);
+	chance = FlxG.random.int(0,49);
 	}
 
-	if (chance == 50) {
+	if (chance == 49) {
 	curVideo = new FlxVideo();
 	curVideo.onEndReached.add(curVideo.dispose);
 	var path = Paths.file("videos/lighthouseRoomforonemore.mp4");
@@ -52,11 +52,9 @@ function create() {
 }
 
 function update() {
-	if (chance == 50) {	
+	if (chance == 49) {	
 	lossSFX.volume = 0;
-	if (FlxG.sound.music != null) {
-	FlxG.sound.music.stop();
-		}
+	FlxG.sound.playMusic(Paths.music('gallery'), 0, true);
 	}
 
 	if (controls.ACCEPT) {
