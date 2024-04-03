@@ -799,7 +799,7 @@ function postUpdate() {
 		});
      }
      if (controls.BACK && FlxG.save.data.wasJustInPause == null && subStateOpen == false && MainOptionsOpen == true) {
-		new FlxTimer().start(1, function(timer) {
+		new FlxTimer().start(0.1, function(timer) {
 			FlxG.switchState(new MainMenuState());
 		});
 	}
