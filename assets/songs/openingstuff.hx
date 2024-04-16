@@ -14,9 +14,7 @@ function create() {
 
 function onCountdown(event) {
     if (event.swagCounter == 0) {
-        FlxTween.tween(camHUD, {alpha: 1}, 4, {ease:FlxEase.quartOut});
-    }
-    if (event.swagCounter == 3) {
-	    FlxTween.tween(openingblack, {alpha: 0}, 2, {ease:FlxEase.quartOut});
+        FlxTween.tween(camHUD, {alpha: 1}, 1.5);
+	    FlxTween.tween(openingblack, {alpha: 0}, 1.5);
 	}
 }
