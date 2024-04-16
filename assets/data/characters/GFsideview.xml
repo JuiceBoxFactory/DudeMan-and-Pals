@@ -1,4 +1,4 @@
 <!DOCTYPE codename-engine-character>
-<character x="410" icon="ourple" camx="-125" y="30" isGF="false" camy="30" color="#C777FF" flipX="false" isPlayer="false" antialiasing="false" sprite="sideviewGF">
+<character x="410" icon="ourple" camx="-125" y="30" isGF="false" camy="75" color="#C777FF" flipX="false" isPlayer="false" antialiasing="false" sprite="sideviewGF">
 	<anim x="0" loop="false" y="0" fps="6" anim="sideviewGF idle" name="idle"/>
 </character>

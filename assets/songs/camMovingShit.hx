@@ -26,6 +26,19 @@ function postCreate() {
 // 		}
 //	}
 
+function stepHit(curStep:Int) {
+if (PlayState.SONG.meta.name == "orangejuice") {
+    switch (curStep) {
+	case 256:
+		angleMoveSpeed = 0;
+		angleVar = 0;
+	case 320:
+ 		angleMoveSpeed = 0.10;
+		angleVar = 0.47;
+	}
+    }
+}
+
 function postUpdate() {
 
 	if (PlayState.SONG.meta.name == "obituary" && curStep > 881) {

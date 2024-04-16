@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="OJ.png">
+<SubTexture name="idle0000" x="211" y="0" width="78" height="153" frameX="-212" frameY="-196" frameWidth="512" frameHeight="512" />
+<SubTexture name="idle0001" x="289" y="0" width="78" height="153" frameX="-212" frameY="-196" frameWidth="512" frameHeight="512" />
+<SubTexture name="right0000" x="105" y="175" width="113" height="147" frameX="-226" frameY="-202" frameWidth="512" frameHeight="512" />
+<SubTexture name="right0001" x="0" y="175" width="105" height="148" frameX="-224" frameY="-201" frameWidth="512" frameHeight="512" />
+<SubTexture name="down0000" x="0" y="323" width="99" height="115" frameX="-203" frameY="-233" frameWidth="512" frameHeight="512" />
+<SubTexture name="down0001" x="367" y="141" width="96" height="123" frameX="-203" frameY="-225" frameWidth="512" frameHeight="512" />
+<SubTexture name="left0000" x="367" y="0" width="119" height="141" frameX="-175" frameY="-209" frameWidth="512" frameHeight="512" />
+<SubTexture name="left0001" x="218" y="175" width="121" height="146" frameX="-177" frameY="-204" frameWidth="512" frameHeight="512" />
+<SubTexture name="up0000" x="0" y="0" width="106" height="175" frameX="-206" frameY="-175" frameWidth="512" frameHeight="512" />
+<SubTexture name="up0001" x="106" y="0" width="105" height="172" frameX="-207" frameY="-179" frameWidth="512" frameHeight="512" />
+</TextureAtlas>
