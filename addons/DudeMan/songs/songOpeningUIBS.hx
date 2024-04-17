@@ -2,7 +2,7 @@ import flixel.util.FlxSave;
 import flixel.util.FlxTimer;
 import flixel.text.FlxTextBorderStyle;
 
-var startingStep = 0;
+var startingStep = PlayState.SONG.meta.appearStep;
 
 function postCreate() {
 

@@ -1,19 +1,22 @@
 {
+	"beatsPerMeasure": 4,
 	"opponentModeAllowed": false,
 	"coopAllowed": false,
 	"stepsPerBeat": 4,
-	"beatsPerMesure": 4,
-	"tagline": "find my red burgers",
-	"singerNames": "Antydote VS DudeMan (as DX-Gamebreaker)",
-	"actoresses2": "artist: MeltyKelpy    composer: ?\ncoder: ?    charter: ?",
 	"bpm": 195,
+	"displayName": "Whopper",
+	"name": "whopper",
+	"bio": "Anty when he the burger king",
+	"actoresses": "artist: MeltyKelpy\ncomposer: AussieDoesThings\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: MeltyKelpy",
+	"tagline": "collect my red burgers",
+	"singerNames": "Antydote VS DudeMan ( as DX-Gamebreaker )",
+	"actoresses2": "artist: MeltyKelpy    composer: ?\ncoder: ?    charter: ?",
+    "appearStep": 0,
 	"difficulties": [
 		"Hard"
 	],
 	"needsVoices": true,
-	"parsedColor": -13893888,
-	"displayName": "Whopper",
+	"parsedColor": -14156032,
 	"icon": "Icon",
-	"name": "whopper",
-	"color": "#2BFF00"
+	"color": "#27FF00"
 }
