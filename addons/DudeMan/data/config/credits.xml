@@ -1,0 +1,5 @@
+<!DOCTYPE codename-mod-credits>
+<!-- TEMPLATE FOR CUSTOM CREDITS!!! -->
+<menu name="PastelFever Credits" desc="Bleh">
+	<credit name="NeonExists" desc="I did all of it." icon="neonicon" size="130" url="https://twitter.com/NeonContext"/>
+</menu>
