@@ -20,10 +20,13 @@ var tipText:Array<String> = [
 "Welcome to my Galaxy",
 "I hate tadpoles",
 "oogali boogaliii ( that was a clown. )",
-"did you know that there is secret settings ?? they're.. soooo well hidden... bet u cant find them..... heh heh... yeah."
+"did you know that there is secret settings ?? they're.. soooo well hidden... bet u cant find them..... heh heh... yeah.",
+"wait.. my shirt... its off !!!",
+"Basketball Practice"
 
 ];
 var tipTextChosen = "null";
+var highestNum = 16;
 
 function postCreate() {
 
@@ -106,7 +109,7 @@ function update() {
 }
 
 function updateTxt() {
-	tipTextChosen = tipText[FlxG.random.int(0,14)];
+	tipTextChosen = tipText[FlxG.random.int(0,highestNum)];
 	tipTxt.text = "Tip:\n"+tipTextChosen;
 	tipTxt.screenCenter();		
 	tipTxt.y += 75;

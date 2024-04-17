@@ -24,7 +24,6 @@ function postCreate(){
 }
 
 function update() {	
-    	DiscordUtil.changePresence("goat, u in the main menu", null);
 	mans.loadGraphic(Paths.image('mainmenu/dudes/'+SelectedButton));
 
 	if (controls.BACK) {

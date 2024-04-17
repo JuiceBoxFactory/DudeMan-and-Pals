@@ -3,14 +3,17 @@
 	"coopAllowed": false,
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
+	"tagline": "find my red burgers",
+	"singerNames": "Antydote VS DudeMan (as DX-Gamebreaker)",
+	"actoresses2": "artist: MeltyKelpy    composer: ?\ncoder: ?    charter: ?",
 	"bpm": 195,
 	"difficulties": [
 		"Hard"
 	],
 	"needsVoices": true,
 	"parsedColor": -13893888,
-	"displayName": "MARIO SING AND GAME RYTHM 9",
+	"displayName": "Whopper",
 	"icon": "Icon",
-	"name": "somari",
+	"name": "whopper",
 	"color": "#2BFF00"
 }
