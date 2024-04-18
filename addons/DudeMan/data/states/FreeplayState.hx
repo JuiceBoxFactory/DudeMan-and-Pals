@@ -81,7 +81,7 @@ function create() {
             info1.borderSize = 2;
             add(info1);
 
-            info2 = new FlxText(0, 0, 250, "im goated", 0);
+            info2 = new FlxText(0, 0, 350, "im goated", 0);
             info2.text = songs[i].bio;
             info2.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
             info2.x = (1280 * i) + 403;

@@ -13,7 +13,7 @@ function postCreate() {
 	logo.alpha = 1;
 	logo.cameras = [camHUD];
 	logo.updateHitbox();
-	add(logo);
+	insert(40, logo);
 
 	openBox = new FlxSprite(325, 1200).loadGraphic(Paths.image('songOpening'));
 	openBox.antialiasing = false;
@@ -22,28 +22,28 @@ function postCreate() {
 	openBox.alpha = 1;
 	openBox.cameras = [camHUD];
 	openBox.updateHitbox();
-	add(openBox);
+	insert(41, openBox);
 
     tagLine = new FlxText(520, 0);
     tagLine.text = '"'+PlayState.SONG.meta.tagline+'"';
     tagLine.setFormat(Paths.font("COMIC.ttf"), 30, 0xFF190028, "center");
     tagLine.cameras = [camHUD];
     tagLine.antialiasing = false;
-    add(tagLine);
+    insert(42, tagLine);
 
     singerNames = new FlxText(0, 0);
     singerNames.text = PlayState.SONG.meta.singerNames;
     singerNames.setFormat(Paths.font("COMIC.ttf"), 27, 0xFF190028, "center");
     singerNames.cameras = [camHUD];
     singerNames.antialiasing = false;
-    add(singerNames);
+    insert(43, singerNames);
 
     actoresses = new FlxText(0, 0, 625);
     actoresses.text = PlayState.SONG.meta.actoresses2;
     actoresses.setFormat(Paths.font("COMIC.ttf"), 22, 0xFF190028, "center");
     actoresses.cameras = [camHUD];
     actoresses.antialiasing = false;
-    add(actoresses);
+    insert(44, actoresses);
 
 }
 
@@ -82,7 +82,7 @@ function stepHit(curStep:Int) {
     switch (curStep) {
         case startingStep:
             anim("appear");
-            new FlxTimer().start(4, function(timer) {
+            new FlxTimer().start(2.5, function(timer) {
                 anim("disappear");
             });
     }

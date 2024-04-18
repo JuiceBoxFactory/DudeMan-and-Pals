@@ -3,16 +3,20 @@
 	"coopAllowed": false,
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
-	"bio": "I won fair and square !",
+	"displayName": "Sizssoers",
+	"name": "sizssoers",
+	"bio": "I won fair and square !\n\nDax and Ghost play rock paper scissoers",
 	"actoresses": "artist: MeltyKelpy\ncomposer: kosejumpscare\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: MeltyKelpy",
+	"tagline": "I won fair and square !",
+	"singerNames": "GhostyBricks VS SkyBlueSilly(Dax)",
+	"actoresses2": "artist: MeltyKelpy    composer: kosejumpscare\ncoder: MeltyKelpy    charter: MeltyKelpy",
+    "appearStep": 16,
 	"bpm": 200,
 	"difficulties": [
 		"Hard"
 	],
 	"needsVoices": true,
 	"parsedColor": -13893888,
-	"displayName": "Sizssoers",
 	"icon": "Icon",
-	"name": "sizssoers",
 	"color": "#2BFF00"
 }

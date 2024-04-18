@@ -3,16 +3,20 @@
 	"coopAllowed": false,
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
-	"bio": "GET OUT OF MY STUDIO",
+	"displayName": "Code of Misconduct",
+	"name": "misconduct",
+	"bio": "GET OUT OF MY STUDIO\n\nMelty has these things called 'polycats', and Dax once made one! song is also about melty's one channel CertainContext lol",
 	"actoresses": "artist: MeltyKelpy\ncomposer: OJSTheCoder\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: MeltyKelpy",
+	"tagline": "GET OUT OF MY STUDIO",
+	"singerNames": "Context (MeltyKelpy) VS Lute",
+	"actoresses2": "artist: MeltyKelpy    composer: OJSTheCoder\ncoder: MeltyKelpy    charter: MeltyKelpy",
+    "appearStep": 64,
 	"bpm": 124,
 	"difficulties": [
 		"Hard"
 	],
 	"needsVoices": true,
 	"parsedColor": -13893888,
-	"name": "misconduct",
 	"icon": "Icon",
-	"displayName": "Code of Misconduct",
 	"color": "#2BFF00"
 }
