@@ -115,16 +115,105 @@ function openingDialogueUpdate() {
     }
     if (dialogProg == 2) {
         updateIcon('Look');
-        txtBro.resetText("i hope you have one");
+        txtBro.resetText("I hope you have one");
         txtBro.start(0.03);
     }
     if (dialogProg == 3) {
         updateIcon('BlankStare');
-        txtBro.resetText("cause it'd be pretty awkward if you didn't");
+        txtBro.resetText("Cause It'd be pretty awkward if you didn't");
         txtBro.start(0.03);
     }
 
-}
+    if (dialogProg == 4) {
+        updateIcon('Evil');
+        txtBro.resetText("If you do! You've come to the right place");
+        txtBro.start(0.03);
+    }
+
+    if (dialogProg == 5) {
+        updateIcon('Base');
+        txtBro.resetText("Behind me stands a Dudeman");
+        txtBro.start(0.03);
+    }
+
+    if (dialogProg == 6) {
+        updateIcon('Base');
+        txtBro.resetText("There is one goal to do to this fella");
+        txtBro.start(0.03);
+    }
+
+    if (dialogProg == 7) {
+        updateIcon('BlankStare');
+        txtBro.resetText("Kill him.");
+        txtBro.start(0.03);
+    }
+
+    if (dialogProg == 8) {
+        updateIcon('Evil');
+        txtBro.resetText("Punish him for all its worth.");
+        txtBro.start(0.03);
+    }
+
+    if (dialogProg == 9) {
+        updateIcon('Anger');
+        txtBro.resetText("SHOW HIM THE TORMENT AND PAIN OF HIS WRONGDOINGS!!!");
+        txtBro.start(0.03);
+    }
+
+    if (dialogProg == 10) {
+        updateIcon('Dude');
+        txtBro.resetText("Erm.");
+        txtBro.start(0.03);
+    }
+
+    if (dialogProg == 11) {
+        updateIcon('Look');
+        txtBro.resetText("Anyways...");
+        txtBro.start(0.03);
+    }
+
+    if (dialogProg == 12) {
+        updateIcon('Base');
+        txtBro.resetText("Your job is to beat the living shit out of the guy");
+        txtBro.start(0.03);
+    }
+
+    if (dialogProg == 13) {
+        updateIcon('Base');
+        txtBro.resetText("When you do, you recieve currency which can be used to buy even more things to beat the bastard to pieces!");
+        txtBro.start(0.03);
+    }  
+
+    if (dialogProg == 13) {
+        updateIcon('Base');
+        txtBro.resetText("You can also purchase more of the dudes, if you weren't already satisfied enough.");
+            txtBro.start(0.03);
+    }
+    
+    if (dialogProg == 13) {
+        updateIcon('Troll');
+        txtBro.resetText("And hey! I'll be running the storefront itself, so you can come and see my hot sexy devil like body every other minute of playing this :)");
+        txtBro.start(0.03);
+    }     
+
+    if (dialogProg == 14) {
+        updateIcon('SmugLook');
+        txtBro.resetText("Alright, that's everything");
+        txtBro.start(0.03);
+    }
+    
+    if (dialogProg == 15) {
+        updateIcon('BlankStare');
+        txtBro.resetText("Don't dissapoint, or else.");
+        txtBro.start(0.03);
+    }   
+
+    if (dialogProg == 16) {
+        updateIcon('Evil');
+        txtBro.resetText("Byeee!!!");
+        txtBro.start(0.03);
+    }   
+    }
 
 function updateIcon(iconToBe) {
     icon.loadGraphic(Paths.image('shh/PUNCHER/dialogue/icon'+iconToBe));
