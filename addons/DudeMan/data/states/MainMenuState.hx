@@ -45,10 +45,6 @@ function update() {
 		FlxG.sound.play(Paths.sound('confirm'));
 		FlxG.switchState(new ModState("DaxGalleryState"));
    	}
-	   if (FlxG.keys.justPressed.S) {
-		FlxG.sound.play(Paths.sound('confirm'));
-		FlxG.switchState(new ModState("datingSim"));
-   	}
 	if (FlxG.keys.justPressed.O) {
 		FlxG.sound.play(Paths.sound('confirm'));
 		FlxG.switchState(new OptionsMenu());

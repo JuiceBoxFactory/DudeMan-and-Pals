@@ -53,6 +53,7 @@ function create() {
 	freeplaysectionselectarrows.screenCenter();
 	freeplaysectionselectarrows.antialiasing = false;
 	freeplaysectionselectarrows.updateHitbox();
+	freeplaysectionselectarrows.scale.set(1.2, 1.2);
 	add(freeplaysectionselectarrows);
 
     sectionname = new FlxText(390, 450, 500, "you cant see this wtf", 0);
@@ -64,30 +65,36 @@ function create() {
 	storyIcon = new FlxSprite(0, 325).loadGraphic(Paths.image('freeplay/selection/story'));
 	storyIcon.screenCenter();
 	storyIcon.scrollFactor.set(0, 0);
+	storyIcon.scale.set(1.2, 1.2);
 	add(storyIcon);
 
 	extrasIcon = new FlxSprite(0, 325).loadGraphic(Paths.image('freeplay/selection/extras'));
 	extrasIcon.screenCenter();
 	extrasIcon.scrollFactor.set(0, 0);
+	extrasIcon.scale.set(1.2, 1.2);
 	add(extrasIcon);
 
 	palsIcon = new FlxSprite(0, 325).loadGraphic(Paths.image('freeplay/selection/pals'));
 	palsIcon.screenCenter();
 	palsIcon.scrollFactor.set(0, 0);
+	palsIcon.scale.set(1.2, 1.2);
 	add(palsIcon);
 
 	coversIcon = new FlxSprite(0, 325).loadGraphic(Paths.image('freeplay/selection/covers'));
 	coversIcon.screenCenter();
 	coversIcon.scrollFactor.set(0, 0);
+	coversIcon.scale.set(1.2, 1.2);
 	add(coversIcon);
 
 	gamesIcon = new FlxSprite(0, 325).loadGraphic(Paths.image('freeplay/selection/games'));
 	gamesIcon.screenCenter();
 	gamesIcon.scrollFactor.set(0, 0);
+	gamesIcon.scale.set(1.2, 1.2);
 	add(gamesIcon);
 
 	conceptIcon = new FlxSprite(0, 325).loadGraphic(Paths.image('freeplay/selection/concept'));
 	conceptIcon.screenCenter();
+	conceptIcon.scale.set(1.2, 1.2);
 	conceptIcon.scrollFactor.set(0, 0);
 	add(conceptIcon);
 
@@ -151,15 +158,15 @@ function update() {
 
 			storyIconPosX = 592;
 			storyIconPosY = 325;
-			extrasIconPosX = 638;
+			extrasIconPosX = 648;
 			extrasIconPosY = 305;
 			palsIconPosX = 592;
 			palsIconPosY = 285;
-			coversIconPosX = 540;
+			coversIconPosX = 530;
 			coversIconPosY = 305;
 		}
 
-		if (amountOfButtons == 4) {
+		if (amountOfButtons == 4 || amountOfButtons == 5) {
 			remove(storyIcon);
 			remove(extrasIcon);
 			remove(coversIcon);
@@ -173,13 +180,13 @@ function update() {
 
 			storyIconPosX = 592;
 			storyIconPosY = 325;
-			extrasIconPosX = 638;
+			extrasIconPosX = 648;
 			extrasIconPosY = 305;
 			palsIconPosX = 622;
 			palsIconPosY = 285;
 			coversIconPosX = 562;
 			coversIconPosY = 285;
-			gamesIconPosX = 540;
+			gamesIconPosX = 530;
 			gamesIconPosY = 305;
 		}
 
@@ -236,15 +243,39 @@ function update() {
 			insert(4,palsIcon);
 			insert(3,coversIcon);
 
-			storyIconPosX = 540;
+			storyIconPosX = 530;
 			storyIconPosY = 305;
 			extrasIconPosX = 592;
 			extrasIconPosY = 325;
-			palsIconPosX = 638;
+			palsIconPosX = 648;
 			palsIconPosY = 305;
 			coversIconPosX = 592;
 			coversIconPosY = 285;
 		}
+
+		if (amountOfButtons == 4 || amountOfButtons == 5) {
+			remove(storyIcon);
+			remove(extrasIcon);
+			remove(coversIcon);
+			remove(palsIcon);
+			remove(gamesIcon);
+			insert(5,extrasIcon);
+			insert(4,storyIcon);
+			insert(4,palsIcon);
+			insert(3,gamesIcon);
+			insert(3,coversIcon);
+
+			storyIconPosX = 530;
+			storyIconPosY = 305;
+			extrasIconPosX = 592;
+			extrasIconPosY = 325;
+			palsIconPosX = 648;
+			palsIconPosY = 305;
+			coversIconPosX = 622;
+			coversIconPosY = 285;
+			gamesIconPosX = 562;
+			gamesIconPosY = 285;
+		}	
 
 		if (extrasIcon.x > extrasIconPosX) {
 			extrasIcon.x -= 3;
@@ -302,13 +333,38 @@ function update() {
 
 			storyIconPosX = 592;
 			storyIconPosY = 285;
-			extrasIconPosX = 540;
+			extrasIconPosX = 530;
 			extrasIconPosY = 305;
 			palsIconPosX = 592;
 			palsIconPosY = 325;
-			coversIconPosX = 638;
+			coversIconPosX = 648;
 			coversIconPosY = 305;
 		}
+
+		if (amountOfButtons == 4 || amountOfButtons == 5) {
+			remove(storyIcon);
+			remove(extrasIcon);
+			remove(coversIcon);
+			remove(palsIcon);
+			remove(gamesIcon);
+			insert(5,palsIcon);
+			insert(4,extrasIcon);
+			insert(4,coversIcon);
+			insert(3,storyIcon);
+			insert(3,gamesIcon);
+
+
+			storyIconPosX = 562;
+			storyIconPosY = 285;
+			extrasIconPosX = 530;
+			extrasIconPosY = 305;
+			palsIconPosX = 592;
+			palsIconPosY = 325;
+			coversIconPosX = 648;
+			coversIconPosY = 305;
+			gamesIconPosX = 622;
+			gamesIconPosY = 285;
+		}	
 
 		if (palsIcon.x > palsIconPosX) {
 			palsIcon.x -= 3;
@@ -363,16 +419,40 @@ function update() {
 			insert(4,palsIcon);
 			insert(3,extrasIcon);
 
-			storyIconPosX = 638;
+			storyIconPosX = 648;
 			storyIconPosY = 305;
 			extrasIconPosX = 592;
 			extrasIconPosY = 285;
-			palsIconPosX = 540;
+			palsIconPosX = 530;
 			palsIconPosY = 305;
 			coversIconPosX = 592;
 			coversIconPosY = 325;
 
 		}
+
+		if (amountOfButtons == 4 || amountOfButtons == 5) {
+			remove(storyIcon);
+			remove(extrasIcon);
+			remove(coversIcon);
+			remove(palsIcon);
+			remove(gamesIcon);
+			insert(5,coversIcon);
+			insert(4,palsIcon);
+			insert(4,gamesIcon);
+			insert(3,extrasIcon);
+			insert(3,storyIcon);
+
+			storyIconPosX = 622;
+			storyIconPosY = 285;
+			extrasIconPosX = 562;
+			extrasIconPosY = 285;
+			palsIconPosX = 530;
+			palsIconPosY = 305;
+			coversIconPosX = 592;
+			coversIconPosY = 325;
+			gamesIconPosX = 648;
+			gamesIconPosY = 305;
+		}	
 
 		if (coversIcon.x > coversIconPosX) {
 			coversIcon.x -= 3;
@@ -417,6 +497,31 @@ function update() {
 	if (Selected == 4 && amountOfButtons > 3) {
 		sectionname.text = "DudeMan's Games";
 
+		if (amountOfButtons == 4 || amountOfButtons == 5) {
+			remove(storyIcon);
+			remove(extrasIcon);
+			remove(coversIcon);
+			remove(palsIcon);
+			remove(gamesIcon);
+			insert(5,gamesIcon);
+			insert(4,coversIcon);
+			insert(4,storyIcon);
+			insert(3,palsIcon);
+			insert(3,extrasIcon);
+
+
+			storyIconPosX = 648;
+			storyIconPosY = 305;
+			extrasIconPosX = 622;
+			extrasIconPosY = 285;
+			palsIconPosX = 562;
+			palsIconPosY = 285;
+			coversIconPosX = 530;
+			coversIconPosY = 305;
+			gamesIconPosX = 592;
+			gamesIconPosY = 325;
+		}
+
 		if (gamesIcon.x > gamesIconPosX) {
 			gamesIcon.x -= 3;
 		}
@@ -459,6 +564,34 @@ function update() {
 	}
 	if (Selected == 5 && amountOfButtons > 4) {
 		FlxG.sound.pause();
+
+		if (amountOfButtons == 5) {
+			remove(storyIcon);
+			remove(extrasIcon);
+			remove(coversIcon);
+			remove(palsIcon);
+			remove(gamesIcon);
+			insert(4,gamesIcon);
+			insert(4,storyIcon);
+			insert(3,coversIcon);
+			insert(3,palsIcon);
+			insert(3,extrasIcon);
+
+
+			storyIconPosX = 648;
+			storyIconPosY = 305;
+			extrasIconPosX = 622;
+			extrasIconPosY = 285;
+			palsIconPosX = 592;
+			palsIconPosY = 285;
+			coversIconPosX = 562;
+			coversIconPosY = 285;
+			gamesIconPosX = 530;
+			gamesIconPosY = 305;
+			conceptIconPosX = 592;
+			conceptIconPosY = 325;
+		}
+
 		sectionname.text = 'Project 46';
 
 		if (conceptIcon.x > conceptIconPosX) {
@@ -498,7 +631,7 @@ function update() {
 			conceptIcon.y += 3;
 		}
 		
-		if (conceptIcon.alpha > 0) {
+		if (conceptIcon.alpha > 0.2) {
 			conceptIcon.alpha -= 0.1;
 		}
 
@@ -506,11 +639,14 @@ function update() {
 	if (controls.ACCEPT && Selected < 4) {
 		FlxG.save.data.sectionselected = Selected;
 		FlxG.switchState(new FreeplayState());
-     }
+    }
+	if (controls.ACCEPT && Selected == 4) {
+		FlxG.switchState(new ModState("datingSim"));
+	}
 	if (FlxG.keys.justPressed.SEVEN) {
 		FlxG.save.data.sectionselected = 4;
 		FlxG.switchState(new FreeplayState());
-     }
+	}
 	if (Selected > amountOfButtons) {
 		Selected = 0;
 	}
