@@ -82,7 +82,7 @@ function create() {
     txtBro.color = 0xFF231033;
     txtBro.skipKeys = ["SHIFT"];
     txtBro.sounds = [
-        FlxG.sound.load(Paths.sound("datingSim/typeSFX"))
+        FlxG.sound.load(Paths.sound("clear"))
     ];
     add(txtBro);
 
@@ -105,115 +105,131 @@ function create() {
 function openingDialogueUpdate() {
 
     if (dialogProg == 0) {
+        playVoiceline("opening/0");
         txtBro.resetText("Greetings, I am Puzzle");
         txtBro.start(0.03);
     }
     if (dialogProg == 1) {
+        playVoiceline("opening/1");
         updateIcon('SmugLook');
         txtBro.resetText("I am notorious for all things that involve using your brain");
         txtBro.start(0.03);
     }
     if (dialogProg == 2) {
+        playVoiceline("opening/2");
         updateIcon('Look');
         txtBro.resetText("I hope you have one");
         txtBro.start(0.03);
     }
     if (dialogProg == 3) {
+        playVoiceline("opening/3");
         updateIcon('BlankStare');
         txtBro.resetText("Cause It'd be pretty awkward if you didn't");
         txtBro.start(0.03);
     }
 
     if (dialogProg == 4) {
+        playVoiceline("opening/4");
         updateIcon('Evil');
         txtBro.resetText("If you do! You've come to the right place");
         txtBro.start(0.03);
     }
 
     if (dialogProg == 5) {
+        playVoiceline("opening/5");
         updateIcon('Base');
         txtBro.resetText("Behind me stands a Dudeman");
         txtBro.start(0.03);
     }
 
     if (dialogProg == 6) {
+        playVoiceline("opening/6");
         updateIcon('Base');
         txtBro.resetText("There is one goal to do to this fella");
         txtBro.start(0.03);
     }
 
     if (dialogProg == 7) {
+        playVoiceline("opening/7");
         updateIcon('BlankStare');
         txtBro.resetText("Kill him.");
         txtBro.start(0.03);
     }
 
     if (dialogProg == 8) {
+        playVoiceline("opening/8");
         updateIcon('Evil');
         txtBro.resetText("Punish him for all its worth.");
         txtBro.start(0.03);
     }
 
     if (dialogProg == 9) {
+        playVoiceline("opening/9");
         updateIcon('Anger');
         txtBro.resetText("SHOW HIM THE TORMENT AND PAIN OF HIS WRONGDOINGS!!!");
         txtBro.start(0.03);
     }
 
     if (dialogProg == 10) {
+        playVoiceline("opening/10");
         updateIcon('Dude');
-        txtBro.resetText("Erm.");
+        txtBro.resetText("Erm.....Anyways...");
         txtBro.start(0.03);
     }
 
     if (dialogProg == 11) {
-        updateIcon('Look');
-        txtBro.resetText("Anyways...");
-        txtBro.start(0.03);
-    }
-
-    if (dialogProg == 12) {
+        playVoiceline("opening/11");
         updateIcon('Base');
         txtBro.resetText("Your job is to beat the living shit out of the guy");
         txtBro.start(0.03);
     }
 
-    if (dialogProg == 13) {
+    if (dialogProg == 12) {
+        playVoiceline("opening/12");
         updateIcon('Base');
         txtBro.resetText("When you do, you recieve currency which can be used to buy even more things to beat the bastard to pieces!");
         txtBro.start(0.03);
     }  
 
     if (dialogProg == 13) {
+        playVoiceline("opening/13");
         updateIcon('Base');
         txtBro.resetText("You can also purchase more of the dudes, if you weren't already satisfied enough.");
             txtBro.start(0.03);
     }
     
-    if (dialogProg == 13) {
+    if (dialogProg == 14) {
+        playVoiceline("opening/14");
         updateIcon('Troll');
         txtBro.resetText("And hey! I'll be running the storefront itself, so you can come and see my hot sexy devil like body every other minute of playing this :)");
         txtBro.start(0.03);
     }     
 
-    if (dialogProg == 14) {
+    if (dialogProg == 15) {
+        playVoiceline("opening/15");
         updateIcon('SmugLook');
         txtBro.resetText("Alright, that's everything");
         txtBro.start(0.03);
     }
     
-    if (dialogProg == 15) {
+    if (dialogProg == 16) {
+        playVoiceline("opening/16");
         updateIcon('BlankStare');
         txtBro.resetText("Don't dissapoint, or else.");
         txtBro.start(0.03);
     }   
 
-    if (dialogProg == 16) {
+    if (dialogProg == 17) {
+        playVoiceline("opening/17");
         updateIcon('Evil');
         txtBro.resetText("Byeee!!!");
         txtBro.start(0.03);
-    }   
-    }
+    } 
+}
+
+function playVoiceline(sound) {
+    FlxG.sound.play(Paths.sound('puncher/voicelines/'+sound), 1);
+}
 
 function updateIcon(iconToBe) {
     icon.loadGraphic(Paths.image('shh/PUNCHER/dialogue/icon'+iconToBe));
