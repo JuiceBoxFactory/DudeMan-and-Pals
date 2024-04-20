@@ -96,7 +96,7 @@ function update() {
         FlxG.sound.play(Paths.sound('datingSim/contSFX'), 1);
         FlxTween.tween(key.scale, {x: 0.6}, 0.4, {ease:FlxEase.backOut});
         new FlxTimer().start(0.5, function(timer) {
-            FlxG.switchState(new ModState("datingSim"));
+            FlxG.switchState(new ModState("GAME/datingSim"));
         });
     }
 
