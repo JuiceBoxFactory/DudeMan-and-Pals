@@ -82,7 +82,7 @@ function stepHit(curStep:Int) {
     switch (curStep) {
         case startingStep:
             anim("appear");
-            new FlxTimer().start(2.5, function(timer) {
+            new FlxTimer().start(3, function(timer) {
                 anim("disappear");
             });
     }

@@ -1,122 +1,93 @@
-var ough:FlxSprite;
+import flixel.text.FlxTextBorderStyle;
+
+var myPpo = "";
+var myOpp = "";
 
 function postCreate() {
 
-if (PlayState.SONG.meta.name == "lighthouse") {
-	remove(iconP1);
-	remove(iconP2);
-	remove(healthBarBG);
-	remove(healthBar);
+	remove(accuracyTxt);
+	missesTxt.y += 10;
+	scoreTxt.y += 10;
 
-	insert(5, healthBarBG);
-	insert(6, healthBar);
-	insert(8, iconP1);
-	insert(8, iconP2);
+	if (PlayState.SONG.meta.name != "lighthouse") {
+		myOpp = dad.getIcon();
+		myPpo = boyfriend.getIcon();
 
-	missesTxt.y += 20;
-	scoreTxt.y += 20;
+		for (dumbShits in [iconP1, iconP2, healthBarBG, missesTxt, scoreTxt]) {
+			remove(dumbShits);
+		}
+
+		remove(healthBar);
+		insert(2, healthBar);
+		healthBar.y = 640;
+
+		healthheader = new FlxSprite(0, 580).loadGraphic(Paths.image('game/healthBarPART2'));
+		healthheader.antialiasing = false;
+		healthheader.cameras = [camHUD];
+		healthheader.screenCenter(FlxAxes.X);
+		healthheader.updateHitbox();
+		insert(3, healthheader);
+
+		icon1 = new FlxSprite(605, 585).loadGraphic(Paths.image('icons/'+myPpo));
+		icon1.antialiasing = false;
+		icon1.flipX = true;
+		icon1.cameras = [camHUD];
+		icon1.updateHitbox();
+		insert(4, icon1);
+
+		icon2 = new FlxSprite(525, 585).loadGraphic(Paths.image('icons/'+myOpp));
+		icon2.antialiasing = false;
+		icon2.cameras = [camHUD];
+		icon2.updateHitbox();
+		insert(5, icon2);
+
+		scoreText = new FlxText();
+		scoreText.setFormat(Paths.font("COMIC.ttf"), 15, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreText.cameras = [camHUD];
+		scoreText.borderSize = 1.25;
+		scoreText.y = 680;
+		scoreText.screenCenter(FlxAxes.X);
+		scoreText.x -= 200; 
+		scoreText.antialiasing = false;
+		insert(6, scoreText);
+
+		missesText = new FlxText();
+		missesText.setFormat(Paths.font("COMIC.ttf"), 15, FlxColor.WHITE, "right", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		missesText.cameras = [camHUD];
+		missesText.borderSize = 1.25;
+		missesText.y = 680;
+		missesText.screenCenter(FlxAxes.X);
+		missesText.x += 75;
+		missesText.antialiasing = false;
+		insert(7, missesText);
+		
+	}	
 }
 
-if (PlayState.SONG.meta.name != "lighthouse") {
-	remove(iconP1);
-	remove(iconP2);
-	remove(healthBarBG);
-	remove(healthBar);
-	remove(missesTxt);
-	remove(scoreTxt);
+function update() {
+	if (PlayState.SONG.meta.name != "lighthouse") {
+		myOpp = dad.getIcon();
+		icon2.loadGraphic(Paths.image('icons/'+myOpp));
+		myPpo = boyfriend.getIcon();
+		icon1.loadGraphic(Paths.image('icons/'+myPpo));
 
-	healthheader = new FlxSprite(347, 580).loadGraphic(Paths.image('game/healthBarPART2'));
-	healthheader.antialiasing = false;
-	healthheader.cameras = [camHUD];
-	healthheader.setGraphicSize(Std.int(healthheader.width * 1));
-	healthheader.updateHitbox();
-
-	insert(5, healthBarBG);
-	insert(6, healthBar);
-	insert(7, healthheader);
-	insert(8, iconP1);
-	insert(8, iconP2);
-	insert(8, missesTxt);
-	insert(8, scoreTxt);
-
-for (obj in [healthBar, healthBarBG])
-    obj.y -= 10;
-
-
-for (obj in [iconP1, iconP2])
-    obj.y += 10;
-
-	missesTxt.x -= 155;
-	missesTxt.y -= 60;
-	scoreTxt.x -= -30;
-	scoreTxt.y -= 60;
-
-if (downscroll) {
-	for (obj in [healthBar, healthBarBG])
-    		obj.y -= 10;
-		scoreTxt.y += -20;
-		missesTxt.y += -20;
-		healthheader.y -= -5;
-		iconP1.y -= 20;
-		iconP2.y -= 20;
-	}
-
-if (FlxG.save.data.xbox) {
-	remove(healthBarBG);
-	remove(healthheader);
-
-	healthBar.x = -50;
-	healthBar.scale.x = 0.7;
-
-	missesTxt.x -= 430;
-	scoreTxt.x -= 525;
-
-	for (obj in [iconP1, iconP2, healthBar, missesTxt, scoreTxt])
-    	obj.y -= 75;
-
-	for (obj in [iconP1, iconP2, healthBar, missesTxt, scoreTxt])
-    	obj.x += 75;
-
-		}
-	}
-
-for (obj in [accuracyTxt])
-    obj.alpha = 0;
-
-}
-
-function postUpdate() {
-if (PlayState.SONG.meta.name != "lighthouse") {
-	if (!FlxG.save.data.xbox) {
-	iconP1.x = 600;
-	iconP2.x = 525;
-		}
-	if (FlxG.save.data.xbox) {
-	iconP1.x = 200;
-	iconP2.x = 125;
-		}
-	}
-}
-
-function stepHit(curStep:Int) { 
-    if (curStep > 884 && PlayState.SONG.meta.name == "skyblue" ) {
-            FlxTween.tween(iconP1, {alpha: 0}, 10);
-            FlxTween.tween(iconP2, {alpha: 0}, 10);
-            FlxTween.tween(healthheader, {alpha: 0}, 10);
-	}    
-    if (PlayState.SONG.meta.name == "misconduct") {
-	iconP1.alpha = 0;
-	iconP2.alpha = 0;
-	healthheader.alpha = 0;
-	}
-    if (curStep > 63 && PlayState.SONG.meta.name == "misconduct") {	
-	iconP1.alpha = 1;
-	iconP2.alpha = 1;
-	healthheader.alpha = 1;
+		scoreText.text = "Coolness: "+songScore;
+		missesText.text = "Bitches Fumbled: "+misses;
 	}
 }
 
 function beatHit() {
-iconP1.scale.set(1, 1);
-iconP2.scale.set(1, 1);
+
+	iconP1.scale.set(1, 1);
+	iconP2.scale.set(1, 1);
+
+
+	if (PlayState.SONG.meta.name != "lighthouse") {
+		for (obj in [icon1, icon2]) {
+			obj.scale.set(1.1, 1.1);
+			FlxTween.tween(obj.scale, {x: 1}, 0.25);
+			FlxTween.tween(obj.scale, {y: 1}, 0.25);
+		}
+	}
+
 }

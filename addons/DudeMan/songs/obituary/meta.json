@@ -4,15 +4,19 @@
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
 	"bpm": 158,
-	"bio": "im so evil",
+	"displayName": "Free-4-Me",
+	"name": "obituary",
+	"bio": "calm down kathy\n\nidk kathy.exe",
 	"actoresses": "artist: Saayo\ncoverer: Saayo\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: Saayo",
+	"tagline": "calm down kathy !",
+	"singerNames": "KATHY.EXE VS DudeMan with a cool hat",
+	"actoresses2": "artist: Saayo    coverer: Saayo\ncoder: MeltyKelpy    charter: AngeltheBoi",
+    "appearStep": 1020,
 	"difficulties": [
 		"Hard"
 	],
 	"needsVoices": true,
 	"parsedColor": -13893888,
-	"displayName": "Free-4-Me",
 	"icon": "Icon",
-	"name": "obituary",
 	"color": "#2BFF00"
 }

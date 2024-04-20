@@ -102,26 +102,26 @@ function postUpdate() {
  	       case "idle", "hey":
  	           camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
 	    }
- 	   switch(strumLines.members[2].characters[0].getAnimName()) {
- 	       case "singLEFT": 
- 	           camFollow.x -= cammove;
- 	           camGame.angle = (lerp(camGame.angle, -angleVar, angleMoveSpeed));
- 	           camHUD.angle = (lerp(camHUD.angle, -angleVar, angleMoveSpeed));
-	        case "singDOWN": 
- 	           camFollow.y += cammove;
-	            camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
- 	            camHUD.angle = (lerp(camHUD.angle, 0, angleMoveSpeed));
- 	       case "singUP": 
-  	          camFollow.y -= cammove;
- 	           camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
- 	           camHUD.angle = (lerp(camHUD.angle, 0, angleMoveSpeed));
-  	      case "singRIGHT": 
-  	          camFollow.x += cammove;
- 	           camGame.angle = (lerp(camGame.angle, angleVar, angleMoveSpeed));
-  	           camHUD.angle = (lerp(camHUD.angle, angleVar, angleMoveSpeed));
- 	       case "idle", "hey":
- 	           camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
-    	}
+// 	   switch(strumLines.members[2].characters[0].getAnimName()) {
+// 	       case "singLEFT": 
+// 	           camFollow.x -= cammove;
+// 	           camGame.angle = (lerp(camGame.angle, -angleVar, angleMoveSpeed));
+// 	           camHUD.angle = (lerp(camHUD.angle, -angleVar, angleMoveSpeed));
+//	        case "singDOWN": 
+// 	           camFollow.y += cammove;
+//	            camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
+// 	            camHUD.angle = (lerp(camHUD.angle, 0, angleMoveSpeed));
+// 	       case "singUP": 
+//  	          camFollow.y -= cammove;
+// 	           camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
+// 	           camHUD.angle = (lerp(camHUD.angle, 0, angleMoveSpeed));
+//  	      case "singRIGHT": 
+//  	          camFollow.x += cammove;
+// 	           camGame.angle = (lerp(camGame.angle, angleVar, angleMoveSpeed));
+//  	           camHUD.angle = (lerp(camHUD.angle, angleVar, angleMoveSpeed));
+// 	       case "idle", "hey":
+// 	           camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
+//    	}
 }
 	if (PlayState.SONG.meta.name != "lighthouse" && !FlxG.save.data.goodCamera) {
 	    switch(strumLines.members[0].characters[0].getAnimName()) {
@@ -156,21 +156,21 @@ function postUpdate() {
  	       case "idle", "hey":
  	           camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
 	    }
- 	   switch(strumLines.members[2].characters[0].getAnimName()) {
- 	       case "singLEFT": 
- 	           camFollow.x -= cammove;
- 	           camGame.angle = (lerp(camGame.angle, -angleVar, angleMoveSpeed));
- 	       case "singDOWN": 
-			camFollow.y += cammove;
-			camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
- 	       case "singUP": 
-			camFollow.y -= cammove;
-			camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
-	        case "singRIGHT": 
-	            camFollow.x += cammove;
-	            camGame.angle = (lerp(camGame.angle, angleVar, angleMoveSpeed));
-	        case "idle", "hey":
-	            camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
-    	}
+// 	   switch(strumLines.members[2].characters[0].getAnimName()) {
+// 	       case "singLEFT": 
+// 	           camFollow.x -= cammove;
+// 	           camGame.angle = (lerp(camGame.angle, -angleVar, angleMoveSpeed));
+// 	       case "singDOWN": 
+//			camFollow.y += cammove;
+//			camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
+// 	       case "singUP": 
+//			camFollow.y -= cammove;
+//			camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
+//	        case "singRIGHT": 
+//	            camFollow.x += cammove;
+//	            camGame.angle = (lerp(camGame.angle, angleVar, angleMoveSpeed));
+//	        case "idle", "hey":
+//	            camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
+//    	}
    }
 }

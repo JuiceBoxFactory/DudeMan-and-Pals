@@ -50,7 +50,6 @@ function create(event) {
 		texts.push(text);
 		text.alpha = 0;
 		i++;
-		trace(e);
 	}
 
 	optionselected = new FlxSprite(0, 600).loadGraphic(Paths.image('johnpork/'+curSelected));
@@ -155,7 +154,6 @@ function update(elapsed) {
 		
 		else if (option == "Change Options") {
 			FlxG.save.data.wasJustInPause = true;
-			trace("gaysex");
 			FlxG.switchState(new ModState("DudeOptionsState"));
 			}
 		
