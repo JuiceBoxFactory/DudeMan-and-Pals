@@ -460,11 +460,50 @@ function update() {
 	if (Selected == 5 && amountOfButtons > 4) {
 		FlxG.sound.pause();
 		sectionname.text = 'Project 46';
+
+		if (conceptIcon.x > conceptIconPosX) {
+			conceptIcon.x -= 3;
+		}
+		if (conceptIcon.x < conceptIconPosX) {
+			conceptIcon.x += 3;
+		}
+
+		if (conceptIcon.y > conceptIconPosY) {
+			conceptIcon.y -= 3;
+		}
+		if (conceptIcon.y < conceptIconPosY) {
+			conceptIcon.y += 3;
+		}
+
+		if (conceptIcon.alpha != 1) {
+			conceptIcon.alpha += 0.1;
+		}
+
 	}
 	else {
+
 		FlxG.sound.resume();
+
+		if (conceptIcon.x > conceptIconPosX) {
+			conceptIcon.x -= 3;
+		}
+		if (conceptIcon.x < conceptIconPosX) {
+			conceptIcon.x += 3;
+		}
+
+		if (conceptIcon.y > conceptIconPosY) {
+			conceptIcon.y -= 3;
+		}
+		if (conceptIcon.y < conceptIconPosY) {
+			conceptIcon.y += 3;
+		}
+		
+		if (conceptIcon.alpha > 0) {
+			conceptIcon.alpha -= 0.1;
+		}
+
 	}
-	if (controls.ACCEPT && Selected > 4) {
+	if (controls.ACCEPT && Selected < 4) {
 		FlxG.save.data.sectionselected = Selected;
 		FlxG.switchState(new FreeplayState());
      }
