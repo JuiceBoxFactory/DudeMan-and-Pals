@@ -8,10 +8,10 @@ import flixel.addons.text.FlxTypeText;
 import flixel.system.FlxAssets;
 import flixel.ui.FlxButton;
 
+var canDoShitDude = false;
 var alongTheDialogue = 0;
 var ground = 'thatSchoolThatIHate';
 var char1var = 'dudeDating';
-var canDoShitDude = false;
 
 // actual like progression shit:
 var happyMan = false;
@@ -236,7 +236,7 @@ function update() {
     }
 
 	if (controls.BACK) {
-		FlxG.switchState(new ModState("FreeplaySelector"));
+		FlxG.switchState(new ModState("datingSimTitle"));
 	}
 
 }

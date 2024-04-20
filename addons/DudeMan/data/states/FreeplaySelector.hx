@@ -641,7 +641,7 @@ function update() {
 		FlxG.switchState(new FreeplayState());
     }
 	if (controls.ACCEPT && Selected == 4) {
-		FlxG.switchState(new ModState("datingSim"));
+		FlxG.switchState(new ModState("datingSimTitle"));
 	}
 	if (FlxG.keys.justPressed.SEVEN) {
 		FlxG.save.data.sectionselected = 4;
