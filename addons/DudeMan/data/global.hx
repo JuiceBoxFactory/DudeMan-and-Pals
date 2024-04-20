@@ -4,12 +4,6 @@ import lime.graphics.Image;
 static var initialized:Bool = false;
 
 function new() {
-window.title = "Dudeman or whatever you wanna call it here!";
-window.setIcon(Image.fromBytes(Assets.getBytes(Paths.image('whatever the icon name is!'))));
-}
-public var sectionselected = 0;
-
-function new() {
     window.title = 'DudeMan and... PALS???';
     window.setIcon(Image.fromBytes(Assets.getBytes('assets/data/modIcon.png')));
 }
@@ -39,6 +33,6 @@ function create() {
 
 function update(elapsed) {
 
-    if (FlxG.keys.justPressed.F5)
+	if (FlxG.keys.justPressed.F5)
         FlxG.resetState();
         }

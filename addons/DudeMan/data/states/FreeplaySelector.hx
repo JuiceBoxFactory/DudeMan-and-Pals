@@ -631,7 +631,7 @@ function update() {
 			conceptIcon.y += 3;
 		}
 		
-		if (conceptIcon.alpha > 0.2) {
+		if (conceptIcon.alpha > 0) {
 			conceptIcon.alpha -= 0.1;
 		}
 

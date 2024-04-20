@@ -135,6 +135,9 @@ function create() {
         dialogueUpdateShit();
     });
 
+    cursor = new FlxSprite(0, 0).loadGraphic(Paths.image('game/cursor'));
+    insert(10,cursor);
+
 }
 
 function buttonText1Be(texty) {
@@ -176,21 +179,21 @@ function buttonAdd(type) {
     switch (type) {
 
         case 1:
-            add(dialogueButton1);
-            add(button1);
-            add(button1text);
+            insert(2, dialogueButton1);
+            insert(3, button1);
+            insert(4, button1text);
         case 2:
-            add(dialogueButton2);
-            add(button2);
-            add(button2text);
+            insert(2, dialogueButton2);
+            insert(3, button2);
+            insert(4, button2text);
         case 3:
-            add(dialogueButton3);  
-            add(button3);
-            add(button3text);
+            insert(2, dialogueButton3);  
+            insert(3, button3);
+            insert(4, button3text);
         case 4:
-            add(dialogueButton4);
-            add(button4);
-            add(button4text);
+            insert(2, dialogueButton4);
+            insert(3, button4);
+            insert(4, button4text);
     }
 
 }
@@ -224,6 +227,9 @@ function changeDialogue() {
 }
 
 function update() {
+
+    cursor.x = FlxG.mouse.x;
+    cursor.y = FlxG.mouse.y;
 
 	if (controls.ACCEPT && canDoShitDude == true) {
         changeDialogue();
