@@ -116,6 +116,8 @@ function create() {
 
 function update() {
 
+    FlxG.mouse.visible = false;
+
 	if (controls.ACCEPT) {
         key.scale.x = 0.2;
         FlxG.sound.play(Paths.sound('datingSim/contSFX'), 1);

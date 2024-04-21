@@ -1,3 +1,5 @@
+import flixel.FlxCamera;
+
 var DoorOC:Int = 0;
 var ventOC:Int = 0;
 var monitorOC:Int = 0;
@@ -9,8 +11,11 @@ var powerPercent:Float = 100;
 var minute:Float = 0;
 var hour:Int = 12;
 var perspective:CustomShader = null;
+var animMyAte = true;
+var camCURSOR = new FlxCamera();
 
 function create(){
+
     window.title = "I'm Dudemanning my nights right now";
 
     camHUD = new FlxCamera();
@@ -82,24 +87,26 @@ function create(){
 
     monitor = new FlxSprite();
 	monitor.frames = Paths.getFrames('shh/FNAF/nightShift/monitor/monitor');
-	monitor.animation.addByPrefix('open', 'open');
-	monitor.animation.addByPrefix('idle', 'idle');
-	monitor.animation.addByPrefix('close', 'close');
+	monitor.animation.addByPrefix('open', 'open', 24, false);
+	monitor.animation.addByPrefix('idle', 'idle', 24, false);
+	monitor.animation.addByPrefix('close', 'close', 24, false);
 	monitor.animation.play('idle');
+    monitor.visible = false;
     monitor.scrollFactor.set();
     monitor.screenCenter();
     monitor.cameras = [camHUD];
     add(monitor);
 
-    room = new FlxSprite();
-    room.scrollFactor.set();
-    room.cameras = [camHUD];
-    add(room);
+//    room = new FlxSprite();
+//    room.scrollFactor.set();
+//    room.cameras = [camHUD];
+//    add(room);
 
     statiC = new FlxSprite();
 	statiC.frames = Paths.getFrames('shh/FNAF/nightShift/monitor/static');
 	statiC.animation.addByPrefix('idle', 'idle');
 	statiC.animation.play('idle');
+    statiC.visible = false;
     statiC.scrollFactor.set();
     statiC.screenCenter();
     statiC.cameras = [camHUD];
@@ -109,6 +116,7 @@ function create(){
 	map.frames = Paths.getFrames('shh/FNAF/nightShift/monitor/map');
     map.scale.set(0.45,0.45);
     map.scrollFactor.set();
+    map.visible = false;
     map.x = 450;
     map.y = 100;
     map.cameras = [camHUD];
@@ -121,6 +129,7 @@ function create(){
 	cam1.animation.addByPrefix('off', 'CamButton Hue2');
 	cam1.animation.play('Blank');
     cam1.scrollFactor.set();
+    cam1.visible = false;
     cam1.x = 840;
     cam1.y = 570;
     cam1.cameras = [camHUD];
@@ -133,6 +142,7 @@ function create(){
 	cam2.animation.addByPrefix('off', 'CamButton Hue2');
 	cam2.animation.play('Blank');
     cam2.scrollFactor.set();
+    cam2.visible = false;
     cam2.x = 1090;
     cam2.y = 570;
     cam2.cameras = [camHUD];
@@ -145,6 +155,7 @@ function create(){
 	cam3.animation.addByPrefix('off', 'CamButton Hue2');
 	cam3.animation.play('Blank');
     cam3.scrollFactor.set();
+    cam3.visible = false;
     cam3.x = 790;
     cam3.y = 520;
     cam3.cameras = [camHUD];
@@ -157,6 +168,7 @@ function create(){
 	cam4.animation.addByPrefix('off', 'CamButton Hue2');
 	cam4.animation.play('Blank');
     cam4.scrollFactor.set();
+    cam4.visible = false;
     cam4.x = 1140;
     cam4.y = 520;
     cam4.cameras = [camHUD];
@@ -169,6 +181,7 @@ function create(){
 	cam5.animation.addByPrefix('off', 'CamButton Hue2');
 	cam5.animation.play('Blank');
     cam5.scrollFactor.set();
+    cam5.visible = false;
     cam5.x = 965;
     cam5.y = 465;
     cam5.cameras = [camHUD];
@@ -181,6 +194,7 @@ function create(){
 	cam6.animation.addByPrefix('off', 'CamButton Hue2');
 	cam6.animation.play('Blank');
     cam6.scrollFactor.set();
+    cam6.visible = false;
     cam6.x = 980;
     cam6.y = 700;
     cam6.cameras = [camHUD];
@@ -193,6 +207,7 @@ function create(){
 	cam7.animation.addByPrefix('off', 'CamButton Hue2');
 	cam7.animation.play('Blank');
     cam7.scrollFactor.set();
+    cam7.visible = false;
     cam7.x = 580;
     cam7.y = 300;
     cam7.cameras = [camHUD];
@@ -232,10 +247,58 @@ function create(){
     add(power);
 
     camHUD.flash(FlxColor.BLACK, 1);
+
+    cursor = new FlxSprite(0, 0).loadGraphic(Paths.image('game/cursor'));
+    cursor.cameras = [camHUD];
+    add(cursor);
+
 }
+
+function cameraUpdate() {
+
+    if(monitorOC == 0){
+        monitor.animation.play('close');
+        statiC.visible = false;
+        map.visible = false;
+        cam1.visible = false;
+        cam2.visible = false;
+        cam3.visible = false;
+        cam4.visible = false;
+        cam5.visible = false;
+        cam6.visible = false;
+        cam7.visible = false;
+    }else if(monitorOC == 1){
+        monitor.animation.play('open');
+        monitor.visible = true;
+    } 
+
+}
+
 function update(elapsed:Float){
+
+    FlxG.mouse.visible = false;
+
+    cursor.x = FlxG.mouse.screenX;
+    cursor.y = FlxG.mouse.screenY;
+
+    if(monitor.animation.frameIndex == 14){
+        monitor.animation.play('idle');
+        statiC.visible = true;
+        map.visible = true;
+        cam1.visible = true;
+        cam2.visible = true;
+        cam3.visible = true;
+        cam4.visible = true;
+        cam5.visible = true;
+        cam6.visible = false;
+        cam7.visible = false;
+    }
+    if(monitor.animation.frameIndex == 6){
+        monitor.visible = false;
+    }
+
     if(controls.BACK){
-        FlxG.switchState(new ModState('titleScreen'));
+        FlxG.switchState(new ModState('GAMES/FNAF/titleScreen'));
     }
     if(FlxG.keys.justPressed.R){
         FlxG.switchState(new ModState('gameOver'));
@@ -266,38 +329,25 @@ function update(elapsed:Float){
         }
     }
     if(FlxG.mouse.overlaps(monitorButton)){
-            if(monitorOC == 0){
-                FlxG.sound.play(Paths.sound('fnaf/gunshot'));
-                monitorOC = 1;
-                if(usageValue < 5){
-                    usageValue += 1;
+        if(FlxG.mouse.justPressed){
+            animMyAte = true;
+            new FlxTimer().start(0.10, function(timer) {
+                if(monitorOC == 0){
+                    FlxG.sound.play(Paths.sound('fnaf/gunshot'));
+                    monitorOC = 1;
+                    if(usageValue < 5){
+                        usageValue += 1;
+                    }
+                    cameraUpdate();
+                }else if(monitorOC == 1){
+                    FlxG.sound.play(Paths.sound('fnaf/gunshot'));
+                    monitorOC = 0;
+                    if(usageValue > 1){
+                        usageValue -= 1;
+                    }
+                    cameraUpdate();
                 }
-            }else if(monitorOC == 2){
-                FlxG.sound.play(Paths.sound('fnaf/gunshot'));
-                monitorOC = 3;
-                if(usageValue > 1){
-                    usageValue -= 1;
-                }
-            }
+            });
         }
-    } 
-    if(monitorOC == 0){
-        monitor.animation.play('idle');
-        monitor.visible = false;
-        room.visible = false;
-        statiC.visible = false;
-        map.visible = false;
-        cam1.visible = false;
-        cam2.visible = false;
-        cam3.visible = false;
-        cam4.visible = false;
-        cam5.visible = false;
-        monitorButton.visible = true;
-    }else if(monitorOC == 1){
-        monitor.animation.play('open');
-        monitor.visible = true;
-        if(monitor.animation.frameIndex == 14){
-            FlxG.sound.play(Paths.sound('fnaf/gunshot'));
-            monitorOC = 2;
-        }
-}
+    }
+} 

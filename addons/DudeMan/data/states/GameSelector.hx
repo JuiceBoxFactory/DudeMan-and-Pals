@@ -38,6 +38,9 @@ function loadPlatformer() {
 }
 
 function update() {
+    
+    FlxG.mouse.visible = false;
+
     cursor.x = FlxG.mouse.x;
     cursor.y = FlxG.mouse.y;
 

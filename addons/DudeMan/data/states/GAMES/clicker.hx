@@ -450,6 +450,8 @@ function resetTextShit() {
 
 function update() {
 
+    FlxG.mouse.visible = false;
+
     fist.loadGraphic(Paths.image('shh/PUNCHER/in-game/hands/'+curHand));
 
     if (dudeman1.scale.x < 1) {

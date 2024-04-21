@@ -10,6 +10,8 @@ function new() {
 
 function create() {
 
+	FlxG.mouse.visible = false;
+
 	if (FlxG.save.data.wheresGarfield == null) {
 		FlxG.save.data.downscroll = false;
 		FlxG.save.data.botplay = false;
@@ -33,6 +35,8 @@ function create() {
 
 function update(elapsed) {
 
-	if (FlxG.keys.justPressed.F5)
+	if (FlxG.keys.justPressed.F5) {
         FlxG.resetState();
+		FlxG.mouse.visible = false;
         }
+}

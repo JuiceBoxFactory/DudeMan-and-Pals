@@ -18,6 +18,8 @@ var happyMan = false;
 
 function create() {
 
+    FlxG.mouse.visible = false;
+
 	FlxG.sound.playMusic(Paths.music('datingSim/datingMySimulator'), 1, true);
 
 	bg = new FlxSprite(0, 0).loadGraphic(Paths.image('shh/DATINGSIM/background/'+ground));
@@ -231,6 +233,8 @@ function changeDialogue() {
 }
 
 function update() {
+
+    FlxG.mouse.visible = false;
 
     cursor.x = FlxG.mouse.x;
     cursor.y = FlxG.mouse.y;

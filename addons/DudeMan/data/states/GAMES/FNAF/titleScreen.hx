@@ -11,6 +11,7 @@ var modSwitchMenu:Bool = false;
 var quitScreen = false;
 
 function create(){
+
     window.title = "A Night with Dudeman and Pals";
     CoolUtil.playMusic(Paths.music('FNAF/DudeManFnafPlaceholder'));
     FlxG.mouse.visible = true;
@@ -190,6 +191,7 @@ function quitQuit() {
 
 function update(elapsed:Float){
 
+    FlxG.mouse.visible = false;
     buttonsIndicator.y = buttonsQuit.y + 35;
 
 // THANK YOU CORVA kiss emoji
