@@ -112,6 +112,18 @@ function create(){
     statiC.cameras = [camHUD];
     add(statiC);
 
+    usageBar = new FlxSprite(30, 425);
+    usageBar.frames = Paths.getFrames('shh/FNAF/nightShift/monitor/usageBar');
+    usageBar.animation.addByPrefix('1','1',6, true);
+    usageBar.animation.addByPrefix('2','2',6, true);
+    usageBar.animation.addByPrefix('3','3',6, true);
+    usageBar.animation.addByPrefix('4','4',6, true);
+    usageBar.animation.addByPrefix('5','5',6, true);
+    usageBar.visible = true;
+    usageBar.scrollFactor.set();
+    usageBar.cameras = [camHUD];
+    add(usageBar);
+
     map = new FlxSprite();
 	map.frames = Paths.getFrames('shh/FNAF/nightShift/monitor/map');
     map.scale.set(0.45,0.45);
@@ -290,6 +302,7 @@ function cameraUpdate() {
 
 function update(elapsed:Float){
 
+    usageBar.animation.play(''+usageValue);
     FlxG.mouse.visible = false;
 
     cursor.x = FlxG.mouse.screenX;
