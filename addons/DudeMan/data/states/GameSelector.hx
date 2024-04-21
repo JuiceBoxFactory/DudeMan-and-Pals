@@ -10,11 +10,11 @@ function create() {
     button2.alpha = 1;
     add(button2);
     
-    button3 = new FlxButton(850, 152, "Fnaf Fangame", loadPuncher);
+    button3 = new FlxButton(850, 152, "Fnaf Fangame", loadFnaf);
     button3.alpha = 1;
     add(button3);
 
-    button4 = new FlxButton(850, 177, "2D Platformer", loadPuncher);
+    button4 = new FlxButton(850, 177, "2D Platformer", loadPlatformer);
     button4.alpha = 1;
     add(button4);
 
@@ -29,6 +29,12 @@ function loadDating() {
 
 function loadPuncher() {
     FlxG.switchState(new ModState("GAMES/clicker"));
+}
+function loadFnaf() {
+    FlxG.switchState(new ModState("GAMES/FNAF/titleScreen"));
+}
+function loadPlatformer() {
+    FlxG.switchState(new ModState("GAMES/FNAF/titleScreen")); //lol
 }
 
 function update() {
