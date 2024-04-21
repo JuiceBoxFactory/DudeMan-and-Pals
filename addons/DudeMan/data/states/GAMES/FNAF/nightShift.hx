@@ -1,4 +1,3 @@
-//Renaming these later lol
 var DoorOC:Int = 0;
 var ventOC:Int = 0;
 var monitorOC:Int = 0;
@@ -175,6 +174,30 @@ function create(){
     cam5.cameras = [camHUD];
     add(cam5);
 
+    cam6 = new FlxSprite();
+    cam6.frames = Paths.getFrames('shh/FNAF/nightShift/monitor/CamButton');
+    cam6.animation.addByPrefix('Blank', 'CamButton Blank');
+	cam6.animation.addByPrefix('on', 'CamButton Hue1');
+	cam6.animation.addByPrefix('off', 'CamButton Hue2');
+	cam6.animation.play('Blank');
+    cam6.scrollFactor.set();
+    cam6.x = 980;
+    cam6.y = 700;
+    cam6.cameras = [camHUD];
+    add(cam6);
+
+    cam7 = new FlxSprite();
+    cam7.frames = Paths.getFrames('shh/FNAF/nightShift/monitor/CamButton');
+    cam7.animation.addByPrefix('Blank', 'CamButton Blank');
+	cam7.animation.addByPrefix('on', 'CamButton Hue1');
+	cam7.animation.addByPrefix('off', 'CamButton Hue2');
+	cam7.animation.play('Blank');
+    cam7.scrollFactor.set();
+    cam7.x = 580;
+    cam7.y = 300;
+    cam7.cameras = [camHUD];
+    add(cam7);
+
     monitorButton = new FlxSprite();
 	monitorButton.frames = Paths.getFrames('shh/FNAF/nightShift/monitor/monitorButton');
 	monitorButton.scale.set(0.9, 0.9);
@@ -214,12 +237,10 @@ function update(elapsed:Float){
     if(controls.BACK){
         FlxG.switchState(new ModState('titleScreen'));
     }
-    // keys
     if(FlxG.keys.justPressed.R){
         FlxG.switchState(new ModState('gameOver'));
     }
-}
-FlxG.camera.follow(camFollow);
+    FlxG.camera.follow(camFollow);
     if(monitorOC == 0 && dudemanAI <= 10){
         if(camFollow.x > 720){
             if(FlxG.mouse.overlaps(leftSlower)){
@@ -244,26 +265,39 @@ FlxG.camera.follow(camFollow);
             }
         }
     }
-if(FlxG.mouse.overlaps(monitorButton)){
-        if(FlxG.mouse.justPressed){
+    if(FlxG.mouse.overlaps(monitorButton)){
             if(monitorOC == 0){
-                // sound
-                FlxG.sound.play(Paths.sound('STEREO_CASSETTE__90097704'));
-                // monitorOC
+                FlxG.sound.play(Paths.sound('fnaf/gunshot'));
                 monitorOC = 1;
-                // usage
                 if(usageValue < 5){
                     usageValue += 1;
                 }
             }else if(monitorOC == 2){
-                // sound
-                FlxG.sound.play(Paths.sound('STEREO_CASSETTE__90097701'));
-                // monitorOC
+                FlxG.sound.play(Paths.sound('fnaf/gunshot'));
                 monitorOC = 3;
-                // usage
                 if(usageValue > 1){
                     usageValue -= 1;
                 }
             }
         }
-    }
+    } 
+    if(monitorOC == 0){
+        monitor.animation.play('idle');
+        monitor.visible = false;
+        room.visible = false;
+        statiC.visible = false;
+        map.visible = false;
+        cam1.visible = false;
+        cam2.visible = false;
+        cam3.visible = false;
+        cam4.visible = false;
+        cam5.visible = false;
+        monitorButton.visible = true;
+    }else if(monitorOC == 1){
+        monitor.animation.play('open');
+        monitor.visible = true;
+        if(monitor.animation.frameIndex == 14){
+            FlxG.sound.play(Paths.sound('fnaf/gunshot'));
+            monitorOC = 2;
+        }
+    } 
