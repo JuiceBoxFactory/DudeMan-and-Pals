@@ -340,7 +340,7 @@ function updateIcon(iconToBe) {
 
 function openingDialogueProgression() {
     txtBro.paused = true;
-    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.5);
+    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.25);
     txtBro.alpha = 0.7;
     new FlxTimer().start(0.35, function(timer) {
         txtBro.paused = false;
@@ -352,7 +352,7 @@ function openingDialogueProgression() {
 
 function dialogProgression() {
     txtBro.paused = true;
-    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.5);
+    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.25);
     txtBro.alpha = 0.7;
     new FlxTimer().start(0.35, function(timer) {
         txtBro.paused = false;
