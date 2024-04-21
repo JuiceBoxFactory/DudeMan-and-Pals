@@ -1,4 +1,5 @@
 import funkin.menus.ModSwitchMenu;
+import flixel.util.FlxTimer;
 import flixel.ui.FlxButton;
 
 var curCharacter:Int = 0;
@@ -35,11 +36,50 @@ function create(){
     continuE.y = 294;
     add(continuE);
 
-    continueButton = new FlxButton(875, 294, "Gay", update);
+    continueButton = new FlxButton(875, 294, "Gay", openShit);
     continueButton.scale.set(2,1);
     continueButton.updateHitbox();
-    //continueButton.alpha = 0.000000000001;
+    continueButton.alpha = 0.000000000001;
     add(continueButton);
+
+    bgDark = new FlxSprite(0, 0).loadGraphic(Paths.image('black'));
+	bgDark.scrollFactor.set(0, 0);
+    bgDark.alpha = 0;
+	add(bgDark);
+
+    newspaper = new FlxSprite(0, 1000).loadGraphic(Paths.image('shh/FNAF/titleScreen/newspaper'));
+	newspaper.scrollFactor.set(0, 0);
+    newspaper.scale.set(1.75, 1.75);
+    newspaper.screenCenter(FlxAxes.X);
+	add(newspaper);
+
+    loadingText = new FlxText(10, 650, 600, "wait.. im loading!");
+    loadingText.setFormat(Paths.font("Bahnschrift.ttf"), 50, FlxColor.WHITE, "left"); 
+    loadingText.color = 0xFFFFFFFF; 
+    loadingText.antialiasing = false;
+    loadingText.alpha = 0;
+    add(loadingText);
+
+    dark = new FlxSprite(0, 0).loadGraphic(Paths.image('black'));
+	dark.scrollFactor.set(0, 0);
+    dark.alpha = 0;
+	add(dark);
+
+}
+
+function openShit() {
+
+    newspaper.angle = 360;
+    FlxTween.tween(newspaper, {angle: 0}, 2, {ease:FlxEase.quartOut});
+    FlxTween.tween(newspaper, {y: 205.5}, 2, {ease:FlxEase.quartOut});
+    FlxTween.tween(bgDark, {alpha: 1}, 4, {ease:FlxEase.quartIn});
+    FlxTween.tween(loadingText, {alpha: 1}, 4, {ease:FlxEase.quartIn});
+    new FlxTimer().start(9, function(timer) {
+        FlxTween.tween(dark, {alpha: 1}, 2, {ease:FlxEase.quartIn});
+            new FlxTimer().start(3, function(timer) {
+                FlxG.switchState(new ModState('GAMES/FNAF/nightShift'));
+            });
+    });
 }
 
 function update(elapsed:Float){
@@ -88,14 +128,6 @@ function update(elapsed:Float){
     }
     logo.frames = Paths.getFrames('shh/FNAF/titleScreen/logo/'+curLogoGlitch);
     if(!modSwitchMenu){
-        if(FlxG.mouse.overlaps(continuE)){
-            selection.visible = true;
-            if(FlxG.mouse.justPressed){
-                FlxG.switchState(new ModState('GAMES/FNAF/nightShift'));
-            }
-        }else if(!FlxG.mouse.overlaps(continuE)){
-            selection.visible = false;
-        }
     }else{
         if(controls.ACCEPT){
             selectItem();

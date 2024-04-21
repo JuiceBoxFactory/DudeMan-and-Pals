@@ -15,6 +15,7 @@ var blurFilter:BlurFilter;
 var inDialogue = false;
 var redditKarmaScore = 0;
 var basicClickAmount = 1;
+var clickAmount = 0;
 var fistHitPosition = -550;
 var openingPlaying = false;
 var respectiveDialogue = "";
@@ -28,7 +29,7 @@ var dialogProg = 0;
 
 
 function create() {
-    
+
 	FlxG.sound.playMusic(Paths.music('datingSim/datingMySimulator'), 0, true);
 
     bgOverflow = new FlxBackdrop(Paths.image('titleScreen/checkerboardbg'));
@@ -70,10 +71,51 @@ function create() {
     buttonLeft.updateHitbox();
     add(buttonLeft);
 
-    redditKarma = new FlxText(425, 425, 600, "");
+    statsBox = new FlxSprite(602, 10).loadGraphic(Paths.image('shh/PUNCHER/ui/box'));
+	statsBox.scrollFactor.set(0, 0);
+    statsBox.scale.set(0.3, 0.6);
+	add(statsBox);
+    statsBox.angle = 90;
+
+    karmaIcon = new FlxSprite(785, 90).loadGraphic(Paths.image('shh/PUNCHER/ui/iconsNShit/karma'));
+	karmaIcon.scrollFactor.set(0, 0);
+    karmaIcon.scale.set(0.2, 0.2);
+	add(karmaIcon);
+
+    redditKarma = new FlxText(900, 170, 600, "");
     redditKarma.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "left"); 
     redditKarma.color = 0xFF231033; 
     add(redditKarma);
+
+    dmgIcon = new FlxSprite(785, 140).loadGraphic(Paths.image('shh/PUNCHER/ui/iconsNShit/punchPower'));
+	dmgIcon.scrollFactor.set(0, 0);
+    dmgIcon.scale.set(0.2, 0.2);
+	add(dmgIcon);
+
+    dmgCounter = new FlxText(900, 220, 600, "");
+    dmgCounter.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "left"); 
+    dmgCounter.color = 0xFF231033; 
+    add(dmgCounter);
+
+    dmgIcon = new FlxSprite(785, 190).loadGraphic(Paths.image('shh/PUNCHER/ui/iconsNShit/springPower'));
+	dmgIcon.scrollFactor.set(0, 0);
+    dmgIcon.scale.set(0.2, 0.2);
+	add(dmgIcon);
+
+    springDmgCounter = new FlxText(900, 270, 600, "");
+    springDmgCounter.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "left"); 
+    springDmgCounter.color = 0xFF231033; 
+    add(springDmgCounter);
+
+    clicksIcon = new FlxSprite(785, 240).loadGraphic(Paths.image('shh/PUNCHER/ui/iconsNShit/clickCount'));
+	clicksIcon.scrollFactor.set(0, 0);
+    clicksIcon.scale.set(0.2, 0.2);
+	add(clicksIcon);
+
+    clickCounter = new FlxText(900, 320, 600, "");
+    clickCounter.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "left"); 
+    clickCounter.color = 0xFF231033; 
+    add(clickCounter);
 
     clickSpot = new FlxButton(490, 200, "this wont be visible", normalClick);
     clickSpot.scale.set(4, 40);
@@ -102,7 +144,7 @@ function create() {
     txtBro.eraseDelay = 0.2;
     txtBro.autoErase = true;
     txtBro.waitTime = 0;
-    txtBro.prefix = "PUZZLE THE DEMON:\n";
+    txtBro.prefix = "PUZZLE THE PRICK:\n";
     txtBro.setTypingVariation(0.10, false);
     txtBro.color = 0xFF231033;
     txtBro.skipKeys = ["SHIFT"];
@@ -136,6 +178,10 @@ function create() {
 
 }
 
+function postCreate() {
+        window.title = "DudeMan Punching Simulator - By HotSexyDemon972 ( Puzzle )";
+}
+
 function normalClick() {
     
     if (inDialogue == false) {
@@ -155,7 +201,9 @@ function normalClick() {
         fistHitPosition = 265;
     
         redditKarmaScore += basicClickAmount;
-        new FlxTimer().start(0.25, function(timer) {
+        clickAmount += 1;
+
+        new FlxTimer().start(0.5, function(timer) {
             fistHitPosition = -550;
         });   
     }
@@ -173,6 +221,15 @@ function dialogueUpdate(dialogueInQuesiton) {
         if (dialogProg == 1) {
             closeDialogue();
         }
+
+        case "skippedDialogue":
+        if (dialogProg == 0) {
+            playVoiceline("dangOkay");
+            updateIcon('Look');
+            txtBro.resetText("Oh, Okay");
+            txtBro.start(0.03);
+        }
+
     }
 }
 
@@ -301,7 +358,6 @@ function openingDialogueUpdate() {
     } 
 
     if (dialogProg == 18) {
-        openingPlaying = false;
         closeDialogue();
     }
 
@@ -320,8 +376,31 @@ function openDialogue() {
 
 }
 
+function skipDialogue() {
+    txtBro.paused = true;
+    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.5);
+    txtBro.alpha = 0.7;
+    openingPlaying = false;
+    new FlxTimer().start(2, function(timer) {
+        txtBro.paused = false;
+        txtBro.alpha = 1;
+        respectiveDialogue = "skippedDialogue";
+        dialogProg = 0;
+        dialogueUpdate(respectiveDialogue);
+        new FlxTimer().start(2, function(timer) {
+            FlxTween.tween(dark, {alpha: 0}, 2, {ease:FlxEase.quartOut});
+            FlxTween.tween(txtBro, {y: 1275}, 2, {ease:FlxEase.quartIn});
+                new FlxTimer().start(2, function(timer) {
+                inDialogue = false;
+            }); 
+        });   
+}); 
+
+}
+
 function closeDialogue() {
 
+    openingPlaying = false;
     FlxTween.tween(dark, {alpha: 0}, 2, {ease:FlxEase.quartOut});
     FlxTween.tween(txtBro, {y: 1275}, 2, {ease:FlxEase.quartIn});
     new FlxTimer().start(2, function(timer) {
@@ -340,7 +419,7 @@ function updateIcon(iconToBe) {
 
 function openingDialogueProgression() {
     txtBro.paused = true;
-    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.25);
+    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.5);
     txtBro.alpha = 0.7;
     new FlxTimer().start(0.35, function(timer) {
         txtBro.paused = false;
@@ -352,7 +431,7 @@ function openingDialogueProgression() {
 
 function dialogProgression() {
     txtBro.paused = true;
-    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.25);
+    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.5);
     txtBro.alpha = 0.7;
     new FlxTimer().start(0.35, function(timer) {
         txtBro.paused = false;
@@ -408,6 +487,9 @@ function update() {
     }
 
     redditKarma.text = 'Reddit Karma: '+redditKarmaScore;
+    dmgCounter.text = 'Karma per Punch: '+basicClickAmount;
+    springDmgCounter.text = 'Karma per SpringPunch: '+basicClickAmount;
+    clickCounter.text = 'total clicks: '+clickAmount;
 
     cursor.x = FlxG.mouse.x;
     cursor.y = FlxG.mouse.y;
@@ -428,7 +510,7 @@ function update() {
     }
 
 	if (FlxG.keys.justPressed.SHIFT && inDialogue == true) {
-        closeDialogue();
+        skipDialogue();
     }
 
 	if (FlxG.keys.justPressed.CONTROL) {

@@ -20,7 +20,8 @@ var reviews:Array<String> = [
     "DudeMan came into my office for some riiizzzz tippps.. if you want\n10/10 - Baldi",
     "I want you",
     "Weshould kill everyong\ndead/10 - Saayo\n\nI second this - Melty",
-    "I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds!\nBanbud/Ban10 - Banbuds"
+    "I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds! I'm banbuds!\nBanbud/Ban10 - Banbuds",
+    "what the fuck am i doing here\n4.98/10 - Corva",
 
     ];
 
@@ -55,7 +56,7 @@ function create() {
     add(text);
 
     if (FlxG.save.data.hasPlayedBefore == true) {
-        text.text = reviews[FlxG.random.int(0,14)];
+        text.text = reviews[FlxG.random.int(0,15)];
     }
 
     text.screenCenter();
