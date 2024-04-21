@@ -300,4 +300,4 @@ function update(elapsed:Float){
             FlxG.sound.play(Paths.sound('fnaf/gunshot'));
             monitorOC = 2;
         }
-    } 
+}
