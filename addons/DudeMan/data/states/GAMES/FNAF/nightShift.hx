@@ -130,8 +130,10 @@ function create(){
 	cam1.animation.play('Blank');
     cam1.scrollFactor.set();
     cam1.visible = false;
-    cam1.x = 840;
-    cam1.y = 570;
+    cam1.scale.set(0.8,0.8);
+    cam1.updateHitbox();
+    cam1.x = 835;
+    cam1.y = 275;
     cam1.cameras = [camHUD];
     add(cam1);
 
@@ -143,8 +145,10 @@ function create(){
 	cam2.animation.play('Blank');
     cam2.scrollFactor.set();
     cam2.visible = false;
-    cam2.x = 1090;
-    cam2.y = 570;
+    cam2.scale.set(0.8,0.8);
+    cam2.updateHitbox();
+    cam2.x = 727;
+    cam2.y = 320;
     cam2.cameras = [camHUD];
     add(cam2);
 
@@ -155,9 +159,11 @@ function create(){
 	cam3.animation.addByPrefix('off', 'CamButton Hue2');
 	cam3.animation.play('Blank');
     cam3.scrollFactor.set();
-    cam3.visible = false;
-    cam3.x = 790;
-    cam3.y = 520;
+    cam3.visible = false;  
+    cam3.scale.set(0.8,0.8);
+    cam3.updateHitbox();
+    cam3.x = 1090;
+    cam3.y = 320;
     cam3.cameras = [camHUD];
     add(cam3);
 
@@ -169,8 +175,10 @@ function create(){
 	cam4.animation.play('Blank');
     cam4.scrollFactor.set();
     cam4.visible = false;
-    cam4.x = 1140;
-    cam4.y = 520;
+    cam4.scale.set(0.8,0.8);
+    cam4.updateHitbox();
+    cam4.x = 674;
+    cam4.y = 450;
     cam4.cameras = [camHUD];
     add(cam4);
 
@@ -182,8 +190,10 @@ function create(){
 	cam5.animation.play('Blank');
     cam5.scrollFactor.set();
     cam5.visible = false;
-    cam5.x = 965;
-    cam5.y = 465;
+    cam5.scale.set(0.8,0.8);
+    cam5.updateHitbox();
+    cam5.x = 1144;
+    cam5.y = 450;
     cam5.cameras = [camHUD];
     add(cam5);
 
@@ -195,8 +205,10 @@ function create(){
 	cam6.animation.play('Blank');
     cam6.scrollFactor.set();
     cam6.visible = false;
-    cam6.x = 980;
-    cam6.y = 700;
+    cam6.scale.set(0.8,0.8);
+    cam6.updateHitbox();
+    cam6.x = 952.5;
+    cam6.y = 470;
     cam6.cameras = [camHUD];
     add(cam6);
 
@@ -208,8 +220,10 @@ function create(){
 	cam7.animation.play('Blank');
     cam7.scrollFactor.set();
     cam7.visible = false;
-    cam7.x = 580;
-    cam7.y = 300;
+    cam7.scale.set(0.8,0.8);
+    cam7.updateHitbox();
+    cam7.x = 999;
+    cam7.y = 600;
     cam7.cameras = [camHUD];
     add(cam7);
 
@@ -290,8 +304,8 @@ function update(elapsed:Float){
         cam3.visible = true;
         cam4.visible = true;
         cam5.visible = true;
-        cam6.visible = false;
-        cam7.visible = false;
+        cam6.visible = true;
+        cam7.visible = true;
     }
     if(monitor.animation.frameIndex == 6){
         monitor.visible = false;
@@ -347,6 +361,7 @@ function update(elapsed:Float){
                     }
                     cameraUpdate();
                 }
+                
             });
         }
     }
