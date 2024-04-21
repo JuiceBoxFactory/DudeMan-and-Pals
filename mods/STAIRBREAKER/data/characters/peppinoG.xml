@@ -1,9 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="-100" icon="peppino" camx="100" y="175" isGF="false" scale="6" camy="250" isPlayer="false" antialiasing="false" sprite="peppinoG">
-	<anim x="0" loop="false" y="0" fps="12" anim="idle" name="idle"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="left" name="singLEFT"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="down" name="singDOWN"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="up" name="singUP"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="right" name="singRIGHT"/>
-	<anim x="0" loop="false" y="0" fps="14" anim="shoot" name="shoot"/>
-</character>

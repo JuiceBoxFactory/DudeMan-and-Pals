@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-stage>
-<stage zoom="0.9" name="stage" folder="stages/vig/">
-	<girlfriend />
-	<sprite name="bg"               x="-300" y="0"   sprite="vigilbg"       scroll="0.7" scale="3" antialiasing="false"/>
-	<sprite name="ground"           x="-300" y="-70"    sprite="vigilground"   scroll="1" scale="3.5" antialiasing="false"/>
-	<dad />
-	<boyfriend />
-</stage>
