@@ -642,7 +642,8 @@ function update() {
     }
 	if (controls.ACCEPT && Selected == 4) {
 //		FlxG.switchState(new ModState("GAMES/datingSimTitle"));
-		FlxG.switchState(new ModState("GAMES/clicker"));
+//		FlxG.switchState(new ModState("GAMES/clicker"));
+		FlxG.switchState(new ModState("GameSelector"));
 	}
 	if (FlxG.keys.justPressed.SEVEN) {
 		FlxG.save.data.sectionselected = 4;

@@ -45,6 +45,9 @@ function update() {
 		FlxG.sound.play(Paths.sound('confirm'));
 		FlxG.switchState(new ModState("DaxGalleryState"));
    	}
+	   if (FlxG.keys.justPressed.R) {
+	   	FlxG.save.data.hasPlayedBefore = false;
+	   }
 	if (FlxG.keys.justPressed.O) {
 		FlxG.sound.play(Paths.sound('confirm'));
 		FlxG.switchState(new OptionsMenu());

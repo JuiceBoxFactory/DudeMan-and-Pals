@@ -12,7 +12,14 @@ var canDoShitDude = false;
 var page = 1;
 var unlockedPages = 1;
 var blurFilter:BlurFilter;
-var inDialogue = true;
+var inDialogue = false;
+var redditKarmaScore = 0;
+var basicClickAmount = 1;
+var fistHitPosition = -550;
+var openingPlaying = false;
+var respectiveDialogue = "";
+var aussieMode = false;
+var curHand = "punch";
 
 // FUCKING PAGE NAMES
 var page0name = "Shop";
@@ -22,6 +29,8 @@ var dialogProg = 0;
 
 function create() {
     
+	FlxG.sound.playMusic(Paths.music('datingSim/datingMySimulator'), 0, true);
+
     bgOverflow = new FlxBackdrop(Paths.image('titleScreen/checkerboardbg'));
     bgOverflow.moves = true;
     bgOverflow.scrollFactor.set(0, 0);
@@ -31,10 +40,14 @@ function create() {
     bgOverflow.alpha = 1;
     add(bgOverflow);
 
-    dudeman1 = new FlxSprite(0, 0).loadGraphic(Paths.image('shh/PUNCHER/in-game/DudeMan'));
+    dudeman1 = new FlxSprite(0, 0).loadGraphic(Paths.image('shh/PUNCHER/in-game/mans/DudeMan'));
 	dudeman1.scrollFactor.set(0, 0);
     dudeman1.alpha = 1;
 	add(dudeman1);
+
+    fist = new FlxSprite(-550, 230).loadGraphic(Paths.image('shh/PUNCHER/in-game/hands/'+curHand));
+	fist.scrollFactor.set(0, 0);
+	add(fist);
 
     arrowLeft = new FlxSprite(0, 0);
     arrowLeft.frames = Paths.getSparrowAtlas('shh/PUNCHER/ui/arrow');
@@ -54,7 +67,19 @@ function create() {
     add(arrowRight);
 
     buttonLeft = new FlxButton(100, 100, "SHOP", update);
+    buttonLeft.updateHitbox();
     add(buttonLeft);
+
+    redditKarma = new FlxText(425, 425, 600, "");
+    redditKarma.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "left"); 
+    redditKarma.color = 0xFF231033; 
+    add(redditKarma);
+
+    clickSpot = new FlxButton(490, 200, "this wont be visible", normalClick);
+    clickSpot.scale.set(4, 40);
+    clickSpot.updateHitbox();
+    clickSpot.alpha = 0.000000000001;
+    add(clickSpot);
 
     dark = new FlxSprite(0, 0).loadGraphic(Paths.image('black'));
 	dark.scrollFactor.set(0, 0);
@@ -86,20 +111,69 @@ function create() {
     ];
     add(txtBro);
 
-    enterTEXT = new FlxText(425, 425, 600, "press ENTER to uhmm");
+    enterTEXT = new FlxText(485, 430, 600, "press ENTER to uhmm");
     enterTEXT.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "center"); 
     enterTEXT.color = 0xFF231033; 
     add(enterTEXT);
 
+    shiftTEXT = new FlxText(310, 430, 600, "SHIFT to skip");
+    shiftTEXT.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "center"); 
+    shiftTEXT.color = 0xFF231033; 
+    add(shiftTEXT);
+
+    inDialogue = true;
+    openingPlaying = true;
     FlxTween.tween(dark, {alpha: 0.7}, 4, {ease:FlxEase.quartOut});
     new FlxTimer().start(2, function(timer) {
-        FlxTween.tween(txtBro, {y: 275}, 2, {ease:FlxEase.quartOut});
+    FlxTween.tween(txtBro, {y: 275}, 2, {ease:FlxEase.quartOut});
         new FlxTimer().start(1.2, function(timer) {
             openingDialogueUpdate();
         });
     });
 
+    cursor = new FlxSprite(0, 0).loadGraphic(Paths.image('game/cursor'));
+    add(cursor);
 
+}
+
+function normalClick() {
+    
+    if (inDialogue == false) {
+
+        dudeman1.scale.x -= 0.05;
+        dudeman1.angle -= 2;
+
+        if (curHand == "pickaxe") {
+            FlxG.sound.play(Paths.sound('puncher/pickaxe'), 0.7);
+        }
+        else {
+            FlxG.sound.play(Paths.sound('puncher/punch'), 1);
+        }
+
+        fist.x += 10;
+        fist.scale.y = 0.8;
+        fistHitPosition = 265;
+    
+        redditKarmaScore += basicClickAmount;
+        new FlxTimer().start(0.25, function(timer) {
+            fistHitPosition = -550;
+        });   
+    }
+}
+
+function dialogueUpdate(dialogueInQuesiton) {
+
+    switch (dialogueInQuesiton) {
+        case "fatBitches":
+        if (dialogProg == 0) {
+            playVoiceline("ILoveFatBitches");
+            txtBro.resetText("I love fat bitches.");
+            txtBro.start(0.03);
+        }
+        if (dialogProg == 1) {
+            closeDialogue();
+        }
+    }
 }
 
 function openingDialogueUpdate() {
@@ -225,6 +299,35 @@ function openingDialogueUpdate() {
         txtBro.resetText("Byeee!!!");
         txtBro.start(0.03);
     } 
+
+    if (dialogProg == 18) {
+        openingPlaying = false;
+        closeDialogue();
+    }
+
+}
+
+function openDialogue() {
+    
+    inDialogue = true;
+    FlxTween.tween(dark, {alpha: 0.7}, 4, {ease:FlxEase.quartOut});
+    new FlxTimer().start(2, function(timer) {
+    FlxTween.tween(txtBro, {y: 275}, 2, {ease:FlxEase.quartOut});
+        new FlxTimer().start(1.2, function(timer) {
+            dialogueUpdate(respectiveDialogue);
+        });
+    });
+
+}
+
+function closeDialogue() {
+
+    FlxTween.tween(dark, {alpha: 0}, 2, {ease:FlxEase.quartOut});
+    FlxTween.tween(txtBro, {y: 1275}, 2, {ease:FlxEase.quartIn});
+    new FlxTimer().start(2, function(timer) {
+            inDialogue = false;
+    });   
+
 }
 
 function playVoiceline(sound) {
@@ -235,7 +338,7 @@ function updateIcon(iconToBe) {
     icon.loadGraphic(Paths.image('shh/PUNCHER/dialogue/icon'+iconToBe));
 }
 
-function openingDialogProgession() {
+function openingDialogueProgression() {
     txtBro.paused = true;
     FlxG.sound.play(Paths.sound('datingSim/contSFX'), 1);
     txtBro.alpha = 0.7;
@@ -247,18 +350,101 @@ function openingDialogProgession() {
     });
 }
 
+function dialogProgression() {
+    txtBro.paused = true;
+    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 1);
+    txtBro.alpha = 0.7;
+    new FlxTimer().start(0.35, function(timer) {
+        txtBro.paused = false;
+        txtBro.alpha = 1;
+        dialogProg += 1;
+        dialogueUpdate(respectiveDialogue);
+    });
+}
+
+function resetTextShit() {
+    dialogProg = 0;
+    updateIcon("Base");
+    txtBro.resetText("");
+    txtBro.start(0.03);
+}
+
 function update() {
+
+    fist.loadGraphic(Paths.image('shh/PUNCHER/in-game/hands/'+curHand));
+
+    if (dudeman1.scale.x < 1) {
+        dudeman1.scale.x += 0.01;
+    }
+    if (dudeman1.angle < 0) {
+        dudeman1.angle += 0.1;
+    }
+    if (dudeman1.angle < -3) {
+        dudeman1.angle = -3;
+    }
+
+    if (fist.x < fistHitPosition) {
+        fist.x += 25;
+    }
+    if (fist.x > fistHitPosition) {
+        fist.x -= 2;
+    }
+    if (fist.scale.y < 1) {
+        fist.scale.y += 0.01;
+    }
+    if (dudeman1.angle < -3) {
+        dudeman1.angle = -3;
+    }
+
+    if (aussieMode == false) {
+
+        if (fist.x > 275) {
+            fist.x = 275;
+        }
+        if (dudeman1.scale.x < 0.95) {
+            dudeman1.scale.x = 0.95;
+       }
+
+    }
+
+    redditKarma.text = 'Reddit Karma: '+redditKarmaScore;
+
+    cursor.x = FlxG.mouse.x;
+    cursor.y = FlxG.mouse.y;
 
     icon.y = txtBro.y - 275;
     dialogueCircle.y = txtBro.y - 275;
-    enterTEXT.y = txtBro.y + 150;
+    enterTEXT.y = txtBro.y + 155;
+    shiftTEXT.y = txtBro.y + 155;
 
-	if (controls.ACCEPT && inDialogue == true) {
-        openingDialogProgession();
+    if (FlxG.keys.justPressed.F && inDialogue == false) {
+        resetTextShit();
+        respectiveDialogue = "fatBitches";
+        openDialogue();
     }
-    
+
+    if (FlxG.keys.justPressed.L && inDialogue == false) {
+        curHand = "pickaxe";
+    }
+
+	if (FlxG.keys.justPressed.SHIFT && inDialogue == true) {
+        closeDialogue();
+    }
+
+	if (FlxG.keys.justPressed.CONTROL) {
+        aussieMode = true;
+    }
+
+	if (controls.ACCEPT && inDialogue == true && openingPlaying == true) {
+        openingDialogueProgression();
+    }
+
+    if (controls.ACCEPT && inDialogue == true && openingPlaying == false) {
+        dialogProgression();
+    }
+
 	if (controls.BACK) {
-		FlxG.switchState(new ModState("FreeplaySelector"));
+        FlxG.switchState(new ModState("GameSelector"));
 	}
 
 }

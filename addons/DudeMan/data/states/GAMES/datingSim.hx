@@ -86,20 +86,24 @@ function create() {
     dialogueButton3 = new FlxSprite(850, 300).loadGraphic(Paths.image('shh/DATINGSIM/dialogueBoxShit/boxHeader'));
     dialogueButton4 = new FlxSprite(850, 400).loadGraphic(Paths.image('shh/DATINGSIM/dialogueBoxShit/boxHeader'));
 
-    button1 = new FlxButton(949, 133, "", buttonSpaghetti1);
+    button1 = new FlxButton(850, 102, "", buttonSpaghetti1);
     button1.scale.set(3.5, 4.2);
+    button1.updateHitbox();
     button1.alpha = 0.0000001;
 
-    button2 = new FlxButton(949, 233, "", buttonSpaghetti2);
+    button2 = new FlxButton(850, 202, "", buttonSpaghetti2);
     button2.scale.set(3.5, 4.2);
+    button2.updateHitbox();
     button2.alpha = 0.0000001;
 
-    button3 = new FlxButton(949, 333, "", buttonSpaghetti3);
+    button3 = new FlxButton(850, 302, "", buttonSpaghetti3);
     button3.scale.set(3.5, 4.2);
+    button3.updateHitbox();
     button3.alpha = 0.0000001;
 
-    button4 = new FlxButton(949, 433, "", buttonSpaghetti4);
+    button4 = new FlxButton(850, 402, "", buttonSpaghetti4);
     button4.scale.set(3.5, 4.2);
+    button4.updateHitbox();
     button4.alpha = 0.0000001;
 
     button1text = new FlxText(792, 122, 400);
@@ -236,7 +240,7 @@ function update() {
     }
 
 	if (controls.BACK) {
-		FlxG.switchState(new ModState("datingSimTitle"));
+		FlxG.switchState(new ModState("GAMES/datingSimTitle"));
 	}
 
 }
