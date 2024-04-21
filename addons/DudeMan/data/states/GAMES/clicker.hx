@@ -381,7 +381,7 @@ function skipDialogue() {
     FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.5);
     txtBro.alpha = 0.7;
     openingPlaying = false;
-    new FlxTimer().start(2, function(timer) {
+    new FlxTimer().start(1, function(timer) {
         txtBro.paused = false;
         txtBro.alpha = 1;
         respectiveDialogue = "skippedDialogue";
