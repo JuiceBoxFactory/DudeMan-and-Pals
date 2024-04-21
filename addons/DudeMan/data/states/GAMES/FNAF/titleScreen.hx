@@ -1,4 +1,6 @@
 import funkin.menus.ModSwitchMenu;
+import flixel.ui.FlxButton;
+
 var curCharacter:Int = 0;
 var curCharacterGlitch:Int = 0;
 var curLogoGlitch:Int = 0;
@@ -32,6 +34,12 @@ function create(){
     continuE.x = 875;
     continuE.y = 294;
     add(continuE);
+
+    continueButton = new FlxButton(875, 294, "Gay", update);
+    continueButton.scale.set(2,1);
+    continueButton.updateHitbox();
+    //continueButton.alpha = 0.000000000001;
+    add(continueButton);
 }
 
 function update(elapsed:Float){
@@ -79,4 +87,26 @@ function update(elapsed:Float){
         logoTimer = 0;
     }
     logo.frames = Paths.getFrames('shh/FNAF/titleScreen/logo/'+curLogoGlitch);
-} 
+    if(!modSwitchMenu){
+        if(FlxG.mouse.overlaps(continuE)){
+            selection.visible = true;
+            if(FlxG.mouse.justPressed){
+                FlxG.switchState(new ModState('GAMES/FNAF/nightShift'));
+            }
+        }else if(!FlxG.mouse.overlaps(continuE)){
+            selection.visible = false;
+        }
+    }else{
+        if(controls.ACCEPT){
+            selectItem();
+        }else if(controls.BACK){
+            closeSubState(new ModSwitchMenu());
+            modSwitchMenu = false;
+        }
+        if(controls.UP_P){
+            changeItem(-1);
+        }else if(controls.DOWN_P){
+            changeItem(1);
+        }
+    }
+}    
