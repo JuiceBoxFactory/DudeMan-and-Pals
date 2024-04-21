@@ -205,7 +205,7 @@ function openingDialogueUpdate() {
     if (dialogProg == 4) {
         playVoiceline("opening/4");
         updateIcon('Evil');
-        txtBro.resetText("If you do! You've come to the right place");
+        txtBro.resetText("If you do--You've come to the right place!");
         txtBro.start(0.03);
     }
 
@@ -219,7 +219,7 @@ function openingDialogueUpdate() {
     if (dialogProg == 6) {
         playVoiceline("opening/6");
         updateIcon('Base');
-        txtBro.resetText("There is one goal to do to this fella");
+        txtBro.resetText("There is one goal to do with this fella");
         txtBro.start(0.03);
     }
 
@@ -254,14 +254,14 @@ function openingDialogueUpdate() {
     if (dialogProg == 11) {
         playVoiceline("opening/11");
         updateIcon('Base');
-        txtBro.resetText("Your job is to beat the living shit out of the guy");
+        txtBro.resetText("Your job is to beat the living shit out of that guy");
         txtBro.start(0.03);
     }
 
     if (dialogProg == 12) {
         playVoiceline("opening/12");
         updateIcon('Base');
-        txtBro.resetText("When you do, you recieve currency which can be used to buy even more things to beat the bastard to pieces!");
+        txtBro.resetText("When you do, you will recieve currency which can be used to buy even more things to beat the bastard to pieces!");
         txtBro.start(0.03);
     }  
 
@@ -275,14 +275,14 @@ function openingDialogueUpdate() {
     if (dialogProg == 14) {
         playVoiceline("opening/14");
         updateIcon('Troll');
-        txtBro.resetText("And hey! I'll be running the storefront itself, so you can come and see my hot sexy devil like body every other minute of playing this :)");
+        txtBro.resetText("And hey! I'll be running the storefront itself, so you can come and see my hot sexy devil body every other minute of playing this :)");
         txtBro.start(0.03);
     }     
 
     if (dialogProg == 15) {
         playVoiceline("opening/15");
         updateIcon('SmugLook');
-        txtBro.resetText("Alright, that's everything");
+        txtBro.resetText("uhm- Alright, that's everything");
         txtBro.start(0.03);
     }
     
@@ -340,7 +340,7 @@ function updateIcon(iconToBe) {
 
 function openingDialogueProgression() {
     txtBro.paused = true;
-    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 1);
+    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.5);
     txtBro.alpha = 0.7;
     new FlxTimer().start(0.35, function(timer) {
         txtBro.paused = false;
@@ -352,7 +352,7 @@ function openingDialogueProgression() {
 
 function dialogProgression() {
     txtBro.paused = true;
-    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 1);
+    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.5);
     txtBro.alpha = 0.7;
     new FlxTimer().start(0.35, function(timer) {
         txtBro.paused = false;

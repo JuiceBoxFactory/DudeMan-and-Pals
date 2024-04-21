@@ -34,4 +34,9 @@ function loadPuncher() {
 function update() {
     cursor.x = FlxG.mouse.x;
     cursor.y = FlxG.mouse.y;
+
+    if (controls.BACK) {
+        FlxG.switchState(new ModState("FreeplaySelector"));
+    }
+
 }
