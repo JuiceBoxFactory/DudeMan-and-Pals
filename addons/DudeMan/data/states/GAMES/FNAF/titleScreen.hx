@@ -47,6 +47,8 @@ function update(elapsed:Float){
         character.frames = Paths.getFrames('shh/FNAF/titleScreen/zee/'+curCharacterGlitch);
     }else if(curCharacter == 3){
         character.frames = Paths.getFrames('shh/FNAF/titleScreen/kathy/'+curCharacterGlitch);
+    }else if(curCharacter == 4){
+        character.frames = Paths.getFrames('shh/FNAF/titleScreen/MXsilly/'+curCharacterGlitch);
     }
     if(characterTimer >= 5){
         curCharacterGlitch = FlxG.random.int(0, 3);
