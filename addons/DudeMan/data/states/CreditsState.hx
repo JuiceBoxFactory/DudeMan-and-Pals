@@ -151,7 +151,7 @@ function update() {
 	case 13:
 		devs.loadGraphic(Paths.image('credits/devs/corva'));
 		devname.text = 'Corva_Tile';
-		thingsdone.text = 'Coder\nVA\n\n\n\n\n"Dudeman? Like the piggy character"';
+		thingsdone.text = 'Coder\nMusician\nVA\nAsset Maker\nCharter(?)\n\n"Dudeman? Like the piggy character"';
 	case 14:
 		devs.loadGraphic(Paths.image('credits/devs/anty'));
 		devname.text = 'Antydote';
