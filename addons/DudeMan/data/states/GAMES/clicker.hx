@@ -30,7 +30,7 @@ var dialogProg = 0;
 
 function create() {
 
-	FlxG.sound.playMusic(Paths.music('datingSim/datingMySimulator'), 0, true);
+	CoolUtil.playMusic(Paths.music('clicker/clicker'));
 
     bgOverflow = new FlxBackdrop(Paths.image('titleScreen/checkerboardbg'));
     bgOverflow.moves = true;

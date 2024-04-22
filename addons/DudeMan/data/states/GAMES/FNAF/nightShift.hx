@@ -97,10 +97,11 @@ function create(){
     monitor.cameras = [camHUD];
     add(monitor);
 
-//    room = new FlxSprite();
-//    room.scrollFactor.set();
-//    room.cameras = [camHUD];
-//    add(room);
+  room = new FlxSprite();
+    //room.frames = Paths.getFrames('shh/FNAF/nightShift/monitor/rooms/'+curCam);
+    room.scrollFactor.set();
+    room.cameras = [camHUD];
+    add(room);
 
     statiC = new FlxSprite();
 	statiC.frames = Paths.getFrames('shh/FNAF/nightShift/monitor/static');
@@ -284,6 +285,7 @@ function cameraUpdate() {
 
     if(monitorOC == 0){
         monitor.animation.play('close');
+        room.visible = false;
         statiC.visible = false;
         map.visible = false;
         cam1.visible = false;
@@ -296,6 +298,7 @@ function cameraUpdate() {
     }else if(monitorOC == 1){
         monitor.animation.play('open');
         monitor.visible = true;
+        room.visible = true;
     } 
 
 }
@@ -310,6 +313,7 @@ function update(elapsed:Float){
 
     if(monitor.animation.frameIndex == 14){
         monitor.animation.play('idle');
+        room.visible = true;
         statiC.visible = true;
         map.visible = true;
         cam1.visible = true;
