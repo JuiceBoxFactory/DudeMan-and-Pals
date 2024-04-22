@@ -143,7 +143,7 @@ function openShit() {
     new FlxTimer().start(9, function(timer) {
         FlxTween.tween(dark, {alpha: 1}, 2, {ease:FlxEase.quartIn});
             new FlxTimer().start(3, function(timer) {
-                FlxG.switchState(new ModState('GAMES/FNAF/nightShift'));
+                FlxG.switchState(new ModState('GAMES/FNAF/PhoneCall'));
             });
     });
 }
