@@ -148,6 +148,22 @@ function subtitlesBitch() {
         subtitles.alpha = 1;
         updateText("NATE:\nMy Name's Nate.");
     }       
+    if (phoneTime == 49.60) {
+        updateText("NATE:\nYou don't really need to know that, But I thought I'd tell you anyways.");
+    }
+    if (phoneTime == 52.15) {
+        subtitles.alpha = 0;
+    }        
+    if (phoneTime == 52.61) {
+        subtitles.alpha = 1;
+        updateText("NATE:\nWelcome to Dudemans Emporium!");
+    }
+    if (phoneTime == 52.61) {
+        updateText("NATE:\nA magical, fun place for Dudeman and his pals to. Chill. And, do Dudeman things. Heh.");
+    }
+    if (phoneTime == 61.15) {
+        updateText("NATE:\nOkay I'm gonna keep it a buck with you man.");
+    }
 }
 
 function loadNight() {
