@@ -30,7 +30,7 @@ var dialogProg = 0;
 
 function create() {
 
-	CoolUtil.playMusic(Paths.music('clicker/clicker'));
+	FlxG.sound.playMusic(Paths.music('clicker/clicker'));
 
     bgOverflow = new FlxBackdrop(Paths.image('titleScreen/checkerboardbg'));
     bgOverflow.moves = true;
@@ -167,6 +167,7 @@ function create() {
     openingPlaying = true;
     FlxTween.tween(dark, {alpha: 0.7}, 4, {ease:FlxEase.quartOut});
     new FlxTimer().start(2, function(timer) {
+    FlxTween.tween(FlxG.sound.music, {volume: 0.2}, 2, {ease:FlxEase.quartOut});
     FlxTween.tween(txtBro, {y: 275}, 2, {ease:FlxEase.quartOut});
         new FlxTimer().start(1.2, function(timer) {
             openingDialogueUpdate();
@@ -377,6 +378,7 @@ function openDialogue() {
 }
 
 function skipDialogue() {
+    FlxTween.tween(FlxG.sound.music, {volume: 1}, 2, {ease:FlxEase.quartOut});
     txtBro.paused = true;
     FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.5);
     txtBro.alpha = 0.7;
@@ -400,6 +402,7 @@ function skipDialogue() {
 
 function closeDialogue() {
 
+    FlxTween.tween(FlxG.sound.music, {volume: 1}, 2, {ease:FlxEase.quartOut});    
     openingPlaying = false;
     FlxTween.tween(dark, {alpha: 0}, 2, {ease:FlxEase.quartOut});
     FlxTween.tween(txtBro, {y: 1275}, 2, {ease:FlxEase.quartIn});
@@ -502,6 +505,7 @@ function update() {
     shiftTEXT.y = txtBro.y + 155;
 
     if (FlxG.keys.justPressed.F && inDialogue == false) {
+        FlxTween.tween(FlxG.sound.music, {volume: 0.2}, 2, {ease:FlxEase.quartOut});
         resetTextShit();
         respectiveDialogue = "fatBitches";
         openDialogue();

@@ -22,8 +22,8 @@ function create(){
     FlxG.cameras.add(camHUD, false);
     camHUD.bgColor = FlxColor.TRANSPARENT;
 
-    perspective = new CustomShader('FNAF/perspective');
-    FlxG.camera.addShader(perspective);
+//    perspective = new CustomShader('FNAF/perspective');
+//    FlxG.camera.addShader(perspective);
 
     camFollow = new FlxSprite();
     camFollow.makeGraphic(20, 20, 0xffffffff);
@@ -47,8 +47,8 @@ function create(){
     leftMedium.cameras = [camHUD];
     add(leftMedium);
 
-	leftFaster = new FlxSprite();
-	leftFaster.makeGraphic(160, FlxG.height, 0xff824999);
+	leftFaster = new FlxSprite(-10, 0);
+	leftFaster.makeGraphic(170, FlxG.height, 0xff824999);
     leftFaster.scrollFactor.set();
     leftFaster.visible = false;
     leftFaster.cameras = [camHUD];
@@ -78,13 +78,11 @@ function create(){
     rightFaster.cameras = [camHUD];
     add(rightFaster);
 
-    office = new FlxSprite();
-	office.frames = Paths.getFrames('shh/FNAF/nightShift/office/office');
-	office.animation.addByPrefix('idle', 'idle');
-	office.animation.play('idle');
+    office = new FlxSprite(-25, 0);
+	office.loadGraphic(Paths.image('shh/FNAF/nightShift/office/tOffice'));
 	office.scale.set(0.9, 0.9);
     add(office);
-
+    
     monitor = new FlxSprite();
 	monitor.frames = Paths.getFrames('shh/FNAF/nightShift/monitor/monitor');
 	monitor.animation.addByPrefix('open', 'open', 24, false);
@@ -347,7 +345,7 @@ function update(elapsed:Float){
                 camFollow.x -= 3;
             }
         }
-        if(camFollow.x < 1140){
+        if(camFollow.x < 1170){
             if(FlxG.mouse.overlaps(rightSlower)){
                 camFollow.x += 1;
             }

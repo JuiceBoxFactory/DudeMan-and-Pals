@@ -44,6 +44,10 @@ function postUpdate() {
 
     subtitlesBitch();
 
+	if (controls.ACCEPT) {
+        loadNight();
+    }
+
 }
 
 function updateText(dialogue) {
@@ -171,5 +175,6 @@ function subtitlesBitch() {
 }
 
 function loadNight() {
+    FlxG.sound.pause();
     FlxG.switchState(new ModState('GAMES/FNAF/nightShift'));
 }
