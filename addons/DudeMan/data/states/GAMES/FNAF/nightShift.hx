@@ -16,8 +16,6 @@ var camCURSOR = new FlxCamera();
 
 function create(){
 
-    window.title = "I'm Dudemanning my nights right now";
-
     camHUD = new FlxCamera();
     FlxG.cameras.add(camHUD, false);
     camHUD.bgColor = FlxColor.TRANSPARENT;

@@ -12,7 +12,7 @@ var quitScreen = false;
 
 function create(){
 
-    window.title = "A Night with Dudeman and Pals";
+    window.title = "Dudeman's Emporium";
     CoolUtil.playMusic(Paths.music('FNAF/DudeManFnafPlaceholder'));
     FlxG.mouse.visible = true;
     curCharacter = FlxG.random.int(0, 3);
