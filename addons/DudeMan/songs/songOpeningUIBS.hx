@@ -26,21 +26,21 @@ function postCreate() {
 
     tagLine = new FlxText(520, 0);
     tagLine.text = '"'+PlayState.SONG.meta.tagline+'"';
-    tagLine.setFormat(Paths.font("COMIC.ttf"), 30, 0xFF190028, "center");
+    tagLine.setFormat(Paths.font("COMIC.ttf"), 30, 0xFF010002, "center");
     tagLine.cameras = [camHUD];
     tagLine.antialiasing = false;
     insert(42, tagLine);
 
     singerNames = new FlxText(0, 0);
     singerNames.text = PlayState.SONG.meta.singerNames;
-    singerNames.setFormat(Paths.font("COMIC.ttf"), 27, 0xFF190028, "center");
+    singerNames.setFormat(Paths.font("COMIC.ttf"), 27, 0xFF010002, "center");
     singerNames.cameras = [camHUD];
     singerNames.antialiasing = false;
     insert(43, singerNames);
 
     actoresses = new FlxText(0, 0, 625);
     actoresses.text = PlayState.SONG.meta.actoresses2;
-    actoresses.setFormat(Paths.font("COMIC.ttf"), 22, 0xFF190028, "center");
+    actoresses.setFormat(Paths.font("COMIC.ttf"), 22, 0xFF010002, "center");
     actoresses.cameras = [camHUD];
     actoresses.antialiasing = false;
     insert(44, actoresses);
