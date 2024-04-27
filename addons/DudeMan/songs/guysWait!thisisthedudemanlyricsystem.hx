@@ -82,23 +82,23 @@ function stepHit(curStep:Int) {
         switch(curStep) {
                 case 520:
                     textState("popUpFast");
-                    setTextShit("FIRE IN THE HOLE", "dudeman", 0xFFFBECFF, 0xFF010002, false);
+                    setTextShit("FIRE IN THE HOLE", "dudeman", 0xFFFFFFFF, 0xFF484848, false);
                 case 528:
                     textState("goDownINSTANT");
                 case 530:
                     textState("popUpINSTANT");
-                    setTextShit("White people be like-", "dudeman", 0xFFFBECFF, 0xFF010002, false);
+                    setTextShit("White people be like-", "dudeman", 0xFFFFFFFF, 0xFF484848, false);
                 case 535:
-                    setTextShit("FIRE IN THE HOLE", "dudeman", 0xFFFBECFF, 0xFF010002, false);
+                    setTextShit("FIRE IN THE HOLE", "dudeman", 0xFFFFFFFF, 0xFF484848, false);
                 case 551:
-                    setTextShit("JDSHSDJHDSJHDSJ", "dudeman", 0xFFFBECFF, 0xFF010002, false);                    
+                    setTextShit("JDSHSDJHDSJHDSJ", "dudeman", 0xFFFFFFFF, 0xFF484848, false);                    
                 case 554:        
-                    setTextShit("Black people be like-", "dudeman", 0xFFFBECFF, 0xFF010002, false); 
+                    setTextShit("Black people be like-", "dudeman", 0xFFFFFFFF, 0xFF484848, false); 
                 case 560:
                     textState("goDownSlow"); 
                 case 620:
                     textState("popUpRlyFast");
-                    setTextShit(":O", "bf", 0xFFFBECFF, 0xFF010002, false);
+                    setTextShit(":O", "bf", 0xFFFF2D32, 0xFFFAE237, false);
                 case 624:
                     textState("goDownRlyFast");
         }
