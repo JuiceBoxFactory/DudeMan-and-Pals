@@ -27,6 +27,7 @@ function create() {
 		FlxG.save.data.nightmare = false;
 		FlxG.save.data.goodCamera = false;
 		FlxG.save.data.MelTabs = false;
+		FlxG.save.data.burger = false;
 		FlxG.save.data.subtitles = true;
 		FlxG.save.data.camMove = true;
 	}

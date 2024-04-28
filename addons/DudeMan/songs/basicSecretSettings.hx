@@ -26,6 +26,17 @@ function postCreate() {
 		insert(60, kissing);
 	}
 
+	if (FlxG.save.data.burger) {
+		burger = new FlxSprite(0, 0).loadGraphic(Paths.image('secretsettings/betterGirlfriend'));
+		burger.antialiasing = false;
+		burger.x = gf.x + 425;
+		burger.y = gf.y;
+		burger.scrollFactor.set(0.95, 0.95);
+		insert(members.indexOf(gf), burger);
+
+		remove(gf);
+	}
+
 	//BALDI GANGAM ACROSS SCREEN SPRITE
 	if (FlxG.save.data.baldiStyle) {
 		baldi = new FlxSprite(0, 250);	

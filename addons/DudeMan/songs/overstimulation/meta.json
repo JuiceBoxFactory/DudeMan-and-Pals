@@ -1,0 +1,22 @@
+{
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"beatsPerMesure": 4,
+	"bpm": 150,
+	"displayName": "Overstimulation",
+	"name": "overstimulation",
+	"bio": "WHAT IS YOUR FUCKING PROBLEM ??",
+	"actoresses": "artists: MeltyKelpy, AussieDoesThings, CherriBlossom\ncomposer: AussieDoesThings\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: MeltyKelpy",
+	"tagline": "WHAT IS YOUR FUCKING PROBLEM ??",
+	"singerNames": "DudeMan (with Bee's shirt backwards) VS Bee",
+	"actoresses2": "artists: Melty, Aussie, Cherri  composer: Aussie\ncoder: MeltyKelpy    charter: MeltyKelpy",
+    "appearStep": 0,
+	"difficulties": [
+		"Hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -13893888,
+	"icon": "Icon",
+	"color": "#2BFF00"
+}

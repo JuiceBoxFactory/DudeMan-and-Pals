@@ -2,19 +2,19 @@ import flixel.util.FlxTimer;
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxSave;
 
-function create() {
+function postCreate() {
 
     lyricItself = new FlxText(0, 1530);
     lyricItself.setFormat(Paths.font("COMIC.ttf"), 30, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
     lyricItself.cameras = [camHUD];
     lyricItself.antialiasing = false;
     lyricItself.borderSize = 3;
-    add(lyricItself);
+    insert(100, lyricItself);
 
     icon = new FlxSprite(0, 1435).loadGraphic(Paths.image('LYRICS/face'));
     icon.antialiasing = false;
     icon.cameras = [camHUD];
-    add(icon);
+    insert(100, icon);
 
     if (FlxG.save.data.subtitles == false) {
         lyricItself.alpha = 0;
@@ -33,7 +33,7 @@ function setTextShit(setText, setSingIcon, setBaseColor, setAddColor, isItaltic)
     lyricItself.screenCenter(FlxAxes.X);
     icon.screenCenter(FlxAxes.X);
     lyricItself.scale.x = 1.1;
-    icon.scale.set(0.95, 0.95);
+    icon.scale.set(0.9, 0.9);
     FlxTween.tween(lyricItself.scale, {x: 1}, 0.3, {ease:FlxEase.quartOut});
     FlxTween.tween(icon.scale, {x: 1, y: 1}, 0.3, {ease:FlxEase.quartOut});
 
@@ -75,8 +75,8 @@ function stepHit(curStep:Int) {
     /// https://fsymbols.com/generators/tarty/
 
 
-    /// █▀▄ █░█ █▀▄ █▀▀   █░░ █▄█ █▀█ █ █▀▀ █▀
-    /// █▄▀ █▄█ █▄▀ ██▄   █▄▄ ░█░ █▀▄ █ █▄▄ ▄█
+    /// █▀▄ █░█ █▀▄ █▀▀ 
+    /// █▄▀ █▄█ █▄▀ ██▄ 
 
     if (PlayState.SONG.meta.name == "dude") {
         switch(curStep) {
@@ -101,6 +101,45 @@ function stepHit(curStep:Int) {
                     setTextShit(":O", "bf", 0xFFFF2D32, 0xFFFAE237, false);
                 case 624:
                     textState("goDownRlyFast");
+        }
+    }
+
+
+    /// █▀█ █░█ █▀▀ █▀█ █▀ ▀█▀ █ █▀▄▀█ █░█ █░░ ▄▀█ ▀█▀ █ █▀█ █▄░█
+    /// █▄█ ▀▄▀ ██▄ █▀▄ ▄█ ░█░ █ █░▀░█ █▄█ █▄▄ █▀█ ░█░ █ █▄█ █░▀█
+
+    if (PlayState.SONG.meta.name == "overstimulation") {
+        switch(curStep) {
+            case 144:
+                textState("popUpRlyFast");
+                setTextShit("Number 15.", "dudeman", 0xFFFFFFFF, 0xFF484848, false);
+            case 156:
+                setTextShit("Wah :c", "dudeman", 0xFFFFFFFF, 0xFF484848, false);
+            case 160:
+                textState("goDownRlyFast");
+            case 248:
+                textState("popUpRlyFast");
+                setTextShit("Severe and Continuous.", "dudeman", 0xFFFFFFFF, 0xFF484848, false);
+            case 256:
+                textState("goDownRlyFast");
+            case 288:
+                textState("popUpRlyFast");
+                setTextShit("*screaming*", "none", 0xFFFFFFFF, 0xFF000000, true);
+            case 300:
+                textState("goDownINSTANT");
+            case 303:
+                textState("popUpINSTANT");
+            case 305:
+                textState("goDownINSTANT");
+//            case 421:
+//                FlxTween.tween(lyricItself, {y: 630}, 0.3, {ease:FlxEase.quartOut});
+//                setTextShit("it was a nightmare.", "none", 0xFFFFFFFF, 0xFF000000, false);
+//            case 437:
+//                setTextShit("im", "none", 0xFFFFFFFF, 0xFF000000, true);
+//            case 440:
+//                setTextShit("EVIL", "none", 0xFFFF0000, 0xFF000000, true);                
+//            case 447:
+//                textState("goDownINSTANT");
         }
     }
 }

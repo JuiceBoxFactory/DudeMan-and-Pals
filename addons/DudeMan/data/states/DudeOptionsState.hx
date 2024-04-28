@@ -507,6 +507,31 @@ function postCreate() {
 		checkboxMelTabs.cameras = [uiCamera];
 		add(checkboxMelTabs);
 
+		gfBurger = new FlxText();
+		gfBurger.text = "Awesum GF";
+		gfBurger.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		gfBurger.x = 180;
+		gfBurger.y = 1025;
+		gfBurger.cameras = [uiCamera];
+		gfBurger.color = 0xFFFFFFFF;
+		gfBurger.borderColor = 0xFF000000;
+		gfBurger.antialiasing = false;
+		gfBurger.alpha = 0;
+		gfBurger.borderSize = 3;
+		add(gfBurger);
+
+		checkboxgfBurger = new FlxSprite(345, 912);	
+		checkboxgfBurger.frames = Paths.getSparrowAtlas('options/checked');
+		checkboxgfBurger.animation.addByPrefix('selected', 'yes', 6);
+		checkboxgfBurger.animation.addByPrefix('disselected', 'no', 6);
+		checkboxgfBurger.animation.play('disselected');
+		checkboxgfBurger.scale.set(0.3, 0.3);
+		checkboxgfBurger.antialiasing = false;
+		checkboxgfBurger.alpha = 1;
+		checkboxgfBurger.scrollFactor.set(1, 1);
+		checkboxgfBurger.cameras = [uiCamera];
+		add(checkboxgfBurger);
+
 	border = new FlxSprite(0, 0).loadGraphic(Paths.image('options/border'));
 	border.antialiasing = false;
 	border.updateHitbox();
@@ -553,6 +578,7 @@ function resetSettings() {
 		FlxG.save.data.nightmare = false;
 		FlxG.save.data.goodCamera = false;
 		FlxG.save.data.MelTabs = false;
+		FlxG.save.data.burger = false;
 		FlxG.save.data.subtitles = true;
 		FlxG.save.data.camMove = true;
 
@@ -577,34 +603,32 @@ function update() {
 	}
 	if (MainOptionsOpen == false) {
 		for (obj in [Controls, Gameplay, Secret]) {
-		remove(obj);
+			remove(obj);
 		}
 	}
-	if (GameplayOptionsOpen == true) {
-		for (obj in [Downscroll, checkboxDownscroll, Botplay, checkboxBotplay, GhostTapping, checkboxGhostTapping, NoteBounce, checkboxNoteBounce, MiddleScroll, checkboxMiddleScroll, Subtitles, checkboxSubtitles, camMove, checkboxcamMove]) {
-		add(obj);
+	
+	for (obj in [Downscroll, checkboxDownscroll, Botplay, checkboxBotplay, GhostTapping, checkboxGhostTapping, NoteBounce, checkboxNoteBounce, MiddleScroll, checkboxMiddleScroll, Subtitles, checkboxSubtitles, camMove, checkboxcamMove]) {
+		if (GameplayOptionsOpen == true) {
+			add(obj);
 		}
-		for (obj in [Downscroll, Botplay, GhostTapping, NoteBounce, MiddleScroll, Subtitles, camMove]) {
+		if (GameplayOptionsOpen == false) {
+			remove(obj);
+		}
+	}
+	for (obj in [Downscroll, Botplay, GhostTapping, NoteBounce, MiddleScroll, Subtitles, camMove]) {
 		obj.alpha = 0.6;
+	}
+
+	for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs, gfBurger, checkboxgfBurger]) {
+		if (SecretOptionsOpen == true) {
+			add(obj);
+		}
+		if (SecretOptionsOpen == false) {
+			remove(obj);
 		}
 	}
-	if (GameplayOptionsOpen == false) {
-		for (obj in [Downscroll, checkboxDownscroll, Botplay, checkboxBotplay, GhostTapping, checkboxGhostTapping, NoteBounce, checkboxNoteBounce, MiddleScroll, checkboxMiddleScroll, Subtitles, checkboxSubtitles, camMove, checkboxcamMove]) {
-		remove(obj);
-		}
-	}
-	if (SecretOptionsOpen == true) {
-		for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs]) {
-		add(obj);
-		}
-		for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs]) {
+	for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs, gfBurger]) {
 		obj.alpha = 0.6;
-		}
-	}
-	if (SecretOptionsOpen == false) {
-		for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs]) {
-		remove(obj);
-		}
 	}
 	// CONTROLS
 	if (controls.UP_P && subStateOpen == false && MainOptionsOpen == true) {
@@ -741,6 +765,10 @@ function update() {
 		BottomText.text = "You dont need all those tabs open.";
 		MelTabs.alpha = 1;	
 	}
+	if (SelectedSecret == 9 && SecretOptionsOpen == true) {
+		BottomText.text = "I think antydote will enjoy dissecting this frame by fra";
+		gfBurger.alpha = 1;	
+	}
 	// CONTROLS PT 2
 	if (Selected1 > 2) {
 		Selected1 = 0;
@@ -754,11 +782,11 @@ function update() {
 	if (SelectedGameplay < 0) {
 		SelectedGameplay = 6;
 	}
-	if (SelectedSecret > 8) {
+	if (SelectedSecret > 9) {
 		SelectedSecret = 0;
 	}
 	if (SelectedSecret < 0) {
-		SelectedSecret = 8;
+		SelectedSecret = 9;
 	}
 	// SECRETSETTINGS CAM
 	if (SelectedSecret > 4 && SecretOptionsOpen == true) {
@@ -816,7 +844,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedGameplay == 0 && GameplayOptionsOpen == true && FlxG.save.data.downscroll == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.downscroll = false;
 		});
@@ -833,7 +860,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedGameplay == 1 && GameplayOptionsOpen == true && FlxG.save.data.botplay  == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.botplay = false;
 		});
@@ -850,7 +876,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedGameplay == 2 && GameplayOptionsOpen == true && FlxG.save.data.ghosttap == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.ghosttap = false;
 		});
@@ -867,7 +892,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedGameplay == 3 && GameplayOptionsOpen == true && FlxG.save.data.notebounce == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.notebounce = false;
 		});
@@ -884,7 +908,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedGameplay == 4 && GameplayOptionsOpen == true && FlxG.save.data.middlescroll == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.middlescroll = false;
 		});
@@ -901,7 +924,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedGameplay == 5 && GameplayOptionsOpen == true && FlxG.save.data.subtitles == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.subtitles = false;
 		});
@@ -918,7 +940,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedGameplay == 6 && GameplayOptionsOpen == true && FlxG.save.data.camMove == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.camMove = false;
 		});
@@ -938,7 +959,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedSecret == 0 && SecretOptionsOpen == true && FlxG.save.data.debug == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.debug = false;
 		});
@@ -955,7 +975,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedSecret == 1 && SecretOptionsOpen == true && FlxG.save.data.xbox == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.xbox = false;
 		});
@@ -972,7 +991,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedSecret == 2 && SecretOptionsOpen == true && FlxG.save.data.horse == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.horse = false;
 		});
@@ -989,7 +1007,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedSecret == 3 && SecretOptionsOpen == true && FlxG.save.data.baldiStyle == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.baldiStyle = false;
 		});
@@ -1006,7 +1023,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedSecret == 4 && SecretOptionsOpen == true && FlxG.save.data.hitsounds == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.hitsounds = false;
 		});
@@ -1023,7 +1039,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedSecret == 5 && SecretOptionsOpen == true && FlxG.save.data.geomtery == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.geomtery = false;
 		});
@@ -1040,7 +1055,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedSecret == 6 && SecretOptionsOpen == true && FlxG.save.data.nightmare == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.nightmare = false;
 		});
@@ -1057,7 +1071,6 @@ function postUpdate() {
 		});
 	}
 	if (SelectedSecret == 7 && SecretOptionsOpen == true && FlxG.save.data.goodCamera == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.goodCamera = false;
 		});
@@ -1074,9 +1087,24 @@ function postUpdate() {
 		});
 	}
 	if (SelectedSecret == 8 && SecretOptionsOpen == true && FlxG.save.data.MelTabs == true && controls.ACCEPT) {
-		trace("oh.. man");
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.MelTabs = false;
+		});
+	}
+	if (FlxG.save.data.burger == true) {
+		checkboxgfBurger.animation.play('selected');
+	}
+	if (FlxG.save.data.burger == false) {
+		checkboxgfBurger.animation.play('disselected');
+	}
+	if (SelectedSecret == 9 && SecretOptionsOpen == true && FlxG.save.data.burger == false && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.burger = true;
+		});
+	}
+	if (SelectedSecret == 9 && SecretOptionsOpen == true && FlxG.save.data.burger == true && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.burger = false;
 		});
 	}
 }

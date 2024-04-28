@@ -22,11 +22,12 @@ var tipText:Array<String> = [
 "oogali boogaliii ( that was a clown. )",
 "did you know that there is secret settings ?? they're.. soooo well hidden... bet u cant find them..... heh heh... yeah.",
 "wait.. my shirt... its off !!!",
-"Basketball Practice"
+"Basketball Practice",
+"Actual battle i destroyed the toilet btw"
 
 ];
 var tipTextChosen = "null";
-var highestNum = 16;
+var highestNum = 17;
 
 function postCreate() {
 
