@@ -15,8 +15,24 @@ function create() {
 	logo.updateHitbox();
 	insert(40, logo);
 	
-}
 
+bgImEvil = new FlxSprite().loadGraphic(Paths.image('backdrop/FREE5ME/obituarybg'));
+    bgImEvil.alpha = 0;
+    bgImEvil.scale.set(1.3,1.3);
+    insert(4, bgImEvil);
+
+    couchImEvil = new FlxSprite().loadGraphic(Paths.image('backdrop/FREE5ME/couchurary'));
+    couchImEvil.alpha = 0;
+    couchImEvil.scale.set(1.3,1.3);
+    insert(6, couchImEvil);
+
+    FlxG.camera.followLerp = 0;
+    camGame.scroll.x = 250;
+}
+function postCreate() {
+    FlxG.camera.followLerp = 0;
+    camGame.scroll.x = 250;
+}
 function onDadHit(event) {
 	if (881 < curStep) {
 		if (health > 0.1) {
@@ -32,5 +48,11 @@ function stepHit(curStep:Int) {
             new FlxTimer().start(3, function(timer) {
                 FlxTween.tween(logo, {y: -1200}, 2, {ease:FlxEase.quartIn});
             });
+case 1020:
+	  FlxG.camera.followLerp = 0.04;
+          bgImEvil.alpha = 1;
+          couchImEvil.alpha = 1;
 	}
 }
+
+

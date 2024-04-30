@@ -1,9 +1,9 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="dudeman" camx="100" y="70" isGF="false" camy="150" color="#FFFFFF" flipX="true" isPlayer="true" antialiasing="false" sprite="dudemanifheboyf">
+<character x="0" icon="dudeman" camx="-250" y="70" isGF="false" camy="-50" color="#FFFFFF" flipX="true" isPlayer="true" antialiasing="false" sprite="dudemanifheboyf">
 	<anim x="0" loop="false" y="0" fps="12" anim="d idle" name="idle"/>
 	<anim x="1" loop="false" y="-6" fps="12" anim="d up" name="singUP"/>
-	<anim x="37" loop="false" y="-1" fps="12" anim="d left" name="singLEFT"/>
-	<anim x="-13" loop="false" y="3" fps="12" anim="d right" name="singRIGHT"/>
+	<anim x="-13" loop="false" y="3" fps="12" anim="d left" name="singLEFT"/>
+	<anim x="37" loop="false" y="-1" fps="12" anim="d right" name="singRIGHT"/>
 	<anim x="35" loop="false" y="10" fps="12" anim="d down" name="singDOWN"/>
 	<anim x="6" loop="false" y="2" fps="24" anim="d spin" name="spin"/>
 </character>
