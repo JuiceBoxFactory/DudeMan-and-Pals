@@ -1,22 +1,23 @@
 {
-	"opponentModeAllowed": false,
-	"coopAllowed": false,
-	"stepsPerBeat": 4,
-	"beatsPerMesure": 4,
-	"bpm": 130,
-	"displayName": "Fang",
-	"name": "fang",
-	"bio": "I'm small, and filled with evil thoughts !",
-	"actoresses": "artist: MeltyKelpy\ncomposer: ChillspaceIRL\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: ?",
-	"tagline": "I'm small, and filled with evil thoughts !",
-	"singerNames": "Zee VS Bee",
+	"appearStep": 0,
+	"parsedColor": -13893888,
+	"color": "#2BFF00",
 	"actoresses2": "artist: MeltyKelpy    composer: ChillspaceIRL\ncoder: MeltyKelpy    charter: AngeltheBoi",
-    "appearStep": 0,
+	"opponentModeAllowed": false,
+	"bio": "I'm small, and filled with evil thoughts !",
+	"icon": "Icon",
 	"difficulties": [
 		"Hard"
 	],
+	"coopAllowed": false,
+	"name": "fang",
+	"stepsPerBeat": 4,
+	"singerNames": "Zee VS Bee",
+	"displayName": "Fang",
+	"beatsPerMesure": 4,
+	"tagline": "I'm small, and filled with evil thoughts !",
 	"needsVoices": true,
-	"parsedColor": -13893888,
-	"icon": "Icon",
-	"color": "#2BFF00"
+	"actoresses": "artist: MeltyKelpy\ncomposer: ChillspaceIRL\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: ?",
+	"beatsPerMeasure": 4,
+	"bpm": 130
 }
