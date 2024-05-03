@@ -261,7 +261,7 @@ function postCreate() {
 		add(checkboxcamMove);
 
 	MISC = new FlxText();
-	MISC.text = "Acessibility >";
+	MISC.text = "Accessibility >";
 	MISC.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
 	MISC.x = 180;
 	MISC.y = 415;
