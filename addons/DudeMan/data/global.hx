@@ -12,6 +12,20 @@ function create() {
 
 	FlxG.mouse.visible = false;
 
+// DEFAULT SAVE DATA.. if u wanna fck wit it !!! - Melty
+	if (FlxG.save.data.defaultSaveData == null) {
+		FlxG.save.data.selectorButtonsUnlocked = 3;
+		FlxG.save.data.dudemailsUnlocked = 0;
+		FlxG.save.data.defaultSaveData = false;
+	}
+// dudeman condems this behaviour - dudeman
+// I DIDNT WRITE THAT - the real dudeman
+// yes I did - dudeman
+
+}
+
+function update(elapsed) {
+
 	if (FlxG.save.data.wheresGarfield == null) {
 		FlxG.save.data.downscroll = false;
 		FlxG.save.data.botplay = false;
@@ -30,11 +44,8 @@ function create() {
 		FlxG.save.data.burger = false;
 		FlxG.save.data.subtitles = true;
 		FlxG.save.data.camMove = true;
+		FlxG.save.data.wheresGarfield = false;
 	}
-
-}
-
-function update(elapsed) {
 
 	if (FlxG.keys.justPressed.F5) {
         FlxG.resetState();

@@ -111,21 +111,12 @@ function checkAvalibilty() {
 		gamesIcon.alpha = 1;
 		conceptIcon.alpha = 0;
 	}
-	if (amountOfButtons == 5) {
-		gamesIcon.alpha = 1;
-		conceptIcon.alpha = 1;
-	}
 }
 
 function update() {	
 
 	if (FlxG.keys.justPressed.SIX) {
 		amountOfButtons = 4;
-		checkAvalibilty();
-	}
-
-	if (FlxG.keys.justPressed.EIGHT) {
-		amountOfButtons = 5;
 		checkAvalibilty();
 	}
 

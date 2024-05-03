@@ -24,11 +24,12 @@ import flixel.util.FlxTimer;
 
 var Selected1 = 0;
 var SelectedGameplay = 0;
+var SelectedMisc = 0;
 var SelectedSecret = 0;
 var subStateOpen = false;
 var MainOptionsOpen = true;
 var GameplayOptionsOpen = false;
-var ApperanceOptionsOpen = false;
+var MiscOptionsOpen = false;
 var SecretOptionsOpen = false;
 
 function create() {
@@ -64,7 +65,7 @@ function postCreate() {
 	Controls.text = "Keybinds";
 	Controls.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
 	Controls.x = 180;
-	Controls.y = 175;
+	Controls.y = 115;
 	Controls.cameras = [uiCamera];
 	Controls.color = 0xFFFFFFFF;
 	Controls.borderColor = 0xFF000000;
@@ -76,7 +77,7 @@ function postCreate() {
 	Gameplay.text = "Gameplay >";
 	Gameplay.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
 	Gameplay.x = 180;
-	Gameplay.y = 325;
+	Gameplay.y = 265;
 	Gameplay.cameras = [uiCamera];
 	Gameplay.color = 0xFFFFFFFF;
 	Gameplay.borderColor = 0xFF000000;
@@ -259,22 +260,36 @@ function postCreate() {
 		checkboxcamMove.cameras = [uiCamera];
 		add(checkboxcamMove);
 
-//	Appearance = new FlxText();
-//	Appearance.text = "Debug Mode >";
-//	Appearance.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
-//	Appearance.x = 180;
-//	Appearance.y = 375;
-//	Appearance.cameras = [uiCamera];
-//	Appearance.color = 0xFFFFFFFF;
-//	Appearance.borderColor = 0xFF000000;
-//	Appearance.antialiasing = false;
-//	Appearance.borderSize = 3;
+	MISC = new FlxText();
+	MISC.text = "Acessibility >";
+	MISC.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+	MISC.x = 180;
+	MISC.y = 415;
+    MISC.cameras = [uiCamera];
+	MISC.color = 0xFFFFFFFF;
+	MISC.borderColor = 0xFF000000;
+	MISC.antialiasing = false;
+	MISC.borderSize = 3;
+	add(MISC);
+
+		ResetSaveData = new FlxText();
+		ResetSaveData.text = "Reset Save Data";
+		ResetSaveData.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		ResetSaveData.x = 180;
+		ResetSaveData.y = 125;
+		ResetSaveData.cameras = [uiCamera];
+		ResetSaveData.color = 0xFFFFFFFF;
+		ResetSaveData.borderColor = 0xFF000000;
+		ResetSaveData.antialiasing = false;
+		ResetSaveData.alpha = 0;
+		ResetSaveData.borderSize = 3;
+		add(ResetSaveData);
 
 	Secret = new FlxText();
 	Secret.text = "Secret Settings >";
 	Secret.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
 	Secret.x = 180;
-	Secret.y = 475;
+	Secret.y = 550;
 	Secret.cameras = [uiCamera];
 	Secret.color = 0xFFFFFFFF;
 	Secret.borderColor = 0xFF000000;
@@ -564,26 +579,15 @@ function postCreate() {
 }
 
 function resetSettings() {
-		FlxG.save.data.downscroll = false;
-		FlxG.save.data.botplay = false;
-		FlxG.save.data.ghosttap = true;
-		FlxG.save.data.notebounce = true;
-		FlxG.save.data.middlescroll = false;
-		FlxG.save.data.debug = false;
-		FlxG.save.data.xbox = false;
-		FlxG.save.data.horse = false;
-		FlxG.save.data.baldiStyle = false;
-		FlxG.save.data.hitsounds = false;
-		FlxG.save.data.geomtery = false;
-		FlxG.save.data.nightmare = false;
-		FlxG.save.data.goodCamera = false;
-		FlxG.save.data.MelTabs = false;
-		FlxG.save.data.burger = false;
-		FlxG.save.data.subtitles = true;
-		FlxG.save.data.camMove = true;
-
-		FlxG.save.data.wheresGarfield = false;
+		FlxG.save.data.wheresGarfield = null;
 		trace("set to default settings");
+}
+
+function resetSaveData() {
+		FlxG.save.data.defaultSaveData = null;
+		FlxG.switchState(new ModState("DudeTitleScreen"));
+		FlxG.sound.playMusic(Paths.music('freakyMenu'), 1, true);
+		trace("reset save data");
 }
 
 function update() {
@@ -592,7 +596,7 @@ function update() {
 
 	// CHECKING CATEGORY		
 	if (MainOptionsOpen == true) {
-		for (obj in [Controls, Gameplay, Secret]) {
+		for (obj in [Controls, Gameplay, MISC, Secret]) {
 		add(obj);
 		obj.alpha = 0.6;
 		}
@@ -602,7 +606,7 @@ function update() {
 		resetSettings();	
 	}
 	if (MainOptionsOpen == false) {
-		for (obj in [Controls, Gameplay, Secret]) {
+		for (obj in [Controls, Gameplay, MISC, Secret]) {
 			remove(obj);
 		}
 	}
@@ -616,6 +620,18 @@ function update() {
 		}
 	}
 	for (obj in [Downscroll, Botplay, GhostTapping, NoteBounce, MiddleScroll, Subtitles, camMove]) {
+		obj.alpha = 0.6;
+	}
+
+	for (obj in [ResetSaveData]) {
+		if (MiscOptionsOpen == true) {
+			add(obj);
+		}
+		if (MiscOptionsOpen == false) {
+			remove(obj);
+		}
+	}
+	for (obj in [ResetSaveData]) {
 		obj.alpha = 0.6;
 	}
 
@@ -655,6 +671,28 @@ function update() {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		SelectedSecret += 1;
 	}
+	// MISC SETTINGS SHIT.. god why is this so unorganized PLS
+	if (controls.UP_P && MiscOptionsOpen == true) {
+		FlxG.sound.play(Paths.sound('menu/scroll'));
+		SelectedMisc -= 1;	
+	}
+	if (controls.DOWN_P && MiscOptionsOpen == true) {
+		FlxG.sound.play(Paths.sound('menu/scroll'));
+		SelectedMisc += 1;
+	}
+	if (SelectedMisc > 0) {
+		SelectedMisc = 0;
+	}
+	if (SelectedMisc < 0) {
+		SelectedMisc = 0;
+	}
+	if (SelectedMisc == 0 && MiscOptionsOpen == true) {
+		BottomText.text = "Pressing this will remove ur save data ! instantly ! like /gen dude";
+		ResetSaveData.alpha = 1;	
+	}
+	if (SelectedMisc == 0 && controls.ACCEPT && MiscOptionsOpen == true) {
+		resetSaveData();
+	}
 	// BUTTONS MAIN
 	if (Selected1 == 0 && controls.ACCEPT && MainOptionsOpen == true && subStateOpen == false) {
 		subStateOpen = true;
@@ -663,13 +701,23 @@ function update() {
 	if (Selected1 == 1 && controls.ACCEPT && MainOptionsOpen == true) {
 		new FlxTimer().start(0.1, function(timer) {
 			GameplayOptionsOpen = true; 
+			MiscOptionsOpen = false;
 			MainOptionsOpen = false;
 			trace("poop");
 		});
 	}
 	if (Selected1 == 2 && controls.ACCEPT && MainOptionsOpen == true) {
 		new FlxTimer().start(0.1, function(timer) {
+			SecretOptionsOpen = false; 
+			MiscOptionsOpen = true;
+			MainOptionsOpen = false;
+			trace("poop");
+		});
+	}
+	if (Selected1 == 3 && controls.ACCEPT && MainOptionsOpen == true) {
+		new FlxTimer().start(0.1, function(timer) {
 			SecretOptionsOpen = true; 
+			MiscOptionsOpen = false;
 			MainOptionsOpen = false;
 			trace("poop");
 		});
@@ -685,10 +733,10 @@ function update() {
 	if (Selected1 == 1 && MainOptionsOpen == true) {
 		Gameplay.alpha = 1;	
 	}
-//	if (Selected1 == 2 && MainOptionsOpen == true) {
-//		Appearance.alpha = 1;	
-//	}
 	if (Selected1 == 2 && MainOptionsOpen == true) {
+		MISC.alpha = 1;	
+	}
+	if (Selected1 == 3 && MainOptionsOpen == true) {
 		Secret.alpha = 1;	
 	}
 	// BUTTONS GAMEPLAY
@@ -770,11 +818,11 @@ function update() {
 		gfBurger.alpha = 1;	
 	}
 	// CONTROLS PT 2
-	if (Selected1 > 2) {
+	if (Selected1 > 3) {
 		Selected1 = 0;
 	}
 	if (Selected1 < 0) {
-		Selected1 = 2;
+		Selected1 = 3;
 	}
 	if (SelectedGameplay > 6) {
 		SelectedGameplay = 0;
@@ -828,6 +876,7 @@ function postUpdate() {
 			GameplayOptionsOpen = false;
 			SecretOptionsOpen = false;
 			MainOptionsOpen = true;
+			MiscOptionsOpen = false;
 			uiCamera.y = 25;
 			SelectedSecret = 0;
 	}
