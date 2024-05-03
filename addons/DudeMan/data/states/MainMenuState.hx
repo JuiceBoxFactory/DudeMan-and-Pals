@@ -28,6 +28,7 @@ function update() {
 
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));
+	FlxG.switchState(new ModState("DudeTitleScreen"));
 	}
 	if (controls.UP_P) {
 		SelectedButton -= 1;

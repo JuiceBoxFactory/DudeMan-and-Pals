@@ -3,6 +3,7 @@ import flixel.util.FlxColor;
 import flixel.addons.display.FlxBackdrop;
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxTimer;
+import flixel.util.FlxSave;
 
 var tipText:Array<String> = [
 
@@ -29,7 +30,15 @@ var tipText:Array<String> = [
 var tipTextChosen = "null";
 var highestNum = 17;
 
+var introOver = false;
+
 function postCreate() {
+
+	CoolUtil.playMenuSong();
+
+	if (FlxG.save.data.firstOnIntroClient == false) {
+		skipIntro();
+	}
 
 	coolBackdrop = new FlxBackdrop(Paths.image('titleScreen/checkerboardbg'));
 	coolBackdrop.moves = true;
@@ -94,11 +103,39 @@ function postCreate() {
 	add(enterTxt);
 
 	updateTxt();
-	
-	new FlxTimer().start(7, function(tmr:FlxTimer) {
-		updateTxt();
-	}, 600);
-	
+
+	blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+	add(blackScreen);
+
+    fakeLogo = new FlxSprite();
+	fakeLogo.antialiasing = false;
+	fakeLogo.frames = Paths.getSparrowAtlas('titleScreen/titleOpeningLogo');
+	fakeLogo.animation.addByPrefix('boil', 'boil', 6);
+	fakeLogo.animation.play("boil");
+	fakeLogo.screenCenter();
+	fakeLogo.updateHitbox();
+	fakeLogo.alpha = 0;
+	add(fakeLogo);
+
+	devs = new FlxText(800, 725);
+	devs.text = "MeltyKelpy\nAussieDoesThings\nkosejumpscare\nOJSTheCoder\nNullFrequency\nGhostyBricks\nCorva_tile\nEcHO\nMissy\nJPR\nChillspace\nR3t1xTheIdiot\nSaayo\nCherriBlossom\nIcepoplol\nAngelTheBoi\nCaz\nSoupSkid\nThat1Gamer";
+	devs.setFormat(Paths.font("COMIC.ttf"), 35, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+	devs.color = 0xFFFFFFFF;
+	devs.borderColor = 0xFF000000;
+	devs.antialiasing = false;
+	devs.borderSize = 3;
+	add(devs);
+
+	introText = new FlxText();
+	introText.text = "stupid fnf mod";
+	introText.setFormat(Paths.font("COMIC.ttf"), 35, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+	introText.color = 0xFFFFFFFF;
+	introText.borderColor = 0xFF000000;
+	introText.antialiasing = false;
+	introText.borderSize = 3;
+	introText.screenCenter();
+	add(introText);
+
 }
 
 function update() {
@@ -106,6 +143,36 @@ function update() {
 	if (FlxG.keys.justPressed.SHIFT) {
 		updateTxt();
 	}
+
+	if (controls.ACCEPT && introOver == false) {
+	new FlxTimer().start(0.1, function(timer) {
+		skipIntro();
+	});
+	}
+
+	if (controls.ACCEPT && introOver == true) {
+		FlxG.sound.play(Paths.sound('confirm'));
+		new FlxTimer().start(0.6, function(timer) {
+			FlxG.switchState(new MainMenuState());
+		});
+	}
+
+	if (introOver == true) {
+		introText.alpha = 0;
+		devs.alpha = 0;
+		fakeLogo.alpha = 0;
+		blackScreen.alpha = 0;
+	}
+
+}
+
+function skipIntro() {
+
+	FlxG.camera.flash(FlxColor.WHITE, 4);
+	new FlxTimer().start(7, function(tmr:FlxTimer) {
+		updateTxt();
+	}, 600);
+	introOver = true;
 
 }
 
@@ -115,3 +182,32 @@ function updateTxt() {
 	tipTxt.screenCenter();		
 	tipTxt.y += 75;
 }
+
+override function beatHit(curBeat:Int)	{
+
+		switch (curBeat)
+		{
+			case 1:		
+				introText.text = "stupidest fnf mod you've ever played";
+				introText.screenCenter();
+			case 4:
+				introText.text = "made by...";
+				introText.screenCenter();
+			case 8:
+				introText.text = "like way too many fucking people dude";
+				introText.screenCenter();				
+				FlxTween.tween(introText, {x: 100}, 0.6, {ease: FlxEase.quartOut});
+				new FlxTimer().start(0.6, function(timer) {
+					FlxTween.tween(devs, {y: -950}, 1);
+				});
+			case 12:
+				introText.text = "and that mods called-";
+				introText.screenCenter();
+			case 14:
+				FlxTween.tween(introText, {alpha: 0}, 0.2);
+				FlxTween.tween(fakeLogo, {alpha: 1}, 0.7);
+			case 16:
+				FlxG.save.data.firstOnIntroClient = false;
+				skipIntro();
+		}
+	}
