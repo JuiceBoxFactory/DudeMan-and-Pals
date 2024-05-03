@@ -1,5 +1,7 @@
 import flixel.text.FlxTextBorderStyle;
 
+var ascendSpeed = 0;
+
 function create() {
 
 	for (i in playerStrums.members) 
@@ -55,6 +57,11 @@ function update() {
 	}
 	if (FlxG.save.data.botplay == false) {
 		player.cpu = false;
+	}
+
+	if (FlxG.save.data.ascend ) {
+		ascendSpeed += 0.000075;
+		boyfriend.y -= ascendSpeed;
 	}
 
 }

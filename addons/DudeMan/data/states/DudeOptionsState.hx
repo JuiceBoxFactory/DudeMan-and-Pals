@@ -547,6 +547,31 @@ function postCreate() {
 		checkboxgfBurger.cameras = [uiCamera];
 		add(checkboxgfBurger);
 
+		ascend = new FlxText();
+		ascend.text = "Ascension";
+		ascend.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		ascend.x = 180;
+		ascend.y = 1125;
+		ascend.cameras = [uiCamera];
+		ascend.color = 0xFFFFFFFF;
+		ascend.borderColor = 0xFF000000;
+		ascend.antialiasing = false;
+		ascend.alpha = 1;
+		ascend.borderSize = 3;
+		add(ascend);
+
+		checkboxascend = new FlxSprite(345, 1012);	
+		checkboxascend.frames = Paths.getSparrowAtlas('options/checked');
+		checkboxascend.animation.addByPrefix('selected', 'yes', 6);
+		checkboxascend.animation.addByPrefix('disselected', 'no', 6);
+		checkboxascend.animation.play('disselected');
+		checkboxascend.scale.set(0.3, 0.3);
+		checkboxascend.antialiasing = false;
+		checkboxascend.alpha = 1;
+		checkboxascend.scrollFactor.set(1, 1);
+		checkboxascend.cameras = [uiCamera];
+		add(checkboxascend);
+
 	border = new FlxSprite(0, 0).loadGraphic(Paths.image('options/border'));
 	border.antialiasing = false;
 	border.updateHitbox();
@@ -817,6 +842,10 @@ function update() {
 		BottomText.text = "I think antydote will enjoy dissecting this frame by fra";
 		gfBurger.alpha = 1;	
 	}
+	if (SelectedSecret == 10 && SecretOptionsOpen == true) {
+		BottomText.text = "bye bye !!!";
+		ascend.alpha = 1;	
+	}
 	// CONTROLS PT 2
 	if (Selected1 > 3) {
 		Selected1 = 0;
@@ -830,19 +859,19 @@ function update() {
 	if (SelectedGameplay < 0) {
 		SelectedGameplay = 6;
 	}
-	if (SelectedSecret > 9) {
+	if (SelectedSecret > 10) {
 		SelectedSecret = 0;
 	}
 	if (SelectedSecret < 0) {
-		SelectedSecret = 9;
+		SelectedSecret = 10;
 	}
 	// SECRETSETTINGS CAM
-	if (SelectedSecret > 4 && SecretOptionsOpen == true) {
-		if (uiCamera.y != -475) {
+	if (SelectedSecret > 5 && SecretOptionsOpen == true) {
+		if (uiCamera.y != -575) {
 			uiCamera.y -= 5;
 		}
 	}
-	if (SelectedSecret < 5 && SecretOptionsOpen == true) {
+	if (SelectedSecret < 6 && SecretOptionsOpen == true) {
 		if (uiCamera.y != 25) {
 			uiCamera.y += 5;
 		}
@@ -1154,6 +1183,23 @@ function postUpdate() {
 	if (SelectedSecret == 9 && SecretOptionsOpen == true && FlxG.save.data.burger == true && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.burger = false;
+		});
+	}
+	
+	if (FlxG.save.data.ascend == true) {
+		checkboxascend.animation.play('selected');
+	}
+	if (FlxG.save.data.ascend == false) {
+		checkboxascend.animation.play('disselected');
+	}
+	if (SelectedSecret == 10 && SecretOptionsOpen == true && FlxG.save.data.ascend == false && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.ascend = true;
+		});
+	}
+	if (SelectedSecret == 10 && SecretOptionsOpen == true && FlxG.save.data.ascend == true && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.ascend = false;
 		});
 	}
 }
