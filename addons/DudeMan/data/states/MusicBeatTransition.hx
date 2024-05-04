@@ -5,8 +5,8 @@ var coolerCamera = new FlxCamera();
 
 function create() {
 
-    blackSpr.alpha = 0;
-    transitionSprite.alpha = 0;
+    remove(blackSpr);
+    remove(transitionSprite);
 
     FlxG.cameras.add(coolerCamera, false);
 
@@ -33,6 +33,7 @@ function create() {
         trans.animation.play('close');
         new FlxTimer().start(0.5, function(timer) {
             coolerCamera.bgColor = 0xFF0C0014;
+            finish();
         });
     }
     else {

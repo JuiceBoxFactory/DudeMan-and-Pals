@@ -98,6 +98,19 @@ function create() {
 	conceptIcon.scrollFactor.set(0, 0);
 	add(conceptIcon);
 
+	gay = new FlxSprite(1100, 550);	
+	gay.frames = Paths.getSparrowAtlas('freeplay/mail');
+	gay.animation.addByPrefix('close', 'close', 6);
+	gay.animation.addByPrefix('open', 'open', 6);
+	gay.animation.play('close');
+	gay.antialiasing = false;
+	gay.scale.set(0.6, 0.6);
+	gay.updateHitbox();
+	add(gay);
+
+    cursor = new FlxSprite(0, 0).loadGraphic(Paths.image('game/cursor'));
+    insert(99, cursor);
+
 	checkAvalibilty();
 
 }
@@ -114,6 +127,19 @@ function checkAvalibilty() {
 }
 
 function update() {	
+
+    cursor.x = FlxG.mouse.screenX;
+    cursor.y = FlxG.mouse.screenY;
+
+    if (FlxG.mouse.overlaps(gay)) {
+		gay.animation.play("open");
+		if (FlxG.mouse.justPressed) {
+			FlxG.switchState(new ModState("DudeMail"));
+		}
+	}
+	else {
+		gay.animation.play("close");
+	}
 
 	if (FlxG.keys.justPressed.SIX) {
 		amountOfButtons = 4;
@@ -649,8 +675,5 @@ function update() {
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));
 	FlxG.switchState(new MainMenuState());
-	}
-	if (FlxG.keys.justPressed.G) {
-		FlxG.switchState(new ModState("DudeMail"));
 	}
 }
