@@ -460,7 +460,7 @@ function postCreate() {
 		Nightmare.borderSize = 3;
 		add(Nightmare);
 
-		checkboxNightmare= new FlxSprite(335, 612);	
+		checkboxNightmare = new FlxSprite(335, 612);	
 		checkboxNightmare.frames = Paths.getSparrowAtlas('options/checked');
 		checkboxNightmare.animation.addByPrefix('selected', 'yes', 6);
 		checkboxNightmare.animation.addByPrefix('disselected', 'no', 6);
@@ -660,7 +660,7 @@ function update() {
 		obj.alpha = 0.6;
 	}
 
-	for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs, gfBurger, checkboxgfBurger]) {
+	for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs, gfBurger, checkboxgfBurger, ascend, checkboxascend]) {
 		if (SecretOptionsOpen == true) {
 			add(obj);
 		}
@@ -668,7 +668,7 @@ function update() {
 			remove(obj);
 		}
 	}
-	for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs, gfBurger]) {
+	for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs, gfBurger, ascend]) {
 		obj.alpha = 0.6;
 	}
 	// CONTROLS
@@ -866,13 +866,24 @@ function update() {
 		SelectedSecret = 10;
 	}
 	// SECRETSETTINGS CAM
-	if (SelectedSecret > 5 && SecretOptionsOpen == true) {
-		if (uiCamera.y != -575) {
+	if (SelectedSecret > 9 && SecretOptionsOpen == true) {
+		if (uiCamera.y > -575) {
 			uiCamera.y -= 5;
 		}
+		else if (uiCamera.y < -575) {
+			uiCamera.y += 5;
+		}
 	}
-	if (SelectedSecret < 6 && SecretOptionsOpen == true) {
-		if (uiCamera.y != 25) {
+	if (SelectedSecret > 4 && SecretOptionsOpen == true && SelectedSecret < 10) {
+		if (uiCamera.y > -475) {
+			uiCamera.y -= 5;
+		}
+		else if (uiCamera.y < -475) {
+			uiCamera.y += 5;
+		}
+	}
+	if (SelectedSecret < 5 && SecretOptionsOpen == true) {
+		if (uiCamera.y < 25) {
 			uiCamera.y += 5;
 		}
 	}
