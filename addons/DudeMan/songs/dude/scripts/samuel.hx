@@ -24,12 +24,7 @@ import flixel.text.FlxTextBorderStyle;
 	add(dad);
 	add(boyfriend);
 
-	DUDEDICTION = new Character(110, 100, "dudediction");
-	DUDEDICTION.flipX = false; 
-	DUDEDICTION.alpha = 0;
-	add(DUDEDICTION);
-
-	vreendude= new Character(110, 100, "dudevreen");
+	vreendude = new Character(110, 100, "dudevreen");
 	vreendude.flipX = false; 
 	vreendude.alpha = 0;
 	add(vreendude);
@@ -37,7 +32,6 @@ import flixel.text.FlxTextBorderStyle;
 }
              
 function onDadHit(event) {
-	DUDEDICTION.playSingAnim(event.direction);
 	vreendude.playSingAnim(event.direction);
 }
 
@@ -63,10 +57,8 @@ function stepHit(curStep:Int) {
      defaultCamZoom = 1.6;
         case 688:
 	black.alpha = 1;
-     	DUDEDICTION.alpha = 1;
         case 768:
-	black.alpha = 0;
-     	DUDEDICTION.alpha = 0;
+	black.alpha = 0
         case 1049:
 	remove(dad);
 	vreendude.alpha = 1;
