@@ -71,7 +71,7 @@ function create() {
         slotSelected = slotSelected+'PINKselected';        
         mailsBack = 0xFFFFB7D1;
         mailBack = 0xFFFFC3DF;
-        topBar1 = 0xFFF2AEC6;
+        topBar1 = 0xFFFFB7D1;
         topBar2 = 0xFFFE0059;
         themeScroll = 2;
     }
