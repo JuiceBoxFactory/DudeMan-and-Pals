@@ -24,11 +24,12 @@ var tipText:Array<String> = [
 "did you know that there is secret settings ?? they're.. soooo well hidden... bet u cant find them..... heh heh... yeah.",
 "wait.. my shirt... its off !!!",
 "Basketball Practice",
-"Actual battle i destroyed the toilet btw"
+"Actual battle i destroyed the toilet btw",
+"SUPERGOONER... ACTIVATE"
 
 ];
 var tipTextChosen = "null";
-var highestNum = 17;
+var highestNum = 18;
 
 var introOver = false;
 

@@ -650,4 +650,7 @@ function update() {
 	FlxG.sound.play(Paths.sound('cancel'));
 	FlxG.switchState(new MainMenuState());
 	}
+	if (FlxG.keys.justPressed.G) {
+		FlxG.switchState(new ModState("DudeMail"));
+	}
 }
