@@ -15,9 +15,9 @@
 	"singerNames": "Zee VS Bee",
 	"displayName": "Fang",
 	"beatsPerMesure": 4,
+	"beatsPerMeasure": 4,
+	"actoresses": "artist: MeltyKelpy\ncomposer: ChillspaceIRL\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: ?",
 	"tagline": "I'm small, and filled with evil thoughts !",
 	"needsVoices": true,
-	"actoresses": "artist: MeltyKelpy\ncomposer: ChillspaceIRL\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: ?",
-	"beatsPerMeasure": 4,
 	"bpm": 130
 }
