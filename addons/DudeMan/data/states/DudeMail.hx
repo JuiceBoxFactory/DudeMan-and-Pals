@@ -28,6 +28,8 @@ var themeScroll = 0;
 
 function create() {
 
+    FlxG.sound.playMusic(Paths.music('dudemailTunes'), 1, true);
+
     coolBackdrop = new FlxBackdrop().loadGraphic(Paths.image('dudeMail/checkerboardbgLIGHT'));
 	coolBackdrop.moves = true;
 	coolBackdrop.scrollFactor.set(0, 0);
@@ -340,23 +342,35 @@ function update() {
     }
 
     if (FlxG.save.data.dudemailsUnlocked >= 1) {
+        mailSlot1.updateHitbox();
+        mailSlot1.offset.set(100, 100);
         if (FlxG.mouse.overlaps(mailSlot1) && FlxG.mouse.justPressed) {
             selectedMail = 1;
+            FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
         }
     }
     if (FlxG.save.data.dudemailsUnlocked >= 2) {
+        mailSlot2.updateHitbox();
+        mailSlot2.offset.set(100, 100);
         if (FlxG.mouse.overlaps(mailSlot2) && FlxG.mouse.justPressed) {
             selectedMail = 2;
+            FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
         }
     }
     if (FlxG.save.data.dudemailsUnlocked >= 3) {
+        mailSlot3.updateHitbox();
+        mailSlot3.offset.set(100, 100);
         if (FlxG.mouse.overlaps(mailSlot3) && FlxG.mouse.justPressed) {
             selectedMail = 3;
+            FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
         }
     }
     if (FlxG.save.data.dudemailsUnlocked >= 4) {
+        mailSlot4.updateHitbox();
+        mailSlot4.offset.set(100, 100);
         if (FlxG.mouse.overlaps(mailSlot4) && FlxG.mouse.justPressed) {
             selectedMail = 4;
+            FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
         }
     }
 
