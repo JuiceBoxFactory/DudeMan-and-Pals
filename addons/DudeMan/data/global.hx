@@ -13,8 +13,6 @@ function new() {
 
 function create() {
 
-	FlxG.mouse.visible = false;
-
 // DEFAULT SAVE DATA.. if u wanna fck wit it !!! - Melty
 	if (FlxG.save.data.defaultSaveData == null) {
 		FlxG.save.data.selectorButtonsUnlocked = 3; // max is 5, however you can only unlock up to 4.... >:] ( its just a scrapped thing, doesnt do anything )
@@ -28,6 +26,8 @@ function create() {
 }
 
 function update(elapsed) {
+
+	FlxG.mouse.visible = false;
 
 	// DEFAULT SETTINGS ! theres not alot you can do this with lol
 	if (FlxG.save.data.wheresGarfield == null) {
