@@ -259,7 +259,7 @@ function makeMailScreen() {
     }
     if (FlxG.save.data.dudemailsUnlocked >= 2) {
         mailInfo2.text = "To: BeeFunk@dudemail.com\nFrom: MYLITTLEPONYFAN1264901@dudemail.com\nSubject: HIIHIHIHIHIIHIHH";
-        mailText2.text = "\n\n\n\nDear Bee Eff,\naw man creeper";
+        mailText2.text = "\n\n\n\nDEAR THAT ONE GUY FROM THAT ONE TIME,\nHI AGAIN !!! THOSE 2 SONGS WE GOT TO SING TOGETHER WERE REALLY FUN AND I THINK WE SHOULD DO IT AGAIN SOMETIME X333 ALSO ALSO HAVE YOU WATCHED MY LITTLE PONY BEFORE ??? I THINK YOU'D LIKE IT ALOT ACTUALLY ITS REALLY GOOD WE COULD WATCH IT TOGETHER AND LIKE UHM UHMU UMHUHMUHMUHMUMU YEAH IT'LL BE AWESOME WE CAN WATCH ALL THE SEASONS AND ALL THE MOVIES !!\n\ni have nothing else to do.\n\n";
     }
     if (FlxG.save.data.dudemailsUnlocked >= 3) {
         mailInfo3.text = "To: BeeFunk@dudemail.com\nFrom: HotSexyDemon972@dudemail.com\nSubject: My Game.";
@@ -299,6 +299,9 @@ function update() {
     }
     if (mail.scroll.y < 0) {
         mail.scroll.y = 0;
+    }
+    if (camera.scroll.y < 0) {
+        camera.scroll.y = 0;
     }
 
     if (themeScroll == 0) {
