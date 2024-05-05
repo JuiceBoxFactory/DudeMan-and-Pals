@@ -1,22 +1,23 @@
 {
-	"opponentModeAllowed": false,
-	"coopAllowed": false,
-	"stepsPerBeat": 4,
-	"beatsPerMesure": 4,
-	"bpm": 158,
-	"displayName": "Free-4-Me",
-	"name": "obituary",
-	"bio": "calm down kathy\n\nidk kathy.exe",
-	"actoresses": "artist: Saayo\ncoverer: Saayo\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: Saayo",
-	"tagline": "calm down kathy !",
-	"singerNames": "KATHY.EXE VS DudeMan with a cool hat",
+	"appearStep": 1020,
+	"parsedColor": -13893888,
+	"color": "#2BFF00",
 	"actoresses2": "artist: Saayo    coverer: Saayo\ncoder: MeltyKelpy    charter: AngeltheBoi",
-    "appearStep": 1020,
+	"opponentModeAllowed": false,
+	"bio": "calm down kathy\n\nidk kathy.exe",
+	"icon": "Icon",
 	"difficulties": [
 		"Hard"
 	],
+	"coopAllowed": false,
+	"name": "obituary",
+	"stepsPerBeat": 4,
+	"singerNames": "KATHY.EXE VS DudeMan with a cool hat",
+	"displayName": "Free-4-Me",
+	"beatsPerMesure": 4,
+	"beatsPerMeasure": 4,
+	"actoresses": "artist: Saayo\ncoverer: Saayo\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: Saayo",
+	"tagline": "calm down kathy !",
 	"needsVoices": true,
-	"parsedColor": -13893888,
-	"icon": "Icon",
-	"color": "#2BFF00"
+	"bpm": 158
 }
