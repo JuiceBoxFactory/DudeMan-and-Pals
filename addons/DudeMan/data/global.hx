@@ -13,21 +13,21 @@ function new() {
 
 function create() {
 
-// DEFAULT SAVE DATA.. if u wanna fck wit it !!! - Melty
-	if (FlxG.save.data.defaultSaveData == null) {
-		FlxG.save.data.selectorButtonsUnlocked = 3; // max is 5, however you can only unlock up to 4.... >:] ( its just a scrapped thing, doesnt do anything )
-		FlxG.save.data.dudemailsUnlocked = 0; // max is [number will be put here later], however you only unlock up to [number will be put here later], so fuck around to your hearts content, dataminer ! 
-		FlxG.save.data.defaultSaveData = false;
-	}
-// dudeman condems this behaviour - dudeman
-// I DIDNT WRITE THAT - the real dudeman
-// yes I did - dudeman
-
 }
 
 function update(elapsed) {
 
 	FlxG.mouse.visible = false;
+
+	// DEFAULT SAVE DATA.. if u wanna fck wit it !!! - Melty
+	if (FlxG.save.data.defaultSaveData == null) {
+		FlxG.save.data.selectorButtonsUnlocked = 3; // max is 5, however you can only unlock up to 4.... >:] ( its just a scrapped thing, doesnt do anything )
+		FlxG.save.data.dudemailsUnlocked = 0; // max is [number will be put here later], however you only unlock up to [number will be put here later], so fuck around to your hearts content, dataminer ! 
+		FlxG.save.data.defaultSaveData = false;
+	}
+	// dudeman condems this behaviour - dudeman
+	// I DIDNT WRITE THAT - the real dudeman
+	// yes I did - dudeman
 
 	// DEFAULT SETTINGS ! theres not alot you can do this with lol
 	if (FlxG.save.data.wheresGarfield == null) {
