@@ -1,0 +1,22 @@
+{
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"beatsPerMesure": 4,
+	"displayName": "Orange-Juice",
+	"name": "orangejuice",
+	"bio": "50th anniversary gerard",
+	"actoresses": "artist: MeltyKelpy\ncomposer: OJSTheCoder\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: MeltyKelpy",
+	"tagline": "50th anniversary gerard",
+	"singerNames": "OJSTheCoder VS Bee",
+	"actoresses2": "artist: MeltyKelpy    composer: OJSTheCoder\ncoder: MeltyKelpy    charter: MeltyKelpy",
+    "appearStep": 0,
+	"bpm": 185,
+	"difficulties": [
+		"Hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -13893888,
+	"icon": "Icon",
+	"color": "#2BFF00"
+}

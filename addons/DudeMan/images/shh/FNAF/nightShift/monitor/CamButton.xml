@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="CamButton.png">
+<SubTexture name="CamButton Blank0000" x="0" y="0" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue10000" x="99" y="0" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue10001" x="99" y="0" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue10002" x="99" y="0" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue10003" x="99" y="0" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue10004" x="99" y="0" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue10005" x="99" y="0" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue10006" x="99" y="0" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue10007" x="99" y="0" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue10008" x="99" y="0" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue10009" x="99" y="0" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue20000" x="0" y="70" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue20001" x="0" y="70" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue20002" x="0" y="70" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue20003" x="0" y="70" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue20004" x="0" y="70" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue20005" x="0" y="70" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue20006" x="0" y="70" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue20007" x="0" y="70" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue20008" x="0" y="70" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+<SubTexture name="CamButton Hue20009" x="0" y="70" width="99" height="70" frameX="0" frameY="0" frameWidth="99" frameHeight="70" />
+</TextureAtlas>

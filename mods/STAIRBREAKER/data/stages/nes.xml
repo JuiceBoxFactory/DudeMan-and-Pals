@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-stage>
-<stage zoom="0.9" name="stage" folder="stages/bloader/">
-	<sprite name="bg"               x="600" y="600"   sprite="bg"       scroll="0.9" scale="8" antialiasing="false"/>
-	<sprite name="stageFront"       x="650" y="600"    sprite="ground"   scroll="1" scale="8" antialiasing="false"/>
-	<girlfriend />
-	<dad scale="1.5" x="1300" y="400" flipX="true"/>
-	<boyfriend zoom="1" scale="1.5" x="600" y="400" flipX="false"/>
-</stage>

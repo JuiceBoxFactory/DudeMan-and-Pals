@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="600" icon="kose" camx="-250" y="70" isGF="false" camy="85" color="#FFFFFF" isPlayer="false" antialiasing="false" sprite="koseKB">
+	<anim x="0" loop="true" y="0" fps="3" anim="idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="down" name="singDOWN"/>
+</character>

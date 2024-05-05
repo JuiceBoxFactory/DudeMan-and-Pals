@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-character>
+<character x="860" icon="dudeman" camx="-150" y="300" isGF="false" scale="3.5" camy="75" color="#FFFFFF" isPlayer="false" antialiasing="false" sprite="INFFTSPapyrus">
+	<anim x="0" loop="true" y="0" fps="24" anim="idle" name="idle"/>
+	<anim x="10" loop="false" y="6" fps="24" anim="up" name="singUP"/>
+	<anim x="11" loop="false" y="2" fps="24" anim="left" name="singLEFT"/>
+	<anim x="5" loop="false" y="-1" fps="24" anim="right" name="singRIGHT"/>
+	<anim x="-5" loop="false" y="-11" fps="24" anim="down" name="singDOWN"/>
+	<anim x="0" loop="false" y="41" fps="24" anim="im not falling for that shit!" name="imnotfallingforthatshit"/>
+</character>

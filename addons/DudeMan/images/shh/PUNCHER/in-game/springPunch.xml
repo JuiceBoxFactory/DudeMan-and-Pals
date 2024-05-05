@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="springPunch.png">
+<SubTexture name="idle0000" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0001" x="1028" y="919" width="21" height="147" frameX="-1259" frameY="-330" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0002" x="0" y="720" width="340" height="199" frameX="-940" frameY="-315" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0003" x="553" y="919" width="475" height="198" frameX="-805" frameY="-317" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0004" x="340" y="720" width="468" height="199" frameX="-812" frameY="-315" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0005" x="808" y="720" width="465" height="199" frameX="-815" frameY="-315" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0006" x="808" y="720" width="465" height="199" frameX="-815" frameY="-315" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0007" x="808" y="720" width="465" height="199" frameX="-815" frameY="-315" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0008" x="0" y="919" width="439" height="199" frameX="-841" frameY="-315" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0009" x="0" y="720" width="340" height="199" frameX="-940" frameY="-315" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0010" x="439" y="919" width="114" height="199" frameX="-1166" frameY="-315" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0011" x="1049" y="919" width="14" height="117" frameX="-1266" frameY="-346" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0012" x="1273" y="720" width="3" height="60" frameX="-1277" frameY="-373" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0013" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

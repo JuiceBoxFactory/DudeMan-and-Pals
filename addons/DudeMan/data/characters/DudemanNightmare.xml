@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="300" icon="dudeman" camx="-125" y="-200" isGF="false" camy="75" color="#FFFFFF" isPlayer="false" flipX="false" antialiasing="false" sprite="dudeNightmare">
+	<anim x="0" loop="false" y="0" fps="6" anim="idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="down" name="singDOWN"/>
+</character>

@@ -1,0 +1,19 @@
+{
+	"bio": "Hubba Bubba Max",
+	"opponentModeAllowed": false,
+	"icon": "Icon",
+	"difficulties": [
+		"Hard"
+	],
+	"parsedColor": -13893888,
+	"color": "#2BFF00",
+	"name": "slashgen",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Slash Gen",
+	"beatsPerMesure": 4,
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"actoresses": "artist: MeltyKelpy, AngeltheBoi\ncomposer: R3t1xTheIdiot\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: MeltyKelpy",
+	"bpm": 186
+}

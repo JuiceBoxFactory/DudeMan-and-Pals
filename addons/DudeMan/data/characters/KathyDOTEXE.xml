@@ -1,0 +1,10 @@
+<!DOCTYPE codename-engine-character>
+<character imagePath="KathyDOTEXE.png" x="0" icon="kathyObituary" camx="150" y="0" isGF="false" color="#970093" isPlayer="false" sprite="KathyDOTEXE">
+	<anim x="0" loop="false" y="0" fps="12" anim="k idle" name="idle"/>
+	<anim x="-5" loop="false" y="0" fps="12" anim="k left" name="singLEFT"/>
+	<anim x="10" loop="false" y="0" fps="12" anim="k down" name="singDOWN"/>
+	<anim x="-20" loop="false" y="5" fps="12" anim="k up" name="singUP"/>
+	<anim x="-125" loop="false" y="10" fps="12" anim="k right" name="singRIGHT"/>
+	<anim x="-15" loop="false" y="-5" fps="12" anim="k giggle" name="gigglesilly"/>
+	<anim x="-15" loop="false" y="-5" fps="12" anim="k KICK" name="kick"/>
+</character>

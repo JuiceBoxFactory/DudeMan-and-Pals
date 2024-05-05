@@ -1,0 +1,19 @@
+{
+	"bio": "Autism Songified",
+	"opponentModeAllowed": false,
+	"icon": "Icon",
+	"difficulties": [
+		"Hard"
+	],
+	"parsedColor": -13893888,
+	"color": "#2BFF00",
+	"name": "skyblue",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "SkyBlue",
+	"beatsPerMesure": 4,
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"actoresses": "artist: MeltyKelpy\ncomposer: OJSTheCoder\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: OJSTheCoder",
+	"bpm": 115
+}

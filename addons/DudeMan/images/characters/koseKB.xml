@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="koseKB.png">
+<SubTexture name="idle0000" x="176" y="0" width="200" height="370" frameX="-327" frameY="-220" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0001" x="376" y="0" width="199" height="370" frameX="-328" frameY="-220" frameWidth="1280" frameHeight="720" />
+<SubTexture name="down0000" x="955" y="0" width="203" height="322" frameX="-324" frameY="-269" frameWidth="1280" frameHeight="720" />
+<SubTexture name="down0001" x="758" y="355" width="193" height="334" frameX="-325" frameY="-256" frameWidth="1280" frameHeight="720" />
+<SubTexture name="left0000" x="758" y="0" width="197" height="355" frameX="-297" frameY="-236" frameWidth="1280" frameHeight="720" />
+<SubTexture name="left0001" x="469" y="376" width="196" height="361" frameX="-299" frameY="-230" frameWidth="1280" frameHeight="720" />
+<SubTexture name="right0000" x="233" y="376" width="236" height="364" frameX="-327" frameY="-229" frameWidth="1280" frameHeight="720" />
+<SubTexture name="right0001" x="0" y="376" width="233" height="367" frameX="-328" frameY="-225" frameWidth="1280" frameHeight="720" />
+<SubTexture name="up0000" x="0" y="0" width="176" height="376" frameX="-332" frameY="-214" frameWidth="1280" frameHeight="720" />
+<SubTexture name="up0001" x="575" y="0" width="183" height="369" frameX="-331" frameY="-220" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

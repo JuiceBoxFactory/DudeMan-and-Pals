@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.69" folder="backdrop/FREE5ME">
+	<combo/>
+	<sprite antialiasing="false" sprite="free4mebg" name="imfree" scale="1.3"/>
+	<sprite antialiasing="false" sprite="couch" name="coach" scale="1.3"/>
+	<dad x="200" y="300"/>
+	<bf x="1000" y="300"/>
+</stage>

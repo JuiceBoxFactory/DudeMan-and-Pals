@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="usageBar.png">
+<SubTexture name="10000" x="0" y="0" width="143" height="267" frameX="0" frameY="0" frameWidth="143" frameHeight="267" />
+<SubTexture name="10001" x="143" y="0" width="142" height="267" frameX="0" frameY="0" frameWidth="143" frameHeight="267" />
+<SubTexture name="20000" x="285" y="0" width="143" height="267" frameX="0" frameY="0" frameWidth="143" frameHeight="267" />
+<SubTexture name="20001" x="428" y="0" width="142" height="267" frameX="0" frameY="0" frameWidth="143" frameHeight="267" />
+<SubTexture name="30000" x="0" y="267" width="143" height="267" frameX="0" frameY="0" frameWidth="143" frameHeight="267" />
+<SubTexture name="30001" x="143" y="267" width="142" height="267" frameX="0" frameY="0" frameWidth="143" frameHeight="267" />
+<SubTexture name="40000" x="285" y="267" width="143" height="267" frameX="0" frameY="0" frameWidth="143" frameHeight="267" />
+<SubTexture name="40001" x="428" y="267" width="142" height="267" frameX="0" frameY="0" frameWidth="143" frameHeight="267" />
+<SubTexture name="50000" x="570" y="0" width="143" height="267" frameX="0" frameY="0" frameWidth="143" frameHeight="267" />
+<SubTexture name="50001" x="570" y="267" width="142" height="267" frameX="0" frameY="0" frameWidth="143" frameHeight="267" />
+</TextureAtlas>

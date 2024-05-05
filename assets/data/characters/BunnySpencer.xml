@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="600" icon="spencer" camx="-150" y="70" isGF="false" camy="30" color="#FFFFFF" isPlayer="false" antialiasing="false" sprite="spencer">
-	<anim x="0" loop="false" y="0" fps="12" anim="spencer idle" name="idle"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="spencer up" name="singUP"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="spencer left" indices="1,0" name="singLEFT"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="spencer right" name="singRIGHT"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="spencer down" name="singDOWN"/>
-</character>

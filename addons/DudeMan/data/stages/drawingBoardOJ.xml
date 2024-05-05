@@ -1,0 +1,13 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="1.2" name="factory" folder="backdrop/drawingBoardOJ/" startCamPosY="200" startCamPosX="-200">
+	<combo x="665.5" y="206.5"/>
+	<sprite antialiasing="false" sprite="bg" name="bg" scale="1"/>
+	<sprite antialiasing="false" sprite="build1" name="build1" scale="1" alpha="0"/>
+	<sprite antialiasing="false" sprite="build1" name="build2" scale="1" alpha="0"/>
+	<sprite antialiasing="false" sprite="build1" name="build3" scale="1" alpha="0"/>
+	<sprite antialiasing="false" sprite="build1" name="buildbg" scale="1" alpha="0"/>
+	<sprite antialiasing="false" sprite="ground" name="ground" scale="1" y="75"/>
+	<gf x="300" y="795"/>
+	<bf x="700" y="805"/>
+	<dad x="-50" y="800"/>
+</stage>

@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="smoke.png">
+<SubTexture name="doYoThang0000" x="0" y="0" width="2063" height="714" frameX="0" frameY="-786" frameWidth="2063" frameHeight="1500" />
+<SubTexture name="doYoThang0001" x="0" y="714" width="2063" height="703" frameX="0" frameY="-797" frameWidth="2063" frameHeight="1500" />
+</TextureAtlas>
