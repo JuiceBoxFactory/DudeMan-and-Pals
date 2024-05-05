@@ -2,6 +2,8 @@ import flixel.util.FlxTimer;
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxSave;
 
+var yValue = 435;
+
 function postCreate() {
 
     lyricItself = new FlxText(0, 1530);
@@ -19,6 +21,10 @@ function postCreate() {
     if (FlxG.save.data.subtitles == false) {
         lyricItself.alpha = 0;
         icon.alpha = 0;
+    }
+
+    if (downscroll) {
+        yValue = 415;
     }
 
 }
@@ -45,19 +51,19 @@ function textState(type) {
         
         case "popUpINSTANT":
             FlxTween.tween(lyricItself, {y: 530}, 0.01, {ease:FlxEase.quartIn});
-            FlxTween.tween(icon, {y: 435}, 0.01, {ease:FlxEase.quartIn});          
+            FlxTween.tween(icon, {y: yValue}, 0.01, {ease:FlxEase.quartIn});          
         case "goDownINSTANT":
             FlxTween.tween(lyricItself, {y: 1530}, 0.01, {ease:FlxEase.quartOut});
             FlxTween.tween(icon, {y: 1435}, 0.01, {ease:FlxEase.quartOut});
         case "popUpFast":
             FlxTween.tween(lyricItself, {y: 530}, 1, {ease:FlxEase.quartOut});
-            FlxTween.tween(icon, {y: 435}, 1, {ease:FlxEase.quartOut});   
+            FlxTween.tween(icon, {y: yValue}, 1, {ease:FlxEase.quartOut});   
         case "popUpRlyFast":
             FlxTween.tween(lyricItself, {y: 530}, 0.3, {ease:FlxEase.quartOut});
-            FlxTween.tween(icon, {y: 435}, 0.3, {ease:FlxEase.quartOut});  
+            FlxTween.tween(icon, {y: yValue}, 0.3, {ease:FlxEase.quartOut});  
         case "popUpSlow":
             FlxTween.tween(lyricItself, {y: 530}, 3, {ease:FlxEase.quartOut});
-            FlxTween.tween(icon, {y: 435}, 3, {ease:FlxEase.quartOut});         
+            FlxTween.tween(icon, {y: yValue}, 3, {ease:FlxEase.quartOut});         
         case "goDownFast":
             FlxTween.tween(lyricItself, {y: 1530}, 1, {ease:FlxEase.quartIn});
             FlxTween.tween(icon, {y: 1435}, 1, {ease:FlxEase.quartIn});

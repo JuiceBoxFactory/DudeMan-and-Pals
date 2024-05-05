@@ -61,7 +61,12 @@ function postCreate() {
 		missesText.x += 75;
 		missesText.antialiasing = false;
 		insert(7, missesText);
-		
+
+		if (downscroll) {
+			for (dumbShits in [healthBar, missesText, scoreText, icon1, icon2]) {
+				dumbShits.y -= 15;
+			}
+		}
 	}	
 }
 
