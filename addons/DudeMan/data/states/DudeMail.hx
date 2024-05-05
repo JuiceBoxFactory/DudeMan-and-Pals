@@ -30,6 +30,11 @@ var shit = new CustomShader("shit");
 
 function create() {
 
+    if (FlxG.save.data.mailTheme == null) {
+        FlxG.save.data.mailTheme = "light";
+        FlxG.resetState();
+    }
+
     FlxG.sound.playMusic(Paths.music('dudemailTunes'), 1, true);
 
     FlxG.cameras.add(awesomeCam, false);
@@ -390,6 +395,7 @@ function update() {
 
     if (FlxG.keys.justPressed.U) {
         FlxG.save.data.dudemailsUnlocked = 100;
+        FlxG.resetState();
     }
     if (FlxG.keys.justPressed.PAGEUP) {
         selectedMail = 1;
