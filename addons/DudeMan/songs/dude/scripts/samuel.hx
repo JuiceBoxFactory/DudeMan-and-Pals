@@ -58,7 +58,7 @@ function stepHit(curStep:Int) {
         case 688:
 	black.alpha = 1;
         case 768:
-	black.alpha = 0
+	black.alpha = 0;
         case 1049:
 	remove(dad);
 	vreendude.alpha = 1;
