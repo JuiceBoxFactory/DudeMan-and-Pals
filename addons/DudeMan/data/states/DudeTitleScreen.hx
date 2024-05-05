@@ -26,7 +26,11 @@ var tipText:Array<String> = [
 "Basketball Practice",
 "Actual battle i destroyed the toilet btw",
 "SUPERGOONER... ACTIVATE"
-
+"and now i really go senile, sometimes going from 'Goodbye Internet' to 'GTLive: FNAF: Security Breach'"
+"yea im not gonna lie i do wanna fuck my 15 year old bf - smelly person"
+"Yo! Really think so?"
+"That isn't very Chuddy Buddy !"
+"kill everyone"
 ];
 var tipTextChosen = "null";
 var highestNum = 18;
