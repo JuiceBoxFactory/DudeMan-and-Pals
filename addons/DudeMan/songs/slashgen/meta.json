@@ -1,19 +1,19 @@
 {
-	"opponentModeAllowed": false,
 	"bio": "Hubba Bubba Max",
+	"opponentModeAllowed": false,
+	"icon": "Icon",
 	"difficulties": [
 		"Hard"
 	],
-	"icon": "Icon",
 	"parsedColor": -13893888,
-	"coopAllowed": false,
-	"name": "slashgen",
 	"color": "#2BFF00",
+	"name": "slashgen",
+	"coopAllowed": false,
 	"stepsPerBeat": 4,
-	"beatsPerMesure": 4,
 	"displayName": "Slash Gen",
-	"actoresses": "artist: MeltyKelpy\ncomposer: R3t1xTheIdiot\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: MeltyKelpy",
-	"needsVoices": true,
+	"beatsPerMesure": 4,
 	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"actoresses": "artist: MeltyKelpy\ncomposer: R3t1xTheIdiot\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: MeltyKelpy",
 	"bpm": 186
 }
