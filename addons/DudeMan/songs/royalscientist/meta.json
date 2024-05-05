@@ -1,16 +1,17 @@
 {
 	"opponentModeAllowed": false,
-	"coopAllowed": false,
-	"stepsPerBeat": 4,
-	"beatsPerMesure": 4,
-	"bpm": 165,
+	"icon": "Icon",
 	"difficulties": [
 		"Hard"
 	],
-	"needsVoices": true,
 	"parsedColor": -13893888,
-	"displayName": "royalscientist",
-	"icon": "Icon",
+	"color": "#2BFF00",
 	"name": "royalscientist",
-	"color": "#2BFF00"
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "royalscientist",
+	"beatsPerMesure": 4,
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"bpm": 165
 }
