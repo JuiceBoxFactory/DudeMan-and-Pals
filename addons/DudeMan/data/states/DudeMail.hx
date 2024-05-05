@@ -10,6 +10,7 @@ import flixel.text.FlxText;
 var mails = new FlxCamera(100, 100, 285, 10000);
 var mail = new FlxCamera(450, 100, 770, 20000);
 var cursorCam = new FlxCamera(0, 0, 1280, 720);
+var awesomeCam = new FlxCamera(0, 0, 1280, 720);
 
 var theme = FlxG.save.data.mailTheme;
 var mainTextColor = 0xFF000000;
@@ -30,12 +31,15 @@ function create() {
 
     FlxG.sound.playMusic(Paths.music('dudemailTunes'), 1, true);
 
+    FlxG.cameras.add(awesomeCam, false);
+
     coolBackdrop = new FlxBackdrop().loadGraphic(Paths.image('dudeMail/checkerboardbgLIGHT'));
 	coolBackdrop.moves = true;
 	coolBackdrop.scrollFactor.set(0, 0);
 	coolBackdrop.velocity.x = 50;
 	coolBackdrop.velocity.y = 50;
 	coolBackdrop.active = true;
+    coolBackdrop.cameras = [awesomeCam];
 	add(coolBackdrop);
 
     if (theme == "light") {
@@ -97,6 +101,7 @@ function create() {
     logoPt1.borderColor = topBar2;
     logoPt1.antialiasing = false;
     logoPt1.borderSize = 4;
+    logoPt1.cameras = [awesomeCam];
     add(logoPt1);
 
     logoPt2 = new FlxText(915, 40, 400, 'ur using', 0);
@@ -105,12 +110,15 @@ function create() {
     logoPt2.borderColor = topBar2;
     logoPt2.antialiasing = false;
     logoPt2.borderSize = 4;
+    logoPt2.cameras = [awesomeCam];
     add(logoPt2);
 
 	mailsPos = new FlxSprite(100, 100).makeGraphic(285, 620, mailsBack);
+    mailsPos.cameras = [awesomeCam];
 	add(mailsPos);
 
 	mailScreenPos = new FlxSprite(450, 100).makeGraphic(770, 20000, mailBack);
+    mailScreenPos.cameras = [awesomeCam];
 	add(mailScreenPos);
 
     themesTitle = new FlxText(110, 15);
@@ -120,6 +128,7 @@ function create() {
     themesTitle.borderColor = topBar2;
     themesTitle.antialiasing = false;
     themesTitle.borderSize = 2;
+    themesTitle.cameras = [awesomeCam];
     add(themesTitle);
 
     themesTxt = new FlxText(195, 42);
@@ -129,6 +138,7 @@ function create() {
     themesTxt.borderColor = topBar2;
     themesTxt.antialiasing = false;
     themesTxt.borderSize = 2;
+    themesTxt.cameras = [awesomeCam];
     add(themesTxt);
 
     mails.bgColor = 0x00000000;
@@ -277,9 +287,11 @@ function update() {
     if (FlxG.mouse.overlaps(mailsPos)) {
         if (FlxG.mouse.wheel > 0) {
             mails.scroll.y -= 20;
+            camera.scroll.y -= 20;
         }
         if (FlxG.mouse.wheel < 0) {
             mails.scroll.y += 20;
+            camera.scroll.y += 20;
         }
     }
     if (mails.scroll.y < 0) {
@@ -342,32 +354,26 @@ function update() {
     }
 
     if (FlxG.save.data.dudemailsUnlocked >= 1) {
-        mailSlot1.updateHitbox();
-        mailSlot1.offset.set(100, 100);
+        slotToBe.updateHitbox();
+        slotToBe.offset.set(100, 100);
         if (FlxG.mouse.overlaps(mailSlot1) && FlxG.mouse.justPressed) {
             selectedMail = 1;
             FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
         }
     }
     if (FlxG.save.data.dudemailsUnlocked >= 2) {
-        mailSlot2.updateHitbox();
-        mailSlot2.offset.set(100, 100);
         if (FlxG.mouse.overlaps(mailSlot2) && FlxG.mouse.justPressed) {
             selectedMail = 2;
             FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
         }
     }
     if (FlxG.save.data.dudemailsUnlocked >= 3) {
-        mailSlot3.updateHitbox();
-        mailSlot3.offset.set(100, 100);
         if (FlxG.mouse.overlaps(mailSlot3) && FlxG.mouse.justPressed) {
             selectedMail = 3;
             FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
         }
     }
     if (FlxG.save.data.dudemailsUnlocked >= 4) {
-        mailSlot4.updateHitbox();
-        mailSlot4.offset.set(100, 100);
         if (FlxG.mouse.overlaps(mailSlot4) && FlxG.mouse.justPressed) {
             selectedMail = 4;
             FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
