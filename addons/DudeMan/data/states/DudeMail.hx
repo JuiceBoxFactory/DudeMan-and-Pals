@@ -413,30 +413,35 @@ function update() {
         if (FlxG.mouse.overlaps(mailSlot1) && FlxG.mouse.justPressed) {
             selectedMail = 1;
             FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
+            mail.scroll.y = 0;
         }
     }
     if (FlxG.save.data.dudemailsUnlocked >= 2) {
         if (FlxG.mouse.overlaps(mailSlot2) && FlxG.mouse.justPressed) {
             selectedMail = 2;
             FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
+            mail.scroll.y = 0;
         }
     }
     if (FlxG.save.data.dudemailsUnlocked >= 3) {
         if (FlxG.mouse.overlaps(mailSlot3) && FlxG.mouse.justPressed) {
             selectedMail = 3;
             FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
+            mail.scroll.y = 0;
         }
     }
     if (FlxG.save.data.dudemailsUnlocked >= 4) {
         if (FlxG.mouse.overlaps(mailSlot4) && FlxG.mouse.justPressed) {
             selectedMail = 4;
             FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
+            mail.scroll.y = 0;
         }
     }
     if (FlxG.save.data.dudemailsUnlocked >= 5) {
         if (FlxG.mouse.overlaps(mailSlot5) && FlxG.mouse.justPressed) {
             selectedMail = 5;
             FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
+            mail.scroll.y = 0;
         }
     }
 
