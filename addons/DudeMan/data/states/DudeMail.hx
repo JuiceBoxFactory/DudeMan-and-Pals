@@ -26,6 +26,7 @@ var selectedMail = 1;
 var slotToBe = null;
 var burgerToBe = null;
 var themeScroll = 0;
+var shit = new CustomShader("shit");
 
 function create() {
 
@@ -94,6 +95,27 @@ function create() {
         topBar2 = 0xFFFEB55E;
         themeScroll = 3;
     }
+    if (theme == "crescent") {
+        mainTextColor = 0xFFFFFFFF;
+        secondaryTextColor = 0xFFFFB7B7;
+        otherTextColor = 0xFFB65353;
+        coolBackdrop.loadGraphic(Paths.image('dudeMail/checkerboardbgCRESCENT'));
+        slot = slot+'CRESCENT';
+        slotSelected = slotSelected+'CRESCENTselected';        
+        mailsBack = 0xFF5B2727;
+        mailBack = 0xFF500F0F;
+        topBar1 = 0xFFFFCECE;
+        topBar2 = 0xFF2E0000;
+        themeScroll = 4;
+    }
+    if (theme == "retro") {
+        
+        slot = slot+'LIGHT';
+        slotSelected = slotSelected+'LIGHTselected';
+        for (cameras in [camera, awesomeCam, cursorCam, mail, mails])
+            cameras.addShader(shit);
+        themeScroll = 5;
+    }
 
     logoPt1 = new FlxText(1015, 15, 400, 'dudemail', 0);
     logoPt1.setFormat(Paths.font("COMIC.TTF"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -160,6 +182,9 @@ function create() {
     if (FlxG.save.data.dudemailsUnlocked >= 3) {
         makeMail("4", 333, "icon4", "sender4", "subject4", "damie", "damie_an", "IT IS NOT ME");
     }
+    if (FlxG.save.data.dudemailsUnlocked >= 3) {
+        makeMail("5", 444, "icon5", "sender5", "subject5", "bee", "Bee", "Hey c:");
+    }
 
     makeMailScreen();
 
@@ -189,6 +214,10 @@ function makeMail(number, posY, iconName, senderName, subjectName, icon, sender,
     if (number == "4") {
         mailSlot4 = new FlxSprite(100, 100).loadGraphic(Paths.image(slot));
         slotToBe = mailSlot4;
+    }
+    if (number == "5") {
+        mailSlot5 = new FlxSprite(100, 100).loadGraphic(Paths.image(slot));
+        slotToBe = mailSlot5;
     }
 
     slotToBe.antialiasing = false;
@@ -229,8 +258,9 @@ function makeMailScreen() {
     mailInfo2 = new FlxText(50, 50, 670, "placeholder", 0);
     mailInfo3 = new FlxText(50, 50, 670, "placeholder", 0);
     mailInfo4 = new FlxText(50, 50, 670, "placeholder", 0);
+    mailInfo5 = new FlxText(50, 50, 670, "placeholder", 0);
 
-    for (mails in [mailInfo1, mailInfo2, mailInfo3, mailInfo4]) {
+    for (mails in [mailInfo1, mailInfo2, mailInfo3, mailInfo4, mailInfo5]) {
         mails.setFormat(Paths.font("Bahnschrift.TTF"), 20, FlxColor.WHITE, "left");
         mails.color = secondaryTextColor;
         mails.antialiasing = false;
@@ -243,8 +273,9 @@ function makeMailScreen() {
     mailText2 = new FlxText(50, 50, 670, "placeholder", 0);
     mailText3 = new FlxText(50, 50, 670, "placeholder", 0);
     mailText4 = new FlxText(50, 50, 670, "placeholder", 0);
+    mailText5 = new FlxText(50, 50, 670, "placeholder", 0);
     
-    for (mails in [mailText1, mailText2, mailText3, mailText4]) {
+    for (mails in [mailText1, mailText2, mailText3, mailText4, mailText5]) {
         mails.setFormat(Paths.font("Bahnschrift.TTF"), 20, FlxColor.WHITE, "left");
         mails.color = mainTextColor;
         mails.antialiasing = false;
@@ -258,8 +289,8 @@ function makeMailScreen() {
         mailText1.text = "\n\n\n\nDear Bee Eff,\nHeyyyyyyyyyy howzit goin dood anyway guess what!??? I'm going to KILL YOU in 3.18 day z so WATCH YOUR BACK! AND ur FRONT! and ur balls. i'm also gonna STEAL ur GRILFEND. yeah. AND I'M GONNA DO DEVIOUS THINGS TO HER. LIKE MAKE HER WATCH THE ENTIRE bee movie including all of the bonus features. YES. ALL of the BONUS features. yes. THEN uhhhhh idk we'll play MARIOCART. yes. MARIOCART on the 64 on the swatch. yes. and ill do one of those speedrunskip things. yes. then we'lll uhhh uhm i forgor\n\ntdlr, i'm coming for you. get ready, you bisexual bitch.\n\nKer Blam,\nDude-Man\n\nPostScript: FUCK YOU";
     }
     if (FlxG.save.data.dudemailsUnlocked >= 2) {
-        mailInfo2.text = "To: BeeFunk@dudemail.com\nFrom: MYLITTLEPONYFAN1264901@dudemail.com\nSubject: HIIHIHIHIHIIHIHH";
-        mailText2.text = "\n\n\n\nDEAR THAT ONE GUY FROM THAT ONE TIME,\nHI AGAIN !!! THOSE 2 SONGS WE GOT TO SING TOGETHER WERE REALLY FUN AND I THINK WE SHOULD DO IT AGAIN SOMETIME X333 ALSO ALSO HAVE YOU WATCHED MY LITTLE PONY BEFORE ??? I THINK YOU'D LIKE IT ALOT ACTUALLY ITS REALLY GOOD WE COULD WATCH IT TOGETHER AND LIKE UHM UHMU UMHUHMUHMUHMUMU YEAH IT'LL BE AWESOME WE CAN WATCH ALL THE SEASONS AND ALL THE MOVIES !!\n\ni have nothing else to do.\n\n";
+        mailInfo2.text = "To: BeeFunk@dudemail.com\nFrom: MYLITTLEPONYFAN1264901@dudemail.com\nSubject: HIIHIHIHIHIIHIHH\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n=======================\nTo: MYLITTLEPONYFAN1264901@dudemail.com\nFrom: BeeFunk@dudemail.com\nSubject: but when\n\n\n\n\n=========================\nTo: BeeFunk@dudemail.com\nFrom: MYLITTLEPONYFAN1264901@dudemail.com\nSubject: REGARDING AWESOMENESS";
+        mailText2.text = "\n\n\n\nDEAR THAT ONE GUY FROM THAT ONE TIME,\nHI AGAIN !!! THOSE 2 SONGS WE GOT TO SING TOGETHER WERE REALLY FUN AND I THINK WE SHOULD DO IT AGAIN SOMETIME X333 ALSO ALSO HAVE YOU WATCHED MY LITTLE PONY BEFORE ??? I THINK YOU'D LIKE IT ALOT ACTUALLY ITS REALLY GOOD WE COULD WATCH IT TOGETHER AND LIKE UHM UHMU UMHUHMUHMUHMUMU YEAH IT'LL BE AWESOME WE CAN WATCH ALL THE SEASONS AND ALL THE MOVIES !!\n\ni have nothing else to do.\n\nIM SO EXCITED I LOVE MY LITTLE PONY I HOPE YOU'LL LIKE IT :3\n\n- FRUITY !!!\n\n\n\n\n\n\nI'd be up for that maybe! but.. also when would we do it..?\ntime is a very important factor\n\n\n\n\n\n\nNEXT WEEK ON THIS EXACT DAY AT LIKE 2PM";
     }
     if (FlxG.save.data.dudemailsUnlocked >= 3) {
         mailInfo3.text = "To: BeeFunk@dudemail.com\nFrom: HotSexyDemon972@dudemail.com\nSubject: My Game.";
@@ -268,6 +299,10 @@ function makeMailScreen() {
     if (FlxG.save.data.dudemailsUnlocked >= 4) {
         mailInfo4.text = "To: BeeFunk@dudemail.com\nFrom: damieunderscorean@dudemail.com\nSubject: IT IS NOT ME";
         mailText4.text = "\n\n\n\nhello buddy\n\nI just wanna let you know\n\nif you see purple plastic bowls and giant blocks of green ham falling from the sky that is NOT ME\n\nso don't enter my house again\n\nP.S. you still owe me $20.50 from last time\n\n-damie_an from Twitter.com";
+    }
+    if (FlxG.save.data.dudemailsUnlocked >= 5) {
+        mailInfo5.text = "To: SavingGracie@dudemail.com\nFrom: BeeFunk@dudemail.com\nSubject: Hey c:\n\n\n\n=========================\nTo: BeeFunk@dudemail.com\nFrom: SavingGracie@dudemail.com\nSubject: Hi\n\n\n\n=========================\nTo: SavingGracie@dudemail.com\nFrom: BeeFunk@dudemail.com\nSubject: <NO SUBJECT>\n\n\n\n=========================\nTo: BeeFunk@dudemail.com\nFrom: SavingGracie@dudemail.com\nSubject: <NO SUBJECT>\n\n\n\n=========================\nTo: SavingGracie@dudemail.com\nFrom: BeeFunk@dudemail.com\nSubject: <NO SUBJECT>\n\n\n\n=========================\nTo: BeeFunk@dudemail.com\nFrom: SavingGracie@dudemail.com\nSubject: <NO SUBJECT>";
+        mailText5.text = "\n\n\n\nHi Hun\n\n\n\n\n\n\nHey hunny! do you need something?\n\n\n\n\n\n\nGuess whaatt...\n\n\n\n\n\n\nHmmmm? what is it?\n\n\n\n\n\n\nI love you <33\n\n\n\n\n\n\nYou're such a dork, dear\n\nI love you too <3333";
     }
 }
 
@@ -300,6 +335,9 @@ function update() {
     if (mail.scroll.y < 0) {
         mail.scroll.y = 0;
     }
+    if (camera.scroll.y < 0) {
+        camera.scroll.y = 0;
+    }
 
     if (themeScroll == 0) {
         themesTxt.x = 195;
@@ -312,14 +350,24 @@ function update() {
         FlxG.save.data.mailTheme = "dark";
     }
     if (themeScroll == 2) {
-        themesTxt.x = 203;
-        themesTxt.text = '< PINK >';
+        themesTxt.x = 150;
+        themesTxt.text = '< COTTON CANDY >';
         FlxG.save.data.mailTheme = "pink";
     }
     if (themeScroll == 3) {
-        themesTxt.x = 175;
-        themesTxt.text = '< DAMIE_AN >';
+        themesTxt.x = 190;
+        themesTxt.text = '< CHEESE >';
         FlxG.save.data.mailTheme = "damie";
+    }
+    if (themeScroll == 4) {
+        themesTxt.x = 155;
+        themesTxt.text = '< CRESCENT RED >';
+        FlxG.save.data.mailTheme = "crescent";
+    }
+    if (themeScroll == 5) {
+        themesTxt.x = 196;
+        themesTxt.text = '< RETRO >';
+        FlxG.save.data.mailTheme = "retro";
     }
 
     if (controls.ACCEPT) {
@@ -332,9 +380,9 @@ function update() {
         themeScroll += 1;
     }
     if (themeScroll < 0) {
-        themeScroll = 3;
+        themeScroll = 5;
     }
-    if (themeScroll > 3) {
+    if (themeScroll > 5) {
         themeScroll = 0;
     }
 
@@ -379,6 +427,12 @@ function update() {
             FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
         }
     }
+    if (FlxG.save.data.dudemailsUnlocked >= 5) {
+        if (FlxG.mouse.overlaps(mailSlot5) && FlxG.mouse.justPressed) {
+            selectedMail = 5;
+            FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
+        }
+    }
 
     if (selectedMail == 1) {
         mailInfo1.alpha = 1;
@@ -419,5 +473,15 @@ function update() {
         mailInfo4.alpha = 0;
         mailText4.alpha = 0;
         mailSlot4.loadGraphic(Paths.image(slot));
+    }
+    if (selectedMail == 5) {
+        mailInfo5.alpha = 1;
+        mailText5.alpha = 1;
+        mailSlot5.loadGraphic(Paths.image(slotSelected));
+    }
+    else {
+        mailInfo5.alpha = 0;
+        mailText5.alpha = 0;
+        mailSlot5.loadGraphic(Paths.image(slot));
     }
 }
