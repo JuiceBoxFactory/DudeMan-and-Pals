@@ -1,22 +1,23 @@
 {
-	"opponentModeAllowed": false,
-	"coopAllowed": false,
-	"stepsPerBeat": 4,
-	"beatsPerMesure": 4,
-	"bpm": 120,
-	"displayName": "Dude",
-	"name": "dude",
-	"bio": "Get a load of these guys.",
-	"actoresses": "artist: MeltyKelpy\ncomposer: AussieDoesThings\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: MeltyKelpy",
-	"tagline": "Get a load of these guys.",
-	"singerNames": "DudeMan (with Bee's shirt backwards) VS Bee",
+	"appearStep": 0,
+	"parsedColor": -13893888,
+	"color": "#2BFF00",
 	"actoresses2": "artist: MeltyKelpy    composer: AussieDoesThings\ncoder: MeltyKelpy    charter: AngeltheBoi",
-    "appearStep": 0,
+	"opponentModeAllowed": false,
+	"bio": "Get a load of these guys.",
+	"icon": "Icon",
 	"difficulties": [
 		"Hard"
 	],
+	"coopAllowed": false,
+	"name": "dude",
+	"stepsPerBeat": 4,
+	"singerNames": "DudeMan (with Bee's shirt backwards) VS Bee",
+	"displayName": "Dude",
+	"beatsPerMesure": 4,
+	"beatsPerMeasure": 4,
+	"actoresses": "artist: MeltyKelpy\ncomposer: AussieDoesThings\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: MeltyKelpy",
+	"tagline": "Get a load of these guys.",
 	"needsVoices": true,
-	"parsedColor": -13893888,
-	"icon": "Icon",
-	"color": "#2BFF00"
+	"bpm": 120
 }
