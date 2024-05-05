@@ -1,22 +1,23 @@
 {
-	"opponentModeAllowed": false,
-	"coopAllowed": false,
-	"stepsPerBeat": 4,
-	"beatsPerMesure": 4,
-	"bpm": 150,
-	"displayName": "Overstimulation",
-	"name": "overstimulation",
-	"bio": "WHAT IS YOUR FUCKING PROBLEM ??",
-	"actoresses": "artists: MeltyKelpy, AussieDoesThings, CherriBlossom\ncomposer: AussieDoesThings\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: MeltyKelpy",
-	"tagline": "WHAT IS YOUR FUCKING PROBLEM ??",
-	"singerNames": "DudeMan (with Bee's shirt backwards) VS Bee",
+	"appearStep": 0,
+	"parsedColor": -13893888,
+	"color": "#2BFF00",
 	"actoresses2": "artists: Melty, Aussie, Cherri  composer: Aussie\ncoder: MeltyKelpy    charter: MeltyKelpy",
-    "appearStep": 0,
+	"opponentModeAllowed": false,
+	"bio": "WHAT IS YOUR FUCKING PROBLEM ??",
+	"icon": "Icon",
 	"difficulties": [
 		"Hard"
 	],
+	"coopAllowed": false,
+	"name": "overstimulation",
+	"stepsPerBeat": 4,
+	"singerNames": "DudeMan (with Bee's shirt backwards) VS Bee",
+	"displayName": "Overstimulation",
+	"beatsPerMesure": 4,
 	"needsVoices": true,
-	"parsedColor": -13893888,
-	"icon": "Icon",
-	"color": "#2BFF00"
+	"tagline": "WHAT IS YOUR FUCKING PROBLEM ??",
+	"beatsPerMeasure": 4,
+	"actoresses": "artists: MeltyKelpy, AussieDoesThings, CherriBlossom\ncomposer: AussieDoesThings\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: MeltyKelpy",
+	"bpm": 150
 }
