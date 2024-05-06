@@ -1,0 +1,23 @@
+{
+"appearStep": 0,
+	"parsedColor": -13893888,
+	"color": "#1ab294",
+	"actoresses2": "artist: ???    composer: Corva_Tile, Aussie\ncoder: ???    charter: Corva_Tile",
+	"opponentModeAllowed": false,
+	"bio": "Latin for Oil! But the cooking kind so-",
+	"icon": "Icon",
+	"difficulties": [
+		"Hard"
+	],
+	"coopAllowed": false,
+	"name": "oleum",
+	"stepsPerBeat": 4,
+	"singerNames": "Corva Vs. MX. Silly",
+	"displayName": "Oleum",
+	"beatsPerMesure": 4,
+	"beatsPerMeasure": 4,
+	"actoresses": "artist: ???    composer: Corva_Tile, Aussie\ncoder: ???    charter: Corva_Tile\ncover art: ?",
+	"tagline": "Latin for Oil! But the cooking kind so-",
+	"needsVoices": true,
+	"bpm": 170
+}
