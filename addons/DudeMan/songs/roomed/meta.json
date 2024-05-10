@@ -1,22 +1,23 @@
 {
-	"opponentModeAllowed": false,
-	"coopAllowed": false,
-	"stepsPerBeat": 4,
-	"beatsPerMesure": 4,
-	"displayName": "Roomed",
-	"name": "roomed",
-	"bio": "its like that one game\n\nDax rly likes doors",
-	"actoresses": "artist: MeltyKelpy\ncomposer: AussieDoesThings\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: Saayo",
-	"tagline": "its like that one game",
-	"singerNames": "Those Fuckass Rooms Bitches VS SkyBlueSilly(Dax)",
+	"appearStep": 0,
+	"parsedColor": -13893888,
+	"color": "#2BFF00",
 	"actoresses2": "artist: MeltyKelpy    composer: kosejumpscare\ncoder: MeltyKelpy    charter: MeltyKelpy",
-    "appearStep": 0,
-	"bpm": 200,
+	"opponentModeAllowed": false,
+	"bio": "its like that one game\n\nDax rly likes doors",
+	"icon": "Icon",
 	"difficulties": [
 		"Hard"
 	],
+	"coopAllowed": false,
+	"name": "roomed",
+	"stepsPerBeat": 4,
+	"singerNames": "Those Fuckass Rooms Bitches VS SkyBlueSilly(Dax)",
+	"displayName": "Roomed",
+	"beatsPerMesure": 4,
+	"actoresses": "artist: MeltyKelpy\ncomposer: AussieDoesThings\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: Saayo",
+	"beatsPerMeasure": 4,
 	"needsVoices": true,
-	"parsedColor": -13893888,
-	"icon": "Icon",
-	"color": "#2BFF00"
+	"tagline": "its like that one game",
+	"bpm": 200
 }
