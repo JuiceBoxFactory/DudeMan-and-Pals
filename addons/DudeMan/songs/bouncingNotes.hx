@@ -19,7 +19,7 @@ function onPostNoteCreation(event) {
 	var note = event.note;
 
 	if(note.isSustainNote) {
-	   note.frameOffset.y -= note.frameHeight / 2;
+	   note.frameOffset.y -= note.frameHeight / 3;
 	}
 
 	event.note.scale.set(2.2, 2.2);
