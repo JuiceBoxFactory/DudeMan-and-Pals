@@ -10,12 +10,17 @@ function postCreate() {
 }
 
 function onPostStrumCreation(event) {
-
 	event.note.antialiasing = false;
 
 }
 
 function onPostNoteCreation(event) {
+
+	var note = event.note;
+
+	if(note.isSustainNote) {
+	   note.frameOffset.y -= note.frameHeight / 2;
+	}
 
 	event.note.scale.set(2.2, 2.2);
 
