@@ -68,6 +68,12 @@ function postCreate() {
 			}
 		}
 	}	
+
+	if (PlayState.SONG.meta.name == "roomed") {
+		for (healthBS in [missesText, scoreText, icon2, icon1, healthheader, healthBar]) {
+			healthBS.alpha = 0;
+		}
+	}
 }
 
 function update() {
