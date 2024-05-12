@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-stage>
+<stage folder="backdrop/isThatWhitty/" zoom="1.7">
+	<combo/>
+	<sprite antialiasing="false" sprite="whittyBack" x="-400" y="-400" name="back" scale="0.5"/>
+	<sprite antialiasing="false" sprite="whittyFront" x="-400" y="250" name="front" scale="0.5"/>
+</stage>

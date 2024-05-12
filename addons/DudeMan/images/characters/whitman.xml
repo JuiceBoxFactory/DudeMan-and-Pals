@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="whitman.png">
+<SubTexture name="idle0000" x="273" y="0" width="118" height="234" frameX="-183" frameY="-123" frameWidth="500" frameHeight="500" />
+<SubTexture name="idle0001" x="391" y="0" width="118" height="234" frameX="-183" frameY="-123" frameWidth="500" frameHeight="500" />
+<SubTexture name="down0000" x="0" y="461" width="124" height="190" frameX="-181" frameY="-168" frameWidth="500" frameHeight="500" />
+<SubTexture name="down0001" x="509" y="202" width="124" height="192" frameX="-182" frameY="-164" frameWidth="500" frameHeight="500" />
+<SubTexture name="left0000" x="159" y="242" width="157" height="218" frameX="-142" frameY="-137" frameWidth="500" frameHeight="500" />
+<SubTexture name="left0001" x="0" y="242" width="159" height="219" frameX="-141" frameY="-136" frameWidth="500" frameHeight="500" />
+<SubTexture name="up0000" x="0" y="0" width="131" height="242" frameX="-175" frameY="-114" frameWidth="500" frameHeight="500" />
+<SubTexture name="up0001" x="131" y="0" width="142" height="238" frameX="-169" frameY="-118" frameWidth="500" frameHeight="500" />
+<SubTexture name="right0000" x="509" y="0" width="176" height="202" frameX="-187" frameY="-153" frameWidth="500" frameHeight="500" />
+<SubTexture name="right0001" x="316" y="242" width="161" height="207" frameX="-188" frameY="-148" frameWidth="500" frameHeight="500" />
+</TextureAtlas>

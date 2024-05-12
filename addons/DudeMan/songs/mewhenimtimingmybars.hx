@@ -28,9 +28,12 @@ function create() {
     timeBar.numDivisions = 400; //Toned it down to 400 to see what it would look like.
     timeBar.alpha = 0;
     timeBar.value = Conductor.songPosition / Conductor.songDuration;
-    add(timeBarBG);
-    add(timeBar);
-    add(timeTxt);
+
+    if (PlayState.SONG.meta.name != "lo-fight") {
+        add(timeBarBG);
+        add(timeBar);
+        add(timeTxt);
+    }
 
     timeBarBG.x = timeBar.x - 4;
     timeBarBG.y = timeBar.y - 4;

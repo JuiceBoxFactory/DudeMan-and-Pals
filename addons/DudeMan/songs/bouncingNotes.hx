@@ -1,36 +1,36 @@
 function postCreate() {
-	for (i in 0...4) {
-		player.members[i].scale.set(2.2, 2.2);
-		cpu.members[i].scale.set(2.2, 2.2);
-		player.members[i].antialiasing = false;
-		cpu.members[i].antialiasing = false;
+	if (PlayState.SONG.meta.name != "lo-fight") {	
+		for (i in 0...4) {
+			player.members[i].scale.set(2.2, 2.2);
+			cpu.members[i].scale.set(2.2, 2.2);
+			player.members[i].antialiasing = false;
+			cpu.members[i].antialiasing = false;
+		}
 	}
-}
-
-function onPostStrumCreation(event) {
-	event.note.antialiasing = false;
-
 }
 
 function onPostNoteCreation(event) {
 
-	var note = event.note;
+	if (PlayState.SONG.meta.name != "lo-fight") {	
+		var note = event.note;
+		
+		if (FlxG.save.data.downscroll == true) {
+			if (note.isSustainNote) {
+				note.frameOffset.y -= note.frameHeight - 70;		
+			}
+		}
+		else {
+			if (note.isSustainNote) {
+				note.frameOffset.y -= note.frameHeight / 3;		
+			}
+		}
+
+		event.note.scale.set(2.2, 2.2);
+
+		event.note.antialiasing = false;
 	
-	if (FlxG.save.data.downscroll == true) {
-		if (note.isSustainNote) {
-			note.frameOffset.y -= note.frameHeight - 70;		
-		}
-	}
-	else {
-		if (note.isSustainNote) {
-			note.frameOffset.y -= note.frameHeight / 3;		
-		}
 	}
 
-	event.note.scale.set(2.2, 2.2);
-
-	event.note.antialiasing = false;
-	
 }
 
 function onNoteHit(event) {
@@ -49,7 +49,7 @@ function onNoteHit(event) {
 function onPlayerHit(e){
 
 	if (FlxG.save.data.notebounce == true && !player.cpu) {
-		if (PlayState.SONG.meta.name != "lighthouse") {
+		if (PlayState.SONG.meta.name != "lighthouse" | PlayState.SONG.meta.name != "lo-fight") {
    			if (e.isSustainNote) return;
 			   	if (downscroll) {
 					playerStrums.members[e.direction].y -= 7;

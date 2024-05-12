@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-character>
+<character x="-25" icon="whitBF" camx="100" y="0" isGF="false" scale="1" camy="65" flipX="true" isPlayer="false" antialiasing="false" sprite="fbf">
+	<anim x="0" loop="false" y="0" fps="10" anim="fbf idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="fbf up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="fbf right" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="fbf left" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="fbf down" name="singDOWN"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="fbf murderReact" name="reaction" indices="2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,21,21,21,21,21,21,21,21"/>
+</character>
