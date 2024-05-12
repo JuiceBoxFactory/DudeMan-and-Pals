@@ -1,0 +1,23 @@
+{
+	"appearStep": 0,
+	"parsedColor": -13893888,
+	"color": "#2BFF00",
+	"actoresses2": "artist: MeltyKelpy    composer: R3t1x+JPR\ncoder: MeltyKelpy    charter: AngeltheBoi",
+	"opponentModeAllowed": false,
+	"bio": "You're just like me !",
+	"icon": "Icon",
+	"difficulties": [
+		"Hard"
+	],
+	"coopAllowed": false,
+	"name": "blobs",
+	"stepsPerBeat": 4,
+	"singerNames": "Bob VS DudeMan",
+	"displayName": "Blobs",
+	"beatsPerMesure": 4,
+	"beatsPerMeasure": 4,
+	"actoresses": "artist: MeltyKelpy\ncomposer: R3t1x+JPR\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: ?",
+	"tagline": "You're just like me !",
+	"needsVoices": true,
+	"bpm": 127
+}
