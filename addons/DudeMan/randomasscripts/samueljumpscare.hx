@@ -11,13 +11,13 @@ var AA:FlxText;
 	samuel.updateHitbox();
 	add(samuel);
 	
-     AA = new FlxText(500, 2000, 1000, "Samuel Jumpscare", 0);
-     AA.setFormat(Paths.font("vcr.ttf"), 30, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-     AA.scrollFactor.set();
-     AA.borderColor = 0xFF000000;
-     AA.borderSize = 2;
-     add(AA);
-     AA.cameras = [camHUD];
+    AA = new FlxText(500, 2000, 1000, "Samuel Jumpscare", 0);
+    AA.setFormat(Paths.font("vcr.ttf"), 30, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+    AA.scrollFactor.set();
+    AA.borderColor = 0xFF000000;
+    AA.borderSize = 2;
+    add(AA);
+    AA.cameras = [camHUD];
 
 }
 

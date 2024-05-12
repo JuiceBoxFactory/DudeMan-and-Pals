@@ -49,7 +49,7 @@ function onNoteHit(event) {
 function onPlayerHit(e){
 
 	if (FlxG.save.data.notebounce == true && !player.cpu) {
-		if (PlayState.SONG.meta.name != "lighthouse" | PlayState.SONG.meta.name != "lo-fight") {
+		if (PlayState.SONG.meta.name != "lighthouse" && PlayState.SONG.meta.name != "lo-fight") {
    			if (e.isSustainNote) return;
 			   	if (downscroll) {
 					playerStrums.members[e.direction].y -= 7;

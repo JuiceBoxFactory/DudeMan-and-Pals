@@ -12,7 +12,7 @@ function postCreate() {
 		scoreTxt.y += 10;
 	}
 
-	if (PlayState.SONG.meta.name != "lighthouse" | PlayState.SONG.meta.name != "lo-fight") {
+	if (PlayState.SONG.meta.name != "lighthouse" && PlayState.SONG.meta.name != "lo-fight") {
 		myOpp = dad.getIcon();
 		myPpo = boyfriend.getIcon();
 
@@ -79,7 +79,7 @@ function postCreate() {
 }
 
 function update() {
-	if (PlayState.SONG.meta.name != "lighthouse" | PlayState.SONG.meta.name != "lo-fight") {
+	if (PlayState.SONG.meta.name != "lighthouse" && PlayState.SONG.meta.name != "lo-fight") {
 		myOpp = dad.getIcon();
 		icon2.loadGraphic(Paths.image('icons/'+myOpp));
 		myPpo = boyfriend.getIcon();
@@ -98,7 +98,7 @@ function beatHit() {
 	}
 
 
-	if (PlayState.SONG.meta.name != "lighthouse" | PlayState.SONG.meta.name != "lo-fight") {
+	if (PlayState.SONG.meta.name != "lighthouse" && PlayState.SONG.meta.name != "lo-fight") {
 		for (obj in [icon1, icon2]) {
 			obj.scale.set(1.1, 1.1);
 			FlxTween.tween(obj.scale, {x: 1}, 0.25);

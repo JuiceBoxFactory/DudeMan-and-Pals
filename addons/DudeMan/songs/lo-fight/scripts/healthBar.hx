@@ -1,4 +1,4 @@
-function postCreate() {
+function postCreate() {      
 
     for (healthSex2 in [accuracyTxt, scoreTxt, missesTxt]) {
         healthSex2.alpha = 0;
@@ -30,6 +30,8 @@ function postCreate() {
 }
 
 function update() {
+
+    ghostTapping = false;
 
     if (accuracy == -1) {
         accuracy = 0;

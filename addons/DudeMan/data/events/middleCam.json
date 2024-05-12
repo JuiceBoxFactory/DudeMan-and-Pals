@@ -1,0 +1,14 @@
+{
+	"params": [
+		{
+			"name": "Yeah Man ? ( turn on / off, other shit dont matter if its off ! )",
+            "type": "Bool",
+            "defaultValue": false
+		},
+        {
+			"name": "Flash from DC ( how fast u wan it to go ? )",
+			"type": "String",
+			"defaultValue": "2"
+		}
+	]
+}
