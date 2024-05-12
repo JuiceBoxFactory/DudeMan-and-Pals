@@ -63,6 +63,14 @@ function create() {
     doorCount.cameras = [camHUD];
     add(doorCount);
 
+    if (FlxG.save.data.downscroll) {
+        icon2.y -= 10;
+        energyBar.y -= 100;
+        progBar.y -= 32.5;
+        progheader.y -= 30;
+        energyheader.y -= 50;
+    }
+
 }
 
 function onPlayerHit(noteHit) {
@@ -85,10 +93,10 @@ function onPlayerMiss(noteHit) {
 
     if (canProgress == true) {
         if (note.isSustainNote) {
-            energy -= 0.5;
+            energy -= 1;
         }
         else {
-            energy -= 1;
+            energy -= 2;
         }
     }
 }

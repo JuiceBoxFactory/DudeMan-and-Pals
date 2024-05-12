@@ -1,5 +1,3 @@
-// real codes lmao
-// also use direction to do it since noteData is broken, FUCK!
 function postCreate() {
 	for (i in 0...4) {
 		player.members[i].scale.set(2.2, 2.2);
@@ -17,9 +15,16 @@ function onPostStrumCreation(event) {
 function onPostNoteCreation(event) {
 
 	var note = event.note;
-
-	if(note.isSustainNote) {
-	   note.frameOffset.y -= note.frameHeight / 3;
+	
+	if (FlxG.save.data.downscroll == true) {
+		if (note.isSustainNote) {
+			note.frameOffset.y -= note.frameHeight - 70;		
+		}
+	}
+	else {
+		if (note.isSustainNote) {
+			note.frameOffset.y -= note.frameHeight / 3;		
+		}
 	}
 
 	event.note.scale.set(2.2, 2.2);
