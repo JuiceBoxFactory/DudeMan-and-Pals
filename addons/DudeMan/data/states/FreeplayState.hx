@@ -20,7 +20,7 @@ import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxSave;
 
 var mainArray:Array<String> = ["dude", "overstimulation"];
-var extrasArray:Array<String> = ["lemon", "slashgen", "die", "kockbuddies"];
+var extrasArray:Array<String> = ["lemon", "slashgen", "die", "kockbuddies", "oleum"];
 var palsArray:Array<String> = ["skyblue", "misconduct", "roomed", "sizssoers", "lighthouse"];
 var coversArray:Array<String> = ["obituary"];
 var devArray:Array<String> = ["pastelfever", "lemon", "whopper", "dude", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange", "obituary", "kockbuddies"];
