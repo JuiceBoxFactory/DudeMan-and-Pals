@@ -27,9 +27,17 @@ function create() {
 	dudecereal.alpha = 1;
 	dudecereal.screenCenter();
 	dudecereal.updateHitbox();
-	dudecereal.x += -2000;
+	dudecereal.x += -2100;
 	dudecereal.y += -90;
 	add(dudecereal);
+
+	max = new FlxSprite(0, 1000).loadGraphic(Paths.image('visuals/slashgen/hubbabubbamax'));
+	max.antialiasing = false;
+	max.scale.set(0.5, 0.5);
+	max.alpha = 1;
+	max.screenCenter(FlxAxes.X);
+	max.x += 450;
+	insert(2, max);
 
 }
 
@@ -37,10 +45,18 @@ function stepHit(curStep:Int) {
     switch (curStep) {
 	case 419:
             FlxTween.tween(macBg, {y: 0}, 2);
-            FlxTween.tween(dudecereal, {x: 200}, 4);
+            FlxTween.tween(dudecereal, {x: 300}, 4, {ease: FlxEase.quartOut});
+	case 466:
+			FlxTween.tween(dudecereal, {angle: 720}, 2);
 	case 480:
 		 macBg.alpha = 0;
 		 dudecereal.alpha = 0;
+	case 704:
+		camHUD.alpha = 0;
+	case 736:
+		camHUD.alpha = 1;
+	case 1399:
+		FlxTween.tween(max, {y: -200, angle: 720}, 1.5, {ease: FlxEase.quartOut});
 
 	}
 }

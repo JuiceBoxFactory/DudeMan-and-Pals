@@ -9,11 +9,11 @@ function postCreate() {
 function stepHit(curStep:Int) { //this is all template btw lol so
     switch (curStep) {
         case 0: 
-        defaultCamZoom = 1;
+        defaultCamZoom = 1.5;
         case 1664: 
-        defaultCamZoom = 1.6;
+        defaultCamZoom = 2.0;
         case 1920: 
-        defaultCamZoom = 1;
+        defaultCamZoom = 1.5;
 //	case 255:
 //	hypercamLogo.alpha = 1;
 //	camGame.addShader(shit);

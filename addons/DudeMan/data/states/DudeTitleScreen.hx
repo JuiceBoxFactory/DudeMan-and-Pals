@@ -33,6 +33,7 @@ var tipText:Array<String> = [
 ];
 var tipTextChosen = "null";
 var highestNum = 22;
+var imBanbuds = false;
 
 var introOver = false;
 
@@ -172,6 +173,8 @@ function update() {
 
 function skipIntro() {
 
+	imBanbuds = true;
+
 	FlxG.camera.flash(FlxColor.WHITE, 4);
 	new FlxTimer().start(7, function(tmr:FlxTimer) {
 		updateTxt();
@@ -212,6 +215,8 @@ override function beatHit(curBeat:Int)	{
 				FlxTween.tween(fakeLogo, {alpha: 1}, 0.7);
 			case 16:
 				FlxG.save.data.firstOnIntroClient = false;
-				skipIntro();
+				if (imBanbuds == false) {
+					skipIntro();
+				}
 		}
 	}

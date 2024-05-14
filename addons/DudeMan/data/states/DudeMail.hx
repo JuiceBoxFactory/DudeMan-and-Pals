@@ -8,7 +8,7 @@ import flixel.util.FlxTimer;
 import flixel.text.FlxText;
 
 var mails = new FlxCamera(100, 100, 285, 10000);
-var mail = new FlxCamera(450, 100, 770, 20000);
+var mail = new FlxCamera(450, 100, 770, 620);
 var cursorCam = new FlxCamera(0, 0, 1280, 720);
 var awesomeCam = new FlxCamera(0, 0, 1280, 720);
 
@@ -114,12 +114,24 @@ function create() {
         themeScroll = 4;
     }
     if (theme == "retro") {
-        
         slot = slot+'LIGHT';
         slotSelected = slotSelected+'LIGHTselected';
         for (cameras in [camera, awesomeCam, cursorCam, mail, mails])
             cameras.addShader(shit);
         themeScroll = 5;
+    }
+    if (theme == "mrbeast") {
+        mainTextColor = 0xFF25000C;
+        secondaryTextColor = 0xFF00647A;
+        otherTextColor = 0xFFE3447C;
+        coolBackdrop.loadGraphic(Paths.image('dudeMail/backdropMrBeast'));
+        slot = slot+'mrbeast';
+        slotSelected = slotSelected+'mrbeastselected';        
+        mailsBack = 0xFF41DFFE;
+        mailBack = 0xFF08B0D5;
+        topBar1 = 0xFF41DFFE;
+        topBar2 = 0xFFE3447C;
+        themeScroll = 6;
     }
 
     logoPt1 = new FlxText(1015, 15, 400, 'dudemail', 0);
@@ -140,7 +152,7 @@ function create() {
     logoPt2.cameras = [awesomeCam];
     add(logoPt2);
 
-	mailsPos = new FlxSprite(100, 100).makeGraphic(285, 620, mailsBack);
+	mailsPos = new FlxSprite(100, 100).makeGraphic(285, 10000, mailsBack);
     mailsPos.cameras = [awesomeCam];
 	add(mailsPos);
 
@@ -374,6 +386,11 @@ function update() {
         themesTxt.text = '< RETRO >';
         FlxG.save.data.mailTheme = "retro";
     }
+    if (themeScroll == 6) {
+        themesTxt.x = 176;
+        themesTxt.text = '< MR.BEAST >';
+        FlxG.save.data.mailTheme = "mrbeast";
+    }
 
     if (controls.ACCEPT) {
         FlxG.resetState();
@@ -385,9 +402,9 @@ function update() {
         themeScroll += 1;
     }
     if (themeScroll < 0) {
-        themeScroll = 5;
+        themeScroll = 6;
     }
-    if (themeScroll > 5) {
+    if (themeScroll > 6) {
         themeScroll = 0;
     }
 

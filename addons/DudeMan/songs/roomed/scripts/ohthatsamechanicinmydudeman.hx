@@ -93,10 +93,10 @@ function onPlayerMiss(noteHit) {
 
     if (canProgress == true) {
         if (note.isSustainNote) {
-            energy -= 1;
+            energy -= 0.8;
         }
         else {
-            energy -= 2;
+            energy -= 1.8;
         }
     }
 }

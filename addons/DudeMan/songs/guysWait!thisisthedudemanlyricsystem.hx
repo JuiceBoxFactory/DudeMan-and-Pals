@@ -147,5 +147,47 @@ function stepHit(curStep:Int) {
 //            case 447:
 //                textState("goDownINSTANT");
         }
+    }   
+
+
+    /// █▀ █░░ ▄▀█ █▀ █░█   █▀▀ █▀▀ █▄░█
+    /// ▄█ █▄▄ █▀█ ▄█ █▀█   █▄█ ██▄ █░▀█
+
+    if (PlayState.SONG.meta.name == "slashgen") {
+        switch(curStep) {
+            case 1377:
+                textState("popUpRlyFast");
+                setTextShit("I'm chewing on...", "dudeman", 0xFFFFFFFF, 0xFF484848, false);
+            case 1387:
+                setTextShit("hubba bubba max", "dudeman", 0xFFFFFFFF, 0xFF484848, false);
+            case 1398:
+                lyricItself.scale.set(0.7, 0.7);
+                setTextShit("hubba bubba max..,,.,..", "none", 0xFFFFFFFF, 0xFF000000, true);
+            case 1410:
+                FlxTween.tween(lyricItself, {alpha: 0}, 0.8, {ease: FlxEase.quartOut});
+            case 1420:
+                if (FlxG.save.data.subtitles == true) {
+                    lyricItself.alpha = 1;
+                    lyricItself.scale.set(1, 1); 
+                }    
+                setTextShit("I got 4 pieces in my mouth rn.", "dudeman", 0xFFFFFFFF, 0xFF484848, false);  
+            case 1440:
+                setTextShit("DAAAAAAAMAMMMMMNNN.,.,,.", "bf", 0xFFFF2D32, 0xFFFAE237, false);   
+            case 1464:
+                textState("goDownFast");
+            case 1482:
+                textState("popUpSlow");
+                if (FlxG.save.data.subtitles == true) {
+                    lyricItself.alpha = 0;
+                    FlxTween.tween(lyricItself, {alpha: 1}, 4, {ease: FlxEase.quartOut});
+                }
+                setTextShit("*bubble gum blowing sounds*", "none", 0xFFFFFFFF, 0xFF000000, true); 
+            case 1528:
+                lyricItself.scale.set(1.5, 1.5);
+                setTextShit("*EXPLOSION SOUND*", "none", 0xFFFFFFFF, 0xFF000000, true);  
+            case 1535:
+                lyricItself.scale.set(1, 1);
+                setTextShit("*SCREAMING*", "dudeman", 0xFFFFFFFF, 0xFF484848, false);  
+        }
     }
 }
