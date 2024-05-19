@@ -4,11 +4,13 @@ var speed = 1;
 function onEvent(e) {
     if (e.event.name == "middleCam") {
 
+        var prevLerp = FlxG.camera.followLerp; 
+
+        posToBe = boyfriend.x + dad.x;
         posToBe = posToBe / 2;
         trace(posToBe);
 
-        speed = e.event.params[1];
-        trace(speed);
+        speed = prevLerp * e.event.params[1];
 
         if (e.event.params[0] == true) {
             FlxG.camera.followLerp = 0;
@@ -16,7 +18,7 @@ function onEvent(e) {
         }
 
         if (e.event.params[0] == false) {
-            FlxG.camera.followLerp = 0.04;   
+            FlxG.camera.followLerp = prevLerp;   
         }
 
     }

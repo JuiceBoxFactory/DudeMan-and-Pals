@@ -6,9 +6,9 @@
             "defaultValue": false
 		},
         {
-			"name": "Flash from DC ( how fast u wan it to go ? )",
+			"name": "Speed ( multiplies the camera speed by said number )",
 			"type": "String",
-			"defaultValue": "2"
+			"defaultValue": "1"
 		}
 	]
 }
