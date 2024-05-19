@@ -10,7 +10,8 @@ function onEvent(e) {
         posToBe = posToBe / 2;
         trace(posToBe);
 
-        speed = prevLerp * e.event.params[1];
+        var howFast = prevLerp * 30;
+        speed = howFast * e.event.params[1];
 
         if (e.event.params[0] == true) {
             FlxG.camera.followLerp = 0;
