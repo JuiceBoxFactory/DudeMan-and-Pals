@@ -12,8 +12,9 @@ function onEvent(e) {
             posToBe = posToBe / 2;
             trace(posToBe);
     
+            var multiplier = e.event.params[1];
             var howFast = prevLerp * 30;
-            speed = howFast * e.event.params[1];
+            speed = howFast * multiplier;
 
             FlxG.camera.followLerp = 0;
             FlxTween.tween(camGame.scroll, {x: posToBe}, speed, {ease: FlxEase.quartOut});      

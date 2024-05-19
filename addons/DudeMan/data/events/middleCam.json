@@ -6,7 +6,7 @@
             "defaultValue": false
 		},
         {
-			"name": "Speed ( multiplies the camera speed by said number )",
+			"name": "Speed ( multiplies the time taken to move by said number ( lower is quicker, higher is slower ) )",
 			"type": "String",
 			"defaultValue": "1"
 		}
