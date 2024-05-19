@@ -19,12 +19,13 @@ import flixel.addons.display.FlxBackdrop;
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxSave;
 
-var mainArray:Array<String> = ["dude", "overstimulation"];
-var extrasArray:Array<String> = ["lemon", "slashgen", "die", "kockbuddies", "oleum"];
+var mainArray:Array<String> = ["dude", "overstimulation", "fang"];
+var extrasArray:Array<String> = ["lemon", "slashgen", "die", "blobs", "kockbuddies", "oleum"];
 var palsArray:Array<String> = ["skyblue", "misconduct", "roomed", "sizssoers", "lighthouse"];
 var coversArray:Array<String> = ["obituary"];
 var devArray:Array<String> = ["pastelfever", "lemon", "whopper", "dude", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange", "obituary", "kockbuddies"];
 var songL:FlxTypedGroup<FlxText> = [];
+var intendedCategory = "VS DUDEMAN";
 
 function create() {
 
@@ -106,16 +107,12 @@ function create() {
             add(info3);
 
         }
-	for (item in grpSongs.members)
-		{
-			item.alpha = 0;
-		}
-
 	for (i in 0...iconArray.length)
 		{
 			iconArray[i].alpha = 0;
 		}
 	curSelected = 0;
+
 }
 
 function postCreate() {
@@ -143,10 +140,23 @@ function postCreate() {
 	arrows.updateHitbox();
 	add(arrows);
 
+	waitImGoated = new FlxText(0, 225);
+	waitImGoated.text = "SCORE: NULL\nCATEGORY: NULL";
+	waitImGoated.setFormat(Paths.font("COMIC.ttf"), 35, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+	waitImGoated.color = 0xFFFFFFFF;
+	waitImGoated.screenCenter(FlxAxes.X);
+	waitImGoated.borderColor = 0xFF000000;
+	waitImGoated.antialiasing = false;
+	waitImGoated.borderSize = 2;
+	add(waitImGoated);
+
 }
 
 function update() {
-		
+
+	waitImGoated.text = "SCORE: "+intendedScore;
+	waitImGoated.screenCenter(FlxAxes.X);
+
 	if (controls.LEFT_P) {
 		changeSelection(-1);
 	}
@@ -163,6 +173,7 @@ function update() {
 		songL[curSelected].alpha = 1;
 	}
 	uiCamera.follow(songL[curSelected], 0.5);
+
 }
 
 function postUpdate() {

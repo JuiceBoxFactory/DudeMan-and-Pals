@@ -11,6 +11,7 @@
 	"coopAllowed": false,
 	"stepsPerBeat": 4,
 	"displayName": "Slash Gen",
+	"category": "CHARACTER SONGS",
 	"beatsPerMesure": 4,
 	"beatsPerMeasure": 4,
 	"needsVoices": true,
