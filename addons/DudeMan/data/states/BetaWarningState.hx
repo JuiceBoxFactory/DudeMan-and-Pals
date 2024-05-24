@@ -34,7 +34,7 @@ function postCreate() {
 function postUpdate() {
 
     if (controls.ACCEPT) {
-        FlxG.switchState(new ModState("DudeTitleScreen"));
+        FlxG.switchState(new ModState("JuiceBoxFactoryOpening"));
     }
 
 }
