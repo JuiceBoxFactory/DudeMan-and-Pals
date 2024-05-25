@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="meltysex.png">
+<SubTexture name="left0000" x="0" y="284" width="247" height="270" frameX="-21" frameY="-17" frameWidth="300" frameHeight="300" />
+<SubTexture name="down0000" x="920" y="532" width="224" height="261" frameX="-44" frameY="-26" frameWidth="300" frameHeight="300" />
+<SubTexture name="idle0000" x="448" y="824" width="224" height="257" frameX="-44" frameY="-30" frameWidth="300" frameHeight="300" />
+<SubTexture name="idle0001" x="920" y="267" width="224" height="265" frameX="-44" frameY="-22" frameWidth="300" frameHeight="300" />
+<SubTexture name="idle0002" x="920" y="0" width="224" height="267" frameX="-44" frameY="-20" frameWidth="300" frameHeight="300" />
+<SubTexture name="idle0003" x="448" y="554" width="224" height="268" frameX="-44" frameY="-19" frameWidth="300" frameHeight="300" />
+<SubTexture name="left0001" x="247" y="284" width="249" height="270" frameX="-19" frameY="-17" frameWidth="300" frameHeight="300" />
+<SubTexture name="left0002" x="672" y="0" width="248" height="270" frameX="-20" frameY="-17" frameWidth="300" frameHeight="300" />
+<SubTexture name="down0001" x="224" y="824" width="224" height="260" frameX="-44" frameY="-27" frameWidth="300" frameHeight="300" />
+<SubTexture name="down0002" x="0" y="824" width="224" height="261" frameX="-44" frameY="-26" frameWidth="300" frameHeight="300" />
+<SubTexture name="up0000" x="0" y="0" width="224" height="284" frameX="-44" frameY="-3" frameWidth="300" frameHeight="300" />
+<SubTexture name="up0001" x="224" y="0" width="224" height="283" frameX="-44" frameY="-4" frameWidth="300" frameHeight="300" />
+<SubTexture name="up0002" x="448" y="0" width="224" height="282" frameX="-44" frameY="-5" frameWidth="300" frameHeight="300" />
+<SubTexture name="right0000" x="672" y="270" width="224" height="270" frameX="-44" frameY="-17" frameWidth="300" frameHeight="300" />
+<SubTexture name="right0001" x="0" y="554" width="224" height="270" frameX="-44" frameY="-17" frameWidth="300" frameHeight="300" />
+<SubTexture name="right0002" x="224" y="554" width="224" height="270" frameX="-44" frameY="-17" frameWidth="300" frameHeight="300" />
+<SubTexture name="idle0004" x="672" y="554" width="224" height="268" frameX="-44" frameY="-19" frameWidth="300" frameHeight="300" />
+</TextureAtlas>
