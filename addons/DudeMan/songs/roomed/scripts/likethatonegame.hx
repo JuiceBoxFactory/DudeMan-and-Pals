@@ -95,6 +95,9 @@ function stepHit(curStep:Int) {
         case 3040:
             FlxTween.tween(black, {alpha: 1}, 3);
 
+        case 3120:
+            FlxTween.tween(black, {alpha: 0}, 3);
+
         }
 
 }
