@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="150" icon="cringeDX" camx="100" y="50" isGF="false" camy="150" color="#FFF354" flipX="true" isPlayer="true" antialiasing="false" sprite="closet">
+	<anim x="0" loop="false" y="0" fps="12" anim="idle" name="idle"/>
+	<anim x="4" loop="false" y="0" fps="12" anim="up" name="singUP"/>
+	<anim x="0" loop="false" y="1" fps="12" anim="right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="left" name="singLEFT"/>
+	<anim x="1" loop="false" y="7" fps="12" anim="down" name="singDOWN"/>
+</character>

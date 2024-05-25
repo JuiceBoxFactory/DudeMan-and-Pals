@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="CringDXnolight.png">
+<SubTexture name="CringDXnolight Idle0000" x="0" y="144" width="56" height="133" frameX="-100" frameY="-64" frameWidth="256" frameHeight="256" />
+<SubTexture name="CringDXnolight Idle0001" x="56" y="144" width="57" height="133" frameX="-99" frameY="-64" frameWidth="256" frameHeight="256" />
+<SubTexture name="CringDXnolight Left0000" x="113" y="144" width="76" height="133" frameX="-74" frameY="-64" frameWidth="256" frameHeight="256" />
+<SubTexture name="CringDXnolight Left0001" x="189" y="144" width="67" height="133" frameX="-85" frameY="-64" frameWidth="256" frameHeight="256" />
+<SubTexture name="CringDXnolight Down0000" x="367" y="0" width="70" height="116" frameX="-96" frameY="-81" frameWidth="256" frameHeight="256" />
+<SubTexture name="CringDXnolight Down0001" x="301" y="0" width="66" height="122" frameX="-98" frameY="-76" frameWidth="256" frameHeight="256" />
+<SubTexture name="CringDXnolight Up0000" x="0" y="0" width="54" height="144" frameX="-105" frameY="-53" frameWidth="256" frameHeight="256" />
+<SubTexture name="CringDXnolight Up0001" x="54" y="0" width="60" height="140" frameX="-104" frameY="-57" frameWidth="256" frameHeight="256" />
+<SubTexture name="CringDXnolight Up0002" x="114" y="0" width="64" height="140" frameX="-104" frameY="-57" frameWidth="256" frameHeight="256" />
+<SubTexture name="CringDXnolight Right0000" x="178" y="0" width="63" height="136" frameX="-118" frameY="-61" frameWidth="256" frameHeight="256" />
+<SubTexture name="CringDXnolight Right0001" x="241" y="0" width="60" height="135" frameX="-114" frameY="-62" frameWidth="256" frameHeight="256" />
+</TextureAtlas>

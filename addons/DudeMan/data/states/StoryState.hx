@@ -1,8 +1,21 @@
 import flixel.addons.display.FlxBackdrop;
+import flixel.util.FlxTimer;
+import flixel.FlxCamera;
+import flixel.util.FlxSave;
+import flixel.text.FlxTextBorderStyle;
 
 var Selected = 0;
+var camPosition = 0;
 
 function create() {
+
+	uiCamera = new FlxCamera(0, 0, 1280, 720);
+	uiCamera.bgColor = FlxColor.TRANSPARENT;
+	FlxG.cameras.add(uiCamera, false);
+
+	borderCamera = new FlxCamera(0, 0, 1280, 720);
+	borderCamera.bgColor = FlxColor.TRANSPARENT;
+	FlxG.cameras.add(borderCamera, false);
 
 	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg'));
 	coolBackdrop.moves = true;
@@ -15,108 +28,35 @@ function create() {
 	border = new FlxSprite(0, 0).loadGraphic(Paths.image('freeplay/border'));
 	border.antialiasing = false;
 	border.updateHitbox();
+	border.cameras = [borderCamera];
 	add(border);
 
-	numbers = new FlxSprite(0, 30).loadGraphic(Paths.image('storyMode/numbers'));
-	numbers.antialiasing = false;
-	numbers.updateHitbox();
-	add(numbers);
+	arrows = new FlxSprite(0, 0).loadGraphic(Paths.image('storyMode/arrows'));
+	arrows.antialiasing = false;
+	arrows.updateHitbox();
+	arrows.cameras = [borderCamera];
+	add(arrows);
 	
-	weekDude = new FlxSprite(325, 110);
+	weekDude = new FlxSprite(325, 110).loadGraphic(Paths.image('storyMode/weekCons/dudeWeek'));
 	weekDude.antialiasing = false;
-	weekDude.frames = Paths.getSparrowAtlas('storyMode/weekCons/dudeWeek');
-	weekDude.animation.addByPrefix('animation', 'idle', 6);
-	weekDude.animation.play('animation');
 	weekDude.scale.x = 1;
 	weekDude.scale.y = 1;
+	weekDude.screenCenter(FlxAxes.X);
 	weekDude.scrollFactor.set(1, 1);
 	weekDude.alpha = 0;
 	weekDude.updateHitbox();
+	weekDude.cameras = [uiCamera];
 	add(weekDude);
 
-	weekFruit = new FlxSprite(325, 265);
-	weekFruit.antialiasing = false;
-	weekFruit.frames = Paths.getSparrowAtlas('storyMode/weekCons/placeWeek');
-	weekFruit.animation.addByPrefix('animation', 'idle', 6);
-	weekFruit.animation.play('animation');
-	weekFruit.scale.x = 1;
-	weekFruit.scale.y = 1;
-	weekFruit.scrollFactor.set(1, 1);
-	weekFruit.alpha = 0;
-	weekFruit.updateHitbox();
-	add(weekFruit);
-
-	weekZee = new FlxSprite(325, 420);
-	weekZee.antialiasing = false;
-	weekZee.frames = Paths.getSparrowAtlas('storyMode/weekCons/placeWeek');
-	weekZee.animation.addByPrefix('animation', 'idle', 6);
-	weekZee.animation.play('animation');
-	weekZee.scale.x = 1;
-	weekZee.scale.y = 1;
-	weekZee.scrollFactor.set(1, 1);
-	weekZee.alpha = 0;
-	weekZee.updateHitbox();
-	add(weekZee);
-	
-	weekRobert = new FlxSprite(325, 575);
-	weekRobert.antialiasing = false;
-	weekRobert.frames = Paths.getSparrowAtlas('storyMode/weekCons/placeWeek');
-	weekRobert.animation.addByPrefix('animation', 'idle', 6);
-	weekRobert.animation.play('animation');
-	weekRobert.scale.x = 1;
-	weekRobert.scale.y = 1;
-	weekRobert.scrollFactor.set(1, 1);
-	weekRobert.alpha = 0;
-	weekRobert.updateHitbox();
-	add(weekRobert);
-
-	weekKathy = new FlxSprite(675, 110);
-	weekKathy.antialiasing = false;
-	weekKathy.frames = Paths.getSparrowAtlas('storyMode/weekCons/placeWeek');
-	weekKathy.animation.addByPrefix('animation', 'idle', 6);
-	weekKathy.animation.play('animation');
-	weekKathy.scale.x = 1;
-	weekKathy.scale.y = 1;
-	weekKathy.scrollFactor.set(1, 1);
-	weekKathy.alpha = 0;
-	weekKathy.updateHitbox();
-	add(weekKathy);
-
-	weekUmbreon = new FlxSprite(675, 265);
-	weekUmbreon.antialiasing = false;
-	weekUmbreon.frames = Paths.getSparrowAtlas('storyMode/weekCons/placeWeek');
-	weekUmbreon.animation.addByPrefix('animation', 'idle', 6);
-	weekUmbreon.animation.play('animation');
-	weekUmbreon.scale.x = 1;
-	weekUmbreon.scale.y = 1;
-	weekUmbreon.scrollFactor.set(1, 1);
-	weekUmbreon.alpha = 0;
-	weekUmbreon.updateHitbox();
-	add(weekUmbreon);
-
-	weekStick = new FlxSprite(675, 420);
-	weekStick.antialiasing = false;
-	weekStick.frames = Paths.getSparrowAtlas('storyMode/weekCons/placeWeek');
-	weekStick.animation.addByPrefix('animation', 'idle', 6);
-	weekStick.animation.play('animation');
-	weekStick.scale.x = 1;
-	weekStick.scale.y = 1;
-	weekStick.scrollFactor.set(1, 1);
-	weekStick.alpha = 0;
-	weekStick.updateHitbox();
-	add(weekStick);
-	
-	weekSilly = new FlxSprite(675, 575);
-	weekSilly.antialiasing = false;
-	weekSilly.frames = Paths.getSparrowAtlas('storyMode/weekCons/placeWeek');
-	weekSilly.animation.addByPrefix('animation', 'idle', 6);
-	weekSilly.animation.play('animation');
-	weekSilly.scale.x = 1;
-	weekSilly.scale.y = 1;
-	weekSilly.scrollFactor.set(1, 1);
-	weekSilly.alpha = 0;
-	weekSilly.updateHitbox();
-	add(weekSilly);
+	weekDax = new FlxSprite(weekDude.x * 3, 110).loadGraphic(Paths.image('storyMode/weekCons/daxWeek'));
+	weekDax.antialiasing = false;
+	weekDax.scale.x = 1;
+	weekDax.scale.y = 1;
+	weekDax.scrollFactor.set(1, 1);
+	weekDax.alpha = 0;
+	weekDax.updateHitbox();
+	weekDax.cameras = [uiCamera];
+	add(weekDax);
 	
 	storytitle = new FlxSprite(310, 10).loadGraphic(Paths.image('storyMode/name'));
 	storytitle.antialiasing = false;
@@ -124,52 +64,83 @@ function create() {
 	storytitle.updateHitbox();
 	add(storytitle);
 	
+	for (obj in [weekDax]) {
+			obj.scale.set(0.8, 0.8);
 	}
+
+	bottomText = new FlxText();
+	bottomText.setFormat(Paths.font("COMIC.ttf"), 30, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+	bottomText.y = 650;
+	bottomText.cameras = [borderCamera];
+	bottomText.color = 0xFFFFFFFF;
+	bottomText.borderColor = 0xFF000000;
+	bottomText.antialiasing = false;
+	bottomText.borderSize = 3;
+	add(bottomText);
+}
 	
 function update() {
+	
+	bottomText.screenCenter(FlxAxes.X);
 
-	for (obj in [weekDude, weekFruit, weekZee, weekRobert, weekKathy, weekUmbreon, weekStick, weekSilly])
-	obj.alpha = 0.6;
+	if (uiCamera.scroll.x > camPosition) {
+		uiCamera.scroll.x -= 25;
+	}
+	else if (uiCamera.scroll.x < camPosition) {
+		uiCamera.scroll.x += 25;
+	}
 
-	if (controls.UP_P) {
+	for (obj in [weekDude, weekDax]) {
+		obj.alpha = 0.6;
+
+		if (obj.scale.x > 1 && obj.scale.y > 1) {
+			obj.scale.set(1, 1);
+		}
+
+		if (obj.scale.x < 0.8 && obj.scale.y < 0.8) {
+			obj.scale.set(0.8, 0.8);
+		}
+	}
+	
+	if (controls.LEFT_P) {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		Selected -= 1;
 	}
-	if (controls.DOWN_P) {
+	if (controls.RIGHT_P) {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		Selected += 1;
 	}
-	if (controls.LEFT_P) {
-		FlxG.sound.play(Paths.sound('menu/scroll'));
-		Selected -= 4;
-	}
-	if (controls.RIGHT_P) {
-		FlxG.sound.play(Paths.sound('menu/scroll'));
-		Selected += 4;
-	}
 	if (Selected == 0) {
-			weekDude.alpha = 1;
+		weekDude.alpha = 1;
+		if (weekDude.scale.x != 1 && weekDude.scale.y != 1) {
+			weekDude.scale.x += 0.05;
+			weekDude.scale.y += 0.05;
+		}
+		camPosition = 0;
+
+		bottomText.text = "tis a main week, dude";
+	}
+	else {
+		if (weekDude.scale.x != 0.8 && weekDude.scale.y != 0.8) {
+			weekDude.scale.x -= 0.05;
+			weekDude.scale.y -= 0.05;
+		}
 	}
 	if (Selected == 1) {
-			weekFruit.alpha = 1;
+		weekDax.alpha = 1;
+		if (weekDax.scale.x != 1 && weekDax.scale.y != 1) {
+			weekDax.scale.x += 0.05;
+			weekDax.scale.y += 0.05;
+		}
+		camPosition = 650;
+
+		bottomText.text = "tis an extra week, dude";
 	}
-	if (Selected == 2) {
-			weekZee.alpha = 1;
-	}
-	if (Selected == 3) {
-			weekRobert.alpha = 1;
-	}
-	if (Selected == 4) {
-			weekKathy.alpha = 1;
-	}
-	if (Selected == 5) {
-			weekUmbreon.alpha = 1;
-	}
-	if (Selected == 6) {
-			weekStick.alpha = 1;
-	}
-	if (Selected == 7) {
-			weekSilly.alpha = 1;
+	else {
+		if (weekDax.scale.x != 0.8 && weekDax.scale.y != 0.8) {
+			weekDax.scale.x -= 0.025;
+			weekDax.scale.y -= 0.025;
+		}
 	}
 	if (Selected == 0 && controls.ACCEPT) {
 			PlayState.loadWeek( {
@@ -183,11 +154,23 @@ function update() {
 
 			new FlxTimer().start(1, function() {FlxG.switchState(new PlayState());}); 
 	}
-	if (Selected > 7) {
+	if (Selected == 1 && controls.ACCEPT) {
+		PlayState.loadWeek( {
+			name: "Dax Shaped Duel",
+			id: "weekDax",
+			sprite: null,
+			chars: [null, null, null],
+			songs: [for (song in ["skyblue", "misconduct", "esex", "sizssoers", "lighthouse", "roomed"]) {name: song, hide: false}],
+			difficulties: ['hard']
+		}, "hard");
+
+		new FlxTimer().start(1, function() {FlxG.switchState(new PlayState());}); 
+}
+	if (Selected > 1) {
 		Selected = 0;
 	}
 	if (Selected < 0) {
-		Selected = 7;
+		Selected = 1;
 	}
  	
 	if (controls.BACK) {

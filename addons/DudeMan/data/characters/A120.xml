@@ -1,8 +1,13 @@
 <!DOCTYPE codename-engine-character>
-<character x="500" icon="A120" camx="-200" y="70" isGF="false" camy="150" color="#000000" flipX="false" isPlayer="false" antialiasing="false" sprite="A120">
-	<anim x="0" loop="false" y="0" fps="12" anim="A120 idle" name="idle"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="A120 up" name="singUP"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="A120 left" name="singLEFT"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="A120 right" name="singRIGHT"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="A120 down" name="singDOWN"/>
+<character x="500" icon="A120" camx="-200" y="70" isGF="false" camy="150" color="#000000" flipX="false" isPlayer="false" antialiasing="false" sprite="A-120">
+	<anim x="0" loop="false" y="0" fps="12" anim="idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="down" name="singDOWN" indices="0, 1"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="recorder" name="singUP-alt"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="recorder" name="singLEFT-alt"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="recorder" name="singRIGHT-alt"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="recorder" name="singDOWN-alt"/>
+	<anim x="0" loop="false" y="0" fps="6" anim="oh" name="oh" indices="0, 1, 2, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5"/>
 </character>

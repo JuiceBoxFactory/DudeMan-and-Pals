@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="A-120.png">
+<SubTexture name="idle0000" x="362" y="0" width="87" height="59" frameX="-489" frameY="-429" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0001" x="60" y="238" width="85" height="60" frameX="-490" frameY="-429" frameWidth="1280" frameHeight="720" />
+<SubTexture name="recorder0000" x="138" y="0" width="129" height="127" frameX="-512" frameY="-430" frameWidth="1280" frameHeight="720" />
+<SubTexture name="oh0000" x="145" y="238" width="87" height="60" frameX="-488" frameY="-429" frameWidth="1280" frameHeight="720" />
+<SubTexture name="oh0001" x="232" y="238" width="87" height="60" frameX="-488" frameY="-429" frameWidth="1280" frameHeight="720" />
+<SubTexture name="oh0002" x="0" y="300" width="87" height="60" frameX="-488" frameY="-429" frameWidth="1280" frameHeight="720" />
+<SubTexture name="oh0003" x="87" y="300" width="87" height="60" frameX="-488" frameY="-429" frameWidth="1280" frameHeight="720" />
+<SubTexture name="oh0004" x="174" y="300" width="87" height="60" frameX="-488" frameY="-429" frameWidth="1280" frameHeight="720" />
+<SubTexture name="oh0005" x="362" y="59" width="86" height="55" frameX="-488" frameY="-432" frameWidth="1280" frameHeight="720" />
+<SubTexture name="left0000" x="169" y="146" width="72" height="82" frameX="-457" frameY="-406" frameWidth="1280" frameHeight="720" />
+<SubTexture name="left0001" x="267" y="80" width="76" height="76" frameX="-462" frameY="-413" frameWidth="1280" frameHeight="720" />
+<SubTexture name="down0000" x="0" y="238" width="60" height="62" frameX="-504" frameY="-453" frameWidth="1280" frameHeight="720" />
+<SubTexture name="down0001" x="261" y="300" width="61" height="60" frameX="-504" frameY="-450" frameWidth="1280" frameHeight="720" />
+<SubTexture name="right0000" x="267" y="0" width="95" height="80" frameX="-512" frameY="-429" frameWidth="1280" frameHeight="720" />
+<SubTexture name="right0001" x="267" y="156" width="91" height="67" frameX="-505" frameY="-426" frameWidth="1280" frameHeight="720" />
+<SubTexture name="up0000" x="86" y="146" width="83" height="91" frameX="-494" frameY="-393" frameWidth="1280" frameHeight="720" />
+<SubTexture name="up0001" x="0" y="146" width="86" height="92" frameX="-492" frameY="-395" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0000" x="0" y="0" width="138" height="146" frameX="-461" frameY="-325" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0001" x="0" y="0" width="138" height="146" frameX="-461" frameY="-397" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0002" x="0" y="0" width="138" height="146" frameX="-461" frameY="-356" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0003" x="0" y="0" width="138" height="146" frameX="-461" frameY="-259" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0004" x="0" y="0" width="138" height="146" frameX="-461" frameY="-258" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0005" x="0" y="0" width="138" height="146" frameX="-461" frameY="-258" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0006" x="0" y="0" width="138" height="146" frameX="-461" frameY="-303" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0007" x="0" y="0" width="138" height="146" frameX="-461" frameY="-351" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0008" x="0" y="0" width="138" height="146" frameX="-461" frameY="-399" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0009" x="0" y="0" width="138" height="146" frameX="-461" frameY="-390" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0010" x="0" y="0" width="138" height="146" frameX="-461" frameY="-361" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0011" x="0" y="0" width="138" height="146" frameX="-461" frameY="-357" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0012" x="0" y="0" width="138" height="146" frameX="-461" frameY="-367" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0013" x="0" y="0" width="138" height="146" frameX="-461" frameY="-390" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0014" x="0" y="0" width="138" height="146" frameX="-461" frameY="-399" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0015" x="0" y="0" width="138" height="146" frameX="-461" frameY="-397" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0016" x="0" y="0" width="138" height="146" frameX="-461" frameY="-398" frameWidth="1280" frameHeight="720" />
+<SubTexture name="downsies0017" x="0" y="0" width="138" height="146" frameX="-461" frameY="-399" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="closet.png">
+<SubTexture name="idle0000" x="209" y="0" width="111" height="152" frameX="-243" frameY="-381" frameWidth="1280" frameHeight="720" />
+<SubTexture name="right0000" x="118" y="175" width="135" height="145" frameX="-241" frameY="-389" frameWidth="1280" frameHeight="720" />
+<SubTexture name="right0001" x="320" y="0" width="126" height="150" frameX="-242" frameY="-383" frameWidth="1280" frameHeight="720" />
+<SubTexture name="down0000" x="112" y="324" width="120" height="107" frameX="-245" frameY="-433" frameWidth="1280" frameHeight="720" />
+<SubTexture name="down0001" x="0" y="324" width="112" height="114" frameX="-248" frameY="-427" frameWidth="1280" frameHeight="720" />
+<SubTexture name="left0000" x="253" y="175" width="124" height="137" frameX="-230" frameY="-394" frameWidth="1280" frameHeight="720" />
+<SubTexture name="left0001" x="0" y="175" width="118" height="149" frameX="-237" frameY="-383" frameWidth="1280" frameHeight="720" />
+<SubTexture name="up0000" x="0" y="0" width="100" height="175" frameX="-248" frameY="-355" frameWidth="1280" frameHeight="720" />
+<SubTexture name="up0001" x="100" y="0" width="109" height="168" frameX="-243" frameY="-363" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

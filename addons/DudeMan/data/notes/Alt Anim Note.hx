@@ -1,1 +1,5 @@
-function onNoteHit(event) if (event.noteType == "Alt Anim Note") event.animSuffix = "-alt";
+function onNoteHit(event) {
+    if (event.noteType == "Alt Anim Note") {
+        event.animSuffix = "-alt";
+    }
+}

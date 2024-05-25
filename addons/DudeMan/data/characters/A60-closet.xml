@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="550" icon="A60" camx="-150" y="70" isGF="false" camy="0" color="#00900B" flipX="false" isPlayer="false" antialiasing="false" sprite="A60-closet">
-	<anim x="0" loop="false" y="0" fps="12" anim="A60-closet idle" name="idle"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="A60-closet up" name="singUP"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="A60-closet left" name="singLEFT"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="A60-closet right" name="singRIGHT"/>
-	<anim x="0" loop="false" y="0" fps="12" anim="A60-closet down" name="singDOWN"/>
-</character>

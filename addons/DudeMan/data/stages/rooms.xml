@@ -3,7 +3,11 @@
 	<combo/>
 	<gf x="-2716" y="-503"/>
 	<sprite sprite="backdrop/roomed/background1" name="bg" antialiasing="false"/>
+	<sprite sprite="characters/shesnotthere" name="nothing" antialiasing="false"/>
+	<sprite sprite="characters/shesnotthere" name="nothing" antialiasing="false"/>
+	<sprite sprite="characters/shesnotthere" name="nothing" antialiasing="false"/>
+	<sprite sprite="characters/shesnotthere" name="nothing" antialiasing="false"/>
+	<sprite sprite="characters/shesnotthere" name="nothing" antialiasing="false"/>
 	<dad x="-550" y="-50"/>
 	<bf x="-150" y="-50"/>
-	<combo/>
 </stage>

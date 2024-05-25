@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="EntitiesCloset.png">
+<SubTexture name="idle0000" x="814" y="874" width="877" height="434" frameX="-163" frameY="-53" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0001" x="0" y="0" width="881" height="437" frameX="-162" frameY="-51" frameWidth="1280" frameHeight="720" />
+<SubTexture name="right0000" x="2555" y="326" width="801" height="313" frameX="-239" frameY="-112" frameWidth="1280" frameHeight="720" />
+<SubTexture name="right0001" x="2555" y="0" width="806" height="326" frameX="-237" frameY="-90" frameWidth="1280" frameHeight="720" />
+<SubTexture name="down0000" x="833" y="2179" width="837" height="342" frameX="-203" frameY="-113" frameWidth="1280" frameHeight="720" />
+<SubTexture name="down0001" x="0" y="2179" width="833" height="344" frameX="-210" frameY="-98" frameWidth="1280" frameHeight="720" />
+<SubTexture name="up0000" x="847" y="2523" width="825" height="320" frameX="-215" frameY="-94" frameWidth="1280" frameHeight="720" />
+<SubTexture name="up0001" x="1664" y="1745" width="849" height="347" frameX="-194" frameY="-91" frameWidth="1280" frameHeight="720" />
+<SubTexture name="left0000" x="1670" y="2179" width="868" height="339" frameX="-172" frameY="-134" frameWidth="1280" frameHeight="720" />
+<SubTexture name="left0001" x="0" y="2523" width="847" height="323" frameX="-196" frameY="-134" frameWidth="1280" frameHeight="720" />
+<SubTexture name="ralt0000" x="0" y="1311" width="903" height="434" frameX="-163" frameY="-53" frameWidth="1280" frameHeight="720" />
+<SubTexture name="ralt0001" x="881" y="0" width="893" height="437" frameX="-162" frameY="-51" frameWidth="1280" frameHeight="720" />
+<SubTexture name="ualt0000" x="0" y="437" width="850" height="437" frameX="-162" frameY="-51" frameWidth="1280" frameHeight="720" />
+<SubTexture name="ualt0001" x="903" y="1311" width="871" height="434" frameX="-163" frameY="-53" frameWidth="1280" frameHeight="720" />
+<SubTexture name="lalt0000" x="850" y="437" width="778" height="437" frameX="-162" frameY="-51" frameWidth="1280" frameHeight="720" />
+<SubTexture name="lalt0001" x="1774" y="0" width="781" height="434" frameX="-163" frameY="-53" frameWidth="1280" frameHeight="720" />
+<SubTexture name="dalt0000" x="0" y="874" width="814" height="437" frameX="-162" frameY="-51" frameWidth="1280" frameHeight="720" />
+<SubTexture name="dalt0001" x="0" y="1745" width="809" height="434" frameX="-163" frameY="-53" frameWidth="1280" frameHeight="720" />
+<SubTexture name="ialt0000" x="809" y="1745" width="855" height="430" frameX="-151" frameY="-52" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>
