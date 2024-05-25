@@ -3,6 +3,17 @@ import sys.io.FileSystem;
 import openfl.display.BitmapData;
 import flixel.graphics.FlxGraphic;
 
+class HealthIcon extends FlxSprite {
+    public function new(icon:String, isPlayer:Bool) {
+        super();
+        loadGraphic(Paths.image('icons/' + icon));
+    }
+
+    public function changeGraphic(newGraphic:String):Void {
+        loadGraphic(Paths.image('icons/' + newGraphic));
+    }
+}
+
 var dataShit:Array<{name:String, xml:String}> = [];
 
 function preload(imagePath:String) {
@@ -52,6 +63,7 @@ function postCreate() {
 
 function onEvent(_)
     if (_.event.name == 'Change Character') {
+        {
         var data = dataShit.pop();
         var character:Character = strumLines.members[_.event.params[0]].characters[_.event.params[1]];
         var isPlayer:Bool = strumLines.members[_.event.params[0]].characters[0].isPlayer;
@@ -64,17 +76,16 @@ function onEvent(_)
 
         if (_.event.params[1] == '0') {
             var icon:HealthIcon = isPlayer ? iconP1 : iconP2;
-            if (icon.graphic != data.preloadData.icon) {
-                remove(icon);
-                icon = new HealthIcon(character.getIcon(), isPlayer);
-                icon.cameras = [camHUD];
+            if (icon.graphic.key != 'icons/' + data.preloadData.icon) { 
+                icon.changeGraphic(data.preloadData.icon);
                 icon.y = healthBar.y - (icon.height / 2);
             }
 
-                var leftColor:Int = dad.iconColor != null && Options.colorHealthBar ? dad.iconColor : 0xFFFF0000;
-                var rightColor:Int = boyfriend.iconColor != null && Options.colorHealthBar ? boyfriend.iconColor : 0xFF66FF33;
-                var colors = [leftColor, rightColor];
-                healthBar.createFilledBar((PlayState.opponentMode ? colors[1] : colors[0]), (PlayState.opponentMode ? colors[0] : colors[1]));
-                healthBar.updateBar();
-            }
+            var leftColor:Int = dad.iconColor != null && Options.colorHealthBar ? dad.iconColor : 0xFFFF0000;
+            var rightColor:Int = boyfriend.iconColor != null && Options.colorHealthBar ? boyfriend.iconColor : 0xFF66FF33;
+            var colors = [leftColor, rightColor];
+            healthBar.createFilledBar((PlayState.opponentMode ? colors[1] : colors[0]), (PlayState.opponentMode ? colors[0] : colors[1]));
+            healthBar.updateBar();
         }
+    }
+}
