@@ -1,4 +1,5 @@
 {
+	"appearStep": 0,
 	"bio": "Autism Songified",
 	"opponentModeAllowed": false,
 	"icon": "Icon",
@@ -16,5 +17,8 @@
 	"beatsPerMeasure": 4,
 	"needsVoices": true,
 	"actoresses": "artist: MeltyKelpy\ncomposer: OJSTheCoder\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: OJSTheCoder",
+	"singerNames": "Dax VS Bee",
+	"tagline": "Autism Songified",
+	"actoresses2": "artist: MeltyKelpy    composer: OJSTheCoder\ncoder: MeltyKelpy    charter: AngeltheBoi",
 	"bpm": 115
 }

@@ -2,7 +2,6 @@
 	"appearStep": 1020,
 	"parsedColor": -13893888,
 	"color": "#2BFF00",
-	"actoresses2": "artist: Saayo    coverer: Saayo\ncoder: MeltyKelpy    charter: AngeltheBoi",
 	"opponentModeAllowed": false,
 	"bio": "calm down kathy\n\nidk kathy.exe",
 	"icon": "Icon",
@@ -13,11 +12,12 @@
 	"name": "obituary",
 	"stepsPerBeat": 4,
 	"singerNames": "KATHY.EXE VS DudeMan with a cool hat",
+	"tagline": "calm down kathy !",
+	"actoresses2": "artist: Saayo    coverer: Saayo\ncoder: MeltyKelpy    charter: AngeltheBoi",
 	"displayName": "Free-4-Me",
 	"beatsPerMesure": 4,
 	"beatsPerMeasure": 4,
 	"actoresses": "artist: Saayo\ncoverer: Saayo\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: Saayo",
-	"tagline": "calm down kathy !",
 	"needsVoices": true,
 	"bpm": 158
 }

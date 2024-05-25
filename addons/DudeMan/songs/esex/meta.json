@@ -1,0 +1,24 @@
+{
+	"appearStep": 0,
+	"bio": "Court Case\n\nI love @AceAttorneyBot2",
+	"opponentModeAllowed": false,
+	"icon": "Icon",
+	"difficulties": [
+		"Hard"
+	],
+	"parsedColor": -13893888,
+	"color": "#2BFF00",
+	"name": "esex",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "E-Sex",
+	"category": "DAX SHAPED DUEL",
+	"beatsPerMesure": 4,
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"actoresses": "artists: Saayo + MeltyKelpy\ncomposer: kosejumpscare\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: kosejumpscare",
+	"singerNames": "Dax VS Melty",
+	"tagline": "Court Case",
+	"actoresses2": "artists: Saayo + MeltyKelpy    composer: kosejumpscare\ncoder: MeltyKelpy    charter: MeltyKelpy",
+	"bpm": 116
+}
