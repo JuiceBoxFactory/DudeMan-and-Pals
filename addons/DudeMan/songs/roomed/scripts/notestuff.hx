@@ -36,6 +36,18 @@ function update()
         playerStrums.members[2].y = defaultStrumY + FlxG.random.int(-1.5, 1.5);
         playerStrums.members[3].y = defaultStrumY + FlxG.random.int(-1.5, 1.5);
     }
+
+    if (curStep == 2434)
+    {
+        playerStrums.members[0].x = defaultStrumX0;
+        playerStrums.members[1].x = defaultStrumX1;
+        playerStrums.members[2].x = defaultStrumX2;
+        playerStrums.members[3].x = defaultStrumX3;
+        playerStrums.members[0].y = defaultStrumY;
+        playerStrums.members[1].y = defaultStrumY;
+        playerStrums.members[2].y = defaultStrumY;
+        playerStrums.members[3].y = defaultStrumY;  
+    }
 }
 
 
