@@ -12,9 +12,24 @@ var energy = 0;
 var note;
 var curDoor = 0;
 var canProgress = true;
+var inMotion = false;
+var songStarted = false;
+var testing = false;
 
 function create() {
 
+    trace(inst.length);
+
+    timeTxt = new FlxText(-60, 625, 400, "Time Remaining:\n3:03", 32);
+    timeTxt.setFormat(Paths.font("Bahnschrift.ttf"), 32, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+    timeTxt.scrollFactor.set();
+    timeTxt.alpha = 1;
+    timeTxt.borderColor = 0xFF2E1200;
+    timeTxt.color = 0xFFB45B21;
+    timeTxt.borderSize = 2;
+    timeTxt.cameras = [camHUD];
+    insert(6, timeTxt);
+    
     progheader = new FlxSprite(0, 670).loadGraphic(Paths.image('fuckingMechanicUi/roomed/doorBar'));
     progheader.antialiasing = false;
     progheader.cameras = [camHUD];
@@ -57,11 +72,12 @@ function create() {
     energyBar.cameras = [camHUD];
     insert(1, energyBar);
 
-    doorCount = new FlxText(100, 600);
-    doorCount.setFormat(Paths.font("Bahnschrift.ttf"), 20, 0xFF2E2600, "center");
-    doorCount.screenCenter(FlxAxes.X);
+    doorCount = new FlxText(590, 600);
+    doorCount.setFormat(Paths.font("Bahnschrift.ttf"), 20, 0xFF2E2600, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
     doorCount.cameras = [camHUD];
-    add(doorCount);
+    doorCount.borderColor = 0xFF2E1200;
+    doorCount.color = 0xFFB45B21;
+    insert(5, doorCount);
 
     if (FlxG.save.data.downscroll) {
         icon2.y -= 10;
@@ -93,10 +109,10 @@ function onPlayerMiss(noteHit) {
 
     if (canProgress == true) {
         if (note.isSustainNote) {
-            energy -= 0.8;
+            energy -= 0.5;
         }
         else {
-            energy -= 1.8;
+            energy -= 1;
         }
     }
 }
@@ -108,16 +124,43 @@ function onUseEnergy() {
     curDoor += 50;
 }
 
+function onSongStart() {
+
+    songStarted = true;
+
+}
+
 function update(elapsed) {
+
+    if (FlxG.keys.justPressed.G && testing == false) {
+        testing = true;
+    }
+
+    if (FlxG.keys.justPressed.F && testing == true) {
+        curDoor = 1000;
+    }
+
+    if (songStarted == true) {
+        var timeRemaining = Std.int((183500 - Conductor.songPosition) / 1000);
+        var seconds = CoolUtil.addZeros(Std.string(timeRemaining % 60), 2);
+        var minutes = Std.int(timeRemaining / 60);
+        timeTxt.text = "Time Remaining:\n" + minutes + ":" + seconds;
     
-    for (mechanicAssets in [progBar, icon1, icon2, doorCount, energyheader, progheader, energyBar]) {
-        if (canProgress == false) {
-            FlxTween.tween(mechanicAssets, {y: mechanicAssets.y + 1000}, 3, {ease: FlxEase.quartIn});
+        if (timeRemaining == 0 && curDoor != 999 && testing == false) {
+            health = 0;
         }
     }
 
-    if (FlxG.keys.justPressed.G) {
-        curDoor = 1000;
+    if (canProgress == false && inMotion == false) {
+        FlxTween.tween(progBar, {y: progBar.y + 1000}, 3, {ease: FlxEase.quartIn});
+        FlxTween.tween(timeTxt, {y: timeTxt.y + 1000}, 3, {ease: FlxEase.quartIn});
+        FlxTween.tween(doorCount, {y: doorCount.y + 1000}, 3, {ease: FlxEase.quartIn});
+        FlxTween.tween(energyBar, {y: energyBar.y + 1000}, 3, {ease: FlxEase.quartIn});
+        FlxTween.tween(energyheader, {y: energyheader.y + 1000}, 3, {ease: FlxEase.quartIn});
+        FlxTween.tween(progheader, {y: progheader.y + 1000}, 3, {ease: FlxEase.quartIn});
+        FlxTween.tween(icon1, {y: icon1.y + 1000}, 3, {ease: FlxEase.quartIn});
+        FlxTween.tween(icon2, {y: icon2.y + 1000}, 3, {ease: FlxEase.quartIn});
+        inMotion = true;
     }
 
     progBar.setRange(0, Math.max(1, 999));
