@@ -48,6 +48,14 @@ function create() {
 
 }
 
+function update() {
+
+    if (controls.ACCEPT) {
+        FlxG.switchState(new ModState("DudeTitleScreen"));
+    }
+
+}
+
 function theOpeningInQuestion() {
     new FlxTimer().start(1, function(timer) {
 		FlxTween.tween(MODIcon, {y: 272}, 2, {ease: FlxEase.quartOut});

@@ -131,7 +131,12 @@ function stepHit(curStep:Int) {
 	FlxTween.tween(luteCC, {y: 0}, 1, {ease:FlxEase.backOut});
 	FlxTween.tween(contextCC, {y: 0}, 1, {ease:FlxEase.backOut});
 	FlxTween.tween(ccbg, {y: 0}, 1, {ease:FlxEase.backOut});
-	FlxTween.tween(ccoverlay, {y: -421}, 1, {ease:FlxEase.backOut});
+		if (downscroll) {
+			FlxTween.tween(ccoverlay, {y: -300}, 1, {ease:FlxEase.backOut});
+		}
+		else {
+			FlxTween.tween(ccoverlay, {y: -421}, 1, {ease:FlxEase.backOut});
+		}
 	case 321:
 	boyfriend.alpha = 0;	
 	dad.alpha = 0;

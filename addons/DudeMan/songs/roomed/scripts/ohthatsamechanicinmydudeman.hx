@@ -81,10 +81,9 @@ function create() {
 
     if (FlxG.save.data.downscroll) {
         icon2.y -= 10;
-        energyBar.y -= 100;
+        energyBar.y -= 50;
         progBar.y -= 32.5;
         progheader.y -= 30;
-        energyheader.y -= 50;
     }
 
 }
