@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="A-90.png">
+<SubTexture name="base0000" x="0" y="680" width="564" height="504" frameX="-126" frameY="-177" frameWidth="800" frameHeight="850" />
 <SubTexture name="jumpscare0000" x="0" y="680" width="564" height="504" frameX="-126" frameY="-177" frameWidth="800" frameHeight="850" />
 <SubTexture name="jumpscare0001" x="932" y="0" width="572" height="576" frameX="-108" frameY="-119" frameWidth="800" frameHeight="850" />
 <SubTexture name="jumpscare0002" x="564" y="680" width="528" height="472" frameX="-134" frameY="-202" frameWidth="800" frameHeight="850" />

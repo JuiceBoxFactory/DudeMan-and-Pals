@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="850" icon="cringeDX" camx="50" y="400" isGF="false" camy="50" color="#FFF354" flipX="true" isPlayer="true" antialiasing="false" sprite="CringDXnolight-guitar">
+	<anim x="0" loop="false" y="0" fps="12" anim="CringDXnolight-guitar Idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="CringDXnolight-guitar Up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="CringDXnolight-guitar Left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="CringDXnolight-guitar Right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="CringDXnolight-guitar Down" name="singDOWN"/>
+</character>

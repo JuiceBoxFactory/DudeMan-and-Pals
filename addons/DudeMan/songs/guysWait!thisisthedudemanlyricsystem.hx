@@ -3,17 +3,27 @@ import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxSave;
 
 var yValue = 435;
+var yValueDpear = 1435;
+var yValueText = 530;
+var yValueDpearText = 1530;
 
 function postCreate() {
 
-    lyricItself = new FlxText(0, 1530);
+    if (downscroll) {
+        yValue = 160;
+        yValueDpear = -160;
+        yValueText = 175;
+        yValueDpearText = -175;
+    }
+
+    lyricItself = new FlxText(0, yValueDpearText);
     lyricItself.setFormat(Paths.font("COMIC.ttf"), 30, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
     lyricItself.cameras = [camHUD];
     lyricItself.antialiasing = false;
     lyricItself.borderSize = 3;
     insert(100, lyricItself);
 
-    icon = new FlxSprite(0, 1435).loadGraphic(Paths.image('LYRICS/face'));
+    icon = new FlxSprite(0, yValueDpear).loadGraphic(Paths.image('LYRICS/face'));
     icon.antialiasing = false;
     icon.cameras = [camHUD];
     insert(100, icon);
@@ -21,10 +31,6 @@ function postCreate() {
     if (FlxG.save.data.subtitles == false) {
         lyricItself.alpha = 0;
         icon.alpha = 0;
-    }
-
-    if (downscroll) {
-        yValue = 415;
     }
 
 }
@@ -50,29 +56,29 @@ function textState(type) {
     switch(type) {
         
         case "popUpINSTANT":
-            FlxTween.tween(lyricItself, {y: 530}, 0.01, {ease:FlxEase.quartIn});
+            FlxTween.tween(lyricItself, {y: yValueText}, 0.01, {ease:FlxEase.quartIn});
             FlxTween.tween(icon, {y: yValue}, 0.01, {ease:FlxEase.quartIn});          
         case "goDownINSTANT":
-            FlxTween.tween(lyricItself, {y: 1530}, 0.01, {ease:FlxEase.quartOut});
-            FlxTween.tween(icon, {y: 1435}, 0.01, {ease:FlxEase.quartOut});
+            FlxTween.tween(lyricItself, {y: yValueDpearText}, 0.01, {ease:FlxEase.quartOut});
+            FlxTween.tween(icon, {y: yValueDpear}, 0.01, {ease:FlxEase.quartOut});
         case "popUpFast":
-            FlxTween.tween(lyricItself, {y: 530}, 1, {ease:FlxEase.quartOut});
+            FlxTween.tween(lyricItself, {y: yValueText}, 1, {ease:FlxEase.quartOut});
             FlxTween.tween(icon, {y: yValue}, 1, {ease:FlxEase.quartOut});   
         case "popUpRlyFast":
-            FlxTween.tween(lyricItself, {y: 530}, 0.3, {ease:FlxEase.quartOut});
+            FlxTween.tween(lyricItself, {y: yValueText}, 0.3, {ease:FlxEase.quartOut});
             FlxTween.tween(icon, {y: yValue}, 0.3, {ease:FlxEase.quartOut});  
         case "popUpSlow":
-            FlxTween.tween(lyricItself, {y: 530}, 3, {ease:FlxEase.quartOut});
+            FlxTween.tween(lyricItself, {y: yValueText}, 3, {ease:FlxEase.quartOut});
             FlxTween.tween(icon, {y: yValue}, 3, {ease:FlxEase.quartOut});         
         case "goDownFast":
-            FlxTween.tween(lyricItself, {y: 1530}, 1, {ease:FlxEase.quartIn});
-            FlxTween.tween(icon, {y: 1435}, 1, {ease:FlxEase.quartIn});
+            FlxTween.tween(lyricItself, {y: yValueDpearText}, 1, {ease:FlxEase.quartIn});
+            FlxTween.tween(icon, {y: yValueDpear}, 1, {ease:FlxEase.quartIn});
         case "goDownRlyFast":
-            FlxTween.tween(lyricItself, {y: 1530}, 0.3, {ease:FlxEase.quartIn});
-            FlxTween.tween(icon, {y: 1435}, 0.3, {ease:FlxEase.quartIn});
+            FlxTween.tween(lyricItself, {y: yValueDpearText}, 0.3, {ease:FlxEase.quartIn});
+            FlxTween.tween(icon, {y: yValueDpear}, 0.3, {ease:FlxEase.quartIn});
         case "goDownSlow":
-            FlxTween.tween(lyricItself, {y: 1530}, 3, {ease:FlxEase.quartIn});
-            FlxTween.tween(icon, {y: 1435}, 3, {ease:FlxEase.quartIn});
+            FlxTween.tween(lyricItself, {y: yValueDpearText}, 3, {ease:FlxEase.quartIn});
+            FlxTween.tween(icon, {y: yValueDpear}, 3, {ease:FlxEase.quartIn});
 
     }
 }
@@ -91,7 +97,7 @@ function stepHit(curStep:Int) {
                     setTextShit("FIRE IN THE HOLE", "dudeman", 0xFFFFFFFF, 0xFF484848, false);
                 case 528:
                     textState("goDownINSTANT");
-                case 530:
+                case yValueText:
                     textState("popUpINSTANT");
                     setTextShit("White people be like-", "dudeman", 0xFFFFFFFF, 0xFF484848, false);
                 case 535:
@@ -190,4 +196,31 @@ function stepHit(curStep:Int) {
                 setTextShit("*SCREAMING*", "dudeman", 0xFFFFFFFF, 0xFF484848, false);  
         }
     }
+
+    // █▀▀ █▀█ █▀▄ █▀▀   █▀█ █▀▀   █▀▄▀█ █ █▀ █▀▀ █▀█ █▄░█ █▀▄ █░█ █▀▀ ▀█▀
+    // █▄▄ █▄█ █▄▀ ██▄   █▄█ █▀░   █░▀░█ █ ▄█ █▄▄ █▄█ █░▀█ █▄▀ █▄█ █▄▄ ░█░
+
+    if (PlayState.SONG.meta.name == "misconduct") {
+        switch(curStep) {
+            case 288:
+                textState("popUpFast");
+                setTextShit("NahNahNahNah", "lute", 0xFF5CFC50, 0xFF2ADD65, false);
+            case 295:
+                setTextShit("Booo booooo !!", "lute", 0xFF5CFC50, 0xFF2ADD65, false);
+            case 303:
+                setTextShit("hey, thats mean !", "melty", 0xFFFF84A6, 0xFFFF4577, false);
+            case 313:
+                setTextShit("grrrrrrrrrr", "lute", 0xFF5CFC50, 0xFF2ADD65, false);
+            case 320:
+                textState("goDownSlow");
+            case 562:
+                textState("popUpRlyFast");
+                setTextShit("GET OUT OF MY STUDIO !", "melty", 0xFFFF84A6, 0xFFFF4577, false);
+            case 579:
+                textState("goDownFast");
+        }
+    }
+
+
+
 }

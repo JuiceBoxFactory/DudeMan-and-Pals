@@ -68,6 +68,10 @@ function postCreate() {
 			for (dumbShits in [healthBar, missesText, scoreText, icon1, icon2]) {
 				dumbShits.y -= 15;
 			}
+			icon1.y -= 10;
+			icon2.y -= 10;
+			missesText.y -= 80;
+			scoreText.y -= 80;
 		}
 	}	
 

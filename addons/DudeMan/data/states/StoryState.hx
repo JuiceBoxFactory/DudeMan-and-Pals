@@ -174,6 +174,6 @@ function update() {
 	}
  	
 	if (controls.BACK) {
-	FlxG.switchState(new StoryMenuState());
+		FlxG.switchState(new MainMenuState());
 	}
 }
