@@ -38,7 +38,8 @@ function onNoteHit(event) {
 	  event.showSplash = false;
 	  splashHandler.__grp = splashHandler.getSplashGroup(event.note.splash);
 	  var splash = splashHandler.__grp.showOnStrum(event.note.__strum);
-  }
+  	}
+}
 
 function onPlayerHit(e){
 

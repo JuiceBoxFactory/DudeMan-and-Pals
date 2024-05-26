@@ -7,6 +7,25 @@ function create() {
 	closet.updateHitbox();
 	insert(15, closet);
 
+    closetBG = new FlxSprite(0, 0).loadGraphic(Paths.image('visuals/roomed/cabBG'));
+	closetBG.antialiasing = false;
+    closetBG.alpha = 0;
+	closetBG.updateHitbox();
+	insert(10, closetBG);
+
+    closetCover = new FlxSprite(0, 0).loadGraphic(Paths.image('visuals/roomed/locker'));
+	closetCover.antialiasing = false;
+    closetCover.alpha = 0;
+	closetCover.updateHitbox();
+	insert(15, closetCover);
+
+    guitar = new FlxSprite(0, 1000).loadGraphic(Paths.image('visuals/roomed/itar'));
+	guitar.antialiasing = false;
+	guitar.updateHitbox();
+    guitar.scrollFactor.set(-1.5, -1.5);
+    guitar.screenCenter(FlxAxes.X);
+	insert(16, guitar);
+
     normalCloset = new FlxSprite(0, 0).loadGraphic(Paths.image('backdrop/roomed/normalCloset'));
 	normalCloset.antialiasing = false;
 	normalCloset.updateHitbox();
@@ -96,7 +115,22 @@ function stepHit(curStep:Int) {
             FlxTween.tween(black, {alpha: 1}, 3);
 
         case 3120:
+            boyfriend.alpha = 0;
+            closet.alpha = 0;
+            closetBG.alpha = 1;
+            closetCover.alpha = 1;
             FlxTween.tween(black, {alpha: 0}, 3);
+
+        case 3888:
+            FlxTween.tween(guitar, {y: 400}, 2, {ease: FlxEase.quartOut});
+
+        case 4210:
+            FlxTween.tween(guitar, {y: 1000}, 2, {ease: FlxEase.quartIn});
+            FlxTween.tween(camHUD, {alpha: 0}, 2, {ease: FlxEase.quartIn});
+
+        case 4256:
+            FlxG.camera.followLerp = 0;
+            FlxTween.tween(dad, {y: 1000}, 2, {ease: FlxEase.quartIn});
 
         }
 
