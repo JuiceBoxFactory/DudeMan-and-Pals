@@ -1,6 +1,7 @@
-var cammove = 10; // how much the camera will move
-var angleMoveSpeed = 0.10; // the speed of the camera rotating
-var angleVar = 0.47; // how much it will rotate
+var cammove = 10; 
+var angleMoveSpeed = 0.10;
+var angleVar = 0.47; 
+var disabled = false;
 
 function postCreate() {
 
@@ -40,6 +41,10 @@ if (PlayState.SONG.meta.name == "orangejuice") {
 }
 
 function postUpdate() {
+
+	if (curStep < 790 && PlayState.SONG.meta.name == "esex") {
+		disabled = true;
+	}
 
 	if (PlayState.SONG.meta.name == "obituary" && curStep > 881) {
 	    switch(strumLines.members[0].characters[0].getAnimName()) {
@@ -123,9 +128,7 @@ function postUpdate() {
 // 	           camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
 //    	}
 }
-if (PlayState.SONG.meta.name == "esex") {
-	if (curStep < 790) {
-	if (PlayState.SONG.meta.name != "lighthouse" && !FlxG.save.data.goodCamera) {
+	if (PlayState.SONG.meta.name != "lighthouse" && !FlxG.save.data.goodCamera && disabled == false) {
 	    switch(strumLines.members[0].characters[0].getAnimName()) {
 	        case "singLEFT": 
 	            camFollow.x -= cammove;
@@ -175,6 +178,4 @@ if (PlayState.SONG.meta.name == "esex") {
 //	            camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
 //    	}
     }
-	}
-	}
 }
