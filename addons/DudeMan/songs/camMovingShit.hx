@@ -123,6 +123,8 @@ function postUpdate() {
 // 	           camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
 //    	}
 }
+if (PlayState.SONG.meta.name == "esex") {
+	if (curStep < 790) {
 	if (PlayState.SONG.meta.name != "lighthouse" && !FlxG.save.data.goodCamera) {
 	    switch(strumLines.members[0].characters[0].getAnimName()) {
 	        case "singLEFT": 
@@ -172,5 +174,7 @@ function postUpdate() {
 //	        case "idle", "hey":
 //	            camGame.angle = (lerp(camGame.angle, 0, angleMoveSpeed));
 //    	}
-   }
+    }
+	}
+	}
 }
