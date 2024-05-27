@@ -2,10 +2,11 @@ import flixel.addons.display.FlxBackdrop;
 
 var time = 0;
 var section2 = false;
+var myPpo = "";
+var myOpp = "";
 
 function create() {
 
-	remove(dad);
 	remove(boyfriend);
 	
 	bg1 = new FlxSprite(-500, -300).loadGraphic(Paths.image('backdrop/lighthoused/bg'));
@@ -48,7 +49,6 @@ function create() {
 	bigbob2.flipX = false; 
 	bigbob2.alpha = 0;
 	add(bigbob2);
-	add(dad);
 
 	lighthouseBase1 = new FlxSprite(0, 0).loadGraphic(Paths.image('backdrop/lighthoused/lighthouseBase'));
 	lighthouseBase1.antialiasing = false;
@@ -102,10 +102,10 @@ function create() {
 	ArmsR.antialiasing = false;
 	ArmsR.animation.addByPrefix('1', 'bobHandsRight idle', 6);
 	ArmsR.animation.play('1');
-    	ArmsR.alpha = 1;
-    	ArmsR.scale.set(1.2, 1);
-    	ArmsR.cameras = [camHUD];
-    	ArmsR.scrollFactor.set(0, 0);
+    ArmsR.alpha = 1;
+    ArmsR.scale.set(1.2, 1);
+    ArmsR.cameras = [camHUD];
+    ArmsR.scrollFactor.set(0, 0);
 	ArmsR.updateHitbox();
 	add(ArmsR);
 
@@ -114,12 +114,17 @@ function create() {
 	ArmsL.antialiasing = false;
 	ArmsL.animation.addByPrefix('1', 'bobHandsLeft idle', 6);
 	ArmsL.animation.play('1');
-    	ArmsL.alpha = 1;
-    	ArmsL.scale.set(1.3, 1);
-    	ArmsL.cameras = [camHUD];
-    	ArmsL.scrollFactor.set(0, 0);
+    ArmsL.alpha = 1;
+    ArmsL.scale.set(1.3, 1);
+    ArmsL.cameras = [camHUD];
+    ArmsL.scrollFactor.set(0, 0);
 	ArmsL.updateHitbox();
 	add(ArmsL);
+	
+	if (FlxG.save.data.downscroll) {
+		ArmsL.y = -450;
+		ArmsR.y = -450;
+	}
 
 	blackCam = new FlxSprite(0, 0).loadGraphic(Paths.image('black'));
 	blackCam.antialiasing = false;
@@ -128,15 +133,6 @@ function create() {
 	blackCam.scale.set(6,6);
 	blackCam.updateHitbox();
 	add(blackCam);
-
-	blackHUD = new FlxSprite(0, 0).loadGraphic(Paths.image('black'));
-	blackHUD.antialiasing = false;
-	blackHUD.alpha = 1;
-	blackHUD.screenCenter();
-	blackHUD.cameras = [camHUD];
-	blackHUD.scale.set(6,6);
-	blackHUD.updateHitbox();
-	add(blackHUD);
 
 	foggyOverlay = new FlxSprite(-600, -400);
 	foggyOverlay.frames = Paths.getSparrowAtlas('visuals/lh/foggy');
@@ -176,6 +172,39 @@ function create() {
 
 }
 
+function postCreate() {
+
+	icon1 = new FlxSprite(0, 0).loadGraphic(Paths.image('icons/'+myPpo));
+	icon1.antialiasing = false;
+	icon1.flipX = true;
+	icon1.cameras = [camHUD];
+	icon1.alpha = 0;
+	icon1.updateHitbox();
+	add(icon1);
+
+	icon2 = new FlxSprite(0, 0).loadGraphic(Paths.image('icons/'+myOpp));
+	icon2.antialiasing = false;
+	icon2.cameras = [camHUD];
+	icon2.updateHitbox();
+	add(icon2);
+
+	blackHUD = new FlxSprite(0, 0).loadGraphic(Paths.image('black'));
+	blackHUD.antialiasing = false;
+	blackHUD.alpha = 1;
+	blackHUD.screenCenter();
+	blackHUD.cameras = [camHUD];
+	blackHUD.scale.set(6,6);
+	blackHUD.updateHitbox();
+	add(blackHUD);
+
+	for (dumbBullShit in [healthBar, healthBarBG, scoreTxt, missesTxt]) {
+		dumbBullShit.y -= 15; 
+		scoreTxt.y -= 20;
+		missesTxt.y -= 20;
+	}
+
+}
+
 function onCountdown(e) {
 	e.cancel();
 }
@@ -197,6 +226,33 @@ function update(delta:Float) {
 }
 
 function postUpdate(){
+
+	iconP1.alpha = 0;
+	iconP2.alpha = 0;
+
+	icon1.x = iconP1.x;
+	icon1.y = iconP1.y;
+	icon2.x = iconP2.x;
+	icon2.y = iconP2.y;
+
+	myOpp = dad.getIcon();
+	myPpo = boyfriend.getIcon();
+
+	if (health < 0.5) {
+		icon1.loadGraphic(Paths.image('icons/'+myPpo+'-losing'));
+		icon2.loadGraphic(Paths.image('icons/'+myOpp));
+		icon1.x = iconP1.x + FlxG.random.int(-1.5, 1.5);
+		icon1.y = iconP1.y + FlxG.random.int(-1.5, 1.5);
+	}
+	else if (health > 1.5) {
+		icon1.loadGraphic(Paths.image('icons/'+myPpo));
+		icon2.loadGraphic(Paths.image('icons/'+myOpp+'-losing'));
+	}
+	else {
+		icon1.loadGraphic(Paths.image('icons/'+myPpo));
+		icon2.loadGraphic(Paths.image('icons/'+myOpp));
+	}
+
 if (section2 == true) {
 	if (curCameraTarget == 0) { 
 		defaultCamZoom = 0.65;
@@ -210,6 +266,7 @@ if (section2 == true) {
 function stepHit(curStep:Int) { 
     switch (curStep) {
 	case 128:
+			icon1.alpha = 1;
             FlxTween.tween(blackHUD, {alpha: 0}, 1);
             FlxTween.tween(blackCam, {alpha: 0}, 2);
 	case 384:
