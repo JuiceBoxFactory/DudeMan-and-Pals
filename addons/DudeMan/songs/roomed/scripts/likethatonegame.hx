@@ -3,6 +3,7 @@ import flixel.addons.display.FlxBackdrop;
 var ninetyShake = false;
 var ninetyDefaultX = 0;
 var ninetyDefaultY = 0;
+var endMessageSection = false;
 
 function create() {
 
@@ -74,6 +75,15 @@ function create() {
     black.scale.set(10, 10);
 	insert(25, black);
 
+    welcomeImage = new FlxSprite(0, 0).loadGraphic(Paths.image('visuals/roomed/welcomeBack'));
+	welcomeImage.antialiasing = false;
+	welcomeImage.updateHitbox();
+    welcomeImage.scale.set(1.2, 1.2);
+    welcomeImage.scrollFactor.set(0, 0);
+    welcomeImage.screenCenter();
+    welcomeImage.alpha = 0;
+	insert(27, welcomeImage);
+
     red = new FlxSprite();
     red.makeGraphic(1920, 1080, FlxColor.RED);
     red.alpha = 0;
@@ -116,6 +126,14 @@ function update() {
     if (ninetyShake == true) {
         ANINETY.x = ninetyDefaultX + FlxG.random.int(-1.5, 1.5);
         ANINETY.y = ninetyDefaultY + FlxG.random.int(-1.5, 1.5);
+    }
+
+}
+
+function beatHit() {
+
+    if (endMessageSection == true) {
+        FlxG.camera.zoom = defaultCamZoom;
     }
 
 }
@@ -319,9 +337,19 @@ function stepHit(curStep:Int) {
             red.alpha = 0;
             
         case 4444:
+            welcomeImage.alpha = 1;
             red.alpha = 1;
             FlxTween.tween(red, {alpha: 0}, 3, {ease:FlxEase.quartOut});
             ANINETY.alpha = 0;
+            defaultCamZoom = 1;
+            FlxTween.tween(welcomeImage.scale, {x: 1, y: 1}, 2, {ease:FlxEase.quartIn});
+            endMessageSection = true;
+
+        case 4454:
+            FlxTween.tween(welcomeImage.scale, {x: 0.8, y: 0.8}, 6, {ease:FlxEase.quartIn});
+
+        case 4504:
+            welcomeImage.alpha = 0;
 
         }
 
