@@ -170,9 +170,24 @@ function create() {
 	bulbbreak.updateHitbox();
 	add(bulbbreak);
 
+	blackHUD = new FlxSprite(0, 0).loadGraphic(Paths.image('black'));
+	blackHUD.antialiasing = false;
+	blackHUD.alpha = 1;
+	blackHUD.screenCenter();
+	blackHUD.cameras = [camHUD];
+	blackHUD.scale.set(6,6);
+	blackHUD.updateHitbox();
+	add(blackHUD);
+
 }
 
 function postCreate() {
+
+	for (dumbBullShit in [healthBar, healthBarBG, scoreTxt, missesTxt]) {
+		dumbBullShit.y -= 15; 
+		scoreTxt.y -= 20;
+		missesTxt.y -= 20;
+	}
 
 	icon1 = new FlxSprite(0, 0).loadGraphic(Paths.image('icons/'+myPpo));
 	icon1.antialiasing = false;
@@ -187,21 +202,6 @@ function postCreate() {
 	icon2.cameras = [camHUD];
 	icon2.updateHitbox();
 	add(icon2);
-
-	blackHUD = new FlxSprite(0, 0).loadGraphic(Paths.image('black'));
-	blackHUD.antialiasing = false;
-	blackHUD.alpha = 1;
-	blackHUD.screenCenter();
-	blackHUD.cameras = [camHUD];
-	blackHUD.scale.set(6,6);
-	blackHUD.updateHitbox();
-	add(blackHUD);
-
-	for (dumbBullShit in [healthBar, healthBarBG, scoreTxt, missesTxt]) {
-		dumbBullShit.y -= 15; 
-		scoreTxt.y -= 20;
-		missesTxt.y -= 20;
-	}
 
 }
 
@@ -244,7 +244,7 @@ function postUpdate(){
 		icon1.x = iconP1.x + FlxG.random.int(-1.5, 1.5);
 		icon1.y = iconP1.y + FlxG.random.int(-1.5, 1.5);
 	}
-	else if (health > 1.5) {
+	else if (health > 1.5 && myOpp != 'shesnotthere') {
 		icon1.loadGraphic(Paths.image('icons/'+myPpo));
 		icon2.loadGraphic(Paths.image('icons/'+myOpp+'-losing'));
 	}
@@ -315,9 +315,9 @@ function stepHit(curStep:Int) {
 	    backRails1.alpha = 0;
 	    frontRails1.alpha = 0;
 	case 1986:
-	    remove(boyfriend);
+        FlxTween.tween(bulbbreak, {alpha: 0}, 0.2, {ease:FlxEase.quartOut});
+		remove(boyfriend);
 	    remove(dad);
-         FlxTween.tween(bulbbreak, {alpha: 0}, 0.2, {ease:FlxEase.quartOut});
 	case 2496:
 //		bulbbreak.scale.set(1, 1);
 //		 bulbbreak.alpha = 1;
