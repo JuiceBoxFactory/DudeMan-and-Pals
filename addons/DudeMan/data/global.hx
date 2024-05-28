@@ -11,13 +11,9 @@ function new() {
 	// oh you're right actually it does wtf - melty
 }
 
-function create() {
+function update(elapsed) {
 
 	FlxG.mouse.visible = false;
-
-}
-
-function update(elapsed) {
 
 	// DEFAULT SAVE DATA.. if u wanna fck wit it !!! - Melty
 	if (FlxG.save.data.defaultSaveData == null) {
