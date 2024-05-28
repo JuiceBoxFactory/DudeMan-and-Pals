@@ -202,6 +202,9 @@ function create() {
     if (FlxG.save.data.dudemailsUnlocked >= 3) {
         makeMail("5", 444, "icon5", "sender5", "subject5", "bee", "Bee", "Hey c:");
     }
+    if (FlxG.save.data.dudemailsUnlocked >= 3) {
+        makeMail("6", 555, "icon6", "sender6", "subject6", "fruity", "FRUITY", "DONT IGNORE THIS MESSAGE.");
+    }
 
     makeMailScreen();
 
@@ -235,6 +238,10 @@ function makeMail(number, posY, iconName, senderName, subjectName, icon, sender,
     if (number == "5") {
         mailSlot5 = new FlxSprite(100, 100).loadGraphic(Paths.image(slot));
         slotToBe = mailSlot5;
+    }
+    if (number == "6") {
+        mailSlot6 = new FlxSprite(100, 100).loadGraphic(Paths.image(slot));
+        slotToBe = mailSlot6;
     }
 
     slotToBe.antialiasing = false;
@@ -276,8 +283,9 @@ function makeMailScreen() {
     mailInfo3 = new FlxText(50, 50, 670, "placeholder", 0);
     mailInfo4 = new FlxText(50, 50, 670, "placeholder", 0);
     mailInfo5 = new FlxText(50, 50, 670, "placeholder", 0);
+    mailInfo6 = new FlxText(50, 50, 670, "placeholder", 0);
 
-    for (mails in [mailInfo1, mailInfo2, mailInfo3, mailInfo4, mailInfo5]) {
+    for (mails in [mailInfo1, mailInfo2, mailInfo3, mailInfo4, mailInfo5, mailInfo6]) {
         mails.setFormat(Paths.font("Bahnschrift.TTF"), 20, FlxColor.WHITE, "left");
         mails.color = secondaryTextColor;
         mails.antialiasing = false;
@@ -291,8 +299,9 @@ function makeMailScreen() {
     mailText3 = new FlxText(50, 50, 670, "placeholder", 0);
     mailText4 = new FlxText(50, 50, 670, "placeholder", 0);
     mailText5 = new FlxText(50, 50, 670, "placeholder", 0);
+    mailText6 = new FlxText(50, 50, 670, "placeholder", 0);
     
-    for (mails in [mailText1, mailText2, mailText3, mailText4, mailText5]) {
+    for (mails in [mailText1, mailText2, mailText3, mailText4, mailText5, mailText6]) {
         mails.setFormat(Paths.font("Bahnschrift.TTF"), 20, FlxColor.WHITE, "left");
         mails.color = mainTextColor;
         mails.antialiasing = false;
@@ -320,6 +329,10 @@ function makeMailScreen() {
     if (FlxG.save.data.dudemailsUnlocked >= 5) {
         mailInfo5.text = "To: SavingGracie@dudemail.com\nFrom: BeeFunk@dudemail.com\nSubject: Hey c:\n\n\n\n=========================\nTo: BeeFunk@dudemail.com\nFrom: SavingGracie@dudemail.com\nSubject: Hi\n\n\n\n=========================\nTo: SavingGracie@dudemail.com\nFrom: BeeFunk@dudemail.com\nSubject: <NO SUBJECT>\n\n\n\n=========================\nTo: BeeFunk@dudemail.com\nFrom: SavingGracie@dudemail.com\nSubject: <NO SUBJECT>\n\n\n\n=========================\nTo: SavingGracie@dudemail.com\nFrom: BeeFunk@dudemail.com\nSubject: <NO SUBJECT>\n\n\n\n=========================\nTo: BeeFunk@dudemail.com\nFrom: SavingGracie@dudemail.com\nSubject: <NO SUBJECT>";
         mailText5.text = "\n\n\n\nHi Hun\n\n\n\n\n\n\nHey hunny! do you need something?\n\n\n\n\n\n\nGuess whaatt...\n\n\n\n\n\n\nHmmmm? what is it?\n\n\n\n\n\n\nI love you <33\n\n\n\n\n\n\nYou're such a dork, dear\n\nI love you too <3333";
+    }
+    if (FlxG.save.data.dudemailsUnlocked >= 6) {
+        mailInfo6.text = "To: BeeFunk@dudemail.com\nFrom: MYLITTLEPONYFAN1264901@dudemail.com\nSubject: DONT IGNORE THIS MESSAGE\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n=======================\nTo: MYLITTLEPONYFAN1264901@dudemail.com\nFrom: BeeFunk@dudemail.com\nSubject: uhm\n\n\n\n\n\n=========================\nTo: BeeFunk@dudemail.com\nFrom: MYLITTLEPONYFAN1264901@dudemail.com\nSubject: UHM ACTUALLY\n\n\n\n\n=========================\nTo:MYLITTLEPONYFAN1264901@dudemail.com\nFrom: BeeFunk@dudemail.com\nSubject: oh";
+        mailText6.text = '\n\n\n\nyou need to forward this message to 5 friends or you will DIE,\n\njust like distinguishable blue haired guy with pronouns, he finds himself in a white void, he can only walk forward, eventually he finds dudeman.exe, he touches him and he turns EVIL... and the screen turns black and and he says "PLAY MY GAME. NOW." then, the background turns into a weird fleshy moutain, and he walks right, again. and eventually, dudeman with blacked out, bleeding eyes starts chasing legally distinct blue haired child, eventually, since he cannot outrun dudeman.exe, he gets caught, which leads to him dying. dudeman then says "SO LITTLE GAMES TO PLAY, SO LITTLE TIME, WOULDNT YOU AGREE?"\n\ndont not heed these warnings. forward this message NOW.\n\n\n\n\n\n\nFruity, you do know those arent real.. right?\n\nalso that really sounds like its about me???\n\n\n\n\n\n\nTHATS NOT POSSIBLE !!! WHO WOULD EVER WRITE SOMETHING LIKE THIS IF IT ISNT TRUE ?? NOBODY IS THAT MESSED UP :c\n\n\n\n\n\n\n...Fruity, have you ever heard of 4chan?';
     }
 }
 
@@ -418,7 +431,7 @@ function update() {
         selectedMail = 1;
     }
     if (FlxG.keys.justPressed.PAGEDOWN) {
-        dudemailsUnlocked = 1;
+        selectedMail = dudemailsUnlocked;
     }
     if (controls.BACK) {
         FlxG.switchState(new ModState("FreeplaySelector"));
@@ -461,7 +474,15 @@ function update() {
             mail.scroll.y = 0;
         }
     }
+    if (FlxG.save.data.dudemailsUnlocked >= 6) {
+        if (FlxG.mouse.overlaps(mailSlot6) && FlxG.mouse.justPressed) {
+            selectedMail = 6;
+            FlxG.sound.play(Paths.sound('dudemailClick'), 0.5);
+            mail.scroll.y = 0;
+        }
+    }
 
+    
     if (selectedMail == 1) {
         mailInfo1.alpha = 1;
         mailText1.alpha = 1;
@@ -511,5 +532,15 @@ function update() {
         mailInfo5.alpha = 0;
         mailText5.alpha = 0;
         mailSlot5.loadGraphic(Paths.image(slot));
+    }
+    if (selectedMail == 6) {
+        mailInfo6.alpha = 1;
+        mailText6.alpha = 1;
+        mailSlot6.loadGraphic(Paths.image(slotSelected));
+    }
+    else {
+        mailInfo6.alpha = 0;
+        mailText6.alpha = 0;
+        mailSlot6.loadGraphic(Paths.image(slot));
     }
 }
