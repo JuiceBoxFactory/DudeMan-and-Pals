@@ -2,8 +2,6 @@ import flixel.addons.display.FlxBackdrop;
 
 var time = 0;
 var section2 = false;
-var myPpo = "";
-var myOpp = "";
 
 function create() {
 
@@ -189,20 +187,6 @@ function postCreate() {
 		missesTxt.y -= 20;
 	}
 
-	icon1 = new FlxSprite(0, 0).loadGraphic(Paths.image('icons/'+myPpo));
-	icon1.antialiasing = false;
-	icon1.flipX = true;
-	icon1.cameras = [camHUD];
-	icon1.alpha = 0;
-	icon1.updateHitbox();
-	add(icon1);
-
-	icon2 = new FlxSprite(0, 0).loadGraphic(Paths.image('icons/'+myOpp));
-	icon2.antialiasing = false;
-	icon2.cameras = [camHUD];
-	icon2.updateHitbox();
-	add(icon2);
-
 }
 
 function onCountdown(e) {
@@ -230,29 +214,6 @@ function postUpdate(){
 	iconP1.alpha = 0;
 	iconP2.alpha = 0;
 
-	icon1.x = iconP1.x;
-	icon1.y = iconP1.y;
-	icon2.x = iconP2.x;
-	icon2.y = iconP2.y;
-
-	myOpp = dad.getIcon();
-	myPpo = boyfriend.getIcon();
-
-	if (health < 0.5) {
-		icon1.loadGraphic(Paths.image('icons/'+myPpo+'-losing'));
-		icon2.loadGraphic(Paths.image('icons/'+myOpp));
-		icon1.x = iconP1.x + FlxG.random.int(-1.5, 1.5);
-		icon1.y = iconP1.y + FlxG.random.int(-1.5, 1.5);
-	}
-	else if (health > 1.5 && myOpp != 'shesnotthere') {
-		icon1.loadGraphic(Paths.image('icons/'+myPpo));
-		icon2.loadGraphic(Paths.image('icons/'+myOpp+'-losing'));
-	}
-	else {
-		icon1.loadGraphic(Paths.image('icons/'+myPpo));
-		icon2.loadGraphic(Paths.image('icons/'+myOpp));
-	}
-
 if (section2 == true) {
 	if (curCameraTarget == 0) { 
 		defaultCamZoom = 0.65;
@@ -266,7 +227,6 @@ if (section2 == true) {
 function stepHit(curStep:Int) { 
     switch (curStep) {
 	case 128:
-			icon1.alpha = 1;
             FlxTween.tween(blackHUD, {alpha: 0}, 1);
             FlxTween.tween(blackCam, {alpha: 0}, 2);
 	case 384:

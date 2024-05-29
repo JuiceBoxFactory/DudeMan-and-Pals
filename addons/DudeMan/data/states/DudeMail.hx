@@ -31,11 +31,6 @@ var shit = new CustomShader("shit");
 
 function create() {
 
-    if (FlxG.save.data.mailTheme == null) {
-        FlxG.save.data.mailTheme = "light";
-        FlxG.resetState();
-    }
-
     FlxG.sound.playMusic(Paths.music('dudemailTunes'), 1, true);
 
     FlxG.cameras.add(awesomeCam, false);
@@ -133,6 +128,10 @@ function create() {
         topBar1 = 0xFF41DFFE;
         topBar2 = 0xFFE3447C;
         themeScroll = 6;
+    }
+    if (FlxG.save.data.mailTheme == null) {
+        FlxG.save.data.mailTheme = "light";
+        FlxG.resetState();
     }
 
     logoPt1 = new FlxText(1015, 15, 400, 'dudemail', 0);
