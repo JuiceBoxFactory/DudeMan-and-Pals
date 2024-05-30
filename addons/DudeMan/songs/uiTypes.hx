@@ -11,6 +11,13 @@ var scared = false;
 var myPpo = "";
 var myOpp = "";
 var startingStep = PlayState.SONG.meta.appearStep;
+var curScore = 0;
+var scoreToAdd = 0;
+var addLerp = 0;
+var lastComboAccuracy = 0;
+var lastComboNoteAmount = 0;
+var animationPlaying = false;
+var noteRatingJustHit = "";
 
 function postCreate() {
 
@@ -124,6 +131,7 @@ function postCreate() {
 	if (PlayState.SONG.meta.noteType == "normal") {
 
 		if (PlayState.SONG.meta.noteType != "base" && PlayState.SONG.meta.noteType != "serious") {
+
 			myOpp = dad.getIcon();
 			myPpo = boyfriend.getIcon();
 		
@@ -132,26 +140,58 @@ function postCreate() {
 			}
 		}	
 	
+		dudeRating = new FlxSprite(-300, -175);	
+		dudeRating.antialiasing = false;
+		dudeRating.cameras = [camHUD];
+		dudeRating.frames = Paths.getSparrowAtlas('game/dudeRating');
+		dudeRating.animation.addByPrefix('noneBro', 'imLegit', 12, false);
+		dudeRating.animation.addByPrefix('erm', 'erm', 12, false);
+		dudeRating.animation.addByPrefix('bad', 'bad', 12, false);
+		dudeRating.animation.addByPrefix('good', 'good', 12, false);
+		dudeRating.animation.addByPrefix('sick', 'sick', 12, false);
+		dudeRating.animation.play('noneBro');
+		dudeRating.updateHitbox();
+		dudeRating.scale.set(1.5, 1.5);
+		insert(1, dudeRating);
+
 		remove(healthBar);
 		insert(2, healthBar);
 		healthBar.y = 640;
-		
+
 		healthheader = new FlxSprite(0, 580).loadGraphic(Paths.image('game/healthBarPART2'));
 		healthheader.antialiasing = false;
 		healthheader.cameras = [camHUD];
 		healthheader.screenCenter(FlxAxes.X);
 		healthheader.updateHitbox();
 		insert(3, healthheader);
-	
+
+		accText = new FlxText();
+		accText.setFormat(Paths.font("COMIC.ttf"), 15, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		accText.cameras = [camHUD];
+		accText.borderSize = 1.25;
+		accText.y = 680;
+		accText.screenCenter(FlxAxes.X);
+		accText.x -= 200; 
+		accText.antialiasing = false;
+		insert(6, accText);
+
 		scoreText = new FlxText();
-		scoreText.setFormat(Paths.font("COMIC.ttf"), 15, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreText.cameras = [camHUD];
-		scoreText.borderSize = 1.25;
-		scoreText.y = 680;
+		scoreText.setFormat(Paths.font("COMIC.ttf"), 35, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreText.borderSize = 2.25;
+		scoreText.y = 65;
+		scoreText.updateHitbox();
 		scoreText.screenCenter(FlxAxes.X);
-		scoreText.x -= 200; 
+		scoreText.x -= 72;
 		scoreText.antialiasing = false;
 		insert(6, scoreText);
+
+		scoreToAddText = new FlxText(610, 165);
+		scoreToAddText.cameras = [camHUD];
+		scoreToAddText.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreToAddText.borderSize = 1.25;
+		scoreToAddText.antialiasing = false;
+		insert(8, scoreToAddText);
 	
 		missesText = new FlxText();
 		missesText.setFormat(Paths.font("COMIC.ttf"), 15, FlxColor.WHITE, "right", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -163,8 +203,13 @@ function postCreate() {
 		missesText.antialiasing = false;
 		insert(7, missesText);
 	
+		scoreAddedIn = new FlxTimer();
+		scoreAddedIn.time = 2;
+		scoreAddedIn.active = false;
+		add(scoreAddedIn);
+
 		if (downscroll) {
-				for (dumbShits in [healthBar, missesText, scoreText, icon1, icon2]) {
+				for (dumbShits in [healthBar, missesText, accText, icon1, icon2]) {
 					dumbShits.y -= 15;
 				}
 				icon1.y -= 10;
@@ -196,6 +241,8 @@ function create() {
 	if (PlayState.SONG.meta.noteType == null) {
 		PlayState.SONG.meta.noteType = "normal";
 	}
+
+	trace("Current ui type is: "+PlayState.SONG.meta.noteType);
 
 	timeTxt = new FlxText(0, 19, 400, "X:XX", 32);
     timeTxt.setFormat(Paths.font("COMIC.ttf"), 32, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -260,16 +307,49 @@ function update(elapsed:Float) {
 	}
 
 	if (PlayState.SONG.meta.noteType != "serious" && PlayState.SONG.meta.noteType != "base") {
+		
 		myOpp = dad.getIcon();
 		icon2.loadGraphic(Paths.image('icons/'+myOpp));
 		myPpo = boyfriend.getIcon();
 		icon1.loadGraphic(Paths.image('icons/'+myPpo));
 
-		scoreText.text = "Coolness: "+songScore;
+		scoreText.text = ":Coolness:\n"+curScore;
+		accText.text = "Accuracy: "+CoolUtil.quantize(accuracy * 100, 100)+"%";
 		missesText.text = "Bitches Fumbled: "+misses;
+
+		if (accuracy == -1) {
+    	    accText.text = "Accuracy: idfk man";
+    	}
+
+		if (curScore < addLerp) {
+			curScore += 200;
+		}
+		if (curScore > addLerp) {
+			curScore = addLerp;
+		}
+
+		if (scoreToAdd > 0) {
+			scoreToAddText.alpha = 1;
+    	    scoreToAddText.text = "+"+scoreToAdd+"\n"+noteRatingJustHit;
+    	}
+		else {
+			scoreToAddText.text = "+"+scoreToAdd+"\n"+noteRatingJustHit;
+			scoreToAddText.alpha = 0;
+		}
+
+		scoreToAddText.screenCenter(FlxAxes.X);
+
+		remove(comboGroup);
+
+		if (scoreToAddText.scale.x > 1 && scoreToAddText.scale.y > 1) {
+			scoreToAddText.scale.x -= 0.025;
+			scoreToAddText.scale.y -= 0.025;
+		}
+
 	}
 
 	if (PlayState.SONG.meta.noteType == "normal") {
+
 		for (textY in [tagLine, singerNames, actoresses]) {
 			textY.y = openBox.y;
 		}
@@ -317,6 +397,12 @@ function beatHit() {
 }
 
 function postUpdate() {
+
+	if (animationPlaying == true) {
+		if (dudeRating.animation.frameIndex == 32 || dudeRating.animation.frameIndex == 62 || dudeRating.animation.frameIndex == 91 || dudeRating.animation.frameIndex == 132) {
+			animationPlaying = false;
+		}
+	}
 
 	if (PlayState.SONG.meta.name == "roomed" && curStep == 1664) {
 		scared = true;
@@ -417,7 +503,86 @@ function onNoteHit(event) {
   	}
 }
 
+function onPlayerMiss() {
+
+	if (PlayState.SONG.meta.noteType == "normal") {
+		lastComboNoteAmount += 1;
+		
+		scoreToAdd -= 10;
+	}
+
+}
+
+function comboRating() {
+	
+	animationPlaying = true;
+
+	var awful = lastComboNoteAmount / 2.2;
+	var bad = lastComboNoteAmount / 2;
+	var good = lastComboNoteAmount / 1.6;
+	var amazing = lastComboNoteAmount;
+
+	trace("\nlastComboNoteAmount: "+lastComboNoteAmount+"\nlastComboAccuracy: "+lastComboAccuracy+"\nerm: "+awful+"\nbad: "+bad+"\ngood: "+good+"\nsick: "+amazing);
+
+	if (lastComboAccuracy == amazing) {
+		dudeRating.animation.play('sick');
+	}
+	else if (lastComboAccuracy >= good) {
+		dudeRating.animation.play('good');
+	}
+	else if (lastComboAccuracy >= bad) {
+		dudeRating.animation.play('bad');
+	}
+	else if (lastComboNolastComboAccuracyteAmount <= awful) {
+		dudeRating.animation.play('erm');
+	}
+
+	lastComboAccuracy = 0;
+	lastComboNoteAmount = 0;
+
+}
+
 function onPlayerHit(e){
+
+	if (PlayState.SONG.meta.noteType == "normal") {
+
+		noteRating = e.accuracy;
+		scoreToAddText.scale.set(1.15, 1.15);
+
+		if (e.accuracy > 0.75) {
+			scoreToAdd += 350;
+			lastComboAccuracy += 1;
+			lastComboNoteAmount += 1;
+			noteRatingJustHit = "Sick!";
+		}
+		else if (e.accuracy > 0.45) {
+			scoreToAdd += 200;
+			lastComboAccuracy += 0.75;
+			lastComboNoteAmount += 1;
+			noteRatingJustHit = "Good";
+		}
+		else if (e.accuracy > 0.25) {
+			scoreToAdd += 100;
+			lastComboAccuracy += 0.5;
+			lastComboNoteAmount += 1;
+			noteRatingJustHit = "Bad";
+		}
+		else if (e.accuracy > 0) {
+			scoreToAdd += 50;
+			lastComboAccuracy += 0.25;
+			lastComboNoteAmount += 1;
+			noteRatingJustHit = "Errmmm";
+		}
+
+		scoreAddedIn.cancel();
+		scoreAddedIn.start(1, function(timer) {
+			addLerp = addLerp + scoreToAdd;
+			scoreToAdd = 0;
+			if (animationPlaying == false) {	
+				comboRating();
+			}
+		});
+	}
 
 	if (FlxG.save.data.notebounce == true && !player.cpu && scared == false) {
 		if (PlayState.SONG.meta.noteType != "base" && PlayState.SONG.meta.noteType != "serious") {

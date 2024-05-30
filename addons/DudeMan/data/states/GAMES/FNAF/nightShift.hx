@@ -320,7 +320,7 @@ function update(elapsed:Float){
         cam6.visible = true;
         cam7.visible = true;
     }
-    if(monitor.animation.frameIndex == 6){
+    if (monitor.animation.frameIndex == 6){
         monitor.visible = false;
     }
 

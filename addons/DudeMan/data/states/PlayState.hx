@@ -5,9 +5,9 @@ var ascendSpeed = 0;
 function create() {
 
 	for (i in playerStrums.members) 
-		i.x -= 22;      	
+		i.x -= 21;      	
 	for (i in cpuStrums.members) 
-		i.x -= 22; 
+		i.x -= 21; 
 
 	if (FlxG.save.data.downscroll == true) {
 		downscroll = true;
