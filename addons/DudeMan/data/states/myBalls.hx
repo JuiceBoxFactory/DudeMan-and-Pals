@@ -61,38 +61,6 @@ function create(event) {
 
 	cameras = [pauseCam];
 
-	if (FlxG.save.data.debug) {
-				
-		FlxG.cameras.remove(pauseCam);
-
-		fakePauseCam = new FlxCamera(0, 0, 1280, 720);
-		fakePauseCam.bgColor = FlxColor.TRANSPARENT;
-		FlxG.cameras.add(fakePauseCam, false);
-	
-		pausedTxt = new FlxText(390, 450, 500, "Game is Paused !", 0);
-     		pausedTxt.setFormat(Paths.font("COMIC.ttf"), 40, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-     		pausedTxt.borderColor = 0xFF06000C;
-     		pausedTxt.cameras = [fakePauseCam];
-     		pausedTxt.borderSize = 3;
-     		add(pausedTxt);
-
-		infoText = new FlxText(135, 500, 1000, "Press Enter to Resume\n Or, if you want to exit/restart the song // turn off debug mode, press one of these three buttons:", 0);
-     		infoText.setFormat(Paths.font("COMIC.ttf"), 25, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-     		infoText.borderColor = 0xFF06000C;
-     		infoText.cameras = [fakePauseCam];
-     		infoText.borderSize = 3;
-     		add(infoText);
-
-		buttonsInfo = new FlxText(135, 615, 1000, "F5 to restart || F6 to Exit Song || F7 to turn off Debug Mode", 0);
-     		buttonsInfo.setFormat(Paths.font("COMIC.ttf"), 25, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-     		buttonsInfo.borderColor = 0xFF06000C;
-     		buttonsInfo.color = 0xFFFFF667;
-     		buttonsInfo.cameras = [fakePauseCam];
-     		buttonsInfo.borderSize = 3;
-     		add(buttonsInfo);
-	
-	}
-
 }
 
 function confText(text) {
@@ -108,19 +76,6 @@ function destroy() {
 var canDoShit = true;
 var time:Float = 0;
 function update(elapsed) {
-
-	if (FlxG.save.data.debug) {
-		if (controls.ACCEPT) {
-			close();
-		}
-		if (FlxG.keys.justPressed.F6) {
-			FlxG.switchState(new FreeplayState());
-		}
-		if (FlxG.keys.justPressed.F7) {
-			FlxG.save.data.debug = false;
-			FlxG.resetState();
-		}
-	}
 
 	optionselected.loadGraphic(Paths.image('johnpork/'+curSelected));
 
