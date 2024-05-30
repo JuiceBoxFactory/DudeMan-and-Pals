@@ -18,6 +18,7 @@ var lastComboAccuracy = 0;
 var lastComboNoteAmount = 0;
 var animationPlaying = false;
 var noteRatingJustHit = "";
+var comboSection = 0;
 
 function postCreate() {
 
@@ -509,20 +510,30 @@ function onPlayerMiss() {
 		lastComboNoteAmount += 1;
 		
 		scoreToAdd -= 10;
-	}
 
+		scoreAddedIn.cancel();
+		scoreAddedIn.start(1, function(timer) {
+			addLerp = addLerp + scoreToAdd;
+			scoreToAdd = 0;
+			if (animationPlaying == false) {	
+				comboRating();
+			}
+		});
+	}
+	
 }
 
 function comboRating() {
 	
 	animationPlaying = true;
 
-	var awful = lastComboNoteAmount / 2.2;
-	var bad = lastComboNoteAmount / 2;
-	var good = lastComboNoteAmount / 1.6;
+	var bad = lastComboNoteAmount / 1.5;
+	var good = lastComboNoteAmount / 1.2;
 	var amazing = lastComboNoteAmount;
 
-	trace("\nlastComboNoteAmount: "+lastComboNoteAmount+"\nlastComboAccuracy: "+lastComboAccuracy+"\nerm: "+awful+"\nbad: "+bad+"\ngood: "+good+"\nsick: "+amazing);
+	comboSection += 1;
+
+	trace("\nstupid FUCKING section "+comboSection+" stats\nlastComboNoteAmount: "+lastComboNoteAmount+"\nlastComboAccuracy: "+lastComboAccuracy+"\nbad: "+bad+"\ngood: "+good+"\nsick: "+amazing);
 
 	if (lastComboAccuracy == amazing) {
 		dudeRating.animation.play('sick');
@@ -533,7 +544,7 @@ function comboRating() {
 	else if (lastComboAccuracy >= bad) {
 		dudeRating.animation.play('bad');
 	}
-	else if (lastComboNolastComboAccuracyteAmount <= awful) {
+	else if (lastComboAccuracy <= bad) {
 		dudeRating.animation.play('erm');
 	}
 
