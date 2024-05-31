@@ -579,13 +579,13 @@ function onPlayerHit(e){
 		}
 		else if (e.accuracy > 0.25) {
 			scoreToAdd += 100;
-			lastComboAccuracy += 0.5;
+			lastComboAccuracy += 0.45;
 			lastComboNoteAmount += 1;
 			noteRatingJustHit = "Bad";
 		}
 		else if (e.accuracy > 0) {
 			scoreToAdd += 50;
-			lastComboAccuracy += 0.25;
+			lastComboAccuracy += 0.1;
 			lastComboNoteAmount += 1;
 			noteRatingJustHit = "Errmmm";
 		}

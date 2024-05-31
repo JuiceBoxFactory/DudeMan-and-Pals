@@ -46,6 +46,10 @@ function create() {
 	borderCamera = new FlxCamera(0, 0, 1280, 720);
 	borderCamera.bgColor = FlxColor.TRANSPARENT;
 	FlxG.cameras.add(borderCamera, false);
+	
+	popUpCamera = new FlxCamera(0, 0, 1280, 720);
+	popUpCamera.bgColor = FlxColor.TRANSPARENT;
+	FlxG.cameras.add(popUpCamera, false);
 
 }
 
@@ -110,30 +114,30 @@ function postCreate() {
 		checkboxDownscroll.cameras = [uiCamera];
 		add(checkboxDownscroll);
 
-		Botplay = new FlxText();
-		Botplay.text = "Botplay";
-		Botplay.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
-		Botplay.x = 180;
-		Botplay.y = 220;
-		Botplay.cameras = [uiCamera];
-		Botplay.color = 0xFFFFFFFF;
-		Botplay.borderColor = 0xFF000000;
-		Botplay.antialiasing = false;
-		Botplay.alpha = 0;
-		Botplay.borderSize = 3;
-		add(Botplay);
+		dudeRating = new FlxText();
+		dudeRating.text = "Dude-Rating";
+		dudeRating.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		dudeRating.x = 180;
+		dudeRating.y = 220;
+		dudeRating.cameras = [uiCamera];
+		dudeRating.color = 0xFFFFFFFF;
+		dudeRating.borderColor = 0xFF000000;
+		dudeRating.antialiasing = false;
+		dudeRating.alpha = 0;
+		dudeRating.borderSize = 3;
+		add(dudeRating);
 
-		checkboxBotplay = new FlxSprite(250, 110);	
-		checkboxBotplay.frames = Paths.getSparrowAtlas('options/checked');
-		checkboxBotplay.animation.addByPrefix('selected', 'yes', 6);
-		checkboxBotplay.animation.addByPrefix('disselected', 'no', 6);
-		checkboxBotplay.animation.play('disselected');
-		checkboxBotplay.scale.set(0.3, 0.3);
-		checkboxBotplay.antialiasing = false;
-		checkboxBotplay.alpha = 1;
-		checkboxBotplay.scrollFactor.set(1, 1);
-		checkboxBotplay.cameras = [uiCamera];
-		add(checkboxBotplay);
+		checkboxdudeRating = new FlxSprite(250, 110);	
+		checkboxdudeRating.frames = Paths.getSparrowAtlas('options/checked');
+		checkboxdudeRating.animation.addByPrefix('selected', 'yes', 6);
+		checkboxdudeRating.animation.addByPrefix('disselected', 'no', 6);
+		checkboxdudeRating.animation.play('disselected');
+		checkboxdudeRating.scale.set(0.3, 0.3);
+		checkboxdudeRating.antialiasing = false;
+		checkboxdudeRating.alpha = 1;
+		checkboxdudeRating.scrollFactor.set(1, 1);
+		checkboxdudeRating.cameras = [uiCamera];
+		add(checkboxdudeRating);
 
 		GhostTapping = new FlxText();
 		GhostTapping.text = "Ghost Tapping";
@@ -636,7 +640,7 @@ function update() {
 		}
 	}
 	
-	for (obj in [Downscroll, checkboxDownscroll, Botplay, checkboxBotplay, GhostTapping, checkboxGhostTapping, NoteBounce, checkboxNoteBounce, MiddleScroll, checkboxMiddleScroll, Subtitles, checkboxSubtitles, camMove, checkboxcamMove]) {
+	for (obj in [Downscroll, checkboxDownscroll, dudeRating, checkboxdudeRating, GhostTapping, checkboxGhostTapping, NoteBounce, checkboxNoteBounce, MiddleScroll, checkboxMiddleScroll, Subtitles, checkboxSubtitles, camMove, checkboxcamMove]) {
 		if (GameplayOptionsOpen == true) {
 			add(obj);
 		}
@@ -644,7 +648,7 @@ function update() {
 			remove(obj);
 		}
 	}
-	for (obj in [Downscroll, Botplay, GhostTapping, NoteBounce, MiddleScroll, Subtitles, camMove]) {
+	for (obj in [Downscroll, dudeRating, GhostTapping, NoteBounce, MiddleScroll, Subtitles, camMove]) {
 		obj.alpha = 0.6;
 	}
 
@@ -770,8 +774,8 @@ function update() {
 		Downscroll.alpha = 1;	
 	}
 	if (SelectedGameplay == 1 && GameplayOptionsOpen == true) {
-		BottomText.text = "Somehow isnt in normal codename. messes stuff up in a select few songs";
-		Botplay.alpha = 1;
+		BottomText.text = "Patented Dude-Rating system ! doesnt work well in Downscroll tho, so u can turn it off !";
+		dudeRating.alpha = 1;
 	}
 	if (SelectedGameplay == 2 && GameplayOptionsOpen == true) {
 		BottomText.text = "Ghost ?? like..... Ghostybricks creator of dudeman from the hit mod dudeman and pals ?";
@@ -927,9 +931,10 @@ function postUpdate() {
 	if (FlxG.save.data.downscroll == false) {
 		checkboxDownscroll.animation.play('disselected');
 	}
-	if (SelectedGameplay == 0 && GameplayOptionsOpen == true && FlxG.save.data.downscroll == false && controls.ACCEPT) {
+	if (SelectedGameplay == 0 && GameplayOptionsOpen == true && FlxG.save.data.downscroll == false && controls.ACCEPT && subStateOpen == false) {
 		new FlxTimer().start(0.10, function(timer) {
-		FlxG.save.data.downscroll = true;
+			subStateOpen = true;
+			downscolled();
 		});
 	}
 	if (SelectedGameplay == 0 && GameplayOptionsOpen == true && FlxG.save.data.downscroll == true && controls.ACCEPT) {
@@ -937,20 +942,20 @@ function postUpdate() {
 		FlxG.save.data.downscroll = false;
 		});
 	}
-	if (FlxG.save.data.botplay == true) {
-		checkboxBotplay.animation.play('selected');
+	if (FlxG.save.data.dudeRating == true) {
+		checkboxdudeRating.animation.play('selected');
 	}
-	if (FlxG.save.data.botplay == false) {
-		checkboxBotplay.animation.play('disselected');
+	if (FlxG.save.data.dudeRating == false) {
+		checkboxdudeRating.animation.play('disselected');
 	}
-	if (SelectedGameplay == 1 && GameplayOptionsOpen == true && FlxG.save.data.botplay  == false && controls.ACCEPT) {
+	if (SelectedGameplay == 1 && GameplayOptionsOpen == true && FlxG.save.data.dudeRating  == false && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
-		FlxG.save.data.botplay = true;
+		FlxG.save.data.dudeRating = true;
 		});
 	}
-	if (SelectedGameplay == 1 && GameplayOptionsOpen == true && FlxG.save.data.botplay  == true && controls.ACCEPT) {
+	if (SelectedGameplay == 1 && GameplayOptionsOpen == true && FlxG.save.data.dudeRating  == true && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
-		FlxG.save.data.botplay = false;
+		FlxG.save.data.dudeRating = false;
 		});
 	}
 	if (FlxG.save.data.ghosttap == true) {
@@ -1213,4 +1218,10 @@ function postUpdate() {
 		FlxG.save.data.ascend = false;
 		});
 	}
+}
+
+function downscolled() {
+
+
+
 }

@@ -29,7 +29,7 @@ function update(elapsed) {
 	if (FlxG.save.data.wheresGarfield == null) {
 		// gameplay settings
 		FlxG.save.data.downscroll = false;
-		FlxG.save.data.botplay = false;
+		FlxG.save.data.dudeRating = false;
 		FlxG.save.data.ghosttap = true;
 		FlxG.save.data.notebounce = true;
 		FlxG.save.data.middlescroll = false;
