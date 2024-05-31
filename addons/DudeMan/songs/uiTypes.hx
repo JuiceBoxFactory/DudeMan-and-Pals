@@ -319,7 +319,13 @@ function update(elapsed:Float) {
 		myPpo = boyfriend.getIcon();
 		icon1.loadGraphic(Paths.image('icons/'+myPpo));
 
-		scoreText.text = ":Coolness:\n"+curScore;
+		if (FlxG.save.data.dudeRating == true) {
+			scoreText.text = ":Coolness:\n"+curScore;
+		}
+		else {
+			scoreText.text = ":Coolness:\n"+songScore;
+		}
+
 		accText.text = "Accuracy: "+CoolUtil.quantize(accuracy * 100, 100)+"%";
 		missesText.text = "Bitches Fumbled: "+misses;
 
@@ -345,7 +351,9 @@ function update(elapsed:Float) {
 
 		scoreToAddText.screenCenter(FlxAxes.X);
 
-		remove(comboGroup);
+		if (FlxG.save.data.dudeRating == true) {
+			remove(comboGroup);
+		}
 
 		if (scoreToAddText.scale.x > 1 && scoreToAddText.scale.y > 1) {
 			scoreToAddText.scale.x -= 0.025;
@@ -511,7 +519,7 @@ function onNoteHit(event) {
 
 function onPlayerMiss() {
 
-	if (PlayState.SONG.meta.noteType == "normal") {
+	if (PlayState.SONG.meta.noteType == "normal" && FlxG.save.data.dudeRating == true) {
 		lastComboNoteAmount += 1;
 		
 		scoreToAdd -= 10;
@@ -560,7 +568,7 @@ function comboRating() {
 
 function onPlayerHit(e){
 
-	if (PlayState.SONG.meta.noteType == "normal") {
+	if (PlayState.SONG.meta.noteType == "normal" && FlxG.save.data.dudeRating == true) {
 
 		noteRating = e.accuracy;
 		scoreToAddText.scale.set(1.15, 1.15);
