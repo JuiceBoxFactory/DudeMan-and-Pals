@@ -150,7 +150,7 @@ function postCreate() {
 		dudeRating.animation.addByPrefix('bad', 'bad', 12, false);
 		dudeRating.animation.addByPrefix('good', 'good', 12, false);
 		dudeRating.animation.addByPrefix('sick', 'sick', 12, false);
-		dudeRating.animation.play('sick');
+		dudeRating.animation.play('noneBro');
 		dudeRating.updateHitbox();
 		dudeRating.scale.set(1.5, 1.5);
 		insert(1, dudeRating);
