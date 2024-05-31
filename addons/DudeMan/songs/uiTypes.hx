@@ -150,7 +150,7 @@ function postCreate() {
 		dudeRating.animation.addByPrefix('bad', 'bad', 12, false);
 		dudeRating.animation.addByPrefix('good', 'good', 12, false);
 		dudeRating.animation.addByPrefix('sick', 'sick', 12, false);
-		dudeRating.animation.play('noneBro');
+		dudeRating.animation.play('sick');
 		dudeRating.updateHitbox();
 		dudeRating.scale.set(1.5, 1.5);
 		insert(1, dudeRating);
@@ -210,13 +210,18 @@ function postCreate() {
 		add(scoreAddedIn);
 
 		if (downscroll) {
-				for (dumbShits in [healthBar, missesText, accText, icon1, icon2]) {
-					dumbShits.y -= 15;
-				}
-				icon1.y -= 10;
-				icon2.y -= 10;
-				missesText.y -= 80;
-				scoreText.y -= 80;
+			for (dumbShits in [healthBar, missesText, accText, icon1, icon2]) {
+				dumbShits.y -= 15;
+			}
+			icon1.y -= 10;
+			icon2.y -= 10;
+			missesText.y -= 80;
+			accText.y -= 80;
+			remove(dudeRating);
+			insert(60, dudeRating);
+			dudeRating.y += 350;
+			dudeRating.x += 0;
+
 		}	
 		
 		if (PlayState.SONG.meta.name == "roomed") {

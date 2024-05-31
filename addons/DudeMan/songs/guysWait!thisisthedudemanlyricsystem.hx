@@ -97,7 +97,7 @@ function stepHit(curStep:Int) {
                     setTextShit("FIRE IN THE HOLE", "dudeman", 0xFFFFFFFF, 0xFF484848, false);
                 case 528:
                     textState("goDownINSTANT");
-                case yValueText:
+                case 530:
                     textState("popUpINSTANT");
                     setTextShit("White people be like-", "dudeman", 0xFFFFFFFF, 0xFF484848, false);
                 case 535:
