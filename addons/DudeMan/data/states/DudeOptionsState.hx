@@ -31,6 +31,7 @@ var MainOptionsOpen = true;
 var GameplayOptionsOpen = false;
 var MiscOptionsOpen = false;
 var SecretOptionsOpen = false;
+var popUpOPEN = false;
 
 function create() {
 
@@ -51,16 +52,65 @@ function create() {
 	popUpCamera.bgColor = FlxColor.TRANSPARENT;
 	FlxG.cameras.add(popUpCamera, false);
 
+	cursorCam = new FlxCamera(0, 0, 1280, 720);
+	cursorCam.bgColor = FlxColor.TRANSPARENT;
+	FlxG.cameras.add(cursorCam, false);
+
 }
 
 function postCreate() {
 
 	FlxG.sound.playMusic(Paths.music('OptionsLoop'), 1, true);
 
-	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg')); // second argument: FlxAxes is required to determinate in what axes the sprite should be repeated, default to XY
+	coolBackdropPOP = new FlxBackdrop(Paths.image('ui/bg'));
+	coolBackdropPOP.moves = true;
+	coolBackdropPOP.scrollFactor.set(0, 0);
+	coolBackdropPOP.velocity.x = 20;
+	coolBackdropPOP.velocity.y = 20;
+	coolBackdropPOP.active = true;
+	coolBackdropPOP.cameras = [popUpCamera];
+	coolBackdropPOP.alpha = 0;
+	add(coolBackdropPOP);
+
+	popBorder = new FlxSprite(0, 0).loadGraphic(Paths.image('ui/border'));
+	popBorder.scrollFactor.set(0, 0);
+	popBorder.cameras = [popUpCamera];
+	popBorder.scale.set(1, 1);
+	popBorder.alpha = 0;
+	add(popBorder);
+
+	warningTextPOP = new FlxText(50, 25, 450);
+	warningTextPOP.text = "WAIT! before you use downscroll, I just want you to know\n\nthis mod's ui looks way better on upscroll, everything still works for downscroll, but things like DudeRatingTM dont really work correctly.\n\nif you CAN use upscroll, I highly recommend it. if not- dont worry! you can still play the mod completely fine c:";
+	warningTextPOP.setFormat(Paths.font("COMIC.ttf"), 25, FlxColor.WHITE, "center");            
+	warningTextPOP.cameras = [popUpCamera];
+	warningTextPOP.color = 0xFF130022;
+	warningTextPOP.antialiasing = false;
+	warningTextPOP.borderSize = 2.25;
+	warningTextPOP.alpha = 0;
+	add(warningTextPOP);
+
+	buttonPOP = new FlxSprite(0, 0).loadGraphic(Paths.image('ui/button'));
+	buttonPOP.scrollFactor.set(0, 0);
+	buttonPOP.cameras = [popUpCamera];
+	buttonPOP.scale.set(1, 1);
+	buttonPOP.alpha = 0;
+	buttonPOP.updateHitbox();
+	add(buttonPOP);
+
+	buttonTextPOP = new FlxText(100, 100, 450);
+	buttonTextPOP.text = "oh. go fuck urself.";
+	buttonTextPOP.setFormat(Paths.font("COMIC.ttf"), 25, FlxColor.WHITE, "center");            
+	buttonTextPOP.cameras = [popUpCamera];
+	buttonTextPOP.color = 0xFF130022;
+	buttonTextPOP.antialiasing = false;
+	buttonTextPOP.borderSize = 2.25;
+	buttonTextPOP.alpha = 0;
+	add(buttonTextPOP);
+
+	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg'));
 	coolBackdrop.moves = true;
 	coolBackdrop.scrollFactor.set(0, 0);
-	coolBackdrop.velocity.x = 100; // you can adjust the values to make the scrolling faster or lower
+	coolBackdrop.velocity.x = 100;
 	coolBackdrop.velocity.y = 100;
 	coolBackdrop.active = true;
 	add(coolBackdrop);
@@ -102,7 +152,7 @@ function postCreate() {
 		Downscroll.borderSize = 3;
 		add(Downscroll);
 
-		checkboxDownscroll = new FlxSprite(325, 10);	
+		checkboxDownscroll = new FlxSprite(310, 10);	
 		checkboxDownscroll.frames = Paths.getSparrowAtlas('options/checked');
 		checkboxDownscroll.animation.addByPrefix('selected', 'yes', 6);
 		checkboxDownscroll.animation.addByPrefix('disselected', 'no', 6);
@@ -127,7 +177,7 @@ function postCreate() {
 		dudeRating.borderSize = 3;
 		add(dudeRating);
 
-		checkboxdudeRating = new FlxSprite(250, 110);	
+		checkboxdudeRating = new FlxSprite(350, 110);	
 		checkboxdudeRating.frames = Paths.getSparrowAtlas('options/checked');
 		checkboxdudeRating.animation.addByPrefix('selected', 'yes', 6);
 		checkboxdudeRating.animation.addByPrefix('disselected', 'no', 6);
@@ -604,7 +654,11 @@ function postCreate() {
 	title.cameras = [borderCamera];
 	title.updateHitbox();
 	add(title);
-		
+
+	cursor = new FlxSprite(0, 0).loadGraphic(Paths.image('game/cursor'));
+    cursor.cameras = [cursorCam];
+    add(cursor);
+
 }
 
 function resetSettings() {
@@ -620,6 +674,9 @@ function resetSaveData() {
 }
 
 function update() {
+
+    cursor.x = FlxG.mouse.screenX;
+    cursor.y = FlxG.mouse.screenY;
 
 	BottomText.text = "Hi welcome to the options menu, goat :fire::100:   press R to reset settings";
 
@@ -933,8 +990,7 @@ function postUpdate() {
 	}
 	if (SelectedGameplay == 0 && GameplayOptionsOpen == true && FlxG.save.data.downscroll == false && controls.ACCEPT && subStateOpen == false) {
 		new FlxTimer().start(0.10, function(timer) {
-			subStateOpen = true;
-			downscolled();
+			downscolled("open");
 		});
 	}
 	if (SelectedGameplay == 0 && GameplayOptionsOpen == true && FlxG.save.data.downscroll == true && controls.ACCEPT) {
@@ -1218,10 +1274,60 @@ function postUpdate() {
 		FlxG.save.data.ascend = false;
 		});
 	}
+
+	if (popUpOPEN && FlxG.mouse.justPressed) {
+		if (FlxG.mouse.overlaps(buttonPOP)) {
+			downscolled("close");
+			FlxG.save.data.downscroll = true;
+		}
+	}
 }
 
-function downscolled() {
+function downscolled(openclose) {
 
+	switch (openclose) {
+		case "open":
+			popUpCamera.x = 350;
+			popUpCamera.y = 50;
+			popUpCamera.width = 550;
+			popUpCamera.height = 600;
+			popBorder.scale.set(5.55, 6.1);
+			popBorder.x = 225;
+			popBorder.y = 255;
 
+			warningTextPOP.scale.set(0.001, 0.001);
+			buttonPOP.scale.set(0.001, 0.001);
+			buttonTextPOP.scale.set(0.001, 0.001);
+			warningTextPOP.alpha = 1;
+			buttonPOP.alpha = 1;
+			buttonTextPOP.alpha = 1;
+			buttonTextPOP.x = 55;
+			buttonTextPOP.y = 510;
+			buttonPOP.x = 635;
+			buttonPOP.y = 485;
+			buttonPOP.offset.set(350, 50);
+			buttonPOP.x -= 145;
+			buttonPOP.y += 50;
+	
+			FlxTween.tween(warningTextPOP.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut});
+			FlxTween.tween(buttonPOP.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut});
+			FlxTween.tween(buttonTextPOP.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut});
+			FlxTween.tween(coolBackdropPOP, {alpha: 1}, 1, {ease: FlxEase.quartOut});
+			FlxTween.tween(popBorder, {alpha: 1}, 1, {ease: FlxEase.quartOut});
+
+			popUpOPEN = true;
+			subStateOpen = true;
+
+		case "close":
+			FlxTween.tween(warningTextPOP.scale, {x: 0.001, y: 0.001}, 1, {ease: FlxEase.quartOut});
+			FlxTween.tween(buttonPOP.scale, {x: 0.001, y: 0.001}, 1, {ease: FlxEase.quartOut});
+			FlxTween.tween(buttonTextPOP.scale, {x: 0.001, y: 0.001}, 1, {ease: FlxEase.quartOut});
+			FlxTween.tween(coolBackdropPOP, {alpha: 0}, 1, {ease: FlxEase.quartOut});
+			FlxTween.tween(popBorder, {alpha: 0}, 1, {ease: FlxEase.quartOut});
+
+			subStateOpen = false;
+			popUpOPEN = false;
+		
+	}
 
 }
