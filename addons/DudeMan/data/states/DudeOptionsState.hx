@@ -81,7 +81,7 @@ function postCreate() {
 	add(popBorder);
 
 	warningTextPOP = new FlxText(50, 25, 450);
-	warningTextPOP.text = "WAIT! before you use downscroll, I just want you to know\n\nthis mod's ui looks way better on upscroll, everything still works for downscroll, but things like DudeRatingTM dont really work correctly.\n\nif you CAN use upscroll, I highly recommend it. if not- dont worry! you can still play the mod completely fine c:";
+	warningTextPOP.text = "WAIT! before you use downscroll, I just want you to know\n\nthis mod's ui looks way better on upscroll, everything still works for downscroll, but things like DudeRatingTM dont really work correctly. ( unless u use middlescroll )\n\nif you CAN use upscroll, I highly recommend it. if not- dont worry! you can still play the mod completely fine c:";
 	warningTextPOP.setFormat(Paths.font("COMIC.ttf"), 25, FlxColor.WHITE, "center");            
 	warningTextPOP.cameras = [popUpCamera];
 	warningTextPOP.color = 0xFF130022;
