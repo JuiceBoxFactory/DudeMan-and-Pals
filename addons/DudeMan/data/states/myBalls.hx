@@ -100,8 +100,8 @@ function create(event) {
 		imOptions.text = "Options";
 	}
 	if (FlxG.save.data.language == "spanish") {
-		pausedText.text = "Pausar";
-		imResume.text = "Reasumier";
+		pausedText.text = "Pausado";
+		imResume.text = "Continuar";
 		imRestart.text = "Reniciar";
 		imControls.text = "Controles";
 		imOptions.text = "Opciones";
