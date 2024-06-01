@@ -51,6 +51,7 @@ function create() {
 function update() {
 
     if (controls.ACCEPT) {
+		FlxG.save.data.noTransition = false;
         FlxG.switchState(new ModState("DudeTitleScreen"));
     }
 

@@ -25,6 +25,12 @@ var gamesIconPosY;
 var conceptIconPosX;
 var conceptIconPosY;
 
+var storymodeName = '';
+var extrasName = '';
+var palsName = '';
+var coversName = '';
+var gamesName = '';
+
 function create() {
 
 	if (FlxG.save.data.selectorButtonsUnlocked == null) {
@@ -113,6 +119,21 @@ function create() {
 
 	checkAvalibilty();
 
+	if (FlxG.save.data.language == "english") {
+		storymodeName = "StoryMode Songs";
+		extrasName = "Extras";
+		palsName = "For my Pals";
+		coversName = "Covers//Remixes";
+		gamesName = "DudeMan's Games";
+	}
+	if (FlxG.save.data.language == "spanish") {
+		storymodeName = "Canciones del Modo-Historia";
+		extrasName = "Extras";
+		palsName = "Para mis Amigos";
+		coversName = "Covers//Remezclas";
+		gamesName = "Juegos De DudeMan";
+	}
+
 }
 
 function checkAvalibilty() {
@@ -161,7 +182,7 @@ function update() {
 	}
 
 	if (Selected == 0) {
-		sectionname.text = 'StoryMode Songs';
+		sectionname.text = storymodeName;
 
 		if (amountOfButtons == 3) {
 			remove(storyIcon);
@@ -248,7 +269,7 @@ function update() {
 	}
 
 	if (Selected == 1) {
-		sectionname.text = 'Extras';
+		sectionname.text = extrasName;
 
 		if (amountOfButtons == 3) {
 			remove(storyIcon);
@@ -336,7 +357,7 @@ function update() {
 	}
 
 	if (Selected == 2) {
-		sectionname.text = 'For my Pals';
+		sectionname.text = palsName;
 
 		if (amountOfButtons == 3) {
 			remove(storyIcon);
@@ -424,7 +445,7 @@ function update() {
 	}
 
 	if (Selected == 3) {
-		sectionname.text = 'Cover/Remixes';
+		sectionname.text = coversName;
 	
 		if (amountOfButtons == 3) {
 			remove(storyIcon);
@@ -512,7 +533,7 @@ function update() {
 	}
 
 	if (Selected == 4 && amountOfButtons > 3) {
-		sectionname.text = "DudeMan's Games";
+		sectionname.text = gamesName;
 
 		if (amountOfButtons == 4 || amountOfButtons == 5) {
 			remove(storyIcon);

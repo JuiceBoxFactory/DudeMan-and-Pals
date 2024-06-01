@@ -32,6 +32,7 @@ var GameplayOptionsOpen = false;
 var MiscOptionsOpen = false;
 var SecretOptionsOpen = false;
 var popUpOPEN = false;
+var languageSelection = 0;
 
 function create() {
 
@@ -339,6 +340,32 @@ function postCreate() {
 		ResetSaveData.borderSize = 3;
 		add(ResetSaveData);
 
+		Language = new FlxText();
+		Language.text = "Language";
+		Language.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		Language.x = 180;
+		Language.y = 225;
+		Language.cameras = [uiCamera];
+		Language.color = 0xFFFFFFFF;
+		Language.borderColor = 0xFF000000;
+		Language.antialiasing = false;
+		Language.alpha = 0;
+		Language.borderSize = 3;
+		add(Language);
+
+		LanguageToPick = new FlxText(0, 0, 300);
+		LanguageToPick.text = "< English >";
+		LanguageToPick.setFormat(Paths.font("COMIC.ttf"), 40, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		LanguageToPick.x = 400;
+		LanguageToPick.y = 235;
+		LanguageToPick.cameras = [uiCamera];
+		LanguageToPick.color = 0xFFFFFFFF;
+		LanguageToPick.borderColor = 0xFF000000;
+		LanguageToPick.antialiasing = false;
+		LanguageToPick.alpha = 0;
+		LanguageToPick.borderSize = 3;
+		add(LanguageToPick);
+
 	Secret = new FlxText();
 	Secret.text = "Secret Settings >";
 	Secret.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
@@ -614,7 +641,7 @@ function postCreate() {
 		ascend.borderSize = 3;
 		add(ascend);
 
-		checkboxascend = new FlxSprite(345, 1012);	
+		checkboxascend = new FlxSprite(305, 1012);	
 		checkboxascend.frames = Paths.getSparrowAtlas('options/checked');
 		checkboxascend.animation.addByPrefix('selected', 'yes', 6);
 		checkboxascend.animation.addByPrefix('disselected', 'no', 6);
@@ -625,6 +652,31 @@ function postCreate() {
 		checkboxascend.scrollFactor.set(1, 1);
 		checkboxascend.cameras = [uiCamera];
 		add(checkboxascend);
+
+		sillyLang = new FlxText();
+		sillyLang.text = "Silly Languages";
+		sillyLang.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		sillyLang.x = 180;
+		sillyLang.y = 1225;
+		sillyLang.cameras = [uiCamera];
+		sillyLang.color = 0xFFFFFFFF;
+		sillyLang.borderColor = 0xFF000000;
+		sillyLang.antialiasing = false;
+		sillyLang.alpha = 1;
+		sillyLang.borderSize = 3;
+		add(sillyLang);
+
+		checkboxsillyLang = new FlxSprite(425, 1115);	
+		checkboxsillyLang.frames = Paths.getSparrowAtlas('options/checked');
+		checkboxsillyLang.animation.addByPrefix('selected', 'yes', 6);
+		checkboxsillyLang.animation.addByPrefix('disselected', 'no', 6);
+		checkboxsillyLang.animation.play('disselected');
+		checkboxsillyLang.scale.set(0.3, 0.3);
+		checkboxsillyLang.antialiasing = false;
+		checkboxsillyLang.alpha = 1;
+		checkboxsillyLang.scrollFactor.set(1, 1);
+		checkboxsillyLang.cameras = [uiCamera];
+		add(checkboxsillyLang);
 
 	border = new FlxSprite(0, 0).loadGraphic(Paths.image('options/border'));
 	border.antialiasing = false;
@@ -659,6 +711,31 @@ function postCreate() {
     cursor.cameras = [cursorCam];
     add(cursor);
 
+	if (FlxG.save.data.language == "english") {
+		languageSelection = 0;
+	}
+	if (FlxG.save.data.language == "spanish") {
+		languageSelection = 1;
+	}
+	if (FlxG.save.data.language == "french") {
+		languageSelection = 2;
+	}
+	if (FlxG.save.data.language == "german") {
+		languageSelection = 3;
+	}
+	if (FlxG.save.data.language == "bengali") {
+		languageSelection = 4;
+	}
+	if (FlxG.save.data.language == "british") {
+		languageSelection = 5;
+	}
+	if (FlxG.save.data.language == "silly") {
+		languageSelection = 6;
+	}
+	if (FlxG.save.data.language == "pirate") {
+		languageSelection = 7;
+	}
+
 }
 
 function resetSettings() {
@@ -668,12 +745,72 @@ function resetSettings() {
 
 function resetSaveData() {
 		FlxG.save.data.defaultSaveData = null;
-		FlxG.switchState(new ModState("DudeTitleScreen"));
-		FlxG.sound.playMusic(Paths.music('freakyMenu'), 1, true);
+		FlxG.switchState(new ModState("BetaWarningState"));
+		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0, true);
 		trace("reset save data");
 }
 
 function update() {
+
+	if (MiscOptionsOpen && SelectedMisc == 1)  {
+		if (controls.LEFT_P) {
+			languageSelection -= 1;
+		}
+		if (controls.RIGHT_P) {
+			languageSelection += 1;
+		}
+	}
+
+	if (languageSelection == 0) {
+		FlxG.save.data.language = "english";
+		LanguageToPick.text = "< English >";
+	}
+	if (languageSelection == 1) {
+		FlxG.save.data.language = "spanish";
+		LanguageToPick.text = "< Español >";
+	}
+	if (languageSelection == 2) {
+		FlxG.save.data.language = "french";
+		LanguageToPick.text = "< Français >";
+	}
+	if (languageSelection == 3) {
+		FlxG.save.data.language = "german";
+		LanguageToPick.text = "< Deutsch >";
+	}
+	if (languageSelection == 4) {
+		FlxG.save.data.language = "bengali";
+		LanguageToPick.text = "< Bengali >";
+	}
+	if (languageSelection == 5) {
+		FlxG.save.data.language = "british";
+		LanguageToPick.text = "< Bri-ish >";
+	}
+	if (languageSelection == 6) {
+		FlxG.save.data.language = "silly";
+		LanguageToPick.text = "< SILLY X3 >";
+	}
+	if (languageSelection == 7) {
+		FlxG.save.data.language = "pirate";
+		LanguageToPick.text = "< Yarg. >";
+	}
+
+	if (FlxG.save.data.sillyLanguages == false) {
+		if (languageSelection < 0) {
+			languageSelection = 4;
+		}
+		if (languageSelection > 4) {
+			languageSelection = 0;
+		}
+	}
+
+	if (FlxG.save.data.sillyLanguages == true) {
+		if (languageSelection < 0) {
+			languageSelection = 7;
+		}
+		if (languageSelection > 7) {
+			languageSelection = 0;
+		}
+	}
 
     cursor.x = FlxG.mouse.screenX;
     cursor.y = FlxG.mouse.screenY;
@@ -709,7 +846,7 @@ function update() {
 		obj.alpha = 0.6;
 	}
 
-	for (obj in [ResetSaveData]) {
+	for (obj in [ResetSaveData, Language, LanguageToPick]) {
 		if (MiscOptionsOpen == true) {
 			add(obj);
 		}
@@ -717,11 +854,11 @@ function update() {
 			remove(obj);
 		}
 	}
-	for (obj in [ResetSaveData]) {
+	for (obj in [ResetSaveData, Language, LanguageToPick]) {
 		obj.alpha = 0.6;
 	}
 
-	for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs, gfBurger, checkboxgfBurger, ascend, checkboxascend]) {
+	for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs, gfBurger, checkboxgfBurger, ascend, checkboxascend, sillyLang, checkboxsillyLang]) {
 		if (SecretOptionsOpen == true) {
 			add(obj);
 		}
@@ -729,7 +866,7 @@ function update() {
 			remove(obj);
 		}
 	}
-	for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs, gfBurger, ascend]) {
+	for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs, gfBurger, ascend, sillyLang]) {
 		obj.alpha = 0.6;
 	}
 	// CONTROLS
@@ -766,15 +903,20 @@ function update() {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		SelectedMisc += 1;
 	}
-	if (SelectedMisc > 0) {
+	if (SelectedMisc > 1) {
 		SelectedMisc = 0;
 	}
 	if (SelectedMisc < 0) {
-		SelectedMisc = 0;
+		SelectedMisc = 1;
 	}
 	if (SelectedMisc == 0 && MiscOptionsOpen == true) {
 		BottomText.text = "Pressing this will remove ur save data ! instantly ! like /gen dude";
 		ResetSaveData.alpha = 1;	
+	}
+	if (SelectedMisc == 1 && MiscOptionsOpen == true) {
+		BottomText.text = "Change ur language, dude !";
+		Language.alpha = 1;	
+		LanguageToPick.alpha = 1;	
 	}
 	if (SelectedMisc == 0 && controls.ACCEPT && MiscOptionsOpen == true) {
 		resetSaveData();
@@ -907,6 +1049,10 @@ function update() {
 		BottomText.text = "bye bye !!!";
 		ascend.alpha = 1;	
 	}
+	if (SelectedSecret == 11 && SecretOptionsOpen == true) {
+		BottomText.text = "wait im so funny haha yes ! ( only for English )";
+		sillyLang.alpha = 1;	
+	}
 	// CONTROLS PT 2
 	if (Selected1 > 3) {
 		Selected1 = 0;
@@ -920,43 +1066,43 @@ function update() {
 	if (SelectedGameplay < 0) {
 		SelectedGameplay = 6;
 	}
-	if (SelectedSecret > 10) {
+	if (SelectedSecret > 11) {
 		SelectedSecret = 0;
 	}
 	if (SelectedSecret < 0) {
-		SelectedSecret = 10;
+		SelectedSecret = 11;
 	}
 	// SECRETSETTINGS CAM
 	if (SelectedSecret > 9 && SecretOptionsOpen == true) {
-		if (uiCamera.y > -575) {
-			uiCamera.y -= 5;
+		if (uiCamera.y > -675) {
+			uiCamera.y -= 10;
 		}
-		else if (uiCamera.y < -575) {
-			uiCamera.y += 5;
+		else if (uiCamera.y < -675) {
+			uiCamera.y += 10;
 		}
 	}
 	if (SelectedSecret > 4 && SecretOptionsOpen == true && SelectedSecret < 10) {
 		if (uiCamera.y > -475) {
-			uiCamera.y -= 5;
+			uiCamera.y -= 10;
 		}
 		else if (uiCamera.y < -475) {
-			uiCamera.y += 5;
+			uiCamera.y += 10;
 		}
 	}
 	if (SelectedSecret < 5 && SecretOptionsOpen == true) {
 		if (uiCamera.y < 25) {
-			uiCamera.y += 5;
+			uiCamera.y += 10;
 		}
 	}
 	// GAMEPLAY CAM
 	if (SelectedGameplay > 4 && GameplayOptionsOpen == true) {
 		if (uiCamera.y != -175) {
-			uiCamera.y -= 5;
+			uiCamera.y -= 10;
 		}
 	}
 	if (SelectedGameplay < 5 && GameplayOptionsOpen == true) {
 		if (uiCamera.y != 25) {
-			uiCamera.y += 5;
+			uiCamera.y += 10;
 		}
 	}
 }
@@ -1272,6 +1418,23 @@ function postUpdate() {
 	if (SelectedSecret == 10 && SecretOptionsOpen == true && FlxG.save.data.ascend == true && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.ascend = false;
+		});
+	}
+
+	if (FlxG.save.data.sillyLanguages == true) {
+		checkboxsillyLang.animation.play('selected');
+	}
+	if (FlxG.save.data.sillyLanguages == false) {
+		checkboxsillyLang.animation.play('disselected');
+	}
+	if (SelectedSecret == 11 && SecretOptionsOpen == true && FlxG.save.data.sillyLanguages == false && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.sillyLanguages = true;
+		});
+	}
+	if (SelectedSecret == 11 && SecretOptionsOpen == true && FlxG.save.data.sillyLanguages == true && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.sillyLanguages = false;
 		});
 	}
 

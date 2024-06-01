@@ -2,7 +2,9 @@ import flixel.util.FlxTimer;
 import flixel.util.FlxSave;
 
 function postCreate() {
-    
+
+    FlxG.save.data.noTransition = true;
+
     FlxG.save.data.firstOnIntroClient = true;
 
 	blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -32,6 +34,17 @@ function postCreate() {
 }
 
 function postUpdate() {
+
+    if (FlxG.keys.justPressed.G) {
+        FlxG.save.data.language = null;
+    }
+
+    trace(FlxG.save.data.language);
+
+    if (FlxG.save.data.language == null) {
+        FlxG.switchState(new ModState("DudeBrandLanguagePicker"));
+        trace('hey buddy');
+    }
 
     if (controls.ACCEPT) {
         FlxG.switchState(new ModState("JuiceBoxFactoryOpening"));

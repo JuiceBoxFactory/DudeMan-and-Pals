@@ -154,7 +154,12 @@ function postCreate() {
 
 function update() {
 
-	waitImGoated.text = "SCORE: "+intendedScore;
+	if (FlxG.save.data.language == "english") {
+		waitImGoated.text = "SCORE: "+intendedScore;
+	}
+	if (FlxG.save.data.language == "spanish") {
+		waitImGoated.text = "PUNTUACIÓN: "+intendedScore;
+	}
 	waitImGoated.screenCenter(FlxAxes.X);
 
 	if (controls.LEFT_P) {

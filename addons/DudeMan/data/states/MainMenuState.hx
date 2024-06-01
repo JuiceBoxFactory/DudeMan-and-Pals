@@ -1,5 +1,6 @@
 import funkin.options.OptionsMenu;
 import flixel.addons.display.FlxBackdrop;
+
 var SelectedButton = 0;
 
 function postCreate(){
@@ -21,10 +22,15 @@ function postCreate(){
 	mans.scrollFactor.set(0, 0);
 	add(mans);
 
+	buttons = new FlxSprite(0, 0).loadGraphic(Paths.image('mainmenu/'+FlxG.save.data.language+'/'+SelectedButton));
+	buttons.scrollFactor.set(0, 0);
+	add(buttons);
+
 }
 
 function update() {	
 	mans.loadGraphic(Paths.image('mainmenu/dudes/'+SelectedButton));
+	buttons.loadGraphic(Paths.image('mainmenu/'+FlxG.save.data.language+'/'+SelectedButton));
 
 	if (controls.BACK) {
 	FlxG.sound.play(Paths.sound('cancel'));
@@ -46,9 +52,6 @@ function update() {
 		FlxG.sound.play(Paths.sound('confirm'));
 		FlxG.switchState(new ModState("DaxGalleryState"));
    	}
-	   if (FlxG.keys.justPressed.R) {
-	   	FlxG.save.data.hasPlayedBefore = false;
-	   }
 	if (FlxG.keys.justPressed.O) {
 		FlxG.sound.play(Paths.sound('confirm'));
 		FlxG.switchState(new OptionsMenu());

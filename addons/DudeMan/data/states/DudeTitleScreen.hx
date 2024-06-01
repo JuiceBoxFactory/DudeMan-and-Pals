@@ -173,6 +173,8 @@ function update() {
 
 function skipIntro() {
 
+	FlxG.save.data.firstOnIntroClient = false;
+
 	imBanbuds = true;
 
 	FlxG.camera.flash(FlxColor.WHITE, 4);

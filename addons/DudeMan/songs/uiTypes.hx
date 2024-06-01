@@ -319,19 +319,37 @@ function update(elapsed:Float) {
 		myPpo = boyfriend.getIcon();
 		icon1.loadGraphic(Paths.image('icons/'+myPpo));
 
-		if (FlxG.save.data.dudeRating == true) {
-			scoreText.text = ":Coolness:\n"+curScore;
-		}
-		else {
-			scoreText.text = ":Coolness:\n"+songScore;
+		if (FlxG.save.data.language == 'english') {
+			if (FlxG.save.data.dudeRating == true) {
+				scoreText.text = ":Coolness:\n"+curScore;
+			}
+			else {
+				scoreText.text = ":Coolness:\n"+songScore;
+			}
+
+			accText.text = "Accuracy: "+CoolUtil.quantize(accuracy * 100, 100)+"%";
+			missesText.text = "Bitches Fumbled: "+misses;
+
+			if (accuracy == -1) {
+    	    	accText.text = "Accuracy: idfk man";
+    		}
 		}
 
-		accText.text = "Accuracy: "+CoolUtil.quantize(accuracy * 100, 100)+"%";
-		missesText.text = "Bitches Fumbled: "+misses;
+		if (FlxG.save.data.language == 'spanish') {
+			if (FlxG.save.data.dudeRating == true) {
+				scoreText.text = ":Frescura:\n"+curScore;
+			}
+			else {
+				scoreText.text = ":Frescura:\n"+songScore;
+			}
 
-		if (accuracy == -1) {
-    	    accText.text = "Accuracy: idfk man";
-    	}
+			accText.text = "Exactitud: "+CoolUtil.quantize(accuracy * 100, 100)+"%";
+			missesText.text = "Perras Perdidas: "+misses;
+
+			if (accuracy == -1) {
+    	    	accText.text = "Exactitud: No sé hombre";
+    		}
+		}
 
 		if (curScore < addLerp) {
 			curScore += 200;
@@ -577,19 +595,34 @@ function onPlayerHit(e){
 			scoreToAdd += 350;
 			lastComboAccuracy += 1;
 			lastComboNoteAmount += 1;
-			noteRatingJustHit = "Sick!";
+			if (FlxG.save.data.language == "english") {
+				noteRatingJustHit = "Sick!";
+			}
+			if (FlxG.save.data.language == "spanish") {
+				noteRatingJustHit = "Enfermos!";
+			}
 		}
 		else if (e.accuracy > 0.45) {
 			scoreToAdd += 200;
 			lastComboAccuracy += 0.75;
 			lastComboNoteAmount += 1;
-			noteRatingJustHit = "Good";
+			if (FlxG.save.data.language == "english") {
+				noteRatingJustHit = "Good";
+			}
+			if (FlxG.save.data.language == "spanish") {
+				noteRatingJustHit = "Bien";
+			}
 		}
 		else if (e.accuracy > 0.25) {
 			scoreToAdd += 100;
 			lastComboAccuracy += 0.45;
 			lastComboNoteAmount += 1;
-			noteRatingJustHit = "Bad";
+			if (FlxG.save.data.language == "english") {
+				noteRatingJustHit = "Bad";
+			}
+			if (FlxG.save.data.language == "spanish") {
+				noteRatingJustHit = "Malo";
+			}
 		}
 		else if (e.accuracy > 0) {
 			scoreToAdd += 50;
