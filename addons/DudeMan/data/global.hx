@@ -6,15 +6,9 @@ static var initialized:Bool = false;
 function new() {
 
 	FlxG.mouse.visible = false;
-
-    window.title = 'DudeMan and... PALS???';
-    window.setIcon(Image.fromBytes(Assets.getBytes('assets/data/modIcon.png')));
-	// the mod icon doesnt work ?? - melty
-	// yes it does - corva
-	// oh you're right actually it does wtf - melty
 }
 
-function update(elapsed) {
+function update(elapsed:Float) {
 
 	// DEFAULT SAVE DATA.. if u wanna fck wit it !!! - Melty
 	if (FlxG.save.data.defaultSaveData == null) {
@@ -61,4 +55,12 @@ function update(elapsed) {
         FlxG.resetState();
 		FlxG.mouse.visible = false;
         }
+}
+
+function preStateSwitch() {
+	WindowUtils.winTitle = window.title = "DudeMan and... PALS???";
+	window.setIcon(Image.fromBytes(Assets.getBytes('data/game/modIcon.png')));
+	// the mod icon doesnt work ?? - melty
+	// yes it does - corva
+	// oh you're right actually it does wtf - melty	
 }
