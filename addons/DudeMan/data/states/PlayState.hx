@@ -2,12 +2,18 @@ import flixel.text.FlxTextBorderStyle;
 
 var ascendSpeed = 0;
 
-function create() {
+function postCreate() {
 
 	for (i in playerStrums.members) 
-		i.x -= 21;      	
+		i.x -= 21;     	
 	for (i in cpuStrums.members) 
 		i.x -= 21; 
+
+	if (PlayState.SONG.meta.noteType == "BandW") {
+		for (i in playerStrums.members) {
+			i.y = -10; 
+		}
+	}
 
 	if (FlxG.save.data.downscroll == true) {
 		downscroll = true;
@@ -51,6 +57,12 @@ function create() {
 }
 
 function update() {
+
+	if (PlayState.SONG.meta.noteType == "BandW" && playerStrums.members.y != -10) {
+		for (i in playerStrums.members) {
+			i.y = -10; 
+		}
+	}
 
 	if (FlxG.save.data.ascend ) {
 		ascendSpeed += 0.000075;
