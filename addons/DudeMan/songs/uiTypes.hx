@@ -180,7 +180,7 @@ function postCreate() {
 		accText.screenCenter(FlxAxes.X);
 		accText.x -= 200; 
 		accText.antialiasing = false;
-		insert(6, accText);
+		insert(4, accText);
 
 		scoreText = new FlxText();
 		scoreText.cameras = [camHUD];
@@ -191,14 +191,14 @@ function postCreate() {
 		scoreText.screenCenter(FlxAxes.X);
 		scoreText.x -= 72;
 		scoreText.antialiasing = false;
-		insert(6, scoreText);
+		insert(5, scoreText);
 
 		scoreToAddText = new FlxText(610, 165);
 		scoreToAddText.cameras = [camHUD];
 		scoreToAddText.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreToAddText.borderSize = 1.25;
 		scoreToAddText.antialiasing = false;
-		insert(8, scoreToAddText);
+		insert(6, scoreToAddText);
 	
 		missesText = new FlxText();
 		missesText.setFormat(Paths.font("COMIC.ttf"), 15, FlxColor.WHITE, "right", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -231,8 +231,11 @@ function postCreate() {
 		}	
 		
 		if (PlayState.SONG.meta.name == "roomed") {
-			for (healthBS in [missesText, scoreText, icon2, icon1, healthheader, healthBar]) {
+			for (healthBS in [missesText, accText, icon2, icon1, healthheader, healthBar]) {
 				healthBS.alpha = 0;
+
+				remove(dudeRating);
+				insert(20, dudeRating);
 			}
 		}
 

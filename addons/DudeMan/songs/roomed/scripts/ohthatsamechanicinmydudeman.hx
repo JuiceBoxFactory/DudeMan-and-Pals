@@ -35,25 +35,25 @@ function create() {
     progheader.cameras = [camHUD];
     progheader.screenCenter(FlxAxes.X);
     progheader.scale.set(hudScale, hudScale);
-    insert(2, progheader);
+    insert(3, progheader);
 
     energyheader = new FlxSprite(1185, 250).loadGraphic(Paths.image('fuckingMechanicUi/roomed/energyMeter'));
     energyheader.antialiasing = false;
     energyheader.cameras = [camHUD];
     energyheader.scale.set(hudScale, hudScale);
-    insert(3, energyheader);
+    insert(1, energyheader);
 
     icon2 = new FlxSprite(progheader.getGraphicMidpoint().x - (-100 / 1.8) + (progheader.width / 2), 650).loadGraphic(Paths.image('fuckingMechanicUi/roomed/doorIcon'));
     icon2.antialiasing = false;
     icon2.cameras = [camHUD];
     icon2.scale.set(hudScale, hudScale);
-    insert(4, icon2);
+    insert(11, icon2);
 
     icon1 = new FlxSprite(progheader.getGraphicMidpoint().x - (200 / 2.2) - (progheader.width / 2), 635).loadGraphic(Paths.image('fuckingMechanicUi/roomed/daxIcon'));
     icon1.antialiasing = false;
     icon1.cameras = [camHUD];
     icon1.scale.set(hudScale, hudScale);
-    insert(5, icon1);
+    insert(10, icon1);
 
     progBar = new FlxBar(progheader.x - 80, progheader.y, FlxBar.FILL_LEFT_TO_RIGHT, Std.int(progheader.width * 1.45), Std.int(progheader.height * 1.25));
     progBar.scrollFactor.set();
