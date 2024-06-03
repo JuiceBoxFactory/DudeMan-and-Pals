@@ -4,6 +4,9 @@ import lime.graphics.Image;
 static var initialized:Bool = false;
 
 function new() {
+
+	FlxG.mouse.visible = false;
+
     window.title = 'DudeMan and... PALS???';
     window.setIcon(Image.fromBytes(Assets.getBytes('assets/data/modIcon.png')));
 	// the mod icon doesnt work ?? - melty
@@ -12,8 +15,6 @@ function new() {
 }
 
 function update(elapsed) {
-
-	FlxG.mouse.visible = false;
 
 	// DEFAULT SAVE DATA.. if u wanna fck wit it !!! - Melty
 	if (FlxG.save.data.defaultSaveData == null) {

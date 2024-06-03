@@ -22,7 +22,7 @@ import flixel.util.FlxSave;
 var mainArray:Array<String> = ["dude", "overstimulation", "fang"];
 var extrasArray:Array<String> = ["lemon", "slashgen", "die", "blobs", "kockbuddies", "oleum"];
 var palsArray:Array<String> = ["skyblue", "misconduct", "esex", "sizssoers", "lighthouse", "roomed"];
-var coversArray:Array<String> = ["obituary"];
+var coversArray:Array<String> = ["obituary", "meet-the-project"];
 var devArray:Array<String> = ["pastelfever", "lemon", "whopper", "dude", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange", "obituary", "kockbuddies"];
 var songL:FlxTypedGroup<FlxText> = [];
 var intendedCategory = "VS DUDEMAN";

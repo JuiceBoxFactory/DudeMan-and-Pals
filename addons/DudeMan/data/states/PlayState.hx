@@ -44,9 +44,9 @@ function create() {
 
 	if (FlxG.save.data.middlescroll == true) {
 		for (i in playerStrums.members) 
-		FlxTween.tween(i, {x: i.x -323}, 1, {ease: FlxEase.smootherStepInOut});       	
+		FlxTween.tween(i, {x: i.x -323}, 0.001, {ease: FlxEase.smootherStepInOut});       	
 		for (i in cpuStrums.members) 
-		FlxTween.tween(i, {x: i.x -923}, 1, {ease: FlxEase.smootherStepInOut}); 
+		FlxTween.tween(i, {x: i.x -923}, 0.001, {ease: FlxEase.smootherStepInOut}); 
         }	
 }
 

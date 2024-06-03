@@ -1,0 +1,23 @@
+{
+	"appearStep": 0,
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 129,
+	"noteType": "BandW",
+	"actoresses2": "artist: MeltyKelpy    composer: ?\ncoder: MeltyKelpy    charter: ?",
+	"bio": "DONT FW 46GANG",
+	"singerNames": "46Gang",
+	"actoresses": "artist: MeltyKelpy\nremixer: ?\nOG by: greggreg\ncoder: MeltyKelpy\ncharter: ?\ncover art: MeltyKelpy",
+	"tagline": "DONT FW THE 46GANG",
+	"difficulties": [
+		"Hard"
+	],
+	"needsVoices": false,
+	"parsedColor": -1,
+	"displayName": "Meet The Project",
+	"icon": "Icon",
+	"name": "meet-the-project",
+	"color": "#FFFFFF"
+}

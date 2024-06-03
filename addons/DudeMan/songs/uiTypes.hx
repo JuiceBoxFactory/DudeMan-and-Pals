@@ -18,7 +18,11 @@ var lastComboAccuracy = 0;
 var lastComboNoteAmount = 0;
 var animationPlaying = false;
 var noteRatingJustHit = "";
+var finalTimeCalculated = false;
+var finalTimeMinutes = 0;
+var finalTimeSeconds = 0;
 var comboSection = 0;
+var songStarted = false;
 
 function postCreate() {
 
@@ -31,22 +35,24 @@ function postCreate() {
 	}
 
 	if (PlayState.SONG.meta.noteType != "base") {
-		icon1 = new FlxSprite(605, 585).loadGraphic(Paths.image('icons/'+myPpo));
-		icon1.antialiasing = false;
-		icon1.flipX = true;
-		icon1.cameras = [camHUD];
-		icon1.updateHitbox();
-		insert(4, icon1);
+		if (PlayState.SONG.meta.noteType != "BandW") {
+			icon1 = new FlxSprite(605, 585).loadGraphic(Paths.image('icons/'+myPpo));
+			icon1.antialiasing = false;
+			icon1.flipX = true;
+			icon1.cameras = [camHUD];
+			icon1.updateHitbox();
+			insert(4, icon1);
 
-		icon2 = new FlxSprite(525, 585).loadGraphic(Paths.image('icons/'+myOpp));
-		icon2.antialiasing = false;
-		icon2.cameras = [camHUD];
-		icon2.updateHitbox();
-		insert(5, icon2);
+			icon2 = new FlxSprite(525, 585).loadGraphic(Paths.image('icons/'+myOpp));
+			icon2.antialiasing = false;
+			icon2.cameras = [camHUD];
+			icon2.updateHitbox();
+			insert(5, icon2);
 
-		if (PlayState.SONG.meta.noteType == "serious") {
-			insert(3, healthBar);
-			insert(2, healthBarBG);
+			if (PlayState.SONG.meta.noteType == "serious") {
+				insert(3, healthBar);
+				insert(2, healthBarBG);
+			}
 		}
 	}
 
@@ -129,17 +135,17 @@ function postCreate() {
 		scoreTxt.y += 10;
 	}
 
-	if (PlayState.SONG.meta.noteType == "normal") {
+	if (PlayState.SONG.meta.noteType != "base" && PlayState.SONG.meta.noteType != "serious") {
 
-		if (PlayState.SONG.meta.noteType != "base" && PlayState.SONG.meta.noteType != "serious") {
+		myOpp = dad.getIcon();
+		myPpo = boyfriend.getIcon();
+	
+		for (dumbShits in [iconP1, iconP2, healthBarBG, missesTxt, scoreTxt]) {
+			remove(dumbShits);
+		}
+	}
 
-			myOpp = dad.getIcon();
-			myPpo = boyfriend.getIcon();
-		
-			for (dumbShits in [iconP1, iconP2, healthBarBG, missesTxt, scoreTxt]) {
-				remove(dumbShits);
-			}
-		}	
+	if (PlayState.SONG.meta.noteType == "normal") {	
 	
 		dudeRating = new FlxSprite(-300, -175);	
 		dudeRating.antialiasing = false;
@@ -240,6 +246,52 @@ function postCreate() {
 			cpu.members[i].antialiasing = false;
 		}
 	}
+
+	if (PlayState.SONG.meta.noteType == "BandW") {
+
+		remove(healthBar);
+
+		scoreText = new FlxText(30, 555);
+		scoreText.cameras = [camHUD];
+		scoreText.setFormat(Paths.font("Bahnschrift.ttf"), 35, FlxColor.WHITE, "center");
+		scoreText.updateHitbox();
+		scoreText.antialiasing = false;
+		insert(6, scoreText);
+
+		scoreToAddText = new FlxText(-140, 645, 500);
+		scoreToAddText.cameras = [camHUD];
+		scoreToAddText.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "center");
+		scoreToAddText.antialiasing = false;
+		insert(8, scoreToAddText);
+
+		back = new FlxSprite();
+		back.makeGraphic(6000, 6000, FlxColor.WHITE);
+		back.scrollFactor.set(0, 0);
+		insert(1, back);
+
+		bars = new FlxSprite(0, 0).loadGraphic(Paths.image('game/BWbars'));
+    	bars.antialiasing = false;
+    	bars.cameras = [camHUD];
+    	bars.screenCenter(FlxAxes.X);
+    	bars.updateHitbox();
+    	insert(5, bars);
+
+		scoreAddedIn = new FlxTimer();
+		scoreAddedIn.time = 2;
+		scoreAddedIn.active = false;
+		add(scoreAddedIn);
+
+		if (!FlxG.save.data.middlescroll) {
+			for (i in playerStrums.members) {
+				FlxTween.tween(i, {x: i.x - 323}, 0.001, {ease: FlxEase.smootherStepInOut});
+			}       	
+			for (i in cpuStrums.members) {
+				FlxTween.tween(i, {x: i.x -923}, 0.001, {ease: FlxEase.smootherStepInOut}); 
+			}	
+		}
+
+	}
+
 }
 
 function create() {
@@ -250,14 +302,24 @@ function create() {
 
 	trace("Current ui type is: "+PlayState.SONG.meta.noteType);
 
-	timeTxt = new FlxText(0, 19, 400, "X:XX", 32);
-    timeTxt.setFormat(Paths.font("COMIC.ttf"), 32, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-    timeTxt.scrollFactor.set();
-    timeTxt.alpha = 0;
-    timeTxt.borderColor = 0xFF0F0014;
-    timeTxt.color = 0xFFFBECFF;
-    timeTxt.borderSize = 2;
-    timeTxt.screenCenter(FlxAxes.X);
+	if (PlayState.SONG.meta.noteType != "BandW") {
+		timeTxt = new FlxText(0, 19, 400, "X:XX", 32);
+		timeTxt.setFormat(Paths.font("COMIC.ttf"), 32, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		timeTxt.scrollFactor.set();
+		timeTxt.alpha = 0;
+		timeTxt.borderColor = 0xFF0F0014;
+		timeTxt.color = 0xFFFBECFF;
+		timeTxt.borderSize = 2;
+		timeTxt.screenCenter(FlxAxes.X);
+	}
+	else {
+		timeTxt = new FlxText(870, 32, 400, "X:XX // X:XX", 32);
+		timeTxt.setFormat(Paths.font("Bahnschrift.ttf"), 32, FlxColor.WHITE, "right");
+		timeTxt.scrollFactor.set();
+		timeTxt.alpha = 0;
+		timeTxt.color = 0xFFFFFFFF;
+		timeTxt.borderSize = 2;
+	}
 
     timeBarBG = new FlxSprite();
     timeBarBG.x = timeTxt.x;
@@ -269,7 +331,15 @@ function create() {
 
     timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, FlxBar.FILL_LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), Conductor, 'songPosition', 0, 1);
     timeBar.scrollFactor.set();
-    timeBar.createFilledBar(0xFF0F0014,0xFFFBECFF);
+	if (PlayState.SONG.meta.noteType != "BandW") {
+    	timeBar.createFilledBar(0xFF0F0014,0xFFFBECFF);
+	}
+	else {
+		timeBar.x = 875;
+		timeBar.y = 20;
+		timeBar.scale.set(1, 1.5);
+    	timeBar.createFilledBar(0xFFFFFFFF,0xFF000000);
+	}
     timeBar.numDivisions = 400; //Toned it down to 400 to see what it would look like.
     timeBar.alpha = 0;
     timeBar.value = Conductor.songPosition / Conductor.songDuration;
@@ -290,6 +360,9 @@ function create() {
 }
 
 function onSongStart() {
+
+	songStarted = true;
+
     if (timeBar != null) {
         FlxTween.tween(timeBar, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
     }
@@ -312,12 +385,32 @@ function update(elapsed:Float) {
 		}
 	}
 
-	if (PlayState.SONG.meta.noteType != "serious" && PlayState.SONG.meta.noteType != "base") {
-		
-		myOpp = dad.getIcon();
-		icon2.loadGraphic(Paths.image('icons/'+myOpp));
-		myPpo = boyfriend.getIcon();
-		icon1.loadGraphic(Paths.image('icons/'+myPpo));
+	if (PlayState.SONG.meta.noteType == "BandW") {
+
+		if (curScore < addLerp) {
+			curScore += 200;
+		}
+		if (curScore > addLerp) {
+			curScore = addLerp;
+		}
+
+		if (scoreToAdd > 0) {
+			scoreToAddText.alpha = 1;
+    	    scoreToAddText.text = "+"+scoreToAdd+"\n"+noteRatingJustHit;
+    	}
+		else {
+			scoreToAddText.text = "+"+scoreToAdd+"\n"+noteRatingJustHit;
+			scoreToAddText.alpha = 0;
+		}
+
+		if (scoreToAddText.scale.x > 1 && scoreToAddText.scale.y > 1) {
+			scoreToAddText.scale.x -= 0.025;
+			scoreToAddText.scale.y -= 0.025;
+		}
+
+	}
+
+	if (PlayState.SONG.meta.noteType == "normal" || PlayState.SONG.meta.noteType == "BandW") {
 
 		if (FlxG.save.data.language == 'english') {
 			if (FlxG.save.data.dudeRating == true) {
@@ -326,6 +419,27 @@ function update(elapsed:Float) {
 			else {
 				scoreText.text = ":Coolness:\n"+songScore;
 			}
+		}
+
+		if (FlxG.save.data.language == 'spanish') {
+			if (FlxG.save.data.dudeRating == true) {
+				scoreText.text = ":Frescura:\n"+curScore;
+			}
+			else {
+				scoreText.text = ":Frescura:\n"+songScore;
+			}
+		}
+
+	}
+
+	if (PlayState.SONG.meta.noteType == "normal") {
+		
+		myOpp = dad.getIcon();
+		icon2.loadGraphic(Paths.image('icons/'+myOpp));
+		myPpo = boyfriend.getIcon();
+		icon1.loadGraphic(Paths.image('icons/'+myPpo));
+
+		if (FlxG.save.data.language == 'english') {
 
 			accText.text = "Accuracy: "+CoolUtil.quantize(accuracy * 100, 100)+"%";
 			missesText.text = "Bitches Fumbled: "+misses;
@@ -336,12 +450,6 @@ function update(elapsed:Float) {
 		}
 
 		if (FlxG.save.data.language == 'spanish') {
-			if (FlxG.save.data.dudeRating == true) {
-				scoreText.text = ":Frescura:\n"+curScore;
-			}
-			else {
-				scoreText.text = ":Frescura:\n"+songScore;
-			}
 
 			accText.text = "Exactitud: "+CoolUtil.quantize(accuracy * 100, 100)+"%";
 			missesText.text = "Perras Perdidas: "+misses;
@@ -380,6 +488,11 @@ function update(elapsed:Float) {
 
 	}
 
+	if (PlayState.SONG.meta.noteType == "BandW") {
+		remove(comboGroup);
+
+	}
+
 	if (PlayState.SONG.meta.noteType == "normal") {
 
 		for (textY in [tagLine, singerNames, actoresses]) {
@@ -404,21 +517,40 @@ function update(elapsed:Float) {
 
 	}
 
-    if (inst != null && timeBar != null && timeBar.max != inst.length) {
-        timeBar.setRange(0, Math.max(1, inst.length));
-    }
+	
+	if (PlayState.SONG.meta.noteType == "BandW") {
+		timeBarBG.alpha = 0;
+	}
+
+	if (inst != null && timeBar != null && timeBar.max != inst.length) {
+	    timeBar.setRange(0, Math.max(1, inst.length));
+	}
 
     if (inst != null && timeTxt != null) {
-        var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
-        var seconds = CoolUtil.addZeros(Std.string(timeRemaining % 60), 2);
-        var minutes = Std.int(timeRemaining / 60);
-        timeTxt.text = minutes + ":" + seconds;
+
+		if (PlayState.SONG.meta.noteType != "BandW") {
+			var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
+        	var seconds = CoolUtil.addZeros(Std.string(timeRemaining % 60), 2);
+        	var minutes = Std.int(timeRemaining / 60);
+			timeTxt.text = minutes + ":" + seconds;
+		}
+		else {
+			var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
+			var seconds = CoolUtil.addZeros(Std.string(timeRemaining % 60), 2);
+			var minutes = Std.int(timeRemaining / 60);
+			if (finalTimeCalculated == false && songStarted == true) {
+        		finalTimeSeconds = seconds;
+        		finalTimeMinutes = minutes;
+				finalTimeCalculated = true;
+			}
+			timeTxt.text = minutes + ":" + seconds + " // " + finalTimeMinutes + ":" + finalTimeSeconds;
+		}
     }
 }
 
 function beatHit() {
 
-	if (PlayState.SONG.meta.noteType != "serious" && PlayState.SONG.meta.noteType != "base") {
+	if (PlayState.SONG.meta.noteType != "serious" && PlayState.SONG.meta.noteType != "base" && PlayState.SONG.meta.noteType != "BandW") {
 		for (obj in [icon1, icon2]) {
 			obj.scale.set(1.1, 1.1);
 			FlxTween.tween(obj.scale, {x: 1}, 0.25);
@@ -488,6 +620,9 @@ function onNoteCreation(e) {
 	if (PlayState.SONG.meta.noteType == "base") {
     	e.noteSprite = "game/notes/baseGame";
 	}
+	if (PlayState.SONG.meta.noteType == "BandW") {
+    	e.noteSprite = "game/notes/BANDW";
+	}
 
 }
 
@@ -499,6 +634,10 @@ function onStrumCreation(e) {
 
 	if (PlayState.SONG.meta.noteType == "base") {
     	e.sprite = "game/notes/baseGame";
+	}
+
+	if (PlayState.SONG.meta.noteType == "BandW") {
+    	e.sprite = "game/notes/BANDW";
 	}
 
 }
@@ -537,7 +676,7 @@ function onNoteHit(event) {
 
 function onPlayerMiss() {
 
-	if (PlayState.SONG.meta.noteType == "normal" && FlxG.save.data.dudeRating == true) {
+	if (PlayState.SONG.meta.noteType == "normal" && FlxG.save.data.dudeRating == true || PlayState.SONG.meta.noteType == "BandW" && FlxG.save.data.dudeRating == true) {
 		lastComboNoteAmount += 1;
 		
 		scoreToAdd -= 10;
@@ -547,7 +686,9 @@ function onPlayerMiss() {
 			addLerp = addLerp + scoreToAdd;
 			scoreToAdd = 0;
 			if (animationPlaying == false) {	
-				comboRating();
+				if (PlayState.SONG.meta.noteType == "normal") {
+					comboRating();
+				}
 			}
 		});
 	}
@@ -586,7 +727,7 @@ function comboRating() {
 
 function onPlayerHit(e){
 
-	if (PlayState.SONG.meta.noteType == "normal" && FlxG.save.data.dudeRating == true) {
+	if (PlayState.SONG.meta.noteType == "normal" && FlxG.save.data.dudeRating == true || PlayState.SONG.meta.noteType == "BandW" && FlxG.save.data.dudeRating == true) {
 
 		noteRating = e.accuracy;
 		scoreToAddText.scale.set(1.15, 1.15);
@@ -636,13 +777,15 @@ function onPlayerHit(e){
 			addLerp = addLerp + scoreToAdd;
 			scoreToAdd = 0;
 			if (animationPlaying == false) {	
-				comboRating();
+				if (PlayState.SONG.meta.noteType == "normal") {
+					comboRating();
+				}
 			}
 		});
 	}
 
 	if (FlxG.save.data.notebounce == true && !player.cpu && scared == false) {
-		if (PlayState.SONG.meta.noteType != "base" && PlayState.SONG.meta.noteType != "serious") {
+		if (PlayState.SONG.meta.noteType != "base" && PlayState.SONG.meta.noteType != "serious"&& PlayState.SONG.meta.noteType != "BandW") {
    			if (e.isSustainNote) return;
 			   	if (downscroll) {
 					playerStrums.members[e.direction].y -= 7;

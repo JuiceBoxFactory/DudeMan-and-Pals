@@ -1,0 +1,16 @@
+<!DOCTYPE codename-engine-character>
+<character x="200" icon="cringeDX" camx="75" y="70" isGF="false" camy="85" color="#FFF354" flipX="true" isPlayer="true" antialiasing="false" sprite="46gang">
+	<anim x="0" loop="false" y="0" fps="12" anim="idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="up-both" name="singUP-both"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="left-both" name="singLEFT-both"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="right-both" name="singRIGHT-both"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="down-both" name="singDOWN-both"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="up-sci" name="singUP-sci"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="left-sci" name="singLEFT-sci"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="right-sci" name="singRIGHT-sci"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="down-sci" name="singDOWN-sci"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="up-dude" name="singUP-dude"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="left-dude" name="singLEFT-dude"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="right-dude" name="singRIGHT-dude"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="down-dude" name="singDOWN-dude"/>
+</character>

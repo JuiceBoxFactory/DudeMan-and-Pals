@@ -5,4 +5,6 @@
 	<anim x="0" loop="false" y="0" fps="12" anim="c right" name="singLEFT"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="c left" name="singRIGHT"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="c down" name="singDOWN"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="c run" name="run"/>
+	<anim x="0" loop="false" y="0" fps="10" anim="c strokes" name="push"/>
 </character>

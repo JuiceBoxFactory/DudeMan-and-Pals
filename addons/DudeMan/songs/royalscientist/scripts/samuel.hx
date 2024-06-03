@@ -1,4 +1,5 @@
 import flixel.text.FlxTextBorderStyle;
+import openfl.geom.ColorTransform;
 
 var time = 0;
 
@@ -30,5 +31,20 @@ function update(delta:Float) {
 
 function stepHit(curStep:Int) { 
     switch (curStep) {
+
+		case 1408:
+			FlxTween.tween(boyfriend, {x: 3000}, 0.8);
+
+		case 1416:
+			FlxG.camera.flash(0xFFFFFFFF, 1);
+			FlxTween.tween(dad, {x: 2500}, 0.4, {ease:FlxEase.quartOut});
+			FlxTween.tween(dad, {angle: 360}, 0.6, {ease:FlxEase.quartOut});
+
+		case 1420:
+			FlxTween.tween(dad, {y: 800}, 0.8, {ease:FlxEase.backIn});
+
+		case 1424:
+			FlxTween.tween(camHUD, {alpha: 0}, 0.7);
+
 	}
 }
