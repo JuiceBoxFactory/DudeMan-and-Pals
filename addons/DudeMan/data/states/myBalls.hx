@@ -11,6 +11,8 @@ var pauseCam = new FlxCamera();
 
 var bg:FlxSprite;
 
+var thewenis:FlxBackdrop;
+
 var texts:Array<FlxText> = [];
 
 function create(event) {
@@ -92,6 +94,16 @@ function create(event) {
 	backDoor.cameras = [pauseCam];
 	add(backDoor);
 
+	thewenis = new FlxBackdrop(Paths.image('johnpork/patterns'),FlxAxes.X);
+	thewenis.alpha = 1;
+	thewenis.velocity.x = 10;
+	thewenis.x = FlxG.random.float(400,1200);
+	thewenis.alpha = 0.0001;
+	add(thewenis);
+
+	for(sprite in [thewenis])
+		FlxTween.tween(sprite, {alpha: 0.3}, 2);
+
 	if (FlxG.save.data.language == "english") {
 		pausedText.text = "Paused";
 		imResume.text = "Resume";
@@ -114,6 +126,7 @@ function create(event) {
 
 	cameras = [pauseCam];
 
+	window.title = "DudeMan and... PALS??? - Currently Playing: " +PlayState.SONG.meta.displayName + " - PAUSED";
 }
 
 function confText(text) {
