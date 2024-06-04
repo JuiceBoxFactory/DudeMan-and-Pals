@@ -5,7 +5,7 @@ import flixel.util.FlxAxes;
 import funkin.game.PlayState;
 import flixel.util.FlxSave;
 import flixel.addons.display.FlxBackdrop;
-import funkin.game.PlayState;
+import funkin.backend.utils.DiscordUtil;
 
 var pauseCam = new FlxCamera();
 
@@ -15,11 +15,27 @@ var thewenis:FlxBackdrop;
 
 var texts:Array<FlxText> = [];
 
+var pauseThings:Array<FlxText> = [
+	"ur a bad person, i hope u know that.",
+	"you're not very paused at this, are you?",
+	"unpause my FUCKING mod",
+	"ooohhh thatssss my pause.,., being mod"
+
+];
+
+var theOne = pauseThings[FlxG.random.int(0, 3)];
+
 function create(event) {
 	// cancel default pause menu!!
 	event.cancel();
 
 	cameras = [];
+
+	DiscordUtil.changePresenceAdvanced({
+		details: "Oh. thats you pausing my mod ("+PlayState.SONG.meta.displayName+")",
+		state: ""+theOne,
+		largeImageKey: "icon"
+	});
 
 	FlxG.cameras.add(pauseCam, false);
 	pauseCam.bgColor = 0x4419002B;

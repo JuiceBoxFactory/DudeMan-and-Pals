@@ -30,6 +30,7 @@ var tipText:Array<String> = [
 "Yo! Really think so?",
 "That isn't very Chuddy Buddy !",
 "kill everyone",
+
 ];
 var tipTextChosen = "null";
 var highestNum = 22;
