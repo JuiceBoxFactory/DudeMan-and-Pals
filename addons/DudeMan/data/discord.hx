@@ -2,10 +2,8 @@ import funkin.backend.utils.DiscordUtil;
 
 function onReady() {
 	DiscordUtil.changePresenceAdvanced({
-		state: "Fortnite",
-		details: "Battle Royale - In Lobby",
-		smallImageText: "Made you look haha",
-		smallImageKey: "icon",
+		details: "Play My Mod",
+		state: "pls",
 		largeImageKey: "icon"
 	});
 }
@@ -13,8 +11,10 @@ function onReady() {
 function onDiscordPresenceUpdate(e) {
 	var data = e.presence;
 
+	preStateSwitch();
+
 	if(data.button1Label == null)
-		data.button1Label = "Join us <3";
+		data.button1Label = "wait follow our twitter pllssss";
 	if(data.button1Url == null)
-		data.button1Url = "https://discord.gg/2NTCdsQvx4";
+		data.button1Url = "https://x.com/JuiceBoxFactory";
 }

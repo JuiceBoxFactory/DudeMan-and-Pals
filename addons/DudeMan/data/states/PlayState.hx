@@ -1,8 +1,17 @@
 import flixel.text.FlxTextBorderStyle;
+import funkin.backend.utils.DiscordUtil;
 
 var ascendSpeed = 0;
 
 function postCreate() {
+
+	window.title = "DudeMan and... PALS??? - Currently Playing: "+PlayState.SONG.meta.displayName;
+
+	DiscordUtil.changePresenceAdvanced({
+		details: "Playing hit song: "+PlayState.SONG.meta.displayName,
+		state: '"'+PlayState.SONG.meta.tagline+'"',
+		largeImageKey: "icon"
+	});
 
 	for (i in playerStrums.members) 
 		i.x -= 21;     	

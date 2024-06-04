@@ -1,6 +1,7 @@
 import funkin.backend.utils.NativeAPI;
 import lime.graphics.Image;
-
+import funkin.backend.utils.DiscordUtil;
+import funkin.backend.utils.WindowUtils;
 static var initialized:Bool = false;
 
 function new() {
@@ -59,7 +60,14 @@ function update(elapsed:Float) {
 
 function preStateSwitch() {
 	WindowUtils.winTitle = window.title = "DudeMan and... PALS???";
-	window.setIcon(Image.fromBytes(Assets.getBytes('data/game/modIcon.png')));
+	window.setIcon(Image.fromBytes(Assets.getBytes('images/modIcon.png')));
+
+	DiscordUtil.changePresenceAdvanced({
+		details: "Play My Mod",
+		state: "pls",
+		largeImageKey: "icon"
+	});
+
 	// the mod icon doesnt work ?? - melty
 	// yes it does - corva
 	// oh you're right actually it does wtf - melty	
