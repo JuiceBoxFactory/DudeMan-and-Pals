@@ -63,17 +63,31 @@ function create() {
 	for (i in 0...songs.length)	
         {
 
+            camPos = new FlxSprite();
+            camPos.loadGraphic(Paths.image("freeplay/cameraFollow"));
+            camPos.x = (1280 * i) - 88;
+			camPos.y = 12;
+            camPos.cameras = [uiCamera];
+			songL.push(camPos);
+            add(camPos);
+
             image = new FlxSprite();
             image.loadGraphic(Paths.image("freeplay/coolsongthings/"+songs[i].displayName));
-            image.x = (1280 * i) + 30;
+            image.x = (1280 * i) - 28;
+			image.y = 12;
             image.cameras = [uiCamera];
-            songL.push(image);
             add(image);
+
+            border = new FlxSprite();
+            border.loadGraphic(Paths.image("freeplay/iconBorder"));
+            border.x = (1280 * i) - 40;
+            border.cameras = [uiCamera];
+            add(border);
 
             info1 = new FlxText();
             info1.text = songs[i].displayName;
             info1.setFormat(Paths.font("COMIC.ttf"), 35, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
-            info1.x = (1280 * i) + 403;
+            info1.x = (1280 * i) + 333;
             info1.y += -9;
             info1.cameras = [uiCamera];
             info1.color = 0xFFFFFFFF;
@@ -85,7 +99,7 @@ function create() {
             info2 = new FlxText(0, 0, 350, "im goated", 0);
             info2.text = songs[i].bio;
             info2.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
-            info2.x = (1280 * i) + 403;
+            info2.x = (1280 * i) + 333;
             info2.y += 35;
             info2.cameras = [uiCamera]; 
             info2.color = 0xFFFFFFFF;
@@ -94,10 +108,10 @@ function create() {
             info2.borderSize = 2;
             add(info2);
 
-            info3 = new FlxText(0, 0, 400, "im goated", 0);
+            info3 = new FlxText(0, 0, 900, "im goated", 0);
             info3.text = songs[i].actoresses;
             info3.setFormat(Paths.font("COMIC.ttf"), 17, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
-            info3.x = (1280 * i) + 403;
+            info3.x = (1280 * i) + 333;
             info3.y += 222;
             info3.cameras = [uiCamera]; 
             info3.color = 0xFFFFFFFF;
@@ -141,7 +155,7 @@ function postCreate() {
 	add(arrows);
 
 	waitImGoated = new FlxText(0, 225);
-	waitImGoated.text = "SCORE: NULL\nCATEGORY: NULL";
+	waitImGoated.text = "SCORE: NULL";
 	waitImGoated.setFormat(Paths.font("COMIC.ttf"), 35, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
 	waitImGoated.color = 0xFFFFFFFF;
 	waitImGoated.screenCenter(FlxAxes.X);

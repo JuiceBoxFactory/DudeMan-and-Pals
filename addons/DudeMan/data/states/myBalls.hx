@@ -152,6 +152,7 @@ function confText(text) {
 }
 
 function destroy() {
+	window.title = "DudeMan and... PALS??? - Currently Playing: " + PlayState.SONG.meta.displayName;
 	FlxG.cameras.remove(pauseCam);
 }
 
@@ -227,7 +228,7 @@ function update(elapsed) {
 				selectOption();
 			}});
 		} 
-		
+
 		else if (option == "Change Options") {
 			FlxG.save.data.wasJustInPause = true;
 			FlxG.switchState(new ModState("DudeOptionsState"));
