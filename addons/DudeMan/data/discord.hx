@@ -11,8 +11,6 @@ function onReady() {
 function onDiscordPresenceUpdate(e) {
 	var data = e.presence;
 
-	preStateSwitch();
-
 	if(data.button1Label == null)
 		data.button1Label = "wait follow our twitter pllssss";
 	if(data.button1Url == null)

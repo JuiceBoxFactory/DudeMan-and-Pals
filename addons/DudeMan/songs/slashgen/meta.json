@@ -1,5 +1,6 @@
 {
 	"bio": "Hubba Bubba Max",
+	"tagline": "Hubba Bubba Max",
 	"opponentModeAllowed": false,
 	"icon": "Icon",
 	"difficulties": [
@@ -10,7 +11,7 @@
 	"name": "slashgen",
 	"coopAllowed": false,
 	"stepsPerBeat": 4,
-	"displayName": "Slash Gen",
+	"displayName": "Slash-Gen",
 	"category": "CHARACTER SONGS",
 	"beatsPerMesure": 4,
 	"beatsPerMeasure": 4,

@@ -1,0 +1,23 @@
+{
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"beatsPerMesure": 4,
+	"displayName": "EvilMan",
+	"category": "DAX SHAPED DUEL",
+	"name": "evilman",
+	"bio": "hey guys. its me. dudeman d-side.",
+	"actoresses": "artist: MeltyKelpy?\ncomposer: NullFrequency\ncoder: MeltyKelpy\ncharter: NullFrequency\ncover art: NullFrequency",
+	"tagline": "hey guys. its me. dudeman d-side.",
+	"singerNames": "naMeduD Vs Bitch",
+	"actoresses2": "artist: MeltyKelpy?    composer: NullFrequency\ncoder: MeltyKelpy    charter: NullFrequency",
+    "appearStep": 0,
+	"bpm": 184,
+	"difficulties": [
+		"Hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -13893888,
+	"icon": "Icon",
+	"color": "#2BFF00"
+}

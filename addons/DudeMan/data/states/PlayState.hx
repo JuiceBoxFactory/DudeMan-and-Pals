@@ -2,15 +2,20 @@ import flixel.text.FlxTextBorderStyle;
 import funkin.backend.utils.DiscordUtil;
 
 var ascendSpeed = 0;
+var iconName = ""+PlayState.SONG.meta.displayName;
 
 function postCreate() {
 
 	window.title = "DudeMan and... PALS??? - Currently Playing: "+PlayState.SONG.meta.displayName;
 
+	iconName = iconName.toLowerCase(PlayState.SONG.meta.displayName);
+
+	trace(iconName);
+
 	DiscordUtil.changePresenceAdvanced({
 		details: "Playing hit song: "+PlayState.SONG.meta.displayName,
 		state: '"'+PlayState.SONG.meta.tagline+'"',
-		largeImageKey: "icon"
+		largeImageKey: iconName
 	});
 
 	for (i in playerStrums.members) 
@@ -59,9 +64,9 @@ function postCreate() {
 
 	if (FlxG.save.data.middlescroll == true) {
 		for (i in playerStrums.members) 
-		FlxTween.tween(i, {x: i.x -323}, 0.001, {ease: FlxEase.smootherStepInOut});       	
+			FlxTween.tween(i, {x: i.x -323}, 0.001, {ease: FlxEase.smootherStepInOut});       	
 		for (i in cpuStrums.members) 
-		FlxTween.tween(i, {x: i.x -923}, 0.001, {ease: FlxEase.smootherStepInOut}); 
+			FlxTween.tween(i, {x: i.x -923}, 0.001, {ease: FlxEase.smootherStepInOut}); 
         }	
 }
 

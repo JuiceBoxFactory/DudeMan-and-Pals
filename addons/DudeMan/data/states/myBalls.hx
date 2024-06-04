@@ -24,6 +24,7 @@ var pauseThings:Array<FlxText> = [
 ];
 
 var theOne = pauseThings[FlxG.random.int(0, 3)];
+var iconName = ""+PlayState.SONG.meta.displayName;
 
 function create(event) {
 	// cancel default pause menu!!
@@ -31,10 +32,12 @@ function create(event) {
 
 	cameras = [];
 
+	iconName = iconName.toLowerCase(PlayState.SONG.meta.displayName);
+
 	DiscordUtil.changePresenceAdvanced({
 		details: "Oh. thats you pausing my mod ("+PlayState.SONG.meta.displayName+")",
 		state: ""+theOne,
-		largeImageKey: "icon"
+		largeImageKey: iconName
 	});
 
 	FlxG.cameras.add(pauseCam, false);
