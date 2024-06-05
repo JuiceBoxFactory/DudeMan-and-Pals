@@ -100,18 +100,18 @@ function onDadHit(event) {
 
 function stepHit(curStep:Int) { 
     switch (curStep) {
-        case 667:
-    FlxTween.tween(white, {alpha: 1}, 1.6, {ease: FlxEase.circOut});
-    FlxTween.tween(logo, {y: 200}, 1.6, {ease: FlxEase.circOut});
-        case 689:
+        case 632:
+    FlxTween.tween(white, {alpha: 1}, 0.7, {ease: FlxEase.circOut});
+    FlxTween.tween(logo, {y: 200}, 0.7, {ease: FlxEase.circOut});
+        case 640:
     soup.alpha = 1;
     text.alpha = 1;
     FlxTween.angle(logo, logo.angle, logo.angle - 360, 1, {ease: FlxEase.circOut});      
     FlxTween.tween(logo, {y: 1000}, 1.2, {ease: FlxEase.circIn});
-        case 691:
+        case 642:
     remove(dad);
     remove(boyfriend);
-        case 693:
+        case 646:
     ground.alpha = 0;
     backdrop.alpha = 0;
     FlxTween.tween(white, {alpha: 0}, 1.2, {ease: FlxEase.circOut});
