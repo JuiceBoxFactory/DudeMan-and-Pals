@@ -1,8 +1,12 @@
 <!DOCTYPE codename-engine-character>
-<character x="600" icon="dudeman" camx="-150" y="70" isGF="false" camy="30" color="#FFFFFF" isPlayer="false" antialiasing="false" sprite="strokemypenis">
+<character x="600" icon="dudeman" camx="-150" y="155" isGF="false" camy="30" color="#FFFFFF" isPlayer="false" antialiasing="false" sprite="strokemypenis">
 	<anim x="0" loop="false" y="0" fps="12" anim="wd idle" name="idle"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="wd up" name="singUP"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="wd left" name="singLEFT"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="wd right" name="singRIGHT"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="wd down" name="singDOWN"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="wd Aup" name="singUP-alt"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="wd Aleft" name="singLEFT-alt"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="wd Aright" name="singRIGHT-alt"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="wd Adown" name="singDOWN-alt"/>
 </character>
