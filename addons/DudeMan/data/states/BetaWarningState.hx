@@ -39,8 +39,6 @@ function postUpdate() {
         FlxG.save.data.language = null;
     }
 
-    trace(FlxG.save.data.language);
-
     if (FlxG.save.data.language == null) {
         FlxG.switchState(new ModState("DudeBrandLanguagePicker"));
         trace('hey buddy');

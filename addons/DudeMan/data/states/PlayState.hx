@@ -12,11 +12,20 @@ function postCreate() {
 
 	trace(iconName);
 
-	DiscordUtil.changePresenceAdvanced({
-		details: "Playing hit song: "+PlayState.SONG.meta.displayName,
-		state: '"'+PlayState.SONG.meta.tagline+'"',
-		largeImageKey: iconName
-	});
+	if (PlayState.SONG.meta.name != "obituary") {
+		DiscordUtil.changePresenceAdvanced({
+			details: "Playing hit song: "+PlayState.SONG.meta.displayName,
+			state: '"'+PlayState.SONG.meta.tagline+'"',
+			largeImageKey: iconName
+		});
+	}
+	else {
+		DiscordUtil.changePresenceAdvanced({
+			details: "Playing hit song: "+PlayState.SONG.meta.displayName,
+			state: '" oooohhh thatsss kathy "',
+			largeImageKey: iconName
+		});
+	}
 
 	for (i in playerStrums.members) 
 		i.x -= 21;     	

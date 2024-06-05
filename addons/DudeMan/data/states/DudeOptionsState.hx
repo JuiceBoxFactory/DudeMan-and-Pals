@@ -21,6 +21,7 @@ import flixel.util.FlxTimer;
 import flixel.FlxCamera;
 import flixel.util.FlxSave;
 import flixel.util.FlxTimer;
+import funkin.backend.utils.DiscordUtil;
 
 var Selected1 = 0;
 var SelectedGameplay = 0;
@@ -35,6 +36,12 @@ var popUpOPEN = false;
 var languageSelection = 0;
 
 function create() {
+
+	DiscordUtil.changePresenceAdvanced({
+		details: "IN: Options",
+		state: "This goat changin their settings <3",
+		largeImageKey: "icon"
+	});
 
 // DEFAULT SETTINGS WHEN YOU FIRST OPEN THE GAME
 	if (FlxG.save.data.wheresGarfield == null) {

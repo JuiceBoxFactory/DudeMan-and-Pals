@@ -6,6 +6,7 @@ import flixel.util.FlxSave;
 import flixel.FlxCamera;
 import flixel.util.FlxTimer;
 import flixel.text.FlxText;
+import funkin.backend.utils.DiscordUtil;
 
 var mails = new FlxCamera(100, 100, 285, 10000);
 var mail = new FlxCamera(450, 100, 770, 620);
@@ -30,6 +31,12 @@ var themeScroll = 0;
 var shit = new CustomShader("shit");
 
 function create() {
+
+	DiscordUtil.changePresenceAdvanced({
+		details: "Reading DudeMails",
+		state: "READ IT NOW",
+		largeImageKey: "icon"
+	});
 
     FlxG.sound.playMusic(Paths.music('dudemailTunes'), 1, true);
 

@@ -1,3 +1,6 @@
+import flixel.util.FlxSave;
+import funkin.backend.utils.DiscordUtil;
+
 function create() {
 
 //	boyfriend.scale.set(2.3,2.3);
@@ -16,7 +19,7 @@ function create() {
 	insert(40, logo);
 	
 
-bgImEvil = new FlxSprite().loadGraphic(Paths.image('backdrop/FREE5ME/obituarybg'));
+    bgImEvil = new FlxSprite().loadGraphic(Paths.image('backdrop/FREE5ME/obituarybg'));
     bgImEvil.alpha = 0;
     bgImEvil.scale.set(1.3,1.3);
     insert(4, bgImEvil);
@@ -26,13 +29,13 @@ bgImEvil = new FlxSprite().loadGraphic(Paths.image('backdrop/FREE5ME/obituarybg'
     couchImEvil.scale.set(1.3,1.3);
     insert(6, couchImEvil);
 
-    FlxG.camera.followLerp = 0;
-    camGame.scroll.x = 250;
+    black = new FlxSprite(-300, 0).loadGraphic(Paths.image('black'));
+    black.alpha = 1;
+    black.scale.set(1.5, 1.5);
+    insert(60, black);
+
 }
-function postCreate() {
-    FlxG.camera.followLerp = 0;
-    camGame.scroll.x = 250;
-}
+
 function onDadHit(event) {
 	if (881 < curStep) {
 		if (health > 0.1) {
@@ -44,14 +47,24 @@ function onDadHit(event) {
 function stepHit(curStep:Int) { 
     switch (curStep) {
         case 0:
+            FlxTween.tween(black, {alpha: 0}, 1.5, {ease:FlxEase.quartOut});	
+            camGame.scroll.x = 250;
+            FlxG.camera.followLerp = 0;
 			FlxTween.tween(logo, {y: 110}, 2, {ease:FlxEase.quartOut});	
             new FlxTimer().start(3, function(timer) {
                 FlxTween.tween(logo, {y: -1200}, 2, {ease:FlxEase.quartIn});
             });
 case 1020:
-	  FlxG.camera.followLerp = 0.04;
-          bgImEvil.alpha = 1;
-          couchImEvil.alpha = 1;
+        FlxG.save.data.obituaryThing = true;
+	    FlxG.camera.followLerp = 0.04;
+        bgImEvil.alpha = 1;
+        couchImEvil.alpha = 1;
+        window.title = "DudeMan and... PALS??? - Currently Playing: Obituary";
+        DiscordUtil.changePresenceAdvanced({
+            details: "Playing hit song: Obituary",
+            state: '"'+PlayState.SONG.meta.tagline+'"',
+            largeImageKey: "obituary"
+        });
 	}
 }
 

@@ -13,6 +13,7 @@ function update(elapsed:Float) {
 
 	// DEFAULT SAVE DATA.. if u wanna fck wit it !!! - Melty
 	if (FlxG.save.data.defaultSaveData == null) {
+		FlxG.save.data.obituaryThing = null; // this just makes the obituary shit change lol
 		FlxG.save.data.selectorButtonsUnlocked = 3; // max is 5, however you can only unlock up to 4.... >:] ( its just a scrapped thing, doesnt do anything )
 		FlxG.save.data.dudemailsUnlocked = 0; // max is [number will be put here later], however you only unlock up to [number will be put here later], so fuck around to your hearts content, dataminer ! 
 		FlxG.save.data.language = null; // what do u think it does man

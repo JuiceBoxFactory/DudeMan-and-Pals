@@ -3,11 +3,18 @@ import flixel.util.FlxTimer;
 import flixel.FlxCamera;
 import flixel.util.FlxSave;
 import flixel.text.FlxTextBorderStyle;
+import funkin.backend.utils.DiscordUtil;
 
 var Selected = 0;
 var camPosition = 0;
 
 function create() {
+
+	DiscordUtil.changePresenceAdvanced({
+		details: "IN: The StoryMenu",
+		state: "This goat in my story menu <3",
+		largeImageKey: "icon"
+	});
 
 	uiCamera = new FlxCamera(0, 0, 1280, 720);
 	uiCamera.bgColor = FlxColor.TRANSPARENT;

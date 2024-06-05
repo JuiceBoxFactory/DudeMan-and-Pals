@@ -18,16 +18,23 @@ import flixel.FlxCamera;
 import flixel.addons.display.FlxBackdrop;
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxSave;
+import funkin.backend.utils.DiscordUtil;
 
 var mainArray:Array<String> = ["dude", "overstimulation", "fang"];
 var extrasArray:Array<String> = ["evilman", "lemon", "slashgen", "die", "blobs", "kockbuddies", "oleum"];
 var palsArray:Array<String> = ["pastelfever", "skyblue", "misconduct", "esex", "sizssoers", "lighthouse", "roomed"];
-var coversArray:Array<String> = ["obituary", "meet-the-project"];
+var coversArray:Array<String> = ["obituary", "meet-your-project"];
 var devArray:Array<String> = ["pastelfever", "lemon", "whopper", "dude", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange", "obituary", "kockbuddies"];
 var songL:FlxTypedGroup<FlxText> = [];
 var intendedCategory = "VS DUDEMAN";
 
 function create() {
+
+	DiscordUtil.changePresenceAdvanced({
+		details: "IN: Freeplay",
+		state: "This goat playin my mod <3",
+		largeImageKey: "icon"
+	});
 
 	canSelect = false;
 
@@ -71,12 +78,22 @@ function create() {
 			songL.push(camPos);
             add(camPos);
 
-            image = new FlxSprite();
-            image.loadGraphic(Paths.image("freeplay/coolsongthings/"+songs[i].displayName));
-            image.x = (1280 * i) - 28;
-			image.y = 12;
-            image.cameras = [uiCamera];
-            add(image);
+			if (FlxG.save.data.sectionselected == 3 && i == 0 && FlxG.save.data.obituaryThing == true) {
+				image = new FlxSprite();
+            	image.loadGraphic(Paths.image("freeplay/coolsongthings/obituary"));
+            	image.x = (1280 * i) - 28;
+				image.y = 12;
+            	image.cameras = [uiCamera];
+            	add(image);
+			}
+			else {
+            	image = new FlxSprite();
+            	image.loadGraphic(Paths.image("freeplay/coolsongthings/"+songs[i].displayName));
+            	image.x = (1280 * i) - 28;
+				image.y = 12;
+            	image.cameras = [uiCamera];
+            	add(image);
+			}
 
             border = new FlxSprite();
             border.loadGraphic(Paths.image("freeplay/iconBorder"));
@@ -84,29 +101,59 @@ function create() {
             border.cameras = [uiCamera];
             add(border);
 
-            info1 = new FlxText();
-            info1.text = songs[i].displayName;
-            info1.setFormat(Paths.font("COMIC.ttf"), 35, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
-            info1.x = (1280 * i) + 333;
-            info1.y += -9;
-            info1.cameras = [uiCamera];
-            info1.color = 0xFFFFFFFF;
-            info1.borderColor = 0xFF000000;
-            info1.antialiasing = false;
-            info1.borderSize = 2;
-            add(info1);
+			if (FlxG.save.data.sectionselected == 3 && i == 0 && FlxG.save.data.obituaryThing == true) {
+				info1 = new FlxText();
+				info1.text = "Obituary";
+				info1.setFormat(Paths.font("COMIC.ttf"), 35, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+				info1.x = (1280 * i) + 333;
+				info1.y += -9;
+				info1.cameras = [uiCamera];
+				info1.color = 0xFFFFFFFF;
+				info1.borderColor = 0xFF000000;
+				info1.antialiasing = false;
+				info1.borderSize = 2;
+				add(info1);
+			}
+			else {
+				info1 = new FlxText();
+				info1.text = songs[i].displayName;
+				info1.setFormat(Paths.font("COMIC.ttf"), 35, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+				info1.x = (1280 * i) + 333;
+				info1.y += -9;
+				info1.cameras = [uiCamera];
+				info1.color = 0xFFFFFFFF;
+				info1.borderColor = 0xFF000000;
+				info1.antialiasing = false;
+				info1.borderSize = 2;
+				add(info1);
+			}
 
-            info2 = new FlxText(0, 0, 350, "im goated", 0);
-            info2.text = songs[i].bio;
-            info2.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
-            info2.x = (1280 * i) + 333;
-            info2.y += 35;
-            info2.cameras = [uiCamera]; 
-            info2.color = 0xFFFFFFFF;
-            info2.borderColor = 0xFF000000;
-            info2.antialiasing = false;
-            info2.borderSize = 2;
-            add(info2);
+			if (FlxG.save.data.sectionselected == 3 && i == 0 && FlxG.save.data.obituaryThing == null) {
+				info2 = new FlxText(0, 0, 350, "im goated", 0);
+				info2.text = "oohhhh thats kathy";
+				info2.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+				info2.x = (1280 * i) + 333;
+				info2.y += 35;
+				info2.cameras = [uiCamera]; 
+				info2.color = 0xFFFFFFFF;
+				info2.borderColor = 0xFF000000;
+				info2.antialiasing = false;
+				info2.borderSize = 2;
+				add(info2);
+			}
+			else {
+				info2 = new FlxText(0, 0, 350, "im goated", 0);
+				info2.text = songs[i].bio;
+				info2.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+				info2.x = (1280 * i) + 333;
+				info2.y += 35;
+				info2.cameras = [uiCamera]; 
+				info2.color = 0xFFFFFFFF;
+				info2.borderColor = 0xFF000000;
+				info2.antialiasing = false;
+				info2.borderSize = 2;
+				add(info2);
+			}
 
             info3 = new FlxText(0, 0, 900, "im goated", 0);
             info3.text = songs[i].actoresses;

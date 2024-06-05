@@ -2,12 +2,20 @@ import flixel.util.FlxSave;
 import flixel.addons.display.FlxBackdrop;
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxTimer;
+import funkin.backend.utils.DiscordUtil;
 
 public var sectionselected;
 var Selected = 0;
 var chars = 0;
 
 function create() {
+
+	DiscordUtil.changePresenceAdvanced({
+		details: "IN: The Gallery",
+		state: "This goat browsing my gallery",
+		largeImageKey: "icon"
+	});
+
 
 	chars = FlxG.random.int(0,1);
 

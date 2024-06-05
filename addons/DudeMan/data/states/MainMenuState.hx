@@ -1,9 +1,17 @@
 import funkin.options.OptionsMenu;
 import flixel.addons.display.FlxBackdrop;
+import funkin.backend.utils.DiscordUtil;
 
 var SelectedButton = 0;
 
 function postCreate(){
+
+	DiscordUtil.changePresenceAdvanced({
+		details: "IN: The MainMenu",
+		state: "This goat in my main menu <3",
+		largeImageKey: "icon"
+	});
+
     magenta.destroy();
 
 	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg')); // second argument: FlxAxes is required to determinate in what axes the sprite should be repeated, default to XY

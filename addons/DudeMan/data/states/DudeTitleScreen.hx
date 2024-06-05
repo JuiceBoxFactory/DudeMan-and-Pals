@@ -4,6 +4,7 @@ import flixel.addons.display.FlxBackdrop;
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxTimer;
 import flixel.util.FlxSave;
+import funkin.backend.utils.DiscordUtil;
 
 var tipText:Array<String> = [
 
@@ -39,6 +40,12 @@ var imBanbuds = false;
 var introOver = false;
 
 function postCreate() {
+
+	DiscordUtil.changePresenceAdvanced({
+		details: "IN: The TitleScreen",
+		state: "This goat in my titlescreen <3",
+		largeImageKey: "icon"
+	});
 
 	CoolUtil.playMenuSong();
 

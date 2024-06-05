@@ -2,6 +2,7 @@ import flixel.util.FlxSave;
 import flixel.addons.display.FlxBackdrop;
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxSave;
+import funkin.backend.utils.DiscordUtil;
 
 public var sectionselected;
 var Selected = 0;
@@ -32,6 +33,12 @@ var coversName = '';
 var gamesName = '';
 
 function create() {
+
+	DiscordUtil.changePresenceAdvanced({
+		details: "IN: FreeplaySelector",
+		state: "This goat in my freeplay selector <3",
+		largeImageKey: "icon"
+	});
 
 	if (FlxG.save.data.selectorButtonsUnlocked == null) {
 		FlxG.save.data.selectorButtonsUnlocked = 3;
