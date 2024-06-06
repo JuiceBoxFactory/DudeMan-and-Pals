@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="kathy" camx="-150" y="0" isGF="false" camy="30" color="#FFFFFF" isPlayer="false" antialiasing="false" sprite="KathyDUDEMANWHAAAAT">
+	<anim x="0" loop="false" y="0" fps="12" anim="k idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="k up" name="singUP"/>
+	<anim x="180" loop="false" y="5" fps="12" anim="k left" name="singLEFT"/>
+	<anim x="20" loop="false" y="-15" fps="12" anim="k right" name="singRIGHT"/>
+	<anim x="-119" loop="false" y="9" fps="12" anim="k down" name="singDOWN"/>
+</character>
