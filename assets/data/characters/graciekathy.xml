@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="200" icon="gracie" camx="10" y="70" isGF="false" camy="75" color="#FFFFFF" isPlayer="true" antialiasing="false" sprite="gracieifshekathy">
+	<anim x="0" loop="false" y="0" fps="12" anim="idle" name="idle"/>
+	<anim x="-15" loop="false" y="-5" fps="12" anim="up" name="singUP"/>
+	<anim x="-90" loop="false" y="-5" fps="12" anim="left" name="singLEFT"/>
+	<anim x="30" loop="false" y="0" fps="12" anim="right" name="singRIGHT"/>
+	<anim x="-55" loop="false" y="-10" fps="12" anim="down" name="singDOWN"/>
+</character>
