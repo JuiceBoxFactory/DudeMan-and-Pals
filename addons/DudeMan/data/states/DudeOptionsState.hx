@@ -685,6 +685,31 @@ function postCreate() {
 		checkboxsillyLang.cameras = [uiCamera];
 		add(checkboxsillyLang);
 
+		brooklynMode = new FlxText();
+		brooklynMode.text = "Brooklyn Mode";
+		brooklynMode.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		brooklynMode.x = 180;
+		brooklynMode.y = 1325;
+		brooklynMode.cameras = [uiCamera];
+		brooklynMode.color = 0xFFFFFFFF;
+		brooklynMode.borderColor = 0xFF000000;
+		brooklynMode.antialiasing = false;
+		brooklynMode.alpha = 1;
+		brooklynMode.borderSize = 3;
+		add(brooklynMode);
+
+		checkboxbrooklynMode = new FlxSprite(425, 1215);	
+		checkboxbrooklynMode.frames = Paths.getSparrowAtlas('options/checked');
+		checkboxbrooklynMode.animation.addByPrefix('selected', 'yes', 6);
+		checkboxbrooklynMode.animation.addByPrefix('disselected', 'no', 6);
+		checkboxbrooklynMode.animation.play('disselected');
+		checkboxbrooklynMode.scale.set(0.3, 0.3);
+		checkboxbrooklynMode.antialiasing = false;
+		checkboxbrooklynMode.alpha = 1;
+		checkboxbrooklynMode.scrollFactor.set(1, 1);
+		checkboxbrooklynMode.cameras = [uiCamera];
+		add(checkboxbrooklynMode);
+
 	border = new FlxSprite(0, 0).loadGraphic(Paths.image('options/border'));
 	border.antialiasing = false;
 	border.updateHitbox();
@@ -865,7 +890,7 @@ function update() {
 		obj.alpha = 0.6;
 	}
 
-	for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs, gfBurger, checkboxgfBurger, ascend, checkboxascend, sillyLang, checkboxsillyLang]) {
+	for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs, gfBurger, checkboxgfBurger, ascend, checkboxascend, sillyLang, checkboxsillyLang, brooklynMode, checkboxbrooklynMode]) {
 		if (SecretOptionsOpen == true) {
 			add(obj);
 		}
@@ -873,7 +898,7 @@ function update() {
 			remove(obj);
 		}
 	}
-	for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs, gfBurger, ascend, sillyLang]) {
+	for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs, gfBurger, ascend, sillyLang, brooklynMode]) {
 		obj.alpha = 0.6;
 	}
 	// CONTROLS
@@ -1060,6 +1085,10 @@ function update() {
 		BottomText.text = "wait im so funny haha yes ! ( only for English )";
 		sillyLang.alpha = 1;	
 	}
+	if (SelectedSecret == 12 && SecretOptionsOpen == true) {
+		BottomText.text = "smells like jobs";
+		brooklynMode.alpha = 1;	
+	}
 	// CONTROLS PT 2
 	if (Selected1 > 3) {
 		Selected1 = 0;
@@ -1073,18 +1102,18 @@ function update() {
 	if (SelectedGameplay < 0) {
 		SelectedGameplay = 6;
 	}
-	if (SelectedSecret > 11) {
+	if (SelectedSecret > 12) {
 		SelectedSecret = 0;
 	}
 	if (SelectedSecret < 0) {
-		SelectedSecret = 11;
+		SelectedSecret = 12;
 	}
 	// SECRETSETTINGS CAM
 	if (SelectedSecret > 9 && SecretOptionsOpen == true) {
-		if (uiCamera.y > -675) {
+		if (uiCamera.y > -775) {
 			uiCamera.y -= 10;
 		}
-		else if (uiCamera.y < -675) {
+		else if (uiCamera.y < -775) {
 			uiCamera.y += 10;
 		}
 	}
@@ -1442,6 +1471,23 @@ function postUpdate() {
 	if (SelectedSecret == 11 && SecretOptionsOpen == true && FlxG.save.data.sillyLanguages == true && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.sillyLanguages = false;
+		});
+	}
+
+	if (FlxG.save.data.imFromBrooklyn == true) {
+		checkboxbrooklynMode.animation.play('selected');
+	}
+	if (FlxG.save.data.imFromBrooklyn == false) {
+		checkboxbrooklynMode.animation.play('disselected');
+	}
+	if (SelectedSecret == 12 && SecretOptionsOpen == true && FlxG.save.data.imFromBrooklyn == false && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.imFromBrooklyn = true;
+		});
+	}
+	if (SelectedSecret == 12 && SecretOptionsOpen == true && FlxG.save.data.imFromBrooklyn == true && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.imFromBrooklyn = false;
 		});
 	}
 

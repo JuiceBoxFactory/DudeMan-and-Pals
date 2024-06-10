@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Chalice.png">
+<SubTexture name="unhover0000" x="346" y="0" width="173" height="159" frameX="-29" frameY="-79" frameWidth="250" frameHeight="250" />
+<SubTexture name="unhover0001" x="0" y="189" width="173" height="159" frameX="-29" frameY="-79" frameWidth="250" frameHeight="250" />
+<SubTexture name="hover0000" x="173" y="0" width="173" height="188" frameX="-29" frameY="-50" frameWidth="250" frameHeight="250" />
+<SubTexture name="hover0001" x="0" y="0" width="173" height="189" frameX="-29" frameY="-49" frameWidth="250" frameHeight="250" />
+</TextureAtlas>

@@ -2,6 +2,7 @@ import flixel.ui.FlxButton;
 import flixel.addons.display.FlxBackdrop;
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxTimer;
+import funkin.backend.utils.DiscordUtil;
 
 var canDoShitDude = false;
 var reviews:Array<String> = [
@@ -26,6 +27,14 @@ var reviews:Array<String> = [
     ];
 
 function create() {
+
+	window.title = "DudeMan: More Than Pals";
+
+	DiscordUtil.changePresenceAdvanced({
+		details: 'Playing "DUDEMAN: MORE THAN PALS"',
+		state: "[From DudeMan's Games]",
+		largeImageKey: "datingsim"
+    });
 
 	FlxG.sound.playMusic(Paths.music('datingSim/title'), 1, true);
 
@@ -77,6 +86,18 @@ function create() {
 	zee.scrollFactor.set(0, 0);
 	add(zee);
 
+    if (FlxG.save.data.imFromBrooklyn == true) {
+        dudeman.loadGraphic(Paths.image('shh/DATINGSIM/ports/BrooklynGuy'));
+        dudeman.x = 700;
+        dudeman.y = 1100;
+        fruity.loadGraphic(Paths.image('shh/DATINGSIM/ports/BrooklynGuy'));
+        fruity.x = 400;
+        fruity.y = 1025;
+        zee.loadGraphic(Paths.image('shh/DATINGSIM/ports/BrooklynGuy'));
+        zee.x = 100;
+        zee.y = 1100;
+    }
+
     key = new FlxSprite(1025, 625).loadGraphic(Paths.image('shh/DATINGSIM/dialogueBoxShit/arrow'));           
     key.antialiasing = false;
     key.scale.set(0.6, 0.6);
@@ -99,9 +120,16 @@ function create() {
                     key.alpha = 1;
                     new FlxTimer().start(0.6, function(timer) {
                         FlxG.save.data.hasPlayedBefore = true;
-                        FlxTween.tween(dudeman, {y: 0}, 1.55, {ease:FlxEase.quartOut});
-                        FlxTween.tween(fruity, {y: 0}, 1.3, {ease:FlxEase.quartOut});
-                        FlxTween.tween(zee, {y: 0}, 1.6, {ease:FlxEase.quartOut});
+                        if (FlxG.save.data.imFromBrooklyn != true) {
+                            FlxTween.tween(dudeman, {y: 0}, 1.55, {ease:FlxEase.quartOut});
+                            FlxTween.tween(fruity, {y: 0}, 1.3, {ease:FlxEase.quartOut});
+                            FlxTween.tween(zee, {y: 0}, 1.6, {ease:FlxEase.quartOut});
+                        }
+                        else {
+                            FlxTween.tween(dudeman, {y: 100}, 1.55, {ease:FlxEase.quartOut});
+                            FlxTween.tween(fruity, {y: 25}, 1.3, {ease:FlxEase.quartOut});
+                            FlxTween.tween(zee, {y: 100}, 1.6, {ease:FlxEase.quartOut});
+                        }
                     });
 
                 });

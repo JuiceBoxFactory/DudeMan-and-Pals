@@ -48,6 +48,7 @@ function update(elapsed:Float) {
 		FlxG.save.data.burger = false;
 		FlxG.save.data.ascend = false;
 		FlxG.save.data.sillyLanguages = false;
+		FlxG.save.data.imFromBrooklyn = false;
 		// other settings ( mail thems and shit )
 		FlxG.save.data.mailTheme = "light";
 		FlxG.save.data.wheresGarfield = false;

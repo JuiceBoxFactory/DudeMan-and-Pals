@@ -74,6 +74,7 @@ function theOpeningInQuestion() {
         }
 	});
     new FlxTimer().start(10, function(timer) {
+		FlxG.save.data.noTransition = false;
         FlxG.switchState(new ModState("DudeTitleScreen"));
 	});
 }

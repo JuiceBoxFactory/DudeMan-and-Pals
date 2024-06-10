@@ -5,4 +5,5 @@
 	<anim x="115" loop="false" y="5" fps="12" anim="left" name="singLEFT"/>
 	<anim x="155" loop="false" y="5" fps="12" anim="right" name="singRIGHT"/>
 	<anim x="36" loop="false" y="4" fps="12" anim="down" name="singDOWN"/>
+	<anim x="36" loop="false" y="4" fps="12" anim="fuckassanim" name="guitarAnim"/>
 </character>

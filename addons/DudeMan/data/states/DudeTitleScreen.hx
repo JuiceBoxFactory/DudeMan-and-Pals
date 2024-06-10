@@ -31,10 +31,12 @@ var tipText:Array<String> = [
 "Yo! Really think so?",
 "That isn't very Chuddy Buddy !",
 "kill everyone",
+"TWERKING BUTT BOOTY NAKED INFRONT OF A GROCERY STORE",
+"wait! turn on burp mode! pls!"
 
 ];
 var tipTextChosen = "null";
-var highestNum = 22;
+var highestNum = 24;
 var imBanbuds = false;
 
 var introOver = false;

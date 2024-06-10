@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="arrows.png">
+<SubTexture name="down0000" x="0" y="0" width="75" height="145" frameX="0" frameY="0" frameWidth="75" frameHeight="145" />
+<SubTexture name="down0001" x="75" y="0" width="75" height="145" frameX="0" frameY="0" frameWidth="75" frameHeight="145" />
+<SubTexture name="down0002" x="150" y="0" width="75" height="145" frameX="0" frameY="0" frameWidth="75" frameHeight="145" />
+<SubTexture name="down0003" x="225" y="0" width="75" height="145" frameX="0" frameY="0" frameWidth="75" frameHeight="145" />
+<SubTexture name="down0004" x="0" y="145" width="75" height="145" frameX="0" frameY="0" frameWidth="75" frameHeight="145" />
+<SubTexture name="up0000" x="75" y="145" width="75" height="145" frameX="0" frameY="0" frameWidth="75" frameHeight="145" />
+<SubTexture name="up0001" x="150" y="145" width="75" height="145" frameX="0" frameY="0" frameWidth="75" frameHeight="145" />
+<SubTexture name="up0002" x="225" y="145" width="75" height="145" frameX="0" frameY="0" frameWidth="75" frameHeight="145" />
+<SubTexture name="up0003" x="300" y="0" width="75" height="145" frameX="0" frameY="0" frameWidth="75" frameHeight="145" />
+<SubTexture name="up0004" x="0" y="145" width="75" height="145" frameX="0" frameY="0" frameWidth="75" frameHeight="145" />
+<SubTexture name="default0000" x="0" y="145" width="75" height="145" frameX="0" frameY="0" frameWidth="75" frameHeight="145" />
+</TextureAtlas>
