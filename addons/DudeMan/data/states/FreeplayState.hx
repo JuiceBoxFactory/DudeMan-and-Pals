@@ -172,7 +172,7 @@ function create() {
 		{
 			iconArray[i].alpha = 0;
 		}
-	curSelected = 0;
+	changeSelection(FlxG.save.data.songSelected);
 
 }
 
@@ -244,8 +244,10 @@ function update() {
 
 function postUpdate() {
 
+	FlxG.save.data.songSelected = curSelected;
+
 	if (controls.BACK) {
-			FlxG.switchState(new ModState("FreeplaySelector"));
+		FlxG.switchState(new ModState("FreeplaySelector"));
 	}
 
 }

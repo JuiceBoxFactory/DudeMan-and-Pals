@@ -23,6 +23,7 @@ var finalTimeMinutes = 0;
 var finalTimeSeconds = 0;
 var comboSection = 0;
 var songStarted = false;
+var squishingTimeBar = false;
 
 function postCreate() {
 
@@ -165,11 +166,12 @@ function postCreate() {
 		insert(2, healthBar);
 		healthBar.y = 640;
 
-		healthheader = new FlxSprite(0, 580).loadGraphic(Paths.image('game/healthBarPART2'));
+		healthheader = new FlxSprite(0, 590).loadGraphic(Paths.image('game/healthBarThing'));
 		healthheader.antialiasing = false;
+		healthheader.scale.set(1.9, 1.9);
 		healthheader.cameras = [camHUD];
-		healthheader.screenCenter(FlxAxes.X);
 		healthheader.updateHitbox();
+		healthheader.screenCenter(FlxAxes.X);
 		insert(3, healthheader);
 
 		accText = new FlxText();
@@ -214,6 +216,9 @@ function postCreate() {
 		scoreAddedIn.time = 2;
 		scoreAddedIn.active = false;
 		add(scoreAddedIn);
+
+		healthBar.scale.set(0.998, 1.4);
+		healthBar.y = 630;
 
 		if (downscroll) {
 			for (dumbShits in [healthBar, missesText, accText, icon1, icon2]) {
@@ -305,60 +310,91 @@ function create() {
 
 	trace("Current ui type is: "+PlayState.SONG.meta.noteType);
 
-	if (PlayState.SONG.meta.noteType != "BandW") {
-		timeTxt = new FlxText(0, 19, 400, "X:XX", 32);
+	if (PlayState.SONG.meta.noteType != "normal") {
+
+		if (PlayState.SONG.meta.noteType != "BandW") {
+			timeTxt = new FlxText(0, 19, 400, "X:XX", 32);
+			timeTxt.setFormat(Paths.font("COMIC.ttf"), 32, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			timeTxt.scrollFactor.set();
+			timeTxt.alpha = 0;
+			timeTxt.borderColor = 0xFF0F0014;
+			timeTxt.color = 0xFFFBECFF;
+			timeTxt.borderSize = 2;
+			timeTxt.cameras = [camHUD];
+			timeTxt.screenCenter(FlxAxes.X);
+		}
+		else {
+			timeTxt = new FlxText(870, 32, 400, "X:XX // X:XX", 32);
+			timeTxt.setFormat(Paths.font("Bahnschrift.ttf"), 32, FlxColor.WHITE, "right");
+			timeTxt.scrollFactor.set();
+			timeTxt.alpha = 0;
+			timeTxt.color = 0xFFFFFFFF;
+			timeTxt.cameras = [camHUD];
+			timeTxt.borderSize = 2;
+		}
+
+    	timeBarBG = new FlxSprite();
+    	timeBarBG.x = timeTxt.x;
+    	timeBarBG.y = timeTxt.y + (timeTxt.height / 4);
+    	timeBarBG.alpha = 0;
+    	timeBarBG.scrollFactor.set();
+    	timeBarBG.color = 0xFF0F0014;
+    	timeBarBG.loadGraphic(Paths.image("TimeBar"));
+
+    	timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, FlxBar.FILL_LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), Conductor, 'songPosition', 0, 1);
+    	timeBar.scrollFactor.set();
+		if (PlayState.SONG.meta.noteType != "BandW") {
+    		timeBar.createFilledBar(0xFF0F0014,dad.iconColor);
+		}
+		else {
+			timeBar.x = 875;
+			timeBar.y = 20;
+			timeBar.scale.set(1, 1.5);
+    		timeBar.createFilledBar(0xFFFFFFFF,0xFF000000);
+		}
+    	timeBar.numDivisions = 400; //Toned it down to 400 to see what it would look like.
+    	timeBar.alpha = 0;
+    	timeBar.value = Conductor.songPosition / Conductor.songDuration;
+
+        add(timeBarBG);
+    	add(timeBar);
+		add(timeTxt);
+
+    	timeBarBG.x = timeBar.x - 4;
+    	timeBarBG.y = timeBar.y - 4;
+
+    	timeBar.cameras = [camHUD];
+    	timeBarBG.cameras = [camHUD];
+    	timeTxt.cameras = [camHUD];
+	}
+
+	if (PlayState.SONG.meta.noteType == "normal") {
+
+		bar = new FlxSprite(540, 25).loadGraphic(Paths.image("game/timeBar/br"));
+		bar.cameras = [camHUD];
+		bar.scale.set(3, 1);
+		add(bar);
+		
+		timeTxt = new FlxText(0, 13, 100, "X:XX", 32);
 		timeTxt.setFormat(Paths.font("COMIC.ttf"), 32, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		timeTxt.scrollFactor.set();
 		timeTxt.alpha = 0;
 		timeTxt.borderColor = 0xFF0F0014;
-		timeTxt.color = 0xFFFBECFF;
-		timeTxt.borderSize = 2;
-		timeTxt.screenCenter(FlxAxes.X);
-	}
-	else {
-		timeTxt = new FlxText(870, 32, 400, "X:XX // X:XX", 32);
-		timeTxt.setFormat(Paths.font("Bahnschrift.ttf"), 32, FlxColor.WHITE, "right");
-		timeTxt.scrollFactor.set();
-		timeTxt.alpha = 0;
 		timeTxt.color = 0xFFFFFFFF;
 		timeTxt.borderSize = 2;
+		timeTxt.cameras = [camHUD];
+		timeTxt.screenCenter(FlxAxes.X);
+		add(timeTxt);
+
+		whoGettingBestHead = new FlxSprite(335, 15).loadGraphic(Paths.image("game/timeBar/bestHead"));
+		whoGettingBestHead.cameras = [camHUD];
+		add(whoGettingBestHead);
+
+		bottom = new FlxSprite(915, 15).loadGraphic(Paths.image("game/timeBar/myMouthDoYouLikeIt"));
+		bottom.cameras = [camHUD];
+		add(bottom);
+
 	}
-
-    timeBarBG = new FlxSprite();
-    timeBarBG.x = timeTxt.x;
-    timeBarBG.y = timeTxt.y + (timeTxt.height / 4);
-    timeBarBG.alpha = 0;
-    timeBarBG.scrollFactor.set();
-    timeBarBG.color = 0xFF0F0014;
-    timeBarBG.loadGraphic(Paths.image("TimeBar"));
-
-    timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, FlxBar.FILL_LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), Conductor, 'songPosition', 0, 1);
-    timeBar.scrollFactor.set();
-	if (PlayState.SONG.meta.noteType != "BandW") {
-    	timeBar.createFilledBar(0xFF0F0014,0xFFFBECFF);
-	}
-	else {
-		timeBar.x = 875;
-		timeBar.y = 20;
-		timeBar.scale.set(1, 1.5);
-    	timeBar.createFilledBar(0xFFFFFFFF,0xFF000000);
-	}
-    timeBar.numDivisions = 400; //Toned it down to 400 to see what it would look like.
-    timeBar.alpha = 0;
-    timeBar.value = Conductor.songPosition / Conductor.songDuration;
-
-    if (PlayState.SONG.meta.noteType != "base") {
-        add(timeBarBG);
-        add(timeBar);
-        add(timeTxt);
-    }
-
-    timeBarBG.x = timeBar.x - 4;
-    timeBarBG.y = timeBar.y - 4;
-
-    timeBar.cameras = [camHUD];
-    timeBarBG.cameras = [camHUD];
-    timeTxt.cameras = [camHUD];
 
 }
 
@@ -366,12 +402,15 @@ function onSongStart() {
 
 	songStarted = true;
 
-    if (timeBar != null) {
-        FlxTween.tween(timeBar, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
-    }
-    if (timeBarBG != null) {
-        FlxTween.tween(timeBarBG, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
-    }
+	if (PlayState.SONG.meta.noteType != "normal") {	
+    	if (timeBar != null) {
+    	    FlxTween.tween(timeBar, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
+    	}
+    	if (timeBarBG != null) {
+    	    FlxTween.tween(timeBarBG, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
+    	}
+	}
+
     if (timeTxt != null) {
     FlxTween.tween(timeTxt, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
     }
@@ -493,7 +532,6 @@ function update(elapsed:Float) {
 
 	if (PlayState.SONG.meta.noteType == "BandW") {
 		remove(comboGroup);
-
 	}
 
 	if (PlayState.SONG.meta.noteType == "normal") {
@@ -507,6 +545,7 @@ function update(elapsed:Float) {
 		for (textX in [tagLine, singerNames, actoresses]) {
 			textX.screenCenter(FlxAxes.X);
 		}
+
 	}
 	
 	if (PlayState.SONG.meta.noteType == "base") {
@@ -525,30 +564,44 @@ function update(elapsed:Float) {
 		timeBarBG.alpha = 0;
 	}
 
-	if (inst != null && timeBar != null && timeBar.max != inst.length) {
-	    timeBar.setRange(0, Math.max(1, inst.length));
-	}
-
     if (inst != null && timeTxt != null) {
+		if (PlayState.SONG.meta.noteType != "normal") {	
 
-		if (PlayState.SONG.meta.noteType != "BandW") {
-			var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
-        	var seconds = CoolUtil.addZeros(Std.string(timeRemaining % 60), 2);
-        	var minutes = Std.int(timeRemaining / 60);
-			timeTxt.text = minutes + ":" + seconds;
+			if (inst != null && timeBar != null && timeBar.max != inst.length) {
+				timeBar.setRange(0, Math.max(1, inst.length));
+			}
+
+			if (PlayState.SONG.meta.noteType != "BandW") {
+				var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
+				var seconds = CoolUtil.addZeros(Std.string(timeRemaining % 60), 2);
+				var minutes = Std.int(timeRemaining / 60);
+				timeTxt.text = minutes + ":" + seconds;
+			}
+			else {
+				var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
+				var seconds = CoolUtil.addZeros(Std.string(timeRemaining % 60), 2);
+				var minutes = Std.int(timeRemaining / 60);
+				if (finalTimeCalculated == false && songStarted == true) {
+					finalTimeSeconds = seconds;
+					finalTimeMinutes = minutes;
+					finalTimeCalculated = true;
+				}
+				timeTxt.text = minutes + ":" + seconds + " // " + finalTimeMinutes + ":" + finalTimeSeconds;
+			}
 		}
 		else {
 			var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
 			var seconds = CoolUtil.addZeros(Std.string(timeRemaining % 60), 2);
 			var minutes = Std.int(timeRemaining / 60);
 			if (finalTimeCalculated == false && songStarted == true) {
-        		finalTimeSeconds = seconds;
-        		finalTimeMinutes = minutes;
+				FlxTween.tween(whoGettingBestHead, {x: 620}, timeRemaining);
+				FlxTween.tween(bottom, {x: 633}, timeRemaining);
+				FlxTween.tween(bar.scale, {x: 0.1}, timeRemaining);
 				finalTimeCalculated = true;
 			}
-			timeTxt.text = minutes + ":" + seconds + " // " + finalTimeMinutes + ":" + finalTimeSeconds;
+			timeTxt.text = minutes + ":" + seconds;
 		}
-    }
+	}
 }
 
 function beatHit() {
@@ -564,6 +617,12 @@ function beatHit() {
 }
 
 function postUpdate() {
+
+	if (whoGettingBestHead.overlaps(timeTxt) && squishingTimeBar == false) {
+		squishingTimeBar = true;
+		var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
+		FlxTween.tween(timeTxt.scale, {x: 0.1}, timeRemaining);
+	}
 
 	if (animationPlaying == true) {
 		if (dudeRating.animation.frameIndex == 32 || dudeRating.animation.frameIndex == 62 || dudeRating.animation.frameIndex == 91 || dudeRating.animation.frameIndex == 132) {

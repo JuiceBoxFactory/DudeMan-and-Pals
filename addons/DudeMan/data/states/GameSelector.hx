@@ -1,6 +1,9 @@
 import flixel.ui.FlxButton;
+import flixel.util.FlxSave;
 
 function create() {
+
+    FlxG.save.data.noTransition = false;
 
     button1 = new FlxButton(850, 102, "Dating Sim", loadDating);
     button1.alpha = 1;
@@ -26,7 +29,6 @@ function create() {
 function loadDating() {
     FlxG.switchState(new ModState("GAMES/datingSimTitle"));
 }
-
 function loadPuncher() {
     FlxG.switchState(new ModState("GAMES/clicker"));
 }
@@ -43,6 +45,10 @@ function update() {
 
     cursor.x = FlxG.mouse.x;
     cursor.y = FlxG.mouse.y;
+
+    if (FlxG.keys.justPressed.G) {
+        FlxG.save.data.hasPlayedBefore = false;
+    }
 
     if (controls.BACK) {
         FlxG.switchState(new ModState("FreeplaySelector"));

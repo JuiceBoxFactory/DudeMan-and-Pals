@@ -8,7 +8,7 @@ import flixel.util.FlxTimer;
 import flixel.text.FlxText;
 import funkin.backend.utils.DiscordUtil;
 
-var mails = new FlxCamera(100, 100, 285, 10000);
+var mails = new FlxCamera(100, 100, 285, 620);
 var mail = new FlxCamera(450, 100, 770, 620);
 var cursorCam = new FlxCamera(0, 0, 1280, 720);
 var awesomeCam = new FlxCamera(0, 0, 1280, 720);

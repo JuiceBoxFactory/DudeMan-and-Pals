@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="mail.png">
-<SubTexture name="close0000" x="0" y="249" width="230" height="184" frameX="-9" frameY="-66" frameWidth="250" frameHeight="250" />
-<SubTexture name="close0001" x="230" y="249" width="230" height="184" frameX="-9" frameY="-66" frameWidth="250" frameHeight="250" />
-<SubTexture name="open0000" x="0" y="0" width="234" height="249" frameX="-7" frameY="-1" frameWidth="250" frameHeight="250" />
-<SubTexture name="open0001" x="234" y="0" width="233" height="249" frameX="-8" frameY="-1" frameWidth="250" frameHeight="250" />
+<SubTexture name="close0000" x="312" y="0" width="161" height="132" frameX="-44" frameY="-88" frameWidth="250" frameHeight="250" />
+<SubTexture name="close0001" x="0" y="162" width="161" height="133" frameX="-44" frameY="-87" frameWidth="250" frameHeight="250" />
+<SubTexture name="open0000" x="0" y="0" width="156" height="162" frameX="-44" frameY="-58" frameWidth="250" frameHeight="250" />
+<SubTexture name="open0001" x="156" y="0" width="156" height="162" frameX="-43" frameY="-58" frameWidth="250" frameHeight="250" />
 </TextureAtlas>
