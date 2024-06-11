@@ -710,6 +710,31 @@ function postCreate() {
 		checkboxbrooklynMode.cameras = [uiCamera];
 		add(checkboxbrooklynMode);
 
+		anglesDream = new FlxText();
+		anglesDream.text = "Angel's Dream";
+		anglesDream.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		anglesDream.x = 180;
+		anglesDream.y = 1425;
+		anglesDream.cameras = [uiCamera];
+		anglesDream.color = 0xFFFFFFFF;
+		anglesDream.borderColor = 0xFF000000;
+		anglesDream.antialiasing = false;
+		anglesDream.alpha = 1;
+		anglesDream.borderSize = 3;
+		add(anglesDream);
+
+		checkboxanglesDream = new FlxSprite(425, 1315);	
+		checkboxanglesDream.frames = Paths.getSparrowAtlas('options/checked');
+		checkboxanglesDream.animation.addByPrefix('selected', 'yes', 6);
+		checkboxanglesDream.animation.addByPrefix('disselected', 'no', 6);
+		checkboxanglesDream.animation.play('disselected');
+		checkboxanglesDream.scale.set(0.3, 0.3);
+		checkboxanglesDream.antialiasing = false;
+		checkboxanglesDream.alpha = 1;
+		checkboxanglesDream.scrollFactor.set(1, 1);
+		checkboxanglesDream.cameras = [uiCamera];
+		add(checkboxanglesDream);
+
 	border = new FlxSprite(0, 0).loadGraphic(Paths.image('options/border'));
 	border.antialiasing = false;
 	border.updateHitbox();
@@ -890,7 +915,7 @@ function update() {
 		obj.alpha = 0.6;
 	}
 
-	for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs, gfBurger, checkboxgfBurger, ascend, checkboxascend, sillyLang, checkboxsillyLang, brooklynMode, checkboxbrooklynMode]) {
+	for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs, gfBurger, checkboxgfBurger, ascend, checkboxascend, sillyLang, checkboxsillyLang, brooklynMode, checkboxbrooklynMode, anglesDream, checkboxanglesDream]) {
 		if (SecretOptionsOpen == true) {
 			add(obj);
 		}
@@ -898,7 +923,7 @@ function update() {
 			remove(obj);
 		}
 	}
-	for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs, gfBurger, ascend, sillyLang, brooklynMode]) {
+	for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs, gfBurger, ascend, sillyLang, brooklynMode, anglesDream]) {
 		obj.alpha = 0.6;
 	}
 	// CONTROLS
@@ -1089,6 +1114,10 @@ function update() {
 		BottomText.text = "smells like jobs";
 		brooklynMode.alpha = 1;	
 	}
+	if (SelectedSecret == 13 && SecretOptionsOpen == true) {
+		BottomText.text = "im at my breaking point istg if i hear BURP MODE ONE MORE TIME -meltykelpy";
+		anglesDream.alpha = 1;	
+	}
 	// CONTROLS PT 2
 	if (Selected1 > 3) {
 		Selected1 = 0;
@@ -1102,18 +1131,18 @@ function update() {
 	if (SelectedGameplay < 0) {
 		SelectedGameplay = 6;
 	}
-	if (SelectedSecret > 12) {
+	if (SelectedSecret > 13) {
 		SelectedSecret = 0;
 	}
 	if (SelectedSecret < 0) {
-		SelectedSecret = 12;
+		SelectedSecret = 13;
 	}
 	// SECRETSETTINGS CAM
 	if (SelectedSecret > 9 && SecretOptionsOpen == true) {
-		if (uiCamera.y > -775) {
+		if (uiCamera.y > -875) {
 			uiCamera.y -= 10;
 		}
-		else if (uiCamera.y < -775) {
+		else if (uiCamera.y < -875) {
 			uiCamera.y += 10;
 		}
 	}
@@ -1488,6 +1517,23 @@ function postUpdate() {
 	if (SelectedSecret == 12 && SecretOptionsOpen == true && FlxG.save.data.imFromBrooklyn == true && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.imFromBrooklyn = false;
+		});
+	}
+
+	if (FlxG.save.data.angelsDream == true) {
+		checkboxanglesDream.animation.play('selected');
+	}
+	if (FlxG.save.data.angelsDream == false) {
+		checkboxanglesDream.animation.play('disselected');
+	}
+	if (SelectedSecret == 12 && SecretOptionsOpen == true && FlxG.save.data.angelsDream == false && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.angelsDream = true;
+		});
+	}
+	if (SelectedSecret == 12 && SecretOptionsOpen == true && FlxG.save.data.angelsDream == true && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.angelsDream = false;
 		});
 	}
 
