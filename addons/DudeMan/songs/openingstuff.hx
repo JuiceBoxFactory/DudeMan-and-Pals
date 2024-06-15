@@ -174,10 +174,12 @@ function onCountdown(event) {
 		}
 	}
 
-	if (PlayState.SONG.meta.name != "roomed") {
-		FlxTween.tween(openingblack, {alpha: 0}, 0.5);
+	if (event.swagCounter == 3) {
+		if (PlayState.SONG.meta.name != "roomed") {
+			FlxTween.tween(openingblack, {alpha: 0}, 0.5);
+		}
+	
+		FlxTween.tween(camHUD, {alpha: 1}, 0.5);
 	}
-
-	FlxTween.tween(camHUD, {alpha: 1}, 0.5);
 
 }
