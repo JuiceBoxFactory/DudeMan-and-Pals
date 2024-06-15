@@ -148,34 +148,34 @@ function onCountdown(event) {
 			FlxTween.tween(number1bg, {angle: 0}, 1.7, {ease:FlxEase.quartOut});
 
 		}
-	}
 	
-    if (event.swagCounter == 3) {
-		FlxG.sound.play(Paths.sound('introGO'));
-		FlxTween.tween(numberGO, {y: -100}, 0.6, {ease:FlxEase.quartOut});
-		FlxTween.tween(numberGObg, {y: -100}, 0.7, {ease:FlxEase.quartOut});
-		FlxTween.tween(numberGO, {angle: 0}, 0.6, {ease:FlxEase.quartOut});
-		FlxTween.tween(numberGObg, {angle: 0}, 0.6, {ease:FlxEase.quartOut});
-
-		new FlxTimer().start(0.6, function(timer) {
-			FlxTween.tween(numberGO, {y: 600}, 0.8, {ease:FlxEase.quartIn});
-			FlxTween.tween(numberGObg, {y: 600}, 0.8, {ease:FlxEase.quartIn});
-			FlxTween.tween(numberGO, {angle: 10}, 0.6, {ease:FlxEase.quartIn});
-			FlxTween.tween(numberGObg, {angle: 25}, 0.6, {ease:FlxEase.quartIn});
-		});
-
-		FlxTween.tween(number3, {y: 600}, 1, {ease:FlxEase.backIn});
-		FlxTween.tween(number3bg, {y: 600}, 1, {ease:FlxEase.backIn});
-		FlxTween.tween(number2, {y: 600}, 1.15, {ease:FlxEase.backIn});
-		FlxTween.tween(number2bg, {y: 600}, 1.15, {ease:FlxEase.backIn});
-		FlxTween.tween(sep1, {y: 600}, 1, {ease:FlxEase.backIn});
-		FlxTween.tween(number1, {y: 600}, 1.2, {ease:FlxEase.backIn});
-		FlxTween.tween(number1bg, {y: 600}, 1.2, {ease:FlxEase.backIn});
-		FlxTween.tween(sep2, {y: 600}, 1.15, {ease:FlxEase.backIn});
-
-        FlxTween.tween(camHUD, {alpha: 1}, 0.5);
-		if (PlayState.SONG.meta.name != "roomed") {
-	    	FlxTween.tween(openingblack, {alpha: 0}, 0.5);
+		if (event.swagCounter == 3) {
+			FlxG.sound.play(Paths.sound('introGO'));
+			FlxTween.tween(numberGO, {y: -100}, 0.6, {ease:FlxEase.quartOut});
+			FlxTween.tween(numberGObg, {y: -100}, 0.7, {ease:FlxEase.quartOut});
+			FlxTween.tween(numberGO, {angle: 0}, 0.6, {ease:FlxEase.quartOut});
+			FlxTween.tween(numberGObg, {angle: 0}, 0.6, {ease:FlxEase.quartOut});
+	
+			new FlxTimer().start(0.6, function(timer) {
+				FlxTween.tween(numberGO, {y: 600}, 0.8, {ease:FlxEase.quartIn});
+				FlxTween.tween(numberGObg, {y: 600}, 0.8, {ease:FlxEase.quartIn});
+				FlxTween.tween(numberGO, {angle: 10}, 0.6, {ease:FlxEase.quartIn});
+				FlxTween.tween(numberGObg, {angle: 25}, 0.6, {ease:FlxEase.quartIn});
+			});
+	
+			FlxTween.tween(number3, {y: 600}, 1, {ease:FlxEase.backIn});
+			FlxTween.tween(number3bg, {y: 600}, 1, {ease:FlxEase.backIn});
+			FlxTween.tween(number2, {y: 600}, 1.15, {ease:FlxEase.backIn});
+			FlxTween.tween(number2bg, {y: 600}, 1.15, {ease:FlxEase.backIn});
+			FlxTween.tween(sep1, {y: 600}, 1, {ease:FlxEase.backIn});
+			FlxTween.tween(number1, {y: 600}, 1.2, {ease:FlxEase.backIn});
+			FlxTween.tween(number1bg, {y: 600}, 1.2, {ease:FlxEase.backIn});
+			FlxTween.tween(sep2, {y: 600}, 1.15, {ease:FlxEase.backIn});
+	
+			FlxTween.tween(camHUD, {alpha: 1}, 0.5);
+			if (PlayState.SONG.meta.name != "roomed") {
+				FlxTween.tween(openingblack, {alpha: 0}, 0.5);
+			}
 		}
 	}
 }

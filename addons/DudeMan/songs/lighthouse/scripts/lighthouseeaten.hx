@@ -230,7 +230,7 @@ function stepHit(curStep:Int) {
             FlxTween.tween(blackHUD, {alpha: 0}, 1);
             FlxTween.tween(blackCam, {alpha: 0}, 2);
 	case 384:
-	    FlxG.camera.flash(0xFF000000, 1);
+	    	FlxG.camera.flash(0xFF000000, 1);
     	    foggyOverlay.alpha = 0.4;
 	case 640:
             FlxTween.tween(blackHUD, {alpha: 1}, 3);

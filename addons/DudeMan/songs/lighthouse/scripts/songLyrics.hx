@@ -2,7 +2,7 @@ import flixel.text.FlxTextBorderStyle;
 
 var LyricInQuestion:FlxText;
 
-function create() {
+function postCreate() {
 
 	if (FlxG.save.data.subtitles == true) {
     	LyricInQuestion = new FlxText(150, 550, 1000, "", 0);
