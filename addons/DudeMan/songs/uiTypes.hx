@@ -528,6 +528,15 @@ function update(elapsed:Float) {
 			scoreToAddText.scale.y -= 0.025;
 		}
 
+		if (FlxG.save.data.middlescroll == true) {
+			scoreToAddText.x = 875;
+			scoreToAddText.y = 75;
+			scoreText.x = 250;
+			if (FlxG.save.data.downscroll == true) {
+				healthBar.y = 639.5;
+			}
+		}
+
 	}
 
 	if (PlayState.SONG.meta.noteType == "BandW") {
