@@ -618,30 +618,31 @@ function beatHit() {
 
 function postUpdate() {
 
-	if (whoGettingBestHead.overlaps(timeTxt) && squishingTimeBar == false) {
-		squishingTimeBar = true;
-		var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
-		FlxTween.tween(timeTxt.scale, {x: 0.1}, timeRemaining);
-	}
-
-	if (animationPlaying == true) {
-		if (dudeRating.animation.frameIndex == 32 || dudeRating.animation.frameIndex == 62 || dudeRating.animation.frameIndex == 91 || dudeRating.animation.frameIndex == 132) {
-			animationPlaying = false;
-		}
-	}
-
-	if (PlayState.SONG.meta.name == "roomed" && curStep == 1664) {
-		scared = true;
-	}
-
-	if (PlayState.SONG.meta.name == "roomed" && curStep == 2434) {
-		scared = false;
-		for (numbers in [0, 1, 2, 3]) {
-			playerStrums.members[numbers].y = 50;
-		}
-	}
-
 	if (PlayState.SONG.meta.noteType == "normal") {
+
+		if (whoGettingBestHead.overlaps(timeTxt) && squishingTimeBar == false) {
+			squishingTimeBar = true;
+			var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
+			FlxTween.tween(timeTxt.scale, {x: 0.1}, timeRemaining);
+		}
+	
+		if (animationPlaying == true) {
+			if (dudeRating.animation.frameIndex == 32 || dudeRating.animation.frameIndex == 62 || dudeRating.animation.frameIndex == 91 || dudeRating.animation.frameIndex == 132) {
+				animationPlaying = false;
+			}
+		}
+	
+		if (PlayState.SONG.meta.name == "roomed" && curStep == 1664) {
+			scared = true;
+		}
+	
+		if (PlayState.SONG.meta.name == "roomed" && curStep == 2434) {
+			scared = false;
+			for (numbers in [0, 1, 2, 3]) {
+				playerStrums.members[numbers].y = 50;
+			}
+		}
+
 		myOpp = dad.getIcon();
 		myPpo = boyfriend.getIcon();
 	}

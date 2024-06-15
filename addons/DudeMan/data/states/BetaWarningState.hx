@@ -39,10 +39,10 @@ function postUpdate() {
         FlxG.save.data.language = null;
     }
 
-    if (FlxG.save.data.language == null) {
-        FlxG.switchState(new ModState("DudeBrandLanguagePicker"));
-        trace('hey buddy');
-    }
+//    if (FlxG.save.data.language == null) {
+//        FlxG.switchState(new ModState("DudeBrandLanguagePicker"));
+//        trace('hey buddy');
+//    }
 
     if (controls.ACCEPT) {
         FlxG.switchState(new ModState("JuiceBoxFactoryOpening"));
