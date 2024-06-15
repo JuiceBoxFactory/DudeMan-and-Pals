@@ -3,6 +3,8 @@ import flixel.util.FlxSave;
 
 function postCreate() {
 
+    FlxG.save.data.language = "english";
+    
     FlxG.save.data.noTransition = true;
 
     FlxG.save.data.firstOnIntroClient = true;
