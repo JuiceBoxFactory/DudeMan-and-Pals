@@ -1,17 +1,15 @@
 import flixel.text.FlxTextBorderStyle;
 
-var LyricInQuestion:FlxText;
-
-function postCreate() {
+function create() {
 
 	if (FlxG.save.data.subtitles == true) {
-    	LyricInQuestion = new FlxText(150, 550, 1000, "", 0);
-    	LyricInQuestion.setFormat(Paths.font("vcr.ttf"), 30, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-    	LyricInQuestion.scrollFactor.set();
-    	LyricInQuestion.borderColor = 0xFF000000;
-    	LyricInQuestion.borderSize = 2;
-        LyricInQuestion.cameras = [camHUD];
-    	add(LyricInQuestion);
+    	lyricItself = new FlxText(150, 550, 1000, "", 0);
+    	lyricItself.setFormat(Paths.font("vcr.ttf"), 30, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+    	lyricItself.scrollFactor.set();
+    	lyricItself.borderColor = 0xFF000000;
+    	lyricItself.borderSize = 2;
+        lyricItself.cameras = [camHUD];
+    	add(lyricItself);
 	}
 	
     ominous1 = new FlxText(-325, 300, 2000, "HE WAITS IN THE FOG", 0);
@@ -32,14 +30,14 @@ function postCreate() {
     ominous2.cameras = [camHUD];
     add(ominous2);
 
-    Songname = new FlxText(-350, 300, 2000, "LIGHTHOUSE", 0);
-    Songname.setFormat(Paths.font("vcr.ttf"), 70, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-    Songname.scrollFactor.set();
-    Songname.borderColor = 0xFF000000;
-    Songname.borderSize = 2;
-    Songname.alpha = 0;
-    Songname.cameras = [camHUD];
-    add(Songname);
+    songname = new FlxText(-350, 300, 2000, "LIGHTHOUSE", 0);
+    songname.setFormat(Paths.font("vcr.ttf"), 70, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+    songname.scrollFactor.set();
+    songname.borderColor = 0xFF000000;
+    songname.borderSize = 2;
+    songname.alpha = 0;
+    songname.cameras = [camHUD];
+    add(songname);
 
     tagline = new FlxText(-350, 375, 2000, "AMONG THE FOG", 0);
     tagline.setFormat(Paths.font("vcr.ttf"), 30, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -91,21 +89,23 @@ function postCreate() {
 }
 
 function UpdateLyric(text:String) {
-    LyricInQuestion.text = text;
+    if (FlxG.save.data.subtitles == true) {
+        lyricItself.text = text;
+    }
 }
 
 function stepHit(curStep:Int) { 
     switch (curStep) {
 	    case 0:
-            FlxTween.tween(Songname, {alpha: 1}, 2);
+            FlxTween.tween(songname, {alpha: 1}, 2);
             FlxTween.tween(tagline, {alpha: 1}, 2);
         case 9:
-		    LyricInQuestion.color = 0xFFFFFFFF;
+		    lyricItself.color = 0xFFFFFFFF;
             UpdateLyric('in a terrifying turn of events');        
         case 27:
             UpdateLyric('a creature only known as big bob');  
         case 48:
-            FlxTween.tween(Songname, {alpha: 0}, 2);
+            FlxTween.tween(songname, {alpha: 0}, 2);
             FlxTween.tween(tagline, {alpha: 0}, 2);
             UpdateLyric('has been roaming the waters and EATING lighthouses');  
 	    case 60:

@@ -171,11 +171,13 @@ function onCountdown(event) {
 			FlxTween.tween(number1, {y: 600}, 1.2, {ease:FlxEase.backIn});
 			FlxTween.tween(number1bg, {y: 600}, 1.2, {ease:FlxEase.backIn});
 			FlxTween.tween(sep2, {y: 600}, 1.15, {ease:FlxEase.backIn});
-	
-			FlxTween.tween(camHUD, {alpha: 1}, 0.5);
-			if (PlayState.SONG.meta.name != "roomed") {
-				FlxTween.tween(openingblack, {alpha: 0}, 0.5);
-			}
 		}
 	}
+
+	if (PlayState.SONG.meta.name != "roomed") {
+		FlxTween.tween(openingblack, {alpha: 0}, 0.5);
+	}
+
+	FlxTween.tween(camHUD, {alpha: 1}, 0.5);
+
 }
