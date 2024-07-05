@@ -1,4 +1,7 @@
 <!DOCTYPE codename-engine-character>
 <character x="410" icon="ourple" camx="-125" y="30" isGF="false" camy="75" color="#C777FF" flipX="false" isPlayer="false" antialiasing="false" sprite="sideviewGF">
 	<anim x="0" loop="false" y="0" fps="6" anim="sideviewGF idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="13" anim="sideviewGF lookRound" name="lookRound" indices="1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11, 11, 11, 11"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="sideviewGF explode" name="explode"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="sideviewGF altdle" name="idle-alt"/>
 </character>

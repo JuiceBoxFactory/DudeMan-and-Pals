@@ -1,5 +1,5 @@
 {
-	"appearStep": 0,
+	"appearStep": 128,
 	"parsedColor": -13893888,
 	"color": "#2BFF00",
 	"category": "VS DUDEMAN",
@@ -14,11 +14,11 @@
 	"name": "srs",
 	"stepsPerBeat": 4,
 	"singerNames": "DudeMan (with Bee's shirt backwards) VS Bee",
-	"displayName": "Slash-SRS",
+	"displayName": "Slash-Srs",
 	"beatsPerMesure": 4,
 	"needsVoices": true,
 	"tagline": "The only time this'll ever happen",
 	"beatsPerMeasure": 4,
-	"actoresses": "artists: MeltyKelpy\ncomposer: OJSTheCoder\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: MeltyKelpy",
+	"actoresses": "artists: MeltyKelpy\ncomposer: OJSTheCoder\ncoder: MeltyKelpy\ncharter: GhosttaleSans\ncover art: MeltyKelpy",
 	"bpm": 180
 }

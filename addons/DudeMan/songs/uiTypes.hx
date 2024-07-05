@@ -77,6 +77,10 @@ function postCreate() {
 		openBox.updateHitbox();
 		insert(41, openBox);
 	
+		if (PlayState.SONG.meta.name == "srs") {
+			logo.alpha = 0;
+		}
+
 		tagLine = new FlxText(520, 0);
 		tagLine.text = '"'+PlayState.SONG.meta.tagline+'"';
 		tagLine.setFormat(Paths.font("COMIC.ttf"), 30, 0xFF010002, "center");

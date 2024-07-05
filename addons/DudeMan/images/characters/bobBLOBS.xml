@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="bobBLOBS.png">
+<SubTexture name="idle0000" x="240" y="497" width="233" height="229" frameX="-390" frameY="-278" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0001" x="0" y="264" width="239" height="233" frameX="-389" frameY="-274" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0002" x="401" y="0" width="238" height="235" frameX="-389" frameY="-272" frameWidth="1280" frameHeight="720" />
+<SubTexture name="right0000" x="0" y="497" width="240" height="230" frameX="-390" frameY="-277" frameWidth="1280" frameHeight="720" />
+<SubTexture name="right0001" x="473" y="497" width="232" height="228" frameX="-389" frameY="-279" frameWidth="1280" frameHeight="720" />
+<SubTexture name="up0000" x="0" y="0" width="202" height="264" frameX="-392" frameY="-242" frameWidth="1280" frameHeight="720" />
+<SubTexture name="up0001" x="202" y="0" width="199" height="260" frameX="-392" frameY="-246" frameWidth="1280" frameHeight="720" />
+<SubTexture name="left0000" x="239" y="264" width="202" height="233" frameX="-353" frameY="-275" frameWidth="1280" frameHeight="720" />
+<SubTexture name="left0001" x="639" y="0" width="200" height="232" frameX="-357" frameY="-276" frameWidth="1280" frameHeight="720" />
+<SubTexture name="down0000" x="0" y="727" width="209" height="196" frameX="-379" frameY="-308" frameWidth="1280" frameHeight="720" />
+<SubTexture name="down0001" x="839" y="0" width="207" height="200" frameX="-381" frameY="-304" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

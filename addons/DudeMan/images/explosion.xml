@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="explosion.png">
+<SubTexture name="explode0000" x="3055" y="2348" width="161" height="175" frameX="-406" frameY="-686" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0001" x="2501" y="1840" width="528" height="474" frameX="-166" frameY="-500" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0002" x="2395" y="2569" width="607" height="788" frameX="-140" frameY="-246" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0003" x="0" y="0" width="767" height="1328" frameX="-93" frameY="-53" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0004" x="727" y="2569" width="854" height="1088" frameX="-93" frameY="-13" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0005" x="1581" y="2569" width="814" height="1088" frameX="-106" frameY="-26" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0006" x="3055" y="0" width="894" height="1187" frameX="-106" frameY="0" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0007" x="0" y="1328" width="920" height="1241" frameX="-80" frameY="0" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0008" x="920" y="1328" width="880" height="1214" frameX="-80" frameY="0" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0009" x="2175" y="0" width="880" height="1254" frameX="-80" frameY="0" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0010" x="3055" y="1187" width="827" height="1161" frameX="-93" frameY="0" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0011" x="0" y="2569" width="727" height="1135" frameX="-93" frameY="-66" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0012" x="1800" y="1328" width="701" height="1201" frameX="-93" frameY="-40" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0013" x="1534" y="0" width="641" height="1275" frameX="-106" frameY="-26" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0014" x="767" y="0" width="767" height="1315" frameX="-93" frameY="-26" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0015" x="3002" y="2569" width="654" height="227" frameX="-153" frameY="0" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0016" x="3216" y="2348" width="667" height="161" frameX="-180" frameY="-13" frameWidth="1000" frameHeight="1407" />
+<SubTexture name="explode0017" x="2501" y="1328" width="512" height="512" frameX="0" frameY="0" frameWidth="512" frameHeight="512" />
+</TextureAtlas>

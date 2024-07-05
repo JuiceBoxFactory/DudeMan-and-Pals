@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dudemanPlayer.png">
+<SubTexture name="idle0000" x="238" y="0" width="82" height="121" frameX="-487" frameY="-261" frameWidth="909" frameHeight="512" />
+<SubTexture name="idle0001" x="0" y="153" width="82" height="121" frameX="-487" frameY="-261" frameWidth="909" frameHeight="512" />
+<SubTexture name="down0000" x="115" y="274" width="97" height="88" frameX="-482" frameY="-294" frameWidth="909" frameHeight="512" />
+<SubTexture name="down0001" x="214" y="153" width="95" height="90" frameX="-483" frameY="-292" frameWidth="909" frameHeight="512" />
+<SubTexture name="up0000" x="0" y="0" width="118" height="153" frameX="-497" frameY="-229" frameWidth="909" frameHeight="512" />
+<SubTexture name="up0001" x="118" y="0" width="120" height="144" frameX="-496" frameY="-238" frameWidth="909" frameHeight="512" />
+<SubTexture name="right0000" x="0" y="274" width="115" height="109" frameX="-500" frameY="-273" frameWidth="909" frameHeight="512" />
+<SubTexture name="right0001" x="320" y="114" width="111" height="110" frameX="-500" frameY="-272" frameWidth="909" frameHeight="512" />
+<SubTexture name="left0000" x="320" y="0" width="134" height="114" frameX="-433" frameY="-268" frameWidth="909" frameHeight="512" />
+<SubTexture name="left0001" x="82" y="153" width="132" height="116" frameX="-435" frameY="-266" frameWidth="909" frameHeight="512" />
+</TextureAtlas>
