@@ -21,16 +21,18 @@ var openingPlaying = false;
 var respectiveDialogue = "";
 var aussieMode = false;
 var curHand = "punch";
+var talkState = "Idle";
+var iconBeing = "sil";
 
 // FUCKING PAGE NAMES
 var page0name = "Shop";
 var page1name = "Normal Dude";
 var dialogProg = 0;
 
-
 function create() {
 
-	FlxG.sound.playMusic(Paths.music('clicker/clicker'));
+    voicelines = new FlxSound();
+    add(voicelines);
 
     bgOverflow = new FlxBackdrop(Paths.image('titleScreen/checkerboardbg'));
     bgOverflow.moves = true;
@@ -132,7 +134,15 @@ function create() {
 	dialogueCircle.scrollFactor.set(0, 0);
 	add(dialogueCircle);
 
-    icon = new FlxSprite(0, 0).loadGraphic(Paths.image('shh/PUNCHER/dialogue/iconBase'));
+    icon = new FlxSprite(0, 0);
+    icon.frames = Paths.getSparrowAtlas('shh/PUNCHER/dialogue/puzzleTalk');
+	icon.antialiasing = false;
+    icon.animation.addByPrefix('baseIdle', 'baseIdle', 6, true);
+    icon.animation.addByPrefix('baseTalk', 'baseTalk', 6, true);
+    icon.animation.addByPrefix('silIdle', 'silIdle', 6, true);
+    icon.animation.addByPrefix('silTalk', 'silTalk', 6, true);
+    icon.scrollFactor.set(0, 0);
+    icon.animation.play('silIdle');
 	icon.scrollFactor.set(0, 0);
 	add(icon);
 
@@ -144,7 +154,7 @@ function create() {
     txtBro.eraseDelay = 0.2;
     txtBro.autoErase = true;
     txtBro.waitTime = 0;
-    txtBro.prefix = "PUZZLE THE PRICK:\n";
+    txtBro.prefix = "???:\n";
     txtBro.setTypingVariation(0.10, false);
     txtBro.color = 0xFF231033;
     txtBro.skipKeys = ["SHIFT"];
@@ -180,7 +190,7 @@ function create() {
 }
 
 function postCreate() {
-        window.title = "DudeMan Punching Simulator - By HotSexyDemon972 ( Puzzle )";
+    window.title = "DudeMan Punching Simulator - By HotSexyDemon972 ( Puzzle )";
 }
 
 function normalClick() {
@@ -210,12 +220,15 @@ function normalClick() {
     }
 }
 
+
+
 function dialogueUpdate(dialogueInQuesiton) {
+
+    playVoiceline(dialogueInQuesiton+"/"+dialogProg);
 
     switch (dialogueInQuesiton) {
         case "fatBitches":
         if (dialogProg == 0) {
-            playVoiceline("ILoveFatBitches");
             txtBro.resetText("I love fat bitches.");
             txtBro.start(0.03);
         }
@@ -225,8 +238,7 @@ function dialogueUpdate(dialogueInQuesiton) {
 
         case "skippedDialogue":
         if (dialogProg == 0) {
-            playVoiceline("dangOkay");
-            updateIcon('Look');
+            updateIcon('sil');
             txtBro.resetText("Oh, Okay");
             txtBro.start(0.03);
         }
@@ -236,129 +248,68 @@ function dialogueUpdate(dialogueInQuesiton) {
 
 function openingDialogueUpdate() {
 
+    playVoiceline("opening/"+dialogProg);
+
     if (dialogProg == 0) {
-        playVoiceline("opening/0");
-        txtBro.resetText("Greetings, I am Puzzle");
+        updateIcon("sil");
+        talkState = "Talk";
+        txtBro.resetText("Oh ho ho, it would seem you've... stumbled upon my.. awesome game! hehehe");
         txtBro.start(0.03);
     }
     if (dialogProg == 1) {
-        playVoiceline("opening/1");
-        updateIcon('SmugLook');
-        txtBro.resetText("I am notorious for all things that involve using your brain");
+        txtBro.resetText("The game where you can... PUNCH DUDEMAN! yes.. yes! YES!");
         txtBro.start(0.03);
     }
     if (dialogProg == 2) {
-        playVoiceline("opening/2");
-        updateIcon('Look');
-        txtBro.resetText("I hope you have one");
+        txtBro.resetText("Oh, you wanna know my name? well that- that makes sense. uhm. well! i'd be glad to tell you!");
         txtBro.start(0.03);
     }
     if (dialogProg == 3) {
-        playVoiceline("opening/3");
-        updateIcon('BlankStare');
-        txtBro.resetText("Cause It'd be pretty awkward if you didn't");
+        txtBro.resetText("My name is...");
         txtBro.start(0.03);
     }
-
     if (dialogProg == 4) {
-        playVoiceline("opening/4");
-        updateIcon('Evil');
-        txtBro.resetText("If you do--You've come to the right place!");
+        updateIcon("base");
+        txtBro.prefix = "PUZZLE THE PRICK:\n";
+        txtBro.resetText("PUZZLE THE PRICK, BABY! #1 dudeman hater!");
         txtBro.start(0.03);
     }
-
     if (dialogProg == 5) {
-        playVoiceline("opening/5");
-        updateIcon('Base');
-        txtBro.resetText("Behind me stands a Dudeman");
+        updateIcon("base");
+        txtBro.resetText("Not at all because he beat me 33 times in blackjack.. in a row. that'd be... poposterous. yeah.");
         txtBro.start(0.03);
     }
-
     if (dialogProg == 6) {
-        playVoiceline("opening/6");
-        updateIcon('Base');
-        txtBro.resetText("There is one goal to do with this fella");
+        updateIcon("base");
+        txtBro.resetText("ANYWAYS in this game of mine? your goal is to punch the SHIT out of these DudeMen! yes thats plural!");
         txtBro.start(0.03);
     }
-
     if (dialogProg == 7) {
-        playVoiceline("opening/7");
-        updateIcon('BlankStare');
-        txtBro.resetText("Kill him.");
+        updateIcon("base");
+        txtBro.resetText("DudeMan IS quite the punchable fellow, of course you can punch him multiple times! im just being nice");
         txtBro.start(0.03);
     }
-
     if (dialogProg == 8) {
-        playVoiceline("opening/8");
-        updateIcon('Evil');
-        txtBro.resetText("Punish him for all its worth.");
+        updateIcon("base");
+        txtBro.resetText('Punching him will get you a "form" of "currency" which can be used in MY shop on the left!');
         txtBro.start(0.03);
     }
-
     if (dialogProg == 9) {
-        playVoiceline("opening/9");
-        updateIcon('Anger');
-        txtBro.resetText("SHOW HIM THE TORMENT AND PAIN OF HIS WRONGDOINGS!!!");
+        updateIcon("base");
+        txtBro.resetText('Buy Upgrades, Buy DudeMen, Buy whatever your heart desires!! that i can provide, of course.');
         txtBro.start(0.03);
     }
-
     if (dialogProg == 10) {
-        playVoiceline("opening/10");
-        updateIcon('Dude');
-        txtBro.resetText("Erm.....Anyways...");
+        updateIcon("base");
+        txtBro.resetText('That should be all you need to know! have fun punishing him for his misdeeds OF DEFINITELY CHEATING IN BLACKJACK. THERE IS NO WAY SOMEONE COULD WIN 33 TIMES IN A ROW JRRHAJRHJHAJRJGAJGRHGHJASGHRGhGASHRGRAREARAFSAGASRASRVASTFASRAFRAFRAFAGAFf');
         txtBro.start(0.03);
     }
-
     if (dialogProg == 11) {
-        playVoiceline("opening/11");
-        updateIcon('Base');
-        txtBro.resetText("Your job is to beat the living shit out of that guy");
+        updateIcon("base");
+        txtBro.resetText("sorry");
         txtBro.start(0.03);
     }
-
     if (dialogProg == 12) {
-        playVoiceline("opening/12");
-        updateIcon('Base');
-        txtBro.resetText("When you do, you will recieve currency which can be used to buy even more things to beat the bastard to pieces!");
-        txtBro.start(0.03);
-    }  
-
-    if (dialogProg == 13) {
-        playVoiceline("opening/13");
-        updateIcon('Base');
-        txtBro.resetText("You can also purchase more of the dudes, if you weren't already satisfied enough.");
-            txtBro.start(0.03);
-    }
-    
-    if (dialogProg == 14) {
-        playVoiceline("opening/14");
-        updateIcon('Troll');
-        txtBro.resetText("And hey! I'll be running the storefront itself, so you can come and see my hot sexy devil body every other minute of playing this :)");
-        txtBro.start(0.03);
-    }     
-
-    if (dialogProg == 15) {
-        playVoiceline("opening/15");
-        updateIcon('SmugLook');
-        txtBro.resetText("uhm- Alright, that's everything");
-        txtBro.start(0.03);
-    }
-    
-    if (dialogProg == 16) {
-        playVoiceline("opening/16");
-        updateIcon('BlankStare');
-        txtBro.resetText("Don't dissapoint, or else.");
-        txtBro.start(0.03);
-    }   
-
-    if (dialogProg == 17) {
-        playVoiceline("opening/17");
-        updateIcon('Evil');
-        txtBro.resetText("Byeee!!!");
-        txtBro.start(0.03);
-    } 
-
-    if (dialogProg == 18) {
         closeDialogue();
     }
 
@@ -371,6 +322,7 @@ function openDialogue() {
     new FlxTimer().start(2, function(timer) {
     FlxTween.tween(txtBro, {y: 275}, 2, {ease:FlxEase.quartOut});
         new FlxTimer().start(1.2, function(timer) {
+            talkState = "Talk";
             dialogueUpdate(respectiveDialogue);
         });
     });
@@ -380,7 +332,6 @@ function openDialogue() {
 function skipDialogue() {
     FlxTween.tween(FlxG.sound.music, {volume: 1}, 2, {ease:FlxEase.quartOut});
     txtBro.paused = true;
-    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.5);
     txtBro.alpha = 0.7;
     openingPlaying = false;
     new FlxTimer().start(1, function(timer) {
@@ -389,11 +340,13 @@ function skipDialogue() {
         respectiveDialogue = "skippedDialogue";
         dialogProg = 0;
         dialogueUpdate(respectiveDialogue);
+        talkState = "Talk";
         new FlxTimer().start(2, function(timer) {
             FlxTween.tween(dark, {alpha: 0}, 2, {ease:FlxEase.quartOut});
             FlxTween.tween(txtBro, {y: 1275}, 2, {ease:FlxEase.quartIn});
                 new FlxTimer().start(2, function(timer) {
                 inDialogue = false;
+                talkState = "Idle";
             }); 
         });   
 }); 
@@ -402,6 +355,7 @@ function skipDialogue() {
 
 function closeDialogue() {
 
+    talkState = "Idle";
     FlxTween.tween(FlxG.sound.music, {volume: 1}, 2, {ease:FlxEase.quartOut});    
     openingPlaying = false;
     FlxTween.tween(dark, {alpha: 0}, 2, {ease:FlxEase.quartOut});
@@ -413,45 +367,56 @@ function closeDialogue() {
 }
 
 function playVoiceline(sound) {
-    FlxG.sound.play(Paths.sound('puncher/voicelines/'+sound), 1);
+    voicelines = FlxG.sound.load(Paths.sound('puncher/voicelines/'+sound), 1);
+    voicelines.play();
 }
 
 function updateIcon(iconToBe) {
-    icon.loadGraphic(Paths.image('shh/PUNCHER/dialogue/icon'+iconToBe));
+    iconBeing = iconToBe;
 }
 
 function openingDialogueProgression() {
+    talkState = "Idle";
     txtBro.paused = true;
-    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.5);
+    voicelines.stop();
     txtBro.alpha = 0.7;
     new FlxTimer().start(0.35, function(timer) {
         txtBro.paused = false;
         txtBro.alpha = 1;
         dialogProg += 1;
         openingDialogueUpdate();
+        talkState = "Talk";
     });
 }
 
 function dialogProgression() {
+    talkState = "Idle";
     txtBro.paused = true;
-    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 0.5);
+    voicelines.stop();
     txtBro.alpha = 0.7;
     new FlxTimer().start(0.35, function(timer) {
         txtBro.paused = false;
         txtBro.alpha = 1;
         dialogProg += 1;
         dialogueUpdate(respectiveDialogue);
+        talkState = "Talk";
     });
 }
 
 function resetTextShit() {
     dialogProg = 0;
-    updateIcon("Base");
+    updateIcon("base");
     txtBro.resetText("");
     txtBro.start(0.03);
 }
 
 function update() {
+
+    if (voicelines.playing == false) {
+        talkState = "Idle";
+    }
+
+    icon.animation.play(iconBeing+talkState);
 
     FlxG.mouse.visible = false;
 

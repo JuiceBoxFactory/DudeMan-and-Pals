@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="puzzleTalk.png">
+<SubTexture name="baseTalk0000" x="0" y="0" width="270" height="270" frameX="-291" frameY="-231" frameWidth="1280" frameHeight="720" />
+<SubTexture name="baseTalk0001" x="270" y="0" width="270" height="270" frameX="-291" frameY="-231" frameWidth="1280" frameHeight="720" />
+<SubTexture name="baseIdle0000" x="0" y="270" width="270" height="270" frameX="-291" frameY="-231" frameWidth="1280" frameHeight="720" />
+<SubTexture name="baseIdle0001" x="270" y="270" width="270" height="270" frameX="-291" frameY="-231" frameWidth="1280" frameHeight="720" />
+<SubTexture name="silTalk0000" x="540" y="0" width="270" height="270" frameX="-291" frameY="-231" frameWidth="1280" frameHeight="720" />
+<SubTexture name="silTalk0001" x="540" y="270" width="270" height="270" frameX="-291" frameY="-231" frameWidth="1280" frameHeight="720" />
+<SubTexture name="silIdle0000" x="0" y="540" width="270" height="270" frameX="-291" frameY="-231" frameWidth="1280" frameHeight="720" />
+<SubTexture name="silIdle0001" x="270" y="540" width="270" height="270" frameX="-291" frameY="-231" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>
