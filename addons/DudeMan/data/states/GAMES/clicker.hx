@@ -4,6 +4,7 @@ import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxTimer;
 import funkin.backend.system.Controls;
 import openfl.filters.BlurFilter;
+import flixel.FlxCamera;
 
 // Dialogue Mechanics n Shit
 var canDoShitDude = false;
@@ -23,13 +24,37 @@ var aussieMode = false;
 var curHand = "punch";
 var talkState = "Idle";
 var iconBeing = "sil";
+var cursorCam = new FlxCamera(0, 0, 1280, 720);
 
 // FUCKING PAGE NAMES
 var page0name = "Shop";
 var page1name = "Normal Dude";
 var dialogProg = 0;
 
+// RADIO
+var radioChannelCam = new FlxCamera(0, 0, 240, 230);
+var checkedPlaying = false;
+var radioState = false;
+var inRadioMenu = false;
+var notChecked = true;
+var channelList:FlxTypedGroup<FlxText> = [];
+var channelAudio:FlxSoundGroup<FlxSound> = [];
+var selectedChannel = 0;
+var alphaToBe = 0;
+var showHostsEnabled = true;
+var dumbestShitEver:FlxTypedGroup<FlxText> = [];
+var songNamesAndArtists = [
+    "CURRENTLY PLAYING:\nnull\nnull",
+    "CURRENTLY PLAYING:\nnull\nnull",
+    "CURRENTLY PLAYING:\nnull\nnull",
+    "CURRENTLY PLAYING:\nnull\nnull",
+    "CURRENTLY PLAYING:\nnull\nnull",
+    "CURRENTLY PLAYING:\nnull\nnull"
+];
+
 function create() {
+
+    FlxG.sound.music.stop();
 
     voicelines = new FlxSound();
     add(voicelines);
@@ -180,12 +205,25 @@ function create() {
     FlxTween.tween(FlxG.sound.music, {volume: 0.2}, 2, {ease:FlxEase.quartOut});
     FlxTween.tween(txtBro, {y: 275}, 2, {ease:FlxEase.quartOut});
         new FlxTimer().start(1.2, function(timer) {
-            openingDialogueUpdate();
+            if (FlxG.save.data.debug == false) {
+                openingDialogueUpdate();
+            }
+            if (FlxG.save.data.debug == true) {
+                closeDialogue();
+            }
         });
     });
 
+    radioCreateFunc();
+
     cursor = new FlxSprite(0, 0).loadGraphic(Paths.image('game/cursor'));
+    cursor.camera = cursorCam;
     add(cursor);
+
+    FlxG.cameras.add(radioChannelCam, false);
+    radioChannelCam.bgColor = 0x00000000;
+    FlxG.cameras.add(cursorCam, false);
+    cursorCam.bgColor = 0x00000000;
 
 }
 
@@ -412,6 +450,8 @@ function resetTextShit() {
 
 function update() {
 
+    radioUpdateFunc();
+
     if (voicelines.playing == false) {
         talkState = "Idle";
     }
@@ -501,3 +541,354 @@ function update() {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// RADDDDDIIIIIIOOOOOOOOOOOOOOOOOOOOOO DOWN HERE !
+
+function createStations() {
+
+    for (i in 0...FlxG.save.data.radioChannels.length)	{
+
+        radioChannel = new FlxText(0, 0);
+        radioChannel.text = FlxG.save.data.radioChannels[i];
+        radioChannel.setFormat(Paths.font("TwCen.ttf"), 30, FlxColor.BLACK, "left");    
+        radioChannel.offset.set(1000, 225);      
+        radioChannel.y = 225 + (40 * i);
+        radioChannel.x = 1000;
+        radioChannel.color = 0xFF000000;
+        radioChannel.antialiasing = true;
+        radioChannel.borderSize = 2;
+        radioChannel.alpha = 1;
+        radioChannel.cameras = [radioChannelCam];
+        channelList.push(radioChannel);
+        add(radioChannel);
+
+        radioChannelAudio = new FlxSound();
+        radioChannelAudio = FlxG.sound.load(Paths.music('radio/songs/'+FlxG.random.int(0, 1)), 0, true);
+        radioChannelAudio.looped = false;
+        channelAudio.push(radioChannelAudio);
+        radioChannelAudio.volume = 0;
+        add(radioChannelAudio);
+        radioChannelAudio.play();
+        radioChannelAudio.stop();
+
+
+        // this has gotta be the weirdest thing ive EVER done LMAO
+
+        // antialiasing off means its a talking audio
+        // on means its playing a song
+
+        checkType = new FlxText();
+        checkType.antialiasing = true;
+        dumbestShitEver.push(checkType);
+        add(checkType);
+
+
+    }
+
+}
+
+function radioCreateFunc() {
+
+    darknessRadio = new FlxSprite(0, 0).loadGraphic(Paths.image('black'));
+	darknessRadio.scrollFactor.set(0, 0);
+    darknessRadio.alpha = 0;
+	add(darknessRadio);
+
+    radioHitBox = new FlxSprite(1090, 604).loadGraphic(Paths.image('shh/RADIO/radioLol'));
+	radioHitBox.antialiasing = false;
+    add(radioHitBox);
+
+    radio = new FlxSprite(0, 0);
+    radio.frames = Paths.getSparrowAtlas('shh/RADIO/dudeRadio');
+	radio.antialiasing = false;
+    radio.animation.addByPrefix('base', 'base', 15, false);
+    radio.animation.addByPrefix('on', 'enable', 15, false);
+    radio.scrollFactor.set(0, 0);
+    radio.animation.play('base');
+    add(radio);
+
+    showHostsText = new FlxText(985, 455);
+    showHostsText.text = "SHOW HOSTS?";
+    showHostsText.setFormat(Paths.font("TwCen.ttf"), 30, FlxColor.BLACK, "center");          
+    showHostsText.color = 0xFF000000;
+    showHostsText.antialiasing = true;
+    showHostsText.borderSize = 2;
+    showHostsText.alpha = 0;
+    add(showHostsText);
+
+    songPlayingBG = new FlxSprite(-190, 550).loadGraphic(Paths.image('songOpening'));
+	songPlayingBG.antialiasing = false;
+    songPlayingBG.scale.set(0.5, 0.6);
+    songPlayingBG.alpha = 0;
+    add(songPlayingBG);
+
+    songPlayingText = new FlxText(15, 600);
+    songPlayingText.text = songNamesAndArtists[selectedChannel];
+    songPlayingText.setFormat(Paths.font("TwCen.ttf"), 30, FlxColor.BLACK, "left");          
+    songPlayingText.color = 0xFF000000;
+    songPlayingText.antialiasing = true;
+    songPlayingText.borderSize = 2;
+    songPlayingText.alpha = 0;
+    add(songPlayingText);
+
+    showHosts = new FlxSprite(985, 485);
+    showHosts.frames = Paths.getSparrowAtlas('shh/RADIO/toggleSwitch');
+	showHosts.antialiasing = false;
+    showHosts.animation.addByPrefix('on', 'on', 12, false);
+    showHosts.animation.addByPrefix('off', 'off', 12, false);
+    showHosts.scrollFactor.set(0, 0);
+    if (FlxG.save.data.hosts == false) {
+        showHosts.animation.play('off', true);
+    }
+    else {
+        showHosts.animation.play('on', true);
+    }
+    showHosts.alpha = 0;
+    add(showHosts);
+
+    dudeRadioTM = new FlxText(1035, 170);
+    dudeRadioTM.text = "DudeRadioTM";
+    dudeRadioTM.setFormat(Paths.font("TwCen.ttf"), 40, FlxColor.BLACK, "center");          
+    dudeRadioTM.color = 0xFF000000;
+    dudeRadioTM.antialiasing = true;
+    dudeRadioTM.borderSize = 2;
+    dudeRadioTM.alpha = 0;
+    add(dudeRadioTM);
+
+	camPos = new FlxSprite(1000, 225).makeGraphic(240, 230, 0x00000000);
+	add(camPos);
+
+    createStations();
+
+    radioChannelCam.x = 1000;
+    radioChannelCam.y = 225;
+    radioChannelCam.alpha = 0;
+
+    topNbottom = new FlxSprite(-10, -20).loadGraphic(Paths.image('shh/RADIO/topNbottom'));
+	topNbottom.scrollFactor.set(0, 0);
+    topNbottom.alpha = 1;
+    topNbottom.cameras = [radioChannelCam];
+	add(topNbottom);
+    
+}
+
+
+function radioUpdateFunc() {
+
+    songPlayingText.text = songNamesAndArtists[selectedChannel];
+
+    if (FlxG.save.data.hosts == false) {
+        showHostsEnabled = false;
+    }
+
+    for (i in 0...FlxG.save.data.radioChannels.length)	{
+        
+        if (channelAudio[i].playing == false) {
+            radioAudioEnd(i, dumbestShitEver[i].antialiasing);
+
+        }
+
+        channelAudio[i].volume = 0;
+        channelAudio[selectedChannel].volume = 1;
+
+    }
+
+    if (FlxG.keys.justReleased.G) {
+        channelAudio[selectedChannel].stop();
+    }
+
+    for (i in 0...FlxG.save.data.radioChannels.length)	{
+        if (FlxG.mouse.overlaps(camPos)) {
+            if (FlxG.mouse.wheel > 0) {
+                channelList[i].y += 20;
+            }
+            if (FlxG.mouse.wheel < 0) {
+                channelList[i].y -= 20;
+                trace(channelList[i].y);
+            }
+        }
+
+        if (channelList[i].y > 225 + (40 * i)) {
+            channelList[i].y = 225 + (40 * i);
+        }
+
+}
+
+    for (i in 0...FlxG.save.data.radioChannels.length)	{
+        if (FlxG.mouse.overlaps(channelList[i]) && inRadioMenu == true) {
+            channelList[i].color = 0xFFFFDD60;
+        }
+        else {
+            channelList[i].color = 0xFF000000;
+        }
+        if (FlxG.mouse.overlaps(channelList[i]) && FlxG.mouse.justReleased && inRadioMenu == true) {
+            selectedChannel = i;
+            trace(selectedChannel);
+            channelList[i].color = 0xFF7400FF;
+        }
+    }
+
+    channelList[selectedChannel].color = 0xFF7400FF;
+
+    if (darknessRadio.alpha < alphaToBe) {
+        darknessRadio.alpha += 0.05;
+    }
+    if (darknessRadio.alpha > alphaToBe) {
+        darknessRadio.alpha -= 0.05;
+    }
+
+    for (i in 0...FlxG.save.data.radioChannels.length)	{
+        if (FlxG.mouse.overlaps(showHosts) && FlxG.mouse.justReleased && showHostsEnabled == true && inRadioMenu == true) {
+            showHosts.animation.play('off', true);
+            FlxG.save.data.hosts = false;
+            trace("hosts are off");
+            new FlxTimer().start(0.01, function(timer) {
+                showHostsEnabled = false;
+                if (dumbestShitEver[i].antialiasing == false) {
+                    channelAudio[i].stop();
+                }
+            });
+        }
+    }
+
+    if (FlxG.mouse.overlaps(showHosts) && FlxG.mouse.justReleased && showHostsEnabled == false && inRadioMenu == true) {
+        showHosts.animation.play('on', true);
+        FlxG.save.data.hosts = null;
+        trace("hosts are on");
+        new FlxTimer().start(0.01, function(timer) {
+            showHostsEnabled = true;
+        });
+    }
+
+    if (FlxG.mouse.overlaps(radioHitBox) && FlxG.mouse.justReleased && radioState == true && inRadioMenu == false) {
+        radio.animation.reverse();
+        inDialogue = false;
+        alphaToBe = 0;
+        new FlxTimer().start(0.01, function(timer) {
+            radioState = false;
+        });
+    }
+
+    if (FlxG.mouse.overlaps(radioHitBox) && FlxG.mouse.justReleased && radioState == false && inRadioMenu == false) {
+        radio.animation.play('on');
+        inDialogue = true;
+        alphaToBe = 0.8;
+        new FlxTimer().start(0.01, function(timer) {
+            radioState = true;
+        });
+    }
+
+    if (FlxG.mouse.overlaps(radioHitBox) && FlxG.mouse.justReleased && inRadioMenu == true) {
+        changeRadioState("off");
+        inDialogue = false;
+        new FlxTimer().start(0.01, function(timer) {
+            radioState = false;
+        });
+    }
+
+    if (radio.animation.frameIndex == 12 && notChecked == true) {
+        changeRadioState("on");
+        notChecked = false;
+    }
+
+    if (radio.animation.frameIndex < 12) {
+        notChecked = true;
+    }
+
+}
+
+function changeRadioState(type) {
+
+    switch (type) {
+
+        case "on":
+            for (i in 0...FlxG.save.data.radioChannels.length)	{
+                FlxTween.tween(radioChannelCam, {alpha: 1}, 0.25);
+            }
+            FlxTween.tween(dudeRadioTM, {alpha: 1}, 0.25);
+            FlxTween.tween(songPlayingBG, {alpha: 1}, 0.25);
+            FlxTween.tween(songPlayingText, {alpha: 1}, 0.25);
+            FlxTween.tween(showHosts, {alpha: 1}, 0.25);
+            FlxTween.tween(showHostsText, {alpha: 1}, 0.25);
+            trace('my fat ass in your face');
+            new FlxTimer().start(0.25, function(timer) {
+                inRadioMenu = true;
+            });
+
+        case "off":
+            for (i in 0...FlxG.save.data.radioChannels.length)	{
+                FlxTween.tween(radioChannelCam, {alpha: 0}, 0.25);
+            }
+            FlxTween.tween(dudeRadioTM, {alpha: 0}, 0.25);
+            FlxTween.tween(songPlayingBG, {alpha: 0}, 0.25);
+            FlxTween.tween(songPlayingText, {alpha: 0}, 0.25);
+            FlxTween.tween(showHosts, {alpha: 0}, 0.25);
+            FlxTween.tween(showHostsText, {alpha: 0}, 0.25);
+            trace('oooo yeah baby kiss me with your hot mouth');
+            new FlxTimer().start(0.25, function(timer) {
+                radio.animation.reverse();
+                inDialogue = false;
+                radioState = false;
+                alphaToBe = 0;
+                inRadioMenu = false;
+            });
+
+    }
+
+}
+
+function radioAudioEnd(channel, state) {
+
+    if (FlxG.save.data.hosts == false) {
+
+        state = false;
+
+    }
+
+    trace(state);
+
+        switch(state) {
+
+            case true:
+
+                channelAudio[channel] = FlxG.sound.load(Paths.music('radio/'+FlxG.save.data.radioChannels[channel]+'/'+FlxG.random.int(0, FlxG.save.data.radioChannelHostAmount[channel])), 0.2, true);
+                channelAudio[channel].play();
+                channelAudio[channel].looped = false;
+                channelAudio[channel].volume = 0;
+                dumbestShitEver[channel].antialiasing = false;
+                songNamesAndArtists[channel] = "CURRENTLY PLAYING:\nnothing at the moment !\nc:";
+
+            case false:
+
+                var songPicker = FlxG.random.int(0, 1);
+                channelAudio[channel] = FlxG.sound.load(Paths.music('radio/songs/'+songPicker), 0.2, true);
+                channelAudio[channel].play();
+                channelAudio[channel].looped = false;
+                channelAudio[channel].volume = 0;
+                dumbestShitEver[channel].antialiasing = true;
+                songNamesAndArtists[channel] = "CURRENTLY PLAYING:\n"+FlxG.save.data.songNamesArtists[songPicker];
+
+        }
+
+}
+
+

@@ -7,6 +7,7 @@ static var initialized:Bool = false;
 function new() {
 
 	FlxG.mouse.visible = false;
+
 }
 
 function update(elapsed:Float) {
