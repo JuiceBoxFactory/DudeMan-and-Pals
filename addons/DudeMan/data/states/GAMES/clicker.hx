@@ -10,7 +10,7 @@ import flixel.FlxCamera;
 var canDoShitDude = false;
 
 // the actual inner-workings
-var page = 1;
+var curPage = 1;
 var unlockedPages = 1;
 var blurFilter:BlurFilter;
 var inDialogue = false;
@@ -18,18 +18,20 @@ var redditKarmaScore = 0;
 var basicClickAmount = 1;
 var clickAmount = 0;
 var fistHitPosition = -550;
-var openingPlaying = false;
+var openingPlaying = true;
 var respectiveDialogue = "";
 var aussieMode = false;
 var curHand = "punch";
 var talkState = "Idle";
 var iconBeing = "sil";
 var cursorCam = new FlxCamera(0, 0, 1280, 720);
-
-// FUCKING PAGE NAMES
-var page0name = "Shop";
-var page1name = "Normal Dude";
 var dialogProg = 0;
+
+// IM GOING TO KILL MYSELF i love my pages
+var page = [
+    "Shop",
+    "DudeMan",
+];
 
 // RADIO
 var radioChannelCam = new FlxCamera(0, 0, 240, 230);
@@ -43,6 +45,7 @@ var selectedChannel = 0;
 var alphaToBe = 0;
 var showHostsEnabled = true;
 var dumbestShitEver:FlxTypedGroup<FlxText> = [];
+var noTouching = false;
 var songNamesAndArtists = [
     "CURRENTLY PLAYING:\nnull\nnull",
     "CURRENTLY PLAYING:\nnull\nnull",
@@ -51,6 +54,7 @@ var songNamesAndArtists = [
     "CURRENTLY PLAYING:\nnull\nnull",
     "CURRENTLY PLAYING:\nnull\nnull"
 ];
+var desiredRadioVolume = 1;
 
 function create() {
 
@@ -68,7 +72,7 @@ function create() {
     bgOverflow.alpha = 1;
     add(bgOverflow);
 
-    dudeman1 = new FlxSprite(0, 0).loadGraphic(Paths.image('shh/PUNCHER/in-game/mans/DudeMan'));
+    dudeman1 = new FlxSprite(0, 0).loadGraphic(Paths.image('shh/PUNCHER/in-game/mans/'+page[curPage]));
 	dudeman1.scrollFactor.set(0, 0);
     dudeman1.alpha = 1;
 	add(dudeman1);
@@ -76,27 +80,6 @@ function create() {
     fist = new FlxSprite(-550, 230).loadGraphic(Paths.image('shh/PUNCHER/in-game/hands/'+curHand));
 	fist.scrollFactor.set(0, 0);
 	add(fist);
-
-    arrowLeft = new FlxSprite(0, 0);
-    arrowLeft.frames = Paths.getSparrowAtlas('shh/PUNCHER/ui/arrow');
-	arrowLeft.antialiasing = false;
-    arrowLeft.animation.addByPrefix('idle', 'idle', 6, true);
-    arrowLeft.scrollFactor.set(0, 0);
-    arrowLeft.animation.play('idle');
-    add(arrowLeft);
-
-    arrowRight = new FlxSprite(0, 0);
-    arrowRight.frames = Paths.getSparrowAtlas('shh/PUNCHER/ui/arrow');
-	arrowRight.antialiasing = false;
-    arrowRight.animation.addByPrefix('idle', 'idle', 6, true);
-    arrowRight.scrollFactor.set(0, 0);
-    arrowRight.flipX = true;
-    arrowRight.animation.play('idle');
-    add(arrowRight);
-
-    buttonLeft = new FlxButton(100, 100, "SHOP", update);
-    buttonLeft.updateHitbox();
-    add(buttonLeft);
 
     statsBox = new FlxSprite(602, 10).loadGraphic(Paths.image('shh/PUNCHER/ui/box'));
 	statsBox.scrollFactor.set(0, 0);
@@ -112,6 +95,7 @@ function create() {
     redditKarma = new FlxText(900, 170, 600, "");
     redditKarma.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "left"); 
     redditKarma.color = 0xFF231033; 
+    redditKarma.antialiasing = true;
     add(redditKarma);
 
     dmgIcon = new FlxSprite(785, 140).loadGraphic(Paths.image('shh/PUNCHER/ui/iconsNShit/punchPower'));
@@ -122,6 +106,7 @@ function create() {
     dmgCounter = new FlxText(900, 220, 600, "");
     dmgCounter.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "left"); 
     dmgCounter.color = 0xFF231033; 
+    dmgCounter.antialiasing = true;
     add(dmgCounter);
 
     dmgIcon = new FlxSprite(785, 190).loadGraphic(Paths.image('shh/PUNCHER/ui/iconsNShit/springPower'));
@@ -132,6 +117,7 @@ function create() {
     springDmgCounter = new FlxText(900, 270, 600, "");
     springDmgCounter.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "left"); 
     springDmgCounter.color = 0xFF231033; 
+    springDmgCounter.antialiasing = true;
     add(springDmgCounter);
 
     clicksIcon = new FlxSprite(785, 240).loadGraphic(Paths.image('shh/PUNCHER/ui/iconsNShit/clickCount'));
@@ -140,6 +126,7 @@ function create() {
 	add(clicksIcon);
 
     clickCounter = new FlxText(900, 320, 600, "");
+    clickCounter.antialiasing = true;
     clickCounter.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "left"); 
     clickCounter.color = 0xFF231033; 
     add(clickCounter);
@@ -149,6 +136,44 @@ function create() {
     clickSpot.updateHitbox();
     clickSpot.alpha = 0.000000000001;
     add(clickSpot);
+
+    puzzleShopImage = new FlxSprite(0, 0).loadGraphic(Paths.image('shh/PUNCHER/shop/puzzleShopPlaceholder'));
+	puzzleShopImage.scrollFactor.set(0, 0);
+    puzzleShopImage.alpha = 0;
+	add(puzzleShopImage);
+
+    leftText = new FlxText(-300, 345, 600, "oooo this'll say a page name if u see this KILL YOURSELF");
+    leftText.antialiasing = true;
+    leftText.setFormat(Paths.font("Bahnschrift.ttf"), 25, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);
+    leftText.color = 0xFFFCF3FF;
+    leftText.borderColor = 0xFF0C0014;
+    leftText.borderSize = 2;
+    add(leftText);
+
+    arrowLeft = new FlxSprite(10, 318);
+    arrowLeft.frames = Paths.getSparrowAtlas('shh/PUNCHER/ui/arrow');
+	arrowLeft.antialiasing = false;
+    arrowLeft.animation.addByPrefix('idle', 'idle', 6, true);
+    arrowLeft.scrollFactor.set(0, 0);
+    arrowLeft.animation.play('idle');
+    add(arrowLeft);
+
+    rightText = new FlxText(0, 345, 600, "oooo this'll say a page name if u see this KILL YOURSELF");
+    rightText.antialiasing = true;
+    rightText.setFormat(Paths.font("Bahnschrift.ttf"), 25, FlxColor.WHITE, "right", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);
+    rightText.color = 0xFFFCF3FF;
+    rightText.borderColor = 0xFF0C0014;
+    rightText.borderSize = 2;
+    add(rightText);
+
+    arrowRight = new FlxSprite(1210, 318);
+    arrowRight.frames = Paths.getSparrowAtlas('shh/PUNCHER/ui/arrow');
+	arrowRight.antialiasing = false;
+    arrowRight.animation.addByPrefix('idle', 'idle', 6, true);
+    arrowRight.scrollFactor.set(0, 0);
+    arrowRight.flipX = true;
+    arrowRight.animation.play('idle');
+    add(arrowRight);
 
     dark = new FlxSprite(0, 0).loadGraphic(Paths.image('black'));
 	dark.scrollFactor.set(0, 0);
@@ -171,10 +196,19 @@ function create() {
 	icon.scrollFactor.set(0, 0);
 	add(icon);
 
+    stupidVolumeShit = new FlxSprite(0, 900);
+    stupidVolumeShit.frames = Paths.getSparrowAtlas('shh/PUNCHER/dialogue/puzzleTalk');
+	stupidVolumeShit.antialiasing = false;
+    stupidVolumeShit.animation.addByPrefix('silIdle', 'silIdle', 6, true);
+    stupidVolumeShit.scrollFactor.set(0, 0);
+    stupidVolumeShit.animation.play('silIdle');
+	stupidVolumeShit.scrollFactor.set(0, 0);
+	add(stupidVolumeShit);
+
     txtBro = new FlxTypeText(575, 1275, 300, "", 16, true);
     txtBro.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "center");            
     txtBro.color = 0xFF130022;
-    txtBro.antialiasing = false;
+    txtBro.antialiasing = true;
     txtBro.delay = 0.02;
     txtBro.eraseDelay = 0.2;
     txtBro.autoErase = true;
@@ -189,11 +223,13 @@ function create() {
     add(txtBro);
 
     enterTEXT = new FlxText(485, 430, 600, "press ENTER to uhmm");
+    enterTEXT.antialiasing = true;
     enterTEXT.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "center"); 
     enterTEXT.color = 0xFF231033; 
     add(enterTEXT);
 
     shiftTEXT = new FlxText(310, 430, 600, "SHIFT to skip");
+    shiftTEXT.antialiasing = true;
     shiftTEXT.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "center"); 
     shiftTEXT.color = 0xFF231033; 
     add(shiftTEXT);
@@ -207,6 +243,7 @@ function create() {
         new FlxTimer().start(1.2, function(timer) {
             if (FlxG.save.data.debug == false) {
                 openingDialogueUpdate();
+                FlxTween.tween(stupidVolumeShit, {alpha: 0.3}, 0.4);
             }
             if (FlxG.save.data.debug == true) {
                 closeDialogue();
@@ -215,6 +252,19 @@ function create() {
     });
 
     radioCreateFunc();
+
+    // im so happy for him
+    puzzleTransgender = new FlxSprite(-1900, 0).loadGraphic(Paths.image('shh/PUNCHER/ui/puzzleTransition'));
+	puzzleTransgender.scrollFactor.set(0, 0);
+	add(puzzleTransgender);
+
+    doorPuzzle = new FlxSprite(-1900, 0);
+    doorPuzzle.frames = Paths.getSparrowAtlas('shh/PUNCHER/ui/puzzlesDoor');
+	doorPuzzle.antialiasing = false;
+    doorPuzzle.animation.addByPrefix('idle', 'idle', 6, true);
+    doorPuzzle.scrollFactor.set(0, 0);
+    doorPuzzle.animation.play('idle');
+    add(doorPuzzle);
 
     cursor = new FlxSprite(0, 0).loadGraphic(Paths.image('game/cursor'));
     cursor.camera = cursorCam;
@@ -257,8 +307,6 @@ function normalClick() {
         });   
     }
 }
-
-
 
 function dialogueUpdate(dialogueInQuesiton) {
 
@@ -356,6 +404,7 @@ function openingDialogueUpdate() {
 function openDialogue() {
     
     inDialogue = true;
+    FlxTween.tween(stupidVolumeShit, {alpha: 0.3}, 2);
     FlxTween.tween(dark, {alpha: 0.7}, 4, {ease:FlxEase.quartOut});
     new FlxTimer().start(2, function(timer) {
     FlxTween.tween(txtBro, {y: 275}, 2, {ease:FlxEase.quartOut});
@@ -384,6 +433,7 @@ function skipDialogue() {
             FlxTween.tween(txtBro, {y: 1275}, 2, {ease:FlxEase.quartIn});
                 new FlxTimer().start(2, function(timer) {
                 inDialogue = false;
+                FlxTween.tween(stupidVolumeShit, {alpha: 1}, 0.4);
                 talkState = "Idle";
             }); 
         });   
@@ -394,6 +444,7 @@ function skipDialogue() {
 function closeDialogue() {
 
     talkState = "Idle";
+    FlxTween.tween(stupidVolumeShit, {alpha: 1}, 0.4);
     FlxTween.tween(FlxG.sound.music, {volume: 1}, 2, {ease:FlxEase.quartOut});    
     openingPlaying = false;
     FlxTween.tween(dark, {alpha: 0}, 2, {ease:FlxEase.quartOut});
@@ -448,9 +499,130 @@ function resetTextShit() {
     txtBro.start(0.03);
 }
 
+function shopTransition(type) {
+
+    switch (type) {
+
+        case "open":
+
+            FlxG.sound.play(Paths.sound('bell'), 0.5);
+            FlxTween.tween(stupidVolumeShit, {alpha: 0.3}, 0.4);
+            inDialogue = true;
+            puzzleTransgender.x = -1900;
+            doorPuzzle.x = -1900;
+            FlxTween.tween(puzzleTransgender, {x: -130}, 1, {ease:FlxEase.quartInOut});
+            FlxTween.tween(doorPuzzle, {x: -10}, 1.5, {ease:FlxEase.quartInOut});
+            new FlxTimer().start(1.6, function(timer) {
+                inDialogue = false;
+                FlxTween.tween(stupidVolumeShit, {alpha: 1}, 0.4);
+                FlxTween.tween(puzzleTransgender, {x: 1900}, 1, {ease:FlxEase.quartInOut});
+                FlxTween.tween(doorPuzzle, {x: 1900}, 1.2, {ease:FlxEase.quartInOut});
+            });
+
+        case "close":
+
+            FlxG.sound.play(Paths.sound('bell'), 0.5);
+            inDialogue = true;
+            FlxTween.tween(stupidVolumeShit, {alpha: 0.3}, 0.4);
+            puzzleTransgender.x = 1900;
+            doorPuzzle.x = 1900;
+            FlxTween.tween(puzzleTransgender, {x: -130}, 1, {ease:FlxEase.quartInOut});
+            FlxTween.tween(doorPuzzle, {x: -10}, 1.5, {ease:FlxEase.quartInOut});
+            new FlxTimer().start(1.6, function(timer) {
+                inDialogue = false;
+                FlxTween.tween(stupidVolumeShit, {alpha: 1}, 0.4);
+                FlxTween.tween(puzzleTransgender, {x: -1900}, 1, {ease:FlxEase.quartInOut});
+                FlxTween.tween(doorPuzzle, {x: -1900}, 1.2, {ease:FlxEase.quartInOut});
+            });
+
+    }
+
+}
+
 function update() {
 
+    managePuzzlesShop();
     radioUpdateFunc();
+
+    dudeman1 = new FlxSprite(0, 0).loadGraphic(Paths.image('shh/PUNCHER/in-game/mans/'+page[curPage]));
+
+    if (FlxG.mouse.overlaps(arrowLeft) && inDialogue == false) {
+
+        if (FlxG.mouse.justReleased) {
+            if (curPage > 1) {
+                curPage -= 1;
+            }
+            if (curPage == 1) {
+                shopTransition("open");
+                new FlxTimer().start(1, function(timer) {
+                    curPage -= 1;
+                }); 
+            }   
+        }
+
+        if (leftText.x < 75) {
+            leftText.x += 25;
+        }
+        if (leftText.x > 75) {
+            leftText.x = 75;
+        } 
+    }
+    else {
+        if (leftText.x > -300) {
+            leftText.x -= 25;
+        } 
+        if (leftText.x < -300) {
+            leftText.x = -300;
+        }    
+    }
+
+    if (FlxG.mouse.overlaps(arrowRight) && inDialogue == false) {
+
+        if (FlxG.mouse.justReleased) {
+            if (curPage > 0) {
+                curPage += 1;
+            }
+            if (curPage == 0) {
+                shopTransition("close");
+                new FlxTimer().start(1, function(timer) {
+                    curPage += 1;
+                }); 
+            }   
+        }
+
+        if (rightText.x > 600) {
+            rightText.x -= 25;
+        }
+        if (rightText.x < 600) {
+            rightText.x = 600;
+        } 
+    }
+    else {
+        if (rightText.x < 975) {
+            rightText.x += 25;
+        } 
+        if (rightText.x > 975) {
+            rightText.x = 975;
+        }    
+    }
+
+    rightText.text = page[curPage + 1];
+
+    if (rightText.text == null) {
+        arrowRight.visible = false;
+    }
+    else {
+        arrowRight.visible = true;
+    }
+
+    leftText.text = page[curPage - 1];
+
+    if (leftText.text == null) {
+        arrowLeft.visible = false;
+    }
+    else {
+        arrowLeft.visible = true;
+    }
 
     if (voicelines.playing == false) {
         talkState = "Idle";
@@ -536,11 +708,45 @@ function update() {
         dialogProgression();
     }
 
+    if (FlxG.keys.justReleased.G && FlxG.save.data.debug == false) {
+        FlxG.save.data.debug = true;
+        FlxG.resetState();
+    }
+    else if (FlxG.keys.justReleased.G && FlxG.save.data.debug == true) {
+        FlxG.save.data.debug = false;
+        FlxG.resetState();
+    }
+
 	if (controls.BACK) {
         FlxG.switchState(new ModState("GameSelector"));
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// PUZZLE'S SHOOOPPPPPPPPPPPPPPPPPPPPPPPPP
+
+function managePuzzlesShop() {
+
+    if (curPage == 0) {
+        puzzleShopImage.alpha = 1;
+    }
+    else {
+        puzzleShopImage.alpha = 0;
+    }
+
+}
+
 
 
 
@@ -689,6 +895,13 @@ function radioCreateFunc() {
     topNbottom.cameras = [radioChannelCam];
 	add(topNbottom);
     
+    for (i in 0...FlxG.save.data.radioChannels.length)	{
+
+        channelAudio[i].volume = 0;
+        channelAudio[selectedChannel].volume = desiredRadioVolume;
+
+    }
+
 }
 
 
@@ -702,13 +915,14 @@ function radioUpdateFunc() {
 
     for (i in 0...FlxG.save.data.radioChannels.length)	{
         
+        desiredRadioVolume = stupidVolumeShit.alpha;
+
         if (channelAudio[i].playing == false) {
             radioAudioEnd(i, dumbestShitEver[i].antialiasing);
 
         }
-
         channelAudio[i].volume = 0;
-        channelAudio[selectedChannel].volume = 1;
+        channelAudio[selectedChannel].volume = desiredRadioVolume;
 
     }
 
@@ -733,6 +947,41 @@ function radioUpdateFunc() {
 
 }
 
+
+    for (i in 0...FlxG.save.data.radioChannels.length)	{
+        if (FlxG.mouse.overlaps(showHosts)) {
+
+            noTouching = true;
+
+            if (FlxG.mouse.justReleased && showHostsEnabled == true && inRadioMenu == true) {
+                showHosts.animation.play('off', true);
+                FlxG.save.data.hosts = false;
+                trace("hosts are off");
+                new FlxTimer().start(0.01, function(timer) {
+                    showHostsEnabled = false;
+                    if (dumbestShitEver[i].antialiasing == false) {
+                        channelAudio[i].stop();
+                    }
+                });
+            }
+
+            if (FlxG.mouse.justReleased && showHostsEnabled == false && inRadioMenu == true) {
+                showHosts.animation.play('on', true);
+                FlxG.save.data.hosts = null;
+                trace("hosts are on");
+                new FlxTimer().start(0.01, function(timer) {
+                    showHostsEnabled = true;
+                });
+            }
+
+        }
+        else { 
+            noTouching = false;
+        }
+    }
+
+
+
     for (i in 0...FlxG.save.data.radioChannels.length)	{
         if (FlxG.mouse.overlaps(channelList[i]) && inRadioMenu == true) {
             channelList[i].color = 0xFFFFDD60;
@@ -740,7 +989,7 @@ function radioUpdateFunc() {
         else {
             channelList[i].color = 0xFF000000;
         }
-        if (FlxG.mouse.overlaps(channelList[i]) && FlxG.mouse.justReleased && inRadioMenu == true) {
+        if (FlxG.mouse.overlaps(channelList[i]) && FlxG.mouse.justReleased && inRadioMenu == true && noTouching == false) {
             selectedChannel = i;
             trace(selectedChannel);
             channelList[i].color = 0xFF7400FF;
@@ -754,29 +1003,6 @@ function radioUpdateFunc() {
     }
     if (darknessRadio.alpha > alphaToBe) {
         darknessRadio.alpha -= 0.05;
-    }
-
-    for (i in 0...FlxG.save.data.radioChannels.length)	{
-        if (FlxG.mouse.overlaps(showHosts) && FlxG.mouse.justReleased && showHostsEnabled == true && inRadioMenu == true) {
-            showHosts.animation.play('off', true);
-            FlxG.save.data.hosts = false;
-            trace("hosts are off");
-            new FlxTimer().start(0.01, function(timer) {
-                showHostsEnabled = false;
-                if (dumbestShitEver[i].antialiasing == false) {
-                    channelAudio[i].stop();
-                }
-            });
-        }
-    }
-
-    if (FlxG.mouse.overlaps(showHosts) && FlxG.mouse.justReleased && showHostsEnabled == false && inRadioMenu == true) {
-        showHosts.animation.play('on', true);
-        FlxG.save.data.hosts = null;
-        trace("hosts are on");
-        new FlxTimer().start(0.01, function(timer) {
-            showHostsEnabled = true;
-        });
     }
 
     if (FlxG.mouse.overlaps(radioHitBox) && FlxG.mouse.justReleased && radioState == true && inRadioMenu == false) {
@@ -821,6 +1047,7 @@ function changeRadioState(type) {
     switch (type) {
 
         case "on":
+            inRadioMenu = true;
             for (i in 0...FlxG.save.data.radioChannels.length)	{
                 FlxTween.tween(radioChannelCam, {alpha: 1}, 0.25);
             }
@@ -830,9 +1057,6 @@ function changeRadioState(type) {
             FlxTween.tween(showHosts, {alpha: 1}, 0.25);
             FlxTween.tween(showHostsText, {alpha: 1}, 0.25);
             trace('my fat ass in your face');
-            new FlxTimer().start(0.25, function(timer) {
-                inRadioMenu = true;
-            });
 
         case "off":
             for (i in 0...FlxG.save.data.radioChannels.length)	{
@@ -888,6 +1112,13 @@ function radioAudioEnd(channel, state) {
                 songNamesAndArtists[channel] = "CURRENTLY PLAYING:\n"+FlxG.save.data.songNamesArtists[songPicker];
 
         }
+
+    for (i in 0...FlxG.save.data.radioChannels.length)	{
+
+        channelAudio[i].volume = 0;
+        channelAudio[selectedChannel].volume = desiredRadioVolume;
+    
+    }
 
 }
 
