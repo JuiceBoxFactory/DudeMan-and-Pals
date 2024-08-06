@@ -2,10 +2,16 @@ import funkin.backend.utils.NativeAPI;
 import lime.graphics.Image;
 import funkin.backend.utils.DiscordUtil;
 import funkin.backend.utils.WindowUtils;
+import flixel.FlxCamera;
+import flixel.util.FlxTimer;
+
+static var volCam:FlxCamera;
 static var initialized:Bool = false;
+static var timeToMove = true;
 
 function new() {
 
+	FlxG.sound.volume = 1;
 	FlxG.mouse.visible = false;
 
 }
@@ -59,10 +65,12 @@ function update(elapsed:Float) {
 	if (FlxG.keys.justPressed.F5) {
         FlxG.resetState();
 		FlxG.mouse.visible = false;
-        }
+    }
 }
 
 function preStateSwitch() {
+	
+	FlxG.sound.soundTrayEnabled = false;
 	WindowUtils.winTitle = window.title = "DudeMan and... PALS???";
 	window.setIcon(Image.fromBytes(Assets.getBytes('images/modIcon.png')));
 
@@ -75,4 +83,95 @@ function preStateSwitch() {
 	// the mod icon doesnt work ?? - melty
 	// yes it does - corva
 	// oh you're right actually it does wtf - melty	
+}
+
+function postStateSwitch() {
+
+	volCam = new FlxCamera();
+	volCam.bgColor = 0;
+	FlxG.cameras.add(volCam, false);
+
+    volBar = new FlxSprite(-200, 0);
+    volBar.frames = Paths.getSparrowAtlas('DudeVOL');
+	volBar.animation.addByPrefix('0', 'noVol', 24, false);
+	volBar.animation.addByPrefix('0.1', '0.1', 24, false);
+	volBar.animation.addByPrefix('0.2', '0.1', 24, false);
+	volBar.animation.addByPrefix('0.2', '0.2', 24, false);
+	volBar.animation.addByPrefix('0.3', '0.3', 24, false);
+	volBar.animation.addByPrefix('0.4', '0.4', 24, false);
+	volBar.animation.addByPrefix('0.5', '0.5', 24, false);
+	volBar.animation.addByPrefix('0.6', '0.6', 24, false);
+	volBar.animation.addByPrefix('0.7', '0.7', 24, false);
+	volBar.animation.addByPrefix('0.8', '0.8', 24, false);
+	volBar.animation.addByPrefix('0.9', '0.9', 24, false);
+	volBar.animation.addByPrefix('1', '1', 24, false);
+	volBar.animation.play(''+FlxG.sound.volume);
+	volBar.antialiasing = false;
+	volBar.updateHitbox();
+	volBar.cameras = [volCam];
+	FlxG.state.add(volBar);
+
+    volTime = new FlxTimer();
+    volTime.time = 2;
+    volTime.active = false;
+    FlxG.state.add(volTime);
+
+}
+
+function postUpdate() {
+
+	if (volBar.x < -199) {
+		timeToMove = false;
+	}
+
+	if (timeToMove == true) {
+		volBar.x -= 0.5;
+	}
+
+	FlxG.sound.soundTrayEnabled = false;
+	if (FlxG.sound.muted == false) {
+		volBar.animation.play(''+FlxG.sound.volume);
+	}
+	if (FlxG.sound.muted == true) {
+		volBar.animation.play('0');
+	}
+
+	if (FlxG.keys.justPressed.MINUS || FlxG.keys.justPressed.NUMPADMINUS) {
+		volTime.cancel();
+		FlxG.sound.play(Paths.sound("Voldown"));
+		timeToMove = false;
+		volBar.x = 0;
+		volTime.start(1, function(timer) {
+			timeToMove = true;
+		});
+    }
+
+	if (FlxG.keys.justPressed.ZERO || FlxG.keys.justPressed.NUMPADZERO) {
+		volTime.cancel();
+		timeToMove = false;
+		volBar.x = 0;
+		volTime.start(1, function(timer) {
+			timeToMove = true;
+		});
+	}
+
+	if (FlxG.keys.justPressed.PLUS || FlxG.keys.justPressed.NUMPADPLUS) {
+		volTime.cancel();
+		if (FlxG.sound.volume < 0.9) {
+			FlxG.sound.play(Paths.sound("Volup"));
+		}
+		else {
+			FlxG.sound.play(Paths.sound("VolMAX"));
+		}
+		timeToMove = false;
+		volBar.x = 0;
+		volTime.start(1, function(timer) {
+			timeToMove = true;
+		});
+	}
+
+	if (FlxG.sound.volume < 0.1) {
+		FlxG.sound.volume = 0;
+	}
+
 }

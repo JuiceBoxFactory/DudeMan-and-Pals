@@ -21,9 +21,11 @@ function create() {
     tickleCam.bgColor = 0x00000000;
     FlxG.cameras.add(tickleCam, false);
 
+
+
 	myOpp = dad.getIcon();
 
-    timeToTICKLE = FlxG.random.int(6000, 6000);
+//    timeToTICKLE = FlxG.random.int(6000, 6000);
     trace(timeToTICKLE);
 
     icon = new FlxSprite(525, -500).loadGraphic(Paths.image('icons/'+myOpp));

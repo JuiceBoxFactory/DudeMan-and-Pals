@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="DudeVOL.png">
+<SubTexture name="noVol" x="0" y="0" width="112" height="429" frameX="0" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="0.10000" x="112" y="0" width="112" height="429" frameX="0" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="0.20000" x="224" y="0" width="112" height="429" frameX="0" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="0.30000" x="336" y="0" width="112" height="429" frameX="0" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="0.40000" x="448" y="0" width="112" height="429" frameX="0" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="0.50000" x="560" y="0" width="112" height="429" frameX="0" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="0.60000" x="672" y="0" width="112" height="429" frameX="0" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="0.70000" x="784" y="0" width="112" height="429" frameX="0" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="0.80000" x="0" y="429" width="112" height="429" frameX="0" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="0.90000" x="112" y="429" width="112" height="429" frameX="0" frameY="-156" frameWidth="1280" frameHeight="720" />
+<SubTexture name="10000" x="224" y="429" width="112" height="429" frameX="0" frameY="-156" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>
