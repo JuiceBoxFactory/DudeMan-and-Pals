@@ -598,11 +598,11 @@ function update() {
 			FlxG.save.data.sectionselected = 4;
 			FlxG.switchState(new FreeplayState());
 		}
-		if (Selected > amountOfButtons) {
+		if (Selected > 3) {
 			Selected = 0;
 		}
 		if (Selected < 0) {
-			Selected = amountOfButtons;
+			Selected = 3;
 		}
 		if (controls.BACK) {
 		FlxG.sound.play(Paths.sound('cancel'));
