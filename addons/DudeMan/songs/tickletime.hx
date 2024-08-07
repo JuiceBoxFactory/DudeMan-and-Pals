@@ -56,7 +56,7 @@ function postCreate() {
     cursor = new FlxSprite(0, 0).loadGraphic(Paths.image('game/cursor'));
     cursor.cameras = [tickleCam];
     cursor.scrollFactor.set(0, 0);
-    cursor.alpha = 1;
+    cursor.alpha = 0;
     add(cursor);
 
 }
