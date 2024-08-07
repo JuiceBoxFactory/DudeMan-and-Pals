@@ -1,0 +1,24 @@
+{
+	"appearStep": 128,
+	"parsedColor": -13893888,
+	"color": "#2BFF00",
+	"category": "VS DUDEMAN",
+	"actoresses2": "artists: MeltyKelpy    composer: OJSTheCoder\ncoder: MeltyKelpy    charter: MeltyKelpy",
+	"opponentModeAllowed": false,
+	"bio": "The only time this'll ever happen",
+	"icon": "Icon",
+	"difficulties": [
+		"Hard"
+	],
+	"coopAllowed": false,
+	"name": "srs",
+	"stepsPerBeat": 4,
+	"singerNames": "DudeMan (with Bee's shirt backwards) VS Bee",
+	"displayName": "Slash-Srs",
+	"beatsPerMesure": 4,
+	"needsVoices": true,
+	"tagline": "The only time this'll ever happen",
+	"beatsPerMeasure": 4,
+	"actoresses": "artists: MeltyKelpy\ncomposer: OJSTheCoder\ncoder: MeltyKelpy\ncharter: GhosttaleSans\ncover art: MeltyKelpy",
+	"bpm": 180
+}

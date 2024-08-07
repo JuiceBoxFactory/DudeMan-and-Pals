@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dudeRadio.png">
+<SubTexture name="base0000" x="888" y="605" width="159" height="94" frameX="-1090" frameY="-604" frameWidth="1280" frameHeight="720" />
+<SubTexture name="enable0000" x="888" y="483" width="159" height="122" frameX="-1090" frameY="-576" frameWidth="1280" frameHeight="720" />
+<SubTexture name="enable0001" x="189" y="541" width="159" height="165" frameX="-1090" frameY="-533" frameWidth="1280" frameHeight="720" />
+<SubTexture name="enable0002" x="888" y="0" width="159" height="162" frameX="-1090" frameY="-536" frameWidth="1280" frameHeight="720" />
+<SubTexture name="enable0003" x="888" y="324" width="159" height="159" frameX="-1090" frameY="-539" frameWidth="1280" frameHeight="720" />
+<SubTexture name="enable0004" x="888" y="162" width="159" height="162" frameX="-1090" frameY="-536" frameWidth="1280" frameHeight="720" />
+<SubTexture name="enable0005" x="348" y="541" width="159" height="165" frameX="-1090" frameY="-533" frameWidth="1280" frameHeight="720" />
+<SubTexture name="enable0006" x="666" y="541" width="159" height="163" frameX="-1090" frameY="-535" frameWidth="1280" frameHeight="720" />
+<SubTexture name="enable0007" x="507" y="541" width="159" height="164" frameX="-1090" frameY="-534" frameWidth="1280" frameHeight="720" />
+<SubTexture name="enable0008" x="0" y="541" width="189" height="219" frameX="-1060" frameY="-479" frameWidth="1280" frameHeight="720" />
+<SubTexture name="enable0009" x="596" y="0" width="292" height="532" frameX="-971" frameY="-166" frameWidth="1280" frameHeight="720" />
+<SubTexture name="enable0010" x="0" y="0" width="300" height="541" frameX="-966" frameY="-157" frameWidth="1280" frameHeight="720" />
+<SubTexture name="enable0011" x="300" y="0" width="296" height="539" frameX="-969" frameY="-159" frameWidth="1280" frameHeight="720" />
+<SubTexture name="disable0000" x="300" y="0" width="296" height="539" frameX="-969" frameY="-159" frameWidth="1280" frameHeight="720" />
+<SubTexture name="disable0001" x="0" y="0" width="300" height="541" frameX="-966" frameY="-157" frameWidth="1280" frameHeight="720" />
+<SubTexture name="disable0002" x="596" y="0" width="292" height="532" frameX="-971" frameY="-166" frameWidth="1280" frameHeight="720" />
+<SubTexture name="disable0003" x="0" y="541" width="189" height="219" frameX="-1060" frameY="-479" frameWidth="1280" frameHeight="720" />
+<SubTexture name="disable0004" x="507" y="541" width="159" height="164" frameX="-1090" frameY="-534" frameWidth="1280" frameHeight="720" />
+<SubTexture name="disable0005" x="666" y="541" width="159" height="163" frameX="-1090" frameY="-535" frameWidth="1280" frameHeight="720" />
+<SubTexture name="disable0006" x="348" y="541" width="159" height="165" frameX="-1090" frameY="-533" frameWidth="1280" frameHeight="720" />
+<SubTexture name="disable0007" x="888" y="162" width="159" height="162" frameX="-1090" frameY="-536" frameWidth="1280" frameHeight="720" />
+<SubTexture name="disable0008" x="888" y="324" width="159" height="159" frameX="-1090" frameY="-539" frameWidth="1280" frameHeight="720" />
+<SubTexture name="disable0009" x="888" y="0" width="159" height="162" frameX="-1090" frameY="-536" frameWidth="1280" frameHeight="720" />
+<SubTexture name="disable0010" x="189" y="541" width="159" height="165" frameX="-1090" frameY="-533" frameWidth="1280" frameHeight="720" />
+<SubTexture name="disable0011" x="888" y="483" width="159" height="122" frameX="-1090" frameY="-576" frameWidth="1280" frameHeight="720" />
+<SubTexture name="disable0012" x="888" y="605" width="159" height="94" frameX="-1090" frameY="-604" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

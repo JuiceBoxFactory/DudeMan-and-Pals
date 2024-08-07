@@ -743,7 +743,7 @@ function dialogueUpdateShit() {
             char1var = 'Kathy/Confused';
             characterStatus("APPEAR", char1);
             name.text = 'Kathy';
-            txtBro.resetText("how did you uh... get here?");
+            txtBro.resetText("how did you uh... get here? ive never seen you in this school before");
             txtBro.start(0.03);
         }
 
@@ -1426,6 +1426,9 @@ function stupidChecks(buttonPressed, varChange) {
         }
         else if (buttonPressed == 3) {
             var amIBrooklynCore = FlxG.random.int(0, 99);
+            if (FlxG.save.data.imFromBrooklyn == true) {
+                amIBrooklynCore = 0;
+            }
             if (amIBrooklynCore > 0) {
                 placeToBe = "class1";
             }

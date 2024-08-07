@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="1" folder="backdrop/blobs/">
+	<combo x="932.5" y="189"/>
+	<sprite x="0" y="0" sprite="bob" name="bob"/>
+	<sprite x="200" y="100" sprite="dude" name="dude" antialiasing="false" scale="1.5"/>
+	<gf/>
+	<bf scale="1.7"/>
+	<dad scale="0.8"/>
+</stage>

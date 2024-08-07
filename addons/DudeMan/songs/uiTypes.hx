@@ -77,6 +77,10 @@ function postCreate() {
 		openBox.updateHitbox();
 		insert(41, openBox);
 	
+		if (PlayState.SONG.meta.name == "srs") {
+			logo.alpha = 0;
+		}
+
 		tagLine = new FlxText(520, 0);
 		tagLine.text = '"'+PlayState.SONG.meta.tagline+'"';
 		tagLine.setFormat(Paths.font("COMIC.ttf"), 30, 0xFF010002, "center");
@@ -528,6 +532,15 @@ function update(elapsed:Float) {
 			scoreToAddText.scale.y -= 0.025;
 		}
 
+		if (FlxG.save.data.middlescroll == true) {
+			scoreToAddText.x = 875;
+			scoreToAddText.y = 75;
+			scoreText.x = 250;
+			if (FlxG.save.data.downscroll == true) {
+				healthBar.y = 639.5;
+			}
+		}
+
 	}
 
 	if (PlayState.SONG.meta.noteType == "BandW") {
@@ -618,30 +631,31 @@ function beatHit() {
 
 function postUpdate() {
 
-	if (whoGettingBestHead.overlaps(timeTxt) && squishingTimeBar == false) {
-		squishingTimeBar = true;
-		var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
-		FlxTween.tween(timeTxt.scale, {x: 0.1}, timeRemaining);
-	}
-
-	if (animationPlaying == true) {
-		if (dudeRating.animation.frameIndex == 32 || dudeRating.animation.frameIndex == 62 || dudeRating.animation.frameIndex == 91 || dudeRating.animation.frameIndex == 132) {
-			animationPlaying = false;
-		}
-	}
-
-	if (PlayState.SONG.meta.name == "roomed" && curStep == 1664) {
-		scared = true;
-	}
-
-	if (PlayState.SONG.meta.name == "roomed" && curStep == 2434) {
-		scared = false;
-		for (numbers in [0, 1, 2, 3]) {
-			playerStrums.members[numbers].y = 50;
-		}
-	}
-
 	if (PlayState.SONG.meta.noteType == "normal") {
+
+		if (whoGettingBestHead.overlaps(timeTxt) && squishingTimeBar == false) {
+			squishingTimeBar = true;
+			var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
+			FlxTween.tween(timeTxt.scale, {x: 0.1}, timeRemaining);
+		}
+	
+		if (animationPlaying == true) {
+			if (dudeRating.animation.frameIndex == 32 || dudeRating.animation.frameIndex == 62 || dudeRating.animation.frameIndex == 91 || dudeRating.animation.frameIndex == 132) {
+				animationPlaying = false;
+			}
+		}
+	
+		if (PlayState.SONG.meta.name == "roomed" && curStep == 1664) {
+			scared = true;
+		}
+	
+		if (PlayState.SONG.meta.name == "roomed" && curStep == 2434) {
+			scared = false;
+			for (numbers in [0, 1, 2, 3]) {
+				playerStrums.members[numbers].y = 50;
+			}
+		}
+
 		myOpp = dad.getIcon();
 		myPpo = boyfriend.getIcon();
 	}

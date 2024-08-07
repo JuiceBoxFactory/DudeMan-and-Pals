@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="toggleSwitch.png">
+<SubTexture name="on0000" x="0" y="0" width="108" height="31" frameX="0" frameY="0" frameWidth="108" frameHeight="31" />
+<SubTexture name="on0001" x="0" y="31" width="108" height="31" frameX="0" frameY="0" frameWidth="108" frameHeight="31" />
+<SubTexture name="on0002" x="0" y="62" width="108" height="31" frameX="0" frameY="0" frameWidth="108" frameHeight="31" />
+<SubTexture name="on0003" x="108" y="0" width="108" height="31" frameX="0" frameY="0" frameWidth="108" frameHeight="31" />
+<SubTexture name="on0004" x="108" y="31" width="108" height="31" frameX="0" frameY="0" frameWidth="108" frameHeight="31" />
+<SubTexture name="on0005" x="108" y="62" width="108" height="31" frameX="0" frameY="0" frameWidth="108" frameHeight="31" />
+<SubTexture name="off0000" x="108" y="62" width="108" height="31" frameX="0" frameY="0" frameWidth="108" frameHeight="31" />
+<SubTexture name="off0001" x="0" y="31" width="108" height="31" frameX="0" frameY="0" frameWidth="108" frameHeight="31" />
+<SubTexture name="off0002" x="0" y="93" width="108" height="31" frameX="0" frameY="0" frameWidth="108" frameHeight="31" />
+<SubTexture name="off0003" x="108" y="93" width="108" height="31" frameX="0" frameY="0" frameWidth="108" frameHeight="31" />
+<SubTexture name="off0004" x="0" y="124" width="108" height="31" frameX="0" frameY="0" frameWidth="108" frameHeight="31" />
+<SubTexture name="off0005" x="0" y="0" width="108" height="31" frameX="0" frameY="0" frameWidth="108" frameHeight="31" />
+</TextureAtlas>

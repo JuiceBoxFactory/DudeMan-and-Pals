@@ -19,7 +19,7 @@ function create() {
 
 		FlxG.cameras.add(deathCam, false);
 	
-		if (chance < 49 | PlayState.SONG.meta.name != 'roomed') {
+		if (chance < 49 && PlayState.SONG.meta.name != 'roomed') {
 			
 			deathQoutes = new FlxSprite(0, 0);
 			deathQoutes.scrollFactor.set(0, 0);

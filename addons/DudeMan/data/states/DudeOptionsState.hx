@@ -22,6 +22,7 @@ import flixel.FlxCamera;
 import flixel.util.FlxSave;
 import flixel.util.FlxTimer;
 import funkin.backend.utils.DiscordUtil;
+import Sys;
 
 var Selected1 = 0;
 var SelectedGameplay = 0;
@@ -33,7 +34,6 @@ var GameplayOptionsOpen = false;
 var MiscOptionsOpen = false;
 var SecretOptionsOpen = false;
 var popUpOPEN = false;
-var languageSelection = 0;
 
 function create() {
 
@@ -122,6 +122,18 @@ function postCreate() {
 	coolBackdrop.velocity.y = 100;
 	coolBackdrop.active = true;
 	add(coolBackdrop);
+
+    ghost47 = new FlxSprite(-1280, 0);
+    ghost47.frames = Paths.getSparrowAtlas('funvalue/47/47ghost');
+	ghost47.animation.addByPrefix('0', '0', 24, false);
+	ghost47.animation.addByPrefix('1', '1', 24, false);
+	ghost47.animation.addByPrefix('2', '2', 24, false);
+	ghost47.animation.addByPrefix('wobble', 'wobble', 24, true);
+	ghost47.animation.play('0');
+	ghost47.antialiasing = false;
+	ghost47.updateHitbox();
+	ghost47.cameras = [cursorCam];
+	FlxG.state.add(ghost47);
 
 	Controls = new FlxText();
 	Controls.text = "Keybinds";
@@ -347,32 +359,6 @@ function postCreate() {
 		ResetSaveData.borderSize = 3;
 		add(ResetSaveData);
 
-		Language = new FlxText();
-		Language.text = "Language";
-		Language.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
-		Language.x = 180;
-		Language.y = 225;
-		Language.cameras = [uiCamera];
-		Language.color = 0xFFFFFFFF;
-		Language.borderColor = 0xFF000000;
-		Language.antialiasing = false;
-		Language.alpha = 0;
-		Language.borderSize = 3;
-		add(Language);
-
-		LanguageToPick = new FlxText(0, 0, 300);
-		LanguageToPick.text = "< English >";
-		LanguageToPick.setFormat(Paths.font("COMIC.ttf"), 40, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
-		LanguageToPick.x = 400;
-		LanguageToPick.y = 235;
-		LanguageToPick.cameras = [uiCamera];
-		LanguageToPick.color = 0xFFFFFFFF;
-		LanguageToPick.borderColor = 0xFF000000;
-		LanguageToPick.antialiasing = false;
-		LanguageToPick.alpha = 0;
-		LanguageToPick.borderSize = 3;
-		add(LanguageToPick);
-
 	Secret = new FlxText();
 	Secret.text = "Secret Settings >";
 	Secret.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
@@ -389,7 +375,7 @@ function postCreate() {
 		DebugMode.text = "Debug Mode";
 		DebugMode.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
 		DebugMode.x = 180;
-		DebugMode.y = 125;
+		DebugMode.y = 225;
 		DebugMode.cameras = [uiCamera];
 		DebugMode.color = 0xFFFFFFFF;
 		DebugMode.borderColor = 0xFF000000;
@@ -398,7 +384,7 @@ function postCreate() {
 		DebugMode.borderSize = 3;
 		add(DebugMode);
 
-		checkboxDebugMode = new FlxSprite(360, 10);	
+		checkboxDebugMode = new FlxSprite(360, 112);	
 		checkboxDebugMode.frames = Paths.getSparrowAtlas('options/checked');
 		checkboxDebugMode.animation.addByPrefix('selected', 'yes', 6);
 		checkboxDebugMode.animation.addByPrefix('disselected', 'no', 6);
@@ -410,11 +396,37 @@ function postCreate() {
 		checkboxDebugMode.cameras = [uiCamera];
 		add(checkboxDebugMode);
 
+		FunValue = new FlxText();
+		FunValue.text = "FunValue";
+		FunValue.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		FunValue.x = 180;
+		FunValue.y = 125;
+		FunValue.cameras = [uiCamera];
+		FunValue.color = 0xFFFFFFFF;
+		FunValue.borderColor = 0xFF000000;
+		FunValue.antialiasing = false;
+		FunValue.alpha = 0;
+		FunValue.borderSize = 3;
+		add(FunValue);
+
+		FunValueToPick = new FlxText(0, 0, 300);
+		FunValueToPick.text = "< 0 >";
+		FunValueToPick.setFormat(Paths.font("COMIC.ttf"), 40, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		FunValueToPick.x = 400;
+		FunValueToPick.y = 135;
+		FunValueToPick.cameras = [uiCamera];
+		FunValueToPick.color = 0xFFFFFFFF;
+		FunValueToPick.borderColor = 0xFF000000;
+		FunValueToPick.antialiasing = false;
+		FunValueToPick.alpha = 0;
+		FunValueToPick.borderSize = 3;
+		add(FunValueToPick);
+
 		XboxMode = new FlxText();
 		XboxMode.text = "Xbox Mode";
 		XboxMode.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
 		XboxMode.x = 180;
-		XboxMode.y = 225;
+		XboxMode.y = 1225;
 		XboxMode.cameras = [uiCamera];
 		XboxMode.color = 0xFFFFFFFF;
 		XboxMode.borderColor = 0xFF000000;
@@ -423,7 +435,7 @@ function postCreate() {
 		XboxMode.borderSize = 3;
 		add(XboxMode);
 
-		checkboxXboxMode = new FlxSprite(335, 112);	
+		checkboxXboxMode = new FlxSprite(335, 1115);	
 		checkboxXboxMode.frames = Paths.getSparrowAtlas('options/checked');
 		checkboxXboxMode.animation.addByPrefix('selected', 'yes', 6);
 		checkboxXboxMode.animation.addByPrefix('disselected', 'no', 6);
@@ -660,31 +672,6 @@ function postCreate() {
 		checkboxascend.cameras = [uiCamera];
 		add(checkboxascend);
 
-		sillyLang = new FlxText();
-		sillyLang.text = "Silly Languages";
-		sillyLang.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
-		sillyLang.x = 180;
-		sillyLang.y = 1225;
-		sillyLang.cameras = [uiCamera];
-		sillyLang.color = 0xFFFFFFFF;
-		sillyLang.borderColor = 0xFF000000;
-		sillyLang.antialiasing = false;
-		sillyLang.alpha = 1;
-		sillyLang.borderSize = 3;
-		add(sillyLang);
-
-		checkboxsillyLang = new FlxSprite(425, 1115);	
-		checkboxsillyLang.frames = Paths.getSparrowAtlas('options/checked');
-		checkboxsillyLang.animation.addByPrefix('selected', 'yes', 6);
-		checkboxsillyLang.animation.addByPrefix('disselected', 'no', 6);
-		checkboxsillyLang.animation.play('disselected');
-		checkboxsillyLang.scale.set(0.3, 0.3);
-		checkboxsillyLang.antialiasing = false;
-		checkboxsillyLang.alpha = 1;
-		checkboxsillyLang.scrollFactor.set(1, 1);
-		checkboxsillyLang.cameras = [uiCamera];
-		add(checkboxsillyLang);
-
 		brooklynMode = new FlxText();
 		brooklynMode.text = "Brooklyn Mode";
 		brooklynMode.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
@@ -709,6 +696,31 @@ function postCreate() {
 		checkboxbrooklynMode.scrollFactor.set(1, 1);
 		checkboxbrooklynMode.cameras = [uiCamera];
 		add(checkboxbrooklynMode);
+
+		anglesDream = new FlxText();
+		anglesDream.text = "Angel's Dream";
+		anglesDream.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		anglesDream.x = 180;
+		anglesDream.y = 1425;
+		anglesDream.cameras = [uiCamera];
+		anglesDream.color = 0xFFFFFFFF;
+		anglesDream.borderColor = 0xFF000000;
+		anglesDream.antialiasing = false;
+		anglesDream.alpha = 1;
+		anglesDream.borderSize = 3;
+		add(anglesDream);
+
+		checkboxanglesDream = new FlxSprite(425, 1315);	
+		checkboxanglesDream.frames = Paths.getSparrowAtlas('options/checked');
+		checkboxanglesDream.animation.addByPrefix('selected', 'yes', 6);
+		checkboxanglesDream.animation.addByPrefix('disselected', 'no', 6);
+		checkboxanglesDream.animation.play('disselected');
+		checkboxanglesDream.scale.set(0.3, 0.3);
+		checkboxanglesDream.antialiasing = false;
+		checkboxanglesDream.alpha = 1;
+		checkboxanglesDream.scrollFactor.set(1, 1);
+		checkboxanglesDream.cameras = [uiCamera];
+		add(checkboxanglesDream);
 
 	border = new FlxSprite(0, 0).loadGraphic(Paths.image('options/border'));
 	border.antialiasing = false;
@@ -743,30 +755,7 @@ function postCreate() {
     cursor.cameras = [cursorCam];
     add(cursor);
 
-	if (FlxG.save.data.language == "english") {
-		languageSelection = 0;
-	}
-	if (FlxG.save.data.language == "spanish") {
-		languageSelection = 1;
-	}
-	if (FlxG.save.data.language == "french") {
-		languageSelection = 2;
-	}
-	if (FlxG.save.data.language == "german") {
-		languageSelection = 3;
-	}
-	if (FlxG.save.data.language == "bengali") {
-		languageSelection = 4;
-	}
-	if (FlxG.save.data.language == "british") {
-		languageSelection = 5;
-	}
-	if (FlxG.save.data.language == "silly") {
-		languageSelection = 6;
-	}
-	if (FlxG.save.data.language == "pirate") {
-		languageSelection = 7;
-	}
+	FlxG.save.data.language = "english";
 
 }
 
@@ -777,71 +766,29 @@ function resetSettings() {
 
 function resetSaveData() {
 		FlxG.save.data.defaultSaveData = null;
-		FlxG.switchState(new ModState("BetaWarningState"));
 		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0, true);
 		trace("reset save data");
+		FlxG.switchState(new ModState("BetaWarningState"));
 }
 
 function update() {
 
-	if (MiscOptionsOpen && SelectedMisc == 1)  {
+	if (SecretOptionsOpen && SelectedSecret == 0)  {
 		if (controls.LEFT_P) {
-			languageSelection -= 1;
+			FlxG.save.data.funValue -= 1;
 		}
 		if (controls.RIGHT_P) {
-			languageSelection += 1;
+			FlxG.save.data.funValue += 1;
 		}
 	}
 
-	if (languageSelection == 0) {
-		FlxG.save.data.language = "english";
-		LanguageToPick.text = "< English >";
-	}
-	if (languageSelection == 1) {
-		FlxG.save.data.language = "spanish";
-		LanguageToPick.text = "< Español >";
-	}
-	if (languageSelection == 2) {
-		FlxG.save.data.language = "french";
-		LanguageToPick.text = "< Français >";
-	}
-	if (languageSelection == 3) {
-		FlxG.save.data.language = "german";
-		LanguageToPick.text = "< Deutsch >";
-	}
-	if (languageSelection == 4) {
-		FlxG.save.data.language = "bengali";
-		LanguageToPick.text = "< Bengali >";
-	}
-	if (languageSelection == 5) {
-		FlxG.save.data.language = "british";
-		LanguageToPick.text = "< Bri-ish >";
-	}
-	if (languageSelection == 6) {
-		FlxG.save.data.language = "silly";
-		LanguageToPick.text = "< SILLY X3 >";
-	}
-	if (languageSelection == 7) {
-		FlxG.save.data.language = "pirate";
-		LanguageToPick.text = "< Yarg. >";
-	}
+	FunValueToPick.text = "< "+FlxG.save.data.funValue+" >";
 
-	if (FlxG.save.data.sillyLanguages == false) {
-		if (languageSelection < 0) {
-			languageSelection = 4;
-		}
-		if (languageSelection > 4) {
-			languageSelection = 0;
-		}
+	if (FlxG.save.data.funValue > 100) {
+		FlxG.save.data.funValue = 0;
 	}
-
-	if (FlxG.save.data.sillyLanguages == true) {
-		if (languageSelection < 0) {
-			languageSelection = 7;
-		}
-		if (languageSelection > 7) {
-			languageSelection = 0;
-		}
+	if (FlxG.save.data.funValue < 0) {
+		FlxG.save.data.funValue = 100;
 	}
 
     cursor.x = FlxG.mouse.screenX;
@@ -878,7 +825,7 @@ function update() {
 		obj.alpha = 0.6;
 	}
 
-	for (obj in [ResetSaveData, Language, LanguageToPick]) {
+	for (obj in [ResetSaveData]) {
 		if (MiscOptionsOpen == true) {
 			add(obj);
 		}
@@ -886,11 +833,11 @@ function update() {
 			remove(obj);
 		}
 	}
-	for (obj in [ResetSaveData, Language, LanguageToPick]) {
+	for (obj in [ResetSaveData]) {
 		obj.alpha = 0.6;
 	}
 
-	for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs, gfBurger, checkboxgfBurger, ascend, checkboxascend, sillyLang, checkboxsillyLang, brooklynMode, checkboxbrooklynMode]) {
+	for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs, gfBurger, checkboxgfBurger, ascend, checkboxascend, brooklynMode, checkboxbrooklynMode, anglesDream, checkboxanglesDream, FunValue, FunValueToPick]) {
 		if (SecretOptionsOpen == true) {
 			add(obj);
 		}
@@ -898,7 +845,7 @@ function update() {
 			remove(obj);
 		}
 	}
-	for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs, gfBurger, ascend, sillyLang, brooklynMode]) {
+	for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs, gfBurger, ascend, brooklynMode, anglesDream, FunValue, FunValueToPick]) {
 		obj.alpha = 0.6;
 	}
 	// CONTROLS
@@ -935,20 +882,15 @@ function update() {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		SelectedMisc += 1;
 	}
-	if (SelectedMisc > 1) {
+	if (SelectedMisc > 0) {
 		SelectedMisc = 0;
 	}
 	if (SelectedMisc < 0) {
-		SelectedMisc = 1;
+		SelectedMisc = 0;
 	}
 	if (SelectedMisc == 0 && MiscOptionsOpen == true) {
 		BottomText.text = "Pressing this will remove ur save data ! instantly ! like /gen dude";
 		ResetSaveData.alpha = 1;	
-	}
-	if (SelectedMisc == 1 && MiscOptionsOpen == true) {
-		BottomText.text = "Change ur language, dude !";
-		Language.alpha = 1;	
-		LanguageToPick.alpha = 1;	
 	}
 	if (SelectedMisc == 0 && controls.ACCEPT && MiscOptionsOpen == true) {
 		resetSaveData();
@@ -1038,12 +980,18 @@ function update() {
 	}
 	// BUTTONS SECRET
 	if (SelectedSecret == 0 && SecretOptionsOpen == true) {
+		BottomText.text = "Change your Fun Value !";
+		FunValue.alpha = 1;	
+		FunValueToPick.alpha = 1;	
+	}
+	if (SelectedSecret == 1 && SecretOptionsOpen == true) {
 		BottomText.text = "Debug Mode, lets you do a bunch of shit in the middle of songs";
 		DebugMode.alpha = 1;	
 	}
-	if (SelectedSecret == 1 && SecretOptionsOpen == true) {
+	if (SelectedSecret == 11 && SecretOptionsOpen == true) {
 		BottomText.text = "This Lowkey turns the game into an xbox";
-		XboxMode.alpha = 1;	
+		FunValue.alpha = 1;	
+		FunValueToPick.alpha = 1;
 	}
 	if (SelectedSecret == 2 && SecretOptionsOpen == true) {
 		BottomText.text = "The horse calls upon those who wait. :racehorse:";
@@ -1082,12 +1030,16 @@ function update() {
 		ascend.alpha = 1;	
 	}
 	if (SelectedSecret == 11 && SecretOptionsOpen == true) {
-		BottomText.text = "wait im so funny haha yes ! ( only for English )";
-		sillyLang.alpha = 1;	
+		BottomText.text = "This Lowkey turns the game into an xbox";
+		XboxMode.alpha = 1;	
 	}
 	if (SelectedSecret == 12 && SecretOptionsOpen == true) {
 		BottomText.text = "smells like jobs";
 		brooklynMode.alpha = 1;	
+	}
+	if (SelectedSecret == 13 && SecretOptionsOpen == true) {
+		BottomText.text = "im at my breaking point istg if i hear BURP MODE ONE MORE TIME -meltykelpy";
+		anglesDream.alpha = 1;	
 	}
 	// CONTROLS PT 2
 	if (Selected1 > 3) {
@@ -1102,18 +1054,18 @@ function update() {
 	if (SelectedGameplay < 0) {
 		SelectedGameplay = 6;
 	}
-	if (SelectedSecret > 12) {
+	if (SelectedSecret > 13) {
 		SelectedSecret = 0;
 	}
 	if (SelectedSecret < 0) {
-		SelectedSecret = 12;
+		SelectedSecret = 13;
 	}
 	// SECRETSETTINGS CAM
 	if (SelectedSecret > 9 && SecretOptionsOpen == true) {
-		if (uiCamera.y > -775) {
+		if (uiCamera.y > -875) {
 			uiCamera.y -= 10;
 		}
-		else if (uiCamera.y < -775) {
+		else if (uiCamera.y < -875) {
 			uiCamera.y += 10;
 		}
 	}
@@ -1155,13 +1107,31 @@ function postUpdate() {
 			FlxG.switchState(new MainMenuState());
 		});
 	}
-     if (controls.BACK && MainOptionsOpen == false) {
+    if (controls.BACK && MainOptionsOpen == false && FlxG.save.data.funValue != 47) {
 			GameplayOptionsOpen = false;
 			SecretOptionsOpen = false;
 			MainOptionsOpen = true;
 			MiscOptionsOpen = false;
 			uiCamera.y = 25;
 			SelectedSecret = 0;
+	}
+	if (controls.BACK && MainOptionsOpen == false && FlxG.save.data.funValue == 47 && popUpOPEN == false) {
+		popUpOPEN = true;
+		FlxG.sound.music.pause();
+		FlxG.sound.play(Paths.sound("47"), 0.5);
+            FlxTween.tween(ghost47, {x: 0}, 2, {ease: FlxEase.quartInOut});
+            new FlxTimer().start(4, function(timer) {
+                ghost47.animation.play('1');
+            });
+            new FlxTimer().start(5.2, function(timer) {
+                ghost47.animation.play('2');
+            });
+            new FlxTimer().start(7, function(timer) {
+                ghost47.animation.play('wobble');
+            });
+            new FlxTimer().start(7.4, function(timer) {
+                Sys.exit();
+            });
 	}
 	// CHECKS GAMEPLAY
 	if (FlxG.save.data.downscroll == true) {
@@ -1285,12 +1255,12 @@ function postUpdate() {
 	if (FlxG.save.data.debug == false) {
 		checkboxDebugMode.animation.play('disselected');
 	}
-	if (SelectedSecret == 0 && SecretOptionsOpen == true && FlxG.save.data.debug == false && controls.ACCEPT) {
+	if (SelectedSecret == 1 && SecretOptionsOpen == true && FlxG.save.data.debug == false && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.debug = true;
 		});
 	}
-	if (SelectedSecret == 0 && SecretOptionsOpen == true && FlxG.save.data.debug == true && controls.ACCEPT) {
+	if (SelectedSecret == 1 && SecretOptionsOpen == true && FlxG.save.data.debug == true && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.debug = false;
 		});
@@ -1301,12 +1271,12 @@ function postUpdate() {
 	if (FlxG.save.data.xbox == false) {
 		checkboxXboxMode.animation.play('disselected');
 	}
-	if (SelectedSecret == 1 && SecretOptionsOpen == true && FlxG.save.data.xbox == false && controls.ACCEPT) {
+	if (SelectedSecret == 11 && SecretOptionsOpen == true && FlxG.save.data.xbox == false && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.xbox = true;
 		});
 	}
-	if (SelectedSecret == 1 && SecretOptionsOpen == true && FlxG.save.data.xbox == true && controls.ACCEPT) {
+	if (SelectedSecret == 11 && SecretOptionsOpen == true && FlxG.save.data.xbox == true && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.xbox = false;
 		});
@@ -1457,20 +1427,20 @@ function postUpdate() {
 		});
 	}
 
-	if (FlxG.save.data.sillyLanguages == true) {
+	if (FlxG.save.data.sillyFunValues == true) {
 		checkboxsillyLang.animation.play('selected');
 	}
-	if (FlxG.save.data.sillyLanguages == false) {
+	if (FlxG.save.data.sillyFunValues == false) {
 		checkboxsillyLang.animation.play('disselected');
 	}
-	if (SelectedSecret == 11 && SecretOptionsOpen == true && FlxG.save.data.sillyLanguages == false && controls.ACCEPT) {
+	if (SelectedSecret == 11 && SecretOptionsOpen == true && FlxG.save.data.sillyFunValues == false && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
-		FlxG.save.data.sillyLanguages = true;
+		FlxG.save.data.sillyFunValues = true;
 		});
 	}
-	if (SelectedSecret == 11 && SecretOptionsOpen == true && FlxG.save.data.sillyLanguages == true && controls.ACCEPT) {
+	if (SelectedSecret == 11 && SecretOptionsOpen == true && FlxG.save.data.sillyFunValues == true && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
-		FlxG.save.data.sillyLanguages = false;
+		FlxG.save.data.sillyFunValues = false;
 		});
 	}
 
@@ -1488,6 +1458,23 @@ function postUpdate() {
 	if (SelectedSecret == 12 && SecretOptionsOpen == true && FlxG.save.data.imFromBrooklyn == true && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.imFromBrooklyn = false;
+		});
+	}
+
+	if (FlxG.save.data.angelsDream == true) {
+		checkboxanglesDream.animation.play('selected');
+	}
+	if (FlxG.save.data.angelsDream == false) {
+		checkboxanglesDream.animation.play('disselected');
+	}
+	if (SelectedSecret == 12 && SecretOptionsOpen == true && FlxG.save.data.angelsDream == false && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.angelsDream = true;
+		});
+	}
+	if (SelectedSecret == 12 && SecretOptionsOpen == true && FlxG.save.data.angelsDream == true && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.angelsDream = false;
 		});
 	}
 

@@ -24,6 +24,8 @@ function create() {
     cursor = new FlxSprite(0, 0).loadGraphic(Paths.image('game/cursor'));
     add(cursor);
 
+    radioLoad();
+    
 }
 
 function loadDating() {
@@ -53,5 +55,35 @@ function update() {
     if (controls.BACK) {
         FlxG.switchState(new ModState("FreeplaySelector"));
     }
+
+}
+
+
+function radioLoad() {
+
+	FlxG.save.data.radioChannels = [
+		"dudecast (and kathy)",
+		"CHANNEL NAME HERE 2",
+		"CHANNEL NAME HERE 3",
+		"Sounds from the Stars",
+		"jumpscareFM",
+        "Conspirator Central",
+        "CHANNEL NAME HERE 7",
+	];
+
+    FlxG.save.data.songNamesArtists = [
+		"how it feels to see beauty.\nmaurice gray",
+		"3am\nAussieDoesThings",
+	];
+
+    FlxG.save.data.radioChannelHostAmount = [
+		1, // dudecast
+        1, // unnamed 2
+        1, // unnamed 3
+        1, // SOUNDS FROM THE STARS :DDDDDDDD
+        1, // jumpscareFM
+        1, // Conspirator Central
+        1, // unnnamed 7
+	];
 
 }

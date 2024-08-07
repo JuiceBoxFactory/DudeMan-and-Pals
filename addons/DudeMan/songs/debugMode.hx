@@ -49,7 +49,7 @@ function postCreate() {
 function postUpdate() {
 
 	if (FlxG.save.data.debug) {	
-		infotxt.text = "shit.,,. idk man\n========\nBotplay: "+botplay+"\nFreeroam: "+freeRoam+"\nsongPosition: "+CoolUtil.quantize(Conductor.songPosition * 100, 1)+"\nuiType: "+PlayState.SONG.meta.noteType+"\nPaused: "+debugPaused;
+		infotxt.text = "shit.,,. idk man\n========\nBotplay: "+botplay+"\nFreeroam: "+freeRoam+"\nsongPosition: "+CoolUtil.quantize(Conductor.songPosition * 1, 1)+"\nuiType: "+PlayState.SONG.meta.noteType+"\nPaused: "+debugPaused;
 
 		if (debugPaused == true) {
 			Conductor.songPosition = timeToBeAt;

@@ -1,5 +1,29 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="sideviewGF.png">
-<SubTexture name="sideviewGF idle0000" x="100" y="0" width="99" height="173" frameX="-210" frameY="-171" frameWidth="512" frameHeight="512" />
-<SubTexture name="sideviewGF idle0001" x="0" y="0" width="100" height="174" frameX="-209" frameY="-170" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF idle0000" x="100" y="183" width="99" height="173" frameX="-210" frameY="-171" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF idle0001" x="276" y="0" width="100" height="174" frameX="-209" frameY="-170" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF lookRound0000" x="276" y="0" width="100" height="174" frameX="-209" frameY="-170" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF lookRound0001" x="179" y="0" width="97" height="176" frameX="-208" frameY="-168" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF lookRound0002" x="0" y="0" width="89" height="183" frameX="-208" frameY="-161" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF lookRound0003" x="89" y="0" width="90" height="183" frameX="-207" frameY="-161" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF lookRound0004" x="89" y="0" width="90" height="183" frameX="-207" frameY="-161" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF lookRound0005" x="179" y="0" width="97" height="176" frameX="-208" frameY="-168" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF lookRound0006" x="199" y="183" width="108" height="173" frameX="-210" frameY="-171" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF lookRound0007" x="376" y="0" width="106" height="173" frameX="-208" frameY="-171" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF lookRound0008" x="376" y="0" width="106" height="173" frameX="-208" frameY="-171" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF lookRound0009" x="199" y="183" width="108" height="173" frameX="-210" frameY="-171" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF lookRound0010" x="376" y="173" width="100" height="173" frameX="-208" frameY="-171" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF lookRound0011" x="0" y="183" width="100" height="174" frameX="-209" frameY="-170" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF altdle0000" x="595" y="0" width="102" height="116" frameX="-203" frameY="-239" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF altdle0001" x="474" y="357" width="103" height="117" frameX="-203" frameY="-238" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF explode0000" x="0" y="357" width="108" height="144" frameX="-200" frameY="-162" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF explode0001" x="220" y="501" width="140" height="108" frameX="-183" frameY="-151" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF explode0002" x="482" y="149" width="110" height="145" frameX="-198" frameY="-114" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF explode0003" x="326" y="357" width="148" height="128" frameX="-179" frameY="-112" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF explode0004" x="482" y="0" width="113" height="149" frameX="-199" frameY="-113" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF explode0005" x="108" y="357" width="110" height="143" frameX="-198" frameY="-123" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF explode0006" x="218" y="357" width="108" height="139" frameX="-199" frameY="-187" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF explode0007" x="106" y="501" width="114" height="108" frameX="-195" frameY="-247" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF explode0008" x="0" y="501" width="106" height="114" frameX="-199" frameY="-241" frameWidth="512" frameHeight="512" />
+<SubTexture name="sideviewGF explode0009" x="474" y="357" width="103" height="117" frameX="-203" frameY="-238" frameWidth="512" frameHeight="512" />
 </TextureAtlas>
