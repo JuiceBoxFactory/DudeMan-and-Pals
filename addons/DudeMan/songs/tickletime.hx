@@ -100,8 +100,6 @@ function update() {
     }
 
     textTextText.text = "YOU NEED TO TICKLE THIS MAN OR YOU WILL DIE IN:\n"+CoolUtil.quantize(timerBeforeDEATH.timeLeft * 1, 100)+" SECONDS\n"+timesClicked+"/25\n"+"(click the icon)";
-    
-    trace(Conductor.songPosition);
 
     if (initalizedTICKLES == false && Conductor.songPosition == timeToTICKLE) {
         tickles();
