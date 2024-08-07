@@ -20,8 +20,8 @@ import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxSave;
 import funkin.backend.utils.DiscordUtil;
 
-var mainArray:Array<String> = ["dude", "overstimulation", "srs", "fang"];
-var extrasArray:Array<String> = ["evilman", "lemon", "slashgen", "die", "blobs", "kockbuddies", "oleum"];
+var mainArray:Array<String> = ["dude", "overstimulation", "srs", "fang", "sucker"];
+var extrasArray:Array<String> = ["evilman", "lemon", "slashgen", "die", "blobs", "kockbuddies", "oleum", "misconduct", "sizssoers", "lighthouse", "roomed"];
 var palsArray:Array<String> = ["pastelfever", "skyblue", "misconduct", "esex", "sizssoers", "lighthouse", "roomed"];
 var coversArray:Array<String> = ["obituary", "meet-your-project"];
 var devArray:Array<String> = ["pastelfever", "lemon", "whopper", "dude", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange", "obituary", "kockbuddies"];
@@ -52,17 +52,18 @@ function create() {
     				songs.push(Chart.loadChartMeta(extrasArray[i]));
   			}
 		}
+//	if (FlxG.save.data.sectionselected == 2) {
+//		for (i in 0...coversArray.length) {
+//    				songs.push(Chart.loadChartMeta(palsArray[i]));
+//  			}
+//		}
 	if (FlxG.save.data.sectionselected == 2) {
 		for (i in 0...palsArray.length) {
-    				songs.push(Chart.loadChartMeta(palsArray[i]));
+					songs.push(Chart.loadChartMeta(coversArray[i]));
   			}
 		}
+
 	if (FlxG.save.data.sectionselected == 3) {
-		for (i in 0...coversArray.length) {
-    				songs.push(Chart.loadChartMeta(coversArray[i]));
-  			}
-		}
-	if (FlxG.save.data.sectionselected == 4) {
 		for (i in 0...devArray.length) {
     				songs.push(Chart.loadChartMeta(devArray[i]));
   			}
