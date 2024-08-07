@@ -11,23 +11,25 @@ static var timeToMove = true;
 
 function new() {
 
-	FlxG.sound.volume = 1;
+	FlxG.sound.volume = 0.5;
 	FlxG.mouse.visible = false;
+	// this mod has more games than the ps5 - Melty
 
 }
 
 function update(elapsed:Float) {
 
-	// DEFAULT SAVE DATA.. if u wanna fck wit it !!! - Melty
+	// DEFAULT SAVE DATA.. if u wanna fck wit it !!! you can use the in-game save file editor to make changes to your actual save - Melty
 	if (FlxG.save.data.defaultSaveData == null) {
+		FlxG.save.data.funValue == null; // I mean. what do you THINK it does ?
 		FlxG.save.data.obituaryThing = null; // this just makes the obituary shit change lol
-		FlxG.save.data.selectorButtonsUnlocked = 3; // max is 5, however you can only unlock up to 4.... >:] ( its just a scrapped thing, doesnt do anything )
+		FlxG.save.data.selectorButtonsUnlocked = 3; // max is 5, however you can only unlock up to 3.... >:] ( 4 was originally for games, and 4 is just a scrapped thing for project 46, doesnt do anything )
 		FlxG.save.data.dudemailsUnlocked = 0; // max is [number will be put here later], however you only unlock up to [number will be put here later], so fuck around to your hearts content, dataminer ! 
-		FlxG.save.data.language = null; // what do u think it does man
-		FlxG.save.data.defaultSaveData = false;
+		FlxG.save.data.language = null; // unused multi-language support ! just didnt have the motivation to translate allat.
+		FlxG.save.data.defaultSaveData = false; // well ??
 	}
 	// dudeman condems this behaviour - dudeman
-	// I DIDNT WRITE THAT - the real dudeman
+	// I DIDNT WRITE THAT - ACTUALLY dudeman
 	// yes I did - dudeman
 
 	// DEFAULT SETTINGS ! theres not alot you can do this with lol
@@ -41,7 +43,7 @@ function update(elapsed:Float) {
 		FlxG.save.data.subtitles = true;
 		FlxG.save.data.camMove = true;
 		// accessibility settings
-		FlxG.save.data.language == null;
+		FlxG.save.data.language == null; // ( UNUSED LOL )
 		// secret settings
 		FlxG.save.data.debug = false;
 		FlxG.save.data.xbox = false;
@@ -117,6 +119,8 @@ function postStateSwitch() {
     FlxG.state.add(volTime);
 
 }
+
+// below this, is the fucking sound tray shit. steal the code I DONT CARE LOL no credit needed ! you're like drake and im your ghostwriter - melty
 
 function postUpdate() {
 

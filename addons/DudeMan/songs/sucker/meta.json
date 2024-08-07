@@ -1,0 +1,22 @@
+{
+	"appearStep": 16,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"beatsPerMesure": 4,
+	"bpm": 177,
+	"actoresses2": "artist: Saayo, Melty    composer: kosejumpscare (Ft. Aussie)\ncoder: MeltyKelpy    charter: GhosttaleSans",
+	"bio": "HAHAHAHA~",
+	"singerNames": "Kathy VS Gracie",
+	"actoresses": "artist: Saayo, MeltyKelpy\ncomposer: kosejumpscare (Ft. AussieDoesThings)\ncoder: MeltyKelpy\ncharter: GhosttaleSans\ncover art: ?",
+	"tagline": "HAHAHAHA~",
+	"difficulties": [
+		"Hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -13893888,
+	"displayName": "Sucker!",
+	"icon": "Icon",
+	"name": "sucker",
+	"color": "#2BFF00"
+}

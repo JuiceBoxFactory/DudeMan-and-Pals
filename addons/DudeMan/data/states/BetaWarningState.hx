@@ -38,7 +38,12 @@ function postCreate() {
 function postUpdate() {
 
     if (FlxG.keys.justPressed.G) {
-        FlxG.save.data.language = null;
+//        FlxG.save.data.language = null;
+        FlxG.save.data.funValue = null;
+    }
+
+    if (FlxG.save.data.funValue == null) {
+        FlxG.switchState(new ModState("DudeBrandFunValueSetter"));
     }
 
 //    if (FlxG.save.data.language == null) {
