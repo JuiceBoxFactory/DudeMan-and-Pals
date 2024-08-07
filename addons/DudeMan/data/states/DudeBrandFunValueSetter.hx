@@ -3,6 +3,10 @@ import flixel.util.FlxSave;
 import flixel.text.FlxText;
 import flixel.addons.display.FlxBackdrop;
 import flixel.text.FlxTextBorderStyle;
+import Sys;
+
+var pick47 = false;
+var fuckYouGhost = false;
 
 function create() {
 
@@ -25,6 +29,18 @@ function create() {
 	coolBackdropPOP.cameras = [popUpCamera];
 	coolBackdropPOP.alpha = 0;
 	add(coolBackdropPOP);
+
+    ghost47 = new FlxSprite(-1280, 0);
+    ghost47.frames = Paths.getSparrowAtlas('funvalue/47/47ghost');
+	ghost47.animation.addByPrefix('0', '0', 24, false);
+	ghost47.animation.addByPrefix('1', '1', 24, false);
+	ghost47.animation.addByPrefix('2', '2', 24, false);
+	ghost47.animation.addByPrefix('wobble', 'wobble', 24, true);
+	ghost47.animation.play('0');
+	ghost47.antialiasing = false;
+	ghost47.updateHitbox();
+	ghost47.cameras = [cursorCam];
+	FlxG.state.add(ghost47);
 
 	popBorder = new FlxSprite(0, 0).loadGraphic(Paths.image('ui/border'));
 	popBorder.scrollFactor.set(0, 0);
@@ -110,8 +126,9 @@ function update() {
     cursor.x = FlxG.mouse.screenX;
     cursor.y = FlxG.mouse.screenY;
 
-    if (FlxG.mouse.justReleased) {
+    if (FlxG.mouse.justReleased && fuckYouGhost == false) {
 		if (FlxG.mouse.overlaps(buttonPOP)) {
+            fuckYouGhost = true;
             funValuePreview.scale.set(0.001, 0.001);
             FlxG.sound.play(Paths.sound("confirm"));
 			FlxTween.tween(buttonPOP.scale, {x: 0.001, y: 0.001}, 1, {ease: FlxEase.quartOut});
@@ -120,14 +137,24 @@ function update() {
             FlxTween.tween(funValuePreview, {alpha: 1}, 1, {ease: FlxEase.quartOut});
             FlxTween.tween(warningTextPOP, {y: 200}, 1, {ease: FlxEase.quartOut});
             warningTextPOP.text = "alright, here we go!";
-            FlxG.save.data.funValue = FlxG.random.int(1, 100);
+            if (pick47 == false) {
+                FlxG.save.data.funValue = FlxG.random.int(1, 100);
+            }
+            else {
+                FlxG.save.data.funValue = 47;
+            }
             trace(FlxG.save.data.funValue);
             rollProcess();
 		}
 	}
 
-    if (controls.BACK) {
+    if (controls.BACK && FlxG.save.data.funValue != 47) {
+        FlxG.save.data.hasntReturned = false;
         FlxG.switchState(new ModState("BetaWarningState"));
+    }
+
+    if (FlxG.keys.justPressed.G) {
+        pick47 = true;
     }
 
 }
@@ -155,7 +182,26 @@ function rollProcess() {
         funValuePreview.text = FlxG.save.data.funValue;
         funValuePreview.scale.set(1.5, 1.5);
         FlxTween.tween(funValuePreview.scale, {x: 1, y: 1}, 1.2, {ease: FlxEase.quartOut});
-        FlxG.sound.play(Paths.sound("rollChosen"), 0.5);
+        if (FlxG.save.data.funValue != 47) {
+            FlxG.sound.play(Paths.sound("rollChosen"), 0.5);
+        }   
+        else {
+            FlxG.sound.play(Paths.sound("rollChosen"), 0.5);
+            FlxG.sound.play(Paths.sound("47"), 0.5);
+            FlxTween.tween(ghost47, {x: 0}, 2, {ease: FlxEase.quartInOut});
+            new FlxTimer().start(4, function(timer) {
+                ghost47.animation.play('1');
+            });
+            new FlxTimer().start(5.2, function(timer) {
+                ghost47.animation.play('2');
+            });
+            new FlxTimer().start(7, function(timer) {
+                ghost47.animation.play('wobble');
+            });
+            new FlxTimer().start(7.4, function(timer) {
+                Sys.exit();
+            });
+        }
         warningTextPOP.text = "awesome. cool. yeah. you can press [ESCAPE] to get back to the mod now";
     });
 

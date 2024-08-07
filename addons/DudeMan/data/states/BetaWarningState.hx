@@ -12,6 +12,14 @@ function postCreate() {
 	blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 	add(blackScreen);
 
+	funVal = new FlxText(810, 625, 450);
+	funVal.text = "your Fun Value is "+FlxG.save.data.funValue+"\nyou can press [G] to reroll if needed";
+	funVal.setFormat(Paths.font("COMIC.ttf"), 25, FlxColor.WHITE, "center");            
+	funVal.color = 0xFF555555;
+	funVal.antialiasing = false;
+	funVal.alpha = 0;
+	add(funVal);
+
 	dudeman = new FlxSprite(250, 300).loadGraphic(Paths.image('warningScreen/dudeman'));
 	dudeman.antialiasing = false;
 	dudeman.updateHitbox();
@@ -31,7 +39,10 @@ function postCreate() {
     new FlxTimer().start(2, function(timer) {
         FlxTween.tween(sign, {y: 50}, 4, {ease: FlxEase.quartOut});
         FlxTween.tween(sign, {angle: 0}, 4, {ease: FlxEase.quartOut});
+        FlxTween.tween(funVal, {alpha: 1}, 4, {ease: FlxEase.quartIn});
     });
+
+    trace(FlxG.save.data.funValue);
 
 }
 
@@ -42,7 +53,12 @@ function postUpdate() {
         FlxG.save.data.funValue = null;
     }
 
+    if (FlxG.save.data.funValue == 47 || FlxG.save.data.hasntReturned == true) {
+        FlxG.save.data.funValue = null;
+    }
+
     if (FlxG.save.data.funValue == null) {
+        FlxG.save.data.hasntReturned = true;
         FlxG.switchState(new ModState("DudeBrandFunValueSetter"));
     }
 

@@ -21,7 +21,7 @@ function update(elapsed:Float) {
 
 	// DEFAULT SAVE DATA.. if u wanna fck wit it !!! you can use the in-game save file editor to make changes to your actual save - Melty
 	if (FlxG.save.data.defaultSaveData == null) {
-		FlxG.save.data.funValue == null; // I mean. what do you THINK it does ?
+		FlxG.save.data.funValue = null; // I mean. what do you THINK it does ?
 		FlxG.save.data.obituaryThing = null; // this just makes the obituary shit change lol
 		FlxG.save.data.selectorButtonsUnlocked = 3; // max is 5, however you can only unlock up to 3.... >:] ( 4 was originally for games, and 4 is just a scrapped thing for project 46, doesnt do anything )
 		FlxG.save.data.dudemailsUnlocked = 0; // max is [number will be put here later], however you only unlock up to [number will be put here later], so fuck around to your hearts content, dataminer ! 
