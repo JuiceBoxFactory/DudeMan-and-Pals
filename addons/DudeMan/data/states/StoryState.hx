@@ -10,6 +10,64 @@ var Selected = 0;
 var camPosition = 0;
 var blurShit = new CustomShader("blur");
 var canDo = true;
+var transparencyShit:FlxTypedGroup<FlxSprite> = [];
+var transparencyShit2:FlxTypedGroup<FlxSprite> = [];
+var weeknamething:FlxTypedGroup<FlxText> = [];
+var taglinething:FlxTypedGroup<FlxText> = [];
+var songies:FlxTypedGroup<FlxText> = [];
+
+var weeksList = [
+
+	"VS DUDEMAN",
+	"VS FRUITY",
+	"VS ZEE",
+	"VS SQUINGLE",
+	"VS KATHY",
+	"VS UMBREON.EXE",
+	"VS STICKERY HICKERY",
+	"VS MX.SILLY",
+	"HALLOWEEN",
+
+];
+var weeksTagList = [
+
+	"sing my evil songs NOW",
+	"ITS MY FAVORITE SHOW !",
+	"zawezome !!",
+	"A New Dimension!",
+	"Vampire Rock is my Blood",
+	"I'm evil im going to kill you",
+	"I'm sticking my hickey in your",
+	"Lights, Camera, Action!",
+	"SPOOKY MONTH!!!",
+
+];
+var weeksSongsList = [
+	
+	"dude", "overstimulation", "srs",
+	"welcome-to-my-test-song",
+	"fang",
+	"welcome-to-my-test-song",
+	"sucker",
+	"welcome-to-my-test-song",
+	"welcome-to-my-test-song",
+	"welcome-to-my-test-song",
+	"welcome-to-my-test-song",
+
+];
+var weeksSongsListDISPLAYNAMES = [
+	
+	"1. Dude\n2. Overstimulation\n3. /Srs",
+	"1. COLORFUL\n2. TISM\n3. SCENE-CULTURE",
+	"1. Fang\n2. Zoomies",
+	"1. Polygon\n2. Konami",
+	"1. Sucker\n2. Bleh",
+	"1. Im-So-Evil",
+	"1. Sticky-Situation",
+	"1. Showstage\n2. Spotlights",
+	"1. Treats\n2. Tricks",
+
+];
 
 function create() {
 
@@ -19,14 +77,6 @@ function create() {
 		largeImageKey: "icon"
 	});
 
-	uiCamera = new FlxCamera(0, 0, 1280, 720);
-	uiCamera.bgColor = FlxColor.TRANSPARENT;
-	FlxG.cameras.add(uiCamera, false);
-
-	borderCamera = new FlxCamera(0, 0, 1280, 720);
-	borderCamera.bgColor = FlxColor.TRANSPARENT;
-	FlxG.cameras.add(borderCamera, false);
-
 	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg'));
 	coolBackdrop.moves = true;
 	coolBackdrop.scrollFactor.set(0, 0);
@@ -35,27 +85,64 @@ function create() {
 	coolBackdrop.active = true;
 	add(coolBackdrop);
 
-	border = new FlxSprite(0, 0).loadGraphic(Paths.image('freeplay/border'));
-	border.antialiasing = false;
-	border.updateHitbox();
-	border.scrollFactor.set(0, 0);
-	add(border);
+	for (i in 0...weeksList.length)	{
+
+		weekImages = new FlxSprite(0, 333).loadGraphic(Paths.image('storyMode/weekCons/'+weeksList[i]));
+		weekImages.antialiasing = false;
+		weekImages.x = (700 * i) + 336;
+		transparencyShit.push(weekImages);
+		weekImages.updateHitbox();
+		add(weekImages);
+
+		weekCover = new FlxSprite(0, 0).loadGraphic(Paths.image('storyMode/weekCons/coverWeeks'));
+		weekCover.antialiasing = false;
+		weekCover.x = (700 * i) + 320;
+		transparencyShit2.push(weekCover);
+		weekCover.screenCenter(FlxAxes.Y);
+		weekCover.y = weekCover.y + 50;
+		weekCover.updateHitbox();
+		add(weekCover);
+
+		name = new FlxText(525, 190, 500);
+		name.setFormat(Paths.font("COMIC.ttf"), 35, 0xFF0C0014, "right");            
+		name.text = weeksList[i];
+		name.x = (700 * i) + 430;
+		weeknamething.push(name);
+		name.antialiasing = false;
+		name.scale.set(1, 1);
+		add(name);
+
+		tagline = new FlxText(525, 240, 500);
+		tagline.setFormat(Paths.font("COMIC.ttf"), 25, 0xFF0C0014, "right");            
+		tagline.text = weeksTagList[i];
+		tagline.x = (700 * i) + 430;
+		taglinething.push(tagline);
+		tagline.antialiasing = false;
+		tagline.scale.set(1, 1);
+		add(tagline);
+
+		songsListACTUAL = new FlxText(525, 190, 500);
+		songsListACTUAL.setFormat(Paths.font("COMIC.ttf"), 20, 0xFF0C0014, "left");            
+		songsListACTUAL.text = weeksSongsListDISPLAYNAMES[i];
+		songsListACTUAL.x = (700 * i) + 345;
+		songies.push(songsListACTUAL);
+		songsListACTUAL.antialiasing = false;
+		songsListACTUAL.scale.set(1, 1);
+		add(songsListACTUAL);
+
+	}
 
 	arrows = new FlxSprite(0, 0).loadGraphic(Paths.image('storyMode/arrows'));
 	arrows.antialiasing = false;
 	arrows.updateHitbox();
 	arrows.scrollFactor.set(0, 0);
 	add(arrows);
-	
-	weekDude = new FlxSprite(325, 110).loadGraphic(Paths.image('storyMode/weekCons/dudeWeek'));
-	weekDude.antialiasing = false;
-	weekDude.scale.x = 1;
-	weekDude.scale.y = 1;
-	weekDude.screenCenter(FlxAxes.X);
-	weekDude.scrollFactor.set(1, 1);
-	weekDude.alpha = 0;
-	weekDude.updateHitbox();
-	add(weekDude);
+
+	border = new FlxSprite(0, 0).loadGraphic(Paths.image('freeplay/border'));
+	border.antialiasing = false;
+	border.updateHitbox();
+	border.scrollFactor.set(0, 0);
+	add(border);
 	
 	storytitle = new FlxSprite(310, 10).loadGraphic(Paths.image('storyMode/name'));
 	storytitle.antialiasing = false;
@@ -64,40 +151,51 @@ function create() {
 	storytitle.updateHitbox();
 	add(storytitle);
 
-	bottomText = new FlxText();
-	bottomText.setFormat(Paths.font("COMIC.ttf"), 30, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
-	bottomText.y = 650;
-	bottomText.color = 0xFFFFFFFF;
-	bottomText.scrollFactor.set(0, 0);
-	bottomText.borderColor = 0xFF000000;
-	bottomText.antialiasing = false;
-	bottomText.borderSize = 3;
-	add(bottomText);
 }
 	
 function update() {
-	
-	bottomText.screenCenter(FlxAxes.X);
 
 	if (camera.scroll.x > camPosition) {
-		camera.scroll.x -= 25;
+		camera.scroll.x -= 50;
 	}
 	else if (camera.scroll.x < camPosition) {
-		camera.scroll.x += 25;
+		camera.scroll.x += 50;
 	}
 
-	for (obj in [weekDude]) {
-		obj.alpha = 0.6;
+	camPosition = 700 * Selected;
 
-		if (obj.scale.x > 1 && obj.scale.y > 1) {
-			obj.scale.set(1, 1);
+	for (i in 0...weeksList.length)	{
+
+		transparencyShit[i].y = 315;
+		transparencyShit[Selected].y = 333;
+
+		songies[i].y = 240;
+		songies[Selected].y = 190;
+
+		weeknamething[i].y = 230;
+		weeknamething[Selected].y = 190;
+
+		taglinething[i].y = 280;
+		taglinething[Selected].y = 240;
+
+		for (shitSHIT in [transparencyShit, transparencyShit2, weeknamething, taglinething, songies]) {
+			shitSHIT[i].scale.set(0.8, 0.8);
 		}
 
-		if (obj.scale.x < 0.8 && obj.scale.y < 0.8) {
-			obj.scale.set(0.8, 0.8);
+		for (shitSHIT in [transparencyShit, transparencyShit2, weeknamething, taglinething, songies]) {
+			shitSHIT[i].alpha = 0.6;
 		}
+
+		for (shitSHIT in [transparencyShit, transparencyShit2, weeknamething, taglinething, songies]) {
+			shitSHIT[Selected].alpha = 1;
+		}
+
+		for (shitSHIT in [transparencyShit, transparencyShit2, weeknamething, taglinething, songies]) {
+			shitSHIT[Selected].scale.set(1, 1);
+		}
+
 	}
-	
+
 	if (controls.LEFT_P && canDo == true) {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		Selected -= 1;
@@ -106,30 +204,14 @@ function update() {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		Selected += 1;
 	}
-	if (Selected == 0) {
-		weekDude.alpha = 1;
-		if (weekDude.scale.x != 1 && weekDude.scale.y != 1) {
-			weekDude.scale.x += 0.05;
-			weekDude.scale.y += 0.05;
-		}
-		camPosition = 0;
 
-		bottomText.text = "tis a main week, dude";
-	}
-	else {
-		if (weekDude.scale.x != 0.8 && weekDude.scale.y != 0.8) {
-			weekDude.scale.x -= 0.05;
-			weekDude.scale.y -= 0.05;
-		}
-	}
-
-	if (Selected == 0 && controls.ACCEPT && canDo == true) {
+	if (controls.ACCEPT && canDo == true) {
 		PlayState.loadWeek( {
-            name: "DudeMan Week",
-            id: "weekDude",
+            name: "week",
+            id: "wathy",
             sprite: null,
             chars: [null, null, null],
-            songs: [for (song in ["dude"]) {name: song, hide: false}],
+            songs: [for (song in [weeksSongsList[Selected]]) {name: song, hide: false}],
             difficulties: ['hard']
         }, "hard");
 
@@ -156,11 +238,11 @@ function update() {
 		FlxG.sound.music.volume = 0.05;
 	}
 
-	if (Selected > 0) {
+	if (Selected > 8) {
 		Selected = 0;
 	}
 	if (Selected < 0) {
-		Selected = 0;
+		Selected = 8;
 	}
  	
 	if (controls.BACK) {
