@@ -4,9 +4,12 @@ import flixel.FlxCamera;
 import flixel.util.FlxSave;
 import flixel.text.FlxTextBorderStyle;
 import funkin.backend.utils.DiscordUtil;
+import flixel.FlxSubState;
 
 var Selected = 0;
 var camPosition = 0;
+var blurShit = new CustomShader("blur");
+var canDo = true;
 
 function create() {
 
@@ -35,13 +38,13 @@ function create() {
 	border = new FlxSprite(0, 0).loadGraphic(Paths.image('freeplay/border'));
 	border.antialiasing = false;
 	border.updateHitbox();
-	border.cameras = [borderCamera];
+	border.scrollFactor.set(0, 0);
 	add(border);
 
 	arrows = new FlxSprite(0, 0).loadGraphic(Paths.image('storyMode/arrows'));
 	arrows.antialiasing = false;
 	arrows.updateHitbox();
-	arrows.cameras = [borderCamera];
+	arrows.scrollFactor.set(0, 0);
 	add(arrows);
 	
 	weekDude = new FlxSprite(325, 110).loadGraphic(Paths.image('storyMode/weekCons/dudeWeek'));
@@ -52,34 +55,20 @@ function create() {
 	weekDude.scrollFactor.set(1, 1);
 	weekDude.alpha = 0;
 	weekDude.updateHitbox();
-	weekDude.cameras = [uiCamera];
 	add(weekDude);
-
-	weekDax = new FlxSprite(weekDude.x * 3, 110).loadGraphic(Paths.image('storyMode/weekCons/daxWeek'));
-	weekDax.antialiasing = false;
-	weekDax.scale.x = 1;
-	weekDax.scale.y = 1;
-	weekDax.scrollFactor.set(1, 1);
-	weekDax.alpha = 0;
-	weekDax.updateHitbox();
-	weekDax.cameras = [uiCamera];
-	add(weekDax);
 	
 	storytitle = new FlxSprite(310, 10).loadGraphic(Paths.image('storyMode/name'));
 	storytitle.antialiasing = false;
 	storytitle.scale.set(0.8, 0.8);
+	storytitle.scrollFactor.set(0, 0);
 	storytitle.updateHitbox();
 	add(storytitle);
-	
-	for (obj in [weekDax]) {
-			obj.scale.set(0.8, 0.8);
-	}
 
 	bottomText = new FlxText();
 	bottomText.setFormat(Paths.font("COMIC.ttf"), 30, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
 	bottomText.y = 650;
-	bottomText.cameras = [borderCamera];
 	bottomText.color = 0xFFFFFFFF;
+	bottomText.scrollFactor.set(0, 0);
 	bottomText.borderColor = 0xFF000000;
 	bottomText.antialiasing = false;
 	bottomText.borderSize = 3;
@@ -90,14 +79,14 @@ function update() {
 	
 	bottomText.screenCenter(FlxAxes.X);
 
-	if (uiCamera.scroll.x > camPosition) {
-		uiCamera.scroll.x -= 25;
+	if (camera.scroll.x > camPosition) {
+		camera.scroll.x -= 25;
 	}
-	else if (uiCamera.scroll.x < camPosition) {
-		uiCamera.scroll.x += 25;
+	else if (camera.scroll.x < camPosition) {
+		camera.scroll.x += 25;
 	}
 
-	for (obj in [weekDude, weekDax]) {
+	for (obj in [weekDude]) {
 		obj.alpha = 0.6;
 
 		if (obj.scale.x > 1 && obj.scale.y > 1) {
@@ -109,11 +98,11 @@ function update() {
 		}
 	}
 	
-	if (controls.LEFT_P) {
+	if (controls.LEFT_P && canDo == true) {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		Selected -= 1;
 	}
-	if (controls.RIGHT_P) {
+	if (controls.RIGHT_P && canDo == true) {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		Selected += 1;
 	}
@@ -133,51 +122,45 @@ function update() {
 			weekDude.scale.y -= 0.05;
 		}
 	}
-	if (Selected == 1) {
-		weekDax.alpha = 1;
-		if (weekDax.scale.x != 1 && weekDax.scale.y != 1) {
-			weekDax.scale.x += 0.05;
-			weekDax.scale.y += 0.05;
-		}
-		camPosition = 650;
 
-		bottomText.text = "tis an extra week, dude";
-	}
-	else {
-		if (weekDax.scale.x != 0.8 && weekDax.scale.y != 0.8) {
-			weekDax.scale.x -= 0.025;
-			weekDax.scale.y -= 0.025;
-		}
-	}
-	if (Selected == 0 && controls.ACCEPT) {
-			PlayState.loadWeek( {
-                name: "DudeMan Week",
-                id: "weekDude",
-                sprite: null,
-                chars: [null, null, null],
-                songs: [for (song in ["dude"]) {name: song, hide: false}],
-                difficulties: ['hard']
-            }, "hard");
-
-			new FlxTimer().start(1, function() {FlxG.switchState(new PlayState());}); 
-	}
-	if (Selected == 1 && controls.ACCEPT) {
+	if (Selected == 0 && controls.ACCEPT && canDo == true) {
 		PlayState.loadWeek( {
-			name: "Dax Shaped Duel",
-			id: "weekDax",
-			sprite: null,
-			chars: [null, null, null],
-			songs: [for (song in ["skyblue", "misconduct", "esex", "sizssoers", "lighthouse", "roomed"]) {name: song, hide: false}],
-			difficulties: ['hard']
-		}, "hard");
+            name: "DudeMan Week",
+            id: "weekDude",
+            sprite: null,
+            chars: [null, null, null],
+            songs: [for (song in ["dude"]) {name: song, hide: false}],
+            difficulties: ['hard']
+        }, "hard");
 
 		new FlxTimer().start(1, function() {FlxG.switchState(new PlayState());}); 
-}
-	if (Selected > 1) {
+	}
+
+	if (FlxG.keys.justPressed.G) {
+		openSubState(new ModSubState("MenuDialogueSubstate"));
+		FlxG.save.data.menuDialougeToPlay = "takeBreaks";
+		canDo = false;
+		FlxG.camera.addShader(blurShit);
+		FlxG.save.data.shortLived = null;
+	}
+
+	if (FlxG.save.data.shortLived == true) {
+		FlxG.camera.removeShader(blurShit);
+		canDo = true;
+	}
+
+	if (canDo == true) {
+		FlxG.sound.music.volume = 1;
+	}
+	else {
+		FlxG.sound.music.volume = 0.05;
+	}
+
+	if (Selected > 0) {
 		Selected = 0;
 	}
 	if (Selected < 0) {
-		Selected = 1;
+		Selected = 0;
 	}
  	
 	if (controls.BACK) {
