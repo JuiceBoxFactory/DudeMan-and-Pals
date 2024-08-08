@@ -42,19 +42,6 @@ var weeksTagList = [
 	"SPOOKY MONTH!!!",
 
 ];
-var weeksSongsList = [
-	
-	"dude", "overstimulation", "srs",
-	"welcome-to-my-test-song",
-	"fang",
-	"welcome-to-my-test-song",
-	"sucker",
-	"welcome-to-my-test-song",
-	"welcome-to-my-test-song",
-	"welcome-to-my-test-song",
-	"welcome-to-my-test-song",
-
-];
 var weeksSongsListDISPLAYNAMES = [
 	
 	"1. Dude\n2. Overstimulation\n3. /Srs",
@@ -194,6 +181,8 @@ function update() {
 			shitSHIT[Selected].scale.set(1, 1);
 		}
 
+		transparencyShit[Selected].scale.set(1, 1.025);
+
 	}
 
 	if (controls.LEFT_P && canDo == true) {
@@ -205,15 +194,62 @@ function update() {
 		Selected += 1;
 	}
 
+	var weeksSongsList = [
+	
+		"dude",
+		"welcome-to-my-test-song",
+		"fang",
+		"welcome-to-my-test-song",
+		"sucker",
+		"welcome-to-my-test-song",
+		"welcome-to-my-test-song",
+		"welcome-to-my-test-song",
+		"welcome-to-my-test-song",
+	
+	];
+
 	if (controls.ACCEPT && canDo == true) {
-		PlayState.loadWeek( {
-            name: "week",
-            id: "wathy",
-            sprite: null,
-            chars: [null, null, null],
-            songs: [for (song in [weeksSongsList[Selected]]) {name: song, hide: false}],
-            difficulties: ['hard']
-        }, "hard");
+		if (Selected == 0) {
+			PlayState.loadWeek( {
+				name: "week",
+				id: weeksList[Selected],
+				sprite: null,
+				chars: [null, null, null],
+				songs: [for (song in ["dude", "overstimulation", "srs"]) {name: song, hide: false}],
+				difficulties: ['hard']
+			}, "hard");
+		}
+		else if (Selected == 2) {
+			PlayState.loadWeek( {
+				name: "week",
+				id: weeksList[Selected],
+				sprite: null,
+				chars: [null, null, null],
+				songs: [for (song in ["fang"]) {name: song, hide: false}],
+				difficulties: ['hard']
+			}, "hard");
+		}
+		else if (Selected == 4) {
+			PlayState.loadWeek( {
+				name: "week",
+				id: weeksList[Selected],
+				sprite: null,
+				chars: [null, null, null],
+				songs: [for (song in ["sucker"]) {name: song, hide: false}],
+				difficulties: ['hard']
+			}, "hard");
+		}
+		else {
+			PlayState.loadWeek( {
+				name: "week",
+				id: weeksList[Selected],
+				sprite: null,
+				chars: [null, null, null],
+				songs: [for (song in ["welcome-to-my-test-song"]) {name: song, hide: false}],
+				difficulties: ['hard']
+			}, "hard");
+		}
+		
 
 		new FlxTimer().start(1, function() {FlxG.switchState(new PlayState());}); 
 	}
