@@ -34,6 +34,8 @@ var GameplayOptionsOpen = false;
 var MiscOptionsOpen = false;
 var SecretOptionsOpen = false;
 var popUpOPEN = false;
+var stupidSKY = false;
+var goCrazy = false;
 
 function create() {
 
@@ -757,6 +759,12 @@ function postCreate() {
 
 	FlxG.save.data.language = "english";
 
+    goFast = new FlxTimer();
+    goFast.time = 2;
+    goFast.active = false;
+    add(goFast);
+	goFast.cancel();
+
 }
 
 function resetSettings() {
@@ -774,12 +782,51 @@ function resetSaveData() {
 function update() {
 
 	if (SecretOptionsOpen && SelectedSecret == 0)  {
-		if (controls.LEFT_P) {
+
+		if (FlxG.keys.justPressed.LEFT) {
 			FlxG.save.data.funValue -= 1;
 		}
-		if (controls.RIGHT_P) {
+		if (FlxG.keys.justPressed.RIGHT) {
 			FlxG.save.data.funValue += 1;
 		}
+
+		if (FlxG.keys.justReleased.LEFT) {
+			stupidSKY = false;
+			goCrazy = false;
+			goFast.cancel();
+		}
+		if (FlxG.keys.justReleased.RIGHT) {
+			stupidSKY = false;
+			goCrazy = false;
+			goFast.cancel();
+		}
+
+		if (FlxG.keys.pressed.LEFT) {
+			if (stupidSKY == false) {
+				stupidSKY = true;
+				goFast.start(0.5, function(timer) {
+					goCrazy = true;
+				});
+			}
+
+			if (goCrazy == true) {
+				FlxG.save.data.funValue -= 1;
+			}
+
+		}
+		if (FlxG.keys.pressed.RIGHT) {
+			if (stupidSKY == false) {
+				stupidSKY = true;
+				goFast.start(0.5, function(timer) {
+					goCrazy = true;
+				});
+			}
+
+			if (goCrazy == true) {
+				FlxG.save.data.funValue += 1;
+			}
+		}
+
 	}
 
 	FunValueToPick.text = "< "+FlxG.save.data.funValue+" >";
