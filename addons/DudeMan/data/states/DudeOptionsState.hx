@@ -1514,12 +1514,19 @@ function postUpdate() {
 	if (FlxG.save.data.angelsDream == false) {
 		checkboxanglesDream.animation.play('disselected');
 	}
-	if (SelectedSecret == 12 && SecretOptionsOpen == true && FlxG.save.data.angelsDream == false && controls.ACCEPT) {
+	if (SelectedSecret == 13 && SecretOptionsOpen == true && FlxG.save.data.angelsDream == false && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.angelsDream = true;
+		openSubState(new ModSubState("Functionality/DudeNotify"));
+		FlxG.save.data.notificationType1 = "angel";
+		FlxG.save.data.notificationMessage1 = "Why are you touching my option without permission!";
+		FlxG.save.data.notificationType2 = "angel";
+		FlxG.save.data.notificationMessage2 = "why are you talking to mEEeeee";
+		FlxG.save.data.notificationType3 = "angel";
+		FlxG.save.data.notificationMessage3 = "the boi setting. my setting. :parrot:";
 		});
 	}
-	if (SelectedSecret == 12 && SecretOptionsOpen == true && FlxG.save.data.angelsDream == true && controls.ACCEPT) {
+	if (SelectedSecret == 13 && SecretOptionsOpen == true && FlxG.save.data.angelsDream == true && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.angelsDream = false;
 		});

@@ -16,6 +16,8 @@ var arbitrary = false;
 
 function create() {
 
+    persistentUpdate = true;
+
     awesomeCam = new FlxCamera(0, 0, 1280, 720);
     FlxG.cameras.add(awesomeCam, false);
     awesomeCam.bgColor = 0x00000000;
@@ -211,13 +213,16 @@ function updateDialogue(dialouge) {
                 txtBro.start(0.03);
                 new FlxTimer().start(0.6, function(timer) {
                     charSwitch(1, "purpleBald");
-                    new FlxTimer().start(0.2, function(timer) {
-                        name.text = "PURPLE BALDI";
-                        canProg = true;
-                        txtBro.resetText("no..that's not cool man. please learn and change. thats just not okay to say man.\nyou need to work on yourself and try to be a nice person, because that just isnt okay. you have to be nice to people.");
-                        txtBro.start(0.03);
-                    });
                 });
+                new FlxTimer().start(0.8, function(timer) {
+                    name.text = "PURPLE BALDI";
+                    canProg = true;
+                    txtBro.resetText("no..that's not cool man. please learn and change. thats just not okay to say man.\nyou need to work on yourself and try to be a nice person, because that just isnt okay. you have to be nice to people.");
+                    txtBro.start(0.03);
+                });
+                openSubState(new ModSubState("Functionality/DudeNotify"));
+                FlxG.save.data.notificationType1 = "funValue";
+                FlxG.save.data.notificationMessage1 = "You Encountered a Fun Value event!";
             }
     
             if (lineToBe == 6) {

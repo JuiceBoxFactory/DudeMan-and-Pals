@@ -255,7 +255,7 @@ function update() {
 	}
 
 	if (FlxG.keys.justPressed.G) {
-		openSubState(new ModSubState("MenuDialogueSubstate"));
+		openSubState(new ModSubState("Functionality/MenuDialogueSubstate"));
 		FlxG.save.data.menuDialougeToPlay = "takeBreaks";
 		canDo = false;
 		FlxG.camera.addShader(blurShit);

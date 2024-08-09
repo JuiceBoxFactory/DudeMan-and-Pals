@@ -301,6 +301,13 @@ function update() {
 			amountOfButtons = 4;
 			FlxG.save.data.selectorButtonsUnlocked = 4;
 			checkAvalibilty();
+			openSubState(new ModSubState("Functionality/DudeNotify"));
+			FlxG.save.data.notificationType1 = "unlockedSmth";
+			FlxG.save.data.notificationMessage1 = 'You have Unlocked "'+"DudeMan's Games!"+'"';
+//			FlxG.save.data.notificationType2 = "newMail";
+//			FlxG.save.data.notificationMessage2 = 'You Got New DudeMail!';
+//			FlxG.save.data.notificationType3 = "achievementUnlocked";
+//			FlxG.save.data.notificationMessage3 = 'You got the achievement: Code induced Insanity';
 		}
 	
 		if (FlxG.keys.justPressed.EIGHT) {
