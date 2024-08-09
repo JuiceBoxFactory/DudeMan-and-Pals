@@ -304,6 +304,8 @@ function update() {
 			openSubState(new ModSubState("Functionality/DudeNotify"));
 			FlxG.save.data.notificationType1 = "unlockedSmth";
 			FlxG.save.data.notificationMessage1 = 'You have Unlocked "'+"DudeMan's Games!"+'"';
+//			FlxG.save.data.notificationType2 = "";
+//			FlxG.save.data.notificationMessage2 = "";
 //			FlxG.save.data.notificationType2 = "newMail";
 //			FlxG.save.data.notificationMessage2 = 'You Got New DudeMail!';
 //			FlxG.save.data.notificationType3 = "achievementUnlocked";

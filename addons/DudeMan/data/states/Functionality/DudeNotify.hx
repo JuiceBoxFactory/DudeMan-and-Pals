@@ -33,15 +33,14 @@ function create() {
         length = FlxG.save.data.notificationLength;
     }
 
-    FlxG.save.data.notificationLength = 0;
+    FlxG.save.data.notificationLength = null;
 
-    if (FlxG.save.data.notificationType1 != "") {
+    amountOfNotifications += 1;
+
+    if (FlxG.save.data.notificationType2 != null) {
         amountOfNotifications += 1;
     }
-    if (FlxG.save.data.notificationType2 != "") {
-        amountOfNotifications += 1;
-    }
-    if (FlxG.save.data.notificationType3 != "") {
+    if (FlxG.save.data.notificationType3 != null) {
         amountOfNotifications += 1;
     }
 
@@ -53,12 +52,12 @@ function create() {
     notificationText[0] = FlxG.save.data.notificationMessage1;
     notificationText[1] = FlxG.save.data.notificationMessage2;
     notificationText[2] = FlxG.save.data.notificationMessage3;
-    FlxG.save.data.notificationType1 = "";
-    FlxG.save.data.notificationMessage1 = "";
-    FlxG.save.data.notificationType2 = "";
-    FlxG.save.data.notificationMessage2 = "";
-    FlxG.save.data.notificationType3 = "";
-    FlxG.save.data.notificationMessage3 = "";
+    FlxG.save.data.notificationType1 = null;
+    FlxG.save.data.notificationMessage1 = null;
+    FlxG.save.data.notificationType2 = null;
+    FlxG.save.data.notificationMessage2 = null;
+    FlxG.save.data.notificationType3 = null;
+    FlxG.save.data.notificationMessage3 = null;
 
 
     notifCam = new FlxCamera(0, 0, 1280, 720);
@@ -66,6 +65,13 @@ function create() {
     notifCam.bgColor = 0x00000000;
 
     for (i in 0...amountOfNotifications)	{
+
+        if (notificationText[i] == "" || notificationText[i] == null) {
+            notificationText[i] = "nothing to see here...";
+        }
+        if (notificationQueue[i] == "" || notificationQueue[i] == null) {
+            notificationQueue[i] = "question";
+        }
 
         notificationBanner = new FlxSprite(1479, 64).loadGraphic(Paths.image('notificationSys/box'));
         notificationBanner.antialiasing = false;
