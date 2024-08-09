@@ -1518,6 +1518,7 @@ function postUpdate() {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.angelsDream = true;
 		openSubState(new ModSubState("Functionality/DudeNotify"));
+		FlxG.save.data.notificationLength = 3;
 		FlxG.save.data.notificationType1 = "angel";
 		FlxG.save.data.notificationMessage1 = "Why are you touching my option without permission!";
 		FlxG.save.data.notificationType2 = "angel";

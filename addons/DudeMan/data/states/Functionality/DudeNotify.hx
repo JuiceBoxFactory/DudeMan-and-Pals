@@ -25,9 +25,15 @@ var notificationText = [
 ];
 var dam = false;
 var amountOfNotifications = 0;
+var length = 2;
 
 function create() {
 
+    if (FlxG.save.data.notificationLength != null) {
+        length = FlxG.save.data.notificationLength;
+    }
+
+    FlxG.save.data.notificationLength = 0;
 
     if (FlxG.save.data.notificationType1 != "") {
         amountOfNotifications += 1;
@@ -102,12 +108,12 @@ function animation() {
                     new FlxTimer().start(0.5, function(timer) {
                         FlxG.sound.play(Paths.sound("confirm"));
                     });
-                    new FlxTimer().start(3, function(timer) {
+                    new FlxTimer().start(length + 1, function(timer) {
                         FlxTween.tween(notifIcon[i], {x: 1479}, 1 + (i * 0.25), {ease:FlxEase.quartInOut}); 
                         FlxTween.tween(notifBanner[i], {x: 1479}, 1 + (i * 0.25), {ease:FlxEase.quartInOut}); 
                         FlxTween.tween(notifText[i], {x: 1523}, 1 + (i * 0.25), {ease:FlxEase.quartInOut}); 
                     });
-                    new FlxTimer().start(4.1, function(timer) {
+                    new FlxTimer().start(length + 2.1, function(timer) {
                         close();
                     });
         
