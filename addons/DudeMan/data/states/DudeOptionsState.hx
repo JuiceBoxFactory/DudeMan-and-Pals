@@ -90,7 +90,7 @@ function postCreate() {
 	add(popBorder);
 
 	warningTextPOP = new FlxText(50, 25, 450);
-	warningTextPOP.text = "WAIT! before you use downscroll, I just want you to know\n\nthis mod's ui looks way better on upscroll, everything still works for downscroll, but things like DudeRatingTM dont really work correctly. ( unless u use middlescroll )\n\nif you CAN use upscroll, I highly recommend it. if not- dont worry! you can still play the mod completely fine c:";
+	warningTextPOP.text = "WAIT! before you use downscroll, I just want you to know\n\nalot of this mod was built for upscroll, it all still works in downscroll dont get me wrong, HOWEVER things in the likes of 'DudeRatingTM' may cover your strumline at times, if this bothers you, either turn off DudeRatingTM OR use upscroll! if not possible to play upscroll, nothing else in the mod should be affected, so dont worry! c:";
 	warningTextPOP.setFormat(Paths.font("COMIC.ttf"), 25, FlxColor.WHITE, "center");            
 	warningTextPOP.cameras = [popUpCamera];
 	warningTextPOP.color = 0xFF130022;
@@ -1005,23 +1005,23 @@ function update() {
 		BottomText.text = "Makes the strumline notes bounce when hit !";
 		NoteBounce.alpha = 1;
 	}
-	if (SelectedGameplay == 4 && GameplayOptionsOpen == true) {
-		BottomText.text = "its just fucking middlescroll- dude do I seriously have to describe these";
-		MiddleScroll.alpha = 1;
-	}
-	if (SelectedGameplay == 5 && GameplayOptionsOpen == true && FlxG.save.data.subtitles == true) {
+//	if (SelectedGameplay == 4 && GameplayOptionsOpen == true) {
+//		BottomText.text = "its just fucking middlescroll- dude do I seriously have to describe these";
+//		MiddleScroll.alpha = 1;
+//	}
+	if (SelectedGameplay == 4 && GameplayOptionsOpen == true && FlxG.save.data.subtitles == true) {
 		BottomText.text = "hehehe wouldnt it be funny if the subtitles controlled this text too ?";
 		Subtitles.alpha = 1;
 	}
-	if (SelectedGameplay == 5 && GameplayOptionsOpen == true && FlxG.save.data.subtitles == false) {
+	if (SelectedGameplay == 4 && GameplayOptionsOpen == true && FlxG.save.data.subtitles == false) {
 		BottomText.text = "";
 		Subtitles.alpha = 1;
 	}
-	if (SelectedGameplay == 6 && GameplayOptionsOpen == true && FlxG.save.data.camMove == true) {
+	if (SelectedGameplay == 5 && GameplayOptionsOpen == true && FlxG.save.data.camMove == true) {
 		BottomText.text = "Are you silly or are you a loser ?";
 		camMove.alpha = 1;
 	}
-	if (SelectedGameplay == 6 && GameplayOptionsOpen == true && FlxG.save.data.camMove == false) {
+	if (SelectedGameplay == 5 && GameplayOptionsOpen == true && FlxG.save.data.camMove == false) {
 		BottomText.text = "Loser. clearly.";
 		camMove.alpha = 1;
 	}
@@ -1095,11 +1095,11 @@ function update() {
 	if (Selected1 < 0) {
 		Selected1 = 3;
 	}
-	if (SelectedGameplay > 6) {
+	if (SelectedGameplay > 5) {
 		SelectedGameplay = 0;
 	}
 	if (SelectedGameplay < 0) {
-		SelectedGameplay = 6;
+		SelectedGameplay = 5;
 	}
 	if (SelectedSecret > 13) {
 		SelectedSecret = 0;
@@ -1245,34 +1245,34 @@ function postUpdate() {
 		FlxG.save.data.notebounce = false;
 		});
 	}
-	if (FlxG.save.data.middlescroll == true) {
-		checkboxMiddleScroll.animation.play('selected');
-	}
-	if (FlxG.save.data.middlescroll == false) {
-		checkboxMiddleScroll.animation.play('disselected');
-	}
-	if (SelectedGameplay == 4 && GameplayOptionsOpen == true && FlxG.save.data.middlescroll == false && controls.ACCEPT) {
-		new FlxTimer().start(0.10, function(timer) {
-		FlxG.save.data.middlescroll = true;
-		});
-	}
-	if (SelectedGameplay == 4 && GameplayOptionsOpen == true && FlxG.save.data.middlescroll == true && controls.ACCEPT) {
-		new FlxTimer().start(0.10, function(timer) {
-		FlxG.save.data.middlescroll = false;
-		});
-	}
+//	if (FlxG.save.data.middlescroll == true) {
+//		checkboxMiddleScroll.animation.play('selected');
+//	}
+//	if (FlxG.save.data.middlescroll == false) {
+//		checkboxMiddleScroll.animation.play('disselected');
+//	}
+//	if (SelectedGameplay == 4 && GameplayOptionsOpen == true && FlxG.save.data.middlescroll == false && controls.ACCEPT) {
+//		new FlxTimer().start(0.10, function(timer) {
+//		FlxG.save.data.middlescroll = true;
+//		});
+//	}
+//	if (SelectedGameplay == 4 && GameplayOptionsOpen == true && FlxG.save.data.middlescroll == true && controls.ACCEPT) {
+//		new FlxTimer().start(0.10, function(timer) {
+//		FlxG.save.data.middlescroll = false;
+//		});
+//	}
 	if (FlxG.save.data.subtitles == true) {
 		checkboxSubtitles.animation.play('selected');
 	}
 	if (FlxG.save.data.subtitles == false) {
 		checkboxSubtitles.animation.play('disselected');
 	}
-	if (SelectedGameplay == 5 && GameplayOptionsOpen == true && FlxG.save.data.subtitles == false && controls.ACCEPT) {
+	if (SelectedGameplay == 4 && GameplayOptionsOpen == true && FlxG.save.data.subtitles == false && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.subtitles = true;
 		});
 	}
-	if (SelectedGameplay == 5 && GameplayOptionsOpen == true && FlxG.save.data.subtitles == true && controls.ACCEPT) {
+	if (SelectedGameplay == 4 && GameplayOptionsOpen == true && FlxG.save.data.subtitles == true && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.subtitles = false;
 		});
@@ -1283,12 +1283,12 @@ function postUpdate() {
 	if (FlxG.save.data.camMove == false) {
 		checkboxcamMove.animation.play('disselected');
 	}
-	if (SelectedGameplay == 6 && GameplayOptionsOpen == true && FlxG.save.data.camMove == false && controls.ACCEPT) {
+	if (SelectedGameplay == 5 && GameplayOptionsOpen == true && FlxG.save.data.camMove == false && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.camMove = true;
 		});
 	}
-	if (SelectedGameplay == 6 && GameplayOptionsOpen == true && FlxG.save.data.camMove == true && controls.ACCEPT) {
+	if (SelectedGameplay == 5 && GameplayOptionsOpen == true && FlxG.save.data.camMove == true && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.camMove = false;
 		});

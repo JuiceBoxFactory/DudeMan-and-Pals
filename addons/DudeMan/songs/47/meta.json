@@ -1,0 +1,22 @@
+{
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"beatsPerMesure": 4,
+	"bpm": 124,
+	"appearStep": 0,	
+	"actoresses2": "artist: MeltyKelpy    composer: AussieDoesThings\ncoder: MeltyKelpy    charter: AngeltheBoi",
+	"bio": "Which door do we go through??\n\nthe origin of the 47 joke...",
+	"singerNames": "GhostyBricks and MeltyKelpy",
+	"actoresses": "artist: MeltyKelpy\ncomposer: AussieDoesThings\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: MeltyKelpy",
+	"tagline": "Which door do we go through??",
+	"difficulties": [
+		"Hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -13893888,
+	"displayName": "47",
+	"icon": "Icon",
+	"name": "47",
+	"color": "#2BFF00"
+}
