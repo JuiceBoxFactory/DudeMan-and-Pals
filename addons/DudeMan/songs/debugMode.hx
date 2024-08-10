@@ -110,34 +110,34 @@ function postUpdate() {
 				vocals.time += 2000;
 			}
 			if (FlxG.keys.justPressed.THREE) {
-				Conductor.songPosition += 2000;
-				inst.time += 2000;
-				vocals.time += 2000;
+				Conductor.songPosition += 3000;
+				inst.time += 3000;
+				vocals.time += 3000;
 			}
 			if (FlxG.keys.justPressed.FOUR) {
-				Conductor.songPosition += 2000;
-				inst.time += 2000;
-				vocals.time += 2000;
+				Conductor.songPosition += 4000;
+				inst.time += 4000;
+				vocals.time += 4000;
 			}
 			if (FlxG.keys.justPressed.FIVE) {
-				Conductor.songPosition += 2000;
-				inst.time += 2000;
-				vocals.time += 2000;
+				Conductor.songPosition += 5000;
+				inst.time += 5000;
+				vocals.time += 5000;
 			}
 			if (FlxG.keys.justPressed.SIX) {
-				Conductor.songPosition += 2000;
-				inst.time += 2000;
-				vocals.time += 2000;
+				Conductor.songPosition += 6000;
+				inst.time += 6000;
+				vocals.time += 6000;
 			}
 			if (FlxG.keys.justPressed.EIGHT) {
-				Conductor.songPosition += 2000;
-				inst.time += 2000;
-				vocals.time += 2000;
+				Conductor.songPosition += 8000;
+				inst.time += 8000;
+				vocals.time += 8000;
 			}
 			if (FlxG.keys.justPressed.NINE) {
-				Conductor.songPosition += 2000;
-				inst.time += 2000;
-				vocals.time += 2000;
+				Conductor.songPosition += 9000;
+				inst.time += 9000;
+				vocals.time += 9000;
 			}
 	
 			if (welcometxt.alpha > alphaToBeINSTR) {

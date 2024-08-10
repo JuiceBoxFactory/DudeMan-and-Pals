@@ -1,5 +1,3 @@
-// TOOK THIS CODE FROM betpowo ON DISCORD, THANK GOD I DIDNT HAVE TO CODE THIS - melty
-
 import funkin.savedata.FunkinSave;
 import funkin.savedata.HighscoreChange;
 import Date;
@@ -21,6 +19,9 @@ var data = [
 function onStartSong() {
     inst.onComplete = _endSong;
 
+    FlxG.save.data.playerResults = PlayState.SONG.meta.player;
+    FlxG.save.data.opponentResults = PlayState.SONG.meta.opponent;
+
     // carry over judgements for each song in story mode
     if (PlayState.isStoryMode) {
         if (PlayState.storyPlaylist.length != PlayState.storyWeek.songs.length) {
@@ -39,6 +40,7 @@ function onStartSong() {
 
 function _endSong()
 {
+
 	scripts.call('onSongEnd');
 	canPause = false;
 	inst.volume = 0;
@@ -89,6 +91,8 @@ function _endSong()
 				    	date: Date.now().toString()
 				    });
                 }
+                FlxG.save.data.song = PlayState.SONG.meta.name;
+                FlxG.save.data.songDisplay = PlayState.SONG.meta.displayName;
                 FlxG.switchState(new ModState('ResultsState'));
 			}
         } else {

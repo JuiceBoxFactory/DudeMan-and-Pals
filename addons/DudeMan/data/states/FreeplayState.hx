@@ -175,6 +175,7 @@ function create() {
 		{
 			iconArray[i].alpha = 0;
 		}
+		
 	changeSelection(FlxG.save.data.songSelected);
 
 }
@@ -233,9 +234,7 @@ function update() {
 	if (controls.RIGHT_P) {
 		changeSelection(1);
 	}
-	if (FlxG.keys.justPressed.TAB) {
-	changeCoopMode(1);
-	}
+	
 
 	for (i in 0...songL.length) {
 		songL[i].alpha = 0.6;

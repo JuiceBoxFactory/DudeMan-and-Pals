@@ -138,6 +138,8 @@ function create() {
 	storytitle.updateHitbox();
 	add(storytitle);
 
+	Selected = 	FlxG.save.data.weeksSelected;
+
 }
 	
 function update() {
@@ -211,7 +213,7 @@ function update() {
 	if (controls.ACCEPT && canDo == true) {
 		if (Selected == 0) {
 			PlayState.loadWeek( {
-				name: "week",
+				name: "DudeMan's Week",
 				id: weeksList[Selected],
 				sprite: null,
 				chars: [null, null, null],
@@ -221,7 +223,7 @@ function update() {
 		}
 		else if (Selected == 2) {
 			PlayState.loadWeek( {
-				name: "week",
+				name: "Zee's Week",
 				id: weeksList[Selected],
 				sprite: null,
 				chars: [null, null, null],
@@ -231,7 +233,7 @@ function update() {
 		}
 		else if (Selected == 4) {
 			PlayState.loadWeek( {
-				name: "week",
+				name: "Kathy's Week",
 				id: weeksList[Selected],
 				sprite: null,
 				chars: [null, null, null],
@@ -281,6 +283,8 @@ function update() {
 		Selected = 8;
 	}
  	
+	FlxG.save.data.weeksSelected = Selected;
+
 	if (controls.BACK) {
 		FlxG.switchState(new MainMenuState());
 	}

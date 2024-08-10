@@ -12,6 +12,8 @@
 	"tagline": "when life gives u lemons, make an fnf mod !",
 	"singerNames": "Limon T. Lemon VS Bee",
 	"actoresses2": "artist: MeltyKelpy    composer: AussieDoesThings\ncoder: MeltyKelpy    charter: MeltyKelpy",
+	"player": "bee",
+	"opponent": "limon",
     "appearStep": 16,
 	"difficulties": [
 		"Hard"

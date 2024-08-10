@@ -16,6 +16,8 @@
 	"singerNames": "DudeMan (with Bee's shirt backwards) VS Bee",
 	"displayName": "Slash-Srs",
 	"beatsPerMesure": 4,
+	"player": "bee",
+	"opponent": "dudeman",
 	"needsVoices": true,
 	"tagline": "The only time this'll ever happen",
 	"beatsPerMeasure": 4,

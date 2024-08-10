@@ -14,6 +14,8 @@ function postCreate(){
 
     magenta.destroy();
 
+	FlxG.save.data.weeksSelected = 0;
+
 	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg')); // second argument: FlxAxes is required to determinate in what axes the sprite should be repeated, default to XY
 	coolBackdrop.moves = true;
 	coolBackdrop.scrollFactor.set(0, 0);
@@ -34,6 +36,12 @@ function postCreate(){
 	buttons.scrollFactor.set(0, 0);
 	add(buttons);
 
+}
+
+function postUpdate() {
+    if (FlxG.keys.justPressed.F7) {
+        FlxG.switchState(new ModState('ResultsState'));
+    }
 }
 
 function update() {	

@@ -10,6 +10,8 @@
 	"displayName": "Dude",
 	"actoresses": "artist: MeltyKelpy\ncomposer: AussieDoesThings\ncoder: MeltyKelpy\ncharter: AngeltheBoi\ncover art: MeltyKelpy",
 	"tagline": "Get a load of these guys.",
+	"player": "bee",
+	"opponent": "dudeman",
 	"difficulties": [
 		"Hard"
 	],
