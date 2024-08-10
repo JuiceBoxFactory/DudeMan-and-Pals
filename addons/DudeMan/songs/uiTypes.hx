@@ -27,6 +27,13 @@ var squishingTimeBar = false;
 
 function postCreate() {
 
+	stupidCodenameEngineBullshit = new FlxSprite(-9000, 585).loadGraphic(Paths.image('icons/face'));
+	stupidCodenameEngineBullshit.antialiasing = false;
+	stupidCodenameEngineBullshit.flipX = true;
+	stupidCodenameEngineBullshit.updateHitbox();
+	stupidCodenameEngineBullshit.alpha = 1;
+	add(stupidCodenameEngineBullshit);
+
 	myOpp = dad.getIcon();
 	myPpo = boyfriend.getIcon();
 
@@ -685,6 +692,8 @@ function postUpdate() {
 		}
 	}
 
+	cpuStrums.notes.forEach(function(notes) notes.alpha = stupidCodenameEngineBullshit.alpha);
+
 }
 
 function onNoteCreation(e) {
@@ -907,6 +916,7 @@ function anim(type) {
 
 }
 
+
 function stepHit(curStep:Int) { 
     	
 	if (PlayState.SONG.meta.noteType == "normal") {	
@@ -918,4 +928,37 @@ function stepHit(curStep:Int) {
             	});
     	}
 	}
+
+
+	if (PlayState.SONG.meta.name == "orangejuice") {
+
+		var quickie = 1;
+
+		switch (curStep) {
+			
+			case 496:
+//				for (hudShit in [cpuStrums.members[0], cpuStrums.members[1], cpuStrums.members[2], cpuStrums.members[3], timeTxt, bar, whoGettingBestHead, bottom, icon1, icon2, healthBar, healthBarBG, healthBarThing, healthBGBetter, healthSex, healthSex2, scoreText, missesText, scoreToAddText]) {
+					FlxTween.tween(cpuStrums.members[0], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(cpuStrums.members[1], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(cpuStrums.members[2], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(cpuStrums.members[3], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(stupidCodenameEngineBullshit, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(timeTxt, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(bar, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(bottom, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(whoGettingBestHead, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(scoreText, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(missesText, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(healthheader, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(icon1, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(icon2, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(accText, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(healthBar, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(scoreToAddText, {y: -700}, quickie, {ease: FlxEase.quartOut});
+//				}
+
+		}
+	}
+
+
 }

@@ -175,7 +175,7 @@ function create() {
 		{
 			iconArray[i].alpha = 0;
 		}
-		
+	
 	changeSelection(FlxG.save.data.songSelected);
 
 }

@@ -1,3 +1,5 @@
+var rotation = false;
+
 function create() {
 
 	buildingbg = new FlxSprite(0, 1300).loadGraphic(Paths.image('backdrop/drawingBoardOJ/backgroundBuild'));
@@ -33,6 +35,38 @@ function create() {
 	fog.scrollFactor.set(1, 1);
 	insert(8, fog);
 
+	pushBuilding = new FlxSprite(0, 1300).loadGraphic(Paths.image('backdrop/drawingBoardOJ/pushBuilding'));
+	pushBuilding.antialiasing = false;
+	pushBuilding.alpha = 1;
+	insert(14, pushBuilding);
+
+	cloudy = new FlxSprite(0, 0).loadGraphic(Paths.image('backdrop/drawingBoardOJ/cloudy'));
+	cloudy.antialiasing = false;
+	cloudy.alpha = 1;
+	insert(15, cloudy);
+
+	bClouds = new FlxSprite(100, -2000).loadGraphic(Paths.image('backdrop/drawingBoardOJ/behindClouds'));
+	bClouds.antialiasing = false;
+	bClouds.scrollFactor.set(0.5, 0.5);
+	bClouds.scale.set(1.5, 1.5);
+	bClouds.alpha = 1;
+	insert(2, bClouds);
+
+	clouds = new FlxSprite(300, -4000).loadGraphic(Paths.image('backdrop/drawingBoardOJ/clouds'));
+	clouds.antialiasing = false;
+	clouds.scale.set(1.5, 1);
+	insert(30, clouds);
+
+}
+
+function update(elapsed) {
+
+	if (rotation == true) {
+		boyfriend.angle += 0.05;
+		dad.angle -= 0.08;
+		gf.angle += 0.1;
+	}
+
 }
 
 function stepHit(curStep:Int) { 
@@ -62,5 +96,26 @@ function stepHit(curStep:Int) {
           defaultCamZoom = 1.2;
         case 320: 
 	  FlxG.camera.followLerp = 0.04;
-        }
+	  	case 486:
+			FlxTween.tween(pushBuilding, {y: 500}, 2, {ease:FlxEase.bounceIn}); 
+		case 504:
+			FlxG.camera.followLerp = 0;
+			defaultCamZoom = 0.8;
+			FlxTween.tween(camGame.scroll, {y: -3600}, 2.5, {ease:FlxEase.quartInOut}); 
+			FlxTween.tween(boyfriend, {y: -3400}, 1, {ease:FlxEase.quartOut});
+			FlxTween.tween(boyfriend, {angle: 720}, 1, {ease:FlxEase.quartOut});  
+			FlxTween.tween(gf, {y: -3400}, 1, {ease:FlxEase.quartOut});
+			FlxTween.tween(gf, {alpha: 0}, 0.75, {ease:FlxEase.quartOut});
+			FlxTween.tween(gf, {angle: 720}, 1, {ease:FlxEase.quartOut});  
+			FlxTween.tween(dad, {y: -3400}, 1, {ease:FlxEase.quartOut});
+			FlxTween.tween(dad, {angle: 720}, 1, {ease:FlxEase.quartOut}); 
+		case 512:
+			rotation = true; 
+		case 514:
+			FlxG.camera.followLerp = 0.04;
+		case 760:
+			FlxTween.tween(boyfriend, {y: -1200}, 2, {ease:FlxEase.quartInOut});
+			FlxTween.tween(gf, {y: -1200}, 2, {ease:FlxEase.quartInOut});
+			FlxTween.tween(dad, {y: -1200}, 2, {ease:FlxEase.quartInOut});
+	}
 }

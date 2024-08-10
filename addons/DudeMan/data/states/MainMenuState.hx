@@ -4,14 +4,14 @@ import funkin.backend.utils.DiscordUtil;
 
 var SelectedButton = 0;
 
-function postCreate(){
+function postCreate() {
 
 	DiscordUtil.changePresenceAdvanced({
 		details: "IN: The MainMenu",
 		state: "This goat in my main menu <3",
 		largeImageKey: "icon"
 	});
-
+	
     magenta.destroy();
 
 	FlxG.save.data.weeksSelected = 0;
