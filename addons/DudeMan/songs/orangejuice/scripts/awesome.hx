@@ -35,7 +35,7 @@ function create() {
 	fog.scrollFactor.set(1, 1);
 	insert(8, fog);
 
-	pushBuilding = new FlxSprite(0, 1300).loadGraphic(Paths.image('backdrop/drawingBoardOJ/pushBuilding'));
+	pushBuilding = new FlxSprite(-75, 1300).loadGraphic(Paths.image('backdrop/drawingBoardOJ/pushBuilding'));
 	pushBuilding.antialiasing = false;
 	pushBuilding.alpha = 1;
 	insert(14, pushBuilding);
@@ -96,26 +96,38 @@ function stepHit(curStep:Int) {
           defaultCamZoom = 1.2;
         case 320: 
 	  FlxG.camera.followLerp = 0.04;
-	  	case 486:
-			FlxTween.tween(pushBuilding, {y: 500}, 2, {ease:FlxEase.bounceIn}); 
+	  	case 500:
+			FlxTween.tween(pushBuilding, {y: 500}, 0.5, {ease:FlxEase.bounceIn}); 
 		case 504:
 			FlxG.camera.followLerp = 0;
 			defaultCamZoom = 0.8;
-			FlxTween.tween(camGame.scroll, {y: -3600}, 2.5, {ease:FlxEase.quartInOut}); 
-			FlxTween.tween(boyfriend, {y: -3400}, 1, {ease:FlxEase.quartOut});
-			FlxTween.tween(boyfriend, {angle: 720}, 1, {ease:FlxEase.quartOut});  
-			FlxTween.tween(gf, {y: -3400}, 1, {ease:FlxEase.quartOut});
+			FlxTween.tween(camGame.scroll, {y: -3600}, 2, {ease:FlxEase.quartInOut}); 
+			FlxTween.tween(boyfriend, {y: -3400}, 3, {ease:FlxEase.quartOut});
+			FlxTween.tween(boyfriend, {angle: 720}, 3, {ease:FlxEase.quartOut});  
+			FlxTween.tween(gf, {y: -3400}, 3, {ease:FlxEase.quartOut});
 			FlxTween.tween(gf, {alpha: 0}, 0.75, {ease:FlxEase.quartOut});
-			FlxTween.tween(gf, {angle: 720}, 1, {ease:FlxEase.quartOut});  
-			FlxTween.tween(dad, {y: -3400}, 1, {ease:FlxEase.quartOut});
-			FlxTween.tween(dad, {angle: 720}, 1, {ease:FlxEase.quartOut}); 
+			FlxTween.tween(gf, {angle: 360}, 3, {ease:FlxEase.quartOut});  
+			FlxTween.tween(dad, {y: -3400}, 3, {ease:FlxEase.quartOut});
+			FlxTween.tween(dad, {angle: -720}, 3, {ease:FlxEase.quartOut}); 
 		case 512:
 			rotation = true; 
 		case 514:
 			FlxG.camera.followLerp = 0.04;
 		case 760:
-			FlxTween.tween(boyfriend, {y: -1200}, 2, {ease:FlxEase.quartInOut});
-			FlxTween.tween(gf, {y: -1200}, 2, {ease:FlxEase.quartInOut});
-			FlxTween.tween(dad, {y: -1200}, 2, {ease:FlxEase.quartInOut});
+			FlxTween.tween(boyfriend, {y: -1800}, 2, {ease:FlxEase.quartInOut});
+			FlxTween.tween(gf, {y: -1800}, 2, {ease:FlxEase.quartInOut});
+			FlxTween.tween(dad, {y: -1800}, 2, {ease:FlxEase.quartInOut});
+			FlxTween.tween(gf, {alpha: 1}, 2, {ease:FlxEase.quartIn});
+			FlxTween.tween(clouds, {alpha: 0.4}, 2, {ease:FlxEase.quartInOut});
+			FlxTween.tween(clouds, {"scale.x": 1.7}, 2, {ease:FlxEase.quartInOut});
+		case 778:
+			rotation = false;
+			pushBuilding.alpha = 0;
+			FlxTween.tween(boyfriend, {y: 805}, 40, {ease:FlxEase.quadIn});
+			FlxTween.tween(boyfriend, {angle: 0}, 40, {ease:FlxEase.quadIn});  
+			FlxTween.tween(gf, {y: 795}, 40, {ease:FlxEase.quadIn});
+			FlxTween.tween(gf, {angle: 0}, 40, {ease:FlxEase.quadIn});  
+			FlxTween.tween(dad, {y: 800}, 40, {ease:FlxEase.quadIn});
+			FlxTween.tween(dad, {angle: 0}, 40, {ease:FlxEase.quadIn});  
 	}
 }

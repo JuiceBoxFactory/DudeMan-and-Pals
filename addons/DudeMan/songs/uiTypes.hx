@@ -942,6 +942,7 @@ function stepHit(curStep:Int) {
 					FlxTween.tween(cpuStrums.members[1], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
 					FlxTween.tween(cpuStrums.members[2], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
 					FlxTween.tween(cpuStrums.members[3], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(camHUD, {alpha: 1}, quickie, {ease: FlxEase.quartOut});
 					FlxTween.tween(stupidCodenameEngineBullshit, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
 					FlxTween.tween(timeTxt, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
 					FlxTween.tween(bar, {alpha: 0}, quickie, {ease: FlxEase.quartOut});

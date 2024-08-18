@@ -10,6 +10,8 @@
 	"tagline": "50th anniversary gerard",
 	"singerNames": "OJSTheCoder VS Bee",
 	"actoresses2": "artist: MeltyKelpy    composer: OJSTheCoder\ncoder: MeltyKelpy    charter: MeltyKelpy",
+	"player": "bee",
+	"opponent": "oj",
     "appearStep": 0,
 	"bpm": 185,
 	"difficulties": [

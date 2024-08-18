@@ -221,8 +221,6 @@ function update() {
 
 	if (canDo == true) {
 
-		FlxG.sound.music.volume = 1;
-
 		if (FlxG.mouse.overlaps(mail)) {
 			mail.animation.play("open");
 			if (FlxG.mouse.justPressed) {
