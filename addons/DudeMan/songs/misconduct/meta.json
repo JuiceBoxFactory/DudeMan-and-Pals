@@ -3,6 +3,8 @@
 	"coopAllowed": false,
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
+	"player": "lute",
+	"opponent": "context",
 	"displayName": "Code-of-Misconduct",
 	"category": "DAX SHAPED DUEL",
 	"name": "misconduct",
