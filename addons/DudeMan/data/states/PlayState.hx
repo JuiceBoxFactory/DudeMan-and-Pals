@@ -8,7 +8,12 @@ function postCreate() {
 
 	window.title = "DudeMan and... PALS??? - Currently Playing: "+PlayState.SONG.meta.displayName;
 
-	iconName = iconName.toLowerCase(PlayState.SONG.meta.displayName);
+	if (PlayState.SONG.meta.name != "sucker") {
+		iconName = iconName.toLowerCase(PlayState.SONG.meta.displayName);
+	}
+	else {
+		iconName = "sucker_";
+	}
 
 	trace(iconName);
 
