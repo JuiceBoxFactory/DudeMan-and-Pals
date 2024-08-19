@@ -5,6 +5,7 @@ import flixel.util.FlxTimer;
 import funkin.backend.system.Controls;
 import openfl.filters.BlurFilter;
 import flixel.FlxCamera;
+import funkin.backend.utils.DiscordUtil;
 
 // Dialogue Mechanics n Shit
 var canDoShitDude = false;
@@ -279,6 +280,12 @@ function create() {
 
 function postCreate() {
     window.title = "DudeMan Punching Simulator - By HotSexyDemon972 ( Puzzle )";
+
+	DiscordUtil.changePresenceAdvanced({
+		details: 'Playing "'+"Puzzle's Dudeman Puncher"+'"',
+		state: "[From PUZZLE's Games]",
+		largeImageKey: "pdp"
+    });
 }
 
 function normalClick() {
