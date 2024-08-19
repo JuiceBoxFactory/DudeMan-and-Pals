@@ -4,9 +4,15 @@
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
 	"bpm": 202,
+	"appearStep": 8,
+	"player": "dudeman",
+	"opponent": "bear5",
 	"bio": "IM GONNA KILL YOU",
 	"category": "CHARACTER SONGS",
 	"actoresses": "artist: MeltyKelpy\ncomposers: NullFrequency + kosejumpscare\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: kosejumpscare",
+	"singerNames": "Bear5 VS DudeMan (with pico's hair)",
+	"tagline": "IM GONNA KILL YOU",
+	"actoresses2": "artist: MeltyKelpy    composer: null + kose\ncoder: MeltyKelpy    charter: MeltyKelpy",
 	"difficulties": [
 		"Hard"
 	],

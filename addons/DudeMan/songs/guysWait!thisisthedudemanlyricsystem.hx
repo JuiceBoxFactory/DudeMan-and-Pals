@@ -23,7 +23,7 @@ function postCreate() {
     lyricItself.borderSize = 3;
     insert(100, lyricItself);
 
-    icon = new FlxSprite(0, yValueDpear).loadGraphic(Paths.image('LYRICS/face'));
+    icon = new FlxSprite(0, yValueDpear).loadGraphic(Paths.image('icons/face'));
     icon.antialiasing = false;
     icon.cameras = [camHUD];
     insert(100, icon);
@@ -38,7 +38,7 @@ function postCreate() {
 function setTextShit(setText, setSingIcon, setBaseColor, setAddColor, isItaltic) {
 
     lyricItself.text = setText;
-    icon.loadGraphic(Paths.image('LYRICS/'+setSingIcon));
+    icon.loadGraphic(Paths.image('icons/'+setSingIcon));
     lyricItself.color = setBaseColor;
     lyricItself.borderColor = setAddColor;
     lyricItself.italic = isItaltic;
@@ -221,6 +221,27 @@ function stepHit(curStep:Int) {
         }
     }
 
+    // █▀▄ █ █▀▀
+    // █▄▀ █ ██▄
+
+    if (PlayState.SONG.meta.name == "die") {
+        switch(curStep) {
+            case 1544:
+                textState("popUpFast");
+                setTextShit("GRAAAHH IM GONNA KILL YOU!!!!", "bear5", 0xFFB2A3DD, 0xFF544A72, false);
+            case 1576:
+                setTextShit("nuh uh", "dudeco", 0xFFDEE5E9, 0xFFF4504A, false);
+            case 1608:
+                setTextShit('FUCK YOU MEAN, "NUH UH"??', "bear5", 0xFFB2A3DD, 0xFF544A72, false);
+            case 1640:
+                setTextShit("nuh uh", "dudeco", 0xFFDEE5E9, 0xFFF4504A, false);
+            case 1672:
+                lyricItself.scale.set(1.5, 1.5);
+                setTextShit("*EXPLOSION*", "bear5", 0xFFB2A3DD, 0xFF544A72, false);  
+                textState("goDownSlow");
+
+        }
+    }
 
 
 }

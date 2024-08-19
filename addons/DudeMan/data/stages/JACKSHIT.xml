@@ -1,0 +1,17 @@
+<!DOCTYPE codename-engine-stage>
+<stage>
+	<gf x="150" y="380"/>
+	<sprite x="0" y="0" sprite="characters/shesnotthere" name="notthere"/>
+	<sprite x="0" y="0" sprite="characters/shesnotthere" name="notthere"/>
+	<sprite x="0" y="0" sprite="characters/shesnotthere" name="notthere"/>
+	<sprite x="0" y="0" sprite="characters/shesnotthere" name="notthere"/>
+	<sprite x="0" y="0" sprite="characters/shesnotthere" name="notthere"/>
+	<sprite x="0" y="0" sprite="characters/shesnotthere" name="notthere"/>
+	<sprite x="0" y="0" sprite="characters/shesnotthere" name="notthere"/>
+	<sprite x="0" y="0" sprite="characters/shesnotthere" name="notthere"/>
+	<sprite x="0" y="0" sprite="characters/shesnotthere" name="notthere"/>
+	<sprite x="0" y="0" sprite="characters/shesnotthere" name="notthere"/>
+	<sprite x="0" y="0" sprite="characters/shesnotthere" name="notthere"/>
+	<bf/>
+	<dad/>
+</stage>

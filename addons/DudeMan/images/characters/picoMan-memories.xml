@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="picoMan.png">
+<SubTexture name="idle0000" x="480" y="0" width="162" height="364" frameX="-930" frameY="-443" frameWidth="1580" frameHeight="1000" />
+<SubTexture name="idle0001" x="480" y="0" width="162" height="364" frameX="-930" frameY="-443" frameWidth="1580" frameHeight="1000" />
+<SubTexture name="down0000" x="1055" y="341" width="160" height="336" frameX="-930" frameY="-471" frameWidth="1580" frameHeight="1000" />
+<SubTexture name="down0001" x="1055" y="0" width="160" height="341" frameX="-930" frameY="-466" frameWidth="1580" frameHeight="1000" />
+<SubTexture name="down0002" x="846" y="357" width="160" height="342" frameX="-930" frameY="-465" frameWidth="1580" frameHeight="1000" />
+<SubTexture name="right0000" x="603" y="395" width="208" height="357" frameX="-927" frameY="-450" frameWidth="1580" frameHeight="1000" />
+<SubTexture name="right0001" x="0" y="395" width="200" height="359" frameX="-930" frameY="-448" frameWidth="1580" frameHeight="1000" />
+<SubTexture name="right0002" x="200" y="395" width="199" height="359" frameX="-930" frameY="-448" frameWidth="1580" frameHeight="1000" />
+<SubTexture name="up0000" x="0" y="0" width="160" height="395" frameX="-930" frameY="-412" frameWidth="1580" frameHeight="1000" />
+<SubTexture name="up0001" x="160" y="0" width="160" height="388" frameX="-930" frameY="-419" frameWidth="1580" frameHeight="1000" />
+<SubTexture name="up0002" x="320" y="0" width="160" height="387" frameX="-930" frameY="-420" frameWidth="1580" frameHeight="1000" />
+<SubTexture name="left0000" x="846" y="0" width="209" height="357" frameX="-881" frameY="-450" frameWidth="1580" frameHeight="1000" />
+<SubTexture name="left0001" x="399" y="395" width="204" height="359" frameX="-886" frameY="-448" frameWidth="1580" frameHeight="1000" />
+<SubTexture name="left0002" x="642" y="0" width="204" height="360" frameX="-886" frameY="-447" frameWidth="1580" frameHeight="1000" />
+</TextureAtlas>

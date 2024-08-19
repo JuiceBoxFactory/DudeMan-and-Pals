@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="bear5" camx="-300" y="0" isGF="false" camy="125" color="#B2A3DD" isPlayer="false" antialiasing="false" sprite="bearFifth">
+	<anim x="0" loop="false" y="0" fps="12" anim="idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="down" name="singDOWN"/>
+</character>
