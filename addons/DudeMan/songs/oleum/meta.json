@@ -4,7 +4,7 @@
 	"color": "#1ab294",
 	"actoresses2": "artist: ???    composer: Corva_Tile, Aussie\ncoder: ???    charter: Corva_Tile",
 	"opponentModeAllowed": false,
-	"bio": "Latin for Oil! But the cooking kind so-",
+	"bio": "The field in Texas",
 	"icon": "Icon",
 	"difficulties": [
 		"Hard"
@@ -17,7 +17,7 @@
 	"beatsPerMesure": 4,
 	"beatsPerMeasure": 4,
 	"actoresses": "artist: ???\ncomposers: Corva_Tile + Raven\ncoder: Corva_Tile\ncharter: Corva_Tile\ncover art: Corva_Tile",
-	"tagline": "Latin for Oil! But the cooking kind so-",
+	"tagline": "The field in Texas",
 	"needsVoices": true,
 	"bpm": 170
 }
