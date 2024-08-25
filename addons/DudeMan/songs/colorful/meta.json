@@ -1,0 +1,25 @@
+{
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"beatsPerMesure": 4,
+	"bpm": 185,
+	"noteType": "fruity",
+	"appearStep": 0,
+	"player": "bee",
+	"opponent": "fruity",
+	"displayName": "COLORFUL",
+	"bio": "HAVE YOU SEEN MY LITTLE PONY??",
+	"actoresses": "artist: MeltyKelpy\ncomposers: OJSTheCoder\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: ?",
+	"singerNames": "Fruity VS Bee",
+	"tagline": "HAVE YOU SEEN MY LITTLE PONY??",
+	"actoresses2": "artist: MeltyKelpy    composer: OJSTheCoder\ncoder: MeltyKelpy    charter: MeltyKelpy",
+	"difficulties": [
+		"Hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -13893888,
+	"icon": "Icon",
+	"name": "colorful",
+	"color": "#2BFF00"
+}

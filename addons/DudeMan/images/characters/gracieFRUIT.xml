@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="gracieFRUIT.png">
+<SubTexture name="idle0000" x="0" y="0" width="181" height="201" frameX="-705" frameY="-457" frameWidth="1580" frameHeight="1000" />
+<SubTexture name="idle0001" x="181" y="0" width="180" height="200" frameX="-705" frameY="-458" frameWidth="1580" frameHeight="1000" />
+</TextureAtlas>

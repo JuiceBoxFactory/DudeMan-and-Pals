@@ -7,6 +7,7 @@
 	"appearStep": 8,
 	"player": "dudeman",
 	"opponent": "bear5",
+	"displayName": "Die",
 	"bio": "IM GONNA KILL YOU",
 	"category": "CHARACTER SONGS",
 	"actoresses": "artist: MeltyKelpy\ncomposers: NullFrequency + kosejumpscare\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: kosejumpscare",
@@ -20,6 +21,5 @@
 	"parsedColor": -1,
 	"name": "die",
 	"icon": "Icon",
-	"displayName": "Die",
 	"color": "#FFFFFF"
 }

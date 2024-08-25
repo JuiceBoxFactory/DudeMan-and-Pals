@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="timeBar.png">
+<SubTexture name="stupidFaggot0000" x="0" y="110" width="81" height="89" frameX="-2" frameY="-13" frameWidth="512" frameHeight="512" />
+<SubTexture name="stupidFaggot0001" x="81" y="0" width="81" height="108" frameX="-2" frameY="-2" frameWidth="512" frameHeight="512" />
+<SubTexture name="stupidFaggot0002" x="0" y="0" width="81" height="110" frameX="-2" frameY="0" frameWidth="512" frameHeight="512" />
+<SubTexture name="stupidFaggot0003" x="162" y="0" width="81" height="104" frameX="-2" frameY="-5" frameWidth="512" frameHeight="512" />
+<SubTexture name="stupidFaggot0004" x="160" y="110" width="81" height="73" frameX="0" frameY="-29" frameWidth="512" frameHeight="512" />
+<SubTexture name="stupidFaggot0005" x="243" y="0" width="81" height="73" frameX="0" frameY="-29" frameWidth="512" frameHeight="512" />
+<SubTexture name="stupidFaggot0006" x="81" y="110" width="79" height="74" frameX="-1" frameY="-28" frameWidth="512" frameHeight="512" />
+<SubTexture name="stupidFaggot0007" x="81" y="110" width="79" height="74" frameX="-1" frameY="-28" frameWidth="512" frameHeight="512" />
+</TextureAtlas>

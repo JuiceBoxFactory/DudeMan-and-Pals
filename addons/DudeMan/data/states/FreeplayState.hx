@@ -20,7 +20,7 @@ import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxSave;
 import funkin.backend.utils.DiscordUtil;
 
-var mainArray:Array<String> = ["dude", "overstimulation", "srs", "fang", "sucker"];
+var mainArray:Array<String> = ["dude", "overstimulation", "srs", "colorful", "fang", "sucker"];
 var extrasArray:Array<String> = ["evilman", "lemon", "slashgen", "die", "blobs", "kockbuddies", "oleum", "misconduct", "sizssoers", "lighthouse", "roomed"];
 var palsArray:Array<String> = ["pastelfever", "skyblue", "misconduct", "esex", "sizssoers", "lighthouse", "roomed"];
 var coversArray:Array<String> = ["obituary", "meet-your-project"];

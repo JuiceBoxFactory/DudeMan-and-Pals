@@ -6,6 +6,7 @@ import openfl.geom.Rectangle;
 import openfl.text.TextFormat;
 import flixel.ui.FlxBar;
 import flixel.FlxG;
+import flixel.math.FlxRect;
 
 var scared = false;
 var myPpo = "";
@@ -25,6 +26,9 @@ var comboSection = 0;
 var songStarted = false;
 var squishingTimeBar = false;
 var logoY = 0;
+var leftColor:Int = dad != null && dad.iconColor != null && Options.colorHealthBar ? dad.iconColor : (opponentMode ? 0xFF66FF33 : 0xFFFF0000);
+var rightColor:Int = boyfriend != null && boyfriend.iconColor != null && Options.colorHealthBar ? boyfriend.iconColor : (opponentMode ? 0xFFFF0000 : 0xFF66FF33); // switch the colors
+var timeRemaining;
 
 function postCreate() {
 
@@ -34,6 +38,14 @@ function postCreate() {
 	stupidCodenameEngineBullshit.updateHitbox();
 	stupidCodenameEngineBullshit.alpha = 1;
 	add(stupidCodenameEngineBullshit);
+
+	stupidCodenameEngineBullshit2 = new FlxSprite(0, -9000).loadGraphic(Paths.image('achievements/stickers/3'));
+	stupidCodenameEngineBullshit2.antialiasing = false;
+	stupidCodenameEngineBullshit2.flipX = true;
+	stupidCodenameEngineBullshit2.updateHitbox();
+	stupidCodenameEngineBullshit2.alpha = 0;
+	stupidCodenameEngineBullshit2.scale.set(0, 1);
+	add(stupidCodenameEngineBullshit2);
 
 	myOpp = dad.getIcon();
 	myPpo = boyfriend.getIcon();
@@ -163,6 +175,118 @@ function postCreate() {
 		}
 	}
 
+	if (PlayState.SONG.meta.noteType == "fruity") {	
+	
+		border = new FlxSprite(0, 0);	
+		border.antialiasing = false;
+		border.cameras = [camHUD];
+		border.frames = Paths.getSparrowAtlas('game/fruity/fruityBorder');
+		border.animation.addByPrefix('anim', 'sobored', 6, true);
+		border.animation.play('anim');
+		border.updateHitbox();
+		insert(1, border);
+
+		dudeRating = new FlxSprite(-300, -175);	
+		dudeRating.antialiasing = false;
+		dudeRating.cameras = [camHUD];
+		dudeRating.frames = Paths.getSparrowAtlas('game/dudeRating');
+		dudeRating.animation.addByPrefix('noneBro', 'imLegit', 12, false);
+		dudeRating.animation.addByPrefix('erm', 'erm', 12, false);
+		dudeRating.animation.addByPrefix('bad', 'bad', 12, false);
+		dudeRating.animation.addByPrefix('good', 'good', 12, false);
+		dudeRating.animation.addByPrefix('sick', 'sick', 12, false);
+		dudeRating.animation.play('noneBro');
+		dudeRating.updateHitbox();
+		dudeRating.scale.set(1.5, 1.5);
+		insert(2, dudeRating);
+
+		remove(healthBar);
+
+		healthy1 = new FlxSprite(0, 618).loadGraphic(Paths.image('game/barShitFML'));	
+		healthy1.antialiasing = false;
+		healthy1.updateHitbox();
+		healthy1.scale.set(1.9, 1.9);
+		healthy1.screenCenter(FlxAxes.X);
+		healthy1.cameras = [camHUD];
+		healthy1.color = leftColor;
+		insert(3, healthy1);
+
+		healthy2 = new FlxSprite(0, 618).loadGraphic(Paths.image('game/barShitFML'));	
+		healthy2.antialiasing = false;
+		healthy2.updateHitbox();
+		healthy2.scale.set(1.9, 1.9);
+		healthy2.screenCenter(FlxAxes.X);
+		healthy2.cameras = [camHUD];
+		healthy2.color = rightColor;
+		insert(4, healthy2);
+
+		healthheader = new FlxSprite(0, 590).loadGraphic(Paths.image('game/fruity/healthBarThing'));
+		healthheader.antialiasing = false;
+		healthheader.scale.set(1.9, 1.9);
+		healthheader.cameras = [camHUD];
+		healthheader.updateHitbox();
+		healthheader.screenCenter(FlxAxes.X);
+		insert(5, healthheader);
+
+		accText = new FlxText();
+		accText.setFormat(Paths.font("COMIC.ttf"), 15, 0xFF4C0000, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		accText.cameras = [camHUD];
+		accText.borderSize = 1.25;
+		accText.y = 680;
+		accText.screenCenter(FlxAxes.X);
+		accText.x -= 200; 
+		accText.antialiasing = false;
+		insert(6, accText);
+
+		scoreText = new FlxText();
+		scoreText.cameras = [camHUD];
+		scoreText.setFormat(Paths.font("COMIC.ttf"), 35, 0xFF4C0000, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreText.borderSize = 2.25;
+		scoreText.y = 65;
+		scoreText.updateHitbox();
+		scoreText.screenCenter(FlxAxes.X);
+		scoreText.x -= 72;
+		scoreText.antialiasing = false;
+		insert(7, scoreText);
+
+		scoreToAddText = new FlxText(610, 165);
+		scoreToAddText.cameras = [camHUD];
+		scoreToAddText.setFormat(Paths.font("COMIC.ttf"), 20, 0xFF4C0000, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreToAddText.borderSize = 1.25;
+		scoreToAddText.antialiasing = false;
+		insert(8, scoreToAddText);
+	
+		missesText = new FlxText();
+		missesText.setFormat(Paths.font("COMIC.ttf"), 15, 0xFF4C0000, "right", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		missesText.cameras = [camHUD];
+		missesText.borderSize = 1.25;
+		missesText.y = 680;
+		missesText.screenCenter(FlxAxes.X);
+		missesText.x += 75;
+		missesText.antialiasing = false;
+		insert(9, missesText);
+	
+		scoreAddedIn = new FlxTimer();
+		scoreAddedIn.time = 2;
+		scoreAddedIn.active = false;
+		add(scoreAddedIn);
+
+		if (downscroll) {
+			for (dumbShits in [healthBar, missesText, accText, icon1, icon2]) {
+				dumbShits.y -= 15;
+			}
+			icon1.y -= 10;
+			icon2.y -= 10;
+			missesText.y -= 80;
+			accText.y -= 80;
+			remove(dudeRating);
+			insert(60, dudeRating);
+			dudeRating.y += 350;
+			dudeRating.x += 0;
+
+		}	
+	}
+
 	if (PlayState.SONG.meta.noteType == "normal") {	
 	
 		dudeRating = new FlxSprite(-300, -175);	
@@ -180,8 +304,24 @@ function postCreate() {
 		insert(1, dudeRating);
 
 		remove(healthBar);
-		insert(2, healthBar);
-		healthBar.y = 640;
+
+		healthy1 = new FlxSprite(0, 618).loadGraphic(Paths.image('game/barShitFML'));	
+		healthy1.antialiasing = false;
+		healthy1.updateHitbox();
+		healthy1.scale.set(1.9, 1.9);
+		healthy1.screenCenter(FlxAxes.X);
+		healthy1.cameras = [camHUD];
+		healthy1.color = leftColor;
+		insert(1, healthy1);
+
+		healthy2 = new FlxSprite(0, 618).loadGraphic(Paths.image('game/barShitFML'));	
+		healthy2.antialiasing = false;
+		healthy2.updateHitbox();
+		healthy2.scale.set(1.9, 1.9);
+		healthy2.screenCenter(FlxAxes.X);
+		healthy2.cameras = [camHUD];
+		healthy2.color = rightColor;
+		insert(2, healthy2);
 
 		healthheader = new FlxSprite(0, 590).loadGraphic(Paths.image('game/healthBarThing'));
 		healthheader.antialiasing = false;
@@ -233,9 +373,6 @@ function postCreate() {
 		scoreAddedIn.time = 2;
 		scoreAddedIn.active = false;
 		add(scoreAddedIn);
-
-		healthBar.scale.set(0.998, 1.4);
-		healthBar.y = 630;
 
 		if (downscroll) {
 			for (dumbShits in [healthBar, missesText, accText, icon1, icon2]) {
@@ -328,6 +465,7 @@ function create() {
 	trace("Current ui type is: "+PlayState.SONG.meta.noteType);
 
 	if (PlayState.SONG.meta.noteType != "normal") {
+		if (PlayState.SONG.meta.noteType != "fruity") {
 
 		if (PlayState.SONG.meta.noteType != "BandW") {
 			timeTxt = new FlxText(0, 19, 400, "X:XX", 32);
@@ -383,6 +521,8 @@ function create() {
     	timeBar.cameras = [camHUD];
     	timeBarBG.cameras = [camHUD];
     	timeTxt.cameras = [camHUD];
+
+		}
 	}
 
 	if (PlayState.SONG.meta.noteType == "normal") {
@@ -413,13 +553,41 @@ function create() {
 
 	}
 
+	if (PlayState.SONG.meta.noteType == "fruity") {
+
+		bar = new FlxSprite(540, 45).loadGraphic(Paths.image("game/timeBar/fruity/br"));
+		bar.cameras = [camHUD];
+		bar.scale.set(3, 1);
+		add(bar);
+		
+		timeTxt = new FlxText(410, 33, 100, "X:XX", 32);
+		timeTxt.setFormat(Paths.font("COMIC.ttf"), 32, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		timeTxt.scrollFactor.set();
+		timeTxt.alpha = 1;
+		timeTxt.borderColor = 0xFF000000;
+		timeTxt.color = 0xFF4C0000;
+		timeTxt.borderSize = 2;
+		timeTxt.cameras = [camHUD];
+		add(timeTxt);
+
+		fruityFag = new FlxSprite(325, -20);
+		fruityFag.antialiasing = false;
+		fruityFag.cameras = [camHUD];
+		fruityFag.frames = Paths.getSparrowAtlas("game/timeBar/fruity/timeBar");
+		fruityFag.animation.addByPrefix('faggot', 'stupidFaggot', 12, true);
+		fruityFag.animation.play('faggot');
+		fruityFag.updateHitbox();
+		add(fruityFag);
+
+	}
+
 }
 
 function onSongStart() {
 
 	songStarted = true;
 
-	if (PlayState.SONG.meta.noteType != "normal") {	
+	if (PlayState.SONG.meta.noteType != "normal" || PlayState.SONG.meta.noteType != "fruity") {	
     	if (timeBar != null) {
     	    FlxTween.tween(timeBar, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
     	}
@@ -469,7 +637,7 @@ function update(elapsed:Float) {
 
 	}
 
-	if (PlayState.SONG.meta.noteType == "normal" || PlayState.SONG.meta.noteType == "BandW") {
+	if (PlayState.SONG.meta.noteType == "normal" || PlayState.SONG.meta.noteType == "BandW" || PlayState.SONG.meta.noteType == "fruity") {
 
 		if (FlxG.save.data.language == 'english') {
 			if (FlxG.save.data.dudeRating == true) {
@@ -491,8 +659,15 @@ function update(elapsed:Float) {
 
 	}
 
-	if (PlayState.SONG.meta.noteType == "normal") {
+	if (PlayState.SONG.meta.noteType == "normal" || PlayState.SONG.meta.noteType == "fruity") {
 		
+		var sillyGooseling = (220 - ((health * 100) + (health * 10)));
+		if (sillyGooseling < 0) {
+			sillyGooseling = 0;
+		}
+		var playerClip = new FlxRect(sillyGooseling, 0, healthy2.frameWidth, healthy2.frameHeight);
+		healthy2.clipRect = playerClip;
+
 		myOpp = dad.getIcon();
 		icon2.loadGraphic(Paths.image('icons/'+myOpp));
 		myPpo = boyfriend.getIcon();
@@ -584,27 +759,26 @@ function update(elapsed:Float) {
     	goFuckUrself.screenCenter(FlxAxes.X);
 
 	}
-
 	
 	if (PlayState.SONG.meta.noteType == "BandW") {
 		timeBarBG.alpha = 0;
 	}
 
     if (inst != null && timeTxt != null) {
-		if (PlayState.SONG.meta.noteType != "normal") {	
+		if (PlayState.SONG.meta.noteType != "normal" && PlayState.SONG.meta.noteType != "fruity") {
 
 			if (inst != null && timeBar != null && timeBar.max != inst.length) {
 				timeBar.setRange(0, Math.max(1, inst.length));
 			}
 
 			if (PlayState.SONG.meta.noteType != "BandW") {
-				var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
+				timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
 				var seconds = CoolUtil.addZeros(Std.string(timeRemaining % 60), 2);
 				var minutes = Std.int(timeRemaining / 60);
 				timeTxt.text = minutes + ":" + seconds;
 			}
 			else {
-				var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
+				timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
 				var seconds = CoolUtil.addZeros(Std.string(timeRemaining % 60), 2);
 				var minutes = Std.int(timeRemaining / 60);
 				if (finalTimeCalculated == false && songStarted == true) {
@@ -616,17 +790,31 @@ function update(elapsed:Float) {
 			}
 		}
 		else {
-			var timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
+			timeRemaining = Std.int((inst.length - Conductor.songPosition) / 1000);
 			var seconds = CoolUtil.addZeros(Std.string(timeRemaining % 60), 2);
 			var minutes = Std.int(timeRemaining / 60);
 			if (finalTimeCalculated == false && songStarted == true) {
-				FlxTween.tween(whoGettingBestHead, {x: 620}, timeRemaining);
-				FlxTween.tween(bottom, {x: 633}, timeRemaining);
-				FlxTween.tween(bar.scale, {x: 0.1}, timeRemaining);
+				if (PlayState.SONG.meta.noteType == "normal") {
+					FlxTween.tween(whoGettingBestHead, {x: 620}, timeRemaining);
+					FlxTween.tween(bottom, {x: 633}, timeRemaining);
+					FlxTween.tween(bar.scale, {x: 0.1}, timeRemaining);
+				}
+				if (PlayState.SONG.meta.noteType == "fruity") {
+					FlxTween.tween(fruityFag, {x: 910}, timeRemaining);
+					FlxTween.tween(timeTxt, {x: 995}, timeRemaining);
+					FlxTween.tween(stupidCodenameEngineBullshit2.scale, {x: 196}, timeRemaining);
+				}
 				finalTimeCalculated = true;
 			}
 			timeTxt.text = minutes + ":" + seconds;
 		}
+	}
+
+	if (PlayState.SONG.meta.noteType == "fruity") {
+		var stupidShitVar = stupidCodenameEngineBullshit2.scale.x;
+		trace(stupidShitVar);
+		var timeClip = new FlxRect(stupidShitVar, 0, bar.frameWidth, bar.frameHeight);
+		bar.clipRect = timeClip;
 	}
 }
 
@@ -643,6 +831,19 @@ function beatHit() {
 }
 
 function postUpdate() {
+
+	if (PlayState.SONG.meta.noteType == "fruity") {
+	
+		if (animationPlaying == true) {
+			if (dudeRating.animation.frameIndex == 32 || dudeRating.animation.frameIndex == 62 || dudeRating.animation.frameIndex == 91 || dudeRating.animation.frameIndex == 132) {
+				animationPlaying = false;
+			}
+		}
+
+		myOpp = dad.getIcon();
+		myPpo = boyfriend.getIcon();
+		
+	}
 
 	if (PlayState.SONG.meta.noteType == "normal") {
 
@@ -671,6 +872,7 @@ function postUpdate() {
 
 		myOpp = dad.getIcon();
 		myPpo = boyfriend.getIcon();
+
 	}
 
 	if (PlayState.SONG.meta.noteType == "serious") {
@@ -818,7 +1020,7 @@ function comboRating() {
 
 function onPlayerHit(e){
 
-	if (PlayState.SONG.meta.noteType == "normal" && FlxG.save.data.dudeRating == true || PlayState.SONG.meta.noteType == "BandW" && FlxG.save.data.dudeRating == true) {
+	if (PlayState.SONG.meta.noteType == "normal" && FlxG.save.data.dudeRating == true || PlayState.SONG.meta.noteType == "BandW" && FlxG.save.data.dudeRating == true || PlayState.SONG.meta.noteType == "fruity" && FlxG.save.data.dudeRating == true) {
 
 		noteRating = e.accuracy;
 		scoreToAddText.scale.set(1.15, 1.15);
@@ -868,7 +1070,7 @@ function onPlayerHit(e){
 			addLerp = addLerp + scoreToAdd;
 			scoreToAdd = 0;
 			if (animationPlaying == false) {	
-				if (PlayState.SONG.meta.noteType == "normal") {
+				if (PlayState.SONG.meta.noteType == "normal" || PlayState.SONG.meta.noteType == "fruity") {
 					comboRating();
 				}
 			}

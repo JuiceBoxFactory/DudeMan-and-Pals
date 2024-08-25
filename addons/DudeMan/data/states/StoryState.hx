@@ -196,20 +196,6 @@ function update() {
 		Selected += 1;
 	}
 
-	var weeksSongsList = [
-	
-		"dude",
-		"welcome-to-my-test-song",
-		"fang",
-		"welcome-to-my-test-song",
-		"sucker",
-		"welcome-to-my-test-song",
-		"welcome-to-my-test-song",
-		"welcome-to-my-test-song",
-		"welcome-to-my-test-song",
-	
-	];
-
 	if (controls.ACCEPT && canDo == true) {
 		if (Selected == 0) {
 			PlayState.loadWeek( {
@@ -218,6 +204,16 @@ function update() {
 				sprite: null,
 				chars: [null, null, null],
 				songs: [for (song in ["dude", "overstimulation", "srs"]) {name: song, hide: false}],
+				difficulties: ['hard']
+			}, "hard");
+		}
+		else if (Selected == 1) {
+			PlayState.loadWeek( {
+				name: "Fruity's Week",
+				id: weeksList[Selected],
+				sprite: null,
+				chars: [null, null, null],
+				songs: [for (song in ["colorful"]) {name: song, hide: false}],
 				difficulties: ['hard']
 			}, "hard");
 		}
