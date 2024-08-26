@@ -211,9 +211,6 @@ function update(delta:Float) {
 
 function postUpdate(){
 
-	iconP1.alpha = 0;
-	iconP2.alpha = 0;
-
 if (section2 == true) {
 	if (curCameraTarget == 0) { 
 		defaultCamZoom = 0.65;

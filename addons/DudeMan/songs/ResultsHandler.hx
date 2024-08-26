@@ -126,6 +126,7 @@ function onNoteHit(e) {
 function onPlayerMiss(e) {
     if (!e.note.avoid) {
         data['miss'] += 1;
+        data['total'] += 1;
         //trace(data);
     }
 }

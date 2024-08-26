@@ -1,48 +1,281 @@
 import flixel.ui.FlxButton;
+import flixel.addons.display.FlxBackdrop;
+import flixel.text.FlxTextBorderStyle;
+import flixel.util.FlxTimer;
+import funkin.backend.system.Controls;
+import openfl.filters.BlurFilter;
+import flixel.FlxCamera;
+import funkin.backend.utils.DiscordUtil;
 import flixel.util.FlxSave;
+
+// put the file path // state name for the game, and put it in the order you want it in the list lol
+// it also uses this to check for disc labels, but if you dont have one yet then dw it'll use an unlabelled disc image
+// - Mel! sole coder of this mod atp
+var gamesOrderBLEH = [
+
+    "datingSimTitle",
+    "puncher",
+    "FNAFtitle"
+
+];
+
+// technically, doing it like this complicates the process of making this just ABIT but it also looks nicer and simplifies
+// like one aspect of this process. also I didnt know this was a thing til now so i dont care LMAO i do what i want
+// - Mel!
+var gameDisplayName = [
+
+    "datingSimTitle" => "DudeMan: More Than Pals",
+    "puncher" => "Puzzle's DudeMan Puncher!",
+    "FNAFtitle" => "DudeMan's Emporium"
+
+];
+var gameDescription = [
+
+    "datingSimTitle" => 'Take a step into '+"DudeMan's "+'"Dude School", '+"because you're about to go on a quest... a quest to.. FIND LOVE <3",
+    "puncher" => ">:] Do you hate DudeMan as much as me? I hope so because hes a LYING CHEATING BITCH. Well then come play My Game! where you can beat the SHIT OUT OF THE BASTARD!",
+    "FNAFtitle" => "DudeMan if it the FIVE NIGHTS AT FREDDY'S FUUUUCCKK"
+
+];
+
+var discs:FlxSpriteGroup<FlxSprite> = [];
+
+// oh right i have make *SIGH* non-arrays....
+// - Mel!
+var chosenOrWhatevs = 0;
+var canDo = true;
+var discSpin = false;
+var discSpinSlow = false;
 
 function create() {
 
     FlxG.save.data.noTransition = false;
 
-    button1 = new FlxButton(850, 102, "Dating Sim", loadDating);
-    button1.alpha = 1;
-    add(button1);
-
-    button2 = new FlxButton(850, 127, "Puncher", loadPuncher);
-    button2.alpha = 1;
-    add(button2);
-    
-    button3 = new FlxButton(850, 152, "Fnaf Fangame", loadFnaf);
-    button3.alpha = 1;
-    add(button3);
-
-    button4 = new FlxButton(850, 177, "2D Platformer", loadPlatformer);
-    button4.alpha = 1;
-    add(button4);
+    FlxTween.tween(FlxG.sound.music, {volume: 0}, 1.5, {ease:FlxEase.quartOut});
 
     cursor = new FlxSprite(0, 0).loadGraphic(Paths.image('game/cursor'));
     add(cursor);
 
+    backdrop = new FlxSprite(0, 0).loadGraphic(Paths.image('shh/background'));
+	backdrop.scrollFactor.set(0, 0);
+	add(backdrop);
+
+    darknessConsumes = new FlxSprite(0, 0).loadGraphic(Paths.image('shh/ihateblackpeople'));
+	darknessConsumes.scrollFactor.set(0, 0);
+	add(darknessConsumes);
+
+    boxBack = new FlxSprite(0, 600).loadGraphic(Paths.image('shh/boxBack'));
+	boxBack.scrollFactor.set(0, 0);
+    boxBack.screenCenter(FlxAxes.X);
+    boxBack.scale.set(1.05, 1.05);
+	add(boxBack);
+
+    for (i in 0...gamesOrderBLEH.length) {
+
+        if (Assets.exists(Paths.image('shh/DISCS/'+gamesOrderBLEH[i]))) {
+            disc = new FlxSprite(0, 600).loadGraphic(Paths.image('shh/DISCS/'+gamesOrderBLEH[i]));
+        }
+        else {
+            disc = new FlxSprite(0, 600).loadGraphic(Paths.image('shh/unlabelledDisc'));
+        }
+        disc.scrollFactor.set(1, 1);
+        disc.screenCenter();
+        var jank = disc.x;
+        disc.alpha = 0;
+        disc.x = jank + (200 * i);
+        discs.push(disc);
+        add(disc);
+
+    }
+
+    boxFront = new FlxSprite(0, 600).loadGraphic(Paths.image('shh/boxFront'));
+	boxFront.scrollFactor.set(0, 0);
+    boxFront.scale.set(1.05, 1.05);
+    boxFront.screenCenter(FlxAxes.X);
+	add(boxFront);
+
+    gameNameText = new FlxText(0, 0, FlxG.width);
+    gameNameText.text = "i dunno";
+    gameNameText.setFormat(Paths.font("Bahnschrift.ttf"), 25, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+    gameNameText.updateHitbox();
+    gameNameText.borderSize = 2;
+    gameNameText.antialiasing = false;
+    gameNameText.screenCenter();
+    gameNameText.scrollFactor.set(0, 0);
+    gameNameText.y += 90;
+    add(gameNameText);
+
+    gameDescriptionText = new FlxText(0, 0, FlxG.width / 2.5);
+    gameDescriptionText.text = "i dunno";
+    gameDescriptionText.setFormat(Paths.font("Bahnschrift.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+    gameDescriptionText.updateHitbox();
+    gameDescriptionText.borderSize = 2;
+    gameDescriptionText.antialiasing = false;
+    gameDescriptionText.screenCenter();
+    gameDescriptionText.scrollFactor.set(0, 0);
+    gameDescriptionText.y += 125;
+    add(gameDescriptionText);
+
+    for (boxOffset in [boxBack, boxFront]) {
+        boxOffset.x += 4.5;
+
+    }
+
+    arrowLEFT = new FlxSprite(0, 0);
+    arrowLEFT.frames = Paths.getSparrowAtlas('shh/arrowLEFT');
+	arrowLEFT.antialiasing = false;
+    arrowLEFT.animation.addByPrefix('left', 'left', 24, false);
+    arrowLEFT.scrollFactor.set(0, 0);
+    arrowLEFT.animation.play('left');
+    arrowLEFT.screenCenter();
+    add(arrowLEFT);
+
+    arrowRIGHT = new FlxSprite(0, 0);
+    arrowRIGHT.frames = Paths.getSparrowAtlas('shh/arrowRIGHT');
+	arrowRIGHT.antialiasing = false;
+    arrowRIGHT.animation.addByPrefix('right', 'right', 24, false);
+    arrowRIGHT.scrollFactor.set(0, 0);
+    arrowRIGHT.animation.play('right');
+    arrowRIGHT.screenCenter();
+    add(arrowRIGHT);
+
     radioLoad();
     
+    for (i in 0...gamesOrderBLEH.length) {
+        var origY = discs[i].y;
+        discs[i].y += 1000;
+        FlxTween.tween(discs[i], {y: origY}, 2, {ease:FlxEase.quartOut});
+    }
+
+    for (ui in [boxBack, boxFront, arrowLEFT, arrowRIGHT, gameNameText, gameDescriptionText]) {
+        var origY = ui.y;
+        ui.y += 900;
+        FlxTween.tween(ui, {y: origY}, 2, {ease:FlxEase.quartOut});
+    }
+
 }
 
-function loadDating() {
-    FlxG.switchState(new ModState("GAMES/datingSimTitle"));
-}
-function loadPuncher() {
-    FlxG.switchState(new ModState("GAMES/clicker"));
-}
-function loadFnaf() {
-    FlxG.switchState(new ModState("GAMES/FNAF/titleScreen"));
-}
-function loadPlatformer() {
-    FlxG.switchState(new ModState("GAMES/FNAF/titleScreen")); //lol
+function loadGame() {
+
+    discSpin = true;
+
+        FlxTween.tween(arrowLEFT, {y: 900}, 2, {ease:FlxEase.quartIn});
+        FlxTween.tween(arrowRIGHT, {y: 900}, 2, {ease:FlxEase.quartIn});
+        FlxTween.tween(gameNameText, {y: 900}, 2, {ease:FlxEase.quartIn});
+        FlxTween.tween(gameDescriptionText, {y: 900}, 2, {ease:FlxEase.quartIn});
+    for (i in 0...gamesOrderBLEH.length) {
+        if (i != chosenOrWhatevs) {
+            FlxTween.tween(discs[i], {y: 900}, 2, {ease:FlxEase.quartIn});
+        }
+        else {
+            FlxTween.tween(discs[i], {y: 550}, 3, {ease:FlxEase.backIn});
+        }
+    }
+
+    new FlxTimer().start(3, function(timer) {
+        discSpinSlow = true;
+        discSpin = false;
+        FlxG.sound.play(Paths.sound('loadGame'));
+        FlxTween.tween(discs[chosenOrWhatevs], {y: 570}, 2, {ease:FlxEase.backIn});
+        new FlxTimer().start(2, function(timer) {
+            discSpinSlow = false;
+            FlxTween.tween(discs[chosenOrWhatevs], {y: 700}, 1);
+            new FlxTimer().start(2, function(timer) {
+                FlxG.switchState(new ModState('GAMES/'+gamesOrderBLEH[chosenOrWhatevs]));
+            });
+        });
+    });
+
 }
 
-function update() {
-    
+function update(elapsed:Float) {
+
+    var stupidShitKinda = gamesOrderBLEH[chosenOrWhatevs];
+
+    gameNameText.text = gameDisplayName[stupidShitKinda];
+    gameDescriptionText.text = gameDescription[stupidShitKinda];
+
+    if (discSpin == true) {
+        discs[chosenOrWhatevs].angle += 5;
+    }
+    if (discSpinSlow == true) {
+        discs[chosenOrWhatevs].angle += 0.05;
+    }
+
+    var desiredCamPos = 0;
+
+    desiredCamPos = chosenOrWhatevs * 200;
+
+    if (FlxG.camera.scroll.x < desiredCamPos) {
+        FlxG.camera.scroll.x += 25;
+    }
+
+    if (FlxG.camera.scroll.x > desiredCamPos) {
+        FlxG.camera.scroll.x -= 25;
+    }
+
+    if (controls.RIGHT_P && canDo == true) {
+        FlxG.sound.play(Paths.sound('menu/scroll'), 0.5);
+        chosenOrWhatevs += 1;
+        arrowRIGHT.animation.play('right');
+    }
+    if (controls.LEFT_P && canDo == true) {
+        FlxG.sound.play(Paths.sound('menu/scroll'), 0.5);
+        chosenOrWhatevs -= 1;
+        arrowLEFT.animation.play('left');
+    } 
+
+    if (controls.ACCEPT && canDo == true) {
+        FlxG.sound.play(Paths.sound('confirm'));
+        loadGame();
+        canDo = false;
+    }
+
+    for (i in 0...gamesOrderBLEH.length) {
+
+    // this code JANKY AS SHIT holy hell
+    // atleast it work doe
+    // -Mel!
+
+        discs[i].alpha = 1;
+        discs[i].scale.set(1, 1);
+
+        if (i < chosenOrWhatevs) {
+
+            var instillingAnorexiaInMiddleSchoolers = i + 1;
+
+            if (instillingAnorexiaInMiddleSchoolers < chosenOrWhatevs) {
+                discs[i].alpha = 0;
+            }
+            if (instillingAnorexiaInMiddleSchoolers == chosenOrWhatevs) {
+                discs[i].alpha = 0.6;
+            }
+
+            discs[i].scale.set(0.8, 0.8);
+        }
+        if (i > chosenOrWhatevs) {
+
+            var instillingAnorexiaInMiddleSchoolers = i - 1;
+
+            if (instillingAnorexiaInMiddleSchoolers > chosenOrWhatevs) {
+                discs[i].alpha = 0;
+            }
+            if (instillingAnorexiaInMiddleSchoolers == chosenOrWhatevs) {
+                discs[i].alpha = 0.6;
+            }
+
+            discs[i].scale.set(0.8, 0.8);
+
+        }
+
+    }
+
+    if (chosenOrWhatevs > gamesOrderBLEH.length - 1) {
+        chosenOrWhatevs = 0;
+    }
+    if (chosenOrWhatevs < 0) {
+        chosenOrWhatevs = gamesOrderBLEH.length - 1;
+    }
+
     FlxG.mouse.visible = false;
 
     cursor.x = FlxG.mouse.x;

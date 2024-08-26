@@ -3,7 +3,7 @@
 	"parsedColor": -13893888,
 	"color": "#2BFF00",
 	"category": "VS DUDEMAN",
-	"actoresses2": "artists: MeltyKelpy    composer: OJSTheCoder\ncoder: MeltyKelpy    charter: GhostyBricks",
+	"actoresses2": "artist: MeltyKelpy    composer: OJSTheCoder\ncoder: MeltyKelpy    charter: GhostyBricks",
 	"opponentModeAllowed": false,
 	"bio": "The only time this'll ever happen",
 	"icon": "Icon",
@@ -21,6 +21,6 @@
 	"needsVoices": true,
 	"tagline": "The only time this'll ever happen",
 	"beatsPerMeasure": 4,
-	"actoresses": "artists: MeltyKelpy\ncomposer: OJSTheCoder\ncoder: MeltyKelpy\ncharter: GhostyBricks\ncover art: MeltyKelpy",
+	"actoresses": "artist: MeltyKelpy\ncomposer: OJSTheCoder\ncoder: MeltyKelpy\ncharter: GhostyBricks\ncover art: MeltyKelpy",
 	"bpm": 180
 }

@@ -85,7 +85,7 @@ function create() {
             	image.x = (1280 * i) - 28;
 				image.y = 12;
             	image.cameras = [uiCamera];
-				image.antialiasing = true;
+				image.antialiasing = false;
             	add(image);
 			}
 			else {
@@ -93,7 +93,7 @@ function create() {
             	image.loadGraphic(Paths.image("freeplay/coolsongthings/"+songs[i].displayName));
             	image.x = (1280 * i) - 28;
 				image.y = 12;
-				image.antialiasing = true;
+				image.antialiasing = false;
             	image.cameras = [uiCamera];
             	add(image);
 			}
@@ -113,7 +113,7 @@ function create() {
 				info1.cameras = [uiCamera];
 				info1.color = 0xFFFFFFFF;
 				info1.borderColor = 0xFF000000;
-				info1.antialiasing = true;
+				info1.antialiasing = false;
 				info1.borderSize = 2;
 				add(info1);
 			}
@@ -126,7 +126,7 @@ function create() {
 				info1.cameras = [uiCamera];
 				info1.color = 0xFFFFFFFF;
 				info1.borderColor = 0xFF000000;
-				info1.antialiasing = true;
+				info1.antialiasing = false;
 				info1.borderSize = 2;
 				add(info1);
 			}
@@ -140,7 +140,7 @@ function create() {
 				info2.cameras = [uiCamera]; 
 				info2.color = 0xFFFFFFFF;
 				info2.borderColor = 0xFF000000;
-				info2.antialiasing = true;
+				info2.antialiasing = false;
 				info2.borderSize = 2;
 				add(info2);
 			}
@@ -153,7 +153,7 @@ function create() {
 				info2.cameras = [uiCamera]; 
 				info2.color = 0xFFFFFFFF;
 				info2.borderColor = 0xFF000000;
-				info2.antialiasing = true;
+				info2.antialiasing = false;
 				info2.borderSize = 2;
 				add(info2);
 			}
@@ -166,7 +166,7 @@ function create() {
             info3.cameras = [uiCamera]; 
             info3.color = 0xFFFFFFFF;
             info3.borderColor = 0xFF000000;
-            info3.antialiasing = true;
+            info3.antialiasing = false;
             info3.borderSize = 2;
             add(info3);
 
@@ -211,7 +211,7 @@ function postCreate() {
 	waitImGoated.color = 0xFFFFFFFF;
 	waitImGoated.screenCenter(FlxAxes.X);
 	waitImGoated.borderColor = 0xFF000000;
-	waitImGoated.antialiasing = true;
+	waitImGoated.antialiasing = false;
 	waitImGoated.borderSize = 2;
 	add(waitImGoated);
 

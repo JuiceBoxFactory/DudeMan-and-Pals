@@ -29,6 +29,7 @@ var logoY = 0;
 var leftColor:Int = dad != null && dad.iconColor != null && Options.colorHealthBar ? dad.iconColor : (opponentMode ? 0xFF66FF33 : 0xFFFF0000);
 var rightColor:Int = boyfriend != null && boyfriend.iconColor != null && Options.colorHealthBar ? boyfriend.iconColor : (opponentMode ? 0xFFFF0000 : 0xFF66FF33); // switch the colors
 var timeRemaining;
+var scaredBoth = false;
 
 function postCreate() {
 
@@ -51,8 +52,92 @@ function postCreate() {
 	myPpo = boyfriend.getIcon();
 
 	if (PlayState.SONG.meta.noteType == "serious") {
-		remove(healthBar);
 		remove(healthBarBG);
+
+		healthBar.alpha = 0;
+
+		remove(scoreTxt);
+		remove(missesTxt);
+
+		healthy1 = new FlxSprite(0, 618).loadGraphic(Paths.image('game/barShitFML'));	
+		healthy1.antialiasing = false;
+		healthy1.updateHitbox();
+		healthy1.scale.set(1.9, 1.9);
+		healthy1.screenCenter(FlxAxes.X);
+		healthy1.cameras = [camHUD];
+		healthy1.color = leftColor;
+		insert(1, healthy1);
+
+		healthy2 = new FlxSprite(0, 618).loadGraphic(Paths.image('game/barShitFML'));	
+		healthy2.antialiasing = false;
+		healthy2.updateHitbox();
+		healthy2.scale.set(1.9, 1.9);
+		healthy2.screenCenter(FlxAxes.X);
+		healthy2.cameras = [camHUD];
+		healthy2.color = rightColor;
+		insert(2, healthy2);
+
+		healthheader = new FlxSprite(0, 590).loadGraphic(Paths.image('game/healthBarThingSERIOUS'));
+		healthheader.antialiasing = false;
+		healthheader.scale.set(1.9, 1.9);
+		healthheader.cameras = [camHUD];
+		healthheader.updateHitbox();
+		healthheader.screenCenter(FlxAxes.X);
+		insert(3, healthheader);
+
+		accText = new FlxText();
+		accText.setFormat(Paths.font("Dubai-Medium.ttf"), 15, 0xFFFFFFFF, "left", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+		accText.cameras = [camHUD];
+		accText.borderSize = 1.25;
+		accText.y = 680;
+		accText.screenCenter(FlxAxes.X);
+		accText.x -= 200; 
+		accText.antialiasing = false;
+		insert(6, accText);
+
+		scoreText = new FlxText();
+		scoreText.cameras = [camHUD];
+		scoreText.setFormat(Paths.font("Dubai-Medium.ttf"), 35, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+		scoreText.borderSize = 2.25;
+		scoreText.y = 60;
+		scoreText.updateHitbox();
+		scoreText.screenCenter(FlxAxes.X);
+		scoreText.x -= 55;
+		scoreText.antialiasing = false;
+		insert(7, scoreText);
+
+		scoreToAddText = new FlxText(605, 165);
+		scoreToAddText.cameras = [camHUD];
+		scoreToAddText.setFormat(Paths.font("Dubai-Medium.ttf"), 20, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+		scoreToAddText.borderSize = 1.25;
+		scoreToAddText.antialiasing = false;
+		insert(8, scoreToAddText);
+	
+		missesText = new FlxText();
+		missesText.setFormat(Paths.font("Dubai-Medium.ttf"), 15, 0xFFFFFFFF, "right", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+		missesText.cameras = [camHUD];
+		missesText.borderSize = 1.25;
+		missesText.y = 680;
+		missesText.screenCenter(FlxAxes.X);
+		missesText.x += 140;
+		missesText.antialiasing = false;
+		insert(9, missesText);
+	
+		scoreAddedIn = new FlxTimer();
+		scoreAddedIn.time = 2;
+		scoreAddedIn.active = false;
+		add(scoreAddedIn);
+
+		if (downscroll) {
+			for (dumbShits in [healthBar, missesText, accText, icon1, icon2]) {
+				dumbShits.y -= 15;
+			}
+			icon1.y -= 10;
+			icon2.y -= 10;
+			missesText.y -= 80;
+			accText.y -= 80;
+
+		}
 	}
 
 	if (PlayState.SONG.meta.noteType != "base") {
@@ -70,10 +155,8 @@ function postCreate() {
 			icon2.updateHitbox();
 			insert(5, icon2);
 
-			if (PlayState.SONG.meta.noteType == "serious") {
-				insert(3, healthBar);
-				insert(2, healthBarBG);
-			}
+			iconP1.alpha = 0;
+			iconP2.alpha = 0;
 		}
 	}
 
@@ -166,13 +249,11 @@ function postCreate() {
 	}
 
 	if (PlayState.SONG.meta.noteType != "base" && PlayState.SONG.meta.noteType != "serious") {
-
-		myOpp = dad.getIcon();
-		myPpo = boyfriend.getIcon();
 	
 		for (dumbShits in [iconP1, iconP2, healthBarBG, missesTxt, scoreTxt]) {
 			remove(dumbShits);
 		}
+
 	}
 
 	if (PlayState.SONG.meta.noteType == "fruity") {	
@@ -200,7 +281,7 @@ function postCreate() {
 		dudeRating.scale.set(1.5, 1.5);
 		insert(2, dudeRating);
 
-		remove(healthBar);
+		healthBar.alpha = 0;
 
 		healthy1 = new FlxSprite(0, 618).loadGraphic(Paths.image('game/barShitFML'));	
 		healthy1.antialiasing = false;
@@ -229,7 +310,7 @@ function postCreate() {
 		insert(5, healthheader);
 
 		accText = new FlxText();
-		accText.setFormat(Paths.font("COMIC.ttf"), 15, 0xFF4C0000, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		accText.setFormat(Paths.font("COMIC.ttf"), 15, 0xFFFFFFFF, "left", FlxTextBorderStyle.OUTLINE, 0xFF4C0000);
 		accText.cameras = [camHUD];
 		accText.borderSize = 1.25;
 		accText.y = 680;
@@ -240,7 +321,7 @@ function postCreate() {
 
 		scoreText = new FlxText();
 		scoreText.cameras = [camHUD];
-		scoreText.setFormat(Paths.font("COMIC.ttf"), 35, 0xFF4C0000, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreText.setFormat(Paths.font("COMIC.ttf"), 35, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF4C0000);
 		scoreText.borderSize = 2.25;
 		scoreText.y = 65;
 		scoreText.updateHitbox();
@@ -251,13 +332,13 @@ function postCreate() {
 
 		scoreToAddText = new FlxText(610, 165);
 		scoreToAddText.cameras = [camHUD];
-		scoreToAddText.setFormat(Paths.font("COMIC.ttf"), 20, 0xFF4C0000, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreToAddText.setFormat(Paths.font("COMIC.ttf"), 20, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF4C0000);
 		scoreToAddText.borderSize = 1.25;
 		scoreToAddText.antialiasing = false;
 		insert(8, scoreToAddText);
 	
 		missesText = new FlxText();
-		missesText.setFormat(Paths.font("COMIC.ttf"), 15, 0xFF4C0000, "right", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		missesText.setFormat(Paths.font("COMIC.ttf"), 15, 0xFFFFFFFF, "right", FlxTextBorderStyle.OUTLINE, 0xFF4C0000);
 		missesText.cameras = [camHUD];
 		missesText.borderSize = 1.25;
 		missesText.y = 680;
@@ -303,7 +384,7 @@ function postCreate() {
 		dudeRating.scale.set(1.5, 1.5);
 		insert(1, dudeRating);
 
-		remove(healthBar);
+		healthBar.alpha = 0;
 
 		healthy1 = new FlxSprite(0, 618).loadGraphic(Paths.image('game/barShitFML'));	
 		healthy1.antialiasing = false;
@@ -411,7 +492,7 @@ function postCreate() {
 
 	if (PlayState.SONG.meta.noteType == "BandW") {
 
-		remove(healthBar);
+		healthBar.alpha = 0;
 
 		scoreText = new FlxText(30, 555);
 		scoreText.cameras = [camHUD];
@@ -469,11 +550,11 @@ function create() {
 
 		if (PlayState.SONG.meta.noteType != "BandW") {
 			timeTxt = new FlxText(0, 19, 400, "X:XX", 32);
-			timeTxt.setFormat(Paths.font("COMIC.ttf"), 32, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			timeTxt.setFormat(Paths.font("Dubai-Medium.ttf"), 32, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			timeTxt.scrollFactor.set();
 			timeTxt.alpha = 0;
-			timeTxt.borderColor = 0xFF0F0014;
-			timeTxt.color = 0xFFFBECFF;
+			timeTxt.borderColor = 0xFF000000;
+			timeTxt.color = 0xFFFFFFFF;
 			timeTxt.borderSize = 2;
 			timeTxt.cameras = [camHUD];
 			timeTxt.screenCenter(FlxAxes.X);
@@ -560,12 +641,12 @@ function create() {
 		bar.scale.set(3, 1);
 		add(bar);
 		
-		timeTxt = new FlxText(410, 33, 100, "X:XX", 32);
+		timeTxt = new FlxText(395, 33, 100, "X:XX", 32);
 		timeTxt.setFormat(Paths.font("COMIC.ttf"), 32, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		timeTxt.scrollFactor.set();
 		timeTxt.alpha = 1;
-		timeTxt.borderColor = 0xFF000000;
-		timeTxt.color = 0xFF4C0000;
+		timeTxt.borderColor = 0xFF4C0000;
+		timeTxt.color = 0xFFFFFFFF;
 		timeTxt.borderSize = 2;
 		timeTxt.cameras = [camHUD];
 		add(timeTxt);
@@ -587,7 +668,7 @@ function onSongStart() {
 
 	songStarted = true;
 
-	if (PlayState.SONG.meta.noteType != "normal" || PlayState.SONG.meta.noteType != "fruity") {	
+	if (PlayState.SONG.meta.noteType != "normal" && PlayState.SONG.meta.noteType != "fruity" && PlayState.SONG.meta.noteType != "serious") {	
     	if (timeBar != null) {
     	    FlxTween.tween(timeBar, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
     	}
@@ -637,14 +718,24 @@ function update(elapsed:Float) {
 
 	}
 
-	if (PlayState.SONG.meta.noteType == "normal" || PlayState.SONG.meta.noteType == "BandW" || PlayState.SONG.meta.noteType == "fruity") {
+	if (PlayState.SONG.meta.noteType == "normal" || PlayState.SONG.meta.noteType == "BandW"  || PlayState.SONG.meta.noteType == "serious" || PlayState.SONG.meta.noteType == "fruity") {
 
 		if (FlxG.save.data.language == 'english') {
-			if (FlxG.save.data.dudeRating == true) {
-				scoreText.text = ":Coolness:\n"+curScore;
+			if (PlayState.SONG.meta.noteType == "serious") {
+				if (FlxG.save.data.dudeRating == true) {
+					scoreText.text = ":SCORE:\n"+curScore;
+				}
+				else {
+					scoreText.text = ":SCORE:\n"+songScore;
+				}
 			}
 			else {
-				scoreText.text = ":Coolness:\n"+songScore;
+				if (FlxG.save.data.dudeRating == true) {
+					scoreText.text = ":Coolness:\n"+curScore;
+				}
+				else {
+					scoreText.text = ":Coolness:\n"+songScore;
+				}
 			}
 		}
 
@@ -659,7 +750,7 @@ function update(elapsed:Float) {
 
 	}
 
-	if (PlayState.SONG.meta.noteType == "normal" || PlayState.SONG.meta.noteType == "fruity") {
+	if (PlayState.SONG.meta.noteType == "normal" || PlayState.SONG.meta.noteType == "fruity" || PlayState.SONG.meta.noteType == "serious") {
 		
 		var sillyGooseling = (220 - ((health * 100) + (health * 10)));
 		if (sillyGooseling < 0) {
@@ -669,14 +760,28 @@ function update(elapsed:Float) {
 		healthy2.clipRect = playerClip;
 
 		myOpp = dad.getIcon();
-		icon2.loadGraphic(Paths.image('icons/'+myOpp));
-		myPpo = boyfriend.getIcon();
-		icon1.loadGraphic(Paths.image('icons/'+myPpo));
+		if (Assets.exists(Paths.image('icons/'+myOpp))) {
+			icon2.loadGraphic(Paths.image('icons/'+myOpp));
+		}
+		else {
+			icon2.loadGraphic(Paths.image('icons/face'));
+		}
+		if (Assets.exists(Paths.image('icons/'+myPpo))) {
+			icon1.loadGraphic(Paths.image('icons/'+myPpo));
+		}
+		else {
+			icon1.loadGraphic(Paths.image('icons/face'));
+		}
 
 		if (FlxG.save.data.language == 'english') {
 
 			accText.text = "Accuracy: "+CoolUtil.quantize(accuracy * 100, 100)+"%";
+			if (PlayState.SONG.meta.noteType != "serious") {
 			missesText.text = "Bitches Fumbled: "+misses;
+			}
+			else {
+			missesText.text = "Misses: "+misses;
+			}
 
 			if (accuracy == -1) {
     	    	accText.text = "Accuracy: idfk man";
@@ -801,7 +906,7 @@ function update(elapsed:Float) {
 				}
 				if (PlayState.SONG.meta.noteType == "fruity") {
 					FlxTween.tween(fruityFag, {x: 910}, timeRemaining);
-					FlxTween.tween(timeTxt, {x: 995}, timeRemaining);
+					FlxTween.tween(timeTxt, {x: 980}, timeRemaining);
 					FlxTween.tween(stupidCodenameEngineBullshit2.scale, {x: 196}, timeRemaining);
 				}
 				finalTimeCalculated = true;
@@ -812,10 +917,14 @@ function update(elapsed:Float) {
 
 	if (PlayState.SONG.meta.noteType == "fruity") {
 		var stupidShitVar = stupidCodenameEngineBullshit2.scale.x;
-		trace(stupidShitVar);
 		var timeClip = new FlxRect(stupidShitVar, 0, bar.frameWidth, bar.frameHeight);
 		bar.clipRect = timeClip;
 	}
+
+	healthBar.alpha = 0;
+	iconP1.alpha = 0;
+	iconP2.alpha = 0;
+
 }
 
 function beatHit() {
@@ -875,7 +984,20 @@ function postUpdate() {
 
 	}
 
+	if (FlxG.save.data.scared == true) {
+		scared = true;
+	}
+	else if (FlxG.save.data.scared == "trueBoth") {
+		scaredBoth = true;
+		scared = true;
+	}
+	else {
+		scared = false;
+		scaredBoth = false;
+	}
+
 	if (PlayState.SONG.meta.noteType == "serious") {
+		
 		icon1.x = iconP1.x;
 		icon1.y = iconP1.y;
 		icon2.x = iconP2.x;
@@ -887,8 +1009,10 @@ function postUpdate() {
 		if (health < 0.5) {
 			icon1.loadGraphic(Paths.image('icons/'+myPpo+'-losing'));
 			icon2.loadGraphic(Paths.image('icons/'+myOpp));
-			icon1.x = iconP1.x + FlxG.random.int(-1.5, 1.5);
-			icon1.y = iconP1.y + FlxG.random.int(-1.5, 1.5);
+			if (PlayState.SONG.meta.name == "lighthouse") {
+				icon1.x = iconP1.x + FlxG.random.int(-1.5, 1.5);
+				icon1.y = iconP1.y + FlxG.random.int(-1.5, 1.5);
+			}
 		}
 		else if (health > 1.5 && myOpp != 'shesnotthere') {
 			icon1.loadGraphic(Paths.image('icons/'+myPpo));
@@ -969,7 +1093,7 @@ function onNoteHit(event) {
 
 function onPlayerMiss() {
 
-	if (PlayState.SONG.meta.noteType == "normal" && FlxG.save.data.dudeRating == true || PlayState.SONG.meta.noteType == "BandW" && FlxG.save.data.dudeRating == true) {
+	if (PlayState.SONG.meta.noteType == "serious" && FlxG.save.data.dudeRating == true || PlayState.SONG.meta.noteType == "fruity" && FlxG.save.data.dudeRating == true ||  PlayState.SONG.meta.noteType == "normal" && FlxG.save.data.dudeRating == true || PlayState.SONG.meta.noteType == "BandW" && FlxG.save.data.dudeRating == true) {
 		lastComboNoteAmount += 1;
 		
 		scoreToAdd -= 10;
@@ -979,7 +1103,7 @@ function onPlayerMiss() {
 			addLerp = addLerp + scoreToAdd;
 			scoreToAdd = 0;
 			if (animationPlaying == false) {	
-				if (PlayState.SONG.meta.noteType == "normal") {
+				if (PlayState.SONG.meta.noteType == "normal" || PlayState.SONG.meta.noteType == "fruity") {
 					comboRating();
 				}
 			}
@@ -1020,7 +1144,7 @@ function comboRating() {
 
 function onPlayerHit(e){
 
-	if (PlayState.SONG.meta.noteType == "normal" && FlxG.save.data.dudeRating == true || PlayState.SONG.meta.noteType == "BandW" && FlxG.save.data.dudeRating == true || PlayState.SONG.meta.noteType == "fruity" && FlxG.save.data.dudeRating == true) {
+	if (PlayState.SONG.meta.noteType == "serious" && FlxG.save.data.dudeRating == true || PlayState.SONG.meta.noteType == "normal" && FlxG.save.data.dudeRating == true || PlayState.SONG.meta.noteType == "BandW" && FlxG.save.data.dudeRating == true || PlayState.SONG.meta.noteType == "fruity" && FlxG.save.data.dudeRating == true) {
 
 		noteRating = e.accuracy;
 		scoreToAddText.scale.set(1.15, 1.15);
@@ -1091,7 +1215,7 @@ function onPlayerHit(e){
 	}
 }
 function onDadHit(e){
-	if (FlxG.save.data.notebounce == true && !player.cpu) {
+	if (FlxG.save.data.notebounce == true && !player.cpu && scaredBoth == false) {
 		if (PlayState.SONG.meta.noteType != "base" && PlayState.SONG.meta.noteType != "serious") {
     		if (e.isSustainNote) return;
 				if (downscroll) {
@@ -1162,7 +1286,8 @@ function stepHit(curStep:Int) {
 					FlxTween.tween(icon1, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
 					FlxTween.tween(icon2, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
 					FlxTween.tween(accText, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
-					FlxTween.tween(healthBar, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+					FlxTween.tween(healthy1, {alpha: 0}, quickie, {ease: FlxEase.quartInOut});
+					FlxTween.tween(healthy2, {alpha: 0}, quickie, {ease: FlxEase.quartInOut});
 					FlxTween.tween(scoreToAddText, {y: -700}, quickie, {ease: FlxEase.quartOut});
 //				}
 
@@ -1190,7 +1315,8 @@ function stepHit(curStep:Int) {
 				FlxTween.tween(icon1, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
 				FlxTween.tween(icon2, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
 				FlxTween.tween(accText, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
-				FlxTween.tween(healthBar, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(healthy1, {alpha: 0}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthy2, {alpha: 0}, quickie, {ease: FlxEase.quartInOut});
 				FlxTween.tween(scoreToAddText, {y: -700}, quickie, {ease: FlxEase.quartOut});
 
 			case 262:
@@ -1204,7 +1330,8 @@ function stepHit(curStep:Int) {
 				FlxTween.tween(icon1, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
 				FlxTween.tween(icon2, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
 				FlxTween.tween(accText, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
-				FlxTween.tween(healthBar, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthy1, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthy2, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
 				FlxTween.tween(scoreToAddText, {y: 165}, quickie, {ease: FlxEase.quartInOut});	
 				
 			case 760:
@@ -1220,7 +1347,8 @@ function stepHit(curStep:Int) {
 				FlxTween.tween(icon1, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
 				FlxTween.tween(icon2, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
 				FlxTween.tween(accText, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
-				FlxTween.tween(healthBar, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(healthy1, {alpha: 0}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthy2, {alpha: 0}, quickie, {ease: FlxEase.quartInOut});
 				FlxTween.tween(scoreToAddText, {y: -700}, quickie, {ease: FlxEase.quartOut});
 
 			case 1272:
@@ -1235,8 +1363,72 @@ function stepHit(curStep:Int) {
 				FlxTween.tween(icon1, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
 				FlxTween.tween(icon2, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
 				FlxTween.tween(accText, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
-				FlxTween.tween(healthBar, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthy1, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthy2, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
 				FlxTween.tween(scoreToAddText, {y: 165}, quickie, {ease: FlxEase.quartInOut});	
+
+		}
+	}
+
+	if (PlayState.SONG.meta.name == "colorful") {
+
+		var quickie = 0.5;
+
+		if (curStep < 128) {
+			var quickie = 0.005;
+		}
+
+		switch (curStep) {
+			
+			case 0:
+				for (gayfags in [bar, timeTxt, fruityFag, scoreText, missesText, healthheader, icon1, icon2, accText, healthy1, healthy2]) {
+					gayfags.alpha = 0;
+				}
+				scoreToAddText.y = -700;
+			case 4: 
+				timeTxt.alpha = 0;
+			case 128:
+				FlxTween.tween(timeTxt, {alpha: 1}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(bar, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(fruityFag, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(scoreText, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(missesText, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthheader, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(icon1, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(icon2, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(accText, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthy1, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthy2, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(scoreToAddText, {y: 165}, quickie, {ease: FlxEase.quartInOut});	
+
+			case 832:
+				var quickie = 6;
+				FlxTween.tween(cpuStrums.members[0], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(cpuStrums.members[1], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(cpuStrums.members[2], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(cpuStrums.members[3], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(camHUD, {alpha: 1}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(stupidCodenameEngineBullshit, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(timeTxt, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(bar, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(fruityFag, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(scoreText, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(missesText, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(healthheader, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(icon1, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(icon2, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(accText, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(healthy1, {alpha: 0}, 4, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthy2, {alpha: 0}, 4, {ease: FlxEase.quartInOut});
+				FlxTween.tween(scoreToAddText, {y: -700}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(dudeRating, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+
+			case 896:
+				var quickie = 4;
+				FlxTween.tween(playerStrums.members[0], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(playerStrums.members[1], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(playerStrums.members[2], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(playerStrums.members[3], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
 
 		}
 	}

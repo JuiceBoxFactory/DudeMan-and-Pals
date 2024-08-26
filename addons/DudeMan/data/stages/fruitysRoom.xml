@@ -4,7 +4,6 @@
 	<sprite x="0" y="0" sprite="roomig" name="roomig" antialiasing="false"/>
 	<sprite x="0" y="0" sprite="puter" name="puter" antialiasing="false"/>
 	<gf/>
-	<bf/>
 	<dad/>
-	<sprite x="0" y="0" sprite="bed" name="bed" antialiasing="false"/>
+	<bf/>
 </stage>
