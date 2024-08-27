@@ -129,4 +129,10 @@ function update() {
         });
     }
 
+    if (FlxG.keys.justPressed.R) {
+        FlxG.sound.play(Paths.sound('confirm'));
+        PlayState.loadSong(FlxG.save.data.song, "hard");
+        FlxG.switchState(!PlayState.isStoryMode ? new PlayState() : trace("sorry but. nah."));
+    }
+
 }
