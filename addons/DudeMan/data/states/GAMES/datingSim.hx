@@ -43,13 +43,20 @@ var mother1 = false;
 var mother2 = false;
 var playerName = null;
 var shutTheFuckUp = false;
+var isDisabled = [
+
+    null, // killing 0 isDisabled[0], for good reason btw
+    false,
+    false,
+    false,
+    false
+
+];
 
 
 function create() {
 
-    FlxG.save.data.substateOpen = false;
-    FlxG.save.data.kathyBar = 0;
-    FlxG.save.data.showbar = null;
+    loadDefaultSaveShit();
 
     FlxG.cameras.add(camHUD, false);
     camHUD.bgColor = 0x0000000;
@@ -263,6 +270,7 @@ function sceneDialogChange(sceneToSwitchTo, doTransition) {
         new FlxTimer().start(2.5, function(timer) {
             curScene = sceneToSwitchTo;
             trace("transitioning to: "+curScene);
+            transitionShit("screenUnfade", "");
             FlxG.sound.play(Paths.sound('datingSim/contSFX'), 1);
             FlxTween.tween(transitionImageBG, {x: 1900}, 1.5, {ease: FlxEase.quartIn});
             FlxTween.tween(transitionImage, {x: 1950}, 1.5, {ease: FlxEase.quartIn});
@@ -562,7 +570,22 @@ function sceneSystem(scene) {
                 val4DoFade = false;
                 buttonText1Be("yoiur moms ho use.");
                 buttonText2Be("Keep going forwards");
-                buttonText3Be("Class on the Left !");
+                for (i in 0...FlxG.save.data.mondayInteractionOrder.length)	{
+
+                    var yeah;
+
+                    if (FlxG.save.data.mondayInteractionOrder[i] == "kathy") {
+                        buttonText3Be("LOCKED");
+                        lockButton(3);
+                        yeah = true;
+                    }
+                    else {
+                        if (yeah != true) {
+                            buttonText3Be("Class on the Left !");
+                        }
+                    }
+
+                }
                 buttonText4Be("Class on the Right !");
                 buttonAdd(1);
                 buttonAdd(2);
@@ -750,7 +773,12 @@ function sceneSystem(scene) {
         
             if (alongTheDialogue == 4) {
                 canDoShitDude = true;
-                name.text = 'You';
+                if (playerName != null) {
+                    name.text = playerName;
+                }
+                else {
+                    name.text = "you";
+                }
                 txtBro.resetText("HOLY CRAP LOUIS ITS BROOKLYN T. GUY");
                 txtBro.start(0.03);
             }
@@ -764,7 +792,12 @@ function sceneSystem(scene) {
         
             if (alongTheDialogue == 6) {
                 canDoShitDude = true;
-                name.text = 'You';
+                if (playerName != null) {
+                    name.text = playerName;
+                }
+                else {
+                    name.text = "you";
+                }
                 txtBro.resetText("This fucking ROCKS.");
                 txtBro.start(0.03);
             }
@@ -787,7 +820,9 @@ function sceneSystem(scene) {
         
             if (alongTheDialogue == 9) {
                 stopHere = true;
-                sceneDialogChange("KathyRoomOPENING", false);
+                new FlxTimer().start(0.25, function(timer) {
+                    sceneDialogChange("KathyRoomOPENING", false);
+                });
             }
 
         case "KathyRoomOPENING":
@@ -1199,7 +1234,7 @@ function sceneSystem(scene) {
                 name.text = playerName;
                 txtBro.resetText("the door");
                 txtBro.start(0.03);
-                FlxG.save.data.kathyBar -= 10;
+                FlxG.save.data.kathyBar -= 15;
             }
     
             if (alongTheDialogue == 2) {
@@ -1310,7 +1345,6 @@ function sceneSystem(scene) {
     
             if (alongTheDialogue == 14) {
                 canDoShitDude = true;
-                characterStatus("UNAPPEAR", char2);
                 characterStatus("MIDDLE", char1);
                 characterStatus("PRIO", char1);
                 name.text = 'Kathy';
@@ -1343,13 +1377,121 @@ function sceneSystem(scene) {
                 stopHere = true;
             }
 
-            if (alongTheDialogue == 18) {
+            if (alongTheDialogue == 18 && FlxG.save.data.kathyBar > -1) {
                 char1var = "Kathy/Tired";
                 name.text = 'Kathy';
                 txtBro.resetText("how did you ACTUALLY get here?");
                 txtBro.start(0.03);
                 stopHere = true;
             }
+
+            if (alongTheDialogue == 18 && FlxG.save.data.kathyBar < 0) {
+                char1var = "Kathy/Tired";
+                name.text = 'Kathy';
+                txtBro.resetText("Can you leave me alone now?");
+                txtBro.start(0.03);
+                exception = true;
+                buttonText3Be("yeah, sorry");
+                buttonText4Be("no");
+                val3 = "apologizeBadRouteKATHY1";
+                val4 = "dontApologizeBadRouteKATHY1";
+                buttonAdd(3);
+                buttonAdd(4);
+                stopHere = true;
+            }
+
+        case "apologizeBadRouteKATHY1":
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                transitionShit("screenFade", "");
+                name.text = '';
+                FlxG.save.data.kathyBar += 15;
+                FlxG.save.data.showbar = null;
+                txtBro.resetText("I think you screwed that one up.");
+                txtBro.start(0.03);
+                findEmptySlot("mondayInteractionOrder", "kathy");
+            }
+    
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                name.text = '';
+                txtBro.resetText("but, atleast you left when asked, good enough.. I guess? it could've been worse.");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 2) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                name.text = '';
+                txtBro.resetText("oh well, onto the next person");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 3) {
+                sceneDialogChange("choice1DEFAULT", true);
+            }
+
+        case "dontApologizeBadRouteKATHY1":
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                name.text = 'Kathy';
+                char1var = 'Kathy/Angry';
+                txtBro.resetText("oh my god. you are INSUFFERABLE");
+                txtBro.start(0.03);
+                FlxG.save.data.kathyBar -= 30;
+            }
+
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                name.text = 'Kathy';
+                char1var = 'Kathy/Angry';
+                txtBro.resetText("I'll just leave on my fucking own then.");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 2) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                characterStatus("UNAPPEAR", char1);
+                name.text = '';
+                FlxG.save.data.showbar = null;
+                txtBro.resetText("..wow");
+                txtBro.start(0.03);
+                findEmptySlot("mondayInteractionOrder", "kathy");
+            }
+    
+            if (alongTheDialogue == 3) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                name.text = '';
+                txtBro.resetText("you're kind of a dick, that went AWFULLY");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 4) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                name.text = '';
+                txtBro.resetText("one day in and you've made a genuine enemy, you're not good at this flirting thing.");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 5) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                name.text = '';
+                txtBro.resetText("well uhm.. I guess lets just move on then.");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 6) {
+                sceneDialogChange("choice1DEFAULT", true);
+            }
+        
 
         case "FruityRoomOPENING":
 
@@ -1382,6 +1524,8 @@ function sceneSystem(scene) {
             
             if (alongTheDialogue == 3) {
                 canDoShitDude = true;
+                FlxG.save.data.showbar = "fruity";
+                FlxG.save.data.showbarSecondary = "zee";
                 transitionShit("nameBoxPEAR", "");
                 transitionShit("screenUnfade", "");
                 char1var = 'Fruity/Base';
@@ -1461,6 +1605,31 @@ function sceneSystem(scene) {
 
 }
 
+function lockButton(type) {
+
+    isDisabled[type] = true;
+
+}
+ 
+function findEmptySlot(variable, toAdd) {
+
+    var found;
+
+    for (i in 0...8) {
+
+        if (variable == "mondayInteractionOrder") {
+            if (found != true) {
+                if (FlxG.save.data.mondayInteractionOrder[i] == "") {
+                    found = true;
+                    FlxG.save.data.mondayInteractionOrder[i] = toAdd;
+                }
+            }
+        }
+
+    }
+
+}
+
 function skipDialogue() {
 
     canDoShitDude = false;
@@ -1526,7 +1695,7 @@ function update() {
             FlxG.switchState(new ModState("GAMES/datingSimTitle"));
         }
     
-        if (dialogueButton1.alpha == 1 && inShop == false) {
+        if (dialogueButton1.alpha == 1 && inShop == false && isDisabled[1] == false) {
             if (FlxG.mouse.overlaps(button1pos) && FlxG.mouse.justPressed) {
                 if (exception == false) {
                     buttonSpaghetti(1, button1text.text, val1DoFade);
@@ -1538,7 +1707,7 @@ function update() {
             }
         }
     
-        if (dialogueButton2.alpha == 1 && inShop == false) {
+        if (dialogueButton2.alpha == 1 && inShop == false && isDisabled[2] == false) {
             if (FlxG.mouse.overlaps(button2pos) && FlxG.mouse.justPressed) {
                 if (exception == false) {
                     buttonSpaghetti(2, button2text.text, val2DoFade);
@@ -1549,7 +1718,7 @@ function update() {
             }
         }
     
-        if (dialogueButton3.alpha == 1 && inShop == false) {
+        if (dialogueButton3.alpha == 1 && inShop == false && isDisabled[3] == false) {
             if (FlxG.mouse.overlaps(button3pos) && FlxG.mouse.justPressed) {
                 if (exception == false) {
                     buttonSpaghetti(3, button3text.text, val3DoFade);
@@ -1560,7 +1729,7 @@ function update() {
             }
         }
     
-        if (dialogueButton4.alpha == 1 && inShop == false) {
+        if (dialogueButton4.alpha == 1 && inShop == false && isDisabled[4] == false) {
             if (FlxG.mouse.overlaps(button4pos) && FlxG.mouse.justPressed) {
                 if (exception == false) {
                     buttonSpaghetti(4, button4text.text, val4DoFade);
@@ -1573,6 +1742,22 @@ function update() {
 
     }
 
+}
+
+function loadDefaultSaveShit() {
+    FlxG.save.data.substateOpen = false;
+    FlxG.save.data.kathyBar = 0;
+    FlxG.save.data.fruityBar = 0;
+    FlxG.save.data.zeeBar = 0;
+    FlxG.save.data.showbar = null;
+    FlxG.save.data.showbarSecondary = null;
+    FlxG.save.data.mondayInteractionOrder = [
+
+        "",
+        "",
+        ""
+
+    ];
 }
 
 function transitionShit(type, sceneToBe) {
@@ -1645,6 +1830,10 @@ function buttonText4Be(texty) {
 
 function removeButtons() {
 
+    for (i in 0...isDisabled.length) {
+        isDisabled[i] = false;
+    }
+
     new FlxTimer().start(0.35, function(timer) {
             dialogueButton1.alpha = 0;
             remove(dialogueButton1);
@@ -1669,18 +1858,58 @@ function buttonAdd(type) {
             dialogueButton1.alpha = 1;
             insert(2, dialogueButton1);
             insert(4, button1text);
+            if (isDisabled[1] == true) {
+                dialogueButton1.color = 0xFF656565;
+                button1text.color = 0xFF656565;
+                button1text.borderColor = 0xFF656565;
+            }
+            else {
+                dialogueButton1.color = 0xFFFFFFFF;
+                button1text.color = 0xFF130022;
+                button1text.borderColor = 0xFFFBF1FF;
+            }
         case 2:
             dialogueButton2.alpha = 1;
             insert(2, dialogueButton2);
             insert(4, button2text);
+            if (isDisabled[2] == true) {
+                dialogueButton2.color = 0xFF656565;
+                button2text.color = 0xFFCDCDCD;
+                button2text.borderColor = 0xFFFBF1FF;
+            }
+            else {
+                dialogueButton2.color = 0xFFFFFFFF;
+                button2text.color = 0xFF130022;
+                button2text.borderColor = 0xFFFBF1FF;
+            }
         case 3:
             dialogueButton3.alpha = 1;
             insert(2, dialogueButton3);  
             insert(4, button3text);
+            if (isDisabled[3] == true) {
+                dialogueButton3.color = 0xFF656565;
+                button3text.color = 0xFF656565;
+                button3text.borderColor = 0xFF656565;
+            }
+            else {
+                dialogueButton3.color = 0xFFFFFFFF;
+                button3text.color = 0xFF130022;
+                button3text.borderColor = 0xFFFBF1FF;
+            }
         case 4:
             dialogueButton4.alpha = 1;
             insert(2, dialogueButton4);
             insert(4, button4text);
+            if (isDisabled[4] == true) {
+                dialogueButton4.color = 0xFF656565;
+                button4text.color = 0xFF656565;
+                button4text.borderColor = 0xFF656565;
+            }
+            else {
+                dialogueButton4.color = 0xFFFFFFFF;
+                button4text.color = 0xFF130022;
+                button4text.borderColor = 0xFFFBF1FF;
+            }
     }
 
 }
@@ -1798,6 +2027,7 @@ function saveGame() {
     FlxG.save.data.datingBackgroundFILE1 = ground;
     FlxG.save.data.showbarFILE1 = FlxG.save.data.showbar;
     FlxG.save.data.kathyBarFILE1 = FlxG.save.data.kathyBar;
+    FlxG.save.data.mondayInteractionOrderFILE1 = FlxG.save.data.mondayInteractionOrder;
 
 }
 
