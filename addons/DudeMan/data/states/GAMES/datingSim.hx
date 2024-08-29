@@ -751,6 +751,9 @@ function sceneSystem(scene) {
         
             if (alongTheDialogue == 2) {
                 canDoShitDude = true;
+                openSubState(new ModSubState("Functionality/DudeNotify"));
+                FlxG.save.data.notificationType1 = "funValue";
+                FlxG.save.data.notificationMessage1 = "You Encountered a Fun Value event!";
                 transitionShit("nameBoxPEAR", "");
                 transitionShit("screenUnfade", "");
                 char1var = 'BrooklynGuy';
