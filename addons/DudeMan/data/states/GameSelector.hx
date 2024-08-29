@@ -8,14 +8,16 @@ import flixel.FlxCamera;
 import funkin.backend.utils.DiscordUtil;
 import flixel.util.FlxSave;
 
+var blurShit = new CustomShader("blur");
 // put the file path // state name for the game, and put it in the order you want it in the list lol
 // it also uses this to check for disc labels, but if you dont have one yet then dw it'll use an unlabelled disc image
 // - Mel! sole coder of this mod atp
 var gamesOrderBLEH = [
 
-    "datingSimTitle",
+    "FNAFtitle",
     "puncher",
-    "FNAFtitle"
+    "fruitysfactory",
+    "datingSimTitle"
 
 ];
 
@@ -25,12 +27,14 @@ var gamesOrderBLEH = [
 var gameDisplayName = [
 
     "datingSimTitle" => "DudeMan: More Than Pals",
+    "fruitysfactory" => "FRUITY'S FABULOUS FASHION FACTORY FOR FUN FRIENDS !!!",
     "puncher" => "Puzzle's DudeMan Puncher!",
     "FNAFtitle" => "DudeMan's Emporium"
 
 ];
 var gameDescription = [
 
+    "fruitysfactory" => "I'M SO PRETTY :3 !!!! DO YOU WANNA BE AS PRETTY AS MEEEEEEE ???? THEN COME TO MY FABULOUS FASHION FACTORY FOR FUN FRIENDS !!! AND PLAY DRESS UP WITH MEEE :3\n:3",
     "datingSimTitle" => 'Take a step into '+"DudeMan's "+'"Dude School", '+"because you're about to go on a quest... a quest to.. FIND LOVE <3",
     "puncher" => ">:] Do you hate DudeMan as much as me? I hope so because hes a LYING CHEATING BITCH. Well then come play My Game! where you can beat the SHIT OUT OF THE BASTARD!",
     "FNAFtitle" => "DudeMan if it the FIVE NIGHTS AT FREDDY'S FUUUUCCKK"
@@ -152,6 +156,7 @@ function create() {
         FlxTween.tween(ui, {y: origY}, 2, {ease:FlxEase.quartOut});
     }
 
+
 }
 
 function loadGame() {
@@ -188,6 +193,20 @@ function loadGame() {
 }
 
 function update(elapsed:Float) {
+
+    if (FlxG.save.data.gamesFirstTime == null) {
+        openSubState(new ModSubState("Functionality/MenuDialogueSubstate"));
+        FlxG.save.data.menuDialougeToPlay = "ps5Games";
+        canDo = false;
+        FlxG.camera.addShader(blurShit);
+        FlxG.save.data.shortLived = null;
+        FlxG.save.data.gamesFirstTime = false;
+    }
+
+	if (FlxG.save.data.shortLived == true) {
+		FlxG.camera.removeShader(blurShit);
+		canDo = true;
+	}
 
     var stupidShitKinda = gamesOrderBLEH[chosenOrWhatevs];
 
@@ -283,6 +302,7 @@ function update(elapsed:Float) {
 
     if (FlxG.keys.justPressed.G) {
         FlxG.save.data.hasPlayedBefore = false;
+        FlxG.save.data.gamesFirstTime = null;
     }
 
     if (controls.BACK) {

@@ -174,145 +174,189 @@ function updateDialogue(dialouge) {
 
         case "takeBreaks":
 
-        if (lineToBe == 0) {
-            character1.loadGraphic(Paths.image('menulogue/ports/fruity/base'));
-            name.text = "FRUITY";
-            txtBro.resetText("HI HI THERE, ITS ME, FRUITY !!!");
-            txtBro.start(0.03);
-        }
-
-        if (lineToBe == 1) {
-            txtBro.resetText("I JUST WANTED TO REMIND YOU THAT, SINCE THIS MOD IS SO LONG, IT WOULDNT HURT TO TAKE BREAKS EVERY NOW AND THEN SO IT DOESNT GET STALE !!");
-            txtBro.start(0.03);
-        }
-
-        if (lineToBe == 2) {
-            txtBro.resetText("IF YOU DONT NEED ONE, THEN GREAT !!! IF YOU DO, THEN THATS OKAY TOO !!!");
-            txtBro.start(0.03);
-        }
-        
-        if (lineToBe == 3) {
-            prioritize("right");
-            name.text = "DUDEMAN";
-            txtBro.resetText("no, actually");
-            txtBro.start(0.03);
-        }
-
-        if (lineToBe == 4) {
-            txtBro.resetText("you have to play my mod NOW");
-            txtBro.start(0.03);
-        }
-
-
-        if (FlxG.save.data.funValue <= 73 && FlxG.save.data.funValue >= 63 && arbitrary == false) {
-
-            if (lineToBe == 5) {
-                prioritize("left");
-                canProg = false;
-                txtBro.resetText("");
+            if (lineToBe == 0) {
+                character1.loadGraphic(Paths.image('menulogue/ports/fruity/base'));
+                name.text = "FRUITY";
+                txtBro.resetText("HI HI THERE, ITS ME, FRUITY !!!");
                 txtBro.start(0.03);
-                new FlxTimer().start(0.6, function(timer) {
-                    charSwitch(1, "purpleBald");
-                });
-                new FlxTimer().start(0.8, function(timer) {
-                    name.text = "PURPLE BALDI";
-                    canProg = true;
-                    txtBro.resetText("no..that's not cool man. please learn and change. thats just not okay to say man.\nyou need to work on yourself and try to be a nice person, because that just isnt okay. you have to be nice to people.");
-                    txtBro.start(0.03);
-                });
-                openSubState(new ModSubState("Functionality/DudeNotify"));
-                FlxG.save.data.notificationType1 = "funValue";
-                FlxG.save.data.notificationMessage1 = "You Encountered a Fun Value event!";
             }
     
-            if (lineToBe == 6) {
+            if (lineToBe == 1) {
+                txtBro.resetText("I JUST WANTED TO REMIND YOU THAT, SINCE THIS MOD IS SO LONG, IT WOULDNT HURT TO TAKE BREAKS EVERY NOW AND THEN SO IT DOESNT GET STALE !!");
+                txtBro.start(0.03);
+            }
+    
+            if (lineToBe == 2) {
+                txtBro.resetText("IF YOU DONT NEED ONE, THEN GREAT !!! IF YOU DO, THEN THATS OKAY TOO !!!");
+                txtBro.start(0.03);
+            }
+            
+            if (lineToBe == 3) {
                 prioritize("right");
                 name.text = "DUDEMAN";
-                txtBro.resetText("SHUT THE FUCK UP I HATE YOU");
+                txtBro.resetText("no, actually");
                 txtBro.start(0.03);
             }
     
-            if (lineToBe == 7) {
-                explosion.x = 0;
-                explosion.animation.play('explode');
-                FlxG.sound.play(Paths.sound('explode'), 1);
-                explosion.alpha = 1;
-                new FlxTimer().start(0.7, function(timer) {
-                    txtBro.resetText("thank fucking god");
-                    character1.loadGraphic(Paths.image('menulogue/ports/nobody'));
-                    txtBro.start(0.03);
-                });
-            }
-    
-            if (lineToBe == 8) {
-                txtBro.resetText("where was I?");
-                txtBro.start(0.03);
-            }
-    
-            if (lineToBe == 9) {
-                txtBro.resetText("oh yeah");
-                txtBro.start(0.03);
-            }
-    
-            if (lineToBe == 10) {
+            if (lineToBe == 4) {
                 txtBro.resetText("you have to play my mod NOW");
                 txtBro.start(0.03);
             }
-
-            if (lineToBe == 11) {
-                prioritize("left");
-                canProg = false;
-                txtBro.resetText("");
-                txtBro.start(0.03);
-                new FlxTimer().start(0.6, function(timer) {
-                    charSwitch(1, "fruity/base");
-                    new FlxTimer().start(0.2, function(timer) {
-                        name.text = "FRUITY";
+    
+    
+            if (FlxG.save.data.funValue <= 73 && FlxG.save.data.funValue >= 63 && arbitrary == false) {
+    
+                if (lineToBe == 5) {
+                    prioritize("left");
+                    canProg = false;
+                    txtBro.resetText("");
+                    txtBro.start(0.03);
+                    new FlxTimer().start(0.6, function(timer) {
+                        charSwitch(1, "purpleBald");
+                    });
+                    new FlxTimer().start(0.8, function(timer) {
+                        name.text = "PURPLE BALDI";
                         canProg = true;
-                        txtBro.resetText("WELL, I MEAN, THEY DO HAVE A POINT DUDEMAN");
+                        txtBro.resetText("no..that's not cool man. please learn and change. thats just not okay to say man.\nyou need to work on yourself and try to be a nice person, because that just isnt okay. you have to be nice to people.");
                         txtBro.start(0.03);
                     });
-                });
-                lineToBe = 4;
-                arbitrary = true;
+                    openSubState(new ModSubState("Functionality/DudeNotify"));
+                    FlxG.save.data.notificationType1 = "funValue";
+                    FlxG.save.data.notificationMessage1 = "You Encountered a Fun Value event!";
+                }
+        
+                if (lineToBe == 6) {
+                    prioritize("right");
+                    name.text = "DUDEMAN";
+                    txtBro.resetText("SHUT THE FUCK UP I HATE YOU");
+                    txtBro.start(0.03);
+                }
+        
+                if (lineToBe == 7) {
+                    explosion.x = 0;
+                    explosion.animation.play('explode');
+                    FlxG.sound.play(Paths.sound('explode'), 1);
+                    explosion.alpha = 1;
+                    new FlxTimer().start(0.7, function(timer) {
+                        txtBro.resetText("thank fucking god");
+                        character1.loadGraphic(Paths.image('menulogue/ports/nobody'));
+                        txtBro.start(0.03);
+                    });
+                }
+        
+                if (lineToBe == 8) {
+                    txtBro.resetText("where was I?");
+                    txtBro.start(0.03);
+                }
+        
+                if (lineToBe == 9) {
+                    txtBro.resetText("oh yeah");
+                    txtBro.start(0.03);
+                }
+        
+                if (lineToBe == 10) {
+                    txtBro.resetText("you have to play my mod NOW");
+                    txtBro.start(0.03);
+                }
+    
+                if (lineToBe == 11) {
+                    prioritize("left");
+                    canProg = false;
+                    txtBro.resetText("");
+                    txtBro.start(0.03);
+                    new FlxTimer().start(0.6, function(timer) {
+                        charSwitch(1, "fruity/base");
+                        new FlxTimer().start(0.2, function(timer) {
+                            name.text = "FRUITY";
+                            canProg = true;
+                            txtBro.resetText("WELL, I MEAN, THEY DO HAVE A POINT DUDEMAN");
+                            txtBro.start(0.03);
+                        });
+                    });
+                    lineToBe = 4;
+                    arbitrary = true;
+                }
+    
+            }
+            else {
+    
+                if (lineToBe == 5) {
+                    name.text = "FRUITY";
+                    prioritize("left");
+                    txtBro.resetText("THATS REALLY REALLY NOT NICE !!!");
+                    txtBro.start(0.03);
+                }
+        
+                if (lineToBe == 6) {
+                    name.text = "DUDEMAN";
+                    prioritize("right");
+                    txtBro.resetText("bleh wah booohooo I DONT CARE");
+                    txtBro.start(0.03);
+                }
+    
+                if (lineToBe == 7) {
+                    name.text = "DUDEMAN";
+                    prioritize("right");
+                    txtBro.resetText("this conversation is OVER play my MOD");
+                    txtBro.start(0.03);
+                }
+    
+                if (lineToBe == 8) {
+                    name.text = "FRUITY";
+                    prioritize("left");
+                    txtBro.resetText(":c");
+                    txtBro.start(0.03);
+                }
+    
+                if (lineToBe == 9) {
+                    closeDiagloue();
+                }
+        
             }
 
-        }
-        else {
+        case "ps5Games":
+
+            if (lineToBe == 0) {
+                character1.loadGraphic(Paths.image('menulogue/ports/dudeman/base'));
+                name.text = "DUDEMAN";
+                txtBro.resetText("Welcome! to my Games!");
+                txtBro.start(0.03);
+            }
+
+            if (lineToBe == 1) {
+                name.text = "DUDEMAN";
+                txtBro.resetText("Of allll different genre and sizes!");
+                txtBro.start(0.03);
+            }
+
+            if (lineToBe == 2) {
+                name.text = "DUDEMAN";
+                txtBro.resetText("Theres more Games here than on the ps5!");
+                txtBro.start(0.03);
+            }
+
+            if (lineToBe == 3) {
+                name.text = "DUDEMAN";
+                txtBro.resetText("get it? because the ps5 has no games");
+                txtBro.start(0.03);
+            }
+            
+            if (lineToBe == 4) {
+                name.text = "DUDEMAN";
+                txtBro.resetText("mhm");
+                txtBro.start(0.03);
+            }
 
             if (lineToBe == 5) {
-                name.text = "FRUITY";
-                prioritize("left");
-                txtBro.resetText("THATS REALLY REALLY NOT NICE !!!");
+                name.text = "DUDEMAN";
+                txtBro.resetText("..yeah");
                 txtBro.start(0.03);
             }
-    
+
             if (lineToBe == 6) {
-                name.text = "DUDEMAN";
-                prioritize("right");
-                txtBro.resetText("bleh wah booohooo I DONT CARE");
-                txtBro.start(0.03);
-            }
-
-            if (lineToBe == 7) {
-                name.text = "DUDEMAN";
-                prioritize("right");
-                txtBro.resetText("this conversation is OVER play my MOD");
-                txtBro.start(0.03);
-            }
-
-            if (lineToBe == 8) {
-                name.text = "FRUITY";
-                prioritize("left");
-                txtBro.resetText(":c");
-                txtBro.start(0.03);
-            }
-
-            if (lineToBe == 9) {
                 closeDiagloue();
             }
 
-        }
 
     }
 

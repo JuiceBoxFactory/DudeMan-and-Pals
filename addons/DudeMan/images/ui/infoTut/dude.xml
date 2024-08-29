@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dude.png">
+<SubTexture name="pop0000" x="1519" y="253" width="13" height="2" frameX="-118" frameY="-718" frameWidth="1280" frameHeight="720" />
+<SubTexture name="pop0001" x="1280" y="919" width="229" height="47" frameX="-39" frameY="-673" frameWidth="1280" frameHeight="720" />
+<SubTexture name="pop0002" x="1280" y="710" width="229" height="125" frameX="-39" frameY="-595" frameWidth="1280" frameHeight="720" />
+<SubTexture name="pop0003" x="1280" y="253" width="239" height="241" frameX="-39" frameY="-479" frameWidth="1280" frameHeight="720" />
+<SubTexture name="pop0004" x="239" y="983" width="239" height="256" frameX="-39" frameY="-464" frameWidth="1280" frameHeight="720" />
+<SubTexture name="pop0005" x="721" y="720" width="239" height="262" frameX="-39" frameY="-458" frameWidth="1280" frameHeight="720" />
+<SubTexture name="pop0006" x="0" y="720" width="239" height="263" frameX="-39" frameY="-457" frameWidth="1280" frameHeight="720" />
+<SubTexture name="tap0000" x="960" y="720" width="249" height="262" frameX="-31" frameY="-458" frameWidth="1280" frameHeight="720" />
+<SubTexture name="tap0001" x="331" y="1243" width="309" height="249" frameX="-6" frameY="-471" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0000" x="0" y="1243" width="331" height="252" frameX="-14" frameY="-468" frameWidth="1280" frameHeight="720" />
+<SubTexture name="tap0002" x="478" y="983" width="322" height="253" frameX="-15" frameY="-467" frameWidth="1280" frameHeight="720" />
+<SubTexture name="tap0003" x="800" y="983" width="319" height="253" frameX="-15" frameY="-467" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Dpear0000" x="1280" y="0" width="290" height="253" frameX="-26" frameY="-467" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Dpear0001" x="239" y="720" width="243" height="263" frameX="-36" frameY="-457" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Dpear0002" x="482" y="720" width="239" height="263" frameX="-39" frameY="-457" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Dpear0003" x="482" y="720" width="239" height="263" frameX="-39" frameY="-457" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Dpear0004" x="482" y="720" width="239" height="263" frameX="-39" frameY="-457" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Dpear0005" x="482" y="720" width="239" height="263" frameX="-39" frameY="-457" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Dpear0006" x="0" y="983" width="239" height="260" frameX="-39" frameY="-460" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Dpear0007" x="1280" y="494" width="239" height="216" frameX="-39" frameY="-504" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Dpear0008" x="1280" y="835" width="229" height="84" frameX="-39" frameY="-636" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Dpear0009" x="1280" y="966" width="72" height="14" frameX="-91" frameY="-706" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Dpear0010" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

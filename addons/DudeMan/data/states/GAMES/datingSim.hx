@@ -8,7 +8,9 @@ import flixel.addons.text.FlxTypeText;
 import flixel.ui.FlxButton;
 import funkin.backend.utils.DiscordUtil;
 import Sys;
+import flixel.FlxSubState;
 
+var blurShit = new CustomShader("blur");
 var camHUD = new FlxCamera(0, 0, 1280, 720);
 var cursorCam = new FlxCamera(0, 0, 1280, 720);
 
@@ -22,27 +24,31 @@ var character1State = "UNAPPEAR";
 var character2State = "UNAPPEAR";
 var state = "GAMES/datingSim";
 var otherChar = char1var;
+var nameBoxState = "";
+var notTalkOrShop = true;
+var inShop = false;
+var inTalk = false;
+var curScene = "none";
+var exception = false;
 var val1 = false;
 var val2 = false;
 var val3 = false;
 var val4 = false;
-var nameBoxState = "";
-var placeChosenFIRST = false;
-var placeToBe = "hallway1";
-var notTalkOrShop = true;
-var inShop = false;
-var inTalk = false;
-
-// actual like progression shit:
-
-var readyForLove = false;
-var yourMom = false;
-var beenHereBefore = false;
-var beenHereBefore2 = false;
-var neverTalkedToJanitor = true;
+var val1DoFade = false;
+var val2DoFade = false;
+var val3DoFade = false;
+var val4DoFade = false;
+var stopHere = true;
+var mother1 = false;
+var mother2 = false;
+var playerName = null;
 
 
 function create() {
+
+    FlxG.save.data.substateOpen = false;
+    FlxG.save.data.kathyBar = 0;
+    FlxG.save.data.showbar = null;
 
     FlxG.cameras.add(camHUD, false);
     camHUD.bgColor = 0x0000000;
@@ -167,7 +173,7 @@ function create() {
         add(shucks);
     }
 
-    button1text = new FlxText(792, 122, 400);
+    button1text = new FlxText(0, 0, 350);
     button1text.setFormat(Paths.font("COMIC.ttf"), 25, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
     button1text.color = 0xFF130022;
     button1text.antialiasing = false;
@@ -175,7 +181,7 @@ function create() {
     button1text.borderSize = 3;
     button1text.cameras = [camHUD];
 
-    button2text = new FlxText(792, 222, 400);
+    button2text = new FlxText(0, 0, 350);
     button2text.setFormat(Paths.font("COMIC.ttf"), 25, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
     button2text.color = 0xFF130022;
     button2text.antialiasing = false;
@@ -183,7 +189,7 @@ function create() {
     button2text.borderSize = 3;
     button2text.cameras = [camHUD];
 
-    button3text = new FlxText(792, 322, 400);
+    button3text = new FlxText(0, 0, 350);
     button3text.setFormat(Paths.font("COMIC.ttf"), 25, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
     button3text.color = 0xFF130022;
     button3text.antialiasing = false;
@@ -191,7 +197,7 @@ function create() {
     button3text.borderSize = 3;
     button3text.cameras = [camHUD];
 
-    button4text = new FlxText(792, 422, 400);
+    button4text = new FlxText(0, 0, 350);
     button4text.setFormat(Paths.font("COMIC.ttf"), 25, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
     button4text.color = 0xFF130022;
     button4text.antialiasing = false;
@@ -205,875 +211,1166 @@ function create() {
     darkness.cameras = [camHUD];
     add(darkness);
 
+    transitionImageBG = new FlxSprite(-1900, 0);
+    transitionImageBG.frames = Paths.getSparrowAtlas('shh/DATINGSIM/transition/switchingScenes');
+	transitionImageBG.antialiasing = false;
+    transitionImageBG.animation.addByPrefix('boil', 'boil', 6, true);
+    transitionImageBG.scrollFactor.set(0, 0);
+    transitionImageBG.animation.play('boil');
+    transitionImageBG.cameras = [camHUD];
+    add(transitionImageBG);
+
+    transitionImage = new FlxSprite(-1950, 0);
+    transitionImage.frames = Paths.getSparrowAtlas('shh/DATINGSIM/transition/0');
+    transitionImage.animation.addByPrefix('boil', 'boil', 6, true);
+    transitionImage.animation.play('boil');
+	transitionImage.antialiasing = false;
+    transitionImage.scrollFactor.set(0, 0);
+    transitionImage.cameras = [camHUD];
+    add(transitionImage);
+
     cursor = new FlxSprite(0, 0).loadGraphic(Paths.image('game/cursor'));
     cursor.cameras = [cursorCam];
     add(cursor);
-
+    
     loadGame();
 
     if (gameLoaded == false) {    
         new FlxTimer().start(0.35, function(timer) {
             canDoShitDude = true;
-            dialogueUpdateShit();
+            //dialogueUpdateShit();
+            sceneDialogChange("openingLOL", false);
         });
     }
 
 }
 
-function dialogueUpdateShit() {
+function sceneDialogChange(sceneToSwitchTo, doTransition) {
 
-    // FINISH UR CODE MELTY
-    
-        if (alongTheDialogue == 0) {
-            transitionShit("nameBoxPEAR", "");
-            ground = 'thatSchoolThatIHate';
-            char1var = 'dudeDating';
-            canDoShitDude = true;
-            characterStatus("APPEAR", char1);
-            name.text = 'DudeMan';
-            txtBro.resetText("Hi there my GOOD FRIEND!");
-            txtBro.start(0.03);
-        }
-    
-        if (alongTheDialogue == 1) {
-            canDoShitDude = true;
-            name.text = 'DudeMan';
-            txtBro.resetText("its me. the dude.. man!");
-            txtBro.start(0.03);
-        }
-    
-        if (alongTheDialogue == 2) {
-            canDoShitDude = true;
-            name.text = 'DudeMan';
-            txtBro.resetText("welcome to DUDE SCHOOL.");
-            txtBro.start(0.03);
-        }
-    
-        if (alongTheDialogue == 3) {
-            canDoShitDude = true;
-            name.text = 'DudeMan';
-            txtBro.resetText("its awesome and cool and awesome and cool and-");
-            txtBro.start(0.03);
-        }
-    
-    
-        if (alongTheDialogue == 4) {
-            char2var = 'Fruity/base';
-            canDoShitDude = true;
-            characterStatus("DEPRIO", char1);
-            characterStatus("APPEAR", char2);
-            name.text = 'Fruity';
-            txtBro.resetText("HI DUDEMAN ! HI THAT ONE GUY !");
-            txtBro.start(0.03);
-        }
-    
-        if (alongTheDialogue == 5) {
-            canDoShitDude = true;
-            characterStatus("PRIO", char1);
-            characterStatus("DEPRIO", char2);
-            characterStatus("SIDELEFT", char1);
-            characterStatus("SIDERIGHT", char2);
-            name.text = 'DudeMan';
-            txtBro.resetText("FRUITY. YOU ARE RUINING. MY. INTRO!!!!!!");
-            txtBro.start(0.03);
-        }
-    
-        if (alongTheDialogue == 6) {
-            canDoShitDude = true;
-            characterStatus("DEPRIO", char1);
-            characterStatus("PRIO", char2);
-            name.text = 'Fruity';
-            txtBro.resetText("BUT I JUST WANTED TO SAY HI :c");
-            txtBro.start(0.03);
-        }
-    
-        if (alongTheDialogue == 7) {
-            canDoShitDude = true;
-            characterStatus("PRIO", char1);
-            characterStatus("DEPRIO", char2);
-            name.text = 'DudeMan';
-            txtBro.resetText("i DONT care lil bro");
-            txtBro.start(0.03);
-        }
-    
-        if (alongTheDialogue == 8) {
-            canDoShitDude = true;
-            characterStatus("MIDDLE", char1);
-            name.text = 'DudeMan';
-            txtBro.resetText("AS i was saying.");
-            txtBro.start(0.03);
-        }
-    
-        if (alongTheDialogue == 9) {
-            canDoShitDude = true;
-            characterStatus("MIDDLE", char1);
-            name.text = 'DudeMan';
-            txtBro.resetText("Welcome to DUDE SCHOOL");
-            txtBro.start(0.03);
-        }
-    
-        if (alongTheDialogue == 10) {
-            canDoShitDude = true;
-            characterStatus("MIDDLE", char1);
-            name.text = 'DudeMan';
-            txtBro.resetText("somewhere here, you'll find someone to LOVE <3333");
-            txtBro.start(0.03);
-        }
-    
-        if (alongTheDialogue == 11) {
-            canDoShitDude = true;
-            characterStatus("DEPRIO", char1);
-            characterStatus("PRIO", char2);
-            characterStatus("SIDELEFT", char1);
-            characterStatus("MIDDLE", char2);
-            name.text = 'Fruity';
-            txtBro.resetText("NO THEY WONT !! c:");
-            txtBro.start(0.03);
-        } 
-        
-        if (alongTheDialogue == 12) {
-            canDoShitDude = true;
-            characterStatus("PRIO", char1);
-            characterStatus("DEPRIO", char2);
-            characterStatus("MIDDLE", char1);
-            characterStatus("SIDERIGHT", char2);
-            name.text = 'DudeMan';
-            txtBro.resetText("FRUITY SHUT UP");
-            txtBro.start(0.03);
-        }
-    
-        if (alongTheDialogue == 13) {
-            canDoShitDude = true;
-            characterStatus("UNAPPEAR", char2);
-            name.text = 'DudeMan';
-            txtBro.resetText("Now, friend of mine. pal.");
-            txtBro.start(0.03);
-        }
-    
-        if (alongTheDialogue == 13) {
-            canDoShitDude = false;
-            name.text = 'DudeMan';
-            txtBro.resetText("Are you ready to take step into my.,,. school of love....?");
-            txtBro.start(0.03);
-            val3 = true;
-            val4 = false;
-            buttonText3Be("Yeah, Man !");
-            buttonText4Be("No, dude.");
-            buttonAdd(3);
-            buttonAdd(4);
-        }
-    
-        if (alongTheDialogue == 14 && readyForLove == false) {
-            canDoShitDude = true;
-            music.pause();
-            name.text = 'DudeMan';
-            txtBro.resetText("oh");
-            txtBro.start(0.03);
-        }
-    
-        if (alongTheDialogue == 15 && readyForLove == false) {
-            FlxG.switchState(new ModState("GAMES/datingSimTitle"));
-        }
-    
-        if (alongTheDialogue == 14 && readyForLove == true) {
-            canDoShitDude = true;
-            name.text = 'DudeMan';
-            txtBro.resetText("oh yeah baby. this is happening. its just getting started.");
-            txtBro.start(0.03);
-        }
-    
-        if (alongTheDialogue == 15 && readyForLove == true) {
-            canDoShitDude = true;
-            name.text = 'DudeMan';
-            txtBro.resetText("okay come with me then bestie");
-            txtBro.start(0.03);
-        }
+    alongTheDialogue = 0;
 
-        if (alongTheDialogue == 16) {
-            canDoShitDude = false;
-            transitionShit("switchLocation", "hallway1");
-        }
-
-        if (alongTheDialogue == 17) {
-            canDoShitDude = true;
-            transitionShit("nameBoxPEAR", "");
-            characterStatus("APPEAR", char1);
-            name.text = 'DudeMan';
-            txtBro.resetText("my school");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 18) {
-            canDoShitDude = true;
-            characterStatus("APPEAR", char1);
-            name.text = 'DudeMan';
-            txtBro.resetText("im realizing that u actually have to meet people to FIND LOVE <3, so im going to let you do that\n\n\nAuf Wiedersehen, Kumpel! Ich hoffe, du kommst zugrunde!");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 19) {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            characterStatus("UNAPPEAR", char1);
-            name.text = '';
-            txtBro.resetText("DudeMan climbs into a locker and vanishes, its up to you now, I guess!");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 20) {
-            canDoShitDude = false;
-            transitionShit("nameBoxDPEAR", "");
-            characterStatus("UNAPPEAR", char1);
-            name.text = '';
-            placeToBe = "hallway1";
-            val1 = true;
-            val2 = true;
-            val3 = true;
-            val4 = true;
-            buttonText1Be("yoiur moms ho use.");
-            buttonText2Be("Keep going forwards");
-            buttonText3Be("Class on the Left !");
-            buttonText4Be("Class on the Right !");
-            buttonAdd(1);
-            buttonAdd(2);
-            buttonAdd(3);
-            buttonAdd(4);
-            txtBro.resetText("Where would you like to go ?");
-            txtBro.start(0.03);
-        }
-
-//      YOUR MOM
-
-        if (alongTheDialogue == 21 && placeToBe == "hallway1" && beenHereBefore == false) {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            characterStatus("UNAPPEAR", char1);
-            name.text = '';
-            txtBro.resetText("haha you're SO FUCKING FUNNY MAN");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 22 && placeToBe == "hallway1" && beenHereBefore == false) {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            characterStatus("UNAPPEAR", char1);
-            name.text = '';
-            txtBro.resetText("I HOPE U DIE BRO RRRAAAAH IM THE BURGER DEMON FUCK YOU");
-            txtBro.start(0.03);
-            yourMom = true;
-        }
-
-        if (alongTheDialogue == 21 && placeToBe == "hallway1" && beenHereBefore == true && beenHereBefore2 == false) {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            characterStatus("UNAPPEAR", char1);
-            name.text = '';
-            txtBro.resetText("dude are you fucking serious");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 22 && placeToBe == "hallway1" && beenHereBefore == true && beenHereBefore2 == false) {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            characterStatus("UNAPPEAR", char1);
-            name.text = '';
-            txtBro.resetText("YOU'RE ABUSING A BUG TO ASK TO SEE MY MOM AGAIN ????");
-            txtBro.start(0.03);
-            yourMom = false;
-        }
-        
-        if (alongTheDialogue == 23 && placeToBe == "hallway1" && yourMom == false && beenHereBefore == true) {
-            canDoShitDude = true;
-            alongTheDialogue = 22;
-            transitionShit("nameBoxDPEAR", "");
-            characterStatus("UNAPPEAR", char1);
-            name.text = '';
-            txtBro.resetText("FUCK YOU");
-            txtBro.start(0.03);
-            yourMom = true;
-        }
-
-        if (alongTheDialogue == 23 && yourMom == true && placeToBe == "hallway1") {
-            canDoShitDude = false;
-            alongTheDialogue = 20;
-            transitionShit("nameBoxDPEAR", "");
-            characterStatus("UNAPPEAR", char1);
-            name.text = '';
-            placeToBe = "hallway1";
-            val2 = true;
-            val3 = true;
-            val4 = true;
-            buttonText2Be("Keep going forwards");
-            buttonText3Be("Class on the Left !");
-            buttonText4Be("Class on the Right !");
-            buttonAdd(2);
-            buttonAdd(3);
-            buttonAdd(4);
-            txtBro.resetText("Where would you like to go ?");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 21 && placeToBe == "hallway1" && beenHereBefore2 == true) {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            characterStatus("UNAPPEAR", char1);
-            name.text = '';
-            txtBro.resetText("i hope you rot");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 22 && placeToBe == "hallway1" && beenHereBefore2 == true) {
-            Sys.exit();
-        }
-
-//      CLASS2
-
-        if (alongTheDialogue == 21 && placeToBe == "class2") {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            transitionShit("screenFade", "");
-            name.text = '';
-            txtBro.resetText("You enter the classroom,");
-            txtBro.start(0.03);
-        }
-        
-        if (alongTheDialogue == 22 && placeToBe == "class2") {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            name.text = '';
-            txtBro.resetText("It smells like,.. smellified autism.");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 23 && placeToBe == "class2") {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            name.text = '';
-            ground = "Class2";
-            txtBro.resetText("didnt know that was even possible");
-            txtBro.start(0.03);
-        }
-        
-        if (alongTheDialogue == 24 && placeToBe == "class2") {
-            canDoShitDude = true;
-            transitionShit("nameBoxPEAR", "");
-            transitionShit("screenUnfade", "");
-            char1var = 'Fruity/Base';
-            char2var = 'Zee/Base';
-            characterStatus("SIDELEFT", char1);
-            characterStatus("SIDERIGHT", char2);
-            characterStatus("PRIO", char1);
-            characterStatus("DEPRIO", char2);
-            name.text = 'Fruity';
-            txtBro.resetText("NO ZEE U ARENT DOING IT RIGHT U GOTTA DO THE LIGHTER COLORS FIRST");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 25 && placeToBe == "class2") {
-            canDoShitDude = true;
-            transitionShit("nameBoxPEAR", "");
-            transitionShit("screenUnfade", "");
-            char1var = 'Fruity/Base';
-            char2var = 'Zee/Base';
-            characterStatus("SIDELEFT", char1);
-            characterStatus("SIDERIGHT", char2);
-            characterStatus("DEPRIO", char1);
-            characterStatus("PRIO", char2);
-            name.text = 'Zee';
-            txtBro.resetText("THIZ IZ CONFUZING!!! WATERCOLOR IS CONFUZING!!!");
-            txtBro.start(0.03);
-        }
-       
-//      CLASS1BROOKLYN
-
-    if (alongTheDialogue == 21 && placeToBe == "class1BROOKLYN") {
-        canDoShitDude = true;
+    if (doTransition == true) {
+        // TRANSITION LINE using this for when i need to ctrl+F to find this
+        transitionImage.frames = Paths.getSparrowAtlas('shh/DATINGSIM/transition/'+FlxG.random.int(0, 2));
+        transitionImage.animation.addByPrefix('boil', 'boil', 6, true);
+        transitionImage.animation.play('boil');
+        FlxTween.tween(transitionImageBG, {x: -150}, 1.5, {ease: FlxEase.quartOut});
+        FlxTween.tween(transitionImage, {x: -150}, 1.5, {ease: FlxEase.quartOut});
         transitionShit("nameBoxDPEAR", "");
-        transitionShit("screenFade", "");
-        name.text = '';
-        txtBro.resetText("You enter the classroom,");
-        txtBro.start(0.03);
-    }
-
-    if (alongTheDialogue == 22 && placeToBe == "class1BROOKLYN") {
-        canDoShitDude = true;
-        transitionShit("nameBoxDPEAR", "");
-        name.text = '';
-        ground = "Class1";
-        txtBro.resetText("It smells like,.. jobs?? tf that aint supposed to happen :sob:");
-        txtBro.start(0.03);
-    }
-
-    if (alongTheDialogue == 23 && placeToBe == "class1BROOKLYN") {
-        canDoShitDude = true;
-        transitionShit("nameBoxPEAR", "");
-        transitionShit("screenUnfade", "");
-        char1var = 'BrooklynGuy';
-        characterStatus("APPEAR", char1);
-        name.text = 'Brooklyn Guy';
-        txtBro.resetText("Oh boy I sure do LOVE my jobs class");
-        txtBro.start(0.03);
-    }
-
-    if (alongTheDialogue == 24 && placeToBe == "class1BROOKLYN") {
-        canDoShitDude = true;
-        transitionShit("nameBoxPEAR", "");
-        transitionShit("screenUnfade", "");
-        char1var = 'BrooklynGuy';
-        characterStatus("APPEAR", char1);
-        name.text = 'Brooklyn Guy';
-        txtBro.resetText("I love jobs :grin:");
-        txtBro.start(0.03);
-    }
-
-    if (alongTheDialogue == 25 && placeToBe == "class1BROOKLYN") {
-        canDoShitDude = true;
-        name.text = 'You';
-        txtBro.resetText("HOLY CRAP LOUIS ITS BROOKLYN T. GUY");
-        txtBro.start(0.03);
-    }
-
-    if (alongTheDialogue == 26 && placeToBe == "class1BROOKLYN") {
-        canDoShitDude = true;
-        name.text = 'Brooklyn Guy';
-        txtBro.resetText("Brooklyn T. Guy");
-        txtBro.start(0.03);
-    }
-
-    if (alongTheDialogue == 27 && placeToBe == "class1BROOKLYN") {
-        canDoShitDude = true;
-        name.text = 'You';
-        txtBro.resetText("This fucking ROCKS.");
-        txtBro.start(0.03);
-    }
-
-    if (alongTheDialogue == 28 && placeToBe == "class1BROOKLYN") {
-        canDoShitDude = true;
-        name.text = 'Brooklyn Guy';
-        txtBro.resetText("Well Brooklyn T. Guy. you did it again.");
-        txtBro.start(0.03); 
-    }
-
-    if (alongTheDialogue == 29 && placeToBe == "class1BROOKLYN") {
-        canDoShitDude = true;
-        transitionShit("nameBoxDPEAR", "");
-        transitionShit("screenFade", "");
-        name.text = '';
-        txtBro.resetText("you BLACK OUT lmao\n\nbut ur like awake now so yeah does a kissy face");
-        txtBro.start(0.03);
-    }
-
-    if (alongTheDialogue == 30 && placeToBe == "class1BROOKLYN") {
-        alongTheDialogue = 22;
-        placeToBe = "class1";
-    }
-    
-
-//      CLASS1
-
-        if (alongTheDialogue == 21 && placeToBe == "class1") {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            transitionShit("screenFade", "");
-            name.text = '';
-            txtBro.resetText("You enter the classroom,");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 22 && placeToBe == "class1") {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            name.text = '';
-            ground = "Class1";
-            txtBro.resetText("It smells like,.. blood?");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 23 && placeToBe == "class1") {
-            canDoShitDude = true;
+        new FlxTimer().start(2.5, function(timer) {
+            curScene = sceneToSwitchTo;
+            trace("transitioning to: "+curScene);
+            FlxG.sound.play(Paths.sound('datingSim/contSFX'), 1);
+            FlxTween.tween(transitionImageBG, {x: 1900}, 1.5, {ease: FlxEase.quartIn});
+            FlxTween.tween(transitionImage, {x: 1950}, 1.5, {ease: FlxEase.quartIn});
             transitionShit("nameBoxPEAR", "");
-            transitionShit("screenUnfade", "");
-            char1var = 'Kathy/Base';
-            characterStatus("APPEAR", char1);
-            name.text = 'Kathy';
-            txtBro.resetText("Oh boy I sure do LOVE my blood class");
-            txtBro.start(0.03);
-        }
+            new FlxTimer().start(0.2, function(timer) {
+                sceneSystem(sceneToSwitchTo);
+            });
+            new FlxTimer().start(2.5, function(timer) {
+                transitionImageBG.x = -1900;
+                transitionImage.x = -1950;
+            });
+        });
+    }
 
-        if (alongTheDialogue == 24 && placeToBe == "class1") {
-            canDoShitDude = true;
-            char1var = 'Kathy/Tired';
-            characterStatus("APPEAR", char1);
-            name.text = 'Kathy';
-            txtBro.resetText("...");
-            txtBro.start(0.03);
-        }
+    if (doTransition == false) {
+        curScene = sceneToSwitchTo;
+        trace("moved to room/scene: "+curScene);
+        sceneSystem(sceneToSwitchTo);
+    }
 
-        if (alongTheDialogue == 25 && placeToBe == "class1") {
-            canDoShitDude = true;
-            char1var = 'Kathy/Tired';
-            characterStatus("APPEAR", char1);
-            name.text = 'Kathy';
-            txtBro.resetText("Who are you?");
-            txtBro.start(0.03);
-        }
+}
 
-        if (alongTheDialogue == 26 && placeToBe == "class1") {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            char1var = 'Kathy/Tired';
-            characterStatus("APPEAR", char1);
-            name.text = '';
-            txtBro.resetText("this dialogue doesnt exist you're seeing things");
-            txtBro.start(0.03);
-        }
+// THE SHITTY ASS OLD SYSTEM HAS DIED FELLAS. WE'RE ONTO A SCENE SYSTEM NOW!!!!
+// you can find it in "OLDDATINGSIMSYTEM.hx in the SCRAPPED folder"
 
-        if (alongTheDialogue == 27 && placeToBe == "class1") {
-            canDoShitDude = true;
-            transitionShit("nameBoxPEAR", "");
-            char1var = 'Kathy/Happy';
-            characterStatus("APPEAR", char1);
-            name.text = 'Kathy';
-            txtBro.resetText("oh, [NONEXISTENT NAME], thats a nice name");
-            txtBro.start(0.03);
-        }
+function sceneSystem(scene) {
 
-        if (alongTheDialogue == 28 && placeToBe == "class1") {
-            canDoShitDude = true;
-            char1var = 'Kathy/Confused';
-            characterStatus("APPEAR", char1);
-            name.text = 'Kathy';
-            txtBro.resetText("how did you uh... get here? ive never seen you in this school before");
-            txtBro.start(0.03);
-        }
+    stopHere = false;
 
-        if (alongTheDialogue == 29 && placeToBe == "class1") {
-            canDoShitDude = true;
-            char1var = 'Kathy/Angry';
-            characterStatus("APPEAR", char1);
-            name.text = 'You';
-            txtBro.resetText("The Door");
-            txtBro.start(0.03);
-        }
+    for (buttons in [button1text, button2text, button3text, button4text]) {
+        buttons.x = 813;
+        buttons.scale.set(1, 1);
+    }
 
-        if (alongTheDialogue == 30 && placeToBe == "class1") {
-            canDoShitDude = true;
-            char1var = 'Kathy/Angry';
-            characterStatus("APPEAR", char1);
-            name.text = 'Kathy';
-            txtBro.resetText("wow. you're so funny");
-            txtBro.start(0.03);
-        }
+        button1text.y = 122;
+        button2text.y = 222;
+        button3text.y = 322;
+        button4text.y = 422;
 
-        if (alongTheDialogue == 31 && placeToBe == "class1") {
-            canDoShitDude = true;
-            char1var = 'Kathy/Ew';
-            characterStatus("SIDERIGHT", char1);
-            characterStatus("FLYIN", char2);
-            char2.x = 375;
-            characterStatus("DEPRIO", char1);
-            char2var = 'dudeDating';
-            name.text = 'DudeMan';
-            txtBro.resetText("hello friends are you liking my awesome sudduesxchohol");
-            txtBro.start(0.03);
-        }
+    switch (scene) {
 
-        if (alongTheDialogue == 32 && placeToBe == "class1") {
-            canDoShitDude = true;
-            name.text = 'DudeMan';
-            characterStatus("SIDELEFT", char2);
-            txtBro.resetText("wait");
-            txtBro.start(0.03);
-        }
+        case "openingLOL":
 
-        if (alongTheDialogue == 33 && placeToBe == "class1") {
-            canDoShitDude = true;
-            name.text = 'DudeMan';
-            char1var = 'Kathy/oh';
-            txtBro.resetText("Kathy why the FUCK do you look like that");
-            txtBro.start(0.03);
-        }
+            if (alongTheDialogue == 0) {
+                transitionShit("nameBoxPEAR", "");
+                ground = 'thatSchoolThatIHate';
+                char1var = 'dudeDating';
+                canDoShitDude = true;
+                characterStatus("APPEAR", char1);
+                name.text = 'DudeMan';
+                txtBro.resetText("Hi there my GOOD FRIEND!");
+                txtBro.start(0.03);
+                removeButtons();
+            }
+
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                name.text = 'DudeMan';
+                txtBro.resetText("its me. the dude.. man!");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 2) {
+                canDoShitDude = true;
+                name.text = 'DudeMan';
+                txtBro.resetText("welcome to DUDE SCHOOL.");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 3) {
+                canDoShitDude = true;
+                name.text = 'DudeMan';
+                txtBro.resetText("its awesome and cool and awesome and cool and-");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 4) {
+                char2var = 'Fruity/base';
+                canDoShitDude = true;
+                characterStatus("DEPRIO", char1);
+                characterStatus("APPEAR", char2);
+                name.text = 'Fruity';
+                txtBro.resetText("HI DUDEMAN ! HI THAT ONE GUY !");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 5) {
+                canDoShitDude = true;
+                characterStatus("PRIO", char1);
+                characterStatus("DEPRIO", char2);
+                characterStatus("SIDELEFT", char1);
+                characterStatus("SIDERIGHT", char2);
+                name.text = 'DudeMan';
+                txtBro.resetText("FRUITY. YOU ARE RUINING. MY. INTRO!!!!!!");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 6) {
+                canDoShitDude = true;
+                characterStatus("DEPRIO", char1);
+                characterStatus("PRIO", char2);
+                name.text = 'Fruity';
+                txtBro.resetText("BUT I JUST WANTED TO SAY HI :c");
+                txtBro.start(0.03);
+            }
         
-        if (alongTheDialogue == 34 && placeToBe == "class1") {
-            canDoShitDude = true;
-            characterStatus("PRIO", char1);
-            characterStatus("DEPRIO", char2);
-            name.text = 'Kathy';
-            txtBro.resetText("Cuz i can");
-            txtBro.start(0.03);
-        }
+            if (alongTheDialogue == 7) {
+                canDoShitDude = true;
+                characterStatus("PRIO", char1);
+                characterStatus("DEPRIO", char2);
+                name.text = 'DudeMan';
+                txtBro.resetText("i DONT care lil bro");
+                txtBro.start(0.03);
+            }
         
-        if (alongTheDialogue == 35 && placeToBe == "class1") {
-            canDoShitDude = true;
-            characterStatus("DEPRIO", char1);
-            characterStatus("PRIO", char2);
-            name.text = 'DudeMan';
-            txtBro.resetText("KATHY");
-            txtBro.start(0.03);
-        }
-               
-        if (alongTheDialogue == 36 && placeToBe == "class1") {
-            canDoShitDude = true;
-            name.text = 'DudeMan';
-            txtBro.resetText("YOU'RE NOT SUPPOSED TO LOOK LIKE THAT");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 37 && placeToBe == "class1") {
-            canDoShitDude = true;
-            characterStatus("PRIO", char1);
-            characterStatus("DEPRIO", char2);
-            name.text = 'Kathy';
-            txtBro.resetText("Cuz i can");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 38 && placeToBe == "class1") {
-            canDoShitDude = true;
-            characterStatus("DEPRIO", char1);
-            characterStatus("PRIO", char2);
-            name.text = 'DudeMan';
-            txtBro.resetText("I HATE YOU");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 39 && placeToBe == "class1") {
-            canDoShitDude = true;
-            characterStatus("PRIO", char1);
-            characterStatus("DEPRIO", char2);
-            name.text = 'Kathy';
-            txtBro.resetText("No you dont");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 40 && placeToBe == "class1") {
-            canDoShitDude = true;
-            characterStatus("DEPRIO", char1);
-            characterStatus("PRIO", char2);
-            name.text = 'DudeMan';
-            txtBro.resetText("You're right");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 41 && placeToBe == "class1") {
-            canDoShitDude = true;
-            characterStatus("FLYOUT", char2);
-            name.text = '';
-            txtBro.resetText("");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 42 && placeToBe == "class1") {
-            canDoShitDude = true;
-            characterStatus("MIDDLE", char1);
-            characterStatus("PRIO", char1);
-            name.text = 'Kathy';
-            txtBro.resetText("Good Riddance I hate that guy");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 43 && placeToBe == "class1") {
-            canDoShitDude = true;
-            characterStatus("MIDDLE", char1);
-            characterStatus("PRIO", char1);
-            name.text = 'Kathy';
-            txtBro.resetText("");
-            txtBro.start(0.03);
-        }
-
-//      FORWARDS
-
-        if (alongTheDialogue == 21 && placeToBe == "hallway2") {
-            transitionShit("nameBoxDPEAR", "");
-            canDoShitDude = false;
-            transitionShit("switchLocation", "Hallway2");
-        }
-
-        if (alongTheDialogue == 22 && placeToBe == "hallway2") {
-            transitionShit("nameBoxDPEAR", "");
-            canDoShitDude = true;
-            characterStatus("UNAPPEAR", char1);
-            name.text = '';
-            buttonText2Be("Nah bro take me back");
-            buttonText3Be("Janitor's Closet");
-            buttonText4Be("Class on the Right");
-            buttonAdd(2);
-            buttonAdd(3);
-            buttonAdd(4);
-            txtBro.resetText("Theres two doors you can go through");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 23 && placeToBe == "hallway2") {
-            transitionShit("nameBoxDPEAR", "");
-            alongTheDialogue = 19;
-            transitionShit("switchLocation", "Hallway1");
-        }
-
-//      JANITORS CLOSET
-
-        if (alongTheDialogue == 23 && placeToBe == "JanitorCloset") {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            transitionShit("screenFade", "");
-            name.text = '';
-            txtBro.resetText("You enter the janitors closet,");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 24 && placeToBe == "JanitorCloset" && neverTalkedToJanitor == true) {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            name.text = '';
-            txtBro.resetText("it smells of,.., windex");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 25 && placeToBe == "JanitorCloset" && neverTalkedToJanitor == true) {
-            canDoShitDude = true;
-            transitionShit("nameBoxDPEAR", "");
-            name.text = '';
-            ground = 'JanitorCloset';
-            txtBro.resetText("Who up washing my windows");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 26 && placeToBe == "JanitorCloset" && neverTalkedToJanitor == true) {
-            canDoShitDude = true;
-            transitionShit("screenUnfade", "");
-            transitionShit("nameBoxDPEAR", "");
-            name.text = '';
-            txtBro.resetText("You may be the first person in this school to see what the janitors closet looks like, good for you!");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 27 && placeToBe == "JanitorCloset" && neverTalkedToJanitor == true) {
-            transitionShit("nameBoxPEAR", "");
-            char1var = 'jimoJanitor';
-            canDoShitDude = true;
-            characterStatus("APPEAR", char1);
-            name.text = 'Jimbo T. Janitor';
-            txtBro.resetText("");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 28 && placeToBe == "JanitorCloset" && neverTalkedToJanitor == true) {
-            transitionShit("nameBoxPEAR", "");
-            char1var = 'jimoJanitor';
-            canDoShitDude = true;
-            characterStatus("APPEAR", char1);
-            name.text = 'Jimbo T. Janitor';
-            txtBro.resetText("");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 29 && placeToBe == "JanitorCloset" && neverTalkedToJanitor == true) {
-            transitionShit("nameBoxPEAR", "");
-            char1var = 'jimoJanitor';
-            canDoShitDude = true;
-            characterStatus("APPEAR", char1);
-            name.text = 'Jimbo T. Janitor';
-            txtBro.resetText("Well there, partner! this is for Janitors only!");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 30 && placeToBe == "JanitorCloset" && neverTalkedToJanitor == true) {
-            transitionShit("nameBoxPEAR", "");
-            char1var = 'jimoJanitor';
-            buttonText3Be("idfk");
-            buttonText4Be("I like windex smell");
-            buttonAdd(3);
-            buttonAdd(4);
-            characterStatus("APPEAR", char1);
-            name.text = 'Jimbo T. Janitor';
-            txtBro.resetText("What're you doin here?");
-            txtBro.start(0.03);
-        }
-
-        if (alongTheDialogue == 31 && placeToBe == "JanitorCloset" && neverTalkedToJanitor == true) {
-            transitionShit("nameBoxPEAR", "");
-            char1var = 'jimoJanitor';
-            canDoShitDude = true;
-            characterStatus("APPEAR", char1);
-            name.text = 'Jimbo T. Janitor';
-            txtBro.resetText("thats fair");
-            txtBro.start(0.03);
-            neverTalkedToJanitor = false;
-            alongTheDialogue = 23;
-        }
-
-        if (alongTheDialogue == 24 && placeToBe == "JanitorCloset" && neverTalkedToJanitor == false) {
-            ground = 'JanitorCloset';
-            transitionShit("screenUnfade", "");
-            transitionShit("nameBoxPEAR", "");
-            char1var = 'jimoJanitor';
-            canDoShitDude = false;
-            characterStatus("APPEAR", char1);
-            buttonText2Be("Yes!");
-            buttonText3Be("Could we just talk?");
-            buttonText4Be("No thanks, Man");
-            buttonAdd(2);
-            buttonAdd(3);
-            buttonAdd(4);
-            name.text = 'Jimbo T. Janitor';
-            txtBro.resetText("ya wanna view my wares, partner?");
-            txtBro.start(0.03);
-        } 
-
-        if (alongTheDialogue == 25 && placeToBe == "JanitorCloset" && neverTalkedToJanitor == false && inTalk == true) {
-            ground = 'JanitorCloset';
-            char1var = 'jimoJanitor';
-            canDoShitDude = false;
-            characterStatus("APPEAR", char1);
-            buttonText1Be("School Secrets?");
-            buttonText2Be("Opinions on Ppl?");
-            buttonText3Be("Supplier?");
-            buttonText4Be("[More Options]");
-            buttonAdd(1);
-            buttonAdd(2);
-            buttonAdd(3);
-            buttonAdd(4);
-            name.text = 'Jimbo T. Janitor';
-            txtBro.resetText("oh, alrigh, 'bout what?");
-            txtBro.start(0.03);
-        } 
+            if (alongTheDialogue == 8) {
+                canDoShitDude = true;
+                characterStatus("MIDDLE", char1);
+                name.text = 'DudeMan';
+                txtBro.resetText("AS i was saying.");
+                txtBro.start(0.03);
+            }
         
-        if (alongTheDialogue == 25 && placeToBe == "JanitorCloset" && neverTalkedToJanitor == false && notTalkOrShop == true) {
-            transitionShit("nameBoxPEAR", "");
-            char1var = 'jimoJanitor';
-            canDoShitDude = true;
-            name.text = 'Jimbo T. Janitor';
-            txtBro.resetText("ok");
-            txtBro.start(0.03);
-        } 
+            if (alongTheDialogue == 9) {
+                canDoShitDude = true;
+                characterStatus("MIDDLE", char1);
+                name.text = 'DudeMan';
+                txtBro.resetText("Welcome to DUDE SCHOOL");
+                txtBro.start(0.03);
+            }
+        
+            if (alongTheDialogue == 10) {
+                canDoShitDude = true;
+                characterStatus("MIDDLE", char1);
+                name.text = 'DudeMan';
+                txtBro.resetText("somewhere here, you'll find someone to LOVE <3333");
+                txtBro.start(0.03);
+            }
+        
+            if (alongTheDialogue == 11) {
+                canDoShitDude = true;
+                characterStatus("DEPRIO", char1);
+                characterStatus("PRIO", char2);
+                characterStatus("SIDELEFT", char1);
+                characterStatus("MIDDLE", char2);
+                name.text = 'Fruity';
+                txtBro.resetText("NO THEY WONT !! c:");
+                txtBro.start(0.03);
+            } 
+            
+            if (alongTheDialogue == 12) {
+                canDoShitDude = true;
+                characterStatus("PRIO", char1);
+                characterStatus("DEPRIO", char2);
+                characterStatus("MIDDLE", char1);
+                characterStatus("SIDERIGHT", char2);
+                name.text = 'DudeMan';
+                txtBro.resetText("FRUITY SHUT UP");
+                txtBro.start(0.03);
+            }
+        
+            if (alongTheDialogue == 13) {
+                canDoShitDude = true;
+                characterStatus("UNAPPEAR", char2);
+                name.text = 'DudeMan';
+                txtBro.resetText("Now, friend of mine. pal.");
+                txtBro.start(0.03);
+            }
+        
+            if (alongTheDialogue == 14) {
+                stopHere = true;
+                //transitionShit("switchLocation", "openingLOL");
+                canDoShitDude = false;
+                name.text = 'DudeMan';
+                txtBro.resetText("Are you ready to take step into my.,,. school of love....?");
+                txtBro.start(0.03);
+                val3DoFade = false;
+                val4DoFade = false;
+                buttonText3Be("Yeah, Man !");
+                buttonText4Be("No, dude.");
+                buttonAdd(3);
+                buttonAdd(4);
+            }
 
-        if (alongTheDialogue == 26 && placeToBe == "JanitorCloset" && neverTalkedToJanitor == false && notTalkOrShop == true) {
-            transitionShit("nameBoxDPEAR", "");
-            canDoShitDude = false;
-            placeToBe = "hallway2";
-            transitionShit("switchLocation", "Hallway2");
-            alongTheDialogue = 21;
-        } 
 
+        case "No, dude.":
 
-        if (FlxG.save.data.imFromBrooklyn == true) {
-            char1var = "BrooklynGuy";
-            char2var = "BrooklynGuy";
-            name.text = 'Brooklyn Guy';
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                music.pause();
+                name.text = 'DudeMan';
+                txtBro.resetText("oh");
+                txtBro.start(0.03);
+            }
+        
+            if (alongTheDialogue == 1) {
+                stopHere = true;
+                FlxG.switchState(new ModState("GAMES/datingSimTitle"));
+            }
+
+        case "Yeah, Man !":
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                name.text = 'DudeMan';
+                txtBro.resetText("oh yeah baby. this is happening. its just getting started.");
+                txtBro.start(0.03);
+            }
+        
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                name.text = 'DudeMan';
+                txtBro.resetText("okay come with me then bestie");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 2) {
+                stopHere = true;
+                canDoShitDude = false;
+                // transitionShit("switchLocation", "hallway1OPENING");
+                sceneDialogChange("hallway1OPENING", true);
+            }
+        
+        case "hallway1OPENING":
+
+            ground = "hallway1";
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                transitionShit("nameBoxPEAR", "");
+                characterStatus("APPEAR", char1);
+                name.text = 'DudeMan';
+                txtBro.resetText("my school");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                characterStatus("APPEAR", char1);
+                name.text = 'DudeMan';
+                txtBro.resetText("im realizing that u actually have to meet people to FIND LOVE <3, so im going to let you do that\n\n\nAuf Wiedersehen, Kumpel! Ich hoffe, du kommst zugrunde!");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 2) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                characterStatus("UNAPPEAR", char1);
+                name.text = '';
+                txtBro.resetText("DudeMan climbs into a locker and vanishes, its up to you now, I guess!");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 3) {
+                FlxG.save.data.tutorialToShow = "datingSimLOVEMETER";
+                openSubState(new ModSubState("Functionality/Tutorial"));
+                camera.addShader(blurShit);
+                camHUD.addShader(blurShit);
+                stopHere = true;
+                sceneDialogChange("choice1DEFAULT", false);
+            }
+
+        case "choice1DEFAULT":
+
+            ground = "hallway1";
+
+            if (alongTheDialogue == 0) {
+                stopHere = true;
+                canDoShitDude = false;
+                transitionShit("nameBoxDPEAR", "");
+                characterStatus("UNAPPEAR", char1);
+                name.text = '';
+                exception = true;
+                if (mother1 == true) {
+                    val1 = "mother2";
+                }
+                else if (mother2 == true) {
+                    val1 = "mother3";
+                }
+                else {
+                    val1 = "mother1";
+                }
+                val2 = "hallway2OPENING"; 
+                val3 = "KathyRoomOPENING";
+                val4 = "FruityRoomOPENING";
+                val1DoFade = false;
+                val2DoFade = true;
+                val3DoFade = false;
+                val4DoFade = false;
+                buttonText1Be("yoiur moms ho use.");
+                buttonText2Be("Keep going forwards");
+                buttonText3Be("Class on the Left !");
+                buttonText4Be("Class on the Right !");
+                buttonAdd(1);
+                buttonAdd(2);
+                buttonAdd(3);
+                buttonAdd(4);
+                txtBro.resetText("Where would you like to go ?");
+                txtBro.start(0.03);
+            }
+
+        case "mother1":
+
+            ground = "hallway1";
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                characterStatus("UNAPPEAR", char1);
+                name.text = '';
+                txtBro.resetText("haha you're SO FUCKING FUNNY MAN");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                characterStatus("UNAPPEAR", char1);
+                name.text = '';
+                txtBro.resetText("I HOPE U DIE BRO RRRAAAAH IM THE BURGER DEMON FUCK YOU");
+                txtBro.start(0.03);
+                mother1 = true;
+            }
+
+            if (alongTheDialogue == 2) {
+                stopHere = true;
+                sceneDialogChange("choice1NOMOTHER", false);
+            }
+                
+                
+    
+        case "mother2":
+
+            ground = "hallway1";
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                mother1 = false;
+                transitionShit("nameBoxDPEAR", "");
+                characterStatus("UNAPPEAR", char1);
+                name.text = '';
+                txtBro.resetText("dude are you fucking serious");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                characterStatus("UNAPPEAR", char1);
+                name.text = '';
+                txtBro.resetText("YOU'RE ABUSING A BUG TO ASK TO SEE MY MOM AGAIN ????");
+                txtBro.start(0.03);
+            }
+            
+            if (alongTheDialogue == 2) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                characterStatus("UNAPPEAR", char1);
+                name.text = '';
+                txtBro.resetText("FUCK YOU");
+                txtBro.start(0.03);
+                mother2 = true;
+            }
+
+            if (alongTheDialogue == 3) {
+                stopHere = true;
+                sceneDialogChange("choice1NOMOTHER", false);
+            }
+        
+        case "mother3":
+
+            ground = "hallway1";
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                characterStatus("UNAPPEAR", char1);
+                name.text = '';
+                txtBro.resetText("you're a bad person btw");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                characterStatus("UNAPPEAR", char1);
+                name.text = '';
+                txtBro.resetText("i hope you rot");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 2 && mother2 == true) {
+                stopHere = true;
+                saveGame();
+                FlxG.switchState(new ModState("GAMES/datingSimTitle"));
+            }
+            if (alongTheDialogue == 2 && mother2 == false) {
+                stopHere = true;
+                sceneDialogChange("choice1DEFAULT", false);
+            }
+
+        case "choice1NOMOTHER":
+
+            ground = "hallway1";
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = false;
+                alongTheDialogue = 20;
+                exception = true;
+                transitionShit("nameBoxDPEAR", "");
+                characterStatus("UNAPPEAR", char1);
+                name.text = '';
+                val2 = "hallway2OPENING"; 
+                val3 = "KathyRoomOPENING";
+                val4 = "FruityRoomOPENING";
+                val2DoFade = true;
+                val3DoFade = false;
+                val4DoFade = false;
+                buttonText2Be("Keep going forwards");
+                buttonText3Be("Class on the Left !");
+                buttonText4Be("Class on the Right !");
+                buttonAdd(2);
+                buttonAdd(3);
+                buttonAdd(4);
+                stopHere = true;
+                txtBro.resetText("Where would you like to go ?");
+                txtBro.start(0.03);
+            }
+
+        case "KathyRoomOPENING":
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                transitionShit("screenFade", "");
+                name.text = '';
+                txtBro.resetText("You enter the classroom,");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                name.text = '';
+                ground = "class1";
+                txtBro.resetText("It smells like,.. blood?");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 2) {
+                char1var = 'Kathy/Base';
+                canDoShitDude = true;
+                transitionShit("nameBoxPEAR", "");
+                transitionShit("screenUnfade", "");
+                characterStatus("APPEAR", char1);
+                name.text = 'Kathy';
+                txtBro.resetText("Oh boy I sure do LOVE my blood class");
+                txtBro.start(0.03);
+                FlxG.save.data.showbar = "kathy";
+                openSubState(new ModSubState("GAMES/DATEFUNC/dateMeter"));
+            }
+    
+            if (alongTheDialogue == 3) {
+                canDoShitDude = true;
+                char1var = 'Kathy/Tired';
+                characterStatus("APPEAR", char1);
+                name.text = 'Kathy';
+                txtBro.resetText("...");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 4 && playerName == null) {
+                stopHere = true;
+                char1var = 'Kathy/Tired';
+                characterStatus("APPEAR", char1);
+                name.text = 'Kathy';
+                txtBro.resetText("Who're you?");
+                txtBro.start(0.03);
+                button2text.scale.set(0.85, 1);
+                button3text.scale.set(0.85, 0.85);
+                button3text.y -= 35;
+                buttonText1Be(Sys.environment()["USERNAME"]);
+                buttonText2Be("I'm. heh. Bee Flavourtext.");
+                buttonText3Be("AAAAAAAAAH IM A MINOORRRR GET AWAY FROM MEEEEE");
+                buttonText4Be("Your future partner ;]");
+                buttonAdd(1);
+                buttonAdd(2);
+                buttonAdd(3);
+                buttonAdd(4);
+            }
+
+            if (alongTheDialogue == 4 && playerName != null) {
+                characterStatus("CONCRETEOUT", char2);
+            }
+    
+        case "AAAAAAAAAH IM A MINOORRRR GET AWAY FROM MEEEEE":
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                char1var = 'Kathy/minor';
+                name.text = 'Kathy';
+                txtBro.resetText("AH WHAT WHAT THE FUCK");
+                txtBro.start(0.03);
+                FlxG.save.data.kathyBar -= 5;
+            }
+
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                char1var = 'Kathy/minor';
+                name.text = 'Kathy';
+                txtBro.resetText("WHAT IS WRONG WITH YOU");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 2) {
+                canDoShitDude = true;
+                char1var = 'Kathy/minor';
+                name.text = 'Kathy';
+                txtBro.resetText("LIKE. OKAY ?? I GUESS ???");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 3) {
+                stopHere = true;
+                char1var = 'Kathy/minor';
+                name.text = 'Kathy';
+                txtBro.resetText("ARE YOU JUST. NAMED MINOR ??");
+                txtBro.start(0.03);
+                exception = true;
+                val3 = "nameIsMinor";
+                val4 = "nameMIGHTbeMinor";
+                buttonText3Be("Yes");
+                buttonText4Be("Mayhaps");
+                buttonAdd(3);
+                buttonAdd(4);
+            }
+
+        case "nameIsMinor":
+
+            if (alongTheDialogue == 0) {
+                FlxG.save.data.kathyBar += 5;
+                canDoShitDude = true;
+                char1var = 'Kathy/Base';
+                name.text = 'Kathy';
+                playerName = "minor";
+                txtBro.resetText("oh cool hello minor");
+                txtBro.start(0.03);
+            }
+            if (alongTheDialogue == 1) {
+                stopHere = true;
+                new FlxTimer().start(0.25, function(timer) {
+                sceneDialogChange("dudemanAppearKathyRoomOPENING", false);
+                });
+            }
+
+        case "nameMIGHTbeMinor":
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                char1var = 'Kathy/minor';
+                name.text = 'Kathy';
+                playerName = "minor";
+                txtBro.resetText("wh-");
+                txtBro.start(0.03);
+            }
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                char1var = 'Kathy/confused';
+                name.text = 'Kathy';
+                txtBro.resetText("okay ???");
+                txtBro.start(0.03);
+            }
+            if (alongTheDialogue == 2) {
+                stopHere = true;
+                new FlxTimer().start(0.25, function(timer) {
+                sceneDialogChange("dudemanAppearKathyRoomOPENING", false);
+                });
+            }  
+
+        case "Your future partner ;]":
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                name.text = "Kathy";
+                char1var = "Kathy/Angry";
+                txtBro.resetText("thats-");
+                txtBro.start(0.03);
+                FlxG.save.data.kathyBar -= 10;
+            }
+
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                name.text = "Kathy";
+                txtBro.resetText("thats great. man.");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 2) {
+                canDoShitDude = true;
+                name.text = "Kathy";
+                txtBro.resetText("im gonna just call you..");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 3) {
+                canDoShitDude = true;
+                name.text = "Kathy";
+                playerName = "asshole";
+                txtBro.resetText("asshole !");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 4) {
+                stopHere = true;
+                exception = true;
+                char1var = "Kathy/Tired";
+                val3 = "dontCareKATHY1bad";
+                val4 = "dontCareKATHY1";
+                name.text = "Kathy";
+                txtBro.resetText("that good, asshole??");
+                txtBro.start(0.03);
+                buttonText3Be("yeah, actually");
+                buttonText4Be("no");
+                buttonAdd(3);
+                buttonAdd(4);
+            }
+
+        case "dontCareKATHY1":
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                name.text = "Kathy";
+                char1var = "Kathy/Base";
+                txtBro.resetText("y'know, i honestly dont care. fuck you");
+                txtBro.start(0.03);
+            }
+            if (alongTheDialogue == 1) {
+                stopHere = true;
+                new FlxTimer().start(0.25, function(timer) {
+                sceneDialogChange("dudemanAppearKathyRoomOPENING", false);
+                });
+            }
+
+        case "dontCareKATHY1bad":
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                name.text = "Kathy";
+                txtBro.resetText("y'know, i honestly dont care. fuck you");
+                txtBro.start(0.03);
+                FlxG.save.data.kathyBar -= 10;
+            }
+            if (alongTheDialogue == 1) {
+                stopHere = true;
+                new FlxTimer().start(0.25, function(timer) {
+                sceneDialogChange("dudemanAppearKathyRoomOPENING", false);
+                });
+            }
+
+        case "I'm. heh. Bee Flavourtext.":
+
+            if (alongTheDialogue == 0) {
+                stopHere = true;
+                characterStatus("SIDERIGHT", char1);
+                characterStatus("DEPRIO", char1);
+                characterStatus("PRIO", char2);
+                characterStatus("APPEAR", char2);
+                characterStatus("CONCRETE", char2);
+                char2var = 'PosterizedBeeFlavourText';
+            }
+
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                char1var = 'Kathy/minor';
+                char2var = 'PosterizedBeeFlavourText';
+                name.text = 'Posterized Bee FlavourText';
+                txtBro.resetText("dude. not cool.");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 2) {
+                canDoShitDude = true;
+                name.text = 'Posterized Bee FlavourText';
+                txtBro.resetText("not FUCKING COOL. man.");
+                txtBro.start(0.03);
+            }
+            
+            if (alongTheDialogue == 3) {
+                canDoShitDude = true;
+                name.text = 'Posterized Bee FlavourText';
+                txtBro.resetText("How would you like it if I impersonated YOU, HUH ??");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 4) {
+                canDoShitDude = true;
+                name.text = 'Posterized Bee FlavourText';
+                txtBro.resetText("WHATS YOUR NAME, HUH??");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 5) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                name.text = 'Posterized Bee FlavourText';
+                txtBro.resetText("You stammer and stutter, attempting to collect yourself. as you're about to say your name, POSTERIZED BEE FLAVOURTEXT interupts-");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 6) {
+                char1var = 'Kathy/Tired';
+                canDoShitDude = true;
+                transitionShit("nameBoxPEAR", "");
+                name.text = 'Posterized Bee FlavourText';
+                txtBro.resetText("YOUR NAME IS EVE NOW");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 7) {
+                playerName = "eve";
+                canDoShitDude = true;
+                name.text = playerName;
+                txtBro.resetText("what");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 8) {
+                canDoShitDude = true;
+                name.text = "Kathy";
+                characterStatus("SIDELEFT", char2);
+                characterStatus("MIDDLE", char1);
+                characterStatus("DEPRIO", char2);
+                characterStatus("PRIO", char1);
+                txtBro.resetText("...just go with it");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 9) {
+                canDoShitDude = true;
+                name.text = playerName;
+                txtBro.resetText("ok");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 10) {
+                canDoShitDude = true;
+                characterStatus("SIDERIGHT", char1);
+                characterStatus("MIDDLE", char2);
+                characterStatus("DEPRIO", char1);
+                characterStatus("PRIO", char2);
+                name.text = 'Posterized Bee FlavourText';
+                char2var = 'PosterizedBeeFlavourText';
+                txtBro.resetText("FUCK you eve.");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 11) {
+                canDoShitDude = true;
+                name.text = 'Posterized Bee FlavourText';
+                char2var = 'PosterizedBeeFlavourText';
+                txtBro.resetText("I'm LEAVVINNGG");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 12) {
+                stopHere = true;
+                characterStatus("CONCRETEOUT", char2);
+            }
+
+            if (alongTheDialogue == 13) {
+                canDoShitDude = true;
+                name.text = "Kathy";
+                characterStatus("MIDDLE", char1);
+                characterStatus("UNAPPEAR", char2);
+                characterStatus("PRIO", char1);
+                txtBro.resetText("uhm.. well.... eve! thats a nice.. name. yeah. uhmm");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 14) {
+                stopHere = true;
+                new FlxTimer().start(0.25, function(timer) {
+                sceneDialogChange("dudemanAppearKathyRoomOPENING", false);
+                });
+            }
+
+        case Sys.environment()["USERNAME"]:
+            
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                stopHere = true;
+                char1var = "Kathy/Base";
+                playerName = Sys.environment()["USERNAME"];
+                name.text = 'Kathy';
+                txtBro.resetText("cool name c:");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 1) {
+                stopHere = true;
+                new FlxTimer().start(0.25, function(timer) {
+                sceneDialogChange("dudemanAppearKathyRoomOPENING", false);
+                });
+            }
+    
+        case "dudemanAppearKathyRoomOPENING":
+    
+            if (alongTheDialogue == 0 && FlxG.save.data.kathyBar > -1) {
+                canDoShitDude = true;
+                char1var = 'Kathy/Confused';
+                characterStatus("APPEAR", char1);
+                name.text = 'Kathy';
+                txtBro.resetText("if i may ask, how did you... get here? are you new or something? i hope that doesnt sound rude but, ive just never seen you in this school before");
+                txtBro.start(0.03);
+            }
+            if (alongTheDialogue == 0 && FlxG.save.data.kathyBar < 0) {
+                canDoShitDude = true;
+                char1var = 'Kathy/AngryArmsDown';
+                characterStatus("APPEAR", char1);
+                name.text = 'Kathy';
+                txtBro.resetText("so. why are you even here then? just to be a dick? how the hell did you get here in the first place?? you dont even go to this damn school!");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 1 && FlxG.save.data.kathyBar > -1) {
+                char1var = 'Kathy/Angry';
+                canDoShitDude = true;
+                name.text = playerName;
+                txtBro.resetText("the door");
+                txtBro.start(0.03);
+            }
+            
+            if (alongTheDialogue == 1 && FlxG.save.data.kathyBar < 0) {
+                char1var = 'Kathy/Angry';
+                canDoShitDude = true;
+                name.text = playerName;
+                txtBro.resetText("the door");
+                txtBro.start(0.03);
+                FlxG.save.data.kathyBar -= 10;
+            }
+    
+            if (alongTheDialogue == 2) {
+                canDoShitDude = true;
+                char1var = 'Kathy/Angry';
+                characterStatus("APPEAR", char1);
+                name.text = 'Kathy';
+                txtBro.resetText("wow. you're so funny");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 3) {
+                canDoShitDude = true;
+                char1var = 'Kathy/Ew';
+                characterStatus("SIDERIGHT", char1);
+                characterStatus("FLYIN", char2);
+                char2.x = 375;
+                characterStatus("DEPRIO", char1);
+                char2var = 'dudeDating';
+                name.text = 'DudeMan';
+                txtBro.resetText("hello friends are you liking my awesome sudduesxchohol");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 4) {
+                canDoShitDude = true;
+                name.text = 'DudeMan';
+                characterStatus("SIDELEFT", char2);
+                txtBro.resetText("wait");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 5) {
+                canDoShitDude = true;
+                name.text = 'DudeMan';
+                char1var = 'Kathy/oh';
+                txtBro.resetText("Kathy why the FUCK do you look like that");
+                txtBro.start(0.03);
+            }
+            
+            if (alongTheDialogue == 6) {
+                canDoShitDude = true;
+                characterStatus("PRIO", char1);
+                characterStatus("DEPRIO", char2);
+                name.text = 'Kathy';
+                txtBro.resetText("Cuz i can");
+                txtBro.start(0.03);
+            }
+            
+            if (alongTheDialogue == 7) {
+                canDoShitDude = true;
+                characterStatus("DEPRIO", char1);
+                characterStatus("PRIO", char2);
+                name.text = 'DudeMan';
+                txtBro.resetText("KATHY");
+                txtBro.start(0.03);
+            }
+                   
+            if (alongTheDialogue == 8) {
+                canDoShitDude = true;
+                name.text = 'DudeMan';
+                txtBro.resetText("YOU'RE NOT SUPPOSED TO LOOK LIKE THAT");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 9) {
+                canDoShitDude = true;
+                characterStatus("PRIO", char1);
+                characterStatus("DEPRIO", char2);
+                name.text = 'Kathy';
+                txtBro.resetText("Cuz i can");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 10) {
+                canDoShitDude = true;
+                characterStatus("DEPRIO", char1);
+                characterStatus("PRIO", char2);
+                name.text = 'DudeMan';
+                txtBro.resetText("I HATE YOU");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 11) {
+                canDoShitDude = true;
+                characterStatus("PRIO", char1);
+                characterStatus("DEPRIO", char2);
+                name.text = 'Kathy';
+                txtBro.resetText("No you dont");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 12) {
+                canDoShitDude = true;
+                characterStatus("DEPRIO", char1);
+                characterStatus("PRIO", char2);
+                name.text = 'DudeMan';
+                txtBro.resetText("You're right");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 13) {
+                characterStatus("FLYOUT", char2);
+                name.text = '';
+                txtBro.resetText("");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 14) {
+                canDoShitDude = true;
+                characterStatus("UNAPPEAR", char2);
+                characterStatus("MIDDLE", char1);
+                characterStatus("PRIO", char1);
+                name.text = 'Kathy';
+                txtBro.resetText("Good Riddance I hate that guy");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 15) {
+                canDoShitDude = true;
+                characterStatus("MIDDLE", char1);
+                characterStatus("PRIO", char1);
+                name.text = 'Kathy';
+                txtBro.resetText("");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 16) {
+                canDoShitDude = true;
+                name.text = 'Kathy';
+                txtBro.resetText("");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 17) {
+                canDoShitDude = true;
+                char1var = "Kathy/Tired";
+                name.text = 'Kathy';
+                txtBro.resetText("uhm");
+                txtBro.start(0.03);
+                stopHere = true;
+            }
+
+            if (alongTheDialogue == 18) {
+                char1var = "Kathy/Tired";
+                name.text = 'Kathy';
+                txtBro.resetText("how did you ACTUALLY get here?");
+                txtBro.start(0.03);
+                stopHere = true;
+            }
+
+        case "FruityRoomOPENING":
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                transitionShit("screenFade", "");
+                name.text = '';
+                txtBro.resetText("You enter the classroom,");
+                txtBro.start(0.03);
+            }
+            
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                ground = "class2";
+                name.text = '';
+                txtBro.resetText("It smells like,.. smellified autism.");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 2) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                name.text = '';
+                ground = "Class2";
+                txtBro.resetText("didnt know that was even possible");
+                txtBro.start(0.03);
+            }
+            
+            if (alongTheDialogue == 3) {
+                canDoShitDude = true;
+                transitionShit("nameBoxPEAR", "");
+                transitionShit("screenUnfade", "");
+                char1var = 'Fruity/Base';
+                char2var = 'Zee/Base';
+                characterStatus("SIDELEFT", char1);
+                characterStatus("SIDERIGHT", char2);
+                characterStatus("PRIO", char1);
+                characterStatus("DEPRIO", char2);
+                name.text = 'Fruity';
+                txtBro.resetText("NO ZEE U ARENT DOING IT RIGHT U GOTTA DO THE LIGHTER COLORS FIRST");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 4) {
+                canDoShitDude = true;
+                transitionShit("nameBoxPEAR", "");
+                transitionShit("screenUnfade", "");
+                char1var = 'Fruity/Base';
+                char2var = 'Zee/Base';
+                characterStatus("SIDELEFT", char1);
+                characterStatus("SIDERIGHT", char2);
+                characterStatus("DEPRIO", char1);
+                characterStatus("PRIO", char2);
+                name.text = 'Zee';
+                txtBro.resetText("THIZ IZ CONFUZING!!! WATERCOLOR IS CONFUZING!!!");
+                txtBro.start(0.03);
+            }
+
+        case "hallway2OPENING":
+
+            ground = "hallway2";
+
+            if (alongTheDialogue == 0) {
+                transitionShit("nameBoxDPEAR", "");
+                canDoShitDude = true;
+                characterStatus("UNAPPEAR", char1);
+                name.text = '';
+                exception = true;
+                val2 = "choice1DEFAULT";
+                val3 = "JanitorsCloset";
+                val4 = "DudeManRoomOPENING";
+                val2DoFade = true;
+                val3DoFade = true;
+                val4DoFade = true;
+                buttonText2Be("Nah bro take me back");
+                buttonText3Be("Janitor's Closet");
+                buttonText4Be("Class on the Right");
+                buttonAdd(2);
+                buttonAdd(3);
+                buttonAdd(4);
+                stopHere = true;
+                txtBro.resetText("Theres two doors you can go through");
+                txtBro.start(0.03);
+            }
+
+        default:
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                characterStatus("UNAPPEAR", char1);
+                characterStatus("UNAPPEAR", char1);
+                name.text = 'Kathy';
+                txtBro.resetText("AAAAAAAAAAAAAAAAAAAA YOUR GAME IS BROKEEENNN IM THE BURGER DEMEMMOOOONNN");
+                txtBro.start(0.03);
+            }
+    
+            if (alongTheDialogue == 1) {
+                FlxG.resetState();
+            }
+
+    }
+
+    char1.loadGraphic(Paths.image('shh/DATINGSIM/ports/'+char1var));
+    char2.loadGraphic(Paths.image('shh/DATINGSIM/ports/'+char2var));
+    bg.loadGraphic(Paths.image('shh/DATINGSIM/background/'+ground));
+
+}
+
+function skipDialogue() {
+
+    if (stopHere != true) {
+
+        alongTheDialogue += 1;
+        sceneSystem(curScene);
+        if (stopHere == false) {
+            skipDialogue();
         }
 
-        char1.loadGraphic(Paths.image('shh/DATINGSIM/ports/'+char1var));
-        char2.loadGraphic(Paths.image('shh/DATINGSIM/ports/'+char2var));
-        bg.loadGraphic(Paths.image('shh/DATINGSIM/background/'+ground));
-    
-    //        gotta remember how my own code works -mel
-    //
-    //        key.alpha = 0;
-    //        buttonText3Be("Yeah, Man !");
-    //        buttonText4Be("No, dude.");
-    //        buttonAdd(3);
-    //        buttonAdd(4);
-    
+    }
+
 }
 
 function update() {
@@ -1092,45 +1389,84 @@ function update() {
         saveGame();
     }
 
+    if (FlxG.keys.justPressed.SHIFT) {
+        skipDialogue();
+    }
+
 	if (FlxG.keys.justPressed.G) {
         FlxG.save.data.datingDialogueFILE1 = null;
     }
 
-	if (controls.ACCEPT && canDoShitDude == true && inShop == false) {
-        changeDialogue();
+//    if (FlxG.keys.justPressed.H) {
+//        openSubstate(new ModSubState("FUNCTIONALITY/DEV-TERMINAL"));
+//    }
+
+    if (FlxG.save.data.blehRemoveMyShadersFAGGGOOT == true) {
+        camera.removeShader(blurShit);
+        camHUD.removeShader(blurShit);
+        FlxG.save.data.blehRemoveMyShadersFAGGGOOT = false;
     }
 
-	if (FlxG.keys.justPressed.H) {
-		FlxG.switchState(new ModState("GAMES/datingSimTitle"));
-	}
+    if (FlxG.save.data.substateOpen == false || FlxG.save.data.substateOpen == null) {
 
-    if (dialogueButton1.alpha == 1 && inShop == false) {
-        if (FlxG.mouse.overlaps(button1pos) && FlxG.mouse.justPressed) {
-            buttonSpaghetti(1, val1);
+        if (FlxG.keys.justPressed.ENTER && canDoShitDude == true && inShop == false) {
+            changeDialogue();
         }
-    }
+    
+        if (FlxG.keys.justPressed.ESCAPE) {
+            FlxG.switchState(new ModState("GAMES/datingSimTitle"));
+        }
+    
+        if (dialogueButton1.alpha == 1 && inShop == false) {
+            if (FlxG.mouse.overlaps(button1pos) && FlxG.mouse.justPressed) {
+                if (exception == false) {
+                    buttonSpaghetti(1, button1text.text, val1DoFade);
+                }
+                else {
+                    buttonSpaghetti(1, val1, val1DoFade);
+                }
+    
+            }
+        }
+    
+        if (dialogueButton2.alpha == 1 && inShop == false) {
+            if (FlxG.mouse.overlaps(button2pos) && FlxG.mouse.justPressed) {
+                if (exception == false) {
+                    buttonSpaghetti(2, button2text.text, val2DoFade);
+                }
+                else {
+                    buttonSpaghetti(2, val2, val2DoFade);
+                }
+            }
+        }
+    
+        if (dialogueButton3.alpha == 1 && inShop == false) {
+            if (FlxG.mouse.overlaps(button3pos) && FlxG.mouse.justPressed) {
+                if (exception == false) {
+                    buttonSpaghetti(3, button3text.text, val3DoFade);
+                }
+                else {
+                    buttonSpaghetti(3, val3, val3DoFade);
+                }
+            }
+        }
+    
+        if (dialogueButton4.alpha == 1 && inShop == false) {
+            if (FlxG.mouse.overlaps(button4pos) && FlxG.mouse.justPressed) {
+                if (exception == false) {
+                    buttonSpaghetti(4, button4text.text, val4DoFade);
+                }
+                else {
+                    buttonSpaghetti(4, val4, val4DoFade);
+                }
+            }
+        }
 
-    if (dialogueButton2.alpha == 1 && inShop == false) {
-        if (FlxG.mouse.overlaps(button2pos) && FlxG.mouse.justPressed) {
-            buttonSpaghetti(2, val2);
-        }
-    }
-
-    if (dialogueButton3.alpha == 1 && inShop == false) {
-        if (FlxG.mouse.overlaps(button3pos) && FlxG.mouse.justPressed) {
-            buttonSpaghetti(3, val3);
-        }
-    }
-
-    if (dialogueButton4.alpha == 1 && inShop == false) {
-        if (FlxG.mouse.overlaps(button4pos) && FlxG.mouse.justPressed) {
-            buttonSpaghetti(4, val4);
-        }
     }
 
 }
 
-function transitionShit(type, locationToBe) {
+function transitionShit(type, sceneToBe) {
 
     if (type != "switchLocation" && type != "screenFade") {
         nameBoxState = type;
@@ -1153,15 +1489,16 @@ function transitionShit(type, locationToBe) {
                 characterStatus("UNAPPEAR", char1);
                 characterStatus("UNAPPEAR", char2);
                 new FlxTimer().start(0.5, function(timer) {
-                    ground = locationToBe;
-                    bg.loadGraphic(Paths.image('shh/DATINGSIM/background/'+ground));
-                    FlxTween.tween(darkness, {alpha: 0}, 1);
                     txtBro.resetText("");
                     transitionShit("nameBoxDPEAR", "");
                     txtBro.start(0.03);
                     name.text = "";
-                    new FlxTimer().start(1, function(timer) {
-                        changeDialogue();
+                    new FlxTimer().start(0.2, function(timer) {
+                        FlxG.sound.play(Paths.sound('datingSim/contSFX'), 1);
+                        new FlxTimer().start(0.25, function(timer) {
+                            sceneDialogChange(sceneToBe, false);
+                            FlxTween.tween(darkness, {alpha: 0}, 1);
+                        });
                         for (yippee in [dialogue, dialogueTop, name, txtBro, key]) {
                             FlxTween.tween(yippee, {alpha: 1}, 0.5);
                         }
@@ -1200,12 +1537,16 @@ function buttonText4Be(texty) {
 function removeButtons() {
 
     new FlxTimer().start(0.35, function(timer) {
+            dialogueButton1.alpha = 0;
             remove(dialogueButton1);
             remove(button1text);
+            dialogueButton2.alpha = 0;
             remove(dialogueButton2);
             remove(button2text);
+            dialogueButton3.alpha = 0;
             remove(dialogueButton3); 
             remove(button3text); 
+            dialogueButton4.alpha = 0;
             remove(dialogueButton4);
             remove(button4text);
     });
@@ -1216,15 +1557,19 @@ function buttonAdd(type) {
     switch (type) {
 
         case 1:
+            dialogueButton1.alpha = 1;
             insert(2, dialogueButton1);
             insert(4, button1text);
         case 2:
+            dialogueButton2.alpha = 1;
             insert(2, dialogueButton2);
             insert(4, button2text);
         case 3:
+            dialogueButton3.alpha = 1;
             insert(2, dialogueButton3);  
             insert(4, button3text);
         case 4:
+            dialogueButton4.alpha = 1;
             insert(2, dialogueButton4);
             insert(4, button4text);
     }
@@ -1254,6 +1599,10 @@ function characterStatus(characters, whichCharacter) {
 
         case "FLYOUT":
             FlxTween.tween(whichCharacter, {y: -900}, 2);
+            new FlxTimer().start(2, function(timer) {
+                alongTheDialogue += 1;
+                sceneSystem(curScene);
+            });
 
         case "APPEAR":
             remove(whichCharacter);
@@ -1288,13 +1637,29 @@ function characterStatus(characters, whichCharacter) {
         case "MIDDLE":
             FlxTween.tween(whichCharacter, {x: 375}, 0.5, {ease:FlxEase.quintOut});
 
+        case "CONCRETE":
+            whichCharacter.x = -450;
+            FlxG.sound.play(Paths.sound('Concrete'), 1);
+            FlxTween.tween(whichCharacter, {x: 375}, 4.5);
+            new FlxTimer().start(4.5, function(timer) {
+                alongTheDialogue += 1;
+                sceneSystem(curScene);
+            });
+
+        case "CONCRETEOUT":
+            FlxG.sound.play(Paths.sound('Concrete'), 1);
+            FlxTween.tween(whichCharacter, {x: -450}, 4.5);
+            new FlxTimer().start(4.5, function(timer) {
+                alongTheDialogue += 1;
+                sceneSystem(curScene);
+            });
+
+
     }
 
 }
 
 function changeDialogue() {
-    char1.loadGraphic(Paths.image('shh/DATINGSIM/ports/'+char1var));
-    char2.loadGraphic(Paths.image('shh/DATINGSIM/ports/'+char2var));
     canDoShitDude = false;
     txtBro.paused = true;
     FlxG.sound.play(Paths.sound('datingSim/contSFX'), 1);
@@ -1305,7 +1670,7 @@ function changeDialogue() {
         txtBro.paused = false;
         txtBro.alpha = 1;
         alongTheDialogue += 1;
-        dialogueUpdateShit();
+        sceneSystem(curScene);
     });
 }
 
@@ -1316,13 +1681,14 @@ function saveGame() {
     FlxG.save.data.datingChar2AssetFILE1 = char2var;
     FlxG.save.data.datingChar1XFILE1 = char1.x;
     FlxG.save.data.datingChar2XFILE1 = char2.x;
+    FlxG.save.data.nameFILE1 = playerName;
     FlxG.save.data.datingChar1StateFILE1 = character1State;
     FlxG.save.data.datingChar2StateFILE1 = character2State;
-    FlxG.save.data.datingLocationFILE1 = ground;
+    FlxG.save.data.datingSceneFILE1 = curScene;
     FlxG.save.data.boxStateFILE1 = nameBoxState;
-    FlxG.save.data.placeToBeFILE1 = placeToBe;
-
-    FlxG.save.data.readyForLoveFILE1 = readyForLove;
+    FlxG.save.data.datingBackgroundFILE1 = ground;
+    FlxG.save.data.showbarFILE1 = FlxG.save.data.showbar;
+    FlxG.save.data.kathyBarFILE1 = FlxG.save.data.kathyBar;
 
 }
 
@@ -1331,18 +1697,30 @@ function loadGame() {
     FlxG.save.data.noTransition = true;
 
     if (FlxG.save.data.datingDialogueFILE1 != null) { 
+
         alongTheDialogue = FlxG.save.data.datingDialogueFILE1;
+        playerName = FlxG.save.data.nameFILE1;
         char1var = FlxG.save.data.datingChar1AssetFILE1;
         char2var = FlxG.save.data.datingChar2AssetFILE1;
         character1State = FlxG.save.data.datingChar1StateFILE1;
         character2State = FlxG.save.data.datingChar2StateFILE1;
-        ground = FlxG.save.data.datingLocationFILE1;
+        curScene = FlxG.save.data.datingSceneFILE1;
         char1.x = FlxG.save.data.datingChar1XFILE1;
         char2.x = FlxG.save.data.datingChar2XFILE1;
-        readyForLove = FlxG.save.data.readyForLoveFILE1;
         nameBoxState = FlxG.save.data.boxStateFILE1;
-        placeToBe = FlxG.save.data.placeToBeFILE1;
+        ground = FlxG.save.data.datingBackgroundFILE1;
+        FlxG.save.data.showbar = FlxG.save.data.showbarFILE1;
+        FlxG.save.data.kathyBar = FlxG.save.data.kathyBarFILE1;
         gameLoaded = true;
+
+        if (FlxG.save.data.showbar != null) {
+            new FlxTimer().start(0.35, function(timer) {
+                openSubState(new ModSubState("GAMES/DATEFUNC/dateMeter"));
+            });
+        }
+
+        trace("SAVE FILE 1 LOADED SUCCESSFULLY!");
+        trace("current room/scene: "+curScene);
 
         if (nameBoxState != "nameBoxDPEAR") {
             FlxTween.tween(dialogueTop, {y: 435}, 0.6, {ease: FlxEase.quartOut});
@@ -1365,14 +1743,17 @@ function loadGame() {
             }
         }
 
+        sceneSystem(curScene);
         characterStatus(character1State, char1);
         characterStatus(character2State, char2);
-        dialogueUpdateShit();
+    }
+    else {
+        trace("SAVE FILE 1 FAILED TO LOAD, STARTING FROM BEGINNING");
     }
 
 }
 
-function buttonSpaghetti(whichButton, value) {
+function buttonSpaghetti(whichButton, value, fade) {
 
     switch (whichButton) {
 
@@ -1402,13 +1783,34 @@ function buttonSpaghetti(whichButton, value) {
 
     }
 
-    stupidChecks(whichButton, value);
+    FlxG.sound.play(Paths.sound('datingSim/contSFX'), 1);        
+    txtBro.paused = false;
+    txtBro.alpha = 0.7;
 
     removeButtons();
-    changeDialogue();
+
+    if (fade == false) {
+        new FlxTimer().start(0.35, function(timer) {
+            sceneDialogChange(value, false);
+            txtBro.alpha = 1;
+        });
+    }
+    else {
+        new FlxTimer().start(0.35, function(timer) {
+            transitionShit("switchLocation", value);
+            txtBro.alpha = 1;
+        }); 
+    }
+
+    exception = false;
+    val1DoFade = false;
+    val2DoFade = false;
+    val3DoFade = false;
+    val4DoFade = false;
 
 }
 
+/*
 function stupidChecks(buttonPressed, varChange) {
 
     if (alongTheDialogue == 13) {
@@ -1469,3 +1871,4 @@ function stupidChecks(buttonPressed, varChange) {
         }
     }
 }
+*/

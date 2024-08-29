@@ -724,6 +724,31 @@ function postCreate() {
 		checkboxanglesDream.cameras = [uiCamera];
 		add(checkboxanglesDream);
 
+		dsideMode = new FlxText();
+		dsideMode.text = "D-Side Mode";
+		dsideMode.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		dsideMode.x = 180;
+		dsideMode.y = 1525;
+		dsideMode.cameras = [uiCamera];
+		dsideMode.color = 0xFFFFFFFF;
+		dsideMode.borderColor = 0xFF000000;
+		dsideMode.antialiasing = false;
+		dsideMode.alpha = 1;
+		dsideMode.borderSize = 3;
+		add(dsideMode);
+
+		checkboxdsideMode = new FlxSprite(380, 1415);	
+		checkboxdsideMode.frames = Paths.getSparrowAtlas('options/checked');
+		checkboxdsideMode.animation.addByPrefix('selected', 'yes', 6);
+		checkboxdsideMode.animation.addByPrefix('disselected', 'no', 6);
+		checkboxdsideMode.animation.play('disselected');
+		checkboxdsideMode.scale.set(0.3, 0.3);
+		checkboxdsideMode.antialiasing = false;
+		checkboxdsideMode.alpha = 1;
+		checkboxdsideMode.scrollFactor.set(1, 1);
+		checkboxdsideMode.cameras = [uiCamera];
+		add(checkboxdsideMode);
+
 	border = new FlxSprite(0, 0).loadGraphic(Paths.image('options/border'));
 	border.antialiasing = false;
 	border.updateHitbox();
@@ -884,7 +909,7 @@ function update() {
 		obj.alpha = 0.6;
 	}
 
-	for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs, gfBurger, checkboxgfBurger, ascend, checkboxascend, brooklynMode, checkboxbrooklynMode, anglesDream, checkboxanglesDream, FunValue, FunValueToPick]) {
+	for (obj in [DebugMode, checkboxDebugMode, XboxMode, checkboxXboxMode, PurpleHorse, checkboxPurpleHorse, BaldiStyle, checkboxBaldiStyle, Hitsounds, checkboxHitsounds, Geometry, checkboxGeometry, Nightmare, checkboxNightmare, CameraAwesome, checkboxCameraAwesome, MelTabs, checkboxMelTabs, gfBurger, checkboxgfBurger, ascend, checkboxascend, brooklynMode, checkboxbrooklynMode, anglesDream, checkboxanglesDream, FunValue, FunValueToPick, dsideMode, checkboxdsideMode]) {
 		if (SecretOptionsOpen == true) {
 			add(obj);
 		}
@@ -892,7 +917,7 @@ function update() {
 			remove(obj);
 		}
 	}
-	for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs, gfBurger, ascend, brooklynMode, anglesDream, FunValue, FunValueToPick]) {
+	for (obj in [DebugMode, XboxMode, PurpleHorse, BaldiStyle, Hitsounds, Geometry, Nightmare, CameraAwesome, MelTabs, gfBurger, ascend, brooklynMode, anglesDream, FunValue, FunValueToPick, dsideMode]) {
 		obj.alpha = 0.6;
 	}
 	// CONTROLS
@@ -1088,6 +1113,10 @@ function update() {
 		BottomText.text = "im at my breaking point istg if i hear BURP MODE ONE MORE TIME -meltykelpy";
 		anglesDream.alpha = 1;	
 	}
+	if (SelectedSecret == 14 && SecretOptionsOpen == true) {
+		BottomText.text = "see, the joke is that d-side is a swap mod";
+		dsideMode.alpha = 1;	
+	}
 	// CONTROLS PT 2
 	if (Selected1 > 3) {
 		Selected1 = 0;
@@ -1101,14 +1130,22 @@ function update() {
 	if (SelectedGameplay < 0) {
 		SelectedGameplay = 5;
 	}
-	if (SelectedSecret > 13) {
+	if (SelectedSecret > 14) {
 		SelectedSecret = 0;
 	}
 	if (SelectedSecret < 0) {
-		SelectedSecret = 13;
+		SelectedSecret = 14;
 	}
 	// SECRETSETTINGS CAM
-	if (SelectedSecret > 9 && SecretOptionsOpen == true) {
+	if (SelectedSecret > 13 && SecretOptionsOpen == true) {
+		if (uiCamera.y > -975) {
+			uiCamera.y -= 10;
+		}
+		else if (uiCamera.y < -975) {
+			uiCamera.y += 10;
+		}
+	}
+	if (SelectedSecret > 9 && SecretOptionsOpen == true && SelectedSecret < 13) {
 		if (uiCamera.y > -875) {
 			uiCamera.y -= 10;
 		}
@@ -1530,6 +1567,23 @@ function postUpdate() {
 	if (SelectedSecret == 13 && SecretOptionsOpen == true && FlxG.save.data.angelsDream == true && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.angelsDream = false;
+		});
+	}
+
+	if (FlxG.save.data.invert == true) {
+		checkboxdsideMode.animation.play('selected');
+	}
+	if (FlxG.save.data.invert == false) {
+		checkboxdsideMode.animation.play('disselected');
+	}
+	if (SelectedSecret == 14 && SecretOptionsOpen == true && FlxG.save.data.invert == false && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.invert = true;
+		});
+	}
+	if (SelectedSecret == 14 && SecretOptionsOpen == true && FlxG.save.data.invert == true && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.invert = false;
 		});
 	}
 

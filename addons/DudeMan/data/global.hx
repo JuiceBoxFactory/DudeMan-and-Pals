@@ -5,9 +5,34 @@ import funkin.backend.utils.WindowUtils;
 import flixel.FlxCamera;
 import flixel.util.FlxTimer;
 
+function create() {
+     invert.invert = 1;
+     FlxG.game.addShader(invert);
+}
+
 static var volCam:FlxCamera;
 static var initialized:Bool = false;
 static var timeToMove = true;
+var invert = new FunkinShader("#pragma header
+    uniform float iTime;
+    #define iChannel0 bitmap
+    #define texture flixel_texture2D
+    #define fragColor gl_FragColor
+    
+    uniform int invert; // 0 means no original color 1 means invert
+    void main(){
+    vec2 uv = openfl_TextureCoordv.xy;
+    
+    vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
+    vec2 iResolution = openfl_TextureSize;
+        vec4 color = texture(iChannel0, fragCoord.xy/iResolution.xy);
+        if(invert == 0) {
+            fragColor = color;
+        } else {
+        fragColor = vec4(flixel_texture2D(iChannel0,uv).a-color.rgb,flixel_texture2D(iChannel0,uv).a);
+        }
+    }");
+var shaderAdded = false;
 
 function new() {
 
@@ -18,6 +43,17 @@ function new() {
 }
 
 function update(elapsed:Float) {
+
+	if (shaderAdded == false && FlxG.save.data.invert == true) {
+		FlxG.game.removeShader(invert);
+		shaderAdded = true;
+		invert.invert = 1;
+		FlxG.game.addShader(invert);
+	}
+	else if (FlxG.save.data.invert == false) {
+		shaderAdded = false;
+		FlxG.game.removeShader(invert);
+	}
 
 	// DEFAULT SAVE DATA.. if u wanna fck wit it !!! you can use the in-game save file editor to make changes to your actual save - Melty
 	if (FlxG.save.data.defaultSaveData == null) {
@@ -59,6 +95,7 @@ function update(elapsed:Float) {
 		FlxG.save.data.sillyLanguages = false;
 		FlxG.save.data.imFromBrooklyn = false;
 		FlxG.save.data.angelsDream = false;
+		FlxG.save.data.invert = false;
 		// other settings ( mail thems and shit )
 		FlxG.save.data.mailTheme = "light";
 		FlxG.save.data.wheresGarfield = false;
@@ -117,6 +154,8 @@ function postStateSwitch() {
     volTime.time = 2;
     volTime.active = false;
     FlxG.state.add(volTime);
+
+
 
 }
 
