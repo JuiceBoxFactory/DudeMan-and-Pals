@@ -786,6 +786,7 @@ function sceneSystem(scene) {
             }
         
             if (alongTheDialogue == 9) {
+                stopHere = true;
                 sceneDialogChange("KathyRoomOPENING", false);
             }
 
