@@ -42,6 +42,7 @@ var stopHere = true;
 var mother1 = false;
 var mother2 = false;
 var playerName = null;
+var shutTheFuckUp = false;
 
 
 function create() {
@@ -250,6 +251,8 @@ function sceneDialogChange(sceneToSwitchTo, doTransition) {
     alongTheDialogue = 0;
 
     if (doTransition == true) {
+        canDoShitDude = false;
+        shutTheFuckUp = true;
         // TRANSITION LINE using this for when i need to ctrl+F to find this
         transitionImage.frames = Paths.getSparrowAtlas('shh/DATINGSIM/transition/'+FlxG.random.int(0, 2));
         transitionImage.animation.addByPrefix('boil', 'boil', 6, true);
@@ -265,7 +268,9 @@ function sceneDialogChange(sceneToSwitchTo, doTransition) {
             FlxTween.tween(transitionImage, {x: 1950}, 1.5, {ease: FlxEase.quartIn});
             transitionShit("nameBoxPEAR", "");
             new FlxTimer().start(0.2, function(timer) {
+                canDoShitDude = true;
                 sceneSystem(sceneToSwitchTo);
+                shutTheFuckUp = false;
             });
             new FlxTimer().start(2.5, function(timer) {
                 transitionImageBG.x = -1900;
@@ -434,6 +439,7 @@ function sceneSystem(scene) {
                 //transitionShit("switchLocation", "openingLOL");
                 canDoShitDude = false;
                 name.text = 'DudeMan';
+                characterStatus("UNAPPEAR", char2);
                 txtBro.resetText("Are you ready to take step into my.,,. school of love....?");
                 txtBro.start(0.03);
                 val3DoFade = false;
@@ -1375,6 +1381,12 @@ function skipDialogue() {
 }
 
 function update() {
+
+    if (shutTheFuckUp == true) {
+        canDo = false;
+        characterStatus("UNAPPEAR", char1);
+        characterStatus("UNAPPEAR", char2);
+    }
 
     if (canDoShitDude == true) {
         key.alpha = 1;
