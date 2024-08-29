@@ -202,7 +202,8 @@ function update(elapsed:Float) {
         FlxG.save.data.menuDialougeToPlay = "ps5Games";
         canDo = false;
         FlxG.camera.addShader(blurShit);
-        FlxG.save.data.shortLived = null;
+        FlxG.save.data.shortLived = null;        
+        FlxG.save.data.gamesFirstTime = true;
     }
 
 	if (FlxG.save.data.shortLived == true) {

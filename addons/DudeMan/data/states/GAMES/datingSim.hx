@@ -547,8 +547,14 @@ function sceneSystem(scene) {
                 else {
                     val1 = "mother1";
                 }
+                trace(FlxG.save.data.funValue);
+                if (FlxG.save.data.funValue > 5 && FlxG.save.data.funValue < 19) {
+                    val3 = "brooklynGuy";
+                }
+                else {
+                    val3 = "KathyRoomOPENING";
+                }
                 val2 = "hallway2OPENING"; 
-                val3 = "KathyRoomOPENING";
                 val4 = "FruityRoomOPENING";
                 val1DoFade = false;
                 val2DoFade = true;
@@ -678,7 +684,13 @@ function sceneSystem(scene) {
                 characterStatus("UNAPPEAR", char1);
                 name.text = '';
                 val2 = "hallway2OPENING"; 
-                val3 = "KathyRoomOPENING";
+                trace(FlxG.save.data.funValue);
+                if (FlxG.save.data.funValue > 5 && FlxG.save.data.funValue < 19) {
+                    val3 = "brooklynGuy";
+                }
+                else {
+                    val3 = "KathyRoomOPENING";
+                }
                 val4 = "FruityRoomOPENING";
                 val2DoFade = true;
                 val3DoFade = false;
@@ -692,6 +704,89 @@ function sceneSystem(scene) {
                 stopHere = true;
                 txtBro.resetText("Where would you like to go ?");
                 txtBro.start(0.03);
+            }
+
+        case "brooklynGuy":
+
+            if (alongTheDialogue == 0) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                transitionShit("screenFade", "");
+                name.text = '';
+                txtBro.resetText("You enter the classroom,");
+                txtBro.start(0.03);
+            }
+        
+            if (alongTheDialogue == 1) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                name.text = '';
+                ground = "Class1";
+                txtBro.resetText("It smells like,.. jobs?? tf that aint supposed to happen :sob:");
+                txtBro.start(0.03);
+            }
+        
+            if (alongTheDialogue == 2) {
+                canDoShitDude = true;
+                transitionShit("nameBoxPEAR", "");
+                transitionShit("screenUnfade", "");
+                char1var = 'BrooklynGuy';
+                characterStatus("APPEAR", char1);
+                name.text = 'Brooklyn Guy';
+                txtBro.resetText("Oh boy I sure do LOVE my jobs class");
+                txtBro.start(0.03);
+            }
+        
+            if (alongTheDialogue == 3) {
+                canDoShitDude = true;
+                transitionShit("nameBoxPEAR", "");
+                transitionShit("screenUnfade", "");
+                char1var = 'BrooklynGuy';
+                characterStatus("APPEAR", char1);
+                name.text = 'Brooklyn Guy';
+                txtBro.resetText("I love jobs :grin:");
+                txtBro.start(0.03);
+            }
+        
+            if (alongTheDialogue == 4) {
+                canDoShitDude = true;
+                name.text = 'You';
+                txtBro.resetText("HOLY CRAP LOUIS ITS BROOKLYN T. GUY");
+                txtBro.start(0.03);
+            }
+        
+            if (alongTheDialogue == 5) {
+                canDoShitDude = true;
+                name.text = 'Brooklyn Guy';
+                txtBro.resetText("Brooklyn T. Guy");
+                txtBro.start(0.03);
+            }
+        
+            if (alongTheDialogue == 6) {
+                canDoShitDude = true;
+                name.text = 'You';
+                txtBro.resetText("This fucking ROCKS.");
+                txtBro.start(0.03);
+            }
+        
+            if (alongTheDialogue == 7) {
+                canDoShitDude = true;
+                name.text = 'Brooklyn Guy';
+                txtBro.resetText("Well Brooklyn T. Guy. you did it again.");
+                txtBro.start(0.03); 
+            }
+        
+            if (alongTheDialogue == 8) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                transitionShit("screenFade", "");
+                name.text = '';
+                txtBro.resetText("you BLACK OUT lmao\n\nbut ur like awake now so yeah does a kissy face");
+                txtBro.start(0.03);
+            }
+        
+            if (alongTheDialogue == 9) {
+                sceneDialogChange("KathyRoomOPENING", false);
             }
 
         case "KathyRoomOPENING":
