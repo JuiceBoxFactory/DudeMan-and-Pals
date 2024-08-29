@@ -46,7 +46,7 @@ var discs:FlxSpriteGroup<FlxSprite> = [];
 // oh right i have make *SIGH* non-arrays....
 // - Mel!
 var chosenOrWhatevs = 0;
-var canDo = true;
+var canDo = false;
 var discSpin = false;
 var discSpinSlow = false;
 
@@ -154,6 +154,9 @@ function create() {
         var origY = ui.y;
         ui.y += 900;
         FlxTween.tween(ui, {y: origY}, 2, {ease:FlxEase.quartOut});
+        new FlxTimer().start(2, function(timer) {
+            canDo = true;
+        });
     }
 
 
@@ -200,7 +203,6 @@ function update(elapsed:Float) {
         canDo = false;
         FlxG.camera.addShader(blurShit);
         FlxG.save.data.shortLived = null;
-        FlxG.save.data.gamesFirstTime = false;
     }
 
 	if (FlxG.save.data.shortLived == true) {

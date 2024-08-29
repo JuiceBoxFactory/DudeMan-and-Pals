@@ -1402,7 +1402,7 @@ function update() {
         saveGame();
     }
 
-    if (FlxG.keys.justPressed.SHIFT) {
+    if (FlxG.keys.justPressed.SHIFT && canDoShitDude == true) {
         skipDialogue();
     }
 
