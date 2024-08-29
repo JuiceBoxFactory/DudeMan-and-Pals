@@ -244,9 +244,9 @@ function update(elapsed:Float) {
     } 
 
     if (controls.ACCEPT && canDo == true) {
+        canDo = false;
         FlxG.sound.play(Paths.sound('confirm'));
         loadGame();
-        canDo = false;
     }
 
     for (i in 0...gamesOrderBLEH.length) {

@@ -1361,6 +1361,7 @@ function sceneSystem(scene) {
 
 function skipDialogue() {
 
+    canDoShitDude = false;
     if (stopHere != true) {
 
         alongTheDialogue += 1;
