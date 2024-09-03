@@ -751,9 +751,9 @@ function sceneSystem(scene) {
         
             if (alongTheDialogue == 2) {
                 canDoShitDude = true;
-                openSubState(new ModSubState("Functionality/DudeNotify"));
-                FlxG.save.data.notificationType1 = "funValue";
-                FlxG.save.data.notificationMessage1 = "You Encountered a Fun Value event!";
+                                    openSubState(new ModSubState("Functionality/DudeNotify"));
+                    FlxG.save.data.notificationType1 = "funValue";
+                    FlxG.save.data.notificationMessage1 = "You Encountered a Fun Value event!";
                 transitionShit("nameBoxPEAR", "");
                 transitionShit("screenUnfade", "");
                 char1var = 'BrooklynGuy';
@@ -1377,13 +1377,12 @@ function sceneSystem(scene) {
                 name.text = 'Kathy';
                 txtBro.resetText("uhm");
                 txtBro.start(0.03);
-                stopHere = true;
             }
 
             if (alongTheDialogue == 18 && FlxG.save.data.kathyBar > -1) {
                 char1var = "Kathy/Tired";
                 name.text = 'Kathy';
-                txtBro.resetText("how did you ACTUALLY get here?");
+                txtBro.resetText("");
                 txtBro.start(0.03);
                 stopHere = true;
             }
