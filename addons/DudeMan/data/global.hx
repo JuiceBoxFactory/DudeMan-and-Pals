@@ -55,13 +55,14 @@ function update(elapsed:Float) {
 		FlxG.game.removeShader(invert);
 	}
 
-	// DEFAULT SAVE DATA.. if u wanna fck wit it !!! you can use the in-game save file editor to make changes to your actual save - Melty
+	// DEFAULT SAVE DATA.. if u wanna fck wit it !!! you can use the in-game save file editor to make changes to your actual save, this is just more... veristile ? ( non limited ) - Melty
 	if (FlxG.save.data.defaultSaveData == null) {
 		FlxG.save.data.funValue = null; // I mean. what do you THINK it does ?
 		FlxG.save.data.obituaryThing = null; // this just makes the obituary shit change lol
 		FlxG.save.data.selectorButtonsUnlocked = 3; // only goes up to 4, 3 locks the games and 4 unlocks them
-		FlxG.save.data.dudemailsUnlocked = 0; // max is [number will be put here later], however you only unlock up to [number will be put here later], so fuck around to your hearts content, dataminer ! 
-		FlxG.save.data.language = null; // unused multi-language support ! just didnt have the motivation to translate allat.
+		FlxG.save.data.language = null; // unused multi-language support ! just didnt have the motivation to translate allat. spanish works on a few places and german works on the main menu, put it in "", ex: "english" or "spanish"
+		FlxG.save.data.datingDialogue = null; // messing with this one will not end well probably
+		FlxG.save.data.datingSaves = "reset"; // this just removes your dating sim save files upon properly resetting your save data
 		FlxG.save.data.defaultSaveData = false; // well ??
 	}
 	// dudeman condems this behaviour - dudeman

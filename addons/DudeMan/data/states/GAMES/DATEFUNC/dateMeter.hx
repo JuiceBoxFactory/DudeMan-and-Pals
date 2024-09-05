@@ -43,13 +43,13 @@ function create() {
 
     showBar(FlxG.save.data.showbar);
 
-    cursor = new FlxSprite(0, 0).loadGraphic(Paths.image('game/cursor'));
-    cursor.cameras = [awesomeCam];
-    add(cursor);
-
     if (FlxG.save.data.showbarSecondary != null) {
         create2();
     }
+
+    cursor = new FlxSprite(0, 0).loadGraphic(Paths.image('game/cursor'));
+    cursor.cameras = [awesomeCam];
+    add(cursor);
 
 }
 

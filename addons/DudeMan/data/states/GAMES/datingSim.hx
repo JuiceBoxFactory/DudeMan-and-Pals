@@ -2065,7 +2065,7 @@ function changeDialogue() {
 
 function saveGame() {
 
-    openSubState(new ModSubState("DATEFUNC/dateFileMenu"));
+    openSubState(new ModSubState("GAMES/DATEFUNC/dateFileMenu"));
 
     // WHY DID I DO THIS LIKE THIS ????
     /*
