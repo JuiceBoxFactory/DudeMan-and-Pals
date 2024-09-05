@@ -6,8 +6,6 @@ import flixel.util.FlxSave;
 
 function create() {
 
-    trace('hi');
-
     persistentUpdate = true;
 
     awesomeCam = new FlxCamera(0, 0, 1280, 720);

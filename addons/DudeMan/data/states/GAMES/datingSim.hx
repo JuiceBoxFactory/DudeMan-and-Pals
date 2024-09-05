@@ -2065,9 +2065,7 @@ function changeDialogue() {
 
 function saveGame() {
 
-    new FlxTimer().start(0.1, function(timer) {
-        openSubState(new ModSubState("DATEFUNC/dateFileMenu"));
-    });
+    openSubState(new ModSubState("DATEFUNC/dateFileMenu"));
 
     // WHY DID I DO THIS LIKE THIS ????
     /*
