@@ -52,6 +52,9 @@ var isDisabled = [
     false
 
 ];
+var energy = 1;
+var fileSceneName = "";
+var day = "Monday";
 
 
 function create() {
@@ -316,6 +319,8 @@ function sceneSystem(scene) {
 
         case "openingLOL":
 
+            fileSceneName = "DUDE SCHOOL Entrance";
+
             if (alongTheDialogue == 0) {
                 transitionShit("nameBoxPEAR", "");
                 ground = 'thatSchoolThatIHate';
@@ -461,6 +466,8 @@ function sceneSystem(scene) {
 
         case "No, dude.":
 
+            fileSceneName = "DUDE SCHOOL Entrance";
+
             if (alongTheDialogue == 0) {
                 canDoShitDude = true;
                 music.pause();
@@ -475,6 +482,9 @@ function sceneSystem(scene) {
             }
 
         case "Yeah, Man !":
+
+            fileSceneName = "DUDE SCHOOL Entrance";
+
             if (alongTheDialogue == 0) {
                 canDoShitDude = true;
                 name.text = 'DudeMan';
@@ -498,6 +508,7 @@ function sceneSystem(scene) {
         
         case "hallway1OPENING":
 
+            fileSceneName = "School Hallways";
             ground = "hallway1";
 
             if (alongTheDialogue == 0) {
@@ -537,6 +548,7 @@ function sceneSystem(scene) {
 
         case "choice1DEFAULT":
 
+            fileSceneName = "School Hallways";
             ground = "hallway1";
 
             if (alongTheDialogue == 0) {
@@ -597,6 +609,7 @@ function sceneSystem(scene) {
 
         case "mother1":
 
+            fileSceneName = "School Hallways";
             ground = "hallway1";
 
             if (alongTheDialogue == 0) {
@@ -627,6 +640,7 @@ function sceneSystem(scene) {
     
         case "mother2":
 
+            fileSceneName = "School Hallways";
             ground = "hallway1";
 
             if (alongTheDialogue == 0) {
@@ -665,6 +679,7 @@ function sceneSystem(scene) {
         
         case "mother3":
 
+            fileSceneName = "School Hallways";
             ground = "hallway1";
 
             if (alongTheDialogue == 0) {
@@ -697,6 +712,7 @@ function sceneSystem(scene) {
 
         case "choice1NOMOTHER":
 
+            fileSceneName = "School Hallways";
             ground = "hallway1";
 
             if (alongTheDialogue == 0) {
@@ -730,6 +746,8 @@ function sceneSystem(scene) {
             }
 
         case "brooklynGuy":
+
+            fileSceneName = "Blood Class ( Brooklyn Guy Fun Value Event )";
 
             if (alongTheDialogue == 0) {
                 canDoShitDude = true;
@@ -830,6 +848,8 @@ function sceneSystem(scene) {
 
         case "KathyRoomOPENING":
 
+            fileSceneName = "Blood Class";
+
             if (alongTheDialogue == 0) {
                 canDoShitDude = true;
                 transitionShit("nameBoxDPEAR", "");
@@ -896,6 +916,8 @@ function sceneSystem(scene) {
     
         case "AAAAAAAAAH IM A MINOORRRR GET AWAY FROM MEEEEE":
 
+            fileSceneName = "Blood Class";
+
             if (alongTheDialogue == 0) {
                 canDoShitDude = true;
                 char1var = 'Kathy/minor';
@@ -938,6 +960,8 @@ function sceneSystem(scene) {
 
         case "nameIsMinor":
 
+            fileSceneName = "Blood Class";
+
             if (alongTheDialogue == 0) {
                 FlxG.save.data.kathyBar += 5;
                 canDoShitDude = true;
@@ -955,6 +979,8 @@ function sceneSystem(scene) {
             }
 
         case "nameMIGHTbeMinor":
+
+            fileSceneName = "Blood Class";
 
             if (alongTheDialogue == 0) {
                 canDoShitDude = true;
@@ -979,6 +1005,8 @@ function sceneSystem(scene) {
             }  
 
         case "Your future partner ;]":
+
+            fileSceneName = "Blood Class";
 
             if (alongTheDialogue == 0) {
                 canDoShitDude = true;
@@ -1028,6 +1056,8 @@ function sceneSystem(scene) {
 
         case "dontCareKATHY1":
 
+            fileSceneName = "Blood Class";
+
             if (alongTheDialogue == 0) {
                 canDoShitDude = true;
                 name.text = "Kathy";
@@ -1044,6 +1074,8 @@ function sceneSystem(scene) {
 
         case "dontCareKATHY1bad":
 
+            fileSceneName = "Blood Class";
+
             if (alongTheDialogue == 0) {
                 canDoShitDude = true;
                 name.text = "Kathy";
@@ -1059,6 +1091,8 @@ function sceneSystem(scene) {
             }
 
         case "I'm. heh. Bee Flavourtext.":
+
+            fileSceneName = "Blood Class";
 
             if (alongTheDialogue == 0) {
                 stopHere = true;
@@ -1187,6 +1221,8 @@ function sceneSystem(scene) {
 
         case Sys.environment()["USERNAME"]:
             
+            fileSceneName = "Blood Class";
+
             if (alongTheDialogue == 0) {
                 canDoShitDude = true;
                 stopHere = true;
@@ -1206,6 +1242,8 @@ function sceneSystem(scene) {
     
         case "dudemanAppearKathyRoomOPENING":
     
+            fileSceneName = "Blood Class";
+
             if (alongTheDialogue == 0 && FlxG.save.data.kathyBar > -1) {
                 canDoShitDude = true;
                 char1var = 'Kathy/Confused';
@@ -1214,7 +1252,7 @@ function sceneSystem(scene) {
                 txtBro.resetText("if i may ask, how did you... get here? are you new or something? i hope that doesnt sound rude but, ive just never seen you in this school before");
                 txtBro.start(0.03);
             }
-            if (alongTheDialogue == 0 && FlxG.save.data.kathyBar < 0) {
+            if (alongTheDialogue == 0 && FlxG.save.data.kathyBar < 5) {
                 canDoShitDude = true;
                 char1var = 'Kathy/AngryArmsDown';
                 characterStatus("APPEAR", char1);
@@ -1231,7 +1269,7 @@ function sceneSystem(scene) {
                 txtBro.start(0.03);
             }
             
-            if (alongTheDialogue == 1 && FlxG.save.data.kathyBar < 0) {
+            if (alongTheDialogue == 1 && FlxG.save.data.kathyBar < 5) {
                 char1var = 'Kathy/Angry';
                 canDoShitDude = true;
                 name.text = playerName;
@@ -1404,6 +1442,8 @@ function sceneSystem(scene) {
 
         case "apologizeBadRouteKATHY1":
 
+            fileSceneName = "Blood Class";
+
             if (alongTheDialogue == 0) {
                 canDoShitDude = true;
                 transitionShit("nameBoxDPEAR", "");
@@ -1437,6 +1477,8 @@ function sceneSystem(scene) {
             }
 
         case "dontApologizeBadRouteKATHY1":
+
+            fileSceneName = "Blood Class";
 
             if (alongTheDialogue == 0) {
                 canDoShitDude = true;
@@ -1496,6 +1538,8 @@ function sceneSystem(scene) {
         
 
         case "FruityRoomOPENING":
+
+            fileSceneName = "Art Class";
 
             if (alongTheDialogue == 0) {
                 canDoShitDude = true;
@@ -1558,6 +1602,8 @@ function sceneSystem(scene) {
 
         case "hallway2OPENING":
 
+            fileSceneName = "School Hallways";
+
             ground = "hallway2";
 
             if (alongTheDialogue == 0) {
@@ -1586,6 +1632,9 @@ function sceneSystem(scene) {
         default:
 
             if (alongTheDialogue == 0) {
+
+                fileSceneName = "Error Room";
+
                 canDoShitDude = true;
                 transitionShit("nameBoxDPEAR", "");
                 characterStatus("UNAPPEAR", char1);
@@ -1674,7 +1723,7 @@ function update() {
     }
 
 	if (FlxG.keys.justPressed.G) {
-        FlxG.save.data.datingDialogueFILE1 = null;
+        FlxG.save.data.datingDialogue = null;
     }
 
 //    if (FlxG.keys.justPressed.H) {
@@ -2016,6 +2065,12 @@ function changeDialogue() {
 
 function saveGame() {
 
+    new FlxTimer().start(0.1, function(timer) {
+        openSubState(new ModSubState("DATEFUNC/dateFileMenu"));
+    });
+
+    // WHY DID I DO THIS LIKE THIS ????
+    /*
     FlxG.save.data.datingDialogueFILE1 = alongTheDialogue;
     FlxG.save.data.datingChar1AssetFILE1 = char1var;
     FlxG.save.data.datingChar2AssetFILE1 = char2var;
@@ -2030,6 +2085,28 @@ function saveGame() {
     FlxG.save.data.showbarFILE1 = FlxG.save.data.showbar;
     FlxG.save.data.kathyBarFILE1 = FlxG.save.data.kathyBar;
     FlxG.save.data.mondayInteractionOrderFILE1 = FlxG.save.data.mondayInteractionOrder;
+    FlxG.save.data.fileSceneNameFILE1 = fileSceneName;
+    FlxG.save.data.curDayFILE1 = day;
+    FlxG.save.data.energyFILE1 = energy;
+    */
+
+    FlxG.save.data.datingDialogue = alongTheDialogue;
+    FlxG.save.data.datingChar1Asset = char1var;
+    FlxG.save.data.datingChar2Asset = char2var;
+    FlxG.save.data.datingChar1X = char1.x;
+    FlxG.save.data.datingChar2X = char2.x;
+    FlxG.save.data.name = playerName;
+    FlxG.save.data.datingChar1State = character1State;
+    FlxG.save.data.datingChar2State = character2State;
+    FlxG.save.data.datingScene = curScene;
+    FlxG.save.data.boxState = nameBoxState;
+    FlxG.save.data.datingBackground = ground;
+    FlxG.save.data.showbar = FlxG.save.data.showbar;
+    FlxG.save.data.kathyBar = FlxG.save.data.kathyBar;
+    FlxG.save.data.mondayInteractionOrder = FlxG.save.data.mondayInteractionOrder;
+    FlxG.save.data.fileSceneName = fileSceneName;
+    FlxG.save.data.curDay = day;
+    FlxG.save.data.energy = energy;
 
 }
 
@@ -2037,21 +2114,25 @@ function loadGame() {
 
     FlxG.save.data.noTransition = true;
 
-    if (FlxG.save.data.datingDialogueFILE1 != null) { 
+    if (FlxG.save.data.datingDialogue != null) { 
 
-        alongTheDialogue = FlxG.save.data.datingDialogueFILE1;
-        playerName = FlxG.save.data.nameFILE1;
-        char1var = FlxG.save.data.datingChar1AssetFILE1;
-        char2var = FlxG.save.data.datingChar2AssetFILE1;
-        character1State = FlxG.save.data.datingChar1StateFILE1;
-        character2State = FlxG.save.data.datingChar2StateFILE1;
-        curScene = FlxG.save.data.datingSceneFILE1;
-        char1.x = FlxG.save.data.datingChar1XFILE1;
-        char2.x = FlxG.save.data.datingChar2XFILE1;
-        nameBoxState = FlxG.save.data.boxStateFILE1;
-        ground = FlxG.save.data.datingBackgroundFILE1;
-        FlxG.save.data.showbar = FlxG.save.data.showbarFILE1;
-        FlxG.save.data.kathyBar = FlxG.save.data.kathyBarFILE1;
+        alongTheDialogue = FlxG.save.data.datingDialogue;
+        playerName = FlxG.save.data.name;
+        char1var = FlxG.save.data.datingChar1Asset;
+        char2var = FlxG.save.data.datingChar2Asset;
+        character1State = FlxG.save.data.datingChar1State;
+        character2State = FlxG.save.data.datingChar2State;
+        curScene = FlxG.save.data.datingScene;
+        char1.x = FlxG.save.data.datingChar1X;
+        char2.x = FlxG.save.data.datingChar2X;
+        nameBoxState = FlxG.save.data.boxState;
+        ground = FlxG.save.data.datingBackground;
+        FlxG.save.data.showbar = FlxG.save.data.showbar;
+        FlxG.save.data.kathyBar = FlxG.save.data.kathyBar;
+        fileSceneName = FlxG.save.data.fileSceneName;
+        day = FlxG.save.data.curDay;
+        energy = FlxG.save.data.energy;
+
         gameLoaded = true;
 
         if (FlxG.save.data.showbar != null) {
