@@ -117,9 +117,7 @@ function checkMeterType(person) {
 
         case null:
 
-            if (prevPpl != null) {
-                hideBar();
-            }
+            hideBar();
 
         case "kathy":
 
@@ -176,7 +174,7 @@ function update() {
     cursor.x = FlxG.mouse.x;
     cursor.y = FlxG.mouse.y;
 
-    if (FlxG.save.data.showbar == null && FlxG.save.data.showbarSecondary == null && text2.x == 1281) {
+    if (FlxG.save.data.showbar == null && FlxG.save.data.showbarSecondary == null && text.x == -180) {
         close();
     }
     
@@ -229,8 +227,6 @@ function update() {
     var clip = new FlxRect(0, sillyGooseling, fill.frameWidth, fill.frameHeight);
     fill.clipRect = clip;
 
-    checkMeterType2(FlxG.save.data.showbarSecondary);
-
     if (FlxG.save.data.showbarSecondary != null) {
         updateSecondary();
     }
@@ -243,9 +239,7 @@ function checkMeterType2(person) {
 
         case null:
 
-            if (prevPpl2 != null) {
-                hideBar2();
-            }
+            hideBar2();
 
         case "kathy":
 
@@ -297,6 +291,8 @@ function checkMeterType2(person) {
 var trueOutput2 = 0;
 
 function updateSecondary() {
+
+    checkMeterType2(FlxG.save.data.showbarSecondary);
 
     if (FlxG.save.data.showbarSecondary != null) {
         text2.text = type.toUpperCase(type)+" METER\n"+FlxG.save.data.showbarSecondary.toUpperCase(FlxG.save.data.showbarSecondary);

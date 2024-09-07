@@ -62,6 +62,10 @@ function postUpdate() {
         FlxG.switchState(new ModState("DudeBrandFunValueSetter"));
     }
 
+    if (FlxG.keys.justPressed.H) {
+        FlxG.switchState(new ModState('GAMES/datingSimTitle'));
+    }
+
 //    if (FlxG.save.data.language == null) {
 //        FlxG.switchState(new ModState("DudeBrandLanguagePicker"));
 //        trace('hey buddy');

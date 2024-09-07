@@ -61,6 +61,7 @@ function create() {
     text.antialiasing = false;
     text.alpha = 0;
     text.borderColor = 0xFFFBF1FF;
+    text.scrollFactor.set(0, 0);
     text.borderSize = 3;
     add(text);
 
@@ -101,6 +102,7 @@ function create() {
     key = new FlxSprite(1025, 625).loadGraphic(Paths.image('shh/DATINGSIM/dialogueBoxShit/arrow'));           
     key.antialiasing = false;
     key.scale.set(0.6, 0.6);
+    key.scrollFactor.set(0, 0);
     key.alpha = 0;
     add(key);
 
@@ -151,7 +153,7 @@ function update() {
         FlxG.sound.play(Paths.sound('datingSim/contSFX'), 1);
         FlxTween.tween(key.scale, {x: 0.6}, 0.4, {ease:FlxEase.backOut});
         new FlxTimer().start(0.5, function(timer) {
-            FlxG.switchState(new ModState("GAMES/datingSim"));
+            openSubState(new ModSubState("GAMES/DATEFUNC/dateFileMenu"));
         });
     }
 

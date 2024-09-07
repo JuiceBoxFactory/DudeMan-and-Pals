@@ -55,11 +55,14 @@ var isDisabled = [
 var energy = 1;
 var fileSceneName = "";
 var day = "Monday";
+var kathyInteractedMonday = false;
+var fruityInteractedMonday = false;
+var dudemanInteractedMonday = false;
 
 
 function create() {
 
-    loadDefaultSaveShit();
+    FlxG.save.data.substateOpen = false;
 
     FlxG.cameras.add(camHUD, false);
     camHUD.bgColor = 0x0000000;
@@ -216,6 +219,46 @@ function create() {
     button4text.borderSize = 3;
     button4text.cameras = [camHUD];
 
+    fileText = new FlxText(0, 0);
+    fileText.text = "|| File |";
+    fileText.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+    fileText.color = 0xFF130022;
+    fileText.antialiasing = false;
+    fileText.borderColor = 0xFFFBF1FF;
+    fileText.borderSize = 2.1;
+    fileText.cameras = [camHUD];
+    add(fileText);
+
+    skipText = new FlxText(0, 0);
+    skipText.text = "| Skip |";
+    skipText.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+    skipText.color = 0xFF130022;
+    skipText.antialiasing = false;
+    skipText.borderColor = 0xFFFBF1FF;
+    skipText.borderSize = 2.1;
+    skipText.cameras = [camHUD];
+    add(skipText);
+
+    refreshText = new FlxText(0, 0);
+    refreshText.text = "| Refresh State |";
+    refreshText.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+    refreshText.color = 0xFF130022;
+    refreshText.antialiasing = false;
+    refreshText.borderColor = 0xFFFBF1FF;
+    refreshText.borderSize = 2.1;
+    refreshText.cameras = [camHUD];
+    add(refreshText);
+
+    quitText = new FlxText(0, 0);
+    quitText.text = "| Quit ||";
+    quitText.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+    quitText.color = 0xFF130022;
+    quitText.antialiasing = false;
+    quitText.borderColor = 0xFFFBF1FF;
+    quitText.borderSize = 2.1;
+    quitText.cameras = [camHUD];
+    add(quitText);
+
     darkness = new FlxSprite(0, 0).makeGraphic(1280, 720, 0xFF000000);
     darkness.scrollFactor.set(0, 0);
     darkness.alpha = 0;
@@ -243,7 +286,10 @@ function create() {
     cursor = new FlxSprite(0, 0).loadGraphic(Paths.image('game/cursor'));
     cursor.cameras = [cursorCam];
     add(cursor);
-    
+
+    characterStatus("UNAPPEAR", char1);
+    characterStatus("UNAPPEAR", char2);
+
     loadGame();
 
     if (gameLoaded == false) {    
@@ -486,6 +532,7 @@ function sceneSystem(scene) {
             fileSceneName = "DUDE SCHOOL Entrance";
 
             if (alongTheDialogue == 0) {
+                characterStatus("UNAPPEAR", char2);
                 canDoShitDude = true;
                 name.text = 'DudeMan';
                 txtBro.resetText("oh yeah baby. this is happening. its just getting started.");
@@ -582,21 +629,12 @@ function sceneSystem(scene) {
                 val4DoFade = false;
                 buttonText1Be("yoiur moms ho use.");
                 buttonText2Be("Keep going forwards");
-                for (i in 0...FlxG.save.data.mondayInteractionOrder.length)	{
-
-                    var yeah;
-
-                    if (FlxG.save.data.mondayInteractionOrder[i] == "kathy") {
-                        buttonText3Be("LOCKED");
-                        lockButton(3);
-                        yeah = true;
-                    }
-                    else {
-                        if (yeah != true) {
-                            buttonText3Be("Class on the Left !");
-                        }
-                    }
-
+                if (kathyInteractedMonday == true) {
+                    buttonText3Be("BEEN THERE ALREADY.");
+                    lockButton(3);
+                }
+                else {
+                    buttonText3Be("Class on the Left !");
                 }
                 buttonText4Be("Class on the Right !");
                 buttonAdd(1);
@@ -735,7 +773,13 @@ function sceneSystem(scene) {
                 val3DoFade = false;
                 val4DoFade = false;
                 buttonText2Be("Keep going forwards");
-                buttonText3Be("Class on the Left !");
+                if (kathyInteractedMonday == true) {
+                    buttonText3Be("BEEN THERE ALREADY.");
+                    lockButton(3);
+                }
+                else {
+                    buttonText3Be("Class on the Left !");
+                }
                 buttonText4Be("Class on the Right !");
                 buttonAdd(2);
                 buttonAdd(3);
@@ -1252,7 +1296,7 @@ function sceneSystem(scene) {
                 txtBro.resetText("if i may ask, how did you... get here? are you new or something? i hope that doesnt sound rude but, ive just never seen you in this school before");
                 txtBro.start(0.03);
             }
-            if (alongTheDialogue == 0 && FlxG.save.data.kathyBar < 5) {
+            if (alongTheDialogue == 0 && FlxG.save.data.kathyBar < 0) {
                 canDoShitDude = true;
                 char1var = 'Kathy/AngryArmsDown';
                 characterStatus("APPEAR", char1);
@@ -1269,7 +1313,7 @@ function sceneSystem(scene) {
                 txtBro.start(0.03);
             }
             
-            if (alongTheDialogue == 1 && FlxG.save.data.kathyBar < 5) {
+            if (alongTheDialogue == 1 && FlxG.save.data.kathyBar < 0) {
                 char1var = 'Kathy/Angry';
                 canDoShitDude = true;
                 name.text = playerName;
@@ -1453,7 +1497,7 @@ function sceneSystem(scene) {
                 FlxG.save.data.showbar = null;
                 txtBro.resetText("I think you screwed that one up.");
                 txtBro.start(0.03);
-                findEmptySlot("mondayInteractionOrder", "kathy");
+                kathyInteractedMonday = true;
             }
     
             if (alongTheDialogue == 1) {
@@ -1505,7 +1549,7 @@ function sceneSystem(scene) {
                 FlxG.save.data.showbar = null;
                 txtBro.resetText("..wow");
                 txtBro.start(0.03);
-                findEmptySlot("mondayInteractionOrder", "kathy");
+                kathyInteractedMonday = true;
             }
     
             if (alongTheDialogue == 3) {
@@ -1661,25 +1705,6 @@ function lockButton(type) {
     isDisabled[type] = true;
 
 }
- 
-function findEmptySlot(variable, toAdd) {
-
-    var found;
-
-    for (i in 0...8) {
-
-        if (variable == "mondayInteractionOrder") {
-            if (found != true) {
-                if (FlxG.save.data.mondayInteractionOrder[i] == "") {
-                    found = true;
-                    FlxG.save.data.mondayInteractionOrder[i] = toAdd;
-                }
-            }
-        }
-
-    }
-
-}
 
 function skipDialogue() {
 
@@ -1697,12 +1722,6 @@ function skipDialogue() {
 }
 
 function update() {
-
-    if (shutTheFuckUp == true) {
-        canDo = false;
-        characterStatus("UNAPPEAR", char1);
-        characterStatus("UNAPPEAR", char2);
-    }
 
     if (canDoShitDude == true) {
         key.alpha = 1;
@@ -1742,6 +1761,8 @@ function update() {
             changeDialogue();
         }
     
+        cursor.alpha = 1;
+
         if (FlxG.keys.justPressed.ESCAPE) {
             FlxG.switchState(new ModState("GAMES/datingSimTitle"));
         }
@@ -1802,13 +1823,7 @@ function loadDefaultSaveShit() {
     FlxG.save.data.zeeBar = 0;
     FlxG.save.data.showbar = null;
     FlxG.save.data.showbarSecondary = null;
-    FlxG.save.data.mondayInteractionOrder = [
 
-        "",
-        "",
-        ""
-
-    ];
 }
 
 function transitionShit(type, sceneToBe) {
@@ -2065,8 +2080,6 @@ function changeDialogue() {
 
 function saveGame() {
 
-    openSubState(new ModSubState("GAMES/DATEFUNC/dateFileMenu"));
-
     // WHY DID I DO THIS LIKE THIS ????
     /*
     FlxG.save.data.datingDialogueFILE1 = alongTheDialogue;
@@ -2099,12 +2112,16 @@ function saveGame() {
     FlxG.save.data.datingScene = curScene;
     FlxG.save.data.boxState = nameBoxState;
     FlxG.save.data.datingBackground = ground;
-    FlxG.save.data.showbar = FlxG.save.data.showbar;
-    FlxG.save.data.kathyBar = FlxG.save.data.kathyBar;
-    FlxG.save.data.mondayInteractionOrder = FlxG.save.data.mondayInteractionOrder;
     FlxG.save.data.fileSceneName = fileSceneName;
     FlxG.save.data.curDay = day;
     FlxG.save.data.energy = energy;
+    FlxG.save.data.kathyInteractedMonday = kathyInteractedMonday;
+    FlxG.save.data.fruityInteractedMonday = fruityInteractedMonday;
+    FlxG.save.data.dudemanInteractedMonday = dudemanInteractedMonday;
+
+    FlxG.save.data.substateOpen = true;
+    cursor.alpha = 0;
+    openSubState(new ModSubState("GAMES/DATEFUNC/dateFileMenu"));
 
 }
 
@@ -2125,11 +2142,12 @@ function loadGame() {
         char2.x = FlxG.save.data.datingChar2X;
         nameBoxState = FlxG.save.data.boxState;
         ground = FlxG.save.data.datingBackground;
-        FlxG.save.data.showbar = FlxG.save.data.showbar;
-        FlxG.save.data.kathyBar = FlxG.save.data.kathyBar;
         fileSceneName = FlxG.save.data.fileSceneName;
         day = FlxG.save.data.curDay;
         energy = FlxG.save.data.energy;
+        kathyInteractedMonday = FlxG.save.data.kathyInteractedMonday;
+        fruityInteractedMonday = FlxG.save.data.fruityInteractedMonday;
+        dudemanInteractedMonday = FlxG.save.data.dudemanInteractedMonday;
 
         gameLoaded = true;
 
@@ -2168,6 +2186,7 @@ function loadGame() {
         characterStatus(character2State, char2);
     }
     else {
+        loadDefaultSaveShit();
         trace("SAVE FILE 1 FAILED TO LOAD, STARTING FROM BEGINNING");
     }
 

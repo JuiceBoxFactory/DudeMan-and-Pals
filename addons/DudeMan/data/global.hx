@@ -62,7 +62,7 @@ function update(elapsed:Float) {
 		FlxG.save.data.selectorButtonsUnlocked = 3; // only goes up to 4, 3 locks the games and 4 unlocks them
 		FlxG.save.data.language = null; // unused multi-language support ! just didnt have the motivation to translate allat. spanish works on a few places and german works on the main menu, put it in "", ex: "english" or "spanish"
 		FlxG.save.data.datingDialogue = null; // messing with this one will not end well probably
-		FlxG.save.data.datingSaves = "reset"; // this just removes your dating sim save files upon properly resetting your save data
+		resetDatingSave();
 		FlxG.save.data.defaultSaveData = false; // well ??
 	}
 	// dudeman condems this behaviour - dudeman
@@ -106,6 +106,20 @@ function update(elapsed:Float) {
         FlxG.resetState();
 		FlxG.mouse.visible = false;
     }
+}
+
+function resetDatingSave() {
+
+    FlxG.save.data.datingSave1 = "blank";
+    FlxG.save.data.datingSave2 = "blank";
+    FlxG.save.data.datingSave3 = "blank";
+    FlxG.save.data.datingSave4 = "blank";
+    FlxG.save.data.datingSave5 = "blank";
+    FlxG.save.data.datingSave6 = "blank";
+    FlxG.save.data.datingSave7 = "blank";
+    FlxG.save.data.datingSave8 = "blank";
+	FlxG.save.data.fileDesc = [];
+
 }
 
 function preStateSwitch() {

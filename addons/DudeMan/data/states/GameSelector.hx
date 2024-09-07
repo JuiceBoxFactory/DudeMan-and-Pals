@@ -9,6 +9,7 @@ import funkin.backend.utils.DiscordUtil;
 import flixel.util.FlxSave;
 
 var blurShit = new CustomShader("blur");
+
 // put the file path // state name for the game, and put it in the order you want it in the list lol
 // it also uses this to check for disc labels, but if you dont have one yet then dw it'll use an unlabelled disc image
 // - Mel! sole coder of this mod atp

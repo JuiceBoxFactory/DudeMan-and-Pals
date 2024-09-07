@@ -36,6 +36,7 @@ var SecretOptionsOpen = false;
 var popUpOPEN = false;
 var stupidSKY = false;
 var goCrazy = false;
+var popUpType = "none";
 
 function create() {
 
@@ -116,6 +117,24 @@ function postCreate() {
 	buttonTextPOP.borderSize = 2.25;
 	buttonTextPOP.alpha = 0;
 	add(buttonTextPOP);
+
+	buttonPOP2 = new FlxSprite(0, 0).loadGraphic(Paths.image('ui/button'));
+	buttonPOP2.scrollFactor.set(0, 0);
+	buttonPOP2.cameras = [popUpCamera];
+	buttonPOP2.scale.set(1, 1);
+	buttonPOP2.alpha = 0;
+	buttonPOP2.updateHitbox();
+	add(buttonPOP2);
+
+	buttonTextPOP2 = new FlxText(100, 100, 450);
+	buttonTextPOP2.text = "oh. go fuck urself.";
+	buttonTextPOP2.setFormat(Paths.font("COMIC.ttf"), 25, FlxColor.WHITE, "center");            
+	buttonTextPOP2.cameras = [popUpCamera];
+	buttonTextPOP2.color = 0xFF130022;
+	buttonTextPOP2.antialiasing = false;
+	buttonTextPOP2.borderSize = 2.25;
+	buttonTextPOP2.alpha = 0;
+	add(buttonTextPOP2);
 
 	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg'));
 	coolBackdrop.moves = true;
@@ -965,7 +984,8 @@ function update() {
 		ResetSaveData.alpha = 1;	
 	}
 	if (SelectedMisc == 0 && controls.ACCEPT && MiscOptionsOpen == true) {
-		resetSaveData();
+		popUpType = "saveData";
+		downscolled("open");
 	}
 	// BUTTONS MAIN
 	if (Selected1 == 0 && controls.ACCEPT && MainOptionsOpen == true && subStateOpen == false) {
@@ -1341,7 +1361,10 @@ function postUpdate() {
 	}
 	if (SelectedSecret == 1 && SecretOptionsOpen == true && FlxG.save.data.debug == false && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
-		FlxG.save.data.debug = true;
+			new FlxTimer().start(0.10, function(timer) {
+				popUpType = "debug";
+				downscolled("open");
+			});
 		});
 	}
 	if (SelectedSecret == 1 && SecretOptionsOpen == true && FlxG.save.data.debug == true && controls.ACCEPT) {
@@ -1511,23 +1534,6 @@ function postUpdate() {
 		});
 	}
 
-	if (FlxG.save.data.sillyFunValues == true) {
-		checkboxsillyLang.animation.play('selected');
-	}
-	if (FlxG.save.data.sillyFunValues == false) {
-		checkboxsillyLang.animation.play('disselected');
-	}
-	if (SelectedSecret == 11 && SecretOptionsOpen == true && FlxG.save.data.sillyFunValues == false && controls.ACCEPT) {
-		new FlxTimer().start(0.10, function(timer) {
-		FlxG.save.data.sillyFunValues = true;
-		});
-	}
-	if (SelectedSecret == 11 && SecretOptionsOpen == true && FlxG.save.data.sillyFunValues == true && controls.ACCEPT) {
-		new FlxTimer().start(0.10, function(timer) {
-		FlxG.save.data.sillyFunValues = false;
-		});
-	}
-
 	if (FlxG.save.data.imFromBrooklyn == true) {
 		checkboxbrooklynMode.animation.play('selected');
 	}
@@ -1587,10 +1593,31 @@ function postUpdate() {
 		});
 	}
 
-	if (popUpOPEN && FlxG.mouse.justPressed) {
+	if (popUpOPEN && FlxG.mouse.justPressed && popUpType == "none") {
 		if (FlxG.mouse.overlaps(buttonPOP)) {
 			downscolled("close");
 			FlxG.save.data.downscroll = true;
+		}
+	}
+
+	if (popUpOPEN && FlxG.mouse.justPressed && popUpType == "debug") {
+		if (FlxG.mouse.overlaps(buttonPOP)) {
+			downscolled("close");
+			FlxG.save.data.debug = true;
+		}
+		if (FlxG.mouse.overlaps(buttonPOP2)) {
+			downscolled("close");
+			FlxG.save.data.debug = false;
+		}
+	}
+
+	if (popUpOPEN && FlxG.mouse.justPressed && popUpType == "saveData") {
+		if (FlxG.mouse.overlaps(buttonPOP)) {
+			downscolled("close");
+			resetSaveData();
+		}
+		if (FlxG.mouse.overlaps(buttonPOP2)) {
+			downscolled("close");
 		}
 	}
 }
@@ -1599,6 +1626,26 @@ function downscolled(openclose) {
 
 	switch (openclose) {
 		case "open":
+
+			if (popUpType == "debug") {
+				buttonPOP2.alpha = 1;
+				buttonTextPOP2.alpha = 1;
+				warningTextPOP.text = "WAIT! Turning on DEBUG MODE can cause mess ups with your save file, unlocking things early and such.\n\nif you'd like to keep playing as intended, dont turn on debug mode, if not, go hard!";
+				buttonTextPOP.text = "turn on";
+				buttonTextPOP2.text = "keep off";
+			}
+			if (popUpType == "saveData") {
+				buttonPOP2.alpha = 1;
+				buttonTextPOP2.alpha = 1;
+				warningTextPOP.text = "this'll delete ur shit are u SUREEEE about this";
+				buttonTextPOP.text = "do it lol";
+				buttonTextPOP2.text = "oh. fuck no nevermind wait";
+			}
+			if (popUpType == "none") {
+				buttonPOP2.alpha = 0;
+				buttonTextPOP2.alpha = 0;
+			}
+
 			popUpCamera.x = 350;
 			popUpCamera.y = 50;
 			popUpCamera.width = 550;
@@ -1606,24 +1653,63 @@ function downscolled(openclose) {
 			popBorder.scale.set(5.55, 6.1);
 			popBorder.x = 225;
 			popBorder.y = 255;
-
 			warningTextPOP.scale.set(0.001, 0.001);
 			buttonPOP.scale.set(0.001, 0.001);
 			buttonTextPOP.scale.set(0.001, 0.001);
+			buttonPOP2.scale.set(0.001, 0.001);
+			buttonTextPOP2.scale.set(0.001, 0.001);
 			warningTextPOP.alpha = 1;
 			buttonPOP.alpha = 1;
 			buttonTextPOP.alpha = 1;
-			buttonTextPOP.x = 55;
-			buttonTextPOP.y = 510;
-			buttonPOP.x = 635;
-			buttonPOP.y = 485;
-			buttonPOP.offset.set(350, 50);
-			buttonPOP.x -= 145;
-			buttonPOP.y += 50;
+			if (popUpType == "none") {
+				buttonTextPOP.x = 55;
+				buttonTextPOP.y = 510;
+				buttonPOP.x = 635 - 145;
+				buttonPOP.y = 485 + 50;
+				buttonPOP.offset.set(350, 50);
+				warningTextPOP.y = 25;
+			}
+			if (popUpType == "debug") {
+				buttonPOP2.alpha = 1;
+				buttonTextPOP2.alpha = 1;
+				buttonTextPOP.x = 55;
+				buttonTextPOP.y = 380;
+				buttonPOP.x = 635 - 145;
+				buttonPOP.y = 385 + 20;
+				buttonPOP.offset.set(350, 50);
+				buttonTextPOP2.x = 55;
+				buttonTextPOP2.y = 480;
+				buttonPOP2.x = 635 - 145;
+				buttonPOP2.y = 485 + 20;
+				buttonPOP2.offset.set(350, 50);
+				warningTextPOP.y = 60;
+			}
+			if (popUpType == "saveData") {
+				buttonPOP2.alpha = 1;
+				buttonTextPOP2.alpha = 1;
+				buttonTextPOP.x = 55;
+				buttonTextPOP.y = 360;
+				buttonPOP.x = 635 - 145;
+				buttonPOP.y = 385;
+				buttonPOP.offset.set(350, 50);
+				buttonTextPOP2.x = 55;
+				buttonTextPOP2.y = 460;
+				buttonPOP2.x = 635 - 145;
+				buttonPOP2.y = 485;
+				buttonPOP2.offset.set(350, 50);
+				warningTextPOP.y = 120;
+			}
 	
 			FlxTween.tween(warningTextPOP.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut});
 			FlxTween.tween(buttonPOP.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut});
 			FlxTween.tween(buttonTextPOP.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut});
+			if (popUpType != "saveData") {
+ 				FlxTween.tween(buttonPOP2.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut});
+			}
+			else {
+				FlxTween.tween(buttonPOP2.scale, {x: 1.25, y: 1}, 1, {ease: FlxEase.quartOut});
+			}
+			FlxTween.tween(buttonTextPOP2.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut});
 			FlxTween.tween(coolBackdropPOP, {alpha: 1}, 1, {ease: FlxEase.quartOut});
 			FlxTween.tween(popBorder, {alpha: 1}, 1, {ease: FlxEase.quartOut});
 
@@ -1633,12 +1719,15 @@ function downscolled(openclose) {
 		case "close":
 			FlxTween.tween(warningTextPOP.scale, {x: 0.001, y: 0.001}, 1, {ease: FlxEase.quartOut});
 			FlxTween.tween(buttonPOP.scale, {x: 0.001, y: 0.001}, 1, {ease: FlxEase.quartOut});
+			FlxTween.tween(buttonPOP2.scale, {x: 0.001, y: 0.001}, 1, {ease: FlxEase.quartOut});
 			FlxTween.tween(buttonTextPOP.scale, {x: 0.001, y: 0.001}, 1, {ease: FlxEase.quartOut});
+			FlxTween.tween(buttonTextPOP2.scale, {x: 0.001, y: 0.001}, 1, {ease: FlxEase.quartOut});
 			FlxTween.tween(coolBackdropPOP, {alpha: 0}, 1, {ease: FlxEase.quartOut});
 			FlxTween.tween(popBorder, {alpha: 0}, 1, {ease: FlxEase.quartOut});
 
 			subStateOpen = false;
 			popUpOPEN = false;
+			popUpType = "none";
 		
 	}
 
