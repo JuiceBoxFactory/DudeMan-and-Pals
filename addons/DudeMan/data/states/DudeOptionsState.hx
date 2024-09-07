@@ -280,36 +280,11 @@ function postCreate() {
 		checkboxNoteBounce.cameras = [uiCamera];
 		add(checkboxNoteBounce);
 
-		MiddleScroll = new FlxText();
-		MiddleScroll.text = "Middle Scroll";
-		MiddleScroll.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
-		MiddleScroll.x = 180;
-		MiddleScroll.y = 520;
-		MiddleScroll.cameras = [uiCamera];
-		MiddleScroll.color = 0xFFFFFFFF;
-		MiddleScroll.borderColor = 0xFF000000;
-		MiddleScroll.antialiasing = false;
-		MiddleScroll.alpha = 0;
-		MiddleScroll.borderSize = 3;
-		add(MiddleScroll);
-
-		checkboxMiddleScroll = new FlxSprite(380, 405);	
-		checkboxMiddleScroll.frames = Paths.getSparrowAtlas('options/checked');
-		checkboxMiddleScroll.animation.addByPrefix('selected', 'yes', 6);
-		checkboxMiddleScroll.animation.addByPrefix('disselected', 'no', 6);
-		checkboxMiddleScroll.animation.play('disselected');
-		checkboxMiddleScroll.scale.set(0.3, 0.3);
-		checkboxMiddleScroll.antialiasing = false;
-		checkboxMiddleScroll.alpha = 1;
-		checkboxMiddleScroll.scrollFactor.set(1, 1);
-		checkboxMiddleScroll.cameras = [uiCamera];
-		add(checkboxMiddleScroll);
-
 		Subtitles = new FlxText();
 		Subtitles.text = "Subtitles";
 		Subtitles.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
 		Subtitles.x = 180;
-		Subtitles.y = 620;
+		Subtitles.y = 520;
 		Subtitles.cameras = [uiCamera];
 		Subtitles.color = 0xFFFFFFFF;
 		Subtitles.borderColor = 0xFF000000;
@@ -318,7 +293,7 @@ function postCreate() {
 		Subtitles.borderSize = 3;
 		add(Subtitles);
 
-		checkboxSubtitles = new FlxSprite(290, 505);	
+		checkboxSubtitles = new FlxSprite(290, 405);	
 		checkboxSubtitles.frames = Paths.getSparrowAtlas('options/checked');
 		checkboxSubtitles.animation.addByPrefix('selected', 'yes', 6);
 		checkboxSubtitles.animation.addByPrefix('disselected', 'no', 6);
@@ -331,10 +306,10 @@ function postCreate() {
 		add(checkboxSubtitles);
 
 		camMove = new FlxText();
-		camMove.text = "camMove";
+		camMove.text = "Cam Move";
 		camMove.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
 		camMove.x = 180;
-		camMove.y = 720;
+		camMove.y = 620;
 		camMove.cameras = [uiCamera];
 		camMove.color = 0xFFFFFFFF;
 		camMove.borderColor = 0xFF000000;
@@ -343,7 +318,7 @@ function postCreate() {
 		camMove.borderSize = 3;
 		add(camMove);
 
-		checkboxcamMove = new FlxSprite(280, 605);	
+		checkboxcamMove = new FlxSprite(310, 505);	
 		checkboxcamMove.frames = Paths.getSparrowAtlas('options/checked');
 		checkboxcamMove.animation.addByPrefix('selected', 'yes', 6);
 		checkboxcamMove.animation.addByPrefix('disselected', 'no', 6);
@@ -354,6 +329,31 @@ function postCreate() {
 		checkboxcamMove.scrollFactor.set(1, 1);
 		checkboxcamMove.cameras = [uiCamera];
 		add(checkboxcamMove);
+
+		ghosts = new FlxText();
+		ghosts.text = "Ghosts";
+		ghosts.setFormat(Paths.font("COMIC.ttf"), 50, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+		ghosts.x = 180;
+		ghosts.y = 720;
+		ghosts.cameras = [uiCamera];
+		ghosts.color = 0xFFFFFFFF;
+		ghosts.borderColor = 0xFF000000;
+		ghosts.antialiasing = false;
+		ghosts.alpha = 0;
+		ghosts.borderSize = 3;
+		add(ghosts);
+
+		checkboxghosts = new FlxSprite(240, 605);	
+		checkboxghosts.frames = Paths.getSparrowAtlas('options/checked');
+		checkboxghosts.animation.addByPrefix('selected', 'yes', 6);
+		checkboxghosts.animation.addByPrefix('disselected', 'no', 6);
+		checkboxghosts.animation.play('disselected');
+		checkboxghosts.scale.set(0.3, 0.3);
+		checkboxghosts.antialiasing = false;
+		checkboxghosts.alpha = 1;
+		checkboxghosts.scrollFactor.set(1, 1);
+		checkboxghosts.cameras = [uiCamera];
+		add(checkboxghosts);
 
 	MISC = new FlxText();
 	MISC.text = "Accessibility >";
@@ -904,7 +904,7 @@ function update() {
 		}
 	}
 	
-	for (obj in [Downscroll, checkboxDownscroll, dudeRating, checkboxdudeRating, GhostTapping, checkboxGhostTapping, NoteBounce, checkboxNoteBounce, MiddleScroll, checkboxMiddleScroll, Subtitles, checkboxSubtitles, camMove, checkboxcamMove]) {
+	for (obj in [Downscroll, checkboxDownscroll, dudeRating, checkboxdudeRating, GhostTapping, checkboxGhostTapping, NoteBounce, checkboxNoteBounce, Subtitles, checkboxSubtitles, camMove, checkboxcamMove, ghosts, checkboxghosts]) {
 		if (GameplayOptionsOpen == true) {
 			add(obj);
 		}
@@ -912,7 +912,7 @@ function update() {
 			remove(obj);
 		}
 	}
-	for (obj in [Downscroll, dudeRating, GhostTapping, NoteBounce, MiddleScroll, Subtitles, camMove]) {
+	for (obj in [Downscroll, dudeRating, GhostTapping, NoteBounce, Subtitles, camMove, ghosts]) {
 		obj.alpha = 0.6;
 	}
 
@@ -1070,6 +1070,10 @@ function update() {
 		BottomText.text = "Loser. clearly.";
 		camMove.alpha = 1;
 	}
+	if (SelectedGameplay == 6 && GameplayOptionsOpen == true) {
+		BottomText.text = "Turns on Ghosts when hitting double notes";
+		ghosts.alpha = 1;
+	}
 	// BUTTONS SECRET
 	if (SelectedSecret == 0 && SecretOptionsOpen == true) {
 		BottomText.text = "Change your Fun Value !";
@@ -1144,11 +1148,11 @@ function update() {
 	if (Selected1 < 0) {
 		Selected1 = 3;
 	}
-	if (SelectedGameplay > 5) {
+	if (SelectedGameplay > 6) {
 		SelectedGameplay = 0;
 	}
 	if (SelectedGameplay < 0) {
-		SelectedGameplay = 5;
+		SelectedGameplay = 6;
 	}
 	if (SelectedSecret > 14) {
 		SelectedSecret = 0;
@@ -1188,7 +1192,7 @@ function update() {
 	}
 	// GAMEPLAY CAM
 	if (SelectedGameplay > 4 && GameplayOptionsOpen == true) {
-		if (uiCamera.y != -175) {
+		if (uiCamera.y != -155) {
 			uiCamera.y -= 10;
 		}
 	}
@@ -1348,6 +1352,24 @@ function postUpdate() {
 	if (SelectedGameplay == 5 && GameplayOptionsOpen == true && FlxG.save.data.camMove == true && controls.ACCEPT) {
 		new FlxTimer().start(0.10, function(timer) {
 		FlxG.save.data.camMove = false;
+		});
+	}	
+	
+
+	if (FlxG.save.data.ghosts == true) {
+		checkboxghosts.animation.play('selected');
+	}
+	if (FlxG.save.data.ghosts == false) {
+		checkboxghosts.animation.play('disselected');
+	}
+	if (SelectedGameplay == 6 && GameplayOptionsOpen == true && FlxG.save.data.ghosts == false && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.ghosts = true;
+		});
+	}
+	if (SelectedGameplay == 6 && GameplayOptionsOpen == true && FlxG.save.data.ghosts == true && controls.ACCEPT) {
+		new FlxTimer().start(0.10, function(timer) {
+		FlxG.save.data.ghosts = false;
 		});
 	}	
 	

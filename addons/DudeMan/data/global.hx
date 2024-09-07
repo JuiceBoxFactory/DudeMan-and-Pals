@@ -76,7 +76,7 @@ function update(elapsed:Float) {
 		FlxG.save.data.dudeRating = true;
 		FlxG.save.data.ghosttap = true;
 		FlxG.save.data.notebounce = true;
-		FlxG.save.data.middlescroll = false;
+		FlxG.save.data.ghosts = true;
 		FlxG.save.data.subtitles = true;
 		FlxG.save.data.camMove = true;
 		// accessibility settings

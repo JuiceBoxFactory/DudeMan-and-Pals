@@ -58,7 +58,7 @@ var day = "Monday";
 var kathyInteractedMonday = false;
 var fruityInteractedMonday = false;
 var dudemanInteractedMonday = false;
-
+var skipping = false;
 
 function create() {
 
@@ -922,6 +922,7 @@ function sceneSystem(scene) {
                 txtBro.resetText("Oh boy I sure do LOVE my blood class");
                 txtBro.start(0.03);
                 FlxG.save.data.showbar = "kathy";
+                FlxG.save.data.showbarSecondary = null;
                 openSubState(new ModSubState("GAMES/DATEFUNC/dateMeter"));
             }
     
@@ -1258,6 +1259,7 @@ function sceneSystem(scene) {
 
             if (alongTheDialogue == 14) {
                 stopHere = true;
+                FlxG.save.data.kathyBar = 0;
                 new FlxTimer().start(0.25, function(timer) {
                 sceneDialogChange("dudemanAppearKathyRoomOPENING", false);
                 });
@@ -1275,12 +1277,13 @@ function sceneSystem(scene) {
                 name.text = 'Kathy';
                 txtBro.resetText("cool name c:");
                 txtBro.start(0.03);
+                FlxG.save.data.kathyBar = 5;
             }
 
             if (alongTheDialogue == 1) {
                 stopHere = true;
                 new FlxTimer().start(0.25, function(timer) {
-                sceneDialogChange("dudemanAppearKathyRoomOPENING", false);
+                    sceneDialogChange("dudemanAppearKathyRoomOPENING", false);
                 });
             }
     
@@ -1457,16 +1460,8 @@ function sceneSystem(scene) {
                 canDoShitDude = true;
                 char1var = "Kathy/Tired";
                 name.text = 'Kathy';
-                txtBro.resetText("uhm");
+                txtBro.resetText("well uhm");
                 txtBro.start(0.03);
-            }
-
-            if (alongTheDialogue == 18 && FlxG.save.data.kathyBar > -1) {
-                char1var = "Kathy/Tired";
-                name.text = 'Kathy';
-                txtBro.resetText("");
-                txtBro.start(0.03);
-                stopHere = true;
             }
 
             if (alongTheDialogue == 18 && FlxG.save.data.kathyBar < 0) {
@@ -1482,6 +1477,65 @@ function sceneSystem(scene) {
                 buttonAdd(3);
                 buttonAdd(4);
                 stopHere = true;
+            }
+
+            if (alongTheDialogue == 18 && FlxG.save.data.kathyBar > -1) {
+                canDoShitDude = true;
+                char1var = "Kathy/Base";
+                name.text = 'Kathy';
+                txtBro.resetText("It was nice meeting you, "+playerName+"!");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 19) {
+                canDoShitDude = true;
+                char1var = "Kathy/Base";
+                name.text = 'Kathy';
+                txtBro.resetText("I'll see you some other time :)");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 20) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                characterStatus("UNAPPEAR", char1);
+                name.text = '';
+                FlxG.save.data.showbar = null;
+                FlxG.save.data.showbarSecondary = null;
+                txtBro.resetText("mmm okay");
+                txtBro.start(0.03);
+                kathyInteractedMonday = true;
+            }
+    
+            if (alongTheDialogue == 21) {
+                canDoShitDude = true;
+                transitionShit("nameBoxDPEAR", "");
+                name.text = '';
+                txtBro.resetText("that went alright!");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 22) {
+                canDoShitDude = true;
+                stopHere = true;
+                transitionShit("nameBoxDPEAR", "");
+                name.text = '';
+                txtBro.resetText("maybe you'll be pretty good at this stuff");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 23) {
+                canDoShitDude = true;
+                stopHere = true;
+                transitionShit("nameBoxDPEAR", "");
+                name.text = '';
+                txtBro.resetText("lets see who else we can meet!");
+                txtBro.start(0.03);
+            }
+
+            if (alongTheDialogue == 24) {
+                stopHere = true;
+                sceneDialogChange("choice1DEFAULT", true);
             }
 
         case "apologizeBadRouteKATHY1":
@@ -1709,14 +1763,18 @@ function lockButton(type) {
 function skipDialogue() {
 
     canDoShitDude = false;
-    if (stopHere != true) {
+    if (stopHere == false) {
 
         alongTheDialogue += 1;
         sceneSystem(curScene);
         if (stopHere == false) {
+            skipping = true;
             skipDialogue();
         }
 
+    }
+    else {
+        skipping = false;
     }
 
 }
@@ -1734,7 +1792,7 @@ function update() {
     }
     if (FlxG.mouse.overlaps(skipText)) {
         skipText.color = 0xFF9600FF;
-        if (FlxG.mouse.justPressed && canDoShitDude == true) {
+        if (FlxG.mouse.justPressed && canDoShitDude == true && stopHere == false) {
             skipDialogue();
         }
     }
@@ -1774,7 +1832,7 @@ function update() {
         saveGame();
     }
 
-    if (FlxG.keys.justPressed.SHIFT && canDoShitDude == true) {
+    if (FlxG.keys.justPressed.SHIFT && canDoShitDude == true && stopHere == false) {
         skipDialogue();
     }
 
@@ -1860,7 +1918,6 @@ function loadDefaultSaveShit() {
     FlxG.save.data.zeeBar = 0;
     FlxG.save.data.showbar = null;
     FlxG.save.data.showbarSecondary = null;
-
 }
 
 function transitionShit(type, sceneToBe) {
@@ -2039,11 +2096,17 @@ function characterStatus(characters, whichCharacter) {
             FlxTween.tween(whichCharacter, {y: 75}, 2);
 
         case "FLYOUT":
-            FlxTween.tween(whichCharacter, {y: -900}, 2);
-            new FlxTimer().start(2, function(timer) {
-                alongTheDialogue += 1;
-                sceneSystem(curScene);
-            });
+            if (skipping == false) {
+                FlxTween.tween(whichCharacter, {y: -900}, 2);
+                new FlxTimer().start(2, function(timer) {
+                    alongTheDialogue += 1;
+                    characterStatus("UNAPPEAR", whichCharacter);
+                    sceneSystem(curScene);
+                });
+            }
+            else {
+                characterStatus("UNAPPEAR", whichCharacter);
+            }
 
         case "APPEAR":
             remove(whichCharacter);

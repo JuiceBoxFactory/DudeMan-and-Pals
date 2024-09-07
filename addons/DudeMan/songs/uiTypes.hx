@@ -1201,8 +1201,8 @@ function onPlayerHit(e){
 		});
 	}
 
-	if (FlxG.save.data.notebounce == true && !player.cpu && scared == false) {
-		if (PlayState.SONG.meta.noteType != "base" && PlayState.SONG.meta.noteType != "serious"&& PlayState.SONG.meta.noteType != "BandW") {
+	if (FlxG.save.data.notebounce == true && !player.cpu && scared == false && e.accuracy > 0.8) {
+		if (PlayState.SONG.meta.noteType != "base" && PlayState.SONG.meta.noteType != "serious" && PlayState.SONG.meta.noteType != "BandW") {
    			if (e.isSustainNote) return;
 			   	if (downscroll) {
 					playerStrums.members[e.direction].y -= 7;

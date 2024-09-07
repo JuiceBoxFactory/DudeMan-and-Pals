@@ -6,6 +6,11 @@ var data:Map<Int, {colors:Array<FlxColor>, lastNote:{time:Float, id:Int}}> = [];
 
 
 function postCreate() {
+
+	if (FlxG.save.data.ghosts == false) {
+		disableGhosts = true;
+	}
+
 	for (sl in strumLines.members)
 		data[strumLines.members.indexOf(sl)] = {
 			colors: [for (character in sl.characters) character.iconColor != null ? character.iconColor : switch(sl.data.position) {
