@@ -1169,7 +1169,7 @@ function update() {
 			uiCamera.y += 10;
 		}
 	}
-	if (SelectedSecret > 9 && SecretOptionsOpen == true && SelectedSecret < 13) {
+	if (SelectedSecret > 9 && SecretOptionsOpen == true && SelectedSecret < 14) {
 		if (uiCamera.y > -875) {
 			uiCamera.y -= 10;
 		}
