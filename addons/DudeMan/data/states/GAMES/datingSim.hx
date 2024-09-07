@@ -219,9 +219,9 @@ function create() {
     button4text.borderSize = 3;
     button4text.cameras = [camHUD];
 
-    fileText = new FlxText(0, 0);
-    fileText.text = "|| File |";
-    fileText.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+    fileText = new FlxText(400, 675);
+    fileText.text = "| File |";
+    fileText.setFormat(Paths.font("COMIC.ttf"), 23, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
     fileText.color = 0xFF130022;
     fileText.antialiasing = false;
     fileText.borderColor = 0xFFFBF1FF;
@@ -229,9 +229,9 @@ function create() {
     fileText.cameras = [camHUD];
     add(fileText);
 
-    skipText = new FlxText(0, 0);
+    skipText = new FlxText(fileText.x+fileText.width, 675);
     skipText.text = "| Skip |";
-    skipText.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+    skipText.setFormat(Paths.font("COMIC.ttf"), 23, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
     skipText.color = 0xFF130022;
     skipText.antialiasing = false;
     skipText.borderColor = 0xFFFBF1FF;
@@ -239,9 +239,9 @@ function create() {
     skipText.cameras = [camHUD];
     add(skipText);
 
-    refreshText = new FlxText(0, 0);
+    refreshText = new FlxText(skipText.x + skipText.width, 675);
     refreshText.text = "| Refresh State |";
-    refreshText.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+    refreshText.setFormat(Paths.font("COMIC.ttf"), 23, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
     refreshText.color = 0xFF130022;
     refreshText.antialiasing = false;
     refreshText.borderColor = 0xFFFBF1FF;
@@ -249,9 +249,9 @@ function create() {
     refreshText.cameras = [camHUD];
     add(refreshText);
 
-    quitText = new FlxText(0, 0);
-    quitText.text = "| Quit ||";
-    quitText.setFormat(Paths.font("COMIC.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
+    quitText = new FlxText(refreshText.x + refreshText.width, 675, 0);
+    quitText.text = "| Quit |";
+    quitText.setFormat(Paths.font("COMIC.ttf"), 23, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
     quitText.color = 0xFF130022;
     quitText.antialiasing = false;
     quitText.borderColor = 0xFFFBF1FF;
@@ -571,7 +571,7 @@ function sceneSystem(scene) {
                 canDoShitDude = true;
                 characterStatus("APPEAR", char1);
                 name.text = 'DudeMan';
-                txtBro.resetText("im realizing that u actually have to meet people to FIND LOVE <3, so im going to let you do that\n\n\nAuf Wiedersehen, Kumpel! Ich hoffe, du kommst zugrunde!");
+                txtBro.resetText("im realizing that u actually have to meet people to FIND LOVE <3, so im going to let you do that");
                 txtBro.start(0.03);
             }
     
@@ -1722,6 +1722,43 @@ function skipDialogue() {
 }
 
 function update() {
+
+    if (FlxG.mouse.overlaps(fileText)) {
+        fileText.color = 0xFF9600FF;
+        if (FlxG.mouse.justPressed && FlxG.save.data.substateOpen == false) {
+            saveGame();
+        }
+    }
+    else {
+        fileText.color = 0xFF130022;
+    }
+    if (FlxG.mouse.overlaps(skipText)) {
+        skipText.color = 0xFF9600FF;
+        if (FlxG.mouse.justPressed && canDoShitDude == true) {
+            skipDialogue();
+        }
+    }
+    else {
+        skipText.color = 0xFF130022;
+    }
+    if (FlxG.mouse.overlaps(refreshText)) {
+        refreshText.color = 0xFF9600FF;
+        if (FlxG.mouse.justPressed) {
+            FlxG.resetState();
+        }
+    }
+    else {
+        refreshText.color = 0xFF130022;
+    }
+    if (FlxG.mouse.overlaps(quitText)) {
+        quitText.color = 0xFF9600FF;
+        if (FlxG.mouse.justPressed) {
+            FlxG.switchState(new ModState("GAMES/datingSimTitle"));
+        }
+    }
+    else {
+        quitText.color = 0xFF130022;
+    }
 
     if (canDoShitDude == true) {
         key.alpha = 1;
