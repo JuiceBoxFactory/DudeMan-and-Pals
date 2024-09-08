@@ -601,10 +601,6 @@ function update() {
 			FlxG.camera.shake(0.005, .1);
 		}
 
-		if (FlxG.keys.justPressed.SEVEN) {
-			FlxG.save.data.sectionselected = 4;
-			FlxG.switchState(new FreeplayState());
-		}
 		if (Selected > 3) {
 			Selected = 0;
 		}
