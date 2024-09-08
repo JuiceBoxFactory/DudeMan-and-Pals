@@ -38,6 +38,7 @@ var tipText:Array<String> = [
 var tipTextChosen = "null";
 var highestNum = 24;
 var imBanbuds = false;
+var silly = false;
 
 var introOver = false;
 
@@ -133,7 +134,7 @@ function postCreate() {
 	add(fakeLogo);
 
 	devs = new FlxText(800, 725);
-	devs.text = "MeltyKelpy\nAussieDoesThings\nkosejumpscare\nOJSTheCoder\nNullFrequency\nGhostyBricks\nCorva_tile\nEcHO\nMissy\nJPR\nChillspace\nR3t1xTheIdiot\nSaayo\nCherriBlossom\nIcepoplol\nAngelTheBoi\nCaz\nSoupSkid\nThat1Gamer";
+	devs.text = "MeltyKelpy\nAussieDoesThings\nkosejumpscare\nOJSTheCoder\nNullFrequency\nGhostyBricks\nCorva_tile\nSalesman\nMissy\nicepop\nPEP\nDoubleSpeakers\ntempotastic\nJPR\nChillspace\nR3t1xTheIdiot\nSaayo\nCherriBlossom\nIcepoplol\nAngelTheBoi\nCaz\nItsLJCool\nThat1Gamer";
 	devs.setFormat(Paths.font("COMIC.ttf"), 35, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);            
 	devs.color = 0xFFFFFFFF;
 	devs.borderColor = 0xFF000000;
@@ -150,6 +151,11 @@ function postCreate() {
 	introText.borderSize = 3;
 	introText.screenCenter();
 	add(introText);
+
+	tipTextTimer = new FlxTimer();
+	tipTextTimer.time = 7;
+	tipTextTimer.active = false;
+	add(tipTextTimer);
 
 }
 
@@ -186,11 +192,11 @@ function skipIntro() {
 	FlxG.save.data.firstOnIntroClient = false;
 
 	imBanbuds = true;
-
+	introText.visible = false;
+	fakeLogo.visible = false;
+	blackScreen.visible = false;
+	devs.visible = false;
 	FlxG.camera.flash(FlxColor.WHITE, 4);
-	new FlxTimer().start(7, function(tmr:FlxTimer) {
-		updateTxt();
-	}, 600);
 	introOver = true;
 
 }
@@ -200,12 +206,16 @@ function updateTxt() {
 	tipTxt.text = "Tip:\n"+tipTextChosen;
 	tipTxt.screenCenter();		
 	tipTxt.y += 75;
+	tipTextTimer.reset();
+	tipTextTimer.start(start(1, function(timer) {
+		updateTxt();
+	}));
 }
 
-override function beatHit(curBeat:Int)	{
+function beatHit(curBeat:Int)	{
 
-		switch (curBeat)
-		{
+	if (FlxG.save.data.firstOnIntroClient == true) {
+		switch (curBeat) {
 			case 1:		
 				introText.text = "stupidest fnf mod you've ever played";
 				introText.screenCenter();
@@ -217,7 +227,7 @@ override function beatHit(curBeat:Int)	{
 				introText.screenCenter();				
 				FlxTween.tween(introText, {x: 100}, 0.6, {ease: FlxEase.quartOut});
 				new FlxTimer().start(0.6, function(timer) {
-					FlxTween.tween(devs, {y: -950}, 1);
+					FlxTween.tween(devs, {y: -1150}, 1.2);
 				});
 			case 12:
 				introText.text = "and that mods called-";
@@ -229,6 +239,16 @@ override function beatHit(curBeat:Int)	{
 				FlxG.save.data.firstOnIntroClient = false;
 				if (imBanbuds == false) {
 					skipIntro();
+					updateTxt();
+					silly = true;
 				}
 		}
 	}
+
+	else {
+		if (silly == false) {
+			skipIntro();
+			silly = true;
+		}
+	}
+}
