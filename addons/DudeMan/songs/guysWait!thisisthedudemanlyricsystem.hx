@@ -243,5 +243,28 @@ function stepHit(curStep:Int) {
         }
     }
 
+    // █░█░█ █░█ █▀█ █▀█ █▀█ █▀▀ █▀█
+    // ▀▄▀▄▀ █▀█ █▄█ █▀▀ █▀▀ ██▄ █▀▄
+
+    if (PlayState.SONG.meta.name == "whopper") {
+        switch(curStep) {
+            case 864:
+                textState("popUpFast");
+                setTextShit("STOP.", "anty", 0xFFFF234F, 0xFF23FF6B, false);
+
+            case 869:
+                setTextShit("STOP POSTING.", "anty", 0xFFFF234F, 0xFF23FF6B, false);
+
+            case 874:
+                setTextShit("STOP POSTING ABOUT.", "anty", 0xFFFF234F, 0xFF23FF6B, false);
+
+            case 878:
+                setTextShit("pingas", "pingas", 0xFF923145, 0xFFFE7C1E, false);
+
+            case 880:
+                textState("goDownINSTANT");
+
+        }
+    }
 
 }

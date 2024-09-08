@@ -53,6 +53,7 @@ var discSpinSlow = false;
 
 function create() {
 
+    FlxG.save.data.shortLived = null;
     FlxG.save.data.noTransition = false;
 
     FlxTween.tween(FlxG.sound.music, {volume: 0}, 1.5, {ease:FlxEase.quartOut});
@@ -156,7 +157,9 @@ function create() {
         ui.y += 900;
         FlxTween.tween(ui, {y: origY}, 2, {ease:FlxEase.quartOut});
         new FlxTimer().start(2, function(timer) {
-            canDo = true;
+            if (FlxG.save.data.gamesFirstTime == true) {
+                canDo = true;
+            }
         });
     }
 
@@ -202,14 +205,14 @@ function update(elapsed:Float) {
         openSubState(new ModSubState("Functionality/MenuDialogueSubstate"));
         FlxG.save.data.menuDialougeToPlay = "ps5Games";
         canDo = false;
-        FlxG.camera.addShader(blurShit);
-        FlxG.save.data.shortLived = null;        
-        FlxG.save.data.gamesFirstTime = true;
+        FlxG.camera.addShader(blurShit);   
+        FlxG.save.data.gamesFirstTime = false;     
     }
 
 	if (FlxG.save.data.shortLived == true) {
 		FlxG.camera.removeShader(blurShit);
 		canDo = true;
+        FlxG.save.data.shortLived = null;
 	}
 
     var stupidShitKinda = gamesOrderBLEH[chosenOrWhatevs];

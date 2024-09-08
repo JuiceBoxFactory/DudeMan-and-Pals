@@ -62,6 +62,7 @@ function update(elapsed:Float) {
 		FlxG.save.data.selectorButtonsUnlocked = 3; // only goes up to 4, 3 locks the games and 4 unlocks them
 		FlxG.save.data.language = null; // unused multi-language support ! just didnt have the motivation to translate allat. spanish works on a few places and german works on the main menu, put it in "", ex: "english" or "spanish"
 		FlxG.save.data.datingDialogue = null; // messing with this one will not end well probably
+		FlxG.save.data.gamesFirstTime = null; // idk
 		resetDatingSave();
 		FlxG.save.data.defaultSaveData = false; // well ??
 	}

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="antyburger2.png">
+<SubTexture name="idle0000" x="0" y="272" width="183" height="249" frameX="-317" frameY="-398" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="idle0001" x="368" y="0" width="183" height="251" frameX="-317" frameY="-397" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="up0000" x="0" y="0" width="183" height="272" frameX="-320" frameY="-373" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="up0001" x="183" y="0" width="185" height="260" frameX="-317" frameY="-379" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="right0000" x="0" y="521" width="181" height="234" frameX="-351" frameY="-405" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="right0001" x="551" y="241" width="180" height="239" frameX="-348" frameY="-403" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="left0000" x="551" y="0" width="227" height="241" frameX="-278" frameY="-403" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="left0001" x="183" y="272" width="216" height="244" frameX="-286" frameY="-397" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="down0000" x="383" y="521" width="208" height="219" frameX="-293" frameY="-423" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="down0001" x="181" y="521" width="202" height="224" frameX="-295" frameY="-417" frameWidth="1580" frameHeight="1020" />
+</TextureAtlas>

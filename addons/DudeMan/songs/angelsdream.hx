@@ -51,7 +51,9 @@ function create() {
 
 function update() {
 
-    burpCount.text = "burp count: "+burpCounter;
+    if (enable == true) {
+        burpCount.text = "burp count: "+burpCounter;
+    }
 
     if (FlxG.keys.justPressed.SPACE) {
         FlxG.sound.play(Paths.sound("burp"));

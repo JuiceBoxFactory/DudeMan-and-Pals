@@ -85,6 +85,11 @@ function create() {
 }
 
 function update() {	
+
+	if (FlxG.save.data.angelsDream == true) {
+		Selected = 10;
+	}
+
 	if (controls.LEFT_P) {
 		FlxG.sound.play(Paths.sound('menu/scroll'));
 		Selected -= 1;

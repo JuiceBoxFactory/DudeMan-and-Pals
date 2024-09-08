@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="whopperBG2.png">
+<SubTexture name="boil0000" x="0" y="0" width="975" height="461" frameX="-68" frameY="-268" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="boil0001" x="0" y="461" width="975" height="461" frameX="-68" frameY="-268" frameWidth="1580" frameHeight="1020" />
+</TextureAtlas>

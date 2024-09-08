@@ -355,6 +355,7 @@ function updateDialogue(dialouge) {
 
             if (lineToBe == 6) {
                 FlxG.save.data.gamesFirstTime = false;
+                FlxG.save.data.shortLived = null; 
                 closeDiagloue();
             }
 

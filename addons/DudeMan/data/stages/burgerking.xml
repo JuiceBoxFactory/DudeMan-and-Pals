@@ -1,6 +1,6 @@
 <!DOCTYPE codename-engine-stage>
 <stage zoom="1.3">
-	<gf/>
+	<gf x="125" y='280'/>
 	<sprite antialiasing="false" x="0" sprite="backdrop/burgerking/behindblack" name="behindanty"/>
 	<sprite antialiasing="false" sprite="backdrop/burgerking/floor" name="floor"/>
 	<dad x="-2" y="-2"/>

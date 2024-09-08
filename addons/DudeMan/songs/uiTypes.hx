@@ -162,7 +162,13 @@ function postCreate() {
 
 	if (PlayState.SONG.meta.noteType == "normal") {
 
-		logo = new FlxSprite(345, -1200).loadGraphic(Paths.image('songLogos/'+PlayState.SONG.meta.name));
+		logo = new FlxSprite(345, -1200);
+		if (FlxG.save.data.angelsDream == true) {
+			logo.loadGraphic(Paths.image('songLogos/burpnow'));
+		}
+		else {
+			logo.loadGraphic(Paths.image('songLogos/'+PlayState.SONG.meta.name));
+		}
 		logo.antialiasing = false;
 		logo.scrollFactor.set(1, 1);
 		logo.scale.set(1.2, 1.2);
@@ -471,7 +477,7 @@ function postCreate() {
 		}	
 		
 		if (PlayState.SONG.meta.name == "roomed") {
-			for (healthBS in [missesText, accText, icon2, icon1, healthheader, healthBar]) {
+			for (healthBS in [missesText, accText, icon2, icon1, healthheader, healthy1, healthy2]) {
 				healthBS.alpha = 0;
 
 				remove(dudeRating);
@@ -1290,6 +1296,42 @@ function stepHit(curStep:Int) {
 					FlxTween.tween(healthy2, {alpha: 0}, quickie, {ease: FlxEase.quartInOut});
 					FlxTween.tween(scoreToAddText, {y: -700}, quickie, {ease: FlxEase.quartOut});
 //				}
+
+		}
+	}
+
+	if (PlayState.SONG.meta.name == "whopper") {
+
+		var quickie = 1;
+
+		switch (curStep) {
+			
+			case 540:
+				FlxTween.tween(timeTxt, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(bar, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(bottom, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(whoGettingBestHead, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(missesText, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(healthheader, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(icon1, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(icon2, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(accText, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(healthy1, {alpha: 0}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthy2, {alpha: 0}, quickie, {ease: FlxEase.quartInOut});
+
+			case 880:
+				var quickie = 0.5;
+				FlxTween.tween(timeTxt, {alpha: 1}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(bar, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(bottom, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(whoGettingBestHead, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(missesText, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthheader, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(icon1, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(icon2, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(accText, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthy1, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthy2, {alpha: 1}, quickie, {ease: FlxEase.quartInOut});
 
 		}
 	}

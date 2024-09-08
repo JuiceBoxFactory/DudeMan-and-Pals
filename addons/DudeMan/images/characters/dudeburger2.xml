@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dudeburger2.png">
+<SubTexture name="idle0000" x="651" y="0" width="154" height="213" frameX="-639" frameY="-449" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="idle0001" x="651" y="213" width="154" height="213" frameX="-639" frameY="-449" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="left0000" x="805" y="0" width="176" height="206" frameX="-647" frameY="-455" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="left0001" x="601" y="532" width="178" height="207" frameX="-652" frameY="-454" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="right0000" x="0" y="745" width="181" height="206" frameX="-672" frameY="-457" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="right0001" x="805" y="206" width="176" height="205" frameX="-675" frameY="-456" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="up0000" x="0" y="298" width="172" height="234" frameX="-668" frameY="-425" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="up0001" x="172" y="298" width="175" height="225" frameX="-667" frameY="-434" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="down0000" x="557" y="745" width="193" height="185" frameX="-663" frameY="-481" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="down0001" x="181" y="745" width="188" height="189" frameX="-670" frameY="-475" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="altL0000" x="398" y="532" width="203" height="210" frameX="-620" frameY="-451" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="altL0001" x="0" y="532" width="202" height="213" frameX="-628" frameY="-448" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="altR0000" x="202" y="532" width="196" height="213" frameX="-672" frameY="-450" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="altR0001" x="347" y="298" width="188" height="214" frameX="-675" frameY="-447" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="altU0000" x="289" y="0" width="180" height="247" frameX="-660" frameY="-412" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="altU0001" x="469" y="0" width="182" height="236" frameX="-660" frameY="-423" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="altD0000" x="750" y="745" width="193" height="185" frameX="-663" frameY="-481" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="altD0001" x="369" y="745" width="188" height="189" frameX="-670" frameY="-475" frameWidth="1580" frameHeight="1020" />
+<SubTexture name="deadaussie0000" x="0" y="0" width="289" height="298" frameX="-579" frameY="-394" frameWidth="1580" frameHeight="1020" />
+</TextureAtlas>

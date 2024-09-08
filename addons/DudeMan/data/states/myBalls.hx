@@ -9,10 +9,6 @@ import funkin.backend.utils.DiscordUtil;
 
 var pauseCam = new FlxCamera();
 
-var bg:FlxSprite;
-
-var thewenis:FlxBackdrop;
-
 var texts:Array<FlxText> = [];
 
 var pauseThings:Array<FlxText> = [
@@ -43,14 +39,23 @@ function create(event) {
 	FlxG.cameras.add(pauseCam, false);
 	pauseCam.bgColor = 0x4419002B;
 
-	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg')); // second argument: FlxAxes is required to determinate in what axes the sprite should be repeated, default to XY
+	coolBackdrop = new FlxBackdrop(Paths.image('mainmenu/checkerboardbg'));
 	coolBackdrop.moves = true;
 	coolBackdrop.scrollFactor.set(0, 0);
-	coolBackdrop.velocity.x = 100; // you can adjust the values to make the scrolling faster or lower
-	coolBackdrop.velocity.y = 100;
+	coolBackdrop.velocity.x = 35;
+	coolBackdrop.velocity.y = 15;
 	coolBackdrop.active = true;
-	coolBackdrop.alpha = 0.3;
+	coolBackdrop.alpha = 0.1;
 	add(coolBackdrop);
+
+	thewenis = new FlxBackdrop(Paths.image('johnpork/patterns'));
+	thewenis.moves = true;
+	thewenis.scrollFactor.set(0, 0);
+	thewenis.velocity.x = 30;
+	thewenis.velocity.y = 10;
+	coolBackdrop.active = true;
+	thewenis.alpha = 0.3;
+	add(thewenis);
 
 	bg = new FlxSprite(0, 1000);
 	bg.loadGraphic(Paths.image('johnpork/pausedBg'));
@@ -112,16 +117,6 @@ function create(event) {
 	backDoor = new FlxSprite(0, 990).loadGraphic(Paths.image('johnpork/backdrop'));
 	backDoor.cameras = [pauseCam];
 	add(backDoor);
-
-	thewenis = new FlxBackdrop(Paths.image('johnpork/patterns'),FlxAxes.X);
-	thewenis.alpha = 1;
-	thewenis.velocity.x = 10;
-	thewenis.x = FlxG.random.float(400,1200);
-	thewenis.alpha = 0.0001;
-	add(thewenis);
-
-	for(sprite in [thewenis])
-		FlxTween.tween(sprite, {alpha: 0.3}, 2);
 
 	if (FlxG.save.data.language == "english") {
 		pausedText.text = "Paused";

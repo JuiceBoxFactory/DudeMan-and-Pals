@@ -21,7 +21,7 @@ import flixel.util.FlxSave;
 import funkin.backend.utils.DiscordUtil;
 
 var mainArray:Array<String> = ["dude", "overstimulation", "srs", "colorful", "fang", "sucker"];
-var extrasArray:Array<String> = ["evilman", "lemon", "slashgen", "die", "blobs", "kockbuddies", "oleum", "misconduct", "sizssoers", "lighthouse", "roomed"];
+var extrasArray:Array<String> = ["evilman", "lemon", "whopper", "slashgen", "die", "blobs", "kockbuddies", "oleum", "misconduct", "sizssoers", "lighthouse", "roomed"];
 var coversArray:Array<String> = ["obituary", "meet-your-project"];
 var devArray:Array<String> = ["pastelfever", "lemon", "whopper", "dude", "blood", "royalscientist", "greetings", "sizssoers", "lighthouse", "Quite-Strange", "obituary", "kockbuddies"];
 var songL:FlxTypedGroup<FlxText> = [];

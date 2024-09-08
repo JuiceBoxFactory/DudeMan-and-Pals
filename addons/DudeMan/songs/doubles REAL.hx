@@ -15,7 +15,7 @@ function postCreate() {
 		data[strumLines.members.indexOf(sl)] = {
 			colors: [for (character in sl.characters) character.iconColor != null ? character.iconColor : switch(sl.data.position) {
 				default: 0xFFFF0000;
-				case 'boyfriend': 0xFF00FFFF;
+				case 'strumLines.members[curCameraTarget].characters[0]': 0xFF00FFFF;
 			}],
 
 			lastNote: {
@@ -50,16 +50,16 @@ function doGhostAnim(char:Character, color:FlxColor) {
 		remove(trail, true);
 	};
 	if (strumLines.members[curCameraTarget].characters[0].getAnimName() == "singUP" || strumLines.members[curCameraTarget].characters[0].getAnimName() == "singUP-alt") {
-    FlxTween.tween(trail, {y: char.y - 10}, .85, {ease: FlxEase.cubeOut});
+    	FlxTween.tween(trail, {y: char.y - 10}, .85, {ease: FlxEase.cubeOut});
     }
 	if (strumLines.members[curCameraTarget].characters[0].getAnimName() == "singDOWN" || strumLines.members[curCameraTarget].characters[0].getAnimName() == "singDOWN-alt") {
-        FlxTween.tween(trail, {y: char.y + 10}, .85, {ease: FlxEase.cubeOut});
+		FlxTween.tween(trail, {y: char.y + 10}, .85, {ease: FlxEase.cubeOut});
     }
 	if (strumLines.members[curCameraTarget].characters[0].getAnimName() == "singLEFT" || strumLines.members[curCameraTarget].characters[0].getAnimName() == "singLEFT-alt") {
-        FlxTween.tween(trail, {x: char.x - 10}, .85, {ease: FlxEase.cubeOut});
+		FlxTween.tween(trail, {x: char.x - 10}, .85, {ease: FlxEase.cubeOut});
     }
 	if (strumLines.members[curCameraTarget].characters[0].getAnimName() == "singRIGHT" || strumLines.members[curCameraTarget].characters[0].getAnimName() == "singRIGHT-alt") {
-        FlxTween.tween(trail, {x: char.x + 10}, .85, {ease: FlxEase.cubeOut});
+		FlxTween.tween(trail, {x: char.x + 10}, .85, {ease: FlxEase.cubeOut});
     }
 	return trail;
 }
