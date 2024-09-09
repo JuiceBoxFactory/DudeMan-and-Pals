@@ -47,7 +47,7 @@ var discs:FlxSpriteGroup<FlxSprite> = [];
 // oh right i have make *SIGH* non-arrays....
 // - Mel!
 var chosenOrWhatevs = 0;
-var canDo = false;
+var canDo = true;
 var discSpin = false;
 var discSpinSlow = false;
 
