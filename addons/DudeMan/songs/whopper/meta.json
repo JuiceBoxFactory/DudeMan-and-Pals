@@ -12,6 +12,8 @@
 	"singerNames": "Antydote VS DudeMan ( as DX-Gamebreaker )",
 	"actoresses2": "artist: MeltyKelpy    composer: AussieDoesThings\ncoder: MeltyKelpy    charter: MeltyKelpy",
     "appearStep": 32,
+	"player": "dudeman",
+	"opponent": "anty",
 	"difficulties": [
 		"Hard"
 	],
