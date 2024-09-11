@@ -20,6 +20,15 @@ var paintingsOrder = [
 	"turkeytime",
 	"burningdog",
 	"dudetuah",
+	"oldslashjay",
+	"cazsoul1",
+	"cazsoul2",
+	"cazsoul3",
+	"cazsoul4",
+	"cazsoul5",
+	"cazsoul6",
+	"cazsoul7",
+	"cazsouls",
 ];
 var paintToDisplay = null;
 
@@ -159,7 +168,34 @@ function update() {
 		case "dudetuah":
 			paintings.loadGraphic(Paths.image('gallery/paintings/amycross'));
 			text.text = '"DUDE TUAH! SPIT ON THAT MAN!"\n\nthis is the line that got aussie put on a cross.\n\nit is right beside the whopper sprites so i can put it here';
-	
+		case "oldslashjay":
+			paintings.loadGraphic(Paths.image('gallery/paintings/oldslashjay'));
+			text.text = 'original concept for the " Brainrot Rap " part of /j, decided not to do it because it felt like abit too much for the song.';
+		case "cazsoul1":
+			paintings.loadGraphic(Paths.image('gallery/paintings/cazsoul1'));
+			text.text = 'oh haha its a caz image hi caz mario';
+		case "cazsoul2":
+			paintings.loadGraphic(Paths.image('gallery/paintings/cazsoul2'));
+			text.text = 'oh. haha. thats another one. ha... haha... im naming you add';
+		case "cazsoul3":
+			paintings.loadGraphic(Paths.image('gallery/paintings/cazsoul3'));
+			text.text = 'oh m,y fucking god its... zack! hah! hahha! help m e';
+		case "cazsoul4":
+			paintings.loadGraphic(Paths.image('gallery/paintings/cazsoul4'));
+			text.text = 'hi vlad why is there so many of you';
+		case "cazsoul5":
+			paintings.loadGraphic(Paths.image('gallery/paintings/cazsoul5'));
+			text.text = 'are you fucking kidding me';
+		case "cazsoul6":
+			paintings.loadGraphic(Paths.image('gallery/paintings/cazsoul6'));
+			text.text = 'is- is that smg4 caz ??? what the fuck is your problem whos doing this';
+		case "cazsoul7":
+			paintings.loadGraphic(Paths.image('gallery/paintings/cazsoul7'));
+			text.text = 'i cant take it anymore please dont have another one after this pleasepoeallleapleasepleaseplapelpalse';
+		case "cazsouls":
+			paintings.loadGraphic(Paths.image('gallery/paintings/the7cazsouls'));
+			text.text = 'im going to kill myslef';
+		
 			//	default:
 //		
 //		

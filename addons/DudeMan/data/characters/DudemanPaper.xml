@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-character>
+<character x="600" icon="dudeman" camx="-150" y="70" isGF="false" camy="75" color="#FFFFFF" isPlayer="false" antialiasing="false" sprite="dudemanPaper">
+	<anim x="0" loop="false" y="0" fps="6" anim="idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="up" name="singUP" indices="0,1"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="down" name="singDOWN"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="upset" name="upset" indices="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29"/>
+</character>

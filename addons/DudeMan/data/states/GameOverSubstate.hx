@@ -77,14 +77,14 @@ function create() {
 		}
 
 		if (chance == 49) {
-		curVideo = new FlxVideo();
-		curVideo.onEndReached.add(curVideo.dispose);
-		var path = Paths.file("videos/lighthouseRoomforonemore.mp4");
-		curVideo.load(Assets.getPath(path));
+			curVideo = new FlxVideo();
+			curVideo.onEndReached.remove(curVideo);
+			var path = Paths.file("videos/lighthouseRoomforonemore.mp4");
+			curVideo.load(Assets.getPath(path));
 
-		var timer:FlxTimer = new FlxTimer();
-		timer.start(1, curVideo.play(), 0);
-		}
+			var timer:FlxTimer = new FlxTimer();
+			timer.start(1, curVideo.play(), 0);
+			}
 	}
 }
 

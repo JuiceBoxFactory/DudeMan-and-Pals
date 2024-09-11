@@ -1,9 +1,9 @@
 function create() {
 }
 
-function stepHit(curStep:Int) { //this is all template btw lol so
+function stepHit(curStep:Int) {
     switch (curStep) {
-        case 0:
+        case 16:
        defaultCamZoom = 1.6;
 	}
 }

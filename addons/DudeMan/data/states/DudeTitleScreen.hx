@@ -51,6 +51,7 @@ function postCreate() {
 	});
 
 	CoolUtil.playMenuSong();
+	FlxG.sound.music.volume = 1;
 
 	if (FlxG.save.data.firstOnIntroClient == false) {
 		skipIntro();

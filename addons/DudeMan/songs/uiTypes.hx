@@ -1475,5 +1475,41 @@ function stepHit(curStep:Int) {
 		}
 	}
 
+	
+	if (PlayState.SONG.meta.name == "slashjay") {
+		
+		var quickie = 2.5;
+
+		switch (curStep) {
+
+			case 1510:
+				FlxTween.tween(cpuStrums.members[0], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(cpuStrums.members[1], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(cpuStrums.members[2], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(cpuStrums.members[3], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(camHUD, {alpha: 1}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(stupidCodenameEngineBullshit, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(timeTxt, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(bar, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(whoGettingBestHead, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(bottom, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(scoreText, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(missesText, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(healthheader, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(icon1, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(icon2, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(accText, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(healthy1, {alpha: 0}, 4, {ease: FlxEase.quartInOut});
+				FlxTween.tween(healthy2, {alpha: 0}, 4, {ease: FlxEase.quartInOut});
+				FlxTween.tween(scoreToAddText, {y: -700}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(dudeRating, {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(playerStrums.members[0], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(playerStrums.members[1], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(playerStrums.members[2], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+				FlxTween.tween(playerStrums.members[3], {alpha: 0}, quickie, {ease: FlxEase.quartOut});
+
+		}
+	}
+
 
 }

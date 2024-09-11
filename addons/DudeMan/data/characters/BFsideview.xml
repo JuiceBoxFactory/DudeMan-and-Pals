@@ -10,5 +10,10 @@
 	<anim x="0" loop="false" y="0" fps="12" anim="sideviewBF alt" name="singUP-alt"/>	
 	<anim x="0" loop="false" y="0" fps="12" anim="sideviewBF alt" name="singLEFT-alt"/>
 	<anim x="0" loop="false" y="0" fps="12" anim="sideviewBF alt" name="singRIGHT-alt"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="tuah" name="singRIGHT-Tuah"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="tuah" name="singLEFT-Tuah"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="tuah" name="singUP-Tuah"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="tuah" name="singDOWN-Tuah"/>
 	<anim x="0" loop="false" y="0" fps="6" anim="sideviewBF damn" name="damn"/>
+	<anim x="0" loop="false" y="0" fps="12" anim="kms" name="kms" indices="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,16,16,16,16,16,16,16,16,16,16,17,18,19,20,20,20,20,20,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,30,31,32,33,34,30,26,27,28,29,30,31,32,33,34,32,33,34,32,33,34,32,33,34,32,33,34,32,33,34,32,33,34"/>
 </character>

@@ -1,0 +1,24 @@
+{
+	"bio": "This will be DudeMan in 2024",
+	"tagline": "This will be DudeMan in 2024",
+	"opponentModeAllowed": false,
+	"icon": "Icon",
+	"difficulties": [
+		"Hard"
+	],
+	"parsedColor": -13893888,
+	"color": "#2BFF00",
+	"name": "slashjay",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"beatsPerMesure": 4,
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"actoresses": "artist: MeltyKelpy\ncomposer: AussieDoesThings\ncoder: MeltyKelpy\ncharter: MeltyKelpy\ncover art: MeltyKelpy",
+	"singerNames": "DudeMan ( wearing Bee's shirt backwards ) Vs Bee",
+	"actoresses2": "artist: MeltyKelpy    composer: AussieDoesThings\ncoder: MeltyKelpy    charter: MeltyKelpy",
+    "appearStep": 16,
+	"player": "bee",
+	"opponent": "dudeman",
+	"bpm": 120
+}
