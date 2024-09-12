@@ -91,5 +91,9 @@ function update() {
 	if (SelectedButton == 4 && controls.ACCEPT) {
 		FlxG.sound.play(Paths.sound('confirm'));
 		FlxG.switchState(new ModState("GalleryState"));
-   	 	}		
+   	 	}	
+	if (SelectedButton == 5 && controls.ACCEPT) {
+		FlxG.sound.play(Paths.sound('confirm'));
+		FlxG.switchState(new ModState("DLCMenu"));
+		}		
 	}
