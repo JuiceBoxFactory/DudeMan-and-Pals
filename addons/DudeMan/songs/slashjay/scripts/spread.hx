@@ -1,6 +1,7 @@
 import openfl.display.BlendMode;
 import hxvlc.openfl.Video;
 import hxvlc.flixel.FlxVideo;
+import hxvlc.flixel.FlxVideoSprite;
 
 var awful = false;
 var awesome = false;
@@ -27,16 +28,24 @@ function create() {
     explosion.scale.set(0.8, 0.8);
     add(explosion);
 
-    curVideo = new FlxVideo();
-    curVideo.onEndReached.remove(curVideo);
-    var path = Paths.file("videos/dudeman.mp4");
-    curVideo.load(Assets.getPath(path));
-    add(curVideo);
-    curVideo.alpha = 0;
-
     blackPeople = new FlxSprite().makeGraphic(FlxG.width * 4, FlxG.height * 2, 0xFF000000);
     blackPeople.alpha = 0;
 	add(blackPeople);
+
+    blackPeople2 = new FlxSprite().makeGraphic(FlxG.width * 4, FlxG.height * 2, 0xFF000000);
+    blackPeople2.alpha = 0;
+    blackPeople2.cameras = [camHUD];
+	add(blackPeople2);
+
+    curVideo = new FlxVideoSprite();
+    var path = Paths.file("videos/dudeman.mp4");
+    curVideo.load(Assets.getPath(path));
+    curVideo.cameras = [camHUD];
+    curVideo.scale.set(0.4, 0.4);
+    curVideo.x += 100;
+    curVideo.y -= 600;
+    add(curVideo);
+    curVideo.alpha = 0;
 
     violin = new FlxSprite(0, 0).loadGraphic(Paths.image('visuals/jay/dudelion'));
     violin.scrollFactor.set(0, 0);
@@ -93,12 +102,14 @@ function stepHit(curStep:Int) {
             dark.alpha = 0;
 
         case 1156:
+            blackPeople2.alpha = 1;
             awesome = true;
             gf.alpha = 0;
             curVideo.play();
             curVideo.alpha = 1;
 
         case 1312:
+            blackPeople2.alpha = 0;
             blackPeople.alpha = 1;
             awesome = false;
 

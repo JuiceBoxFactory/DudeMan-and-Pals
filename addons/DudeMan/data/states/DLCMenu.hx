@@ -12,6 +12,13 @@ var output = [
     ""
 ];
 
+var outputName = [
+    "",
+    "",
+    "",
+    ""
+];
+
 var checkBlankNum = (-1);
 
 function create() {
@@ -30,9 +37,10 @@ function create() {
         if (FileSystem.exists("addons/"+i+"/.dudelc")) {
             checkBlankNum += 1;
             var nameToShowNSTUFF = File.getContent("addons/"+i+"/DLCname.txt");
-            output[checkBlankNum] = nameToShowNSTUFF;
+            output[checkBlankNum] = i;
+            outputName[checkBlankNum] = nameToShowNSTUFF;
             trace(output[checkBlankNum]);
-            Downscroll.text = Downscroll.text +"\n"+output[checkBlankNum];
+            Downscroll.text = Downscroll.text +"\n"+outputName[checkBlankNum];
         }
 
     }
