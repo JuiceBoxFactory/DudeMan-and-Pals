@@ -819,6 +819,10 @@ function update(elapsed:Float) {
 			scoreToAddText.text = "+"+scoreToAdd+"\n"+noteRatingJustHit;
 			scoreToAddText.alpha = 0;
 		}
+				if (scoreToAddText.scale.x > 1 && scoreToAddText.scale.y > 1) {
+			scoreToAddText.scale.x -= 0.025;
+			scoreToAddText.scale.y -= 0.025;
+		}
 
 		scoreToAddText.screenCenter(FlxAxes.X);
 
