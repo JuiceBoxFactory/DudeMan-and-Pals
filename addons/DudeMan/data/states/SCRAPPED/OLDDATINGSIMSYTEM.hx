@@ -1,6 +1,4 @@
-/* function dialogueUpdateShit() {
-
-     FINISH UR CODE MELTY
+function dialogueUpdateShit() {
     
         if (alongTheDialogue == 0) {
             transitionShit("nameBoxPEAR", "");
@@ -220,8 +218,6 @@
             txtBro.start(0.03);
         }
 
-      YOUR MOM
-
         if (alongTheDialogue == 21 && placeToBe == "hallway1" && beenHereBefore == false) {
             canDoShitDude = true;
             transitionShit("nameBoxDPEAR", "");
@@ -305,8 +301,6 @@
             Sys.exit();
         }
 
-      CLASS2
-
         if (alongTheDialogue == 21 && placeToBe == "class2") {
             canDoShitDude = true;
             transitionShit("nameBoxDPEAR", "");
@@ -362,8 +356,6 @@
             txtBro.resetText("THIZ IZ CONFUZING!!! WATERCOLOR IS CONFUZING!!!");
             txtBro.start(0.03);
         }
-       
-      CLASS1BROOKLYN
 
     if (alongTheDialogue == 21 && placeToBe == "class1BROOKLYN") {
         canDoShitDude = true;
@@ -446,9 +438,6 @@
         alongTheDialogue = 22;
         placeToBe = "class1";
     }
-    
-
-      CLASS1
 
         if (alongTheDialogue == 21 && placeToBe == "class1") {
             canDoShitDude = true;
@@ -660,8 +649,6 @@
             txtBro.start(0.03);
         }
 
-      FORWARDS
-
         if (alongTheDialogue == 21 && placeToBe == "hallway2") {
             transitionShit("nameBoxDPEAR", "");
             canDoShitDude = false;
@@ -688,8 +675,6 @@
             alongTheDialogue = 19;
             transitionShit("switchLocation", "Hallway1");
         }
-
-      JANITORS CLOSET
 
         if (alongTheDialogue == 23 && placeToBe == "JanitorCloset") {
             canDoShitDude = true;
@@ -845,12 +830,10 @@
         char2.loadGraphic(Paths.image('shh/DATINGSIM/ports/'+char2var));
         bg.loadGraphic(Paths.image('shh/DATINGSIM/background/'+ground));
     
-            gotta remember how my own code works -mel
-    
             key.alpha = 0;
             buttonText3Be("Yeah, Man !");
             buttonText4Be("No, dude.");
             buttonAdd(3);
             buttonAdd(4);
     
-} */
+}

@@ -42,17 +42,17 @@ function create() {
 
 	if (FlxG.save.data.sectionselected == 0) {
 		for (i in 0...mainArray.length) {
-    				songs.push(Chart.loadChartMeta(mainArray[i]));
+    			songs.push(Chart.loadChartMeta(mainArray[i]));
   			}
 		}
 	if (FlxG.save.data.sectionselected == 1) {
 		for (i in 0...extrasArray.length) {
-    				songs.push(Chart.loadChartMeta(extrasArray[i]));
+    			songs.push(Chart.loadChartMeta(extrasArray[i]));
   			}
 		}
 	if (FlxG.save.data.sectionselected == 2) {
 		for (i in 0...coversArray.length) {
-					songs.push(Chart.loadChartMeta(coversArray[i]));
+				songs.push(Chart.loadChartMeta(coversArray[i]));
   			}
 		}
 
@@ -159,10 +159,9 @@ function create() {
             add(info3);
 
         }
-	for (i in 0...iconArray.length)
-		{
-			iconArray[i].alpha = 0;
-		}
+	for (i in 0...iconArray.length){
+		iconArray[i].alpha = 0;
+	}
 	
 	changeSelection(FlxG.save.data.songSelected);
 
